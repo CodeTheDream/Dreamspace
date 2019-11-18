@@ -1,0 +1,29 @@
+.about {
+    padding: 5em 1em;
+    max-width: $contentWidth;
+    margin: 0 auto;
+    p {
+        text-align: left;
+        font-size: 1.1em;
+        font-weight: 300;
+    }
+}
+
+.cta-wrapper {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    a {
+        color: $blue;
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: .5s;
+        font-size: 1rem;
+    }
+    a:hover {
+        color: $orange;
+    
+    }
+}

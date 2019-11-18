@@ -1,0 +1,45 @@
+.navigation {
+    width: 100%;
+    background: $blue;
+    position: relative;
+    padding: .5em;
+
+    .logo-wrapper {
+        width: 150px;
+        top: 10px;
+        left: 10px;
+        position: relative;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        position: relative;
+        top: -20px;
+        right: 10px;
+    }
+    li {
+        margin: 0 .5em
+    }
+
+    a {
+        color: white;
+    }
+}
+
+.nav-content {
+    max-width: $maxWidth;
+    margin: 0 auto;
+}
+
+.footer {
+    background: $orange;
+    color: white;
+    height: 50px;
+    margin-top: auto;
+}
+
+.footer-content {
+    margin-top:  15px;
+}
