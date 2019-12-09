@@ -7,23 +7,31 @@ import Dashboard from "./containers/Dashboard";
 import * as ROUTES from "./constants/routes.js";
 import About from "./containers/About";
 import Createarticle from './containers/Create-article';
+import Account from "./containers/Account";
+import SignUp from "./components/SignUp"
+import SignInPage from "./components/SignIn"
+import { withAuthentication } from './components/Session';
 
 
 function App() {
   return (
     <div className="App">
+      
         <Router>
           <Navigation />
           <Switch>
             <Route exact path={ROUTES.HOME} component={Dashboard} />
             <Route exact path={ROUTES.ABOUT} component={About} />
             <Route exact path={ROUTES.CREATEARTICLE} component={Createarticle} />
+            <Route exact path={ROUTES.ACCOUNT} component={Account} />
+            <Route exact path={ROUTES.SIGNUP} component={SignUp}/>
+            <Route exact path={ROUTES.SIGN_IN} component={SignInPage}/>
           </Switch>
           <Footer />
         </Router>
+       
     </div>
   );
 }
 
-export default App;
-
+export default withAuthentication(App);

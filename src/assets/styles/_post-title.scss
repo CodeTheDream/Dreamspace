@@ -1,0 +1,115 @@
+
+ body {
+    margin: 0;
+    background-color: rgb(230, 242, 255); 
+  }
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    display: -ms-flexbox;
+    
+  }
+  .create-post {
+    background: white;
+    margin-bottom: 10px;
+  }
+  .writepost {
+    height: inherit;
+    width: 90%;
+}
+  .wrapper > div {
+    border: 1px solid whitesmoke; 
+    width: 80%;
+  }
+  .popular-title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    align-items: initial;
+    color: black;
+  }
+  .posts {
+    background: white;
+    height: 300px; //this should be dynamic( but now its ok)
+    box-shadow: gray;
+    display: flex;
+    display: -ms-flexbox;
+    color: inherit;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    align-items: left;
+    position: relative;
+
+  }
+  .likes {
+      width: 5%;
+      background-color: whitesmoke;
+  }
+  .maincontent {
+    width: 95%;
+
+    .author{
+        width: fit-content;
+        margin-top: 4px;
+        margin-bottom: 10px;
+    }
+    .posts-content {
+      width:auto;
+      height:auto;
+        margin-top: 20px;
+        background:white;
+        box-shadow: gray;
+        color: inherit;
+        margin-bottom: 10px;
+        p, h4, h5{
+            margin: 3px;
+            text-align: justify;
+        }
+    }
+    .profile-img{
+      height:200px;
+      width:500px;
+    }
+    .bottom{
+        width: fit-content;
+        margin-bottom: 5px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+      .likes {
+        position: absolute;
+        bottom: 0;
+        padding-left: 10px;
+        display: inline;
+        background-color: inherit;
+
+      }
+      .maincontent {
+          width: inherit;
+      }
+      .bottom {
+          padding-left: 30px;
+      }
+  }
+  
+span {
+    padding-left: 3px;
+}
+
+i.custom {
+
+    font-size: 1em;
+    color: gray;
+}
+
+#content {
+    position: relative;
+}
+#commentarea {
+    position: absolute;
+    bottom: 0;
+    width: inherit;
+}
