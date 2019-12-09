@@ -1,0 +1,48 @@
+
+.wrapper {
+    display: grid ;
+    grid-template-rows: 5% 30% ;
+    grid-row-gap:1em;
+    grid-auto-rows: minmax(80px, auto);
+}
+
+
+.wrapper > div { 
+    margin: 10px;
+    padding:12px;
+
+}
+
+.NewPost  {
+text-align: left;    
+background: rgb(255, 252, 252);
+   
+border: rgb(218, 213, 213) 1px solid;
+font-size: 15px;
+font-weight: bold;
+
+}
+
+.right {
+align-self: flex-end;
+}
+
+.PostedBy {
+    border: rgb(218, 213, 213) 1px solid;
+    text-align: left;
+    
+  
+}
+
+.Start {
+    align-items: start;
+    padding-top: 2px; 
+    border: #ccc 1px solid;
+    font-size: 15px;
+    background-color: rgb(255, 252, 252);
+   
+   
+}
+
+.Topic {
+}

@@ -1,0 +1,52 @@
+ [
+
+        {
+            "id": 1,
+            "postedBy" : "Posted By Traversy Media",
+            "timeAt" : "3:00PM",
+            "content": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.!!"
+
+        },
+
+
+        {
+
+      "id": 2,
+            "postedBy": "Posted By Stephen Grider",
+            "timeAt" : "3:00PM",
+            "content": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. !!"
+
+         },
+
+         {
+
+          "id": 3,
+                "postedBy": "Posted By Stephen Grider",
+                "timeAt" : "3:00PM",
+                "content": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.!!"
+    
+             },
+
+             {
+
+              "id": 3,
+                    "postedBy": "Posted By Stephen Grider",
+                    "timeAt" : "3:00PM",
+                    "content": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.!!"
+        
+                 }
+        
+        
+    
+    
+    
+
+
+
+
+
+
+
+
+
+ ]
