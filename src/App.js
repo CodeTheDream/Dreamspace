@@ -8,9 +8,11 @@ import * as ROUTES from "./constants/routes.js";
 import About from "./containers/About";
 
 
+
 function App() {
   return (
     <div className="App">
+      
         <Router>
           <Navigation />
           <Switch>
@@ -19,9 +21,9 @@ function App() {
           </Switch>
           <Footer />
         </Router>
+       
     </div>
   );
 }
 
 export default App;
-
