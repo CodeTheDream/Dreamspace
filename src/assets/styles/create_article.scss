@@ -1,0 +1,46 @@
+.Datapost-form {  
+    background-color:lemonchiffon; 
+    height: 800px; 
+    
+    }
+  .grid-container {
+     display: grid;
+    grid-template-columns:800px 500px ;
+    grid-template-rows: 80px 400px;
+    grid-gap: 20px;
+   padding: 60px 1000px 20px 100px;
+    
+  }
+  
+  .grid-container div {
+    background-color: lightslategray;
+    text-align: center;
+    padding: 10px 0;
+  
+  }
+  
+  .subgrid-container1 {
+    align-self: end;
+    background-color:lightgray;
+    font-size: 20px;
+    
+  }
+  
+  .subgrid-container3 ul {
+    padding: 20px;
+    display: grid;
+    grid-gap: 10px;
+    grid: auto-flow / auto 1fr;
+  }
+  
+  .subgrid-container3 li {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: subgrid ;
+    border: solid wheat ;
+  
+  }
+  
+  .subgrid-container2{
+    align-self: end; 
+  }
