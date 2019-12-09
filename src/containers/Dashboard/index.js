@@ -1,5 +1,9 @@
 import React from "react";
 import myimage from '../../assets/images/nice-piccy3.jpg';
+import { compose } from 'recompose';
+import { withAuthorization, withEmailVerification } from '../../components/Session';
+import labsLogo from '../../assets/images/ctd-labs-logo.png'
+
 class Dashboard extends React.Component {
     render() {
     return (
@@ -68,4 +72,10 @@ class Dashboard extends React.Component {
   );
 }
 }
-export default Dashboard
+
+
+const condition = authUser => !!authUser;
+
+export default compose(
+  withAuthorization(condition),
+)(Dashboard);
