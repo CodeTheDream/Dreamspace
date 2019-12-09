@@ -14,6 +14,7 @@ const withAuthentication = Component => {
     }
 
     componentDidMount() {
+      console.log("Running with authentication")
       this.listener = this.props.firebase.onAuthUserListener(
         authUser => {
           localStorage.setItem('authUser', JSON.stringify(authUser));
