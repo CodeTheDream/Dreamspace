@@ -1,4 +1,6 @@
 import React from "react";
+import { compose } from 'recompose';
+import { withAuthorization, withEmailVerification } from '../../components/Session';
 import labsLogo from '../../assets/images/ctd-labs-logo.png'
 
 class Dashboard extends React.Component {
@@ -32,5 +34,8 @@ class Dashboard extends React.Component {
   }
 }
 
+const condition = authUser => !!authUser;
 
-export default Dashboard
+export default compose(
+  withAuthorization(condition),
+)(Dashboard);
