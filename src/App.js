@@ -11,9 +11,11 @@ import SignUp from "./components/SignUp"
 import SignInPage from "./components/SignIn"
 import { withAuthentication } from './components/Session';
 
+
 function App() {
   return (
     <div className="App">
+      
         <Router>
           <Navigation />
           <Switch>
@@ -26,9 +28,9 @@ function App() {
           </Switch>
           <Footer />
         </Router>
+       
     </div>
   );
 }
 
 export default withAuthentication(App);
-
