@@ -17,6 +17,9 @@ const Navigation = () => (
           <li>
             <Link to={ROUTES.ABOUT}>About</Link>
           </li>
+          <li>
+            <Link to={ROUTES.CREATEARTICLE}>Create_article</Link>
+          </li>
         </ul>
       </div>
   </nav>
