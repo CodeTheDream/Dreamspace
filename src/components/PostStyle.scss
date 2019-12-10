@@ -1,48 +1,119 @@
 
+
 .wrapper {
     display: grid ;
-    grid-template-rows: 5% 30% ;
-    grid-row-gap:1em;
+    grid-template-rows: 4% 30% ;
     grid-auto-rows: minmax(80px, auto);
+    
 }
 
 
 .wrapper > div { 
-    margin: 10px;
-    padding:12px;
+    margin: 5px;
+    padding:5px;
 
 }
 
 .NewPost  {
-text-align: left;    
-background: rgb(255, 252, 252);
-   
-border: rgb(218, 213, 213) 1px solid;
-font-size: 15px;
-font-weight: bold;
+    display: grid;
+    grid-column: span 2;
+    text-align: left; 
+    background: rgb(255, 252, 252);
+    font-weight: bold;
+    font-size: 15px;
+    border: rgb(218, 213, 213) 1px solid;
+    
 
+}
+
+.subgrid-post{
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: subgrid;
+    gap: 12px;
 }
 
 .right {
-align-self: flex-end;
+    display: grid;
+    grid-template-columns:repeat(1,1fr);
+    justify-items: right;
+    font-weight: bold;
+    
+    //margin-bottom: 80px;
+  
+
 }
 
 .PostedBy {
+ 
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: 1fr;
+    justify-items: stretch;
     border: rgb(218, 213, 213) 1px solid;
     text-align: left;
+    padding: 12px;   
     
   
 }
 
 .Start {
+
+    display: grid;
+    grid-template-columns: subgrid;
     align-items: start;
-    padding-top: 2px; 
     border: #ccc 1px solid;
     font-size: 15px;
+    font-weight:light;
     background-color: rgb(255, 252, 252);
+    padding: 8px;   
    
    
 }
 
 .Topic {
+    display: grid;
+    grid-template-rows: subgrid;
+
+    font-size: 15px;
+}
+
+.buttonGrid {
+   
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: 50px;
+    grid-gap: 1em;
+    
+    
+
+}
+
+
+
+.buttonGrid >button {
+    background-color: rgb(224, 222, 230);
+    font-size: 12px;
+    border-radius: 8px;
+    width: 100px;
+    height: 30px;
+    
+}
+
+.nested {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-auto-rows: 50px;
+    justify-items: right;
+
+    
+}
+
+.nested >button {
+    background-color: rgb(224, 222, 230);
+    font-size: 12px;
+    border-radius: 8px;
+    width: 100px;
+    height: 30px;
+    
 }
