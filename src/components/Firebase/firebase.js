@@ -88,6 +88,23 @@ class Firebase {
 
   users = () => this.db.collection('users');
 
+  // *** Article API ***
+
+  article = uid => this.db.doc(`article/${uid}`);
+  
+  articles = () => this.db.collection('article');
+
+  //*** Comments API ***
+
+  comment = uid => this.db.doc(`comments/${uid}`);
+  
+  comments = () => this.db.collection('comments');
+// *** Tags API ***
+
+  tag = uid => this.db.doc(`tags/${uid}`);
+  
+  tags = () => this.db.collection('tags');
+
 }
 
 export default Firebase;

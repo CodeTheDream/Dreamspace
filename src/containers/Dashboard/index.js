@@ -8,8 +8,23 @@ import {
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes.js";
 import labsLogo from "../../assets/images/ctd-labs-logo.png";
+import { withFirebase } from "../../components/Firebase";
 
 class Dashboard extends React.Component {
+  componentDidMount() {
+    // let articles =this.props.firebase.articles()
+    this.unsubscribe = this.props.firebase.articles().onSnapshot(snapshot => {
+      let articles = [];
+      snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
+
+      console.log("Articles loaded here yo!", articles);
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -21,7 +36,6 @@ class Dashboard extends React.Component {
             <i className="fa fa-link"></i>
           </a>
           <Link to={ROUTES.CREATEARTICLE}>Create_article</Link>
-
         </div>
         <div className="popular-title">
           <p style={{ float: "left" }}>Popular Posts</p>
@@ -120,4 +134,4 @@ class Dashboard extends React.Component {
 
 const condition = authUser => !!authUser;
 
-export default compose(withAuthorization(condition))(Dashboard);
+export default compose(withFirebase, withAuthorization(condition))(Dashboard);
