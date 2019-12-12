@@ -10,6 +10,7 @@ import Createarticle from './containers/Create-article';
 import Account from "./containers/Account";
 import SignUp from "./components/SignUp"
 import SignInPage from "./components/SignIn"
+import IndividualView from "./components/IndividualView"
 import { withAuthentication } from './components/Session';
 
 
@@ -26,6 +27,8 @@ function App() {
             <Route exact path={ROUTES.ACCOUNT} component={Account} />
             <Route exact path={ROUTES.SIGNUP} component={SignUp}/>
             <Route exact path={ROUTES.SIGN_IN} component={SignInPage}/>
+            <Route exact path={ROUTES.INDIVIDUAL_VIEW} component={IndividualView} />
+
           </Switch>
           <Footer />
         </Router>
