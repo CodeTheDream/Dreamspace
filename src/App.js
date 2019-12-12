@@ -10,7 +10,7 @@ import Createarticle from './containers/Create-article';
 import Account from "./containers/Account";
 import SignUp from "./components/SignUp"
 import SignInPage from "./components/SignIn"
-import IndividualView from "./components/IndividualView"
+import IndividualView from "./containers/IndividualView"
 import { withAuthentication } from './components/Session';
 
 
