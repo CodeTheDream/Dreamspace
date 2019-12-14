@@ -2,6 +2,21 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./create_article.css";
 const options = ["Select Tag", "React", "Ruby", "Javascript"];
+
+
+class Dialog extends React.Component {
+  render() {
+    return (
+      <div className='dialogstyle '>
+        <button className=" dialogCloseButonStayle" onClick={this.props.closePopup}> X </button>
+        <div className='diglog_inner'>
+          <h4>{this.props.children}</h4>
+        
+        </div>
+      </div>
+    );
+  }
+}
 class Createarticle extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +27,12 @@ class Createarticle extends Component {
       urlBody: ""
     };
   }
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
 
   onUrlChange = e => {
     this.setState({
@@ -63,11 +84,20 @@ class Createarticle extends Component {
   };
   render() {
     return (
+      <div>
+        <input placeholder="create_article" onClick={this.togglePopup.bind(this)}/> 
+
+{this.state.showPopup ?
+  <Dialog
+
+   closePopup={this.togglePopup.bind(this)}
+  >
+      
       <div className=" Datapost-form">
         <div className="grid-container">
           <div className="subgrid-container1">Create a new post</div>
 
-          <div className="subgrid-container2">Today Top Growing Taps</div>
+        {/*}  <div className="subgrid-container2">Today Top Growing Taps</div>*/}
           <div className="form-area">
             <div className="subgrid-container3">
               <ul >
@@ -128,8 +158,13 @@ class Createarticle extends Component {
               </ul>
             </div>
           </div>
-          <div>4</div>
+          {/*<div>4</div>*/}
         </div>
+      </div>
+       
+      </Dialog>
+         : null
+       }
       </div>
     );
   }
@@ -137,12 +172,3 @@ class Createarticle extends Component {
 
 export default Createarticle;
 
-/*import React,{Component} from 'react'
- class Createarticle extends Component {
-     render(){
-         return(
-             <div>post an article</div>
-         )
-     }
- }
- export default Createarticle;*/
