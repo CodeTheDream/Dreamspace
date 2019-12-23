@@ -81,7 +81,7 @@ class Createarticle extends Component {
       downvotes: this.state.downvotes,
       upvotes: this.state.upvotes,
       timeCreated:moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  UTC-6`) 
-      //timeCreated:moment().add(moment().utcOffset(), 'm').utc().format()
+      
       
     });
 
