@@ -1,0 +1,129 @@
+.container  {
+      //height : 1000px;
+      background-color: white;
+      padding-top: 20px;
+  }
+ .auther-name {
+      display: grid;
+      grid-template-columns: 1000px;
+      grid-template-rows: 30px;
+      justify-content: center;
+      
+  }
+  
+
+  .autherstyle {
+    
+    border: 1px rgb(209, 202, 202) solid;
+    border-bottom-style:hidden;
+    padding : 8px;
+    text-align: left;
+    background-color: rgb(220, 220, 226);
+    //padding: 1em;
+  
+
+  }
+
+
+  .grid-subject {
+    display: grid;
+    grid-template-columns: 1000px;
+    grid-template-rows: 30px;
+    justify-content: center;
+
+     
+  }
+ 
+
+ .article-subject {
+   
+    padding:5px;
+    background-color: rgb(220, 220, 226);
+    border: 1px rgb(209, 202, 202) solid;
+    border-bottom-style:hidden;
+    padding-left : 12px;
+    text-align: left;
+    font-weight: bold;
+ 
+    
+}
+
+
+  .grid-view {
+      display: grid;
+      grid-template-columns: 1000px;
+      grid-template-rows: 400px;
+      grid-auto-rows: 500px;
+      background-color:white;
+      justify-content: center;
+  }
+
+  .grid-view > div {
+    background-color: rgb(220, 220, 226);
+    padding: 15px;
+   
+  }
+
+  
+
+ 
+
+  .view-article {
+      text-align: center;
+     // padding: 15px;
+      border: 1px rgb(209, 202, 202) solid;
+  }
+
+
+
+
+
+.stylebutton {
+    display: inline-block;
+    float: left;
+    padding-left: 170px;
+
+}
+   button {
+    
+    background-color: rgb(224, 222, 230);
+    font-size: 12px;
+    border-radius: 8px;
+    width: 70px;
+    height: 20px;
+ 
+    
+}
+
+
+.commentgrid {
+    display: grid;
+    grid-template-columns: 1000px;
+    grid-template-rows: 300px;
+    justify-content:center;
+    margin-top: 80px;
+    margin-bottom: 30px;
+
+
+}
+
+.commentstyle {
+    padding:10px;
+    background-color: rgb(220, 220, 226);
+    border: 1px rgb(209, 202, 202) solid;
+    //border-bottom-style:hidden;
+    padding-left : 12px;
+    text-align: left;
+    font-weight: bold;
+}
+.btncomment {
+    float: right;
+}
+
+
+
+
+
+
+  
+  

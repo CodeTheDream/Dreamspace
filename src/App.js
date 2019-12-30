@@ -7,6 +7,7 @@ import Dashboard from "./containers/Dashboard";
 import * as ROUTES from "./constants/routes.js";
 import About from "./containers/About";
 import Createarticle from './containers/Create-article';
+import IndividualView from './components/IndividualView';
 import Account from "./containers/Account";
 import SignUp from "./components/SignUp"
 import SignInPage from "./components/SignIn"
@@ -26,6 +27,7 @@ function App() {
             <Route exact path={ROUTES.ACCOUNT} component={Account} />
             <Route exact path={ROUTES.SIGNUP} component={SignUp}/>
             <Route exact path={ROUTES.SIGN_IN} component={SignInPage}/>
+            <Route exact path={ROUTES.INDIVIDUAL_VIEW} component ={IndividualView} />
           </Switch>
           <Footer />
         </Router>

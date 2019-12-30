@@ -1,23 +1,23 @@
 .Datapost-form {  
-    background-color:lemonchiffon; 
-    height: 800px; 
-    
-    }
-  .grid-container {
-     display: grid;
-    grid-template-columns:800px 500px ;
-    grid-template-rows: 80px 400px;
-    grid-gap: 20px;
-   padding: 0 1000px 20px 100px;
-    
-  }
-  
-  .grid-container div {
-    background-color: lightslategray;
-    text-align: center;
-    padding: 10px 0;
+  background-color:lemonchiffon; 
+  height: 800px; 
   
   }
+.grid-container {
+   display: grid;
+  grid-template-columns:800px 500px ;
+  grid-template-rows: 80px 400px;
+  grid-gap: 20px;
+ padding: 0 1000px 20px 100px;
+  
+}
+
+.grid-container div {
+  background-color: lightslategray;
+  text-align: center;
+  padding: 10px 0;
+
+}
   
   .subgrid-container1 {
     align-self: end;
