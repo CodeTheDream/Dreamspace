@@ -36,7 +36,7 @@ class FilterDropDown extends Component {
     return (
       <div>
         <button onClick={this.showMenu}>
-          Show menu
+          Popular Posts
         </button>
         
         {
@@ -48,9 +48,9 @@ class FilterDropDown extends Component {
                   this.dropdownMenu = element;
                 }}
               >
-                <button> Menu item 1 </button>
-                <button> Menu item 2 </button>
-                <button> Menu item 3 </button>
+                <button> React</button>
+                <button> Ruby</button>
+                <button> Javascript</button>
               </div>
             )
             : (
