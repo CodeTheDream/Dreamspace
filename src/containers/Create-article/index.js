@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./create_article.css";
 const options = ["Select Tag", "React", "Ruby", "Javascript"];
 
@@ -65,10 +64,7 @@ class Createarticle extends Component {
       value: this.state.value,
       urlBody: this.state.urlBody
     };
-    axios
-      .post("https://jsonplaceholder.typicode.com/posts", data)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    
   };
 
   /* resetForm = () => {
