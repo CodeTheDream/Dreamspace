@@ -11,6 +11,7 @@ import labsLogo from "../../assets/images/ctd-labs-logo.png";
 import { withFirebase } from "../../components/Firebase";
 import ListItems from "../../components/ListItems";
 import Create_article from '../Create-article'
+import FilterDropDown from "../../components/FilterDropDown";
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -83,7 +84,8 @@ class Dashboard extends React.Component {
           New Post
         </button>
         <div className="popular-title">
-          <p style={{ float: "left" }}>Popular Posts</p>
+          {/* <p style={{ float: "left" }}>Popular Posts</p> */}
+<FilterDropDown/>
         </div>
         <div>
           <ListItems
