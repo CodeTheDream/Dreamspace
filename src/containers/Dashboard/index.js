@@ -35,6 +35,9 @@ class Dashboard extends React.Component {
   }
 
   render() {
+
+
+    console.log("M*8",this.props.authUser)
     return (
       <div className="wrapper">
         <div className="create-post">
@@ -50,9 +53,13 @@ class Dashboard extends React.Component {
 
         <button
           onClick={() => {
+
+            console.log(this.state.articles[2])
+            let article = this.state.articles[2]
             this.props.firebase
-              .article("3BkKXYRVLMNSbupu04zC")
-              .set({ title: "Live TEST" });
+              .article("B5x4fBiKQufH2MjXVXh5")
+              .set({ ...article,
+              commentID: "TLd6KEj0yGlrLyKL6On1" });
           }}
         >
           Edit Post
@@ -61,9 +68,18 @@ class Dashboard extends React.Component {
           onClick={() => {
             this.props.firebase
               .articles()
-              .add({ title: "Live TEST2" });
+              .add({ 
+                title: "Live TEST FINAL",
+                 authorID: "N5OzGWJFHUYUxK5UDbfjFuuKYN52",
+                 downvotes: 0,
+                 timeCreated:"December 10, 2019 at 3:00:00 PM UTC-6",
+                 upvotes:16,
+                 url:""
+                });
           }}
         >
+
+
           New Post
         </button>
         <div className="popular-title">

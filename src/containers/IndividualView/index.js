@@ -6,6 +6,7 @@ import { SignUpLink } from '../../components/SignUp';
 import { PasswordForgetLink } from '../../components/PasswordForget';
 import { withFirebase } from '../../components/Firebase';
 import * as ROUTES from '../../constants/routes';
+import Post from '../../components/Post';
 
 
 
@@ -14,7 +15,9 @@ class IndividualView extends Component {
 
 render(){
     return(
-        <div>Individual view Here</div>
+        <div>Individual view Here
+        <Post/>
+        </div>
     )
 }
 }
