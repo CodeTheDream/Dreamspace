@@ -1,6 +1,6 @@
 .navigation {
     width: 100%;
-    background: $blue;
+    background: $main-color;
     position: relative;
     padding: .5em;
 
@@ -24,7 +24,7 @@
     }
 
     a {
-        color: white;
+        color: $secondary-color;
     }
 }
 
@@ -34,8 +34,8 @@
 }
 
 .footer {
-    background: $orange;
-    color: white;
+    background: $tertiary-color;
+    color: $secondary-color;
     height: 50px;
     margin-top: auto;
 }

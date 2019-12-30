@@ -40,6 +40,7 @@ class PasswordChangeForm extends Component {
     const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
 
     return (
+      <div className="devedit-form">
       <form onSubmit={this.onSubmit}>
         <input
           name="passwordOne"
@@ -55,12 +56,13 @@ class PasswordChangeForm extends Component {
           type="password"
           placeholder="Confirm New Password"
         />
-        <button className="button" disabled={isInvalid} type="submit">
+        <button className="button-main" disabled={isInvalid} type="submit">
           Reset My Password
         </button>
 
         {error && <p>{error.message}</p>}
       </form>
+      </div>
     );
   }
 }
