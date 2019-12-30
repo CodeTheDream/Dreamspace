@@ -61,28 +61,30 @@ class ListItem extends React.Component {
         upvotes: this.upvotes + 1
     })
 }
-  downVote(e, article) {
+  downVote(e, article, authUser) {
         // let article = this.state.article
         console.log(article);
-        if (article !== undefined) {
-          let newDownvotes = article.downvotes + 1;
-          console.log(article.downvotes);
-          console.log(newDownvotes);
-          this.props.firebase
-            .article(article.uid)
-            .set({ ...article, downvotes: newDownvotes })
-            .then(() => {
-              console.log("SETTING STATE", newDownvotes);
-              this.setState({
-                ...article ,
-                totalVote: newDownvotes
-              });
-            })
-            .then(()=>{
-              this.calculateTotal(newDownvotes,article.upvotes);
+        console.log("AUTHUSER",authUser)
 
-            });
-        }
+        // if (article !== undefined) {
+        //   let newDownvotes = article.downvotes + 1;
+        //   console.log(article.downvotes);
+        //   console.log(newDownvotes);
+        //   this.props.firebase
+        //     .article(article.uid)
+        //     .set({ ...article, downvotes: newDownvotes })
+        //     .then(() => {
+        //       console.log("SETTING STATE", newDownvotes);
+        //       this.setState({
+        //         ...article ,
+        //         totalVote: newDownvotes
+        //       });
+        //     })
+        //     .then(()=>{
+        //       this.calculateTotal(newDownvotes,article.upvotes);
+
+        //     });
+        // }
   }
   calculateTotal(downvotes, upvotes) {
     console.log("UPVOTE", upvotes);
