@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { compose } from "recompose";
+import {
+  AuthUserContext,
+  withAuthorization,
+  withEmailVerification
+} from "../../components/Session";
 import { withFirebase } from "../../components/Firebase";
 import "./create_article.css";
 const options = ["Select Tag", "React", "Ruby", "Javascript"];
+const moment = require('moment');
 class Dialog extends React.Component {
   render() {
     return (
@@ -28,10 +34,13 @@ class Createarticle extends Component {
       description: "",
       tags: "Select an Option",
       url: "",
-      loading: false,
-      messages: []
+      downvotes: 0,
+      upvotes: 0,
+      authorID: "",
+      timeCreated: ""
     };
   }
+  
   togglePopup() {
     this.setState({
       showPopup: !this.state.showPopup
@@ -39,7 +48,7 @@ class Createarticle extends Component {
   }
   onUrlChange = e => {
     this.setState({
-      ur: e.target.value
+      url: e.target.value
     });
   };
   onTagChange = e => {
@@ -52,53 +61,44 @@ class Createarticle extends Component {
       title: e.target.value
     });
   };
-  onDescriptionChange = e => {
+  onBodyChange = e => {
     this.setState({
       description: e.target.value
     });
   };
-  /*componentDidMount() {
-    this.setState({ loading: true });
-    this.props.firebase.messages().on("value", snapshot => {
-      const messageObject = snapshot.val();
-      if (messageObject) {
-        const messageList = Object.keys(messageObject).map(key => ({
-          ...messageObject[key],
-          uid: key
-        }));
-        this.setState({
-          messages: messageList,
-          loading: false
-        });
-      } else {
-        this.setState({ messages: null, loading: false });
-      }
-    });
-  }
-  componentWillUnmount() {
-    this.props.firebase.messages().off();
-  }*/
-  handleSubmit = e => {
+  handleSubmit = (e, authUser) => {
+    
+ 
+     
     e.preventDefault();
-    const data = {
+
+    this.props.firebase.articles().add({
+      userId: authUser.uid,
       title: this.state.title,
       description: this.state.description,
       tags: this.state.tags,
-      url: this.state.url
-    };
+      url: this.state.url,
+      downvotes: this.state.downvotes,
+      upvotes: this.state.upvotes,
+      timeCreated:moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  UTC-6`) 
+      
+      
+    });
 
-    this.props.firebase.articles().add({ data });
-    console.log("DATA",data);
     this.setState({
       tags: "",
       title: "",
       url: "",
-      description: ""
+      description: "",
+      downvotes: 0,
+      upvotes: 0
     });
   };
   render() {
     const { title, tags, url, description} = this.state;
     return (
+      <AuthUserContext.Consumer>
+         {authUser => (
       <div>
         <input
           placeholder="create_article"
@@ -113,19 +113,16 @@ class Createarticle extends Component {
                   <div className="subgrid-container3">
                     <ul>
                       <li>
-                     
                         <form
-                          id="postdataform"
+                        
                           className="subgrid-post"
-                          onSubmit={this.handleSubmit}
+                          onSubmit={e =>this.handleSubmit(e, authUser)}
                         >
                           <ul>
                             <li>
                               <label>Tags</label>
                               <select
-                                id="tags"
-                                /*value={this.state.tags}*/
-                                value={tags}
+                                value={this.state.tags}
                                 onChange={this.onTagChange}
                               >
                                 {options.map(option => {
@@ -139,20 +136,16 @@ class Createarticle extends Component {
                             </li>
                             <li>
                               <input
-                                id="title"
                                 placeholder="Title"
-                               /* value={this.state.title}*/
-                               value={title}
+                                value={this.state.title}
                                 onChange={this.onTitleChange}
                                 required
                               />
                             </li>
                             <li>
                               <textarea
-                                id="url"
                                 placeholder="URl"
-                                /*value={this.state.url}*/
-                                value={url}
+                                value={this.state.url}
                                 onChange={this.onUrlChange}
                               />
                             </li>
@@ -160,11 +153,9 @@ class Createarticle extends Component {
                               <textarea
                                 col={30}
                                 rows={10}
-                                id="description"
                                 placeholder="Description"
-                               /* value={this.state.description}*/
-                               value={description}
-                                onChange={this.onDescriptionChange}
+                                value={this.state.description}
+                                onChange={this.onBodyChange}
                                 required
                               />
                             </li>
@@ -182,7 +173,12 @@ class Createarticle extends Component {
           </Dialog>
         ) : null}
       </div>
+      )}
+      </AuthUserContext.Consumer>
     );
+    
   }
+
 }
+
 export default compose(withFirebase)(Createarticle);

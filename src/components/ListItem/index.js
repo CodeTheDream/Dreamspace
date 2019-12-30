@@ -3,7 +3,7 @@ import myimage from "../../assets/images/nice-piccy3.jpg";
 import { withRouter } from "react-router-dom";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
-import { withAuthentication } from "../Session";
+import { AuthUserContext, withAuthentication } from "../Session";
 
 class ListItem extends React.Component {
   constructor(props) {
@@ -24,8 +24,10 @@ class ListItem extends React.Component {
       state: { article }
     });
   }
-  upVote(e, article) {
+  upVote(e, article, authUser) {
     // let article = this.state.article
+    console.log("AUTHUSER", authUser.uid)
+
     console.log(article);
     if (article !== undefined) {
       let newUpvotes = article.upvotes + 1;
@@ -47,11 +49,12 @@ class ListItem extends React.Component {
         });
     }
   }
-  handleUpvote = (e) => {
+  handleUpvote = (e, authUser) => {
     console.log("upvotes",this.state.upvotes + 1)
+
+    console.log("AUTHUSER", authUser.uid)
     this.props.firebase
         .articles().add({
-            title: "Elsa,Aster,Ella",
        upvotes:this.state.upvotes + 1
         })
     this.setState({
@@ -120,10 +123,13 @@ class ListItem extends React.Component {
   render() {
     const { article } = this.props;
     const user = this.state.user;
-    console.log("USERSTUFF", this.state);
+    // console.log("USERSTUFF", this.state);
 
-    console.log("AUTHSTUFFHERE", this.props)
+    // console.log("AUTHSTUFFHERE", this.props)
     return (
+
+      <AuthUserContext.Consumer>
+        {authUser =>(
       <div className="posts">
         <div
           className="likes"
@@ -135,11 +141,11 @@ class ListItem extends React.Component {
           <span style={{ fontSize: "1em" }}>
             <i
               className="fa fa-arrow-up custom"
-              onClick={e => this.handleUpvote(e, article)}
+              onClick={e => this.upVote(e, article, authUser)}
             ></i>
             {this.state.totalVote}
             <i className="fa fa-arrow-down custom"
-                          onClick={e => this.downVote(e, article)}
+                          onClick={e => this.downVote(e, article, authUser)}
 
             ></i>
           </span>
@@ -175,6 +181,9 @@ class ListItem extends React.Component {
           </div>
         </div>
       </div>
+        )}
+      </AuthUserContext.Consumer>
+
     );
   }
 }
