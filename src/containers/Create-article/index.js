@@ -78,6 +78,14 @@ console.log("ARTICLE", articleId)
   }
   handleSubmit = (e, authUser) => {
     e.preventDefault();
+    const data = {
+      title: this.state.title,
+      description: this.state.description,
+      value: this.state.value,
+      urlBody: this.state.urlBody
+    };
+    
+
 
     this.props.firebase
       .articles()

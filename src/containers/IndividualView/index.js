@@ -13,6 +13,10 @@ import Post from '../../components/Post';
 class IndividualView extends Component {
 
 
+
+
+
+
 render(){
     return(
         <div>Individual view Here

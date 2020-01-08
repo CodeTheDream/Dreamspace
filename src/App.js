@@ -12,7 +12,7 @@ import SignUp from "./components/SignUp"
 import SignInPage from "./components/SignIn"
 import IndividualView from "./containers/IndividualView"
 import { withAuthentication } from './components/Session';
-
+import Admin from "./containers/Admin"
 
 function App() {
   return (
@@ -28,6 +28,8 @@ function App() {
             <Route exact path={ROUTES.SIGNUP} component={SignUp}/>
             <Route exact path={ROUTES.SIGN_IN} component={SignInPage}/>
             <Route exact path={ROUTES.INDIVIDUAL_VIEW} component={IndividualView} />
+            <Route exact path={ROUTES.ADMIN} component={Admin} />
+
 
           </Switch>
           <Footer />
