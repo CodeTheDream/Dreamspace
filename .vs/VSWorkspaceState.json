@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\Firebase",
+    "\\src\\components\\ListItem",
+    "\\src\\containers",
+    "\\src\\containers\\Dashboard"
+  ],
+  "SelectedNode": "\\src\\components\\ListItem\\index.js",
+  "PreviewInSolutionExplorer": false
+}
