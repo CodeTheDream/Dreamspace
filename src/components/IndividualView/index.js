@@ -1,13 +1,13 @@
 import React from 'react';
 import './ViewArticle.scss';
-import Comments from './comment.js';
+import AddComment from '../CommentSystem/AddComment.js';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
-import myimage from "../../assets/images/nice-piccy3.jpg";
+
 
 
 
@@ -16,9 +16,11 @@ class IndividualView extends React.Component {
         super(props);
         this.state ={
            title:"",
-           content:"",
-           article:""
-           
+           article:"",
+           comment:[],
+           articleId:"",
+           createdAT:"",
+           comments:[]
            
            
         }; 
@@ -26,12 +28,12 @@ class IndividualView extends React.Component {
 
 
 
- componentDidMount() {
+ componentDidMount =() => {
         //get the ID for a particular article
         let articleId =this.props.match.params.articleId;
      
       console.log("articleId" , this.props.match.params);
-        
+        this.setState({articleId})
       
      this.unsubscribe=this.props.firebase.article(articleId).get().then((doc ) =>  {
       
@@ -48,29 +50,33 @@ class IndividualView extends React.Component {
 
        
     } 
- componentWillUnmount() {
-        this.unsubscribe();
-    }    
+//  componentWillUnmount =() => {
+//         this.unsubscribe();
+//     }    
     
-    
-            handleSubmit =(e) => {
-                e.preventDefault();
-               
+
+            createComment =(comment, article) => {
+               console.log( "here create comment",comment,this.state.articleId);
+               this.props.firebase
+               .comments().add({
+                   ...comment, articleId:this.state.articleId
+               })
+               .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+              })
             }
 
 
+
+            
+
     render() {
-        // Access article from local component state
-       const {article} =this.state;
+        // Access to local component state
+       const {article, comment, comments } =this.state;
 
 
 
-//    let displayArticle = this.state.article.map((A) => (
-//        <div  Key={A.articleId} >
-//            <h1>{A.title}</h1>
-//            <p>{A.article}</p>
-//        </div>
-//    ))
+
         return (
 
            
@@ -104,7 +110,8 @@ class IndividualView extends React.Component {
                <div className="stylebutton" >
                        <button 
                         type="button" 
-                        onClick={this.handleSubmit}
+                        //onClick={this.handleSubmit}
+                     
                         >
                         Comment
                         </button>
@@ -114,42 +121,29 @@ class IndividualView extends React.Component {
                  </div>
 
                     <div>
-                    < Comments />
-                    </div>
+                    < AddComment
+                    comments ={comment}
+                    onCreate ={this.createComment}
+                   
+                     />
+
+             <section>
+                   {comments.map(comment =>
+                       comment={comment} )}
+
+             </section> 
                 
-                 
+                   
+                
+                    </div> 
+
+                   
+                   
                </div>
         );
-    };
+    };              
 }
 
 export default compose(withFirebase, withRouter)(IndividualView);
 
 
-
-
-/*this.unsubscribe=this.props.firebase.article(articleId).get().then((doc ) =>  {
-    if (doc.exists) {
-        console.log(" this is my article", doc.data());
-     
-        }  else {
-            console.log("No such document!");
-        } */
-
-
-
-         /*componentDidMount (){
-      db.collection('article')
-        .get()
-        .then (snapshot => {
-            console.log(snapshot)
-           /* const article =[]
-            snapshot.forEach( doc => {
-                const data =doc.data()
-                article.push (data)
-            })
-            this.setState ({article :article})*
-            
-            
-   /*firebase.database().ref("article").once('value')
-    .then((snapshot) => console.log(snapshot.val()));*/

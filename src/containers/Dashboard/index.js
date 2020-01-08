@@ -9,9 +9,7 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes.js";
 import { withFirebase } from "../../components/Firebase";
 import ListItems from "../../components/ListItems";
-
-
-
+import Create_article from '../Create-article'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -41,13 +39,14 @@ class Dashboard extends React.Component {
     return (
       <div className="wrapper">
         <div className="create-post">
+        <Create_article/>
           {/* <a href="#" title="upload image" style={{ float: "right" }}>
             <i className="fa fa-image"></i>
           </a> */}
           <a href="#" title="upload image" style={{ float: "right" }}>
             <i className="fa fa-link"></i>
           </a>
-          <Link to={ROUTES.CREATEARTICLE}>Create article</Link>
+          {/*<Link to={ROUTES.CREATEARTICLE}>Create article</Link>*/}
         </div>
         
 
