@@ -1,15 +1,13 @@
 
   .dialogstyle {
-    width: 550px;
+    width: 70%;
     max-width: 100%;
-    height: 600px;
-    margin:auto;
+    margin: auto;
     position: fixed;
-    left: 70%;
-    right: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);z-index: 999;
-    background-color:lightslategray;
+    left: 15%;
+    right: 15%;
+    top: 20%;
+    z-index: 999;
     padding: 10px;
     border-radius: 8px;
     display: flex;
@@ -26,6 +24,7 @@
     height: 30px;
     font-weight: bold;
     align-self: flex-end;
+    background: $secondary-color;
   }
   
   .grid-container {
@@ -71,4 +70,13 @@
   
   .subgrid-container2{
     align-self: end; 
+  }
+  .modal-wrapper{
+    position: fixed;
+    width: 200%;
+    min-height: 200%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+    margin-left: -10%;
+    margin-top: -25%;
   }

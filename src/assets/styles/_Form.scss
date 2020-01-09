@@ -1,0 +1,112 @@
+.devedit-form{
+	padding: 10px 20px;
+	background: $white;
+	margin: 10px auto;
+	padding: 20px;
+	background: $white;
+	border-radius: 8px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.devedit-form fieldset{
+	border: none;
+}
+.devedit-form legend {
+	font-size: 1.4em;
+	margin-bottom: 10px;
+}
+.devedit-form label {
+	display: block;
+	margin-bottom: 8px;
+}
+.devedit-form input[type="text"],
+.devedit-form input[type="password"],
+.devedit-form input[type="date"],
+.devedit-form input[type="datetime"],
+.devedit-form input[type="email"],
+.devedit-form input[type="number"],
+.devedit-form input[type="search"],
+.devedit-form input[type="time"],
+.devedit-form input[type="url"],
+.devedit-form textarea,
+.devedit-form select {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	background: rgba(255,255,255,.1);
+	border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	margin: 0;
+	outline: 0;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	background-color: #e8eeef;
+	color:#8a97a0;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	margin-bottom: 30px;
+}
+.devedit-form input[type="text"]:focus,
+.devedit-form input[type="date"]:focus,
+.devedit-form input[type="datetime"]:focus,
+.devedit-form input[type="password"]:focus,
+.devedit-form input[type="email"]:focus,
+.devedit-form input[type="number"]:focus,
+.devedit-form input[type="search"]:focus,
+.devedit-form input[type="time"]:focus,
+.devedit-form input[type="url"]:focus,
+.devedit-form textarea:focus,
+.devedit-form select:focus{
+	background: #d2d9dd;
+}
+.devedit-form select{
+	-webkit-appearance: menulist-button;
+	height:35px;
+}
+.devedit-form .number {
+	background: $secondary-color;
+	color: $tertiary-color;
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+	font-size: 0.8em;
+	margin-right: 4px;
+	line-height: 30px;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+	border-radius: 15px 15px 15px 0px;
+}
+
+.button-main,
+.button-secondary,
+.button-tertiary,
+.button-secondary {
+	position: relative;
+	display: block;
+	padding: 19px 39px 18px 39px;
+	color: #FFF;
+	margin: 0 auto;
+	font-size: 18px;
+	text-align: center;
+	font-style: normal;
+	width: 100%;
+	// border: 1px solid $secondary-color;
+	// border-width: 1px 1px 3px;
+	margin-bottom: 10px;
+}
+
+.button-main {
+	background: $main-color;
+}
+.button-main:hover {
+	background: $tertiary-color;
+}
+.button-secondary {
+    background:$secondary-color; 
+    color: $tertiary-color !important;
+}
+
+.button-tertiary {
+    background:$tertiary-color; 
+}
