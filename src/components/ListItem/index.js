@@ -12,11 +12,11 @@ class ListItem extends React.Component {
             upvotes: [],
             downvotes: [],
             calculatedvote: 0,
-           // disabled: false
+            // disabled: false
         };
-       
+
     }
-    
+
     componentDidMount() {
         const { article } = this.props
         let upvotes = article.upvotes;
@@ -38,13 +38,13 @@ class ListItem extends React.Component {
         console.log("upvotestotal", upvotesTotal)
         console.log("downvotestotal", downvotesTotal)
         this.setState({ calculatedvote: finalTotal })
-    
+
     }
 
     handleUpvote = (e, authUser) => {
-            const { article } = this.props
-        let initialvote = [authUser.uid]; 
-       
+        const { article } = this.props
+        let initialvote = [authUser.uid];
+
         //let filteredVote = this.props.article.upvotes.findIndex(this.checkUpvote(authUser.uid,article.upvotes))
         //console.log("filtervote", filteredVote)
         if (article.upvotes == 0) {
@@ -54,11 +54,11 @@ class ListItem extends React.Component {
                 .set({
                     ...article,
                     upvotes: initialvote,
-                    
+
                 })
         }
-      
-        
+
+
 
         else {
             if (this.checkUpvote(authUser.uid, article.upvotes) == -1) {
@@ -77,7 +77,7 @@ class ListItem extends React.Component {
             else {
                 console.log("already upvoted")
             }
-          
+
         }
 
 
@@ -95,31 +95,31 @@ class ListItem extends React.Component {
         }
         else {
             //if (this.checkDownvote(authUser.uid, article.upvotes) == -1) {
-                this.setState({ calculatedvote: this.state.calculatedvote - 1 })
-                let downvotes = article.downvotes
-                let updatedDownvotes = downvotes
-                updatedDownvotes.push(authUser.uid)
-                this.props.firebase
-                    .article(article.uid)
-                    .set({
-                        ...article,
-                        upvotes: updatedDownvotes
-                    })
+            this.setState({ calculatedvote: this.state.calculatedvote - 1 })
+            let downvotes = article.downvotes
+            let updatedDownvotes = downvotes
+            updatedDownvotes.push(authUser.uid)
+            this.props.firebase
+                .article(article.uid)
+                .set({
+                    ...article,
+                    upvotes: updatedDownvotes
+                })
 
-            }
-           /* else {
-                console.log("already downvoted")
-            }*/
+        }
+        /* else {
+             console.log("already downvoted")
+         }*/
 
-       // }
+        // }
 
 
     }
-    checkUpvote = (uid,upvotes) => {
-        console.log("filter",upvotes,uid)
+    checkUpvote = (uid, upvotes) => {
+        console.log("filter", upvotes, uid)
         let filteredUpvote = upvotes.indexOf(uid)
-        console.log("filteredvote",filteredUpvote)
-   
+        console.log("filteredvote", filteredUpvote)
+
     }
     checkDownvote = (uid, downvotes) => {
 
@@ -129,13 +129,13 @@ class ListItem extends React.Component {
 
     }
 
-   
+
     render() {
 
-         const { upvotes } = this.state
+        const { upvotes } = this.state
         // const { downvotes } = this.state
         const { countedvote } = this.state
-        
+
         return (
             <AuthUserContext.Consumer>
                 {
@@ -158,7 +158,7 @@ class ListItem extends React.Component {
                                     <br />
                                     <button
                                         onClick={(e) => this.handleDownvote(e, authUser)}>
-                                   
+
                                         <i className="fa fa-arrow-down custom"></i>
                                     </button>
                                 </span>
