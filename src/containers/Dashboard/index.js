@@ -34,7 +34,8 @@ class Dashboard extends React.Component {
     this.unsubscribe();
   }
 
-  render() {
+    render() {
+       
     return (
       <div className="wrapper">
         <div className="create-post">
