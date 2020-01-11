@@ -43,30 +43,11 @@ class Dashboard extends React.Component {
           {/* <a href="#" title="upload image" style={{ float: "right" }}>
             <i className="fa fa-image"></i>
           </a> */}
-          <a href="#" title="upload image" style={{ float: "right" }}>
+          {/* <a href="#" title="upload image" style={{ float: "right" }}>
             <i className="fa fa-link"></i>
-          </a>
+          </a> */}
           {/*<Link to={ROUTES.CREATEARTICLE}>Create article</Link>*/}
         </div>
-
-        <button
-          onClick={() => {
-            this.props.firebase
-              .article("3BkKXYRVLMNSbupu04zC")
-              .set({ title: "Live TEST" });
-          }}
-        >
-          Edit Post
-        </button>
-        <button
-          onClick={() => {
-            this.props.firebase
-              .articles()
-              .add({ title: "Live TEST2" });
-          }}
-        >
-          New Post
-        </button>
         <div className="popular-title">
           <p style={{ float: "left" }}>Popular Posts</p>
         </div>
