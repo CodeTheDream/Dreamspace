@@ -9,20 +9,19 @@ class AddComment extends React.Component {
  constructor(props){
      super(props);
      this.state = {
-         createdAt:"",
+         timeCreated:"",
          comment:'',
-         comments:[],
          limit:50
          
      };
  }
 
-componentWillMount =() => {
+componentdidMount =() => {
  
 //create reference to messages in firebase database 
 this.unsubscribe = this.props.firebase
                    .comments()
-                   .orderBy('createdAt')
+                   .orderBy('timeCreated')
                    .limit(50)
                    console.log("Here is my comments refrence",this.unsubscribe);
                   

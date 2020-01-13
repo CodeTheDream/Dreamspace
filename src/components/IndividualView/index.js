@@ -1,6 +1,8 @@
 import React from 'react';
 import './ViewArticle.scss';
 import AddComment from '../CommentSystem/AddComment.js';
+import Comments from '../CommentSystem/Comments.js';
+import Comment from '../CommentSystem/Comment.js';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { SignUpLink } from '../SignUp';
@@ -11,6 +13,7 @@ import * as ROUTES from '../../constants/routes';
 
 
 
+const moment = require("moment");
 class IndividualView extends React.Component {
     constructor(props){
         super(props);
@@ -19,8 +22,9 @@ class IndividualView extends React.Component {
            article:"",
            comment:[],
            articleId:"",
-           createdAT:"",
-           comments:[]
+           timeCreated:"",
+           comments:null,
+           limmit:50
            
            
         }; 
@@ -29,6 +33,32 @@ class IndividualView extends React.Component {
 
 
  componentDidMount =() => {
+    
+    this.unsubscribe = this.props.firebase
+    .comments()
+    .get()
+    .then(snapshot => {
+        const comments = []
+        snapshot.forEach(doc => {
+            const data=doc.data()
+             comments.push(data)
+        })
+   
+        this.setState({ comments:comments })
+        console.log('here my snapshot',snapshot)
+      })
+      .catch(error => console.log(error))
+    
+
+    //   componentWillUnmount() {
+    //     this.unsubscribe();
+    //   }
+
+
+
+
+
+
         //get the ID for a particular article
         let articleId =this.props.match.params.articleId;
      
@@ -39,7 +69,9 @@ class IndividualView extends React.Component {
       
          if (doc.exists) {
             console.log(" this is my article", doc.data());
-            this.setState({article :doc.data()})   // set data to local state
+            this.setState({article :doc.data(),
+                 timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  UTC-6`)
+                })   // set data to local state
          
             }  else {
                 console.log("No such document!");
@@ -47,19 +79,24 @@ class IndividualView extends React.Component {
         
      })
   
-
-       
+    
+    
     } 
+
+
+
 //  componentWillUnmount =() => {
 //         this.unsubscribe();
 //     }    
     
 
-            createComment =(comment, article) => {
+            createComment =(comment, article ) => {
                console.log( "here create comment",comment,this.state.articleId);
                this.props.firebase
                .comments().add({
-                   ...comment, articleId:this.state.articleId
+                     ...comment,
+                     articleId:this.state.articleId,
+                   
                })
                .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
@@ -72,7 +109,7 @@ class IndividualView extends React.Component {
 
     render() {
         // Access to local component state
-       const {article, comment, comments } =this.state;
+       const {article, comment, comments , timeCreated, articleId} =this.state;
 
 
 
@@ -86,7 +123,7 @@ class IndividualView extends React.Component {
                        <span style={{ float: "left" }}>
                           <i className="fa fa-user"></i>
                        </span>
-                    <span style={{ float: "left",fontWeight:'bold' }}>posted by Auther  8 hours ago </span>
+                    <span style={{ float: "left",fontWeight:'bold' }}>posted byAuther  {timeCreated} </span>
                  </div>
                 </div>
 
@@ -122,28 +159,72 @@ class IndividualView extends React.Component {
 
                     <div>
                     < AddComment
-                    comments ={comment}
+                    comment ={comment}
                     onCreate ={this.createComment}
                    
                      />
-
-             <section>
-                   {comments.map(comment =>
-                       comment={comment} )}
-
-             </section> 
+                    </div>
                 
-                   
-                
-                    </div> 
+                    
 
-                   
-                   
-               </div>
+                 <div>
+                   {this.state.comments && this.state.comments.map(comments => {
+                       return (
+                       <div className="commentDisplay">
+                        <div className="styleDisplay" >
+                           <article  >
+                             <p> {comments.articleId} </p>
+                             <p>{comments.comment}</p>
+                             <p>{comments.limmit}</p>
+                             <p>{comments.timeCreated}</p>
+                          </article>
+                         </div>
+                       </div>
+                       )
+                   }
+                   )}
+                </div>            
+
+            </div>
         );
     };              
 }
 
 export default compose(withFirebase, withRouter)(IndividualView);
+
+
+
+
+
+
+
+
+
+// fetch('https://console.firebase.google.com/u/0/project/devedit-8d545/database/firestore/data~2Fcomments', {
+      
+        
+    //     method: "GET",
+    //     dataType: "JSON",
+    //     headers: {
+    //         "Content-Type": "application/json; charset=utf-8"
+    //     }
+    // })
+    //     .then(resp => {
+    //         return resp.json();
+    //     })
+    //     .then(comments => { this.setState({ hits: comments.hits});
+    //      })
+       
+    //     .catch(error => {
+    //         console.log(error, "catch the hoop");
+    //     });
+
+
+
+
+
+   
+
+
 
 
