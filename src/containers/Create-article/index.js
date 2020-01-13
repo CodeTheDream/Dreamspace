@@ -8,7 +8,7 @@ import {
 import { withFirebase } from "../../components/Firebase";
 import { messaging } from "firebase";
 const options = ["Select Tag", "React", "Ruby", "Javascript"];
-const moment = require("moment");
+//const moment = require("moment");
 class Dialog extends React.Component {
   render() {
     return (
@@ -94,7 +94,7 @@ class Createarticle extends Component {
         url: this.state.url,
         downvotes: this.state.downvotes,
         upvotes: this.state.upvotes,
-        timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  UTC-6`)
+      //  timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  UTC-6`)
       })
       .then(docRef => {
         
