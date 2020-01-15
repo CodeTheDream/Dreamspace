@@ -1,6 +1,6 @@
 .container  {
     //height : 1000px;
-    background-color: white;
+    background-color: #f4f7f8;
     padding-top: 20px;
 }
 .auther-name {
@@ -139,18 +139,28 @@ border: hidden;
 .commentDisplay {
   display: grid;
   grid-template-columns: 1000px;
-  grid-template-rows: 150px;
+  grid-template-rows: 160px;
   justify-content:center;
-  margin-top: 80px;
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  
+  
 
 
 }
+
 
 .styleDisplay {
   padding:10px;
-  border: 1px rgb(209, 202, 202) solid;
+  //border: hidden;
+  border-bottom: 1px rgb(209, 202, 202) solid;
   padding-left : 12px;
   text-align: left;
+  overflow: auto;
+ // background: white;
   
 }
+
+// .styleDisplay:nth-child(odd){
+//   background:  rgb(220, 220, 226);
+// }

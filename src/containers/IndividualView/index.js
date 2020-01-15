@@ -1,14 +1,10 @@
 import React from 'react';
 import './ViewArticle.scss';
-import AddComment from '../CommentSystem/AddComment.js';
-import Comments from '../CommentSystem/Comments.js';
-import Comment from '../CommentSystem/Comment.js';
+import AddComment from '../../components/CommentSystem/AddComment.js';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import { SignUpLink } from '../SignUp';
-import { PasswordForgetLink } from '../PasswordForget';
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
+import { withFirebase } from '../../components/Firebase';
+
 
 
 
@@ -22,9 +18,9 @@ class IndividualView extends React.Component {
            article:"",
            comment:[],
            articleId:"",
-           timeCreated:"",
+           timeCreated:'',
            comments:null,
-           limmit:50
+           limmit:5
            
            
         }; 
@@ -33,9 +29,10 @@ class IndividualView extends React.Component {
 
 
  componentDidMount =() => {
-    
+    let articleId =this.props.match.params.articleId;
     this.unsubscribe = this.props.firebase
     .comments()
+    .where("articleId","==",articleId)
     .get()
     .then(snapshot => {
         const comments = []
@@ -60,8 +57,6 @@ class IndividualView extends React.Component {
 
 
         //get the ID for a particular article
-        let articleId =this.props.match.params.articleId;
-     
       console.log("articleId" , this.props.match.params);
         this.setState({articleId})
       
@@ -70,7 +65,7 @@ class IndividualView extends React.Component {
          if (doc.exists) {
             console.log(" this is my article", doc.data());
             this.setState({article :doc.data(),
-                 timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  UTC-6`)
+                // timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  `)
                 })   // set data to local state
          
             }  else {
@@ -130,7 +125,7 @@ class IndividualView extends React.Component {
 
                <div className="grid-subject" >
                      <div className="article-subject">
-                            Article Subject    
+                            {article.title}   
                      </div>
                      </div> 
 
@@ -167,23 +162,24 @@ class IndividualView extends React.Component {
                 
                     
 
-                 <div>
-                   {this.state.comments && this.state.comments.map(comments => {
+                 <div >
+                 {this.state.comments && this.state.comments.map(comments => {
                        return (
-                       <div className="commentDisplay">
-                        <div className="styleDisplay" >
-                           <article  >
-                             <p> {comments.articleId} </p>
+                       
+                          <div  className="commentDisplay">
+                           <div className="styleDisplay" >
+                              {/* <p> {comments.articleId} </p>  */}
+                             <p>{comments.timeCreated}</p><br />
                              <p>{comments.comment}</p>
                              <p>{comments.limmit}</p>
-                             <p>{comments.timeCreated}</p>
-                          </article>
+                            
+                          </div>
                          </div>
-                       </div>
+                       
                        )
                    }
                    )}
-                </div>            
+                </div>             
 
             </div>
         );
@@ -197,33 +193,6 @@ export default compose(withFirebase, withRouter)(IndividualView);
 
 
 
-
-
-
-// fetch('https://console.firebase.google.com/u/0/project/devedit-8d545/database/firestore/data~2Fcomments', {
-      
-        
-    //     method: "GET",
-    //     dataType: "JSON",
-    //     headers: {
-    //         "Content-Type": "application/json; charset=utf-8"
-    //     }
-    // })
-    //     .then(resp => {
-    //         return resp.json();
-    //     })
-    //     .then(comments => { this.setState({ hits: comments.hits});
-    //      })
-       
-    //     .catch(error => {
-    //         console.log(error, "catch the hoop");
-    //     });
-
-
-
-
-
-   
 
 
 

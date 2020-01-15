@@ -7,7 +7,7 @@ import Dashboard from "./containers/Dashboard";
 import * as ROUTES from "./constants/routes.js";
 import About from "./containers/About";
 import Createarticle from './containers/Create-article';
-import IndividualView from './components/IndividualView';
+import IndividualView from './containers/IndividualView';
 import Account from "./containers/Account";
 import SignUp from "./components/SignUp"
 import SignInPage from "./components/SignIn"

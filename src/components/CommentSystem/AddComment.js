@@ -4,6 +4,9 @@ import { withFirebase } from '../Firebase';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import * as ROUTES from '../../constants/routes';
+const moment = require("moment");
+
+
 
 class AddComment extends React.Component {
  constructor(props){
@@ -11,18 +14,18 @@ class AddComment extends React.Component {
      this.state = {
          timeCreated:"",
          comment:'',
-         limit:50
+         limit:5
          
      };
  }
 
 componentdidMount =() => {
  
-//create reference to messages in firebase database 
+//create reference to comments in firebase database 
 this.unsubscribe = this.props.firebase
                    .comments()
                    .orderBy('timeCreated')
-                   .limit(50)
+                   .limit(5)
                    console.log("Here is my comments refrence",this.unsubscribe);
                   
 
@@ -32,7 +35,9 @@ this.unsubscribe = this.props.firebase
 
               handleChange = event => {
               const { name, value } = event.target;
-              this.setState({ [name]: value });
+              this.setState({ [name]: value, 
+                               timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `)
+                            });
               };
 
 
