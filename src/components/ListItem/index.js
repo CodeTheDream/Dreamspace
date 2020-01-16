@@ -21,6 +21,11 @@ class ListItem extends React.Component {
         let downvotes = article.downvotes;
         this.calculatedvote(upvotes, downvotes)
     }
+    componentDidUpdate = (prevProps) => {
+        if (prevProps.article !== this.props.article) {
+            this.calculatedvote(this.props.article.upvotes, this.props.article.downvotes)
+        }
+      };
     calculatedvote(upvotes, downvotes) {
         if (upvotes == 0) {
             upvotes = []
@@ -53,7 +58,7 @@ class ListItem extends React.Component {
            // this.setState({ calculatedvote: this.state.calculatedvote + 1 })
         }
        else {
-            if (this.checkUpvote(authUser.uid, article.upvotes) == -1) {
+            if (this.checkUpvote(authUser.uid, article.upvotes) == true) {
                 console.log( this.checkUpvote)
                 this.setState({ calculatedvote: this.state.calculatedvote + 1 })
                 let upvotes = article.upvotes
@@ -83,7 +88,7 @@ class ListItem extends React.Component {
                 })
         }
         else {
-            if (this.checkDownvote(authUser.uid, article.upvotes) == -1) {
+            if (this.checkDownvote(authUser.uid, article.downvotes) == true) {
             this.setState({ calculatedvote: this.state.calculatedvote - 1 })
             let downvotes = article.downvotes
             let updatedDownvotes = downvotes
@@ -104,11 +109,21 @@ class ListItem extends React.Component {
         console.log("filter", upvotes, uid)
         let filteredUpvote = upvotes.indexOf(uid)
         console.log("filteredvote", filteredUpvote)
+        if (filteredUpvote==-1){
+            return true
+        }else{
+            return false
+        }
     }
     checkDownvote = (uid, downvotes) => {
             console.log("filter", downvotes, uid)
         let filteredDownvote = downvotes.indexOf(uid)
           console.log("filteredvote", filteredDownvote)
+          if (filteredDownvote==-1){
+            return true
+        }else{
+            return false
+        }
     }
     render() {
         const { upvotes } = this.state
