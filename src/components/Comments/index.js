@@ -11,7 +11,7 @@ class Comments extends React.Component{
         };
       }
         componentDidMount() {
-        // let articles =this.props.firebase.articles()
+        // let comments =this.props.firebase.comments()
         this.unsubscribe = this.props.firebase.comments().onSnapshot(snapshot => {
           let comments = [];
           snapshot.forEach(doc => comments.push({ ...doc.data(), uid: doc.id }));
@@ -20,11 +20,23 @@ class Comments extends React.Component{
           this.setState({ comments });
         })
       }
-    render(){
-        return(
-            <div>Comments</div>
-        )
+      render() {
+        let comments = this.state.comments;
+        console.log(comments);
+    
+        if (comments !== undefined || comments !== null || comments !=="") {
+          console.log(comments);
+          return comments.map((comment, index) => {
+            console.log(comment);
+            return <tr><td>{comment.articleId}</td> <td>{comment.uid}</td></tr>;
+          });
+        
+    // return(
+    //     <div>TESTING</div>
+    // )
     }
+        return null;
+      }
 }
 
 

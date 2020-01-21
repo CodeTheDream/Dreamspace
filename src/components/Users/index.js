@@ -20,11 +20,23 @@ class Users extends React.Component{
           this.setState({ users });
         })
       }
-    render(){
-        return(
-            <div>Users</div>
-        )
+      render() {
+        let users = this.state.users;
+        console.log(users);
+    
+        if (users !== undefined || users !== null || users !=="") {
+          console.log(users);
+          return users.map((user, index) => {
+            console.log(user);
+            return <tr><td>{user.username}</td> <td>{user.email}</td></tr>;
+          });
+        
+    // return(
+    //     <div>TESTING</div>
+    // )
     }
+        return null;
+      }
 }
 
 

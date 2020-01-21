@@ -20,11 +20,23 @@ class Articles extends React.Component{
           this.setState({ articles });
         })
       }
-    render(){
-        return(
-            <div>Articles</div>
-        )
+      render() {
+        let articles = this.state.articles;
+        console.log(articles);
+    
+        if (articles !== undefined || articles !== null || articles !=="") {
+          console.log(articles);
+          return articles.map((article, index) => {
+            console.log(article);
+            return <tr><td>{article.title}</td> <td>{article.uid}</td></tr>;
+          });
+        
+    // return(
+    //     <div>TESTING</div>
+    // )
     }
+        return null;
+      }
 }
 
 
