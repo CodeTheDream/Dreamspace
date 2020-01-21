@@ -39,8 +39,8 @@ class Createarticle extends Component {
       downvotes: 0,
       upvotes: 0,
       authorID: "",
-      timeCreated: ""
-     
+      timeCreated: "",
+      confurmmessage:null
        
     };
     
@@ -49,10 +49,10 @@ class Createarticle extends Component {
   /*showSuccessMessage = () => {
     this.setState({
     showMessage: true}, () => {
-       setTimer(this.setState({showMessage: false}), 5000)
+       setTimeout(this.setState({showMessage: false}), 5000)
     })
-   }*/
-    
+   }
+    */
   togglePopup() {
    
     this.setState({
@@ -95,14 +95,15 @@ class Createarticle extends Component {
         downvotes: this.state.downvotes,
         upvotes: this.state.upvotes,
         timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  UTC-6`)
+       // timeCreated:Date().toString()
       })
       .then(docRef => {
         
-        this.setState({confurmmessage:docRef.id})
-        console.log("Document written with ID: ", this.state.confurmmessage);
+         this.setState({confurmmessage:docRef.id})
+       console.log("Document written with ID: ", this.state.confurmmessage);
      alert("you've successfully created an article with ID: " + this.state.confurmmessage);
-      
-      });
+    
+      }); 
     this.setState({
       tags: "",
       title: "",
@@ -110,11 +111,11 @@ class Createarticle extends Component {
       description: "",
       downvotes: 0,
       upvotes: 0,
-      showPopup:false
+     showPopup:false
     });
-    /*this.togglePopUp()
-    this.showSuccessMessage()
-    */
+    //this.togglePopUp()
+ // this.showSuccessMessage()
+    
   }
   render() {
     return (
@@ -126,13 +127,14 @@ class Createarticle extends Component {
               Post New Article
               </button>  
             {this.state.showPopup ? (
-              <Dialog closePopup={this.togglePopup.bind(this)}>
+              <Dialog closePopup={this.togglePopup.bind(this)} className="popup">
                 
                 <div className="">
                   <div className="">
                     {/* <div className="">Create a new post</div> */}
-                    <legend>             Create New Post
-</legend>
+                    <legend> 
+                      Create New Post
+                     </legend>
                     <div className="">
                       <div className="">
                         <ul>
@@ -144,6 +146,9 @@ class Createarticle extends Component {
                             >
                               <ul>
                               <li>
+                            {/*} { this.showMessage && 
+                                <p>"Document written with ID: " + {this.state.confurmmessage}</p>
+                              }*/}
                                   <input
                                     type="text"
                                     placeholder="Title"
@@ -188,9 +193,13 @@ class Createarticle extends Component {
                                 </li>
                                 <li>
                                   
-                                  <button className="button-tertiary" type="submit" onClick={this.closeSelf}> Post</button>
+                                  <button  /*onClick={ this.showMessage && 
+                           console.log (' you have successfully created an article'+ this.state.confurmmessage)
+                            // <p>you've successfully created an article</p>
+                          }
+                          */ className="button-tertiary" type="submit" onClick={this.closeSelf}> Post</button>
                                 </li>
-                              { /* {this.showMessage && <p>you've successfully created an article</p>}*/}
+                            
 
                               </ul>
                             </form>
