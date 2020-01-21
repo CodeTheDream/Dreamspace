@@ -24,8 +24,8 @@ class AddComment extends React.Component {
    //create reference to comments in firebase database 
    this.unsubscribe = this.props.firebase
                       .comments()
-                      .orderBy('timeCreated')
-                      .limit(5)
+                      //.orderBy('timeCreated')
+                      //.limit(5)
                       console.log("Here is my comments refrence",this.unsubscribe);
                      
    
