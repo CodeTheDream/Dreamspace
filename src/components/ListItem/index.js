@@ -12,7 +12,6 @@ class ListItem extends React.Component {
             upvotes: [],
             downvotes: [],
             calculatedvote: 0,
-           
         };
     }
     componentDidMount() {
@@ -25,7 +24,7 @@ class ListItem extends React.Component {
         if (prevProps.article !== this.props.article) {
             this.calculatedvote(this.props.article.upvotes, this.props.article.downvotes)
         }
-      };
+    };
     calculatedvote(upvotes, downvotes) {
         if (upvotes == 0) {
             upvotes = []
@@ -38,38 +37,73 @@ class ListItem extends React.Component {
         let upvotesTotal = upvotes.length;
         let downvotesTotal = downvotes.length;
         let finalTotal = upvotesTotal - downvotesTotal;
-        console.log("upvotestotal", upvotesTotal)
-        console.log("downvotestotal", downvotesTotal)
+        // console.log("upvotestotal", upvotesTotal)
+        //console.log("downvotestotal", downvotesTotal)
         this.setState({ calculatedvote: finalTotal })
     }
     handleUpvote = (e, authUser) => {
         const { article } = this.props
         let initialvote = [authUser.uid];
-        
         if (article.upvotes == 0) {
-            this.props.firebase
-                .article(article.uid)
-                .set({
-                    ...article,
-                    upvotes: initialvote,
-                   
-                })
-            console.log("upvotes", this.upvotes)
-           // this.setState({ calculatedvote: this.state.calculatedvote + 1 })
-        }
-       else {
-            if (this.checkUpvote(authUser.uid, article.upvotes) == true) {
-                console.log( this.checkUpvote)
-                this.setState({ calculatedvote: this.state.calculatedvote + 1 })
-                let upvotes = article.upvotes
-                let updatedUpvotes = upvotes
-                updatedUpvotes.push(authUser.uid)
+            if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
                 this.props.firebase
                     .article(article.uid)
                     .set({
                         ...article,
-                        upvotes: updatedUpvotes
+                        upvotes: initialvote,
                     })
+                // console.log("upvotes", this.upvotes)
+            }
+            else {
+                let uidIndex = this.checkDownvote(authUser.uid, article.downvotes)
+                let articlearray = article.downvotes;
+                articlearray.splice(uidIndex, 1)
+                this.props.firebase
+                    .article(article.uid)
+                    .set({
+                        ...article,
+                        upvotes: initialvote,
+                        downvotes: articlearray
+                    })
+            }
+        }
+        else {
+            if (this.checkUpvote(authUser.uid, article.upvotes) == -1) {
+                if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
+
+                    console.log(this.checkUpvote)
+                    this.setState({ calculatedvote: this.state.calculatedvote + 1 })
+                    let upvotes = article.upvotes
+                    let updatedUpvotes = upvotes
+                    updatedUpvotes.push(authUser.uid)
+                    this.props.firebase
+                        .article(article.uid)
+                        .set({
+                            ...article,
+                            upvotes: updatedUpvotes
+                        })
+
+
+                }
+
+                else {
+                    console.log("checkDownvote")
+                    let uidindex = this.checkDownvote(authUser.uid, article.downvotes)
+                    let articlearray = article.downvotes;
+                    articlearray.splice(uidindex, 1)
+                    console.log("article.upvote", article.upvotes)
+                    //let upvotesarray=article.upvotes.push(authUser.uid)
+                    let upvotes = article.upvotes
+                    let updatedUpvotes = upvotes
+                    updatedUpvotes.push(authUser.uid)
+                    this.props.firebase
+                        .article(article.uid)
+                        .set({
+                            ...article,
+                            downvotes: articlearray,
+                            upvotes: updatedUpvotes
+                        })
+                }
             }
             else {
                 console.log("already upvoted")
@@ -80,54 +114,103 @@ class ListItem extends React.Component {
         const { article } = this.props
         let initialvote = [authUser.uid];
         if (article.downvotes == 0) {
-            this.props.firebase
-                .article(article.uid)
-                .set({
-                    ...article,
-                    downvotes: initialvote
-                })
+            console.log("typeof",typeof(article.upvotes))
+            if (this.checkUpvote(authUser.uid, article.upvotes) == -1) {
+                this.props.firebase
+                    .article(article.uid)
+                    .set({
+                        ...article,
+                        downvotes: initialvote
+                    })
+
+            }
+            else {
+                let uidIndex = this.checkUpvote(authUser.uid, article.upvotes)
+                let articlearray = article.upvotes;
+                articlearray.splice(uidIndex, 1)
+                this.props.firebase
+                    .article(article.uid)
+                    .set({
+                        ...article,
+                        downvotes: initialvote,
+                        upvotes: articlearray
+                    })
+            }
         }
         else {
-            if (this.checkDownvote(authUser.uid, article.downvotes) == true) {
-            this.setState({ calculatedvote: this.state.calculatedvote - 1 })
-            let downvotes = article.downvotes
-            let updatedDownvotes = downvotes
-            updatedDownvotes.push(authUser.uid)
-            this.props.firebase
-                .article(article.uid)
-                .set({
-                    ...article,
-                    upvotes: updatedDownvotes
-                })
-        }
-        else {
-             console.log("already downvoted")
-         }
-         }
-    }
+            console.log("checkdownvote", this.checkDownvote(authUser.uid, article.downvotes));
+            if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
+                if (this.checkUpvote(authUser.uid, article.upvotes) == -1) {
+                    this.setState({ calculatedvote: this.state.calculatedvote - 1 })
+                    let downvotes = article.downvotes
+                    let updatedDownvotes = downvotes
+                    updatedDownvotes.push(authUser.uid)
+                    this.props.firebase
+                        .article(article.uid)
+                        .set({
+                            ...article,
+                            downvotes: updatedDownvotes
+                        })
+
+                }
+
+
+                else {
+                    console.log("checkDownvote")
+                    let uidindex = this.checkUpvote(authUser.uid, article.upvotes)
+                    console.log("uid",uidindex)
+                    let articlearray = article.upvotes;
+                    articlearray.splice(uidindex, 1)
+                    console.log("article.downvote", article.downvotes)
+                    //let downvotearray=article.downvotes.push(authUser.uid)
+                    let downvotes = article.downvotes
+                    let updatedDownvotes = downvotes
+                    updatedDownvotes.push(authUser.uid)
+                    this.props.firebase
+                        .article(article.uid)
+                        .set({
+                            ...article,
+                            upvotes: articlearray,
+                            downvotes: updatedDownvotes
+                        })
+                }
+            }
+        
+      else {
+                    console.log("already upvoted")
+                }
+            }
+        } 
+    
     checkUpvote = (uid, upvotes) => {
         console.log("filter", upvotes, uid)
-        let filteredUpvote = upvotes.indexOf(uid)
-        console.log("filteredvote", filteredUpvote)
-        if (filteredUpvote==-1){
-            return true
-        }else{
-            return false
+        if (typeof (upvotes) == "number") {
+            return -1
         }
-    }
+            else {
+                let filteredUpvote = upvotes.indexOf(uid)
+                console.log("filteredvote", filteredUpvote)
+
+                return filteredUpvote
+            }
+        }
     checkDownvote = (uid, downvotes) => {
-            console.log("filter", downvotes, uid)
-        let filteredDownvote = downvotes.indexOf(uid)
-          console.log("filteredvote", filteredDownvote)
-          if (filteredDownvote==-1){
-            return true
-        }else{
-            return false
+        console.log("filter", downvotes, uid)
+        console.log("typeof1",typeof(downvotes))
+        if (typeof (downvotes) == "number") {
+            return -1
+        }
+        else {
+            let filteredDownvote = downvotes.indexOf(uid)
+            console.log("filteredvote", filteredDownvote)
+
+
+            return filteredDownvote
         }
     }
     render() {
         const { upvotes } = this.state
-       const { downvotes } = this.state
+        const { downvotes } = this.state
         const { article } = this.props
         return (
             <AuthUserContext.Consumer>
@@ -140,16 +223,17 @@ class ListItem extends React.Component {
                                     width: "40px; border-left:4px solid transparent;",
                                     float: "left"
                                 }}
+
                             >
                                 <span style={{ fontSize: "1em" }}>
-                                    <button
+                                    <button className="upvote"
                                         onClick={(e) => this.handleUpvote(e, authUser)}>
-                                      <i className="fa fa-arrow-up custom"> </i>
+                                        <i className="fa fa-arrow-up custom"> </i>
                                     </button>
                                     <br />
                                     {this.state.calculatedvote}
                                     <br />
-                                    <button
+                                    <button className="downvote"
                                         onClick={(e) => this.handleDownvote(e, authUser)}>
                                         <i className="fa fa-arrow-down custom"></i>
                                     </button>
