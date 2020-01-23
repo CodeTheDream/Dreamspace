@@ -111,7 +111,6 @@
     padding:10px;
     background-color: rgb(220, 220, 226);
     border: 1px rgb(209, 202, 202) solid;
-    //border-bottom-style:hidden;
     padding-left : 12px;
     text-align: left;
     font-weight: bold;
@@ -133,21 +132,19 @@
 .commentDisplay {
   display: flex;
   flex-direction: column;
-  //grid-template-columns: 1000px;
-  //grid-template-rows: 150px;
   width: 980px;
   justify-content:center;
-  margin-top: 50px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   padding-left: 110px;
 
 }
 
 .styleDisplay {
-  padding:10px;
+
   border: hidden;
   border-bottom: 1px rgb(209, 202, 202) solid;
   padding-left : 12px;
+  padding-bottom: 30px;
   text-align: left;
   line-height: 22px;
   

@@ -21,7 +21,7 @@ class IndividualView extends React.Component {
            articleId:"",
            timeCreated:'',
            comments:null,
-           limit:5,
+           limit:'',
            limited:450
            
            
@@ -34,28 +34,28 @@ class IndividualView extends React.Component {
 
 
  
-componentDidMount =() => {
-    let articleId = this.props.match.params.articleId;
-    this.unsubscribe =this.props.firebase
-    .comments()
-    .where("articleId","==",articleId)
-    //.orderBy("timeCreated")
-    //.limit(5)
-    
-    .onSnapshot(snapshot => {
-        const comments = []
-             snapshot.forEach(doc => {
-                 const data=doc.data()
-                  comments.push(data)
-    })
-    
-       this.setState({ comments:comments })
-       console.log('here my snapshot',snapshot)
-      })
-      
-    //   componentWillUnmount() {
-    //     this.unsubscribe();
-    //   }
+    componentDidMount =() => {
+            let articleId = this.props.match.params.articleId;
+            this.unsubscribe =this.props.firebase
+            .comments()
+            .where("articleId","==",articleId)
+            //.orderBy("timeCreated")
+            .limit(6)
+            
+            .onSnapshot(snapshot => {
+                const comments = []
+                    snapshot.forEach(doc => {
+                        const data=doc.data()
+                        comments.push(data)
+            })
+            
+            this.setState({ comments:comments })
+            console.log('here my snapshot',snapshot)
+            })
+            
+            //   componentWillUnmount() {
+            //     this.unsubscribe();
+            //   }
 
 
 
@@ -89,13 +89,14 @@ componentDidMount =() => {
 //     }    
     
 
-            createComment =(comment, article ) => {
+            createComment =(comment, article) => {
                console.log( "here create comment",comment,this.state.articleId);
                this.props.firebase
                .comments().add({
                      ...comment,
                      articleId:this.state.articleId,
-                   
+                     
+                     
                })
                .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
@@ -124,7 +125,7 @@ componentDidMount =() => {
                        <span style={{ float: "left" }}>
                           <i className="fa fa-user"></i>
                        </span>
-                    <span style={{ float: "left",fontWeight:'bold' }}>posted by Auther  {timeCreated}</span>
+                    <span style={{ float: "left",fontWeight:'bold' }}>posted by Auther {article.timeCreated}</span>
                  </div>
                 </div>
 
