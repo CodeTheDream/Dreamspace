@@ -25,6 +25,15 @@ class ListItem extends React.Component {
             this.calculatedvote(this.props.article.upvotes, this.props.article.downvotes)
         }
     };
+    openPost(e,article) {
+        console.log("ARTICLE" , article)
+        e.preventDefault();
+        this.props.history.push({
+          pathname: "/articles/" + article.uid,
+          params: article.uid,
+          state: {article}
+        });
+      }
     calculatedvote(upvotes, downvotes) {
         if (upvotes == 0) {
             upvotes = []
@@ -239,7 +248,7 @@ class ListItem extends React.Component {
                                     </button>
                                 </span>
                             </div>
-                            <div className="maincontent" id="content">
+                            <div   onClick={e=>this.openPost(e,article) }  className="maincontent" id="content">
                                 <div className="author">
                                     <span style={{ float: "left" }}>
                                         <i className="fa fa-user"></i>
