@@ -7,14 +7,14 @@ import * as ROUTES from '../../constants/routes';
 
 
 
-const moment = require("moment");
+
 class AddComment extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             timeCreated:"",
             comment:'',
-            limit:5
+           // limit:5
             
         };
     }
@@ -24,8 +24,8 @@ class AddComment extends React.Component {
    //create reference to comments in firebase database 
    this.unsubscribe = this.props.firebase
                       .comments()
-                      .orderBy('timeCreated')
-                      .limit(5)
+                      //.orderBy('timeCreated')
+                      //.limit(5)
                       console.log("Here is my comments refrence",this.unsubscribe);
                      
    
@@ -36,7 +36,7 @@ class AddComment extends React.Component {
                  handleChange = event => {
                  const { name, value } = event.target;
                  this.setState({ [name]: value, 
-                                  timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `)
+                                 // timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `)
                                });
                  };
    
@@ -46,7 +46,7 @@ class AddComment extends React.Component {
                    event.preventDefault();
                
                   this.props.onCreate(this.state);
-                  this.setState({comment: ''});
+                  this.setState({comment: '' });
                 };
    
    
