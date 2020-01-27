@@ -1,0 +1,81 @@
+  .dialogstyle {
+    width: 70%;
+    max-width: 100%;
+    margin: auto;
+    position: fixed;
+    left: 15%;
+    right: 15%;
+    top: 20%;
+    z-index: 999;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .dialogCloseButonStayle {
+    margin-bottom:15px;
+    padding: 3px 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    border:none;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    align-self: flex-end;
+    background: $secondary-color;
+  }
+  
+  .grid-container {
+   
+     display: grid;
+    grid-template-columns: 500px ;
+    grid-template-rows: 80px 400px;
+    grid-gap: 5px;
+   padding: 1px 1px 150px 20px;
+    
+  }
+  
+  .grid-container div {
+    background-color: lightslategray;
+    text-align: center;
+    padding: 0;
+  
+  
+  }
+  
+  .subgrid-container1 {
+    align-self: end;
+    background-color:lightgray;
+    font-size: 40px;
+    border: solid wheat ;
+    
+  }
+  
+  .subgrid-container3 ul {
+    padding: 20px;
+    display: grid;
+    grid-gap: 10px;
+    grid: auto-flow / auto 1fr;
+  }
+  
+  .subgrid-container3 li {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: subgrid ;
+    border: solid wheat ;
+  
+  }
+  
+  .subgrid-container2{
+    align-self: end; 
+  }
+  .modal-wrapper{
+    position: fixed;
+    width: 200%;
+    min-height: 200%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+    margin-left: -10%;
+    margin-top: -25%;
+  }
