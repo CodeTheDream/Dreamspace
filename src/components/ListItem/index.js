@@ -12,6 +12,9 @@ class ListItem extends React.Component {
             upvotes: [],
             downvotes: [],
             calculatedvote: 0,
+            upvotecolor: 'gray',
+            downvotecolor:'gray',
+          
         };
     }
     componentDidMount() {
@@ -41,11 +44,16 @@ class ListItem extends React.Component {
         //console.log("downvotestotal", downvotesTotal)
         this.setState({ calculatedvote: finalTotal })
     }
-    handleUpvote = (e, authUser) => {
-        const { article } = this.props
-        let initialvote = [authUser.uid];
+    handleUpvote = (authUser) => {
+        console.log("upvote")
+        const { article } = this.props        
+           let initialvote = [authUser.uid];
         if (article.upvotes == 0) {
             if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
+                this.setState({
+                    downvotecolor:'gray',
+                    upvotecolor: 'darkorange'
+                })
                 this.props.firebase
                     .article(article.uid)
                     .set({
@@ -58,6 +66,10 @@ class ListItem extends React.Component {
                 let uidIndex = this.checkDownvote(authUser.uid, article.downvotes)
                 let articlearray = article.downvotes;
                 articlearray.splice(uidIndex, 1)
+                this.setState({
+                    downvotecolor: 'gray',
+                    upvotecolor: 'darkorange'
+                })
                 this.props.firebase
                     .article(article.uid)
                     .set({
@@ -72,7 +84,10 @@ class ListItem extends React.Component {
                 if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
 
                     console.log(this.checkUpvote)
-                    this.setState({ calculatedvote: this.state.calculatedvote + 1 })
+                    this.setState({
+                        calculatedvote: this.state.calculatedvote + 1,
+                        upvotecolor: 'darkorange',
+                    downvotecolor:'gray'})
                     let upvotes = article.upvotes
                     let updatedUpvotes = upvotes
                     updatedUpvotes.push(authUser.uid)
@@ -83,13 +98,17 @@ class ListItem extends React.Component {
                             upvotes: updatedUpvotes
                         })
 
-
                 }
 
                 else {
                     console.log("checkDownvote")
                     let uidindex = this.checkDownvote(authUser.uid, article.downvotes)
                     let articlearray = article.downvotes;
+                    this.setState({
+                      
+                        downvotecolor: 'gray',
+                        upvotecolor: 'darkorange'
+                    })
                     articlearray.splice(uidindex, 1)
                     console.log("article.upvote", article.upvotes)
                     //let upvotesarray=article.upvotes.push(authUser.uid)
@@ -110,12 +129,17 @@ class ListItem extends React.Component {
             }
         }
     }
-    handleDownvote = (e, authUser) => {
+    handleDownvote = (authUser) => {
         const { article } = this.props
-        let initialvote = [authUser.uid];
+        let initialvote = [authUser.uid];    
+        
         if (article.downvotes == 0) {
             console.log("typeof",typeof(article.upvotes))
             if (this.checkUpvote(authUser.uid, article.upvotes) == -1) {
+                this.setState({
+                    downvotecolor: 'dodgerblue',
+                    upvotecolor: 'gray'
+                })
                 this.props.firebase
                     .article(article.uid)
                     .set({
@@ -128,6 +152,10 @@ class ListItem extends React.Component {
                 let uidIndex = this.checkUpvote(authUser.uid, article.upvotes)
                 let articlearray = article.upvotes;
                 articlearray.splice(uidIndex, 1)
+                this.setState({
+                    downvotecolor: 'dodgerblue',
+                    upvotecolor:'gray'
+                })
                 this.props.firebase
                     .article(article.uid)
                     .set({
@@ -141,7 +169,11 @@ class ListItem extends React.Component {
             console.log("checkdownvote", this.checkDownvote(authUser.uid, article.downvotes));
             if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
                 if (this.checkUpvote(authUser.uid, article.upvotes) == -1) {
-                    this.setState({ calculatedvote: this.state.calculatedvote - 1 })
+                    this.setState({
+                        calculatedvote: this.state.calculatedvote - 1,
+                        downvotecolor: 'dodgerblue',
+                        upvotecolor:'gray'
+                    })
                     let downvotes = article.downvotes
                     let updatedDownvotes = downvotes
                     updatedDownvotes.push(authUser.uid)
@@ -158,6 +190,10 @@ class ListItem extends React.Component {
                 else {
                     console.log("checkDownvote")
                     let uidindex = this.checkUpvote(authUser.uid, article.upvotes)
+                    this.setState({
+                        downvotecolor: 'dodgerblue',
+                        upvotecolor: 'gray'
+                    })
                     console.log("uid",uidindex)
                     let articlearray = article.upvotes;
                     articlearray.splice(uidindex, 1)
@@ -185,12 +221,14 @@ class ListItem extends React.Component {
     checkUpvote = (uid, upvotes) => {
         console.log("filter", upvotes, uid)
         if (typeof (upvotes) == "number") {
+           
             return -1
+            
         }
             else {
                 let filteredUpvote = upvotes.indexOf(uid)
                 console.log("filteredvote", filteredUpvote)
-
+         
                 return filteredUpvote
             }
         }
@@ -198,10 +236,12 @@ class ListItem extends React.Component {
         console.log("filter", downvotes, uid)
         console.log("typeof1",typeof(downvotes))
         if (typeof (downvotes) == "number") {
+       
             return -1
         }
         else {
             let filteredDownvote = downvotes.indexOf(uid)
+          
             console.log("filteredvote", filteredDownvote)
 
 
@@ -226,17 +266,19 @@ class ListItem extends React.Component {
 
                             >
                                 <span style={{ fontSize: "1em" }}>
-                                    <button className="upvote"
-                                        onClick={(e) => this.handleUpvote(e, authUser)}>
-                                        <i className="fa fa-arrow-up custom"> </i>
-                                    </button>
-                                    <br />
+                                    <div className="upvote"
+                                      
+                                        onClick={() => this.handleUpvote(authUser)}>
+                                        <i className="fas fa-arrow-alt-up" style={{ color: this.state.upvotecolor }}> </i>
+                                    </div>
+                                    
                                     {this.state.calculatedvote}
-                                    <br />
-                                    <button className="downvote"
-                                        onClick={(e) => this.handleDownvote(e, authUser)}>
-                                        <i className="fa fa-arrow-down custom"></i>
-                                    </button>
+                                    
+                                    <div className="downvote"
+                                         onClick={() => this.handleDownvote(authUser)}>
+                                       
+                                        <i className="fas fa-arrow-alt-down" style={{color: this.state.downvotecolor }}> </i>
+                                    </div>
                                 </span>
                             </div>
                             <div className="maincontent" id="content">
