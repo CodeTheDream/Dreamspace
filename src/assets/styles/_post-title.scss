@@ -14,11 +14,17 @@
     
     
   }
-.upvote:hover{
-  color:orange
-      
+.upvote:hover {
+     
+  background-color: lightcoral;
+  
+   
 }
 
+.downvote:hover {
+    background-color: aquamarine;
+    background-size:10px;
+}
 
     
 .create-post {
@@ -55,10 +61,11 @@
     position: relative;
 
   }
-  .likes {
-      width: 5%;
-      background-color: whitesmoke;
-  }
+.likes {
+    width: 2%;
+    background-color: whitesmoke;
+
+}
   .maincontent {
     width: 95%;
 
@@ -123,4 +130,7 @@ i.custom {
     position: absolute;
     bottom: 0;
     width: inherit;
+}
+i.fas fa:hover{
+   
 }

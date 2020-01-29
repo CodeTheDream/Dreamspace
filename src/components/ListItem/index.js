@@ -52,7 +52,7 @@ class ListItem extends React.Component {
             if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
                 this.setState({
                     downvotecolor:'gray',
-                    upvotecolor: 'darkorange'
+                    upvotecolor: 'darkred'
                 })
                 this.props.firebase
                     .article(article.uid)
@@ -68,7 +68,7 @@ class ListItem extends React.Component {
                 articlearray.splice(uidIndex, 1)
                 this.setState({
                     downvotecolor: 'gray',
-                    upvotecolor: 'darkorange'
+                    upvotecolor: 'darkred'
                 })
                 this.props.firebase
                     .article(article.uid)
@@ -86,7 +86,7 @@ class ListItem extends React.Component {
                     console.log(this.checkUpvote)
                     this.setState({
                         calculatedvote: this.state.calculatedvote + 1,
-                        upvotecolor: 'darkorange',
+                        upvotecolor: 'darkred',
                     downvotecolor:'gray'})
                     let upvotes = article.upvotes
                     let updatedUpvotes = upvotes
@@ -107,7 +107,7 @@ class ListItem extends React.Component {
                     this.setState({
                       
                         downvotecolor: 'gray',
-                        upvotecolor: 'darkorange'
+                        upvotecolor: 'darkred'
                     })
                     articlearray.splice(uidindex, 1)
                     console.log("article.upvote", article.upvotes)
@@ -268,7 +268,8 @@ class ListItem extends React.Component {
                                 <span style={{ fontSize: "1em" }}>
                                     <div className="upvote"
                                       
-                                        onClick={() => this.handleUpvote(authUser)}>
+                                        onClick={() => this.handleUpvote(authUser)}
+                                        onMouseOver={()=>this.c}>
                                         <i className="fas fa-arrow-alt-up" style={{ color: this.state.upvotecolor }}> </i>
                                     </div>
                                     
@@ -277,7 +278,10 @@ class ListItem extends React.Component {
                                     <div className="downvote"
                                          onClick={() => this.handleDownvote(authUser)}>
                                        
-                                        <i className="fas fa-arrow-alt-down" style={{color: this.state.downvotecolor }}> </i>
+                                         <i className="fas fa-arrow-alt-down" style={{
+                                            color: this.state.downvotecolor 
+                                            
+                                        }}> </i>
                                     </div>
                                 </span>
                             </div>
