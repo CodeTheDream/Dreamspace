@@ -1,8 +1,8 @@
 
- body {
+body {
     margin: 0;
-    background-color: $grey-contrast; 
-  }
+    background-color: #e8eeef;
+}
 .wrapper {
     display: flex;
     flex-direction: row;
@@ -28,7 +28,7 @@
 
     
 .create-post {
-    background: $grey-contrast;
+   
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 5px;
@@ -38,7 +38,7 @@
     width: 90%;
 }
   .wrapper > div {
-    border: 1px solid whitesmoke; 
+   
     width: 80%;
   }
   .popular-title {
@@ -79,8 +79,7 @@
       height:auto;
         margin-top: 20px;
         background:white;
-        box-shadow: gray;
-        color: inherit;
+     
         margin-bottom: 10px;
         p, h4, h5{
             margin: 3px;
