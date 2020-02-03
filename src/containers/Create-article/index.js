@@ -39,21 +39,14 @@ class Createarticle extends Component {
       downvotes: 0,
       upvotes: 0,
       authorID: "",
-      timeCreated: "",
-      confurmmessage:null
+      timeCreated: ""
+     
        
     };
     
   }
   
-  /*showSuccessMessage = () => {
-    this.setState({
-    showMessage: true}, () => {
-       setTimeout(this.setState({showMessage: false}), 5000)
-    })
-   }
-    */
-  togglePopup() {
+  togglePopup=()=> {
    
     this.setState({
       showPopup: !this.state.showPopup
@@ -95,15 +88,14 @@ class Createarticle extends Component {
         downvotes: this.state.downvotes,
         upvotes: this.state.upvotes,
         timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  UTC-6`)
-       // timeCreated:Date().toString()
       })
       .then(docRef => {
         
-         this.setState({confurmmessage:docRef.id})
-       console.log("Document written with ID: ", this.state.confurmmessage);
+        this.setState({confurmmessage:docRef.id})
+        console.log("Document written with ID: ", this.state.confurmmessage);
      alert("you've successfully created an article with ID: " + this.state.confurmmessage);
-    
-      }); 
+      
+      });
     this.setState({
       tags: "",
       title: "",
@@ -111,10 +103,8 @@ class Createarticle extends Component {
       description: "",
       downvotes: 0,
       upvotes: 0,
-     showPopup:false
+      showPopup:false
     });
-    //this.togglePopUp()
- // this.showSuccessMessage()
     
   }
   render() {
@@ -123,18 +113,16 @@ class Createarticle extends Component {
         {authUser => (
           <div className="">
             <button className="button-secondary"
-              onClick={this.togglePopup.bind(this)}>
+              onClick={this.togglePopup}>
               Post New Article
               </button>  
             {this.state.showPopup ? (
-              <Dialog closePopup={this.togglePopup.bind(this)} className="popup">
+              <Dialog closePopup={this.togglePopup}>
                 
                 <div className="">
                   <div className="">
                     {/* <div className="">Create a new post</div> */}
-                    <legend> 
-                      Create New Post
-                     </legend>
+                    <legend>Create New Post</legend>
                     <div className="">
                       <div className="">
                         <ul>
@@ -146,9 +134,6 @@ class Createarticle extends Component {
                             >
                               <ul>
                               <li>
-                            {/*} { this.showMessage && 
-                                <p>"Document written with ID: " + {this.state.confurmmessage}</p>
-                              }*/}
                                   <input
                                     type="text"
                                     placeholder="Title"
@@ -177,6 +162,7 @@ class Createarticle extends Component {
                                     placeholder="URl"
                                     value={this.state.url}
                                     onChange={this.onUrlChange}
+                                    required
                                   />
                                 </li>
                                 <li>
@@ -193,13 +179,8 @@ class Createarticle extends Component {
                                 </li>
                                 <li>
                                   
-                                  <button  /*onClick={ this.showMessage && 
-                           console.log (' you have successfully created an article'+ this.state.confurmmessage)
-                            // <p>you've successfully created an article</p>
-                          }
-                          */ className="button-tertiary" type="submit" onClick={this.closeSelf}> Post</button>
+                                  <button className="button-tertiary" type="submit" onClick={this.closeSelf}> Post</button>
                                 </li>
-                            
 
                               </ul>
                             </form>
