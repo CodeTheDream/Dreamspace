@@ -220,7 +220,7 @@ class ListItem extends React.Component {
     render() {
         const { upvotes } = this.state
         const { downvotes } = this.state
-        const { article } = this.props
+        const { article, descritption } = this.props
         return (
             <AuthUserContext.Consumer>
                 {
@@ -250,19 +250,32 @@ class ListItem extends React.Component {
                             </div>
                             <div   onClick={e=>this.openPost(e,article) }  className="maincontent" id="content">
                                 <div className="author">
-                                    <span style={{ float: "left" }}>
+                                    <span>
                                         <i className="fa fa-user"></i>
                                     </span>
-                                    <span style={{ float: "left" }}> post by Eliz </span>
-                                    <span style={{ float: "left" }}> 7 hours ago</span>
-                                    <span style={{ float: "left" }} className="effect">
+                                    <span > post by { article.timeCreated} </span>
+                                    
+                                    {/* <span className="effect">
                                         <i className="fa fa-trophy"></i>
-                                    </span>
+                                    </span> */}
                                 </div>
-                                <div className="posts-content">
-                                    <h4>{this.props.article.title}</h4>
-                                    <img className="profile-img" alt="complex" src={myimage} />
+{/*                            
+                             <div className="auther-name" >
+                 <div className="autherstyle"> 
+                       <span>
+                          <i className="fa fa-user"></i>
+                       </span>
+                    <span>posted by {article.timeCreated}</span>
+                 </div>
+                </div>  */}
+                                    <div className="bottom">
+                                    <p>{this.props.article.title}</p>
+                                    <p>{this.props.article.description}</p>
+                                    <a>{this.props.article.url}</a>
+                                    <a href="this.props.article.url">check the url</a>
                                 </div>
+                            
+                                
                                 <div className="bottom" id="commentarea">
                                     <span style={{ float: "left" }}>
                                         <button> <i className="fa fa-comment">comments</i></button>

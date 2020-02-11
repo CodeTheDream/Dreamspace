@@ -57,6 +57,7 @@
         width: fit-content;
         margin-top: 4px;
         margin-bottom: 10px;
+        font-weight: bold;
     }
     .posts-content {
       width:auto;
@@ -78,6 +79,8 @@
     .bottom{
         width: fit-content;
         margin-bottom: 5px;
+        text-align: left;
+        padding-left: 15px;
     }
   }
   @media only screen and (max-width: 600px) {

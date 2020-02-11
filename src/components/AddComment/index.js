@@ -53,12 +53,13 @@ class AddComment extends React.Component {
        render() {
            const {comment} = this.state;
            return (
-               <form     onSubmit={this.handleSubmit}>
+               <form  className="card-addcomment" onSubmit={this.handleSubmit}>
                <div className="commentgrid">
                          <div className="commentstyle">
                              
                              <textarea className="commentContent" id="comment"
                                         type="text"
+                                       
                                         value={comment}
                                         name="comment"
                                         placeholder="Write your comment here! "
@@ -71,15 +72,18 @@ class AddComment extends React.Component {
                             </textarea>
                         
                          </div>
-                        <button className="btncomment" 
+                         
+                        <button className="submit-btn"
+                                
                                  type="submit" 
                                  value=" Comment"
+                                 disabled={!this.state.comment}
                             
                         >
                                       Comment
                           </button>
-                        
-                    </div>
+                     </div>
+                    
                </form>
    
    

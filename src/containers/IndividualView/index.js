@@ -1,6 +1,6 @@
 import React from 'react';
 import './ViewArticle.scss';
-import AddComment from '../../components/CommentSystem/AddComment.js';
+import AddComment from '../../components/AddComment';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { withFirebase } from '../../components/Firebase';
@@ -15,14 +15,15 @@ class IndividualView extends React.Component {
     constructor(props){
         super(props);
         this.state ={
-           title:"",
-           article:"",
+           
+           article:'',
            comment:[],
-           articleId:"",
+           articleId:'',
            timeCreated:'',
            comments:null,
            limit:'',
-           limited:450
+           limited:450,
+           
            
            
            
@@ -35,12 +36,15 @@ class IndividualView extends React.Component {
 
  
     componentDidMount =() => {
+        
             let articleId = this.props.match.params.articleId;
             this.unsubscribe =this.props.firebase
             .comments()
             .where("articleId","==",articleId)
-            //.orderBy("timeCreated")
-            .limit(6)
+            
+            //.orderBy('timeCreated','desc')
+            //.startAfter(lastDoc.timeCreated)
+            .limit(8)
             
             .onSnapshot(snapshot => {
                 const comments = []
@@ -79,7 +83,8 @@ class IndividualView extends React.Component {
             } 
         
      })
-  
+
+       
     
     
     } 
@@ -102,7 +107,12 @@ class IndividualView extends React.Component {
                 console.log("Document written with ID: ", docRef.id);
               })
             }
+       
 
+
+            handleRemove = (articleId) => {
+                const allArticles = this.state.articles 
+            }
          
 
           
@@ -112,61 +122,55 @@ class IndividualView extends React.Component {
     render() {
         // Access to local component state
        const {article, comment, comments , timeCreated, articleId, limited} =this.state;
+       const {userId, url , description, title} = this.props;
 
 
 
 
         return (
 
-           
-              <div className="container">
-                <div className="auther-name" >
-                 <div className="autherstyle"> 
-                       <span style={{ float: "left" }}>
-                          <i className="fa fa-user"></i>
-                       </span>
-                    <span style={{ float: "left",fontWeight:'bold' }}>posted by Auther {article.timeCreated}</span>
+        
+              <div className="container ">
+                  <div className="card-article">
+                   
+                <div className="auther-name">
+                   <div className="autherstyle">
+                     <i className="fa fa-user"></i>       
+                    <span>posted by {article.timeCreated}</span>
                  </div>
-                </div>
+                 </div>
 
 
                <div className="grid-subject" >
-                     <div className="article-subject">
-                            {article.title}   
+                     <div className="subject-style">
+                     <a href={article.url}>{article.title}</a> 
                      </div>
                      </div> 
 
 
 
-               <div className="grid-view"> 
-                     <div className="view-article">
-                     <h1>{article.title}</h1> 
+               <div className="grid-description"> 
+                     <div className="view-description">
+                     <p>{article.description}</p> 
                      </div>
                </div>   
-                   
-
+               
 
                <div className="stylebutton" >
                        <button 
                         type="button" 
                         //onClick={this.handleSubmit}
-                     
+                        className="disabled"  
                         >
                         Comment
                         </button>
 
-                       <button type="button" >Share</button>
-                       <button  type="button" >Save</button>
+                       <button type="button"  onClick={this.handleRemove} >Save</button>
+                       
                  </div>
 
-                    <div>
-                    < AddComment
-                    comment ={comment}
-                    onCreate ={this.createComment}
-                   
-                     />
-                    </div>
-                
+                 </div>     
+    
                     
 
                  <div>
@@ -175,9 +179,20 @@ class IndividualView extends React.Component {
                       }
                    )}
                   
-                </div>             
+                </div>    
+
+
+                 <div>
+                    < AddComment
+                    comment ={comment}
+                    onCreate ={this.createComment}
+                   
+                     />
+                    </div>
+                         
                
             </div>
+        
         );
     };              
 }
