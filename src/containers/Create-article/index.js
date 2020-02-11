@@ -171,13 +171,15 @@ class Createarticle extends Component {
                                   <textarea
                                     placeholder="URl"
                                     value={this.state.url}
-                                    onChange={this.onUrlChange}
+                                      onChange={this.onUrlChange}
+
                                   />
                                 </li>
                                 <li>
                                   <textarea
-                                    col={30}
-                                    rows={10}
+                                   // col={30}
+                                    //rows={10}
+                                    maxlength="200"
                                     placeholder="Description"
                                     value={this.state.description}
                                     onChange={this.onBodyChange}

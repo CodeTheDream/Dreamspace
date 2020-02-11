@@ -14,7 +14,7 @@ class ListItem extends React.Component {
             calculatedvote: 0,
             upvotecolor: 'gray',
             downvotecolor:'gray',
-          
+           username:""
         };
     }
     componentDidMount() {
@@ -22,12 +22,43 @@ class ListItem extends React.Component {
         let upvotes = article.upvotes;
         let downvotes = article.downvotes;
         this.calculatedvote(upvotes, downvotes)
+        let autherId = article.userId;
+        this.unsubscribe = this.props.firebase
+            .user(autherId)
+            .get()
+            .then(doc => {
+                console.log("userdata", doc.data())
+                let user=doc.data()
+                this.setState({username:user.username})
+            })
+        console.log( "article",article);
+    }
+    openPost(e, article) {
+        console.log("ARTICLE", article)
+        e.preventDefault();
+        this.props.history.push({
+            pathname: "/articles/" + article.uid,
+            params: article.uid,
+            state: { article }
+        });
     }
     componentDidUpdate = (prevProps) => {
         if (prevProps.article !== this.props.article) {
             this.calculatedvote(this.props.article.upvotes, this.props.article.downvotes)
         }
     };
+
+
+    checkurl = () => {
+        console.log( "check url",this.props.article.url)
+        if (this.props.article.url === true) {
+            return <a href="{this.props.article.url}">Related link</a>
+        }
+        else {
+            return null
+        }
+    }
+    
     calculatedvote(upvotes, downvotes) {
         if (upvotes == 0) {
             upvotes = []
@@ -256,15 +287,12 @@ class ListItem extends React.Component {
             <AuthUserContext.Consumer>
                 {
                     authUser => (
-                        <div className="posts">
-                            <div
-                                className="likes"
-                                style={{
-                                    width: "40px; border-left:4px solid transparent;",
-                                    float: "left"
-                                }}
+                        
+                        <div className="card">
+                            <div className="likes">
+                                
 
-                            >
+                            
                                 <span style={{ fontSize: "1em" }}>
                                     <div className="upvote"
                                       
@@ -285,36 +313,50 @@ class ListItem extends React.Component {
                                     </div>
                                 </span>
                             </div>
-                            <div className="maincontent" id="content">
-                                <div className="author">
-                                    <span style={{ float: "left" }}>
-                                        <i className="fa fa-user"></i>
-                                    </span>
-                                    <span style={{ float: "left" }}> post by Eliz </span>
-                                    <span style={{ float: "left" }}> 7 hours ago</span>
-                                    <span style={{ float: "left" }} className="effect">
-                                        <i className="fa fa-trophy"></i>
-                                    </span>
+                            <div  className="maincontent" id="content">
+                                <div className="auther-name">                          
+                                    <div className="auther-style">    
+                                    <span>
+                                            <i className="fa fa-user"></i>
+                                        </span>
+                                        <span>posted by{this.state.username}{article.timeCreated}</span>
+                                   
+                      
+                               </div>
+                                </div>  
+                                
+                                <div className="auther-style">
+                                 
+                                    <a href={this.props.article.url}>{this.props.article.title}</a>
                                 </div>
-                                <div className="posts-content">
-                                    <h4>{this.props.article.title}</h4>
-                                    <img className="profile-img" alt="complex" src={myimage} />
-                                </div>
-                                <div className="bottom" id="commentarea">
-                                    <span style={{ float: "left" }}>
-                                        <button> <i className="fa fa-comment">comments</i></button>
+                                    
+                                <div className="description-style">
+
+                                    {this.props.article.description}
+                                  </div>
+                                   </div>
+                           
+                            <div onClick={e => this.openPost(e, article)}
+                                id="commentarea">
+                                
+                            
+                                   
+                                            
+                                    
+                                    <span style={{ float: 'right' }}>
+                                    <button className="button"> <i className="fa fa-comment">comments</i></button>
+                                    <span style={{ float: 'right' }}>
+                                        <button className="button">   <i className="fa fa-share">share...</i></button>
                                     </span>
-                                    <span style={{ float: "left" }}>
-                                        <button>
-                                            <i className="fa fa-share">share...</i>
-                                        </button>
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                            
+                          
                     )}
             </AuthUserContext.Consumer>
         )
     }
 }
 export default compose(withFirebase, withRouter)(ListItem);
+ 

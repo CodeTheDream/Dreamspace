@@ -3,8 +3,13 @@
     "",
     "\\public",
     "\\src",
+    "\\src\\assets",
+    "\\src\\assets\\styles",
     "\\src\\components",
-    "\\src\\components\\ListItem"
+    "\\src\\components\\ListItem",
+    "\\src\\containers",
+    "\\src\\containers\\Create-article",
+    "\\src\\containers\\Dashboard"
   ],
   "SelectedNode": "\\src\\components\\ListItem\\index.js",
   "PreviewInSolutionExplorer": false
