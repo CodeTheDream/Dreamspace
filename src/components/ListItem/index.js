@@ -293,7 +293,7 @@ class ListItem extends React.Component {
                                 
 
                             
-                                <span style={{ fontSize: "1em" }}>
+                                <span style={{ fontSize: "1em", marginLeft:"auto", marginRight:"auto" }}>
                                     <div className="upvote"
                                       
                                         onClick={() => this.handleUpvote(authUser)}
@@ -343,9 +343,9 @@ class ListItem extends React.Component {
                                    
                                             
                                     
-                                    <span style={{ float: 'right' }}>
+                                    <span>
                                     <button className="button"> <i className="fa fa-comment">comments</i></button>
-                                    <span style={{ float: 'right' }}>
+                                    <span>
                                         <button className="button">   <i className="fa fa-share">share...</i></button>
                                     </span>
                                     </span>

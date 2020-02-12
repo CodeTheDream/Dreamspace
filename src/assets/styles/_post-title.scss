@@ -54,22 +54,24 @@ body {
         margin-bottom: 10px;
         align-items: initial;
         color: black;
+        margin-left: auto;
     }
     
 
 .card {
-    width: 100%;
-    max-width: 1200px;
+  /*  width: 100%; */
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
-    text-decoration: none;  
+    text-decoration: none;
     background-color: ghostwhite;
     display: -ms-flexbox;
     color: inherit;
     display: flex;
     margin-bottom: 20px;
     position: relative;
-    padding-right: 3em
-   
+    /* padding-right: 3em;*/   
 }
 .card:hover {
     background-color: white;
@@ -81,8 +83,8 @@ body {
 .likes {
     width: 3%;
     background-color: whitesmoke;
-    height: 220px;
-    margin-top: 0 ;
+    /* height: 220px; */
+    margin-top: 0;
 
 }
     .maincontent {
@@ -96,13 +98,12 @@ body {
     max-height: 120px;
     position: relative;
     overflow: hidden;
-    margin-bottom: 5px;
+    margin-bottom: 2em;
     padding-left: 10px;
-    padding-right:12px;
-     text-align: left;
+    padding-right: 12px;
+    text-align: left;
     font-weight: normal;
     line-height: normal;
-   
 }
 div.description-style:hover {
     overflow: visible;
@@ -113,7 +114,8 @@ div.description-style:hover {
             position: relative;
             bottom: 0;
             display: inline-flex;
-            background-color:gainsboro;
+            background-color: gainsboro;
+            width: 10%;
         }
 
        
@@ -133,6 +135,7 @@ div.description-style:hover {
     #commentarea {
         position: absolute;
         bottom: 0;
+        right:0;
         width: inherit;
     }
 
