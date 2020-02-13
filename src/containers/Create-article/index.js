@@ -179,7 +179,7 @@ class Createarticle extends Component {
                                   <textarea
                                    // col={30}
                                     //rows={10}
-                                    maxlength="200"
+                                    //maxlength="200"
                                     placeholder="Description"
                                     value={this.state.description}
                                     onChange={this.onBodyChange}

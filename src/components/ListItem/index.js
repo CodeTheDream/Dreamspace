@@ -4,11 +4,14 @@ import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import { AuthUserContext } from "../Session";
+import ReadMoreReact from 'read-more-react';
 class ListItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             article: [],
+           
+            showAll: false,
             upvotes: [],
             downvotes: [],
             calculatedvote: 0,
@@ -279,6 +282,7 @@ class ListItem extends React.Component {
             return filteredDownvote
         }
     }
+   
     render() {
         const { upvotes } = this.state
         const { downvotes } = this.state
@@ -314,12 +318,12 @@ class ListItem extends React.Component {
                                 </span>
                             </div>
                             <div  className="maincontent" id="content">
-                                <div className="auther-name">                          
+                                <div className="auther">                          
                                     <div className="auther-style">    
                                     <span>
                                             <i className="fa fa-user"></i>
                                         </span>
-                                        <span>posted by{this.state.username}{article.timeCreated}</span>
+                                        <span>posted by {this.state.username} {article.timeCreated}</span>
                                    
                       
                                </div>
@@ -332,11 +336,14 @@ class ListItem extends React.Component {
                                     
                                 <div className="description-style">
 
-                                    {this.props.article.description}
+                                    
+                                    {this.props.article.description} 
+                                        
+                           
                                   </div>
                                    </div>
                            
-                            <div onClick={e => this.openPost(e, article)}
+                            <div 
                                 id="commentarea">
                                 
                             
@@ -344,7 +351,7 @@ class ListItem extends React.Component {
                                             
                                     
                                     <span style={{ float: 'right' }}>
-                                    <button className="button"> <i className="fa fa-comment">comments</i></button>
+                                    <button className="button" onClick={e => this.openPost(e, article)} > <i className="fa fa-comment">comments</i></button>
                                     <span style={{ float: 'right' }}>
                                         <button className="button">   <i className="fa fa-share">share...</i></button>
                                     </span>
