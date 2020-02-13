@@ -4,7 +4,6 @@ import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import { AuthUserContext } from "../Session";
-import ReadMoreReact from 'read-more-react';
 class ListItem extends React.Component {
     constructor(props) {
         super(props);
