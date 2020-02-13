@@ -9,9 +9,14 @@ class ListItem extends React.Component {
         super(props);
         this.state = {
             article: [],
+           
+            showAll: false,
             upvotes: [],
             downvotes: [],
             calculatedvote: 0,
+            upvotecolor: 'gray',
+            downvotecolor:'gray',
+           username:""
         };
     }
     componentDidMount() {
@@ -19,12 +24,42 @@ class ListItem extends React.Component {
         let upvotes = article.upvotes;
         let downvotes = article.downvotes;
         this.calculatedvote(upvotes, downvotes)
+        let autherId = article.userId;
+        this.unsubscribe = this.props.firebase
+            .user(autherId)
+            .get()
+            .then(doc => {
+                console.log("userdata", doc.data())
+                let user=doc.data()
+                this.setState({username:user.username})
+            })
+        console.log( "article",article);
+    }
+    openPost(e, article) {
+        console.log("ARTICLE", article)
+        e.preventDefault();
+        this.props.history.push({
+            pathname: "/articles/" + article.uid,
+            params: article.uid,
+            state: { article }
+        });
     }
     componentDidUpdate = (prevProps) => {
         if (prevProps.article !== this.props.article) {
             this.calculatedvote(this.props.article.upvotes, this.props.article.downvotes)
         }
     };
+
+    checkurl = () => {
+        console.log( "check url",this.props.article.url)
+        if (this.props.article.url === true) {
+            return <a href="{this.props.article.url}">Related link</a>
+        }
+        else {
+            return null
+        }
+    }
+    
     openPost(e,article) {
         console.log("ARTICLE" , article)
         e.preventDefault();
@@ -50,11 +85,16 @@ class ListItem extends React.Component {
         //console.log("downvotestotal", downvotesTotal)
         this.setState({ calculatedvote: finalTotal })
     }
-    handleUpvote = (e, authUser) => {
-        const { article } = this.props
-        let initialvote = [authUser.uid];
+    handleUpvote = (authUser) => {
+        console.log("upvote")
+        const { article } = this.props        
+           let initialvote = [authUser.uid];
         if (article.upvotes == 0) {
             if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
+                this.setState({
+                    downvotecolor:'gray',
+                    upvotecolor: 'darkred'
+                })
                 this.props.firebase
                     .article(article.uid)
                     .set({
@@ -67,6 +107,10 @@ class ListItem extends React.Component {
                 let uidIndex = this.checkDownvote(authUser.uid, article.downvotes)
                 let articlearray = article.downvotes;
                 articlearray.splice(uidIndex, 1)
+                this.setState({
+                    downvotecolor: 'gray',
+                    upvotecolor: 'darkred'
+                })
                 this.props.firebase
                     .article(article.uid)
                     .set({
@@ -81,7 +125,10 @@ class ListItem extends React.Component {
                 if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
 
                     console.log(this.checkUpvote)
-                    this.setState({ calculatedvote: this.state.calculatedvote + 1 })
+                    this.setState({
+                        calculatedvote: this.state.calculatedvote + 1,
+                        upvotecolor: 'darkred',
+                    downvotecolor:'gray'})
                     let upvotes = article.upvotes
                     let updatedUpvotes = upvotes
                     updatedUpvotes.push(authUser.uid)
@@ -92,13 +139,17 @@ class ListItem extends React.Component {
                             upvotes: updatedUpvotes
                         })
 
-
                 }
 
                 else {
                     console.log("checkDownvote")
                     let uidindex = this.checkDownvote(authUser.uid, article.downvotes)
                     let articlearray = article.downvotes;
+                    this.setState({
+                      
+                        downvotecolor: 'gray',
+                        upvotecolor: 'darkred'
+                    })
                     articlearray.splice(uidindex, 1)
                     console.log("article.upvote", article.upvotes)
                     //let upvotesarray=article.upvotes.push(authUser.uid)
@@ -119,12 +170,17 @@ class ListItem extends React.Component {
             }
         }
     }
-    handleDownvote = (e, authUser) => {
+    handleDownvote = (authUser) => {
         const { article } = this.props
-        let initialvote = [authUser.uid];
+        let initialvote = [authUser.uid];    
+        
         if (article.downvotes == 0) {
             console.log("typeof",typeof(article.upvotes))
             if (this.checkUpvote(authUser.uid, article.upvotes) == -1) {
+                this.setState({
+                    downvotecolor: 'dodgerblue',
+                    upvotecolor: 'gray'
+                })
                 this.props.firebase
                     .article(article.uid)
                     .set({
@@ -137,6 +193,10 @@ class ListItem extends React.Component {
                 let uidIndex = this.checkUpvote(authUser.uid, article.upvotes)
                 let articlearray = article.upvotes;
                 articlearray.splice(uidIndex, 1)
+                this.setState({
+                    downvotecolor: 'dodgerblue',
+                    upvotecolor:'gray'
+                })
                 this.props.firebase
                     .article(article.uid)
                     .set({
@@ -150,7 +210,11 @@ class ListItem extends React.Component {
             console.log("checkdownvote", this.checkDownvote(authUser.uid, article.downvotes));
             if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
                 if (this.checkUpvote(authUser.uid, article.upvotes) == -1) {
-                    this.setState({ calculatedvote: this.state.calculatedvote - 1 })
+                    this.setState({
+                        calculatedvote: this.state.calculatedvote - 1,
+                        downvotecolor: 'dodgerblue',
+                        upvotecolor:'gray'
+                    })
                     let downvotes = article.downvotes
                     let updatedDownvotes = downvotes
                     updatedDownvotes.push(authUser.uid)
@@ -167,6 +231,10 @@ class ListItem extends React.Component {
                 else {
                     console.log("checkDownvote")
                     let uidindex = this.checkUpvote(authUser.uid, article.upvotes)
+                    this.setState({
+                        downvotecolor: 'dodgerblue',
+                        upvotecolor: 'gray'
+                    })
                     console.log("uid",uidindex)
                     let articlearray = article.upvotes;
                     articlearray.splice(uidindex, 1)
@@ -194,12 +262,14 @@ class ListItem extends React.Component {
     checkUpvote = (uid, upvotes) => {
         console.log("filter", upvotes, uid)
         if (typeof (upvotes) == "number") {
+           
             return -1
+            
         }
             else {
                 let filteredUpvote = upvotes.indexOf(uid)
                 console.log("filteredvote", filteredUpvote)
-
+         
                 return filteredUpvote
             }
         }
@@ -207,16 +277,19 @@ class ListItem extends React.Component {
         console.log("filter", downvotes, uid)
         console.log("typeof1",typeof(downvotes))
         if (typeof (downvotes) == "number") {
+       
             return -1
         }
         else {
             let filteredDownvote = downvotes.indexOf(uid)
+          
             console.log("filteredvote", filteredDownvote)
 
 
             return filteredDownvote
         }
     }
+   
     render() {
         const { upvotes } = this.state
         const { downvotes } = this.state
@@ -225,59 +298,80 @@ class ListItem extends React.Component {
             <AuthUserContext.Consumer>
                 {
                     authUser => (
-                        <div className="posts">
-                            <div
-                                className="likes"
-                                style={{
-                                    width: "40px; border-left:4px solid transparent;",
-                                    float: "left"
-                                }}
+                        
+                        <div className="card">
+                            <div className="likes">
+                                
 
-                            >
+                            
                                 <span style={{ fontSize: "1em" }}>
-                                    <button className="upvote"
-                                        onClick={(e) => this.handleUpvote(e, authUser)}>
-                                        <i className="fa fa-arrow-up custom"> </i>
-                                    </button>
-                                    <br />
+                                    <div className="upvote"
+                                      
+                                        onClick={() => this.handleUpvote(authUser)}
+                                        onMouseOver={()=>this.c}>
+                                        <i className="fas fa-arrow-alt-up" style={{ color: this.state.upvotecolor }}> </i>
+                                    </div>
+                                    
                                     {this.state.calculatedvote}
-                                    <br />
-                                    <button className="downvote"
-                                        onClick={(e) => this.handleDownvote(e, authUser)}>
-                                        <i className="fa fa-arrow-down custom"></i>
-                                    </button>
+                                    
+                                    <div className="downvote"
+                                         onClick={() => this.handleDownvote(authUser)}>
+                                       
+                                         <i className="fas fa-arrow-alt-down" style={{
+                                            color: this.state.downvotecolor 
+                                            
+                                        }}> </i>
+                                    </div>
                                 </span>
                             </div>
-                            <div   onClick={e=>this.openPost(e,article) }  className="maincontent" id="content">
-                                <div className="author">
-                                    <span style={{ float: "left" }}>
-                                        <i className="fa fa-user"></i>
-                                    </span>
-                                    <span style={{ float: "left" }}> post by Eliz </span>
-                                    <span style={{ float: "left" }}> 7 hours ago</span>
-                                    <span style={{ float: "left" }} className="effect">
-                                        <i className="fa fa-trophy"></i>
-                                    </span>
+                            <div  className="maincontent" id="content">
+                                <div className="auther">                          
+                                    <div className="auther-style">    
+                                    <span>
+                                            <i className="fa fa-user"></i>
+                                        </span>
+                                        <span>posted by {this.state.username} {article.timeCreated}</span>
+                                   
+                      
+                               </div>
+                                </div>  
+                                
+                                <div className="auther-style">
+                                 
+                                    <a href={this.props.article.url}>{this.props.article.title}</a>
+
                                 </div>
-                                <div className="posts-content">
-                                    <h4>{this.props.article.title}</h4>
-                                    <img className="profile-img" alt="complex" src={myimage} />
-                                </div>
-                                <div className="bottom" id="commentarea">
-                                    <span style={{ float: "left" }}>
-                                        <button> <i className="fa fa-comment">comments</i></button>
+                                    
+                                <div className="description-style">
+
+                                    
+                                    {this.props.article.description} 
+                                        
+                           
+                                  </div>
+                                   </div>
+                           
+                            <div 
+                                id="commentarea">
+                                
+                            
+                                   
+                                            
+                                    
+                                    <span style={{ float: 'right' }}>
+                                    <button className="button" onClick={e => this.openPost(e, article)} > <i className="fa fa-comment">comments</i></button>
+                                    <span style={{ float: 'right' }}>
+                                        <button className="button">   <i className="fa fa-share">share...</i></button>
                                     </span>
-                                    <span style={{ float: "left" }}>
-                                        <button>
-                                            <i className="fa fa-share">share...</i>
-                                        </button>
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                            
+                          
                     )}
             </AuthUserContext.Consumer>
         )
     }
 }
 export default compose(withFirebase, withRouter)(ListItem);
+ 
