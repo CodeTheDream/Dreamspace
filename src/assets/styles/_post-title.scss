@@ -57,20 +57,20 @@ body {
     }
 
 
-.card {
-    width: 100%;
-    max-width: 1200px;
-    position: relative;
-    text-decoration: none;
-    background-color: ghostwhite;
-    display: -ms-flexbox;
-    color: inherit;
-    display: flex;
-    margin-bottom: 20px;
-    position: relative;
-    padding-right: 3em;
-    border-radius: 10px;
-}
+    .card {
+        width: 100%;
+        max-width: 1200px;
+        position: relative;
+        text-decoration: none;
+        background-color: ghostwhite;
+        display: -ms-flexbox;
+        color: inherit;
+        display: flex;
+        margin-bottom: 20px;
+        position: relative;
+        padding-right: 3em;
+        border-radius: 10px;
+    }
 
     .card:hover {
         background-color: white;
