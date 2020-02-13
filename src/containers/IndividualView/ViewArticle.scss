@@ -1,44 +1,21 @@
 
 
-@media only screen and (min-width: 401px) and (max-width: 800px) {
-* {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  max-width: 100%;
-  position:relative;
-  box-sizing: border-box;
- // background-color: #E8EEEF;
-
-}
-}
-
-
-
   
+@media only screen and (min-width: 401px)   {
 
 .container  {
   
-  
-      margin:0  auto;
-      // padding-top: 20px;
-       display: grid;
-      grid-template-columns: 65em;
-       grid-template-rows: auto;
-       position: relative;
-      // width: 100%;
-      // max-width: 60em;
-      // padding-left: 5em;
-      // padding-right: 5em;
-       //justify-content: center;
+      display:grid;
+      grid-template-columns: auto ;
+      grid-template-rows: auto;
+      justify-content: center;
       background-color: #E8EEEF;
-     
-     
+      
       
      }
            
     
-
+ }
  
 
 
@@ -54,7 +31,6 @@
     justify-content: center;
     padding: 4px;
     margin: 20px;
-    margin-left: 120px;
     background-color:whitesmoke;
     
   }
@@ -68,7 +44,6 @@
       // grid-template-columns: 980px;
       // grid-template-rows: 30px;
       // justify-content: center;
-       
        margin: 5px;
        padding: 12px;
   }
@@ -76,15 +51,10 @@
 
   .autherstyle {
     
-    
-    //border-bottom-style:hidden;
     text-align: left;
     background-color:whitesmoke;
     float: left;
     font-weight: bold;
-    
-    
-  
 
   }
 
@@ -98,10 +68,7 @@
            
        margin: 5px;
        padding: 12px;
-  
-            
-           
-          
+     
   }
  
  
@@ -125,12 +92,9 @@
       // grid-template-columns: 980px;
       // grid-template-rows: auto;
       // grid-auto-rows: auto;
-            
-      // margin-left: 14px;
-      // margin-bottom: 14px;
+          
       margin: 0 0 14px 14px;
-      
-     // padding: 6px;  
+    
   
   }
 
@@ -138,10 +102,6 @@
 
   .view-description {
       text-align: left;
-    
-       //padding-bottom: 10px;
-      
-    
      
   }
  
@@ -158,10 +118,10 @@
     font-size: 12px;
     //border-radius: 5px;
     width: 70px;
-    height: 20px;
+    height: 18px;
     cursor: pointer;
     border: hidden;
-    margin: 6px;
+    margin: 4px;
     
    
 

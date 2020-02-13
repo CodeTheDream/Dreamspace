@@ -23,6 +23,7 @@ class IndividualView extends React.Component {
            comments:null,
            limit:'',
            limited:450,
+           username:""
            
            
            
@@ -36,7 +37,7 @@ class IndividualView extends React.Component {
 
  
     componentDidMount =() => {
-        
+        const {article} = this.props
             let articleId = this.props.match.params.articleId;
             this.unsubscribe =this.props.firebase
             .comments()
@@ -83,8 +84,15 @@ class IndividualView extends React.Component {
             } 
         
      })
-
-       
+//    let autherId = article.userId;
+//        this.unsubscribe = this.props.firebase
+//                       .user(autherId)
+//                       .get()
+//                       .then(doc => {
+//                           console.log("Here is user data", doc.data())
+//                           let user=doc.data()
+//                           this.setState({username:user.username})
+//                       })
     
     
     } 
@@ -110,9 +118,9 @@ class IndividualView extends React.Component {
        
 
 
-            handleRemove = (articleId) => {
-                const allArticles = this.state.articles 
-            }
+            // handleRemove = (articleId) => {
+            //     const allArticles = this.state.articles 
+            // }
          
 
           
@@ -121,8 +129,8 @@ class IndividualView extends React.Component {
 
     render() {
         // Access to local component state
-       const {article, comment, comments , timeCreated, articleId, limited} =this.state;
-       const {userId, url , description, title} = this.props;
+       const {article, comment, comments , timeCreated, articleId, limited, username} =this.state;
+       const { userId, url , description, title} = this.props;
 
 
 
@@ -136,14 +144,14 @@ class IndividualView extends React.Component {
                 <div className="auther-name">
                    <div className="autherstyle">
                      <i className="fa fa-user"></i>       
-                    <span>posted by {article.timeCreated}</span>
+                    <span>posted by{this.state.username} {article.timeCreated}</span>
                  </div>
                  </div>
 
 
                <div className="grid-subject" >
                      <div className="subject-style">
-                     <a href={article.url}>{article.title}</a> 
+                     <a  style={{color:"black"}} href={article.url}>{article.title}</a> 
                      </div>
                      </div> 
 
