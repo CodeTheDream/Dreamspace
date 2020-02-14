@@ -60,7 +60,7 @@ body {
 
 .card {
   /*  width: 100%; */
-    max-width: 100%;
+    max-width: 80%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -82,7 +82,7 @@ body {
 
 
 .likes {
-    width: 3%;
+    //width: 2%;
     background-color: whitesmoke;
     /* height: 220px; */
     margin-top: 0;
@@ -107,7 +107,7 @@ body {
     line-height: normal;
 }
 div.description-style:hover {
-    overflow: auto;
+    overflow: visible;
 }
 
     
@@ -116,7 +116,7 @@ div.description-style:hover {
             bottom: 0;
             display: inline-flex;
             background-color: gainsboro;
-            width: 10%;
+            width: 5%;
         }
 
        
@@ -166,7 +166,7 @@ div.description-style:hover {
     margin-right:4px;
     font-family: "Helvetica";
     color: #173E43;
-    font-size: 10pt;
+    font-size: 8pt;
     background-color: white;
     border: 1px solid;
     border-color: #173E43;
