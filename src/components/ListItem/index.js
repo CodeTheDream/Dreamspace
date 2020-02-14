@@ -359,7 +359,7 @@ class ListItem extends React.Component {
                                             
                                     
                                     <span style={{ float: 'right' }}>
-                                    <button className="button" onClick={e => this.openPost(e, article)} > <i className="fa fa-comment">comments</i></button>
+                                    <button className="button" onClick={e => this.openPost(e, article)} > <i className="fa fa-comment">comment</i></button>
                                     <span style={{ float: 'right' }}>
                                         <button className="button">   <i className="fa fa-share">share...</i></button>
                                     </span>
