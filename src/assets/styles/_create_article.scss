@@ -1,18 +1,23 @@
-  .dialogstyle {
-    width: 70%;
+
+  .dialogstyle{
+    z-index: 999;
+    width: 55%;
     max-width: 100%;
     margin: auto;
     position: fixed;
-    left: 15%;
-    right: 15%;
-    top: 20%;
-    z-index: 999;
+    left: 35%;
+    right: 35%;
+    top: 10%; 
     padding: 10px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    transform: translate(-26%, -26%);
+    //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
     
+   
   }
+  
   .dialogCloseButonStayle {
     margin-bottom:15px;
     padding: 3px 8px;
@@ -23,59 +28,43 @@
     height: 30px;
     font-weight: bold;
     align-self: flex-end;
-    background: $secondary-color;
-  }
-  
-  .grid-container {
-   
-     display: grid;
-    grid-template-columns: 500px ;
-    grid-template-rows: 80px 400px;
-    grid-gap: 5px;
-   padding: 1px 1px 150px 20px;
-    
-  }
-  
-  .grid-container div {
-    background-color: lightslategray;
-    text-align: center;
-    padding: 0;
-  
+    background: $main-color;
+  // background: $secondary-color;
+    color:lightgray;
+  // background-color: yellow;
   
   }
   
-  .subgrid-container1 {
-    align-self: end;
-    background-color:lightgray;
-    font-size: 40px;
-    border: solid wheat ;
-    
-  }
-  
-  .subgrid-container3 ul {
-    padding: 20px;
-    display: grid;
-    grid-gap: 10px;
-    grid: auto-flow / auto 1fr;
-  }
-  
-  .subgrid-container3 li {
-    grid-column: span 2;
-    display: grid;
-    grid-template-columns: subgrid ;
-    border: solid wheat ;
-  
-  }
-  
-  .subgrid-container2{
-    align-self: end; 
-  }
-  .modal-wrapper{
-    position: fixed;
-    width: 200%;
-    min-height: 200%;
+  .modal-wrapper-postarticle{
     background: rgba(0, 0, 0, 0.5);
     z-index: 500;
-    margin-left: -10%;
-    margin-top: -25%;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+   margin: 0;
+    min-height:120em;
+     
+
   }
+  
+  .button-tertiary {
+    background: $main-color;
+    color:lightgrey;
+    text-align: center;
+}
+
+.button-secondary1{
+  padding: 19px 39px 18px 39px;
+	margin: 0 auto;
+	font-size: 18px;
+	text-align: center;
+  font-style: normal;
+  //width: 100%;
+  width: 12em;
+  margin-bottom: 10px;
+  //background-color:teal ;
+  background: $main-color;
+  float: right;
+  color:#fae596;
+  border-radius: 8px;
+  position: relative;  
+}
