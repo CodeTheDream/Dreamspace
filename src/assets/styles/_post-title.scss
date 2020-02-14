@@ -60,7 +60,7 @@ body {
 
 .card {
   /*  width: 100%; */
-    max-width: 60%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -70,6 +70,7 @@ body {
     color: inherit;
     display: flex;
     margin-bottom: 20px;
+    border-radius:5px;
     position: relative;
     /* padding-right: 3em;*/   
 }
@@ -106,7 +107,7 @@ body {
     line-height: normal;
 }
 div.description-style:hover {
-    overflow: visible;
+    overflow: auto;
 }
 
     
