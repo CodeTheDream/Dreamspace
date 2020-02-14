@@ -1,117 +1,182 @@
 
- body {
+
+
+body {
     margin: 0;
-    background-color: $grey-contrast; 
-  }
-.wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    display: -ms-flexbox;
-    
-  }
-  .create-post {
-    background:$grey-contrast;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding: 5px;
-  }
-  .writepost {
-    height: inherit;
-    width: 90%;
+    background-color: #e8eeef;
+    box-sizing: border-box;
+    // background-color: transparent;
 }
-  .wrapper > div {
-    
-    width: 80%;
-  }
-  .popular-title {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    align-items: initial;
-    color: black;
-  }
-  .posts {
-    background: white;
-    height: 300px; //this should be dynamic( but now its ok)
-    box-shadow: gray;
+
+.wrapper {
+        width: 100%;
+    line-height: 1.58;
+     box-sizing: border-box;
+    justify-content: center;
+    max-width: 1000px;
+    align-self: center;
     display: flex;
+    flex-direction: column;
+    display: -ms-flexbox;
+    margin-bottom: 1px;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    margin-left:auto;
+    margin-right:auto;
+}
+    .upvote:hover {
+        background-color: lightcoral;
+    }
+
+
+    .downvote:hover {
+        background-color: deepskyblue;
+        background-size: 10px;
+    }
+
+
+    .create-post {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding: 5px;
+    }
+
+    .writepost {
+        height: inherit;
+        width: 90%;
+    }
+
+    .wrapper > div {
+        width: 80%;
+    }
+
+    .popular-title {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        align-items: initial;
+        color: black;
+        margin-left: auto;
+    }
+    
+
+.card {
+  /*  width: 100%; */
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    text-decoration: none;
+    background-color: ghostwhite;
     display: -ms-flexbox;
     color: inherit;
     display: flex;
-    flex-direction: row;
     margin-bottom: 20px;
-    align-items: left;
     position: relative;
+    /* padding-right: 3em;*/   
+}
+.card:hover {
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
+}
 
-  }
-  .likes {
-      width: 5%;
-      background-color: whitesmoke;
-  }
-  .maincontent {
-    width: 95%;
 
-    .author{
-        width: fit-content;
-        margin-top: 4px;
-        margin-bottom: 10px;
+
+.likes {
+    width: 3%;
+    background-color: whitesmoke;
+    /* height: 220px; */
+    margin-top: 0;
+
+}
+    .maincontent {
+        width: 100%;
+        object-fit: contain;
+        overflow:hidden; 
+        
     }
-    .posts-content {
-      width:auto;
-      height:auto;
-        margin-top: 20px;
-        background:white;
-        box-shadow: gray;
-        color: inherit;
-        margin-bottom: 10px;
-        p, h4, h5{
-            margin: 3px;
-            text-align: justify;
+
+.description-style {
+    max-height: 120px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2em;
+    padding-left: 10px;
+    padding-right: 12px;
+    text-align: left;
+    font-weight: normal;
+    line-height: normal;
+}
+div.description-style:hover {
+    overflow: visible;
+}
+
+    
+        .likes {
+            position: relative;
+            bottom: 0;
+            display: inline-flex;
+            background-color: gainsboro;
+            width: 10%;
         }
+
+       
+
+    span {
+        padding-left: 2px;
     }
-    .profile-img{
-      height:200px;
-      width:500px;
+
+    i.custom {
+        font-size: 1em;
+   }
+
+    #content {
+        position: relative;
     }
-    .bottom{
-        width: fit-content;
-        margin-bottom: 5px;
-    }
-  }
-  @media only screen and (max-width: 600px) {
-      .likes {
+
+    #commentarea {
         position: absolute;
         bottom: 0;
-        padding-left: 10px;
-        display: inline;
-        background-color: inherit;
+        right:0;
+        width: inherit;
+    }
 
-      }
-      .maincontent {
-          width: inherit;
-      }
-      .bottom {
-          padding-left: 30px;
-      }
-  }
+.auther-name {
+    display: grid;
+        grid-template-columns: 1000px;
+        grid-template-rows: 30px;
+        float: left;
+        margin-top: 3px;
+        font-size: x-small;
+        line-height: 1px;
+        text-align: left;
+        font-weight: bold;
+        line-height: normal;
   
-span {
-    padding-left: 3px;
 }
 
-i.custom {
-
-    font-size: 1em;
-    color: gray;
+.auther-style {
+    text-align: left;
+    font-weight: bold;
+     line-height: normal;
+     padding-left: 10px;
+    
+}
+.button {
+    margin-bottom: 6px;
+    margin-right:4px;
+    font-family: "Helvetica";
+    color: #173E43;
+    font-size: 10pt;
+    background-color: white;
+    border: 1px solid;
+    border-color: #173E43;
+    border-radius: 1px;
+    position:relative;
 }
 
-#content {
-    position: relative;
-}
-#commentarea {
-    position: absolute;
-    bottom: 0;
-    width: inherit;
-}
+    .button:hover {
+        opacity: 0.6;
+        text-align: center;
+       
+    }
+
+  
