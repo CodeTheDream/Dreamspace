@@ -297,7 +297,9 @@ class ListItem extends React.Component {
 
 
 
-                                <span style={{ fontSize: "1em" }}>
+                                <span style={{
+                                    fontSize: "1em",
+                                marginRight:"auto",marginLeft:"auto"}}>
                                     <div className="upvote"
 
                                         onClick={() => this.handleUpvote(authUser)}
