@@ -1,155 +1,160 @@
-.container  {
-      //height : 1000px;
-      background-color: white;
-      padding-top: 20px;
-  }
- .auther-name {
-      display: grid;
-      grid-template-columns: 1000px;
-      grid-template-rows: 30px;
-      justify-content: center;
-      
-  }
-  
-
-  .autherstyle {
-    
-    border: 1px rgb(209, 202, 202) solid;
-    border-bottom-style:hidden;
-    padding : 8px;
-    text-align: left;
-    background-color: rgb(220, 220, 226);
-    //padding: 1em;
-  
-
-  }
-
-
-  .grid-subject {
-    display: grid;
-    grid-template-columns: 1000px;
-    grid-template-rows: 30px;
-    justify-content: center;
-
-     
-  }
+body {
  
-
- .article-subject {
-   
-    padding:5px;
-    background-color: rgb(220, 220, 226);
-    border: 1px rgb(209, 202, 202) solid;
-    border-bottom-style:hidden;
-    padding-left : 12px;
-    text-align: left;
-    font-weight: bold;
- 
-    
+  background-color:#E8EEEF;; 
+}
+//MAIN CONTAINER CODE
+.container-indvidual {
+  margin: auto;
+  display: grid;
+  grid-gap: 10px;
+  position: relative;
+  max-width: 800px;
+  justify-content: center;
+  background-color:lightgray;
+  padding: 20px;
+  
+  
+  
 }
 
 
-  .grid-view {
-      display: grid;
-      grid-template-columns: 1000px;
-      grid-template-rows: 400px;
-      grid-auto-rows: 500px;
-      background-color:white;
-      justify-content: center;
-  }
+//THIS IS THE INDUVIDWAL VIWE CSS
 
-  .grid-view > div {
-    background-color: rgb(220, 220, 226);
-    padding: 15px;
-   
-  }
+.card-individual {
+// box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+background-color: whitesmoke;
+border-bottom: solid 0.1px lightgrey;
 
+}
+
+.auther-name-indvidual {
+  padding: 12px 70px;
   
+}
 
- 
+.autherstyle-individual {
+  text-align: left;
+  background-color: whitesmoke;
+  float: left;
+  font-weight: bold;
+  font-size: 15px;
+}
 
-  .view-article {
-      text-align: center;
-     // padding: 15px;
-      border: 1px rgb(209, 202, 202) solid;
-  }
+.grid-subject2 {
+  padding: 12px 70px ;
+  background-color: whitesmoke;
+  border-bottom-style: hidden;
+  text-align: left;
+  font-weight: bold;
+}
 
 
 
+.grid-description {
+  padding: 0 0 14px 70px;
+  text-align: left;
+}
 
 
 .stylebutton {
-    display: inline-block;
-    float: left;
-    padding-left: 170px;
-
+  float: left;
+ padding-left: 70px;
 }
-.stylebutton   button {
-    
-    background-color: rgb(224, 222, 230);
-    font-size: 12px;
-    border-radius: 8px;
-    width: 70px;
-    height: 20px;
- 
-    
-}
-
-
-.commentgrid {
-    display: grid;
-    grid-template-columns: 1000px;
-    grid-template-rows: 250px;
-    justify-content:center;
-    margin-top: 80px;
-    margin-bottom: 30px;
-
-
-}
-
-.commentstyle {
-    padding:10px;
-    background-color: rgb(220, 220, 226);
-    border: 1px rgb(209, 202, 202) solid;
-    //border-bottom-style:hidden;
-    padding-left : 12px;
-    text-align: left;
-    font-weight: bold;
-}
-.btncomment {
-    float: right;
-}
-
-.commentContent {
-  height: 200px;
-  width: 950px;
-  vertical-align: "top";
-  background-color: rgb(220, 220, 226);
+.stylebutton button {
+  background-color: whitesmoke;
+  font-size: 12px;
+  width: 70px;
+  height: 20px;
+  cursor: pointer;
   border: hidden;
-}
-
-
-
-.commentDisplay {
-  display: flex;
-  flex-direction: column;
-  //grid-template-columns: 1000px;
-  //grid-template-rows: 150px;
-  justify-content:center;
-  margin-top: 80px;
-  margin-bottom: 30px;
-
-
-}
-
-.styleDisplay {
-  padding:10px;
-  border: 1px rgb(209, 202, 202) solid;
-  padding-left : 12px;
-  text-align: left;
-  width: 980px;
+  margin: 6px;
+ 
   
 }
 
+.stylebutton button:hover {
+  background-color: #e8eeef;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+//THIS IS ADD COMMENT CSS
+.card-addcomment {
+  // box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+   background-color: whitesmoke;
+   padding: 4px 4px 30px 4px; 
+   transform: 1.5;
+   border-bottom: solid 0.2px lightgray;
+ }
+ .card-addcomment:hover{
+ // box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.9) !important;
+ border: solid 1px gray;
+ }
+
+ .submit-btn {
+   background-color: #3fb0ac;
+   font-size: 12px;
+   font-weight: bold;
+   width: 80px;
+   height: 25px;
+   cursor: pointer;
+   float: right;
+ }
+ 
+ textarea {
+   width: 98%;
+   height:12em;
+   padding: 4px;
+   outline: none;
+   border: hidden;
+ }
+
+
+//THIS IS THE LIST OF COMMENTS CSS
+.card-comment {
+  //box-shadow: 0 1px 2px rgba(0,0,0, 0.4);                   
+  background-color: whitesmoke;
+  margin-top: 4px; 
+  border-bottom: solid 0.2px lightgray;
+ }
+ 
+ .styleDisplay {
+  border: hidden;
+   text-align: left;
+   line-height: 22px;
+   padding: 12px;
+   font-size: 1em;
+   line-height: 1.5;
+   
+ }
+ /*.card-comment total-comment {
+  background-color: whitesmoke;
+  font-size: 12px;
+  height: 20px;
+  cursor: pointer;
+  border: hidden; 
+ }
+ .total-comment{
+  //float: left;
+  padding-right: 55em;
+ }*/
+
+
+ @media only screen and (max-width: 600px) {
+  .likes-indivividual {
+    position: absolute;
+    bottom: 0;
+    padding-left: 10px;
+    display: inline;
+    background-color: inherit;
+
+  }
   
+}
+.likes-indivividual {
+  width: 4%;
+  background-color:lightgray;
   
+}

@@ -12,7 +12,7 @@ const moment = require("moment");
 class Dialog extends React.Component {
   render() {
     return (
-      <div className="modal-wrapper">
+      <div className="modal-wrapper-postarticle">
       <div className="dialogstyle devedit-form">
         <button
           className=" dialogCloseButonStayle"
@@ -39,21 +39,14 @@ class Createarticle extends Component {
       downvotes: 0,
       upvotes: 0,
       authorID: "",
-      timeCreated: ""
-     
+      timeCreated: "",
+      userName:""
        
     };
     
   }
   
-  /*showSuccessMessage = () => {
-    this.setState({
-    showMessage: true}, () => {
-       setTimer(this.setState({showMessage: false}), 5000)
-    })
-   }*/
-    
-  togglePopup() {
+  togglePopup=()=> {
    
     this.setState({
       showPopup: !this.state.showPopup
@@ -82,12 +75,14 @@ class Createarticle extends Component {
       description: e.target.value
     });
   };
+  
   handleSubmit = (e, authUser) => {
     e.preventDefault();
     this.props.firebase
       .articles()
       .add({
         userId: authUser.uid,
+       // userName:this.state.userName,
         title: this.state.title,
         description: this.state.description,
         tags: this.state.tags,
@@ -112,27 +107,25 @@ class Createarticle extends Component {
       upvotes: 0,
       showPopup:false
     });
-    /*this.togglePopUp()
-    this.showSuccessMessage()
-    */
+    
   }
   render() {
     return (
       <AuthUserContext.Consumer>
         {authUser => (
           <div className="">
-            <button className="button-secondary"
-              onClick={this.togglePopup.bind(this)}>
+          
+            <button className="button-secondary1"
+              onClick={this.togglePopup}>
               Post New Article
               </button>  
             {this.state.showPopup ? (
-              <Dialog closePopup={this.togglePopup.bind(this)}>
+              <Dialog closePopup={this.togglePopup}>
                 
                 <div className="">
                   <div className="">
                     {/* <div className="">Create a new post</div> */}
-                    <legend>             Create New Post
-</legend>
+                    <legend>Create New Post</legend>
                     <div className="">
                       <div className="">
                         <ul>
@@ -171,15 +164,14 @@ class Createarticle extends Component {
                                   <textarea
                                     placeholder="URl"
                                     value={this.state.url}
-                                      onChange={this.onUrlChange}
-
+                                    onChange={this.onUrlChange}
+                                    required
                                   />
                                 </li>
                                 <li>
                                   <textarea
-                                   // col={30}
-                                    //rows={10}
-                                    //maxlength="200"
+                                    col={30}
+                                    rows={10}
                                     placeholder="Description"
                                     value={this.state.description}
                                     onChange={this.onBodyChange}
@@ -192,7 +184,6 @@ class Createarticle extends Component {
                                   
                                   <button className="button-tertiary" type="submit" onClick={this.closeSelf}> Post</button>
                                 </li>
-                              { /* {this.showMessage && <p>you've successfully created an article</p>}*/}
 
                               </ul>
                             </form>
