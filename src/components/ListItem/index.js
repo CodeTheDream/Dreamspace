@@ -4,7 +4,6 @@ import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import { AuthUserContext } from "../Session";
-import ReadMoreReact from 'read-more-react';
 class ListItem extends React.Component {
     constructor(props) {
         super(props);
@@ -51,7 +50,6 @@ class ListItem extends React.Component {
         }
     };
 
-
     checkurl = () => {
         console.log( "check url",this.props.article.url)
         if (this.props.article.url === true) {
@@ -62,6 +60,15 @@ class ListItem extends React.Component {
         }
     }
     
+    openPost(e,article) {
+        console.log("ARTICLE" , article)
+        e.preventDefault();
+        this.props.history.push({
+          pathname: "/articles/" + article.uid,
+          params: article.uid,
+          state: {article}
+        });
+      }
     calculatedvote(upvotes, downvotes) {
         if (upvotes == 0) {
             upvotes = []
@@ -332,6 +339,7 @@ class ListItem extends React.Component {
                                 <div className="auther-style">
                                  
                                     <a href={this.props.article.url}>{this.props.article.title}</a>
+
                                 </div>
                                     
                                 <div className="description-style">
