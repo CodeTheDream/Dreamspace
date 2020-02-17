@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import Comment from "../../components/Comment";
-
+import ListItem  from '../../components/ListItem'
 const moment = require("moment");
 class IndividualView extends React.Component {
   constructor(props) {
@@ -17,7 +17,9 @@ class IndividualView extends React.Component {
       timeCreated: "",
       comments: null,
       limit: "",
-      limited: 450
+      limited: 450,
+      TotallComment: "",
+      totalcount: 0
     };
   }
 
@@ -36,19 +38,14 @@ class IndividualView extends React.Component {
         snapshot.forEach(doc => {
           const data = doc.data();
           comments.push(data);
-        
         });
 
         this.setState({ comments: comments });
-        console.log("here my snapshot", snapshot);
+        // console.log("here my snapshot ", snapshot);
       });
 
-    //   componentWillUnmount() {
-    //     this.unsubscribe();
-    //   }
-
     //get the ID for a particular article
-    console.log("articleId", this.props.match.params);
+    // console.log("articleId", this.props.match.params);
     this.setState({ articleId });
 
     this.unsubscribe = this.props.firebase
@@ -65,6 +62,23 @@ class IndividualView extends React.Component {
           console.log("No such document!");
         }
       });
+    //This Helps to find the total commets for spesific articleId
+    this.unsubscribe = this.props.firebase
+      .comments()
+      .where("articleId", "==", articleId)
+      .onSnapshot(snapshot => {
+        const TotallComment = [];
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          TotallComment.push(data);
+         
+
+        });
+
+        this.setState({ TotallComment: TotallComment });
+        const totalcount = TotallComment.length
+        this.setState({totalcount:totalcount})
+      });
   };
 
   //  componentWillUnmount =() => {
@@ -72,7 +86,7 @@ class IndividualView extends React.Component {
   //     }
 
   createComment = (comment, article) => {
-    console.log("here create comment", comment, this.state.articleId);
+    //  console.log("here create comment", comment, this.state.articleId);
     this.props.firebase
       .comments()
       .add({
@@ -80,7 +94,7 @@ class IndividualView extends React.Component {
         articleId: this.state.articleId
       })
       .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        //console.log("Document written with ID: ", docRef.id);
       });
   };
 
@@ -99,6 +113,7 @@ class IndividualView extends React.Component {
       limited
     } = this.state;
     const { userId, url, description, title } = this.props;
+    //const numRows = this.state.TotallComment.length;
 
     return (
       <div className="container-indvidual ">
@@ -111,19 +126,13 @@ class IndividualView extends React.Component {
             }}
           >
             <span style={{ fontSize: "1em" }}>
-              <button
-                className="upvote-individual"
-              
-              >
+              <button className="upvote-individual">
                 <i className="fa fa-arrow-up custom"> </i>
               </button>
               <br />
               {this.state.calculatedvote}
               <br />
-              <button
-                className="downvote-individual"
-                
-              >
+              <button className="downvote-individual">
                 <i className="fa fa-arrow-down custom"></i>
               </button>
             </span>
@@ -136,27 +145,25 @@ class IndividualView extends React.Component {
           </div>
 
           <div className="grid-subject2">
-              <a href={article.url}>{article.title}</a>
+            <a href={article.url}>{article.title}</a>
           </div>
 
           <div className="grid-description">
-              <p>{article.description}</p>
-
+            <p>{article.description}</p>
           </div>
-         
+
           <div className="stylebutton">
-         <i className="fa fa-comment"> </i> 
-               
-           <button
+            <button style={{justifyContent:"spacebitween"}}
               type="button"
               //onClick={this.handleSubmit}
               className="disabled"
             >
-               
-             Comment
+              <i className="fa fa-comment"> </i>
+              {this.state.totalcount}
+              Comment
             </button>
 
-            <button type="button" onClick={this.handleRemove}>
+            <button type="button" onClick={this.handleRemove} className="disabled">
               Save
             </button>
           </div>
@@ -164,7 +171,6 @@ class IndividualView extends React.Component {
 
         <div>
           <AddComment comment={comment} onCreate={this.createComment} />
-       
         </div>
 
         <div>
@@ -178,8 +184,9 @@ class IndividualView extends React.Component {
                 />
               );
             })}
-            
+         
         </div>
+        {/*<ListItem {this.state.totalcount}</ListItem>*/}
       </div>
     );
   }

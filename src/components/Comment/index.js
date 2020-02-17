@@ -7,6 +7,14 @@ class Comment extends React.Component {
       showAll: false
     };
   }
+  togglePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  };
+  cancle = () => {
+    this.setState({ showPopup: false });
+  };
 
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
@@ -23,12 +31,23 @@ class Comment extends React.Component {
               {comments.timeCreated} <br />
               {comments.comment}{" "}
             </p>
-           {/* <br/>
-            <div className="total-comment">
-              <i className="fa fa-comment"> </i>
-              <button>Reply</button>
-           </div>*/}
-        
+            <br />
+            <div >
+              <div className="reply-button1">
+              <button  style={{border:"hidden",fontFamily:"Helvetica", opacity: 0.6 ,color:"#173E43",fontWeight:"bold"}} onClick={this.togglePopup}>
+                <i className="fa fa-comment"> </i>Reply
+              </button>
+              </div>
+              {this.state.showPopup ? (
+                <div >
+                  <textarea  />
+                  <div className="reply-button2">
+                    <button onClick={this.cancle}>cancle</button>
+                    <button>Reply</button>
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       );
@@ -43,7 +62,6 @@ class Comment extends React.Component {
                 {comments.timeCreated} <br />
                 {comments.comment}
                 <a onClick={this.showLess} style={{ color: "darkblue" }}>
-                  
                   Read less
                 </a>
               </p>
@@ -65,10 +83,9 @@ class Comment extends React.Component {
                 {" "}
                 Read More{" "}
               </a>
-            </p><br/>
-            
+            </p>
+            <br />
           </div>
-         
         </div>
       );
     }

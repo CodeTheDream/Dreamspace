@@ -7,10 +7,10 @@ import { AuthUserContext } from "../Session";
 
 class ListItem extends React.Component {
     constructor(props) {
+        console.log("this is the props value:" + props)
         super(props);
         this.state = {
             article: [],
-
             upvotes: [],
             downvotes: [],
             calculatedvote: 0,
@@ -18,7 +18,9 @@ class ListItem extends React.Component {
             downvotecolor: 'gray',
             username: ""
         };
+        
     }
+   
     componentDidMount() {
         const { article } = this.props
         let upvotes = article.upvotes;

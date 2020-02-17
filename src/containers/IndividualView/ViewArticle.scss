@@ -8,10 +8,11 @@ body {
   display: grid;
   grid-gap: 10px;
   position: relative;
+  //width: 100%;
   max-width: 800px;
   justify-content: center;
-  background-color:lightgray;
-  padding: 20px;
+ background-color:lightgray;
+  padding:  20px;
   
   
   
@@ -22,8 +23,9 @@ body {
 
 .card-individual {
 // box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-background-color: whitesmoke;
+background-color:white;
 border-bottom: solid 0.1px lightgrey;
+//overflow: auto;
 
 }
 
@@ -34,7 +36,7 @@ border-bottom: solid 0.1px lightgrey;
 
 .autherstyle-individual {
   text-align: left;
-  background-color: whitesmoke;
+  background-color: white;
   float: left;
   font-weight: bold;
   font-size: 15px;
@@ -42,7 +44,7 @@ border-bottom: solid 0.1px lightgrey;
 
 .grid-subject2 {
   padding: 12px 70px ;
-  background-color: whitesmoke;
+  background-color: white;
   border-bottom-style: hidden;
   text-align: left;
   font-weight: bold;
@@ -61,21 +63,30 @@ border-bottom: solid 0.1px lightgrey;
  padding-left: 70px;
 }
 .stylebutton button {
-  background-color: whitesmoke;
-  font-size: 12px;
-  width: 70px;
-  height: 20px;
+ /* background-color: white;
+  font-size: 9px;
+  width: 10em;
+  height: 30px;
   cursor: pointer;
   border: hidden;
   margin: 6px;
- 
+ //font-weight: bold;
+ font-family: "Helvetica";
+ color: #173E43;
+ position: relative;
+  */
+  
+  font-family:Helvetica;
+  color: #173E43;
+  font-size: 9pt;
+  background-color: white;
+  border: hidden;
+  //font-weight: bold;
+  border-radius: 1px;
+  position: relative;
+  font-weight: bold;
   
 }
-
-.stylebutton button:hover {
-  background-color: #e8eeef;
-}
-
 .disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -127,34 +138,51 @@ border-bottom: solid 0.1px lightgrey;
    padding: 12px;
    font-size: 1em;
    line-height: 1.5;
-   
+   padding-left: 45px;
  }
- /*.card-comment total-comment {
-  background-color: whitesmoke;
-  font-size: 12px;
-  height: 20px;
-  cursor: pointer;
-  border: hidden; 
+ 
+ .reply-button1 {
+   padding-right: 37em;
+   font-family:fantasy;
+  overflow: hidden;
+  position: relative;
  }
- .total-comment{
-  //float: left;
-  padding-right: 55em;
- }*/
+ .reply-button2 {
+  padding-left: 38em;
+
+  margin: auto;
+  //float:right;
+ }
+ 
 
 
+ //This Css is for votes
  @media only screen and (max-width: 600px) {
   .likes-indivividual {
-    position: absolute;
-    bottom: 0;
-    padding-left: 10px;
-    display: inline;
-    background-color: inherit;
-
+    width: 6%;
+   background-color: whitesmoke;
+    height: auto;
+    margin-top: 0;
+    justify-content:center;
+    border: hidden;
+    opacity: 0.6;
   }
   
 }
 .likes-indivividual {
-  width: 4%;
-  background-color:lightgray;
-  
+ 
+  position: relative;
+   // bottom: 0;
+    display: -moz-inline-grid;
+    background-color: gainsboro;
+    height: auto;
+}
+.upvote-individual:hover {
+  background-color: lightcoral;
+}
+
+
+.downvote-individual:hover {
+  background-color: deepskyblue;
+  background-size: 10px;
 }

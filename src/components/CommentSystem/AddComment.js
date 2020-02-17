@@ -12,7 +12,7 @@ class AddComment extends React.Component {
       timeCreated: "",
       comment: "",
       limit: 5,
-      totallComment:0
+      
     };
   }
 
@@ -30,6 +30,7 @@ class AddComment extends React.Component {
     this.setState({
       [name]: value,
       timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `)
+     
     });
   };
 
@@ -40,6 +41,7 @@ class AddComment extends React.Component {
     this.setState({ comment: "" });
   };
 
+ 
   render() {
     const { comment } = this.state;
     return (

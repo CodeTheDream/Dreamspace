@@ -122,16 +122,16 @@ class Createarticle extends Component {
             {this.state.showPopup ? (
               <Dialog closePopup={this.togglePopup}>
                 
-                <div className="">
-                  <div className="">
+                <div >
+                  <div >
                     {/* <div className="">Create a new post</div> */}
                     <legend>Create New Post</legend>
-                    <div className="">
-                      <div className="">
+                    <div >
+                      <div >
                         <ul>
                           <li>
                             <form
-                              className=""
+                              
                               onSubmit={e => this.handleSubmit(e, authUser)}
                              
                             >
@@ -161,7 +161,8 @@ class Createarticle extends Component {
                                 </li>
 
                                 <li>
-                                  <textarea
+                                <input
+                                    type="text"
                                     placeholder="URl"
                                     value={this.state.url}
                                     onChange={this.onUrlChange}
