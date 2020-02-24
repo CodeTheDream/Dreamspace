@@ -1,17 +1,16 @@
 import React from "react";
-import "./ViewArticle.scss";
 import AddComment from "../../components/CommentSystem/AddComment";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import Comment from "../../components/Comment";
-import ListItem  from '../../components/ListItem'
+import ListItem1 from '../../components/ListItem1'
 const moment = require("moment");
 class IndividualView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      article: "",
+      article:"" ,
       comment: [],
       articleId: "",
       timeCreated: "",
@@ -55,9 +54,11 @@ class IndividualView extends React.Component {
         if (doc.exists) {
           console.log(" this is my article", doc.data());
           this.setState({
-            article: doc.data(),
+            article: doc.data()})
+            this.setState({
             timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  `)
           }); // set data to local state
+          console.log("this is a state article:" , this.state.article)
         } else {
           console.log("No such document!");
         }
@@ -114,30 +115,15 @@ class IndividualView extends React.Component {
     } = this.state;
     const { userId, url, description, title } = this.props;
     //const numRows = this.state.TotallComment.length;
-
+console.log("this is the new article for indivi:" , article)
+if(article){
     return (
-      <div className="container-indvidual ">
+      <div className="container-individual ">
         <div className="card-individual">
-          <div
-            className="likes-indivividual"
-            style={{
-              width: "40px; border-left:4px solid transparent;",
-              float: "left"
-            }}
-          >
-            <span style={{ fontSize: "1em" }}>
-              <button className="upvote-individual">
-                <i className="fa fa-arrow-up custom"> </i>
-              </button>
-              <br />
-              {this.state.calculatedvote}
-              <br />
-              <button className="downvote-individual">
-                <i className="fa fa-arrow-down custom"></i>
-              </button>
-            </span>
-          </div>
-          <div className="auther-name-indvidual">
+
+          <ListItem1 article={article }  isIndividualView = {true}/>
+         
+          <div className="auther-name-individual">
             <div className="autherstyle-individual">
               <i className="fa fa-user"></i>
               <span>posted by {article.timeCreated}</span>
@@ -162,7 +148,6 @@ class IndividualView extends React.Component {
               {this.state.totalcount}
               Comment
             </button>
-
             <button type="button" onClick={this.handleRemove} className="disabled">
               Save
             </button>
@@ -186,9 +171,17 @@ class IndividualView extends React.Component {
             })}
          
         </div>
-        {/*<ListItem {this.state.totalcount}</ListItem>*/}
+        
       </div>
     );
+          }
+          else {
+          
+            console.log("no article")
+            return(
+            null)
+
+          }
   }
 }
 

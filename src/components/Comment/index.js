@@ -31,20 +31,22 @@ class Comment extends React.Component {
               {comments.timeCreated} <br />
               {comments.comment}{" "}
             </p>
-            <br />
+
             <div >
-              <div className="reply-button1">
-              <button  style={{border:"hidden",fontFamily:"Helvetica", opacity: 0.6 ,color:"#173E43",fontWeight:"bold"}} onClick={this.togglePopup}>
+              <div className="Reply">
+              <button 
+                onClick={this.togglePopup}
+              >
                 <i className="fa fa-comment"> </i>Reply
               </button>
               </div>
               {this.state.showPopup ? (
-                <div >
-                  <textarea  />
-                  <div className="reply-button2">
-                    <button onClick={this.cancle}>cancle</button>
-                    <button>Reply</button>
-                  </div>
+                <div>
+                  <textarea />
+                  <div className="Reply1" >
+                  <button onClick={this.cancle}>cancle</button>
+                  <button>Reply</button>
+                </div>
                 </div>
               ) : null}
             </div>

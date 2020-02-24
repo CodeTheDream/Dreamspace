@@ -22,6 +22,7 @@ body {
         font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
         margin-left: auto;
         margin-right: auto;
+        
     }
 }
 
@@ -120,11 +121,16 @@ div.description-style:hover {
     overflow: auto;
 }
 
-
+.Likis-container{
+    background-color: lightgrey;
+    padding-right: 0.2em;
+    padding-left: 0.2em;
+    padding-top: 1%;
+}
 .likes {
     position: relative;
     bottom: 0;
-    display: inline-flex;
+   display: inline-flex;
     background-color: gainsboro;
 }
 
@@ -172,6 +178,7 @@ i.custom {
     border-color: #173E43;
     border-radius: 1px;
     position: relative;
+ 
 }
 
 .button:hover {

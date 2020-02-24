@@ -15,7 +15,11 @@ class ListItems extends React.Component {
       console.log(articles);
       return articles.map((article, index) => {
         console.log(article);
-        return <ListItem article={article}></ListItem>;
+        return <div>
+        
+          <ListItem article={article}></ListItem>
+        </div>;
+
       });
     
 // return(
