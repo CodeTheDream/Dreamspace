@@ -39,7 +39,8 @@ class Dashboard extends React.Component {
        
     return (
       <div className="wrapper">
-        <div className="create-post">
+            <div className="create-post" >
+                
         <Create_article/>
           {/* <a href="#" title="upload image" style={{ float: "right" }}>
             <i className="fa fa-image"></i>
