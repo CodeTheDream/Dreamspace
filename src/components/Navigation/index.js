@@ -33,12 +33,13 @@ const NavigationAuth = () => (
     
   const NavigationNonAuth = () => (
       <header className="header">
-        <label className="menu-icon" for="menu-btn"><span className="nav-icon"></span></label>
-       <input className="menu-btn" type="checkbox" id="menu-btn" />
+      <img src={Logo}  className="logo-wrapper"/>
+              <input className="menu-btn" type="checkbox" id="menu-btn" />
+ <label className="menu-icon" for="menu-btn"><span className="nav-icon"></span></label>
            
            <ul className="menu">
-                <li><Link to={ROUTES.ABOUT}>ABOUT</Link></li>
-                <li> <Link to={ROUTES.ACCOUNT}>Account</Link></li>
+                <li><Link to={ROUTES.ABOUT}>About</Link></li>
+                <li>  <Link to={ROUTES.SIGNUP}>Sign Up</Link></li>
                   <li> <Link to={ROUTES.SIGN_IN}>Sign In</Link></li>
                   </ul>
                 </header>      

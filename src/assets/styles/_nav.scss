@@ -33,11 +33,12 @@ body {
     text-decoration: none;
     background-color: $main-color;
     color: #fae596;
+    //font-weight:bold;
 }
 
-.header li a:hover,
+.header a:hover,
 .header .menu-btn:hover {
-    background-color: #f4f4f4;
+   color: #f4f4f4;
 }
 
 
