@@ -4,20 +4,20 @@ import ListItem from "../ListItem";
 
 class ListItems extends React.Component {
   componentDidMount() {
-    console.log(this.props.articles);
+    //console.log(this.props.articles);
   }
 
   render() {
-    let articles = this.props.articles;
-    console.log(articles);
+    let articles = this.props.filteredArticles;
+   // console.log(articles);
 
     if (articles !== undefined || articles !== null || articles !=="") {
-      console.log(articles);
-      return articles.map((article, index) => {
-        console.log(article);
+     // console.log(articles);
+      return articles.map((article,i) => {
+        //console.log(article);
         return <div>
         
-          <ListItem article={article}></ListItem>
+          <ListItem   key={i} article={article}></ListItem>
         </div>;
 
       });

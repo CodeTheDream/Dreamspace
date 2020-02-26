@@ -14,7 +14,7 @@ class ListItem extends React.Component {
       article: [],
       username: "",
       TotallComment: "",
-      totalcount:0
+      totalcount:""
     };
   }
   openPost(e, article) {
@@ -66,7 +66,7 @@ class ListItem extends React.Component {
                   </span>
                 </div>
               </div>
-
+<div>  {this.props.article.tags}</div>
               <div className="auther-style">
                 <a href={this.props.article.url}>{this.props.article.title}</a>
               </div>

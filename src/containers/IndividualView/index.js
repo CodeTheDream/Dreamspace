@@ -18,7 +18,7 @@ class IndividualView extends React.Component {
       limit: "",
       limited: 450,
       TotallComment: "",
-      totalcount: 0
+      totalcount: ""
     };
   }
 
@@ -100,7 +100,7 @@ class IndividualView extends React.Component {
   };
 
   handleRemove = articleId => {
-    const allArticles = this.state.articles;
+   // const allArticles = this.state.articles;
   };
 
   render() {
@@ -108,12 +108,12 @@ class IndividualView extends React.Component {
     const {
       article,
       comment,
-      comments,
+   
       timeCreated,
-      articleId,
+     
       limited
     } = this.state;
-    const { userId, url, description, title } = this.props;
+    //const { userId, url, description, title } = this.props;
     //const numRows = this.state.TotallComment.length;
 console.log("this is the new article for indivi:" , article)
 if(article){
@@ -160,10 +160,11 @@ if(article){
 
         <div>
           {this.state.comments &&
-            this.state.comments.map(comments => {
+            this.state.comments.map((comments,index) => {
               return (
                 <Comment
                   comments={comments}
+                  key={index}
                   limited={limited}
                   timeCreated={timeCreated}
                 />

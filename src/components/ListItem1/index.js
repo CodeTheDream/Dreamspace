@@ -1,5 +1,5 @@
 import React from "react";
-import myimage from "../../assets/images/nice-piccy3.jpg";
+//import myimage from "../../assets/images/nice-piccy3.jpg";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
@@ -24,9 +24,9 @@ class ListItem1 extends React.Component {
     componentDidMount() {
        
         const { article } = this.props
-        console.log("this is the new article:", article)
+       // console.log("this is the new article:", article)
         let upvotes = article.upvotes;
-        console.log("this is the upvotes:" + upvotes)
+       // console.log("this is the upvotes:" + upvotes)
         let downvotes = article.downvotes;
         this.calculatedvote(upvotes, downvotes)
         let autherId = article.userId;
@@ -38,24 +38,7 @@ class ListItem1 extends React.Component {
                 let user = doc.data()
                 this.setState({ username: user.username })
             })
-        //console.log("article", article);
-        this.props.firebase
-        .comments()
-        .where(article.uid, "==", article.uid)
-        .onSnapshot(snapshot => {
-          const TotallComment = [];
-          snapshot.forEach(doc => {
-            const data = doc.data();
-            TotallComment.push(data);
-           
-  
-          });
-  
-          this.setState({ TotallComment: TotallComment });
-          const totalcount = TotallComment.length
-          this.setState({totalcount:totalcount})
-        // console.log("this is  total count of the new component:" + totalcount)
-        });
+        
     }
    
     componentDidUpdate = (prevProps) => {
@@ -66,7 +49,7 @@ class ListItem1 extends React.Component {
 
 
     checkurl = () => {
-        console.log("check url", this.props.article.url)
+       // console.log("check url", this.props.article.url)
         if (this.props.article.url === true) {
             return <a href="{this.props.article.url}">Related link</a>
         }
@@ -77,14 +60,13 @@ class ListItem1 extends React.Component {
 
     calculatedvote(upvotes, downvotes) {
         
-        if (upvotes == 0) {
+        if (upvotes === 0) {
             upvotes = []
         }
-        if (downvotes == 0) {
+        if (downvotes === 0) {
             downvotes = []
         }
-        console.log("upvote", upvotes)
-        console.log("downvote", downvotes)
+        
         let upvotesTotal = upvotes.length;
         let downvotesTotal = downvotes.length;
         let finalTotal = upvotesTotal - downvotesTotal;
@@ -174,7 +156,7 @@ class ListItem1 extends React.Component {
                 }
             }
             else {
-                console.log("already upvoted")
+              //  console.log("already upvoted")
             }
         }
     }
@@ -246,7 +228,7 @@ class ListItem1 extends React.Component {
                  //   console.log("uid", uidindex)
                     let articlearray = article.upvotes;
                     articlearray.splice(uidindex, 1)
-                    console.log("article.downvote", article.downvotes)
+                  //  console.log("article.downvote", article.downvotes)
                     //let downvotearray=article.downvotes.push(authUser.uid)
                     let downvotes = article.downvotes
                     let updatedDownvotes = downvotes
@@ -262,7 +244,7 @@ class ListItem1 extends React.Component {
             }
 
             else {
-                console.log("already upvoted")
+               // console.log("already upvoted")
             }
         }
     }
@@ -301,7 +283,7 @@ class ListItem1 extends React.Component {
         const { upvotes } = this.state
         const { downvotes } = this.state
         const { article } = this.props
-        console.log("this is the new article:", article)
+       // console.log("this is the new article:", article)
         if(this.props.isIndividualView == true){
         return (
             <AuthUserContext.Consumer>
