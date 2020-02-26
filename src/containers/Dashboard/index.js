@@ -53,11 +53,14 @@ class Dashboard extends React.Component {
     });
     return (
       <div className="wrapper">
+        <div className="main-class">
+        <div className="search-bar" >
+          <SearchBar handleInput={this.handleInput} />
+        </div>
         <div className="create-post">
           <Create_article />
         </div>
-        <div className="search-bar" >
-          <SearchBar handleInput={this.handleInput} />
+        
         </div>
         <div className="popular-title">
           <p style={{ float: "left" }}>Popular Posts</p>

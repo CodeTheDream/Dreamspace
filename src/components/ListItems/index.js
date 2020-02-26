@@ -13,11 +13,11 @@ class ListItems extends React.Component {
 
     if (articles !== undefined || articles !== null || articles !=="") {
      // console.log(articles);
-      return articles.map((article,i) => {
+      return articles.map((article,index) => {
         //console.log(article);
         return <div>
         
-          <ListItem   key={i} article={article}></ListItem>
+          <ListItem   key={index} article={article}></ListItem>
         </div>;
 
       });

@@ -12,7 +12,7 @@ class ListItem1 extends React.Component {
             article: [],
             upvotes: [],
             downvotes: [],
-            calculatedvote: 0,
+            calculatedvote: "",
             upvotecolor: 'gray',
             downvotecolor: 'gray',
             username: "",

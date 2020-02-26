@@ -79,6 +79,17 @@ body {
     font-weight: bold;
     
   }
+  .cancle-btn{
+    font-family:Helvetica;
+    color: #173E43;
+    font-size: 9pt;
+    background-color: white;
+    border: hidden;
+    //font-weight: bold;
+    border-radius: 1px;
+    position: relative;
+    font-weight: bold; 
+  }
   .disabled {
     opacity: 0.6;
     cursor: not-allowed;

@@ -20,23 +20,26 @@ class SearchBar extends React.Component {
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <div>
-            <div>
-              <input
-                className="mainSearch"
+          <div  className="mainsearch">
+            
+            <div className="input-icons"> 
+            <i className="fa fa-search"></i> 
+            <input className="input-field"
                 type="text"
                 placeholder="search..."
+              
                 onChange={this.props.handleInput}
                 onClick={this.togglePopup}
+
               />
-              <i className="fa fa-search"/>
+                
             </div>
-            {this.state.showPopup ? (
+           {/* {this.state.showPopup ? (
               <div className="card-search">
-                <p>search by tags</p>
+                <li></li>search by tags</p>
                 <p>search by title</p>
-              </div>
-            ) : null}
+            </div>
+            ) : null}*/}
           </div>
         )}
       </AuthUserContext.Consumer>

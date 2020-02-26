@@ -103,6 +103,11 @@ class IndividualView extends React.Component {
    // const allArticles = this.state.articles;
   };
 
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.article !== this.props.article) {
+        this.calculatedvote(this.props.article.upvotes, this.props.article.downvotes)
+    }
+};
   render() {
     // Access to local component state
     const {

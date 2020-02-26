@@ -1,4 +1,5 @@
 import React from "react";
+import ReplyComment from "../ReplyComment"
 class Comment extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +12,7 @@ class Comment extends React.Component {
     this.setState({
       showPopup: !this.state.showPopup
     });
+
   };
   cancle = () => {
     this.setState({ showPopup: false });
@@ -42,11 +44,8 @@ class Comment extends React.Component {
               </div>
               {this.state.showPopup ? (
                 <div>
-                  <textarea />
-                  <div className="Reply1" >
-                  <button onClick={this.cancle}>cancle</button>
-                  <button>Reply</button>
-                </div>
+                  <ReplyComment/>
+
                 </div>
               ) : null}
             </div>

@@ -1,15 +1,40 @@
-.mainSearch {
-    width:30em;
-    border-radius:0.3em;
-    height: 30px;
-    border:1px solid gray;
-    padding-left:40px;
-    display:flex;
- position:relative;
+
+.main-class{
+    display: flex;
 }
 .card-search {
-    width:23em;
+    width:10em;
     background-color:whitesmoke;
     float: left;
     padding-left:40px;
+}
+.mainSearch {
+ display:flex;
+ //position:relative;
+ overflow: hidden;
+
+}
+.input-icons i { 
+    position: absolute;
+    float: left;
+    margin-top: 12px;
+    margin-left: 6px;
+} 
+  
+.input-icons { 
+    //width: 100%; 
+    margin-bottom: 10px; 
+
+} 
+  
+.icon { 
+    padding: 10px; 
+    min-width: 40px; 
+} 
+  
+.input-field { 
+    
+    padding: 10px 10px 10px 30px;
+    text-align: left;
+    width: 30em;
 }
