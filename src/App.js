@@ -6,7 +6,6 @@ import Footer from "./components/Footer";
 import Dashboard from "./containers/Dashboard";
 import * as ROUTES from "./constants/routes.js";
 import About from "./containers/About";
-import Createarticle from './containers/Create-article';
 import IndividualView from './containers/IndividualView';
 import Account from "./containers/Account";
 import SignUp from "./components/SignUp"

@@ -1,23 +1,24 @@
 import React from "react";
-import "./ViewArticle.scss";
 import AddComment from "../../components/CommentSystem/AddComment";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import Comment from "../../components/Comment";
-
+import ListItem1 from '../../components/ListItem1'
 const moment = require("moment");
 class IndividualView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      article: "",
+      article:"" ,
       comment: [],
       articleId: "",
       timeCreated: "",
       comments: null,
       limit: "",
-      limited: 450
+      limited: 450,
+      TotallComment: "",
+      totalcount: ""
     };
   }
 
@@ -36,19 +37,14 @@ class IndividualView extends React.Component {
         snapshot.forEach(doc => {
           const data = doc.data();
           comments.push(data);
-        
         });
 
         this.setState({ comments: comments });
-        console.log("here my snapshot", snapshot);
+        // console.log("here my snapshot ", snapshot);
       });
 
-    //   componentWillUnmount() {
-    //     this.unsubscribe();
-    //   }
-
     //get the ID for a particular article
-    console.log("articleId", this.props.match.params);
+    // console.log("articleId", this.props.match.params);
     this.setState({ articleId });
 
     this.unsubscribe = this.props.firebase
@@ -58,12 +54,31 @@ class IndividualView extends React.Component {
         if (doc.exists) {
           console.log(" this is my article", doc.data());
           this.setState({
-            article: doc.data(),
+            article: doc.data()})
+            this.setState({
             timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  `)
           }); // set data to local state
+          console.log("this is a state article:" , this.state.article)
         } else {
           console.log("No such document!");
         }
+      });
+    //This Helps to find the total commets for spesific articleId
+    this.unsubscribe = this.props.firebase
+      .comments()
+      .where("articleId", "==", articleId)
+      .onSnapshot(snapshot => {
+        const TotallComment = [];
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          TotallComment.push(data);
+         
+
+        });
+
+        this.setState({ TotallComment: TotallComment });
+        const totalcount = TotallComment.length
+        this.setState({totalcount:totalcount})
       });
   };
 
@@ -72,7 +87,7 @@ class IndividualView extends React.Component {
   //     }
 
   createComment = (comment, article) => {
-    console.log("here create comment", comment, this.state.articleId);
+    //  console.log("here create comment", comment, this.state.articleId);
     this.props.firebase
       .comments()
       .add({
@@ -80,55 +95,40 @@ class IndividualView extends React.Component {
         articleId: this.state.articleId
       })
       .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        //console.log("Document written with ID: ", docRef.id);
       });
   };
 
   handleRemove = articleId => {
-    const allArticles = this.state.articles;
+   // const allArticles = this.state.articles;
   };
 
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.article !== this.props.article) {
+        this.calculatedvote(this.props.article.upvotes, this.props.article.downvotes)
+    }
+};
   render() {
     // Access to local component state
     const {
       article,
       comment,
-      comments,
+   
       timeCreated,
-      articleId,
+     
       limited
     } = this.state;
-    const { userId, url, description, title } = this.props;
-
+    //const { userId, url, description, title } = this.props;
+    //const numRows = this.state.TotallComment.length;
+console.log("this is the new article for indivi:" , article)
+if(article){
     return (
-      <div className="container-indvidual ">
+      <div className="container-individual ">
         <div className="card-individual">
-          <div
-            className="likes-indivividual"
-            style={{
-              width: "40px; border-left:4px solid transparent;",
-              float: "left"
-            }}
-          >
-            <span style={{ fontSize: "1em" }}>
-              <button
-                className="upvote-individual"
-              
-              >
-                <i className="fa fa-arrow-up custom"> </i>
-              </button>
-              <br />
-              {this.state.calculatedvote}
-              <br />
-              <button
-                className="downvote-individual"
-                
-              >
-                <i className="fa fa-arrow-down custom"></i>
-              </button>
-            </span>
-          </div>
-          <div className="auther-name-indvidual">
+
+          <ListItem1 article={article }  isIndividualView = {true}/>
+         
+          <div className="auther-name-individual">
             <div className="autherstyle-individual">
               <i className="fa fa-user"></i>
               <span>posted by {article.timeCreated}</span>
@@ -136,27 +136,24 @@ class IndividualView extends React.Component {
           </div>
 
           <div className="grid-subject2">
-              <a href={article.url}>{article.title}</a>
+            <a href={article.url}>{article.title}</a>
           </div>
 
           <div className="grid-description">
-              <p>{article.description}</p>
-
+            <p>{article.description}</p>
           </div>
-         
+
           <div className="stylebutton">
-         <i className="fa fa-comment"> </i> 
-               
-           <button
+            <button style={{justifyContent:"spacebitween"}}
               type="button"
               //onClick={this.handleSubmit}
               className="disabled"
             >
-               
-             Comment
+              <i className="fa fa-comment"> </i>
+              {this.state.totalcount}
+              Comment
             </button>
-
-            <button type="button" onClick={this.handleRemove}>
+            <button type="button" onClick={this.handleRemove} className="disabled">
               Save
             </button>
           </div>
@@ -164,24 +161,33 @@ class IndividualView extends React.Component {
 
         <div>
           <AddComment comment={comment} onCreate={this.createComment} />
-       
         </div>
 
         <div>
           {this.state.comments &&
-            this.state.comments.map(comments => {
+            this.state.comments.map((comments,index) => {
               return (
                 <Comment
                   comments={comments}
+                  key={index}
                   limited={limited}
                   timeCreated={timeCreated}
                 />
               );
             })}
-            
+         
         </div>
+        
       </div>
     );
+          }
+          else {
+          
+            console.log("no article")
+            return(
+            null)
+
+          }
   }
 }
 

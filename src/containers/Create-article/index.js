@@ -9,6 +9,7 @@ import { withFirebase } from "../../components/Firebase";
 import { messaging } from "firebase";
 const options = ["Select Tag", "React", "Ruby", "Javascript"];
 const moment = require("moment");
+
 class Dialog extends React.Component {
   render() {
     return (
@@ -113,8 +114,7 @@ class Createarticle extends Component {
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <div className="">
-          
+          <div>
             <button className="button-secondary1"
               onClick={this.togglePopup}>
               Post New Article
@@ -122,16 +122,16 @@ class Createarticle extends Component {
             {this.state.showPopup ? (
               <Dialog closePopup={this.togglePopup}>
                 
-                <div className="">
-                  <div className="">
+                <div >
+                  <div >
                     {/* <div className="">Create a new post</div> */}
                     <legend>Create New Post</legend>
-                    <div className="">
-                      <div className="">
+                    <div >
+                      <div >
                         <ul>
                           <li>
                             <form
-                              className=""
+                              
                               onSubmit={e => this.handleSubmit(e, authUser)}
                              
                             >
@@ -161,7 +161,8 @@ class Createarticle extends Component {
                                 </li>
 
                                 <li>
-                                  <textarea
+                                <input
+                                    type="text"
                                     placeholder="URl"
                                     value={this.state.url}
                                     onChange={this.onUrlChange}

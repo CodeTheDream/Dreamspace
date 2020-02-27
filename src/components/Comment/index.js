@@ -1,4 +1,5 @@
 import React from "react";
+import ReplyComment from "../ReplyComment"
 class Comment extends React.Component {
   constructor(props) {
     super(props);
@@ -7,6 +8,15 @@ class Comment extends React.Component {
       showAll: false
     };
   }
+  togglePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+
+  };
+  cancle = () => {
+    this.setState({ showPopup: false });
+  };
 
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
@@ -23,12 +33,22 @@ class Comment extends React.Component {
               {comments.timeCreated} <br />
               {comments.comment}{" "}
             </p>
-           {/* <br/>
-            <div className="total-comment">
-              <i className="fa fa-comment"> </i>
-              <button>Reply</button>
-           </div>*/}
-        
+
+            <div >
+              <div className="Reply">
+              <button 
+                onClick={this.togglePopup}
+              >
+                <i className="fa fa-comment"> </i>Reply
+              </button>
+              </div>
+              {this.state.showPopup ? (
+                <div>
+                  <ReplyComment/>
+
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       );
@@ -43,7 +63,6 @@ class Comment extends React.Component {
                 {comments.timeCreated} <br />
                 {comments.comment}
                 <a onClick={this.showLess} style={{ color: "darkblue" }}>
-                  
                   Read less
                 </a>
               </p>
@@ -65,10 +84,9 @@ class Comment extends React.Component {
                 {" "}
                 Read More{" "}
               </a>
-            </p><br/>
-            
+            </p>
+            <br />
           </div>
-         
         </div>
       );
     }

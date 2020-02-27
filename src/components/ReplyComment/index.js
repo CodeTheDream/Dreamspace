@@ -5,12 +5,12 @@ import { compose } from "recompose";
 import * as ROUTES from "../../constants/routes";
 
 const moment = require("moment");
-class AddComment extends React.Component {
+class ReplyComment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       timeCreated: "",
-      comment: "",
+      Reply: "",
       limit: 5,
       
     };
@@ -38,7 +38,7 @@ class AddComment extends React.Component {
     event.preventDefault();
 
     this.props.onCreate(this.state)
-    this.setState({ comment: "" });
+    this.setState({ Reply: "" });
   };
 
  
@@ -68,10 +68,17 @@ class AddComment extends React.Component {
           >
             Comment
           </button>
+          <button
+            className="submit-btn"
+            type="cancle"
+            value=" cancle"
+          >
+            cancle
+          </button>
         </div>
       </form>
     );
   }
 }
 
-export default compose(withFirebase, withRouter)(AddComment);
+export default compose(withFirebase, withRouter)(ReplyComment);

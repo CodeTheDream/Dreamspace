@@ -9,55 +9,68 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes.js";
 import { withFirebase } from "../../components/Firebase";
 import ListItems from "../../components/ListItems";
-import Create_article from '../Create-article'
+import Create_article from "../Create-article";
+import SearchBar from "../../components/Search-bar";
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      articles: []
+      articles: [],
+      search: ""
     };
   }
- 
-  componentDidMount() {
-  // let articles =this.props.firebase.articles()
-  this.unsubscribe = this.props.firebase.articles().onSnapshot(snapshot => {
-    let articles = [];
-    snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
 
-    console.log("Articles loaded here yo!", articles);
-    this.setState({ articles });
-  });
-} 
+  componentDidMount() {
+    // let articles =this.props.firebase.articles()
+    this.unsubscribe = this.props.firebase.articles().onSnapshot(snapshot => {
+      let articles = [];
+      snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
+
+      // console.log("Articles loaded here yo!", articles);
+      this.setState({ articles });
+    });
+  }
 
   componentWillUnmount() {
     this.unsubscribe();
   }
- 
-
-    render() {
-       
+  handleInput = e => {
+    console.log(e.target.value);
+    this.setState({
+      search: e.target.value
+    });
+  };
+  render() {
+    let filteredArticles = this.state.articles.filter(article => {
+      return (
+        article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
+        article.title.toLowerCase().includes(this.state.search.toLowerCase()),
+        article.description
+          .toLowerCase()
+          .includes(this.state.search.toLowerCase())
+      );
+    });
     return (
       <div className="wrapper">
+        <div className="main-class">
+        <div className="search-bar" >
+          <SearchBar handleInput={this.handleInput} />
+        </div>
         <div className="create-post">
-        <Create_article/>
-          {/* <a href="#" title="upload image" style={{ float: "right" }}>
-            <i className="fa fa-image"></i>
-          </a> */}
-          {/* <a href="#" title="upload image" style={{ float: "right" }}>
-            <i className="fa fa-link"></i>
-          </a> */}
-          {/*<Link to={ROUTES.CREATEARTICLE}>Create article</Link>*/}
+          <Create_article />
+        </div>
+        
         </div>
         <div className="popular-title">
           <p style={{ float: "left" }}>Popular Posts</p>
         </div>
         <div>
           <ListItems
-            articles={this.state.articles}
+            filteredArticles={filteredArticles}
+
             //recipes={this.state.recipes}
           />
-          
         </div>
       </div>
     );
@@ -67,5 +80,3 @@ class Dashboard extends React.Component {
 const condition = authUser => !!authUser;
 
 export default compose(withFirebase, withAuthorization(condition))(Dashboard);
-
-
