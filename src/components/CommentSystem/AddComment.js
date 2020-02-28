@@ -12,18 +12,26 @@ class AddComment extends React.Component {
       timeCreated: "",
       comment: "",
       limit: 5,
-      
+      isOldestFirst:true
     };
   }
 
-  componentdidMount = () => {
-    //create reference to comments in firebase database
-    this.unsubscribe = this.props.firebase
-      .comments()
-      .orderBy("timeCreated")
-      .limit(5);
-    console.log("Here is my comments refrence", this.unsubscribe);
-  };
+
+sortByDtate () {
+  const {comment}=this.state.comment
+  let newPostList = comment
+if(this.state.isOldestFirst){
+  newPostList.sort((a,b) => a.timeCreated > b.timeCreated)
+}
+else {
+  newPostList.sort((a,b) =>a.timeCreated > b.timeCreated)
+
+}
+this.setState({
+isOldestFirst :!this.state.isOldestFirst,
+  comment:newPostList})
+console.log("this is a " ,Comment)
+}
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -43,7 +51,7 @@ class AddComment extends React.Component {
 
  
   render() {
-    const { comment } = this.state;
+   // const { comment } = this.state;
     return (
       <form className="card-addcomment" onSubmit={this.handleSubmit}>
         <div className="commentgrid">
@@ -52,7 +60,7 @@ class AddComment extends React.Component {
               className="commentContent"
               id="comment"
               type="text"
-             value={comment}
+             value={this.state.comment}
               name="comment"
               placeholder="Write your comment here! "
               autoFocus={true}

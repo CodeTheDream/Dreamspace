@@ -18,12 +18,30 @@ class Comment extends React.Component {
     this.setState({ showPopup: false });
   };
 
+  sortByDtate () {
+    const { postList, limited, timeCreated } = this.props;
+    let newPostList = postList
+  if(this.state.isOldestFirst){
+    newPostList.sort((a,b) => a.timeCreated< b.timeCreated)
+  }
+  else {
+    newPostList.sort((a,b) =>a.timeCreated > b.timeCreated)
+  console.log("newpost" , newPostList)
+  }
+  
+  this.setState({comments:newPostList.sort((a,b) => a.timeCreated >b.timeCreated)})
+  
+  }
+  
+
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
 
   render() {
     const { comments, limited, timeCreated } = this.props;
     const { showAll } = this.state;
+
+  
     if (comments.comment && comments.comment.length <= limited) {
       console.log("IF", comments.comment, comments.comment.length);
       return (

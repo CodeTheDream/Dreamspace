@@ -32,9 +32,13 @@ class Dashboard extends React.Component {
     });
   }
 
+
   componentWillUnmount() {
     this.unsubscribe();
   }
+
+
+  
   handleInput = e => {
     console.log(e.target.value);
     this.setState({

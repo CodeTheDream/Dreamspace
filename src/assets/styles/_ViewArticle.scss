@@ -13,8 +13,8 @@ body {
    max-width: 1000px;
    align-self: center;
    margin-bottom: 1px;
-   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
-    
+   font-family:Helvetica;
+    background-color: lightgray;
   }
   
   
@@ -116,6 +116,7 @@ body {
      height: 25px;
      cursor: pointer;
      float: right;
+     color: #fae596;
    }
    
    textarea {

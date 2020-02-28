@@ -20,8 +20,7 @@ class ReplyComment extends React.Component {
     //create reference to comments in firebase database
     this.unsubscribe = this.props.firebase
       .comments()
-      .orderBy("timeCreated")
-      .limit(5);
+      
     console.log("Here is my comments refrence", this.unsubscribe);
   };
 
@@ -59,22 +58,15 @@ class ReplyComment extends React.Component {
               onChange={this.handleChange}
             ></textarea>
          
-
           <button
             className="submit-btn"
             type="submit"
             value=" Comment"
             disabled={!this.state.comment}
           >
-            Comment
+            Reply
           </button>
-          <button
-            className="submit-btn"
-            type="cancle"
-            value=" cancle"
-          >
-            cancle
-          </button>
+          
         </div>
       </form>
     );

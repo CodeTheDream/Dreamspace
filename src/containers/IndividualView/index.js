@@ -52,14 +52,14 @@ class IndividualView extends React.Component {
       .get()
       .then(doc => {
         if (doc.exists) {
-          console.log(" this is my article", doc.data());
+         // console.log(" this is my article", doc.data());
           this.setState({
             article: doc.data()
           });
           this.setState({
             timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  `)
           }); // set data to local state
-          console.log("this is a state article:", this.state.article);
+         // console.log("this is a state article:", this.state.article);
         } else {
           console.log("No such document!");
         }
@@ -122,7 +122,7 @@ class IndividualView extends React.Component {
     } = this.state;
     //const { userId, url, description, title } = this.props;
     //const numRows = this.state.TotallComment.length;
-    console.log("this is the new article for indivi:", article);
+    //console.log("this is the new article for indivi:", article);
     if (article) {
       return (
         <div className="container-individual ">

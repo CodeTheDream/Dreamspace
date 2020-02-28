@@ -52,7 +52,7 @@
     text-align: center;
 }
 
-.button-secondary1{
+/*.button-secondary1{
   padding: 19px 39px 18px 39px;
 	margin: 0 auto;
 	font-size: 18px;
@@ -66,5 +66,20 @@
   float: right;
   color:#fae596;
   border-radius: 8px;
-  position: relative;  
-}
+  position: relative; 
+  }*/
+  
+@media  screen and (min-width:320px) and (max-width:120em) {
+  .button-secondary1{
+  margin-top: 10px;;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 9em;
+    margin-bottom: 10px;
+    background: #3fb0ac;
+    float: right;
+    color: #fae596;
+    border-radius: 8px;
+    position: relative; 
+}}
