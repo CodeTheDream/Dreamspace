@@ -6,7 +6,7 @@ import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 const SignUpPage = () => (
-  <div>
+  <div style={{marginTop:"3.5em"}}>
     <h1>SignUp</h1>
     <SignUpForm />
   </div>
