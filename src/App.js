@@ -11,15 +11,21 @@ import Account from "./containers/Account";
 import SignUp from "./components/SignUp"
 import SignInPage from "./components/SignIn"
 import { withAuthentication } from './components/Session';
+import Sidebar from "./components/Sidebar";
 
 
 function App() {
   return (
     <div className="App">
-      
-        <Router>
-          <Navigation />
-          <Switch>
+         
+          <Router>
+              
+                  
+                  
+              <Navigation />
+         
+              <Switch>
+                 
             <Route exact path={ROUTES.HOME} component={Dashboard} />
             <Route exact path={ROUTES.ABOUT} component={About} />
           { /* <Route exact path={ROUTES.CREATEARTICLE} component={Createarticle} />*/}

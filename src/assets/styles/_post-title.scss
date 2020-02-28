@@ -8,10 +8,11 @@ body {
     // background-color: transparent;
 }
 
-@media only screen and (min-width: 401px) {
+@media only screen and (min-width: 800px) {
     .wrapper {
         width: 100%;
         line-height: 1.58;
+        margin-top:5em;
         justify-content: center;
         max-width: 1000px;
         align-self: center;
@@ -140,7 +141,7 @@ div.description-style:hover {
 
 
 span {
-    padding-left: 2px;
+   // padding-left: 2px;
 }
 
 .readmore {
@@ -172,14 +173,14 @@ i.custom {
 
 .button {
     margin-bottom: 6px;
-    margin-right: 4px;
+    margin-right: 12px;
     font-family: "Helvetica";
     color: #173E43;
-    font-size: 9pt;
-    background-color: white;
-    border: 1px solid;
+    font-size: 15px;
+     background-color: white;
+    border: 0px solid;
     border-color: #173E43;
-    border-radius: 1px;
+    border-radius:9px;
     position: relative;
  
 }
