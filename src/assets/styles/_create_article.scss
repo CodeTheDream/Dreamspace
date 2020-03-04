@@ -1,7 +1,8 @@
 
+
   .dialogstyle{
     z-index: 999;
-    width: 55%;
+    width:55%;
     max-width: 100%;
     margin: auto;
     position: fixed;
@@ -12,10 +13,8 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    transform: translate(-37%, -37%);
-    //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-    
-   
+    transform: translate(-35%, -35%);
+  
   }
   
   .dialogCloseButonStayle {
@@ -52,7 +51,7 @@
     text-align: center;
 }
 
-.button-secondary1{
+/*.button-secondary1{
   padding: 19px 39px 18px 39px;
 	//margin: 0 auto;
 	font-size: 18px;
@@ -66,5 +65,21 @@
   float: right;
   color:#fae596;
   border-radius: 8px;
-  position: relative;  
-}
+  position: relative; 
+  }*/
+  
+@media  screen and (min-width:320px) {
+  .button-secondary1{
+  margin-top: 10px;;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 8.5em;
+    margin-bottom: 10px;
+    background: #3fb0ac;
+    float: right;
+    color: #fae596;
+    border-radius: 8px;
+    position: relative; 
+    padding:8px;
+}}

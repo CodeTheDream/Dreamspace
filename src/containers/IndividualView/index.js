@@ -18,11 +18,13 @@ class IndividualView extends React.Component {
       limit: "",
       limited: 450,
       TotallComment: "",
-      totalcount: ""
+      totalcount: "",
+      isOldestFirst:true
     };
   }
 
   componentDidMount = () => {
+    //this.sortByDtate(Comment)
     let articleId = this.props.match.params.articleId;
     this.unsubscribe = this.props.firebase
       .comments()
@@ -40,8 +42,10 @@ class IndividualView extends React.Component {
         });
 
         this.setState({ comments: comments });
+       
         // console.log("here my snapshot ", snapshot);
       });
+   
 
     //get the ID for a particular article
     // console.log("articleId", this.props.match.params);
@@ -52,13 +56,13 @@ class IndividualView extends React.Component {
       .get()
       .then(doc => {
         if (doc.exists) {
-          console.log(" this is my article", doc.data());
+         // console.log(" this is my article", doc.data());
           this.setState({
             article: doc.data()})
             this.setState({
             timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  `)
           }); // set data to local state
-          console.log("this is a state article:" , this.state.article)
+         // console.log("this is a state article:" , this.state.article)
         } else {
           console.log("No such document!");
         }
@@ -80,6 +84,7 @@ class IndividualView extends React.Component {
         const totalcount = TotallComment.length
         this.setState({totalcount:totalcount})
       });
+     
   };
 
   //  componentWillUnmount =() => {
@@ -108,6 +113,22 @@ class IndividualView extends React.Component {
         this.calculatedvote(this.props.article.upvotes, this.props.article.downvotes)
     }
 };
+ sortByDate() {
+  const {comment} = this.state
+  let newPostList = comment
+  if (this.state.isOldestFirst) {
+    newPostList = comment.sort((a, b) => a.date > b.date)
+  } else {
+    newPostList = comment.sort((a, b) => a.date < b.date)
+    console.log("this is the sorted data",newPostList)
+  }
+  this.setState({
+    isOldestFirst: !this.state.isOldestFirsts,
+    comments: newPostList
+  
+  })
+      console.log("this is the sorted data",newPostList)
+}
   render() {
     // Access to local component state
     const {
@@ -120,7 +141,7 @@ class IndividualView extends React.Component {
     } = this.state;
     //const { userId, url, description, title } = this.props;
     //const numRows = this.state.TotallComment.length;
-console.log("this is the new article for indivi:" , article)
+//console.log("this is the new article for indivi:" , article)
 if(article){
     return (
       <div className="container-individual ">
@@ -168,10 +189,13 @@ if(article){
             this.state.comments.map((comments,index) => {
               return (
                 <Comment
+                
                   comments={comments}
                   key={index}
                   limited={limited}
                   timeCreated={timeCreated}
+                  onCreate={this.createComment}
+                  
                 />
               );
             })}
