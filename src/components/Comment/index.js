@@ -4,7 +4,7 @@ class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: null,
+      comment: null,
       showAll: false
     };
   }
@@ -22,16 +22,19 @@ class Comment extends React.Component {
   showLess = () => this.setState({ showAll: false });
 
   render() {
-    const { comments, limited, timeCreated } = this.props;
+    const { comment, limited, timeCreated } = this.props;
     const { showAll } = this.state;
-    if (comments.comment && comments.comment.length <= limited) {
-      console.log("IF", comments.comment, comments.comment.length);
+
+
+     console.log("Here is your comment ID", comment.commentId)
+    if (comment.comment && comment.comment.length <= limited) {
+      // console.log("IF", comment.comment, comment.comment.length);
       return (
         <div className="card-comment">
           <div className="commentDisplay">
             <p className="styleDisplay">
-              {comments.timeCreated} <br />
-              {comments.comment}{" "}
+              {comment.timeCreated} <br />
+              {comment.comment}{" "}
             </p>
 
             <div >
@@ -53,15 +56,15 @@ class Comment extends React.Component {
         </div>
       );
     } else {
-      console.log("ELSE", comments.comment, comments.comment.length);
+      console.log("ELSE", comment.comment, comment.comment.length);
 
       if (showAll) {
         return (
           <div className="card-comment">
             <div className="commentDisplay">
               <p className="styleDisplay">
-                {comments.timeCreated} <br />
-                {comments.comment}
+                {comment.timeCreated} <br />
+                {comment.comment}
                 <a onClick={this.showLess} style={{ color: "darkblue" }}>
                   Read less
                 </a>
@@ -72,13 +75,13 @@ class Comment extends React.Component {
       }
     }
 
-    const toShow = comments.comment.slice(0, limited) + "....";
+    const toShow = comment.comment.slice(0, limited) + "....";
     if (toShow) {
       return (
         <div className="card-comment">
           <div className="commentDisplay ">
             <p className="styleDisplay">
-              {comments.timeCreated} <br />
+              {comment.timeCreated} <br />
               {toShow}
               <a onClick={this.showMore} style={{ color: "darkblue" }}>
                 {" "}

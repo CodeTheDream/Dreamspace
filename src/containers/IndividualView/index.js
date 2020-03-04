@@ -10,10 +10,6 @@ class IndividualView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      article:"" ,
-      comment: [],
-      articleId: "",
-      timeCreated: "",
       comments: null,
       limit: "",
       limited: 450,
@@ -34,13 +30,17 @@ class IndividualView extends React.Component {
 
       .onSnapshot(snapshot => {
         const comments = [];
+        let commentId ="";
         snapshot.forEach(doc => {
           const data = doc.data();
+          commentId=doc.id
+          data.commentId= commentId
           comments.push(data);
+              this.setState({
+                comments:comments,
+            });
         });
 
-        this.setState({ comments: comments });
-        // console.log("here my snapshot ", snapshot);
       });
 
     //get the ID for a particular article
@@ -72,8 +72,6 @@ class IndividualView extends React.Component {
         snapshot.forEach(doc => {
           const data = doc.data();
           TotallComment.push(data);
-         
-
         });
 
         this.setState({ TotallComment: TotallComment });
@@ -120,7 +118,7 @@ class IndividualView extends React.Component {
     } = this.state;
     //const { userId, url, description, title } = this.props;
     //const numRows = this.state.TotallComment.length;
-console.log("this is the new article for indivi:" , article)
+// console.log("this is the new article for indivi:" , article)
 if(article){
     return (
       <div className="container-individual ">
@@ -165,10 +163,11 @@ if(article){
 
         <div>
           {this.state.comments &&
-            this.state.comments.map((comments,index) => {
+            this.state.comments.map((comment,index) => {
+              {/* console.log(comment) */}
               return (
                 <Comment
-                  comments={comments}
+                  comment={comment}
                   key={index}
                   limited={limited}
                   timeCreated={timeCreated}
