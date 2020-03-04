@@ -1,3 +1,8 @@
+* {
+  
+box-sizing:border-box;
+content: width= device-width ,initial-scale=1;
+}
 body {
  
     background-color:#E8EEEF;; 
@@ -7,14 +12,16 @@ body {
     margin: auto;
     display: grid;
     grid-gap: 10px;
-    padding:  20px 10px 20px 10px;
+    padding:  30px 10px 20px 10px;
     width: 100%;
    justify-content: center;
    max-width: 1000px;
    align-self: center;
    margin-bottom: 1px;
    font-family:Helvetica;
-    background-color: lightgray;
+   // background-color: lightgray;
+    margin-top: 3em;
+
   }
   
   
