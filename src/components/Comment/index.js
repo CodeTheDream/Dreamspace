@@ -1,22 +1,48 @@
 import React from "react";
-import ReplyComment from "../ReplyComment"
+import ReplyComment from "../ReplyComment";
 class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       comment: null,
-      showAll: false
+      showAll: false,
+      reply:"",
+      isOldestFirst:""
+     
     };
   }
+
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log("new reply",this.state.reply)
+   this.props.onCreate(this.state.reply)
+    this.setState({ reply: "" });
+    alert("new reply",this.state.reply)
+  };
+ 
+  
+  handleChange = e => {
+   // console.log(e.target.value)
+      this.setState({
+        reply: e.target.value
+      });
+    };
+    
   togglePopup = () => {
     this.setState({
       showPopup: !this.state.showPopup
     });
-
   };
   cancle = () => {
     this.setState({ showPopup: false });
+
   };
+
+
+  
+
+
 
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
@@ -37,18 +63,46 @@ class Comment extends React.Component {
               {comment.comment}{" "}
             </p>
 
-            <div >
+            <div>
               <div className="Reply">
-              <button 
-                onClick={this.togglePopup}
-              >
-                <i className="fa fa-comment"> </i>Reply
-              </button>
+                <button onClick={this.togglePopup}>
+                  <i className="fa fa-comment"> </i>Reply
+                </button>
               </div>
               {this.state.showPopup ? (
                 <div>
-                  <ReplyComment/>
+                  
+                  <form className="card-addcomment" onSubmit={this.handleSubmit}>
+                  <div className="commentgrid">
+                  
+                  <textarea
+              className="commentContent"
+              type="text"
+             value={this.state.reply}
 
+             name="reply"
+              placeholder="Write your Reply here! "
+              autoFocus={true}
+              onChange={this.handleChange}
+            ></textarea>
+         
+          <button
+            className="submit-btn"
+            type="submit"
+            value=" Reply"
+            disabled={!this.state.Reply}
+           
+          >
+            Reply
+          </button>
+                    <button className="submit-btn" onClick={this.cancle}>
+                        cancle
+                      </button>
+                    </div>
+                  
+                </form>
+
+                 
                 </div>
               ) : null}
             </div>
