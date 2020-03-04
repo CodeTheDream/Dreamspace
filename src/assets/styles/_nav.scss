@@ -136,38 +136,8 @@ body {
         font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
         margin-left: auto;
         margin-right: auto;
-
-        
     }
-    .card {
-    width: 100%;
-    max-width: 1200px;
-    position: relative;
-    text-decoration: none;
-    background-color: ghostwhite;
-    color: inherit;
-    display: flex;
-    margin-bottom: 20px;
-    /* position: relative; */
-    padding-right: 3em;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-left: 2em;
-    margin-right: auto;
-}
-.popular-title {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    align-items: initial;
-    color: black;
-    margin-left: 2em;
-    margin-right: 3em;
-}
-
     }
-    
-
-    
     /* 48em = 768px @ 16pt font */
 
     @media (min-width: 685px) {

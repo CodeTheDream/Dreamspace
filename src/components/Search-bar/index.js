@@ -3,7 +3,7 @@ import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import { AuthUserContext } from "../Session";
-//import "./searchbar.scss";
+import "./searchbar.scss";
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +25,7 @@ class SearchBar extends React.Component {
             <div className="input-icons"> 
             <i className="fa fa-search"></i> 
             <input className="input-field"
-                type="search"
+                type="text"
                 placeholder="search..."
               
                 onChange={this.props.handleInput}

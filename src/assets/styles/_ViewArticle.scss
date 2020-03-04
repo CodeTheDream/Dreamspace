@@ -1,8 +1,3 @@
-* {
-  
-box-sizing:border-box;
-content: width= device-width ,initial-scale=1;
-}
 body {
  
     background-color:#E8EEEF;; 
@@ -12,16 +7,14 @@ body {
     margin: auto;
     display: grid;
     grid-gap: 10px;
-    padding:  30px 10px 20px 10px;
+    padding:  20px 10px 20px 10px;
     width: 100%;
    justify-content: center;
    max-width: 1000px;
    align-self: center;
    margin-bottom: 1px;
-   font-family:Helvetica;
-   // background-color: lightgray;
-    margin-top: 3em;
-
+   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    
   }
   
   
@@ -123,7 +116,6 @@ body {
      height: 25px;
      cursor: pointer;
      float: right;
-     color: #fae596;
    }
    
    textarea {

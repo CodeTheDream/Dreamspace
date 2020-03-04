@@ -21,19 +21,6 @@ class ListItem1 extends React.Component {
 
         };
     }
-    /*sortByDtate () {
-        const {postList}= this.props
-        let newPostList = postList
-      if(this.state.isOldestFirst){
-        newPostList.sort((a,b) => a.timeCreated < b.timeCreated)
-      }
-      else {
-        newPostList.sort((a,b) =>a.timeCreated > b.timeCreated)
-      
-      }
-      this.setState({article:newPostList.sort((a,b) => a.timeCreated >b.timeCreated)})
-      }*/
-      
     componentDidMount() {
        
         const { article } = this.props
@@ -53,7 +40,6 @@ class ListItem1 extends React.Component {
             })
         
     }
-    
    
     componentDidUpdate = (prevProps) => {
         if (prevProps.article !== this.props.article) {
@@ -294,7 +280,10 @@ class ListItem1 extends React.Component {
         }
     }
     render() {
-       
+        const { upvotes } = this.state
+        const { downvotes } = this.state
+        const { article } = this.props
+       // console.log("this is the new article:", article)
         if(this.props.isIndividualView == true){
         return (
             <AuthUserContext.Consumer>

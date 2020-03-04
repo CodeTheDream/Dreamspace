@@ -14,44 +14,47 @@ class ListItem extends React.Component {
       article: [],
       username: "",
       TotallComment: "",
-      totalcount: ""
+      totalcount:""
     };
   }
   openPost(e, article) {
     // console.log("ARTICLE", article)
-    e.preventDefault();
-    this.props.history.push({
-      pathname: "/articles/" + article.uid,
-      params: article.uid,
-      state: { article }
-    });
-  }
-  componentDidMount() {
-    const { article } = this.props;
-    this.props.firebase
-      .comments()
-      .where("articleId", "==", article.uid)
-      .onSnapshot(snapshot => {
-        const TotallComment = [];
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          TotallComment.push(data);
+     e.preventDefault();
+     this.props.history.push({
+         pathname: "/articles/" + article.uid,
+         params: article.uid,
+         state: { article }
+     });
+ }
+ componentDidMount() {
+       
+        const { article } = this.props
+        this.props.firebase
+        .comments()
+        .where("articleId", "==", article.uid)
+        .onSnapshot(snapshot => {
+          const TotallComment = [];
+          snapshot.forEach(doc => {
+            const data = doc.data();
+            TotallComment.push(data);
+          });
+          this.setState({ TotallComment: TotallComment });
+          const totalcount = TotallComment.length
+          this.setState({totalcount:totalcount})
+        
         });
-        this.setState({ TotallComment: TotallComment });
-        const totalcount = TotallComment.length;
-        this.setState({ totalcount: totalcount });
-      });
-  }
+    }
 
   render() {
-    const { upvotes } = this.state;
-    const { downvotes } = this.state;
+    const { upvotes } = this.state
+    const { downvotes } = this.state
     const { article } = this.props;
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <div className="card">
-            <ListItem1 article={article} />
+          
+          <div className="card"> 
+           <ListItem1 article={article}/>
             <div className="maincontent" id="content">
               <div className="auther">
                 <div className="auther-style">
@@ -63,7 +66,7 @@ class ListItem extends React.Component {
                   </span>
                 </div>
               </div>
-             {/*} <div> {this.props.article.tags}</div>*/}
+             <div>  {this.props.article.tags}</div>
               <div className="auther-style">
                 <a href={this.props.article.url}>{this.props.article.title}</a>
               </div>
@@ -79,19 +82,19 @@ class ListItem extends React.Component {
                   className="button"
                   onClick={e => this.openPost(e, article)}
                 >
-                  <i className="fa fa-comment">
-                    {" "}
-                    {this.state.totalcount} {" comment "}
-                  </i>
+                  
+        <i className="fa fa-comment">{this.state.totalcount}comment</i>
                 </button>
                 <span style={{ float: "right" }}>
                   <button className="button">
+                    
                     <i className="fa fa-share">share...</i>
                   </button>
                 </span>
               </span>
             </div>
           </div>
+          
         )}
       </AuthUserContext.Consumer>
     );

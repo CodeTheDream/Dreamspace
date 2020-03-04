@@ -1,9 +1,12 @@
 
-* {
-  
-    box-sizing:border-box;
-    content: width= device-width ,initial-scale=1;
-    }
+
+
+body {
+    margin: 0;
+    background-color: #e8eeef;
+    box-sizing: border-box;
+    // background-color: transparent;
+}
 
 @media only screen and (min-width: 800px) {
     .wrapper {
@@ -22,31 +25,6 @@
         margin-right: auto;
         
     }
-    .card {
-        width: 100%;
-        max-width: 1200px;
-        position: relative;
-        text-decoration: none;
-        background-color: ghostwhite;
-        color: inherit;
-        display: flex;
-        margin-bottom: 20px;
-        position: relative;
-        padding-right: 3em;
-        border-radius: 10px;
-        overflow:hidden;
-        margin-left: 6em;
-        //margin-right: 3em;
-    }
-    
-.popular-title {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    align-items: initial;
-    color: black;
-    margin-left: 6em;
-    margin-right: 3em;
-}
 }
 
 .upvote:hover {
@@ -61,11 +39,11 @@
 
 
 .create-post {
-   // margin-bottom: 10px;
-   // margin-top: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
    // margin-left: 80%;
-   // padding-top:5px ;
-   // padding-left: 70%;
+    padding-top:5px ;
+    padding-left: 70%;
     
 }
 
@@ -78,9 +56,29 @@
     width: 80%;
 }
 
+.popular-title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    align-items: initial;
+    color: black;
+}
 
 
-
+.card {
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    text-decoration: none;
+    background-color: ghostwhite;
+    display: -ms-flexbox;
+    color: inherit;
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+    padding-right: 3em;
+    border-radius: 10px;
+    overflow:hidden;
+}
 
 .card:hover {
     background-color: white;
