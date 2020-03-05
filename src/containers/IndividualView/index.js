@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import AddComment from "../../components/CommentSystem/AddComment";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import Comment from "../../components/Comment";
 import ListItem1 from '../../components/ListItem1'
+import ReplyComment from "../../components/ReplyComment";
 const moment = require("moment");
 class IndividualView extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class IndividualView extends React.Component {
       limited: 450,
       TotallComment: "",
       totalcount: "",
-      isOldestFirst:true
+     // isOldestFirst:true
     };
   }
 
@@ -27,7 +28,6 @@ class IndividualView extends React.Component {
       .where("articleId", "==", articleId)
 
       //.orderBy('timeCreated','desc')
-      //.startAfter(lastDoc.timeCreated)
       .limit(8)
 
       .onSnapshot(snapshot => {
@@ -113,6 +113,7 @@ class IndividualView extends React.Component {
  sortByDate() {
   const {comment} = this.state
   let newPostList = comment
+  console.log("this is the sorted data",newPostList)
   if (this.state.isOldestFirst) {
     newPostList = comment.sort((a, b) => a.date > b.date)
   } else {
@@ -186,6 +187,7 @@ if(article){
             this.state.comments.map((comment,index) => {
               {/* console.log(comment) */}
               return (
+               
                 <Comment
                   comment={comment}
                   key={index}
@@ -194,7 +196,8 @@ if(article){
                   onCreate={this.createComment}
                   
                 />
-              );
+             
+                            );
             })}
          
         </div>

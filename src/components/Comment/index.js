@@ -68,6 +68,7 @@ class Comment extends React.Component {
                 <button onClick={this.togglePopup}>
                   <i className="fa fa-comment"> </i>Reply
                 </button>
+                <ReplyComment/>
               </div>
               {this.state.showPopup ? (
                 <div>
