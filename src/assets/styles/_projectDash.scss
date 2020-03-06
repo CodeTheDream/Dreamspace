@@ -1,0 +1,26 @@
+.dashboard {
+  width: 100%;
+  overflow-x: hidden;
+}
+.dashboard-content {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar-menu featured";
+  grid-template-rows: 0.2fr 1fr;
+  grid-template-columns: 250px 1fr;
+  max-width: 100%;
+  width: 100%;
+  height: 100vh;
+  grid-column-gap: 10px;
+  box-sizing: border-box;
+}
+
+.slide-container {
+  grid-area: header;
+}
+
+.sidebar-menu {
+  grid-area: sidebar-menu;
+  box-sizing: border-box;
+}
