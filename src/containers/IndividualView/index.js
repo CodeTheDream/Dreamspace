@@ -16,7 +16,8 @@ class IndividualView extends React.Component {
       limited: 450,
       TotallComment: "",
       totalcount: "",
-     // isOldestFirst:true
+      isOldestFirst:true,
+     commentId:""
     };
   }
 
@@ -25,6 +26,7 @@ class IndividualView extends React.Component {
     let articleId = this.props.match.params.articleId;
     this.unsubscribe = this.props.firebase
       .comments()
+
       .where("articleId", "==", articleId)
 
       //.orderBy('timeCreated','desc')
@@ -84,9 +86,7 @@ class IndividualView extends React.Component {
      
   };
 
-  //  componentWillUnmount =() => {
-  //         this.unsubscribe();
-  //     }
+  
 
   createComment = (comment, article) => {
     //  console.log("here create comment", comment, this.state.articleId);
@@ -101,15 +101,7 @@ class IndividualView extends React.Component {
       });
   };
 
-  handleRemove = articleId => {
-   // const allArticles = this.state.articles;
-  };
 
-  componentDidUpdate = (prevProps) => {
-    if (prevProps.article !== this.props.article) {
-        this.calculatedvote(this.props.article.upvotes, this.props.article.downvotes)
-    }
-};
  sortByDate() {
   const {comment} = this.state
   let newPostList = comment
@@ -137,9 +129,7 @@ class IndividualView extends React.Component {
      
       limited
     } = this.state;
-    //const { userId, url, description, title } = this.props;
-    //const numRows = this.state.TotallComment.length;
-// console.log("this is the new article for indivi:" , article)
+   
 if(article){
     return (
       <div className="container-individual ">
@@ -187,17 +177,18 @@ if(article){
             this.state.comments.map((comment,index) => {
               {/* console.log(comment) */}
               return (
-               
-                <Comment
+               <div  className="card-comment">
+                <Comment 
                   comment={comment}
                   key={index}
                   limited={limited}
                   timeCreated={timeCreated}
-                  onCreate={this.createComment}
                   
                 />
              
-                            );
+                </div>
+                );
+               
             })}
          
         </div>
