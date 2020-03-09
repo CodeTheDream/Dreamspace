@@ -41,7 +41,7 @@ class ReplyComment extends React.Component {
   
   render() {
     return (
-      <div style={{margin:"10px",paddingLeft:"2%" ,right:"80%"}}>
+      <div className="repypage">
         <button className="fas fa-arrow-alt-down" onClick={this.handelOnClick}>
           view more Replys
         </button>
