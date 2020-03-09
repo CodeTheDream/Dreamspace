@@ -26,7 +26,7 @@ class Comment extends React.Component {
    e.preventDefault();
    //console.log("this is the event",e)
     //const {commentId}=this.props.comments.commentId
-    console.log("this is the commentId for the reply",commentId)
+   // console.log("this is the commentId for the reply",commentId)
   //console.log("show the reply",this.state.reply)
     this.props.firebase
     .replys(commentId)
@@ -37,7 +37,7 @@ class Comment extends React.Component {
     })
     .then(
       docRef => {
-console.log(" this is the replysID ", docRef.id)
+//console.log(" this is the replysID ", docRef.id)
       }
     )
     ;
@@ -71,11 +71,12 @@ console.log(" this is the replysID ", docRef.id)
   showLess = () => this.setState({ showAll: false });
 
   render() {
-    const { comment, limited, timeCreated ,reply} = this.props;
+    const { comment, limited, timeCreated } = this.props;
     const { showAll } = this.state;
     let commentContent= comment.comment
   //  const { reply } = this.state;
-   // console.log("Here is your comment ", comment);
+  //console.log("Here is your comment ID", comment.commentId)
+
     if (comment.comment && comment.comment.length <= limited) {
       // console.log("IF", comment.comment, comment.comment.length);
       return (
@@ -127,7 +128,7 @@ console.log(" this is the replysID ", docRef.id)
                   </form>
                 </div>
               ) : null}
-          <ReplyComment  commentID={comment.commentID}/>
+          <ReplyComment  commentID = {comment.commentId} />
             </div>
           </div>
         </div>
