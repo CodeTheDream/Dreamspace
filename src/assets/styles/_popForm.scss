@@ -7,7 +7,8 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  color: #fae596;
+  background-color: rgba(63, 176, 172, 0.6);
 }
 .popup\_inner {
   //   position: absolute;
@@ -18,4 +19,45 @@
   margin: auto;
   border-radius: 20px;
   background-color: white;
+}
+.button-style {
+  position: absolute;
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  width: 8.5em;
+  margin-bottom: 38px;
+  background: #3fb0ac;
+  /* float: right; */
+  color: #fae596;
+  border-radius: 8px;
+  position: relative;
+  /* padding: 8px; */
+  margin-left: inherit;
+}
+.form-content {
+  list-style: none;
+  //   display: grid;
+  //   grid-template-rows: 6 (1fr);
+  //   grid-template-columns: 2 (3fr);
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   align-content: space-around;
+  //   background-color: DodgerBlue;
+}
+.form-button-style {
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  width: 8.5em;
+  margin-bottom: 38px;
+  color: #3fb0ac;
+  /* float: right; */
+  background: #fae596;
+  border-radius: 8px;
+  position: relative;
+  /* padding: 8px; */
+  margin-left: inherit;
 }
