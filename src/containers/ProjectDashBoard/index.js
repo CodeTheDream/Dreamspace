@@ -1,7 +1,7 @@
 import React from "react";
 import {
   FeatureCard,
-  Header,
+  PopForm,
   SearchBar,
   SideBarOpen
 } from "../../ctd-project-components";
@@ -11,10 +11,18 @@ class ProjectDashBoard extends React.Component {
     super(props);
     this.state = {
       projectData: [],
-      searchName: ""
+      searchName: "",
+      showPopup: false
       // selectedProject: {}
     };
   }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
   componentDidMount() {
     this.getAirTable();
   }
@@ -81,7 +89,13 @@ class ProjectDashBoard extends React.Component {
           {this.state.selectedProject ? (
             <FeatureCard project={this.state.selectedProject} />
           ) : null}
-
+          <button onClick={this.togglePopup.bind(this)}>Add Project</button>
+          {this.state.showPopup ? (
+            <PopForm
+              text="Enter Project Data in appropriate fields"
+              closePopup={this.togglePopup.bind(this)}
+            />
+          ) : null}
           {this.state.projectData && (
             <SideBarOpen
               projectData={this.state.projectData}
