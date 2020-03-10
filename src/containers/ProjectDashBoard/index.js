@@ -63,12 +63,12 @@ class ProjectDashBoard extends React.Component {
       <div className="view-container dashboard">
         <div className="dashboard-content">
           <div>
-            {this.state.projectData && (
+            {/* {this.state.projectData && (
               <Header
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
               />
-            )}
+            )} */}
             {this.state.projectData && (
               <SearchBar
                 projectData={this.state.projectData}
