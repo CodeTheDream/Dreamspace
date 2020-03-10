@@ -1,4 +1,4 @@
-.card-bun {
+.flip-card-bun {
   display: grid;
   grid-template-areas:
     "image image"
@@ -10,11 +10,11 @@
   grid-template-rows: auto;
   justify-items: center;
 }
-#card-logo {
+#flip-card-logo {
   height: 40vmin;
   pointer-events: none;
 }
-#card-logo-title {
+#flip-card-logo-title {
   height: 5vmin;
   padding: 10px;
   /* background-color: black; */
@@ -24,14 +24,14 @@
   border-radius: 10px;
   grid-area: image;
 }
-#card-logo-title:hover {
+#flip-card-logo-title:hover {
   /* Start the shake animation and make the animation last for 0.5 seconds */
   animation: shake 0.5s;
   /* When the animation is finished, start again */
   animation-iteration-count: infinite;
 }
 
-.card-header {
+.flip-card-header {
   grid-area: header;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -47,7 +47,7 @@
   font-size: 70px;
   font-weight: bolder;
 }
-.card-header:hover {
+.flip-card-header:hover {
   text-shadow: 11px 2px 11px rgba(33, 33, 33, 0.2);
 }
 .card-team {
