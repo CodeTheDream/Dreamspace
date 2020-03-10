@@ -89,10 +89,15 @@ class ProjectDashBoard extends React.Component {
           {this.state.selectedProject ? (
             <FeatureCard project={this.state.selectedProject} />
           ) : null}
-          <button onClick={this.togglePopup.bind(this)}>Add Project</button>
+          <button
+            className="button-style"
+            onClick={this.togglePopup.bind(this)}
+          >
+            Add Project
+          </button>
           {this.state.showPopup ? (
             <PopForm
-              text="Enter Project Data in appropriate fields"
+              text="Enter Project Data"
               closePopup={this.togglePopup.bind(this)}
             />
           ) : null}
@@ -100,7 +105,7 @@ class ProjectDashBoard extends React.Component {
             <SideBarOpen
               projectData={this.state.projectData}
               selectProject={this.selectProject}
-              filterProject={filterProject}
+              // filterProject={filterProject}
             />
           )}
         </div>
