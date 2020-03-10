@@ -27,7 +27,7 @@ const NavigationAuth = () => (
         <Link to={ROUTES.HOME}>Home</Link>
       </li>
       <li>
-        <Link to={ROUTES.PROJECT}>CTD Project</Link>
+        <Link to={ROUTES.PROJECT}>Projects</Link>
       </li>
       <li>
         {" "}
