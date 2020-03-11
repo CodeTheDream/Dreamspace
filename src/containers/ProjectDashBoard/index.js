@@ -84,8 +84,8 @@ class ProjectDashBoard extends React.Component {
                 handleInput={this.handleInput}
               />
             )}
-          </div>
-
+          </div>{" "}
+          */}
           {this.state.selectedProject ? (
             <FeatureCard project={this.state.selectedProject} />
           ) : null}

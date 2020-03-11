@@ -1,7 +1,9 @@
 .dashboard {
   width: 100%;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
+
 .dashboard-content {
   display: grid;
   grid-template-areas:
@@ -21,6 +23,23 @@
 }
 
 .sidebar-menu {
+  display: grid;
+  grid-template-rows: 124px auto;
   grid-area: sidebar-menu;
   box-sizing: border-box;
+  background-color: #fff;
+  border-right: solid;
+  border-color: #0066cc;
+  // border-radius: 8px;
+  color: #f15c39;
+  width: 300px;
+  // padding: 23px;
 }
+
+.sidebar-menu li {
+  padding: 5px;
+}
+
+// .search-container {
+//   margin-top: 20px;
+// }
