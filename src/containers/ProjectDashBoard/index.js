@@ -60,14 +60,22 @@ class ProjectDashBoard extends React.Component {
     return (
       <div className="view-container dashboard">
         <div className="dashboard-content">
+<<<<<<< .merge_file_CNMhoE
           {/* <div>
+=======
+          <div>
+>>>>>>> .merge_file_07KzAF
             {/* {this.state.projectData && (
               <Header
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
               />
             )} */}
+<<<<<<< .merge_file_CNMhoE
             {/*this.state.projectData && (
+=======
+            {this.state.projectData && (
+>>>>>>> .merge_file_07KzAF
               <SearchBar
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
