@@ -22,8 +22,6 @@ const Header = props => {
   );
   console.log("filterList", filterList);
 
-  // let projectList = props.projectData;
-  // console.log('check ', projectList)
   return (
     <div className="slide-container">
       <Zoom {...zoomOutProperties}>
