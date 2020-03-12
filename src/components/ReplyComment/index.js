@@ -20,11 +20,11 @@ class ReplyComment extends React.Component {
 
  
   render() {
-    //const { comment } = this.state;
+    const { commentId,replyId } = this.props;
     
-console.log(this.state.reply)
+console.log("this is the commentId and ReplyId",replyId,commentId)
     return (
-    <div>Reply comment</div>
+    <div>Number of Reply comment</div>
      
     );
   }
