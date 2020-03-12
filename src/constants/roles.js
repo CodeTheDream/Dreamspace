@@ -1,2 +1,2 @@
 export const ADMIN = "ADMIN";
-// export const NONADMIN = "NONADMIN";
+export const NONADMIN = "NONADMIN";

@@ -8,7 +8,7 @@ class PopFrom extends React.Component {
       Name: "",
       Repo: "",
       Website: "",
-      Current_Team: "",
+      //   Current_Team: "",
       Meeting_Time: "",
       Project_Description: "",
       Notes: "",
@@ -24,7 +24,7 @@ class PopFrom extends React.Component {
       Notes,
       External,
       Website,
-      // Current_Team,
+      //   Current_Team,
       Meeting_Time,
       Project_Description
     } = this.state;
@@ -60,7 +60,7 @@ class PopFrom extends React.Component {
       Notes,
       External,
       Website,
-      Current_Team,
+      //   Current_Team,
       Meeting_Time,
       Project_Description
     } = this.state;
@@ -76,7 +76,7 @@ class PopFrom extends React.Component {
       "website",
       Website,
       "CT",
-      Current_Team,
+      //   Current_Team,
       "MT",
       Meeting_Time,
       "PD",
@@ -98,50 +98,44 @@ class PopFrom extends React.Component {
         <div className="popup\_inner">
           <h1>{this.props.text}</h1>
           <form className="form-content" onSubmit={this.push2AirTable}>
-            <li>
-              <label>
+            <li className="form-li">
+              <label className="form-lable">
                 Project Name:
                 <input
+                  className="project-name"
                   name="Name"
                   value={this.state.Name}
                   onChange={this.handleChange}
                 />
               </label>
             </li>
-            <li>
-              <label>
+            <li className="form-li">
+              <label className="form-lable">
                 Project Repo:
                 <input
+                  className="project-repo"
                   name="Repo"
                   value={this.state.Repo}
                   onChange={this.handleChange}
                 />
               </label>
             </li>
-            <li>
-              <label>
+            <li className="form-li">
+              <label className="form-lable">
                 Project Website:
                 <input
+                  className="project-web"
                   name="Website"
                   value={this.state.Website}
                   onChange={this.handleChange}
                 />
               </label>
             </li>
-            {/* <li>
-              <label>
-                Current Team:
-                <input
-                  name="Current_Team"
-                  value={this.state.Current_Team}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </li> */}
-            <li>
-              <label>
+            <li className="form-li">
+              <label className="form-lable">
                 Meeting Time:
                 <input
+                  className="project-time"
                   name="Meeting_Time"
                   type="datetime-local"
                   value={this.state.Meeting_Time}
@@ -149,30 +143,33 @@ class PopFrom extends React.Component {
                 />
               </label>
             </li>
-            <li>
-              <label>
+            <li className="form-li">
+              <label className="form-lable">
                 Project Description:
-                <input
+                <textarea
+                  className="project-des"
                   name="Project_Description"
                   value={this.state.Project_Description}
                   onChange={this.handleChange}
                 />
               </label>
             </li>
-            <li>
-              <label>
+            <li className="form-li">
+              <label className="form-lable">
                 Project Notes:
-                <input
+                <textarea
+                  className="project-notes"
                   name="Notes"
                   value={this.state.Notes}
                   onChange={this.handleChange}
                 />
               </label>
             </li>
-            <li>
-              <label>
+            <li className="form-li">
+              <label className="form-lable">
                 External:
                 <input
+                  className="project-extern"
                   name="External"
                   type="checkbox"
                   checked={this.state.External}
@@ -184,10 +181,13 @@ class PopFrom extends React.Component {
             <button className="form-button-style" type="submit" value="Submit">
               Submit
             </button>
+            <button
+              className="form-button-style"
+              onClick={this.props.closePopup}
+            >
+              Close
+            </button>
           </form>
-          <button className="form-button-style" onClick={this.props.closePopup}>
-            Close
-          </button>
         </div>
       </div>
     );

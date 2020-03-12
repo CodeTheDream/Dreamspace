@@ -9,15 +9,15 @@
   grid-template-columns: 2fr 2fr;
   grid-template-rows: auto;
   justify-items: center;
+  #flip-card-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
 }
-#flip-card-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+
 #flip-card-logo-title {
   height: 5vmin;
   padding: 10px;
-  /* background-color: black; */
   color: white;
   padding-left: 10px;
   padding-right: 10px;
@@ -37,13 +37,6 @@
   margin-bottom: 50px;
   line-height: 55px;
   align-items: center;
-  content: "";
-  /* display: block;
-    margin: 0 auto;
-    width: 30%;
-    padding-top: 20px;
-    border-bottom: 10px double orange; This creates the border. Replace black with whatever color you want. */
-  /* border-radius: 10px; */
   font-size: 70px;
   font-weight: bolder;
 }
