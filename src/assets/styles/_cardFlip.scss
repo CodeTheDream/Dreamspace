@@ -1,11 +1,9 @@
 .flip-card {
   background-color: transparent;
-  /* border: 1px solid #ccc; */
   border-radius: 15px;
   margin: 0;
-  width: 80vw;
-  /* min-width: 300px; */
-  height: 85vh;
+  width: 60vw;
+  height: 70vh;
   perspective: 100%;
   margin-bottom: 20px;
   grid-area: featured;
@@ -18,7 +16,6 @@
   text-align: center;
   transition: transform 1.5s;
   transform-style: preserve-3d;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
 }
 
 .flip-card:hover .flip-card-inner {
@@ -40,18 +37,14 @@
   border: 1px solid #ccc;
   border-radius: 15px;
   color: whitesmoke;
-  /* position: relative; */
   overflow-y: auto;
 }
 
 .flip-card-back {
-  /* background-image: url("../styles/images/ctdLiving.jpg"); */
-  /* filter: blur(8px); */
   background-color: slategray;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* border: 1px solid #ccc; */
   border-radius: 15px;
   color: whitesmoke;
   transform: rotateY(180deg);
