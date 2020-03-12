@@ -21,19 +21,34 @@
 .slide-container {
   grid-area: header;
 }
-
+.addButton {
+  grid-area: AddButton;
+}
+.featured {
+  grid-area: featured;
+  margin-top: 30px;
+}
 .sidebar-menu {
   display: grid;
-  grid-template-rows: 124px auto;
+  // grid-template-areas:
+  //   "searchBar searchBar"
+  //   "listItem"
+  //   "listItem";
   grid-area: sidebar-menu;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: whitesmoke;
   border-right: solid;
   border-color: #0066cc;
   // border-radius: 8px;
   color: #f15c39;
   width: 300px;
   // padding: 23px;
+}
+
+.menu-container {
+  list-style: none;
+  // position: left;
+  // cursor: pointer;
 }
 
 .sidebar-menu li {

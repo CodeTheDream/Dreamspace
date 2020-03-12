@@ -1,4 +1,5 @@
 import React from "react";
+import ctdlogo from "../../assets/images/ctd-labs-logo.png";
 import {
   FeatureCard,
   PopForm,
@@ -68,8 +69,9 @@ class ProjectDashBoard extends React.Component {
     });
 
     return (
-      <div className="view-container dashboard">
+      <div className="dashboard">
         <div className="dashboard-content">
+<<<<<<< HEAD
           <div>
             {/* {this.state.projectData && (
               <Header
@@ -82,8 +84,29 @@ class ProjectDashBoard extends React.Component {
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
                 handleInput={this.handleInput}
+=======
+          <div className="addButton">
+            <button
+              className="button-style"
+              onClick={this.togglePopup.bind(this)}
+            >
+              Add Project
+            </button>
+            {this.state.showPopup ? (
+              <PopForm
+                text="Enter Project Data"
+                closePopup={this.togglePopup.bind(this)}
+>>>>>>> FinalMergeConflict
               />
+            ) : null}
+          </div>
+          <div className="featured">
+            {this.state.selectedProject ? (
+              <FeatureCard project={this.state.selectedProject} />
+            ) : (
+              <img className="featured" src={ctdlogo} />
             )}
+<<<<<<< HEAD
           </div>{" "}
           */}
           {this.state.selectedProject ? (
@@ -107,6 +130,24 @@ class ProjectDashBoard extends React.Component {
               selectProject={this.selectProject}
               // filterProject={filterProject}
             />
+=======
+          </div>
+          {this.state.projectData && (
+            <div className="sidebar-menu">
+              <SideBarOpen
+                projectData={this.state.projectData}
+                selectProject={this.selectProject}
+                filterProject={filterProject}
+                handleInput={this.handleInput}
+              >
+                <SearchBar
+                  projectData={this.state.projectData}
+                  selectProject={this.selectProject}
+                  // handleInput={this.handleInput}
+                />
+              </SideBarOpen>
+            </div>
+>>>>>>> FinalMergeConflict
           )}
         </div>
       </div>
