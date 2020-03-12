@@ -1,7 +1,8 @@
 import React from "react";
+import ctdlogo from "../../assets/images/ctd-labs-logo.png";
 import {
   FeatureCard,
-  Header,
+  PopForm,
   SearchBar,
   SideBarOpen
 } from "../../ctd-project-components";
@@ -11,10 +12,18 @@ class ProjectDashBoard extends React.Component {
     super(props);
     this.state = {
       projectData: [],
-      searchName: ""
+      searchName: "",
+      showPopup: false
       // selectedProject: {}
     };
   }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
   componentDidMount() {
     this.getAirTable();
   }
@@ -60,41 +69,44 @@ class ProjectDashBoard extends React.Component {
     });
 
     return (
-      <div className="view-container dashboard">
+      <div className="dashboard">
         <div className="dashboard-content">
-          {/* <div>
-            {/* {this.state.projectData && (
-              <Header
-                projectData={this.state.projectData}
-                selectProject={this.selectProject}
-              />
-            )} */}
-          {/*this.state.projectData && (
-              <SearchBar
-                projectData={this.state.projectData}
-                selectProject={this.selectProject}
-                handleInput={this.handleInput}
-              />
-            )}
-          </div> */}
-
-          {this.state.selectedProject ? (
-            <FeatureCard project={this.state.selectedProject} />
-          ) : null}
-
-          {this.state.projectData && (
-            <SideBarOpen
-              projectData={this.state.projectData}
-              selectProject={this.selectProject}
-              filterProject={filterProject}
-              handleInput={this.handleInput}
+          <div className="addButton">
+            <button
+              className="button-style"
+              onClick={this.togglePopup.bind(this)}
             >
-              <SearchBar
+              Add Project
+            </button>
+            {this.state.showPopup ? (
+              <PopForm
+                text="Enter Project Data"
+                closePopup={this.togglePopup.bind(this)}
+              />
+            ) : null}
+          </div>
+          <div className="featured">
+            {this.state.selectedProject ? (
+              <FeatureCard project={this.state.selectedProject} />
+            ) : (
+              <img className="featured" src={ctdlogo} />
+            )}
+          </div>
+          {this.state.projectData && (
+            <div className="sidebar-menu">
+              <SideBarOpen
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
-                // handleInput={this.handleInput}
-              />
-            </SideBarOpen>
+                filterProject={filterProject}
+                handleInput={this.handleInput}
+              >
+                <SearchBar
+                  projectData={this.state.projectData}
+                  selectProject={this.selectProject}
+                  // handleInput={this.handleInput}
+                />
+              </SideBarOpen>
+            </div>
           )}
         </div>
       </div>
