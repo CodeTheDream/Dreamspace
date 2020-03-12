@@ -70,21 +70,21 @@ class ProjectDashBoard extends React.Component {
     return (
       <div className="view-container dashboard">
         <div className="dashboard-content">
-          <div>
+          {/* <div>
             {/* {this.state.projectData && (
               <Header
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
               />
             )} */}
-            {this.state.projectData && (
+          {/*this.state.projectData && (
               <SearchBar
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
                 handleInput={this.handleInput}
               />
             )}
-          </div>
+          </div> */}
 
           {this.state.selectedProject ? (
             <FeatureCard project={this.state.selectedProject} />
@@ -105,8 +105,15 @@ class ProjectDashBoard extends React.Component {
             <SideBarOpen
               projectData={this.state.projectData}
               selectProject={this.selectProject}
-              // filterProject={filterProject}
-            />
+              filterProject={filterProject}
+              handleInput={this.handleInput}
+            >
+              <SearchBar
+                projectData={this.state.projectData}
+                selectProject={this.selectProject}
+                // handleInput={this.handleInput}
+              />
+            </SideBarOpen>
           )}
         </div>
       </div>

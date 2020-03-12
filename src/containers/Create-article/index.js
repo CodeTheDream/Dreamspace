@@ -125,7 +125,7 @@ class Createarticle extends Component {
                 <div >
                   <div >
                    {/* <div style={{fontSize:"legend"}}>Create new post</div>*/} 
-                    <legend>Create New Post</legend>
+                    <legend className="devedit-form-legend1">Create New Post</legend>
                     <div >
                       <div >
                         <ul>

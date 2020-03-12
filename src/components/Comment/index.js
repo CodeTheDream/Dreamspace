@@ -1,62 +1,88 @@
 import React from "react";
+import { compose } from "recompose";
+import {
+  AuthUserContext,
+  withAuthorization,
+  withEmailVerification
+} from "../../components/Session";
+import { withFirebase } from "../../components/Firebase";
 import ReplyComment from "../ReplyComment";
+const moment = require("moment");
 class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comment: null,
+      comments: [],
       showAll: false,
+     replies:[],
+     // isOldestFirst: "",
+      commentId:"",
       reply:"",
-      isOldestFirst:""
-     
+      timeCreated:""
     };
   }
-
-
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log("new reply",this.state.reply)
-   this.props.onCreate(this.state.reply)
-    this.setState({ reply: "" });
-    alert("new reply",this.state.reply)
-  };
- 
   
-  handleChange = e => {
-   // console.log(e.target.value)
-      this.setState({
-        reply: e.target.value
-      });
-    };
+  handleSubmit = (e, commentId) => {
+   e.preventDefault();
+   //console.log("this is the event",e)
+    //const {commentId}=this.props.comments.commentId
+    console.log("this is the commentId for the reply",commentId)
+  //console.log("show the reply",this.state.reply)
+    this.props.firebase
+    .replys(commentId)
+    .add({
+     // commentId:commentId,
+      reply:this.state.reply,
+      timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `)
+    })
+    .then(
+      docRef => {
+console.log(" this is the replysID ", docRef.id)
+      }
+    )
+    ;
     
+    this.setState({
+      reply:""
+      
+    });
+  
+  };
+   handleChange = e => {
+    console.log(e.target.value)
+    this.setState({
+      reply: e.target.value
+    });
+  };
+
+  
   togglePopup = () => {
+    //const{commentId}=this.props
     this.setState({
       showPopup: !this.state.showPopup
     });
+    //console.log("this is the commentId", commentId)
   };
   cancle = () => {
     this.setState({ showPopup: false });
-
   };
-
-
-  
-
-
 
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
 
   render() {
-    const { comment, limited, timeCreated } = this.props;
+    const { comment, limited, timeCreated ,reply} = this.props;
     const { showAll } = this.state;
-
-
-     console.log("Here is your comment ID", comment.commentId)
+    let commentContent= comment.comment
+  //  const { reply } = this.state;
+   // console.log("Here is your comment ", comment);
     if (comment.comment && comment.comment.length <= limited) {
       // console.log("IF", comment.comment, comment.comment.length);
       return (
-        <div className="card-comment">
+        <AuthUserContext.Consumer>
+        {authUser => (
+          <div>
+        <div>
           <div className="commentDisplay">
             <p className="styleDisplay">
               {comment.timeCreated} <br />
@@ -71,46 +97,46 @@ class Comment extends React.Component {
               </div>
               {this.state.showPopup ? (
                 <div>
-                  
-                  <form className="card-addcomment" onSubmit={this.handleSubmit}>
-                  <div className="commentgrid">
-                  
-                  <textarea
-              className="commentContent"
-              type="text"
-             value={this.state.reply}
+                  <form
+                    className="card-addcomment"
+                    onSubmit={e=>this.handleSubmit(e,comment.commentId)}
+                  >
+                    <div className="commentgrid">
+                      <textarea
+                        className="commentContent"
+                       // id="reply"
+                        type="text"
+                        value={this.state.reply}
+                        //name="reply"
+                        placeholder="Write your Reply here! "
+                        autoFocus={true}
+                        onChange={this.handleChange}
+                      ></textarea>
 
-             name="reply"
-              placeholder="Write your Reply here! "
-              autoFocus={true}
-              onChange={this.handleChange}
-            ></textarea>
-         
-          <button
-            className="submit-btn"
-            type="submit"
-            value=" Reply"
-            disabled={!this.state.Reply}
-           
-          >
-            Reply
-          </button>
-                    <button className="submit-btn" onClick={this.cancle}>
+                      <button
+                        className="submit-btn"
+                        type="submit"
+
+                      >
+                        Reply
+                      </button>
+                      <button className="submit-btn" onClick={this.cancle}>
                         cancle
                       </button>
                     </div>
-                  
-                </form>
-
-                 
+                  </form>
                 </div>
               ) : null}
+          <ReplyComment  commentID={comment.commentID}/>
             </div>
           </div>
         </div>
+        </div>
+        )}
+        </AuthUserContext.Consumer>
       );
     } else {
-      console.log("ELSE", comment.comment, comment.comment.length);
+  //  console.log("ELSE", comment.comment, comment.comment.length);
 
       if (showAll) {
         return (
@@ -128,8 +154,9 @@ class Comment extends React.Component {
         );
       }
     }
-
-    const toShow = comment.comment.slice(0, limited) + "....";
+//console.log("this is commentContent",commentContent)
+    const toShow = commentContent.slice(0, limited) + "....";
+    
     if (toShow) {
       return (
         <div className="card-comment">
@@ -149,4 +176,4 @@ class Comment extends React.Component {
     }
   }
 }
-export default Comment;
+export default  compose(withFirebase)(Comment);

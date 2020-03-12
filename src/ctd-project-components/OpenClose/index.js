@@ -3,7 +3,8 @@ import React from "react";
 
 class OpenClose extends React.Component {
   state = {
-    isOpen: false
+    isOpen: false,
+    isClicked: "" 
   };
 
   handleOpen = () => {
@@ -12,11 +13,13 @@ class OpenClose extends React.Component {
     });
     console.log("hello ", this.state.isOpen);
     let openSlider = !this.state.isOpen;
-    console.log("bernie ", openSlider);
+    console.log("openSlider ", openSlider);
     if (openSlider === true) {
       console.log("Hello, Nick");
     }
   };
+
+ 
 
   // handleClose = () => {
   //   this.setState({
@@ -26,8 +29,10 @@ class OpenClose extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleOpen}>test</button>
+      <div class="hamburger-container" onClick = {this.animateButton}>
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
       </div>
     );
   }
