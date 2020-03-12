@@ -1,16 +1,12 @@
 import React from "react";
-// import SideBarOpen from '../SideBarOpen';
+// import SideBarOpen from '../SideBarOpen';`
 
 const SearchBar = props => {
   return (
-    <div>
-      <form>
-        <label>
-          Search:
-          <input onChange={props.handleInput} type="text" />
-          {/* <input onChange = {() => props.selectProject} type = 'submit' />  button is not working properly */}
-        </label>
-      </form>
+    <div className = 'search-container'>
+      <input onChange={props.handleInput} type="text" placeholder = 'Search...'/>
+      <div className = 'search'></div>
+      {/* <input onChange = {() => props.selectProject} type = 'submit' />  button is not working properly */}
     </div>
   );
 };

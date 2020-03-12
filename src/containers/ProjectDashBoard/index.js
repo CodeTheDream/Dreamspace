@@ -29,7 +29,7 @@ class ProjectDashBoard extends React.Component {
     });
   };
 
-  handleInput = e => {
+  handleInput = (e) => {
     console.log(e.target.value);
     this.setState({
       searchName: e.target.value
@@ -53,30 +53,28 @@ class ProjectDashBoard extends React.Component {
 
   render() {
     // Filtering out the side bar Menu
-    let filterProject = this.state.projectData.filter(sideBarFilter => {
-      return sideBarFilter.fields.Name.toUpperCase().includes(
-        this.state.searchName.toUpperCase()
-      );
-    });
+    let filterProject = this.state.projectData.filter((sideBarFilter) => {
+      return sideBarFilter.fields.Name.toUpperCase().includes(this.state.searchName.toUpperCase());
+    })
 
     return (
       <div className="view-container dashboard">
         <div className="dashboard-content">
-          <div>
-            {this.state.projectData && (
+          {/* <div>
+            {/* {this.state.projectData && (
               <Header
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
               />
-            )}
-            {this.state.projectData && (
+            )} */}
+            {/*this.state.projectData && (
               <SearchBar
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
                 handleInput={this.handleInput}
               />
             )}
-          </div>
+          </div> */}
 
           {this.state.selectedProject ? (
             <FeatureCard project={this.state.selectedProject} />
@@ -87,7 +85,14 @@ class ProjectDashBoard extends React.Component {
               projectData={this.state.projectData}
               selectProject={this.selectProject}
               filterProject={filterProject}
-            />
+              handleInput={this.handleInput}
+              >
+              <SearchBar
+                projectData={this.state.projectData}
+                selectProject={this.selectProject}
+                // handleInput={this.handleInput}
+              />
+              </SideBarOpen>
           )}
         </div>
       </div>
