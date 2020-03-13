@@ -115,6 +115,9 @@ class Firebase {
  replys = (commentId) => this.db.collection(`comments/${commentId}/replys`);
   reply = (commentId, replyId) => this.db.collection(`comments/${commentId}/replys/${replyId}`);
 
+ // reply = uid => this.db.doc(`replies/${uid}`);
+  
+ // replies = () => this.db.collection('replies');
 
 
 //*** Tags API ***

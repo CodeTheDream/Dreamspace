@@ -2,8 +2,9 @@ import React from "react";
 import { withFirebase } from "../Firebase";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
-
+import AddReplys from "../AddReplys";
 const moment = require("moment");
+
 class ReplyComment extends React.Component {
   constructor(props) {
     super(props);
@@ -11,41 +12,75 @@ class ReplyComment extends React.Component {
       timeCreated: "",
       replys: [],
       limit: 5,
-      showAll: false
+      showAll: false,
+      showPopup: false
     };
   }
 
-  componentDidMount = () => {
-    const commentId = this.props.commentID;
-    //console.log("this is commentId",commentId)
-    this.unsubscribe = this.props.firebase
-      .replys(commentId)
-      //.where("articleId", "==", articleId)
-      .onSnapshot(snapshot => {
-        const Replys = [];
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          Replys.push(data);
-        });
-      
-        this.setState({ replys: Replys });
-      });
+  togglePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   };
-  handelOnClick = () => {
-    if(this.state.replys.length > 0){
-      console.log("this is my list of replys",this.state.replys)
-          return <div >{this.state.Replys}</div>;
-       
-      }
-    }
-  
+  cancle = () => {
+    this.setState({ showPopup: false });
+  };
+
+  renderReplycomment = () => {
+    console.log("this is the replys in renderreplys func", this.props.replys);
+    const { comment, timeCreated } = this.props;
+   return(
+      this.props.replys &&
+    
+    this.props.replys.map(reply => {
+        console.log("this is the the reply in the reply function", reply);
+        return (
+          <div>
+            <ReplyComment
+              reply={reply.reply}
+              timeCreated={timeCreated}
+            />
+
+            <AddReplys type="child" />
+          </div>
+        );
+      })
+   )
+  };
+
   render() {
+    const { reply, timeCreated, commentId } = this.props;
+    //console.log("totall replys",reply)
+    console.log("show popup", this.state.showPopup);
     return (
-      <div className="repypage">
-        <button className="fas fa-arrow-alt-down" onClick={this.handelOnClick}>
-          view more Replys
-        </button>
-   
+      <div>
+        <div className="repypage">
+          <i
+            className="fas fa-angle-down "
+            style={{ width: "10em" }}
+            onClick={() => this.togglePopup()}
+          >
+            {" "}
+            view{""} {this.props.totallReplys}
+            {" more "}
+            {" Replys "}
+          </i>
+        </div>
+        {this.state.showPopup ? (
+          <div>
+            {this.props.replys.map(reply => {
+              console.log("this is the the reply in the reply function", reply);
+              return (
+                <div>
+                  <div className="replystayle">{this.renderReplycomment}</div>
+                  <div>
+                    <AddReplys type="child" />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : null}
       </div>
     );
   }

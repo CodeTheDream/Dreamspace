@@ -6,6 +6,7 @@ import { withFirebase } from "../../components/Firebase";
 import Comment from "../../components/Comment";
 import ListItem1 from '../../components/ListItem1'
 import ReplyComment from "../../components/ReplyComment";
+import AddReplys from  "../../components/AddReplys"
 const moment = require("moment");
 class IndividualView extends React.Component {
   constructor(props) {
@@ -54,8 +55,8 @@ class IndividualView extends React.Component {
 
     this.unsubscribe = this.props.firebase
       .article(articleId)
-      .get()
-      .then(doc => {
+      
+      .onSnapshot(doc => {
         if (doc.exists) {
          // console.log(" this is my article", doc.data());
           this.setState({
@@ -105,19 +106,19 @@ class IndividualView extends React.Component {
  sortByDate() {
   const {comment} = this.state
   let newPostList = comment
-  console.log("this is the sorted data",newPostList)
+ // console.log("this is the sorted data",newPostList)
   if (this.state.isOldestFirst) {
     newPostList = comment.sort((a, b) => a.date > b.date)
   } else {
     newPostList = comment.sort((a, b) => a.date < b.date)
-    console.log("this is the sorted data",newPostList)
+    //console.log("this is the sorted data",newPostList)
   }
   this.setState({
     isOldestFirst: !this.state.isOldestFirsts,
     comments: newPostList
   
   })
-      console.log("this is the sorted data",newPostList)
+     // console.log("this is the sorted data",newPostList)
 }
   render() {
     // Access to local component state
@@ -159,7 +160,9 @@ if(article){
               className="disabled"
             >
               <i className="fa fa-comment"> </i>
+              {" "}
               {this.state.totalcount}
+              {" "}
               Comment
             </button>
             <button type="button" onClick={this.handleRemove} className="disabled">
@@ -178,14 +181,15 @@ if(article){
               {/* console.log(comment) */}
               return (
                <div  className="card-comment">
-                <Comment 
+               <Comment 
                   comment={comment}
                   key={index}
                   limited={limited}
                   timeCreated={timeCreated}
-                  
-                />
-            
+                  commentId={comment.commentId}
+              />
+             {/* <ReplyComment     commentId={comment.commentId}/>*/}
+             
                 </div>
                 );
                

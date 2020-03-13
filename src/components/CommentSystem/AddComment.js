@@ -22,7 +22,7 @@ class AddComment extends React.Component {
       .comments()
       .orderBy("timeCreated")
       .limit(5);
-    console.log("Here is my comments refrence", this.unsubscribe);
+    //console.log("Here is my comments refrence", this.unsubscribe);
   };
 
   handleChange = event => {
