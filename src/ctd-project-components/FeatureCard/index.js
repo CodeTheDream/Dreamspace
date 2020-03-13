@@ -8,13 +8,14 @@ const FeatureCard = props => {
   const { project } = props;
 
   return (
+    
     <div className="flip-card">
       <div className="flip-card-inner">
         <div className="flip-card-front">
           <div className="card-content">
+            <img className = "ctd-image-logo-front" src={ctdlogo} id="card-logo" alt={ctd} />
             <h2>{project.fields.Name}</h2>
           </div>
-          <img src={ctdlogo} id="card-logo" alt={ctd} />
         </div>
         <div className="flip-card-back">
           <div className="card-bun">
