@@ -18,14 +18,14 @@ const FeatureCard = props => {
           </div>
         </div>
         <div className="flip-card-back">
-          <div className="card-bun">
+          <div className="flip-card-bun">
             {/* <div className="scroll-tip"> */}
-            <img src={ctd} id="card-logo-title" alt={ctdlogo} />
+            <img src={ctd} id="flip-card-logo-title" alt={ctdlogo} />
             {/* <div className="scroll-tip-text">
                 Card is scrollable depending on size of content
               </div> */}
             {/* </div> */}
-            <div className="card-header">{project.fields.Name}</div>
+            <div className="flip-card-header">{project.fields.Name}</div>
             {project.fields.Current_Team && (
               <>
                 <div className="card-team">Current Team</div>
