@@ -29,10 +29,10 @@ class ListItem extends React.Component {
     });
     }
     sortByDate() {
-        const { article } = this.state
+        const { article } = this.props
         let newArticleList = article
         if (this.state.isOldestFirst) {
-            newArticleList = article.sort((a, b) => a.date > b.date)
+            newArticleList = article.sort((a, b) => a.date > b.timeCreated)
         } else {
             newArticleList = article.sort((a, b) => a.date < b.date)
         }
@@ -63,10 +63,7 @@ class ListItem extends React.Component {
                   article: article
               })
                
-             /* this.unsubscribe = this.props.firebase
-                  
-                 article.orderBy("timeCreated")
-                  .limit(10);*/
+           
           
          
 
@@ -103,7 +100,7 @@ class ListItem extends React.Component {
                     <i className="fa fa-user"></i>
                   </span>
                   <span>
-                    posted by {this.state.username} {article.timeCreated}
+             posted by {this.state.username} {article.timeCreated} 
                   </span>
                 </div>
               </div>

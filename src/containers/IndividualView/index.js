@@ -18,7 +18,8 @@ class IndividualView extends React.Component {
       TotallComment: "",
       totalcount: "",
       isOldestFirst:true,
-     commentId:""
+        commentId: "",
+     comment:[]
     };
   }
 
@@ -45,6 +46,8 @@ class IndividualView extends React.Component {
                 comments:comments,
             });
         });
+
+
 
       });
    
@@ -84,7 +87,8 @@ class IndividualView extends React.Component {
         const totalcount = TotallComment.length
         this.setState({totalcount:totalcount})
       });
-     
+      { this.sortByDate() }
+      console.log("sort",this.sortByDate)
   };
 
   
@@ -143,7 +147,7 @@ if(article){
           <div className="auther-name-individual">
             <div className="autherstyle-individual">
               <i className="fa fa-user"></i>
-              <span>posted by {article.timeCreated}</span>
+                        <span>posted by {article.timeCreated} </span>
             </div>
           </div>
 

@@ -19,23 +19,24 @@ class ListItem1 extends React.Component {
             TotallComment: "",
             totalcount: 0,
             isOldestFirst: true,
-            sortType:"ASC"
+            sortDirection: 'descending',
+           
 
 
         };
     }
-   /* sortByDtate () {
-        const {article}= this.props
+   sortByDate () {
+        const {article}= this.state
         let newArticleList = article
       if(this.state.isOldestFirst){
-        newArticleList.sort((a,b) => a.date < b.date)
+        newArticleList.sort((a,b) => a.timeCreated < b.timeCreated)
       }
       else {
-        newArticleList.sort((a,b) =>a.date > b.date)
+        newArticleList.sort((a,b) =>a.timeCreated > b.timeCreated)
       
       }
-      this.setState({article:newArticleList.sort((a,b) => a.date >b.date)})
-      }*/
+      this.setState({article:newArticleList.sort((a,b) => a.timeCreated >b.timeCreated)})
+      }
 
 
 
@@ -57,6 +58,7 @@ class ListItem1 extends React.Component {
                 let user = doc.data()
                 this.setState({ username: user.username })
             })
+        this.sortByDate()
         
     }
     
@@ -300,11 +302,7 @@ class ListItem1 extends React.Component {
         }
     }
     render() {
-        const { article, sortType } = this.state
-        const sorted = article.sort((a, b) => {
-            const isReversed = (sortType === 'ASC') ? 1 : -1
-            return isReversed*a.date.localCompare(b.date)
-        })
+      
         if(this.props.isIndividualView == true){
         return (
             <AuthUserContext.Consumer>
