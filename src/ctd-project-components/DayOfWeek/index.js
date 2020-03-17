@@ -21,6 +21,7 @@ class DayOfWeek extends React.Component {
       date: new Date()
     });
   }
+  
   render() {
     let date = new Date();
     let weekday = new Array(7);
