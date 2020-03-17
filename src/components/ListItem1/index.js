@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 import { AuthUserContext } from "../Session";
 
 class ListItem1 extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -20,18 +21,52 @@ class ListItem1 extends React.Component {
       totalcount: 0
     };
   }
-  /*sortByDtate () {
-        const {postList}= this.props
-        let newPostList = postList
-      if(this.state.isOldestFirst){
-        newPostList.sort((a,b) => a.timeCreated < b.timeCreated)
-      }
-      else {
-        newPostList.sort((a,b) =>a.timeCreated > b.timeCreated)
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            article: [],
+            upvotes: [],
+            downvotes: [],
+            calculatedvote: "",
+            upvotecolor: 'gray',
+            downvotecolor: 'gray',
+            username: "",
+            TotallComment: "",
+           totalcount:0
+
+        };
+    }
+  
+    
       
-      }
-      this.setState({article:newPostList.sort((a,b) => a.timeCreated >b.timeCreated)})
-      }*/
+    componentDidMount() {
+      
+        const { article } = this.props
+       // console.log("this is the new article:", article)
+        let upvotes = article.upvotes;
+       // console.log("this is the upvotes:" + upvotes)
+        let downvotes = article.downvotes;
+        this.calculatedvote(upvotes, downvotes)
+       /* let autherId = article.userId;
+        this.unsubscribe = this.props.firebase
+            .user(autherId)
+            .get()
+            .then(doc => {
+               // console.log("userdata", doc.data())
+                let user = doc.data()
+                this.setState({ username: user.username })
+            })*/
+        
+    }
+    
+   
+    componentDidUpdate = (prevProps) => {
+        if (prevProps.article !== this.props.article) {
+            this.calculatedvote(this.props.article.upvotes, this.props.article.downvotes)
+        }
+    };
+
 
   componentDidMount() {
     const { article } = this.props;

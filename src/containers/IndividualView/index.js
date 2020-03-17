@@ -5,7 +5,10 @@ import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import Comment from "../../components/Comment";
 import ListItem1 from "../../components/ListItem1";
+<<<<<<< HEAD
 import ReplyComment from "../../components/ReplyComment";
+=======
+>>>>>>> newpostarticle1
 const moment = require("moment");
 class IndividualView extends React.Component {
   constructor(props) {
@@ -17,13 +20,19 @@ class IndividualView extends React.Component {
       TotallComment: "",
       totalcount: "",
       isOldestFirst: true,
+<<<<<<< HEAD
       commentId: ""
+=======
+      commentId: "",
+      username: "",
+      sortType:'asc'
+>>>>>>> newpostarticle1
     };
   }
 
   componentDidMount = () => {
-    //this.sortByDtate(Comment)
     let articleId = this.props.match.params.articleId;
+
     this.unsubscribe = this.props.firebase
       .comments()
 
@@ -66,6 +75,16 @@ class IndividualView extends React.Component {
         } else {
           console.log("No such document!");
         }
+
+        let autherId = this.state.article.userId;
+        this.unsubscribe = this.props.firebase
+          .user(autherId)
+          .get()
+          .then(doc => {
+            // console.log("userdata", doc.data())
+            let user = doc.data();
+            this.setState({ username: user.username });
+          });
       });
     //This Helps to find the total commets for spesific articleId
     this.unsubscribe = this.props.firebase
@@ -97,32 +116,30 @@ class IndividualView extends React.Component {
       });
   };
 
-  sortByDate() {
-    const { comment } = this.state;
-    let newPostList = comment;
-    console.log("this is the sorted data", newPostList);
-    if (this.state.isOldestFirst) {
-      newPostList = comment.sort((a, b) => a.date > b.date);
-    } else {
-      newPostList = comment.sort((a, b) => a.date < b.date);
-      //console.log("this is the sorted data",newPostList)
-    }
-    this.setState({
-      isOldestFirst: !this.state.isOldestFirsts,
-      comments: newPostList
-    });
-    // console.log("this is the sorted data",newPostList)
-  }
+
+  
+
+
   render() {
     // Access to local component state
     const {
       article,
       comment,
-
+      comments,
       timeCreated,
 
-      limited
+      limited,
+      sortType
     } = this.state;
+   // console.log("unsorted comments",comments)
+    if(comments){
+ comments.sort((a,b) =>{
+  const  isReversed = (sortType === 'dsc') ? 1 :-1;
+  return  isReversed * a.timeCreated.localeCompare(b.timeCreated)
+})
+//console.log("sortedComment",sortedcomments)
+    }
+
 
     if (article) {
       return (
@@ -132,8 +149,11 @@ class IndividualView extends React.Component {
 
             <div className="auther-name-individual">
               <div className="autherstyle-individual">
-                <i className="fa fa-user"></i>
-                <span>posted by {article.timeCreated}</span>
+
+                <i className="fa fa-user"></i>{" "}
+                <span>
+                  posted by {this.state.username} {} {article.timeCreated}
+                </span>
               </div>
             </div>
 
@@ -152,7 +172,8 @@ class IndividualView extends React.Component {
                 //onClick={this.handleSubmit}
                 className="disabled"
               >
-                <i className="fa fa-comment"> </i> {this.state.totalcount}{" "}
+                <i className="fa fa-comment-alt"> </i> {this.state.totalcount}{" "}
+
                 Comment
               </button>
               <button
@@ -162,6 +183,7 @@ class IndividualView extends React.Component {
               >
                 Save
               </button>
+
             </div>
           </div>
 
@@ -182,7 +204,13 @@ class IndividualView extends React.Component {
                       key={index}
                       limited={limited}
                       timeCreated={timeCreated}
+
+
+                      commentId={comment.commentId}
+                      userName={this.state.username}
                     />
+                    {/* <ReplyComment     commentId={comment.commentId}/>*/}
+
                   </div>
                 );
               })}

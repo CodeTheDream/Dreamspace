@@ -14,7 +14,8 @@ class ListItem extends React.Component {
       article: [],
       username: "",
       TotallComment: "",
-      totalcount: ""
+      totalcount: "",
+      authorPhoto:""
     };
   }
   openPost(e, article) {
@@ -41,6 +42,20 @@ class ListItem extends React.Component {
         const totalcount = TotallComment.length;
         this.setState({ totalcount: totalcount });
       });
+      let autherId = article.userId;
+        this.unsubscribe = this.props.firebase
+            .user(autherId)
+            .get()
+            .then(doc => {
+               // console.log("userdata", doc.data())
+                let user = doc.data()
+                this.setState({ 
+                  username: user.username,
+                  authorPhoto:user.email
+                 })
+                 console.log("authorPhoto",this.state.authorPhoto)
+            })
+        
   }
 
   render() {
@@ -79,7 +94,8 @@ class ListItem extends React.Component {
                   className="button"
                   onClick={e => this.openPost(e, article)}
                 >
-                  <i className="fa fa-comment">
+                  <i className="fa fa-comment-alt
+">
                     {" "}
                     {this.state.totalcount} {" comment "}
                   </i>
