@@ -88,6 +88,12 @@ class Firebase {
 
   users = () => this.db.collection('users');
 
+  // *** Admin User ***
+  
+  adminUser = uid =>this.db.doc(`adminUsers/${uid}`);
+
+  adminUsers = () => this.db.collection('adminUsers');
+  
   // *** Article API ***
 
   article = uid => this.db.doc(`article/${uid}`);
