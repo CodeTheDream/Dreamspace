@@ -40,6 +40,29 @@
   padding: 5px;
 }
 
-// .search-container {
-//   margin-top: 20px;
-// }
+.footer {
+  background: #0066cc;
+  display: grid;
+  grid-template-columns: auto 200px;
+  // padding: 7px;
+  // border-top: solid;
+  // border-color: #f15c39;
+  // border-width: 3px;
+}
+
+
+.today {
+  margin-top: 8px;
+}
+
+.style-day, .style-time, .footer-content {
+  color: #fff;
+  font-weight: 200;
+}
+
+.header {
+  background: #0066cc;
+  padding: 7px;
+  padding-left: 45px;
+}
+
