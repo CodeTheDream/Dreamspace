@@ -4,33 +4,6 @@ import SearchBar from "../SearchBar";
 // import '../../../src/'
 
 const SideBarOpen = props => {
-  // let sideBarMenu = props.filterProject;
-  // let probableList = sideBarMenu.filter(
-  //   filterProjectList => filterProjectList.fields.Status !== "Probable"
-  // );
-
-  // let filteredList = probableList.filter(
-  //   project => project.fields.Status !== "Complete"
-  // );
-  // // const dummyList = props.projectData;
-  // // console.log("dummy", dummyList);
-  // // const probableList = dummyList.filter(
-  // //   project => project.fields.Status !== "Probable"
-  // // );
-  // // let sideBarMenu = probableList.filter(
-  // //   project => project.fields.Status !== "Complete"
-  // // );
-  // // sideBarMenu = props.filterProject
-  // // let filterSideBarMenu = props.filterProject
-  // // console.log('filterSideBarMenu ', filterSideBarMenu)
-  // console.log("sideBarMenu ", sideBarMenu);
-  // console.log("probableList ", probableList);
-  // console.log("filteredList ", filteredList);
-
-  // // let actualProbableList = probableList;      // figure how to add only probable projects
-  // // let notProbableList = sideBarMenu;          // need to somehow link them conditionally or something?
-  // // console.log('actualProbableList ', probableList)
-  // // console.log('notProbableList ', notProbableList)
   const dummyList = props.projectData;
   console.log("dummy", dummyList);
   const probableList = dummyList.filter(
