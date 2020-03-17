@@ -19,7 +19,7 @@ class IndividualView extends React.Component {
       totalcount: "",
       isOldestFirst:true,
         commentId: "",
-     comment:[]
+  sortType:"dsc"
     };
   }
 
@@ -87,8 +87,7 @@ class IndividualView extends React.Component {
         const totalcount = TotallComment.length
         this.setState({totalcount:totalcount})
       });
-      { this.sortByDate() }
-      console.log("sort",this.sortByDate)
+    
   };
 
   
@@ -107,7 +106,7 @@ class IndividualView extends React.Component {
   };
 
 
- sortByDate() {
+ /*sortByDate() {
   const {comment} = this.state
   let newPostList = comment
  // console.log("this is the sorted data",newPostList)
@@ -123,19 +122,26 @@ class IndividualView extends React.Component {
   
   })
      // console.log("this is the sorted data",newPostList)
-}
+}*/
   render() {
     // Access to local component state
      
     const {
       article,
       comment,
-   
+   sortType,
       timeCreated,
      
       limited
     } = this.state;
-  
+
+      if (comments) {
+          comments.sort((a, b) => {
+              const isReversed = (sortType === 'dsc') ? 1 : -1;
+              return isReversed * a.timeCreated.localeCompare(b.timeCreated)
+          })
+          //console.log("sortedComment",sortedcomments)
+      }
 if(article){
     return (
        

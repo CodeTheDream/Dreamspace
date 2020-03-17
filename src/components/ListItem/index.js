@@ -15,7 +15,8 @@ class ListItem extends React.Component {
       username: "",
       TotallComment: "",
         totalcount: "",
-      isOldestFirst:true
+        isOldestFirst: true,
+      sortType:"ASC"
 
     };
   }
@@ -28,7 +29,7 @@ class ListItem extends React.Component {
       state: { article }
     });
     }
-    sortByDate() {
+  /*  sortByDate() {
         const { article } = this.props
         let newArticleList = article
         if (this.state.isOldestFirst) {
@@ -41,7 +42,7 @@ class ListItem extends React.Component {
             article: newArticleList
         })
        
-    }
+    }*/
   
   componentDidMount() {
     const { article } = this.props;
@@ -86,8 +87,16 @@ class ListItem extends React.Component {
   render() {
     const { upvotes } = this.state;
     const { downvotes } = this.state;
+      const { sortType} = this.state;
       const { article } = this.props;
-    
+     /* if (article) {
+          article.sort((a, b) => {
+              const isReversed = (sortType === 'dsc') ? 1 : -1;
+              return isReversed * a.timeCreated.localeCompare(b.timeCreated)
+          })
+          //console.log("sortedComment",sortedcomments)
+
+      }*/
     return (
       <AuthUserContext.Consumer>
         {authUser => (

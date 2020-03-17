@@ -19,13 +19,13 @@ class ListItem1 extends React.Component {
             TotallComment: "",
             totalcount: 0,
             isOldestFirst: true,
-            sortDirection: 'descending',
+             sortType:'ASC'
            
 
 
         };
     }
-   sortByDate () {
+   /*sortByDate () {
         const {article}= this.state
         let newArticleList = article
       if(this.state.isOldestFirst){
@@ -36,7 +36,7 @@ class ListItem1 extends React.Component {
       
       }
       this.setState({article:newArticleList.sort((a,b) => a.timeCreated >b.timeCreated)})
-      }
+      }*/
 
 
 
@@ -58,7 +58,8 @@ class ListItem1 extends React.Component {
                 let user = doc.data()
                 this.setState({ username: user.username })
             })
-        this.sortByDate()
+      //  this.sortByDate()
+       
         
     }
     
@@ -302,6 +303,7 @@ class ListItem1 extends React.Component {
         }
     }
     render() {
+       
       
         if(this.props.isIndividualView == true){
         return (
