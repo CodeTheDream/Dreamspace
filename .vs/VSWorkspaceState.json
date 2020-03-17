@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\assets",
+    "\\src\\assets\\styles",
+    "\\src\\components",
+    "\\src\\components\\ListItem",
+    "\\src\\components\\Navigation",
+    "\\src\\containers",
+    "\\src\\containers\\Create-article",
+    "\\src\\containers\\Dashboard",
+    "\\src\\containers\\IndividualView"
+  ],
+  "SelectedNode": "\\src\\assets\\styles\\_nav.scss",
+  "PreviewInSolutionExplorer": false
+}

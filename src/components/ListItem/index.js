@@ -1,50 +1,127 @@
 import React from "react";
 import myimage from "../../assets/images/nice-piccy3.jpg";
+import { withFirebase } from "../Firebase";
+import { compose } from "recompose";
+import { withRouter } from "react-router-dom";
+import { AuthUserContext } from "../Session";
 
-class ListItem extends React.Component{
-    render(){
-        return(
-        <div className="posts">
-        <div
-          className="likes"
-          style={{
-            width: "40px; border-left:4px solid transparent;",
-            float: "left"
-          }}
-        >
-          <span style={{ fontSize: "1em" }}>
-            <i className="fa fa-arrow-up custom"></i>6k
-            <i className="fa fa-arrow-down custom"></i>
-          </span>
-        </div>
-        <div className="maincontent" id="content">
-          <div className="author">
-            <span style={{ float: "left" }}>
-              <i className="fa fa-user"></i>
-            </span>
-            <span style={{ float: "left" }}> post by Eliz </span>
-            <span style={{ float: "left" }}> 7 hours ago</span>
-            <span style={{ float: "left" }} className="effect">
-              <i className="fa fa-trophy"></i>
-            </span>
-          </div>
-          <div className="posts-content">
-            <h4>{this.props.article.title}</h4>
-            <img className="profile-img" alt="complex" src={myimage} />
-          </div>
-          <div className="bottom" id="commentarea">
-            <span style={{ float: "left" }}>
-              <i className="fa fa-comment">6k comments</i>
-            </span>
-            <span style={{ float: "left" }}>
-              <i className="fa fa-share">share</i>
-            </span>
-
-            <span style={{ float: "left" }}>...</span>
-          </div>
-        </div>
-      </div>)
+import ListItem1 from "../ListItem1";
+class ListItem extends React.Component {
+  constructor(props) {
+    // console.log("this is the props value:" + props)
+    super(props);
+    this.state = {
+      article: [],
+      username: "",
+      TotallComment: "",
+      totalcount: ""
+    };
+  }
+  openPost(e, article) {
+    // console.log("ARTICLE", article)
+    e.preventDefault();
+    this.props.history.push({
+      pathname: "/articles/" + article.uid,
+      params: article.uid,
+      state: { article }
+    });
     }
-}
+    sortByDate() {
+        const { article } = this.state
+        let newPostList = article
+        if (this.state.isOldestFirst) {
+            newPostList = article.sort((a, b) => a.date > b.date)
+        } else {
+            newPostList = article.sort((a, b) => a.date < b.date)
+        }
+        this.setState({
+            isOldestFirst: !this.state.isOldestFirst,
+            postList: newPostList
+        })
+       
+    }
+  componentDidMount() {
+    const { article } = this.props;
+    this.props.firebase
+      .comments()
+      .where("articleId", "==", article.uid)
+      .onSnapshot(snapshot => {
+        const TotallComment = [];
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          TotallComment.push(data);
+        });
+        this.setState({ TotallComment: TotallComment });
+        const totalcount = TotallComment.length;
+          this.setState({ totalcount: totalcount });
+          
+              
+          })
+      
+      let autherId = article.userId;
+      this.unsubscribe = this.props.firebase
+          .user(autherId)
+          .get()
+          .then(doc => {
+              // console.log("userdata", doc.data())
+              let user = doc.data()
+              this.setState({ username: user.username })
+          })
+  }
 
-export default ListItem
+  render() {
+    const { upvotes } = this.state;
+    const { downvotes } = this.state;
+      const { article } = this.props;
+    
+    return (
+      <AuthUserContext.Consumer>
+        {authUser => (
+          <div className="card">
+            <ListItem1 article={article} />
+            <div className="maincontent" id="content">
+              <div className="auther">
+                <div className="auther-style">
+                  <span>
+                    <i className="fa fa-user"></i>
+                  </span>
+                  <span>
+                                    posted by {this.state.username}    {article.timeCreated}
+                  </span>
+                </div>
+              </div>
+             {/*} <div> {this.props.article.tags}</div>*/}
+              <div className="auther-style">
+                <a href={this.props.article.url}>{this.props.article.title}</a>
+              </div>
+
+              <div className="description-style">
+                {this.props.article.description}
+              </div>
+            </div>
+
+            <div id="commentarea">
+              <span style={{ float: "right" }}>
+                <button
+                  className="button"
+                  onClick={e => this.openPost(e, article)}
+                >
+                  <i className="fa fa-comment">
+                    {" "}
+                    {this.state.totalcount} {" comment "}
+                  </i>
+                </button>
+                <span style={{ float: "right" }}>
+                  <button className="button">
+                    <i className="fa fa-share">share...</i>
+                  </button>
+                </span>
+              </span>
+            </div>
+          </div>
+        )}
+      </AuthUserContext.Consumer>
+    );
+  }
+}
+export default compose(withFirebase, withRouter)(ListItem);

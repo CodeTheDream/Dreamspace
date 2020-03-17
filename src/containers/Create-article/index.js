@@ -9,10 +9,11 @@ import { withFirebase } from "../../components/Firebase";
 import { messaging } from "firebase";
 const options = ["Select Tag", "React", "Ruby", "Javascript"];
 const moment = require("moment");
+
 class Dialog extends React.Component {
   render() {
     return (
-      <div className="modal-wrapper">
+      <div className="modal-wrapper-postarticle">
       <div className="dialogstyle devedit-form">
         <button
           className=" dialogCloseButonStayle"
@@ -39,8 +40,8 @@ class Createarticle extends Component {
       downvotes: 0,
       upvotes: 0,
       authorID: "",
-      timeCreated: ""
-     
+      timeCreated: "",
+      userName:""
        
     };
     
@@ -75,12 +76,14 @@ class Createarticle extends Component {
       description: e.target.value
     });
   };
+  
   handleSubmit = (e, authUser) => {
     e.preventDefault();
     this.props.firebase
       .articles()
       .add({
         userId: authUser.uid,
+       // userName:this.state.userName,
         title: this.state.title,
         description: this.state.description,
         tags: this.state.tags,
@@ -111,24 +114,29 @@ class Createarticle extends Component {
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <div className="">
-            <button className="button-secondary"
+
+          <div>
+            <button className="button-secondary1"
+
               onClick={this.togglePopup}>
               Post New Article
               </button>  
             {this.state.showPopup ? (
               <Dialog closePopup={this.togglePopup}>
                 
-                <div className="">
-                  <div className="">
-                    {/* <div className="">Create a new post</div> */}
-                    <legend>Create New Post</legend>
-                    <div className="">
-                      <div className="">
+
+
+                <div >
+                  <div >
+                   {/* <div style={{fontSize:"legend"}}>Create new post</div>*/} 
+                    <legend className="devedit-form-legend1">Create New Post</legend>
+                    <div >
+                      <div >
+
                         <ul>
                           <li>
                             <form
-                              className=""
+                              
                               onSubmit={e => this.handleSubmit(e, authUser)}
                              
                             >
@@ -158,7 +166,8 @@ class Createarticle extends Component {
                                 </li>
 
                                 <li>
-                                  <textarea
+                                <input
+                                    type="text"
                                     placeholder="URl"
                                     value={this.state.url}
                                     onChange={this.onUrlChange}
