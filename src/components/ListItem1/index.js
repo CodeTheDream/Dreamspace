@@ -21,28 +21,18 @@ class ListItem1 extends React.Component {
 
         };
     }
-    /*sortByDtate () {
-        const {postList}= this.props
-        let newPostList = postList
-      if(this.state.isOldestFirst){
-        newPostList.sort((a,b) => a.timeCreated < b.timeCreated)
-      }
-      else {
-        newPostList.sort((a,b) =>a.timeCreated > b.timeCreated)
-      
-      }
-      this.setState({article:newPostList.sort((a,b) => a.timeCreated >b.timeCreated)})
-      }*/
+  
+    
       
     componentDidMount() {
-       
+      
         const { article } = this.props
        // console.log("this is the new article:", article)
         let upvotes = article.upvotes;
        // console.log("this is the upvotes:" + upvotes)
         let downvotes = article.downvotes;
         this.calculatedvote(upvotes, downvotes)
-        let autherId = article.userId;
+       /* let autherId = article.userId;
         this.unsubscribe = this.props.firebase
             .user(autherId)
             .get()
@@ -50,7 +40,7 @@ class ListItem1 extends React.Component {
                // console.log("userdata", doc.data())
                 let user = doc.data()
                 this.setState({ username: user.username })
-            })
+            })*/
         
     }
     

@@ -27,34 +27,30 @@ class ReplyComment extends React.Component {
   };
 
   renderReplycomment = () => {
-    console.log("this is the replys in renderreplys func", this.props.replys);
+    // console.log("this is the replys in renderreplys func", this.props.replys);
     const { comment, timeCreated } = this.props;
-   return(
-      this.props.replys &&
-    
-    this.props.replys.map(reply => {
+
+    if (this.props.replys) {
+      this.props.replys.map((reply,i)=> {
         console.log("this is the the reply in the reply function", reply);
         return (
           <div>
-            <ReplyComment
-              reply={reply.reply}
-              timeCreated={timeCreated}
-            />
+            <ReplyComment timeCreated={reply.timeCreated} reply={reply.reply} />
 
             <AddReplys type="child" />
           </div>
         );
-      })
-   )
+      });
+    }
   };
 
   render() {
-    const { reply, timeCreated, commentId } = this.props;
-    //console.log("totall replys",reply)
-    console.log("show popup", this.state.showPopup);
+    const { reply, timeCreated, commentId, userName } = this.props;
+   // console.log("poted by", userName);
+    //console.log("show popup", this.state.showPopup);
     return (
       <div>
-        <div className="repypage">
+        <div className="replypage">
           <i
             className="fas fa-angle-down "
             style={{ width: "10em" }}
@@ -72,10 +68,15 @@ class ReplyComment extends React.Component {
               console.log("this is the the reply in the reply function", reply);
               return (
                 <div>
-                  <div className="replystayle">{this.renderReplycomment}</div>
-                  <div>
-                    <AddReplys type="child" />
+                  <div className="replystayle">
+                    <p>
+                      {" "}
+                      <i className="fa fa-user"></i> posted By {userName}{" "}
+                      {reply.timeCreated}
+                    </p>
+                    <p>{reply.reply}</p>
                   </div>
+                  <AddReplys type="child" />
                 </div>
               );
             })}
