@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
-import * as ROLES from '../../constants/roles';
+import { withFirebase } from "../Firebase";
+import * as ROUTES from "../../constants/routes";
+import * as ROLES from "../../constants/roles";
 
 const SignUpPage = () => (
-  <div style={{marginTop:"3.5em"}}>
+  <div style={{ marginTop: "3.5em" }}>
     <h1>SignUp</h1>
     <SignUpForm />
   </div>
 );
 
 const INITIAL_STATE = {
-  username: '',
-  email: '',
-  passwordOne: '',
-  passwordTwo: '',
+  username: "",
+  email: "",
+  passwordOne: "",
+  passwordTwo: "",
   isAdmin: false,
-  error: null,
+  error: null
 };
 
-const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
+const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 
 const ERROR_MSG_ACCOUNT_EXISTS = `
   An account with this E-Mail address already exists.
@@ -45,7 +45,10 @@ class SignUpFormBase extends Component {
     if (isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
     }
-
+    // else {
+    //   roles[ROLES.NONADMIN] = ROLES.NONADMIN;
+    // }
+    console.log("roles: ", roles);
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
@@ -54,9 +57,9 @@ class SignUpFormBase extends Component {
           {
             username,
             email,
-            roles,
+            roles
           },
-          { merge: true },
+          { merge: true }
         );
       })
       .then(() => {
@@ -92,14 +95,14 @@ class SignUpFormBase extends Component {
       passwordOne,
       passwordTwo,
       isAdmin,
-      error,
+      error
     } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
-      passwordOne === '' ||
-      email === '' ||
-      username === '';
+      passwordOne === "" ||
+      email === "" ||
+      username === "";
 
     return (
       <form onSubmit={this.onSubmit}>
