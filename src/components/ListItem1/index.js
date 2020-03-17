@@ -12,14 +12,14 @@ class ListItem1 extends React.Component {
             article: [],
             upvotes: [],
             downvotes: [],
-            calculatedvote: "",
+            calculatedvote:[],
             upvotecolor: 'gray',
             downvotecolor: 'gray',
             username: "",
             TotallComment: "",
             totalcount: 0,
             isOldestFirst: true,
-             sortType:'ASC'
+             sortType:'asc'
            
 
 
@@ -29,13 +29,13 @@ class ListItem1 extends React.Component {
         const {article}= this.state
         let newArticleList = article
       if(this.state.isOldestFirst){
-        newArticleList.sort((a,b) => a.timeCreated < b.timeCreated)
+        newArticleList.sort((a,b) => a.date < b.date)
       }
       else {
-        newArticleList.sort((a,b) =>a.timeCreated > b.timeCreated)
+        newArticleList.sort((a,b) =>a.date> b.date)
       
       }
-      this.setState({article:newArticleList.sort((a,b) => a.timeCreated >b.timeCreated)})
+      this.setState({article:newArticleList.sort((a,b) => a.date >b.date)})
       }*/
 
 
@@ -101,8 +101,8 @@ class ListItem1 extends React.Component {
       
         const { article } = this.props
         let initialvote = [authUser.uid];
-        if (article.upvotes == 0) {
-            if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
+        if (article.upvotes === 0) {
+            if (this.checkDownvote(authUser.uid, article.downvotes) === -1) {
                 this.setState({
                     downvotecolor: 'gray',
                     upvotecolor: 'darkred'
@@ -133,8 +133,8 @@ class ListItem1 extends React.Component {
             }
         }
         else {
-            if (this.checkUpvote(authUser.uid, article.upvotes) == -1) {
-                if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
+            if (this.checkUpvote(authUser.uid, article.upvotes) === -1) {
+                if (this.checkDownvote(authUser.uid, article.downvotes) === -1) {
 
                    // console.log(this.checkUpvote)
                     this.setState({
@@ -187,9 +187,9 @@ class ListItem1 extends React.Component {
         const { article } = this.props
         let initialvote = [authUser.uid];
 
-        if (article.downvotes == 0) {
+        if (article.downvotes === 0) {
            // console.log("typeof", typeof (article.upvotes))
-            if (this.checkUpvote(authUser.uid, article.upvotes) == -1) {
+            if (this.checkUpvote(authUser.uid, article.upvotes) === -1) {
                 this.setState({
                     downvotecolor: 'dodgerblue',
                     upvotecolor: 'gray'
@@ -221,8 +221,8 @@ class ListItem1 extends React.Component {
         }
         else {
            // console.log("checkdownvote", this.checkDownvote(authUser.uid, article.downvotes));
-            if (this.checkDownvote(authUser.uid, article.downvotes) == -1) {
-                if (this.checkUpvote(authUser.uid, article.upvotes) == -1) {
+            if (this.checkDownvote(authUser.uid, article.downvotes) === -1) {
+                if (this.checkUpvote(authUser.uid, article.upvotes) === -1) {
                     this.setState({
                         calculatedvote: this.state.calculatedvote - 1,
                         downvotecolor: 'dodgerblue',
@@ -274,7 +274,7 @@ class ListItem1 extends React.Component {
 
     checkUpvote = (uid, upvotes) => {
        // console.log("filter", upvotes, uid)
-        if (typeof (upvotes) == "number") {
+        if (typeof (upvotes) === "number") {
 
             return -1
 
@@ -289,7 +289,7 @@ class ListItem1 extends React.Component {
     checkDownvote = (uid, downvotes) => {
        // console.log("filter", downvotes, uid)
        // console.log("typeof1", typeof (downvotes))
-        if (typeof (downvotes) == "number") {
+        if (typeof (downvotes) === "number") {
 
             return -1
         }
@@ -303,9 +303,18 @@ class ListItem1 extends React.Component {
         }
     }
     render() {
-       
+        //const {upvotes }  = this.state
+      //const  { sortType } = this.state
+
+        /*if (upvotes) {
+            upvotes.sort((a, b) => {
+                const isReversed = (sortType === 'dsc') ? 1 : -1;
+                return isReversed * a.timeCreated.localeCompare(b.timeCreated)
+            })
+            //console.log("sortedComment",sortedcomments)
+        }*/
       
-        if(this.props.isIndividualView == true){
+        if(this.props.isIndividualView === true){
         return (
             <AuthUserContext.Consumer>
                 {
@@ -343,8 +352,10 @@ class ListItem1 extends React.Component {
             </AuthUserContext.Consumer>
         )
                                     }
-                                    else{
-                                        return (
+        else {
+            
+            return (
+              
                                             <AuthUserContext.Consumer>
                                                 {
                                                     authUser => (
@@ -374,11 +385,13 @@ class ListItem1 extends React.Component {
                                                                     </div>
                                                                 </span>
                                                                     </div>
-                                                                    {this.props.children}
+                                                            {this.props.children}
+                                                          
                                                         </div>
                                                         
                                 
-                                                    )}
+                        )}
+
                                             </AuthUserContext.Consumer>
                                         )
                                     }

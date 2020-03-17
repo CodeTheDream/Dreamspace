@@ -1,5 +1,5 @@
 import React from "react";
-import myimage from "../../assets/images/nice-piccy3.jpg";
+//import myimage from "../../assets/images/nice-piccy3.jpg";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
@@ -16,7 +16,7 @@ class ListItem extends React.Component {
       TotallComment: "",
         totalcount: "",
         isOldestFirst: true,
-      sortType:"ASC"
+      sortType:"asc"
 
     };
   }
@@ -46,30 +46,28 @@ class ListItem extends React.Component {
   
   componentDidMount() {
     const { article } = this.props;
-    this.props.firebase
-      .comments()
-      .where("articleId", "==", article.uid)
-      .onSnapshot(snapshot => {
-        const TotallComment = [];
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          TotallComment.push(data);
-        });
-        this.setState({ TotallComment: TotallComment });
-        const totalcount = TotallComment.length;
-          this.setState({ totalcount: totalcount });
-        
+      this.props.firebase
+          .comments()
+          .where("articleId", "==", article.uid)
+          .onSnapshot(snapshot => {
+              const TotallComment = [];
+              snapshot.forEach(doc => {
+                  const data = doc.data();
+                  TotallComment.push(data);
+              });
+              this.setState({ TotallComment: TotallComment });
+              const totalcount = TotallComment.length;
+              this.setState({ totalcount: totalcount });
+
               this.setState({
                   isOldestFirst: true,
                   article: article
               })
-               
-           
-          
-         
+          })
+     
 
               
-      })
+      
 
       
       
@@ -82,21 +80,17 @@ class ListItem extends React.Component {
               let user = doc.data()
               this.setState({ username: user.username })
           })
-  }
+    }
+
+
+
 
   render() {
-    const { upvotes } = this.state;
-    const { downvotes } = this.state;
-      const { sortType} = this.state;
+    //const { upvotes } = this.state;
+     // const { downvotes } = this.state;
       const { article } = this.props;
-     /* if (article) {
-          article.sort((a, b) => {
-              const isReversed = (sortType === 'dsc') ? 1 : -1;
-              return isReversed * a.timeCreated.localeCompare(b.timeCreated)
-          })
-          //console.log("sortedComment",sortedcomments)
-
-      }*/
+     
+      
     return (
       <AuthUserContext.Consumer>
         {authUser => (

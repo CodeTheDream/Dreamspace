@@ -23,7 +23,7 @@ class Sidebar extends React.Component {
     }
         render() {
             const showSidebar = this.state.showSidebar
-                   if (showSidebar == false) {
+                   if (showSidebar === false) {
             return (
                 <div className="bar">
                 <a href="#Home" onClick={()=>this.toggleSidebar()}>

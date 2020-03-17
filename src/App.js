@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
@@ -11,7 +11,7 @@ import Account from "./containers/Account";
 import SignUp from "./components/SignUp"
 import SignInPage from "./components/SignIn"
 import { withAuthentication } from './components/Session';
-import Sidebar from "./components/Sidebar";
+//import Sidebar from "./components/Sidebar";
 
 
 function App() {
