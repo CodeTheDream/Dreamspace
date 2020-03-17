@@ -73,7 +73,7 @@ class AddReplys extends React.Component {
         <div>
              <div className="Reply">
                 <button onClick={this.togglePopup}>
-                {/*  <i className="fa fa-comment"> </i>*/}Reply
+    <i className="fa fa-comment-alt"> </i> {" "}Reply
                 </button>
               </div>
               {this.state.showPopup ? (

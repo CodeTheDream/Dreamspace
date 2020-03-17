@@ -8,19 +8,19 @@ body {
     background-color:#E8EEEF;; 
   }
   //MAIN CONTAINER CODE
-  .container-individual {
+  .container-individual{
     margin: auto;
     display: grid;
     grid-gap: 10px;
     padding:  30px 10px 20px 10px;
     width: 100%;
    justify-content: center;
-   max-width: 1000px;
+   max-width:1000px;
    align-self: center;
    margin-bottom: 1px;
    font-family:Helvetica;
-   // background-color: lightgray;
     margin-top: 3em;
+   // background-color: gray;;
 
   }
   
@@ -33,6 +33,7 @@ body {
   border-bottom: solid 0.1px lightgrey;
   overflow: auto;
   border-radius: 10px;
+ // width: 900px;
 
   
   }
@@ -155,7 +156,7 @@ body {
    }
    
    .Reply button {
-    margin-left: 84%;
+    margin-right: 60%;
     background-color: whitesmoke;
     font-family: Helvetica;
     opacity: 0.6;
