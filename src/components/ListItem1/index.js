@@ -18,37 +18,28 @@ class ListItem1 extends React.Component {
             username: "",
             TotallComment: "",
             totalcount: 0,
-            isOldestFirst: true
+            isOldestFirst: true,
+            sortType:"ASC"
+
 
         };
     }
-    /*sortByDtate () {
-        const {postList}= this.props
-        let newPostList = postList
+   /* sortByDtate () {
+        const {article}= this.props
+        let newArticleList = article
       if(this.state.isOldestFirst){
-        newPostList.sort((a,b) => a.timeCreated < b.timeCreated)
+        newArticleList.sort((a,b) => a.date < b.date)
       }
       else {
-        newPostList.sort((a,b) =>a.timeCreated > b.timeCreated)
+        newArticleList.sort((a,b) =>a.date > b.date)
       
       }
-      this.setState({article:newPostList.sort((a,b) => a.timeCreated >b.timeCreated)})
+      this.setState({article:newArticleList.sort((a,b) => a.date >b.date)})
       }*/
 
 
-     sortByDate() {
-        const { article } = this.state
-        let newPostList = article
-        if (this.state.isOldestFirst) {
-            newPostList = article.sort((a, b) => a.date > b.date)
-        } else {
-            newPostList = article.sort((a, b) => a.date < b.date)
-        }
-        this.setState({
-            isOldestFirst: !this.state.isOldestFirst,
-            article: newPostList
-        })
-    }
+
+    
     componentDidMount() {
      
         const { article } = this.props
@@ -104,7 +95,7 @@ class ListItem1 extends React.Component {
         this.setState({ calculatedvote: finalTotal })
     }
     handleUpvote = (authUser) => {
-        this.sortByDate()
+      
         const { article } = this.props
         let initialvote = [authUser.uid];
         if (article.upvotes == 0) {
@@ -309,7 +300,11 @@ class ListItem1 extends React.Component {
         }
     }
     render() {
-        const { postList } = this.state
+        const { article, sortType } = this.state
+        const sorted = article.sort((a, b) => {
+            const isReversed = (sortType === 'ASC') ? 1 : -1
+            return isReversed*a.date.localCompare(b.date)
+        })
         if(this.props.isIndividualView == true){
         return (
             <AuthUserContext.Consumer>

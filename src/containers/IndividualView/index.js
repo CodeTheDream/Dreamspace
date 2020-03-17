@@ -122,6 +122,7 @@ class IndividualView extends React.Component {
 }
   render() {
     // Access to local component state
+     
     const {
       article,
       comment,
@@ -130,9 +131,10 @@ class IndividualView extends React.Component {
      
       limited
     } = this.state;
-   
+  
 if(article){
     return (
+       
       <div className="container-individual ">
         <div className="card-individual">
 

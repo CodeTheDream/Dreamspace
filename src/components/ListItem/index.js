@@ -14,7 +14,9 @@ class ListItem extends React.Component {
       article: [],
       username: "",
       TotallComment: "",
-      totalcount: ""
+        totalcount: "",
+      isOldestFirst:true
+
     };
   }
   openPost(e, article) {
@@ -28,18 +30,19 @@ class ListItem extends React.Component {
     }
     sortByDate() {
         const { article } = this.state
-        let newPostList = article
+        let newArticleList = article
         if (this.state.isOldestFirst) {
-            newPostList = article.sort((a, b) => a.date > b.date)
+            newArticleList = article.sort((a, b) => a.date > b.date)
         } else {
-            newPostList = article.sort((a, b) => a.date < b.date)
+            newArticleList = article.sort((a, b) => a.date < b.date)
         }
         this.setState({
             isOldestFirst: !this.state.isOldestFirst,
-            postList: newPostList
+            article: newArticleList
         })
        
     }
+  
   componentDidMount() {
     const { article } = this.props;
     this.props.firebase
@@ -54,9 +57,23 @@ class ListItem extends React.Component {
         this.setState({ TotallComment: TotallComment });
         const totalcount = TotallComment.length;
           this.setState({ totalcount: totalcount });
+        
+              this.setState({
+                  isOldestFirst: true,
+                  article: article
+              })
+               
+             /* this.unsubscribe = this.props.firebase
+                  
+                 article.orderBy("timeCreated")
+                  .limit(10);*/
           
+         
+
               
-          })
+      })
+
+      
       
       let autherId = article.userId;
       this.unsubscribe = this.props.firebase
@@ -86,7 +103,7 @@ class ListItem extends React.Component {
                     <i className="fa fa-user"></i>
                   </span>
                   <span>
-                                    posted by {this.state.username}    {article.timeCreated}
+                    posted by {this.state.username} {article.timeCreated}
                   </span>
                 </div>
               </div>
@@ -106,7 +123,8 @@ class ListItem extends React.Component {
                   className="button"
                   onClick={e => this.openPost(e, article)}
                 >
-                  <i className="fa fa-comment">
+                                <i className="fa fa-comment">
+
                     {" "}
                     {this.state.totalcount} {" comment "}
                   </i>
