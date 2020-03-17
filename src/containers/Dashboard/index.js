@@ -46,17 +46,29 @@ class Dashboard extends React.Component {
       search: e.target.value
     });
   };
-  render() {
-    let filteredArticles = this.state.articles.filter(article => {
+    render() {
+        const { sortType } = this.state;
+        
+
+        let filteredArticles = this.state.articles.filter(article => {
+           
       return (
-          article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
-          article.timeCreated.toLowerCase().includes(this.state.search.toLowerCase()),
-        article.title.toLowerCase().includes(this.state.search.toLowerCase()),
-        article.description
-          .toLowerCase()
-          .includes(this.state.search.toLowerCase())
+          //article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
+          article.timeCreated.toLowerCase().includes(this.state.search.toLowerCase())
+       // article.title.toLowerCase().includes(this.state.search.toLowerCase()),
+        //article.description
+         // .toLowerCase()
+          //.includes(this.state.search.toLowerCase())
       )
-    });
+        });
+        
+        if (filteredArticles) {
+            filteredArticles.sort((a, b) => {
+                const isReversed = (sortType === 'dsc') ? 1 : -1;
+                return isReversed * a.timeCreated.localeCompare(b.timeCreated)
+            })
+
+        }
     return (
       <div className="wrapper">
         <div className="main-class">
