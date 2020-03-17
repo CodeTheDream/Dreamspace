@@ -71,7 +71,6 @@ class ProjectDashBoard extends React.Component {
     return (
       <div className="dashboard">
         <div className="dashboard-content">
-<<<<<<< HEAD
           <div>
             {/* {this.state.projectData && (
               <Header
@@ -79,26 +78,13 @@ class ProjectDashBoard extends React.Component {
                 selectProject={this.selectProject}
               />
             )} */}
-            {this.state.projectData && (
-              <SearchBar
-                projectData={this.state.projectData}
-                selectProject={this.selectProject}
-                handleInput={this.handleInput}
-=======
-          <div className="addButton">
-            <button
-              className="button-style"
-              onClick={this.togglePopup.bind(this)}
-            >
-              Add Project
-            </button>
-            {this.state.showPopup ? (
-              <PopForm
-                text="Enter Project Data"
-                closePopup={this.togglePopup.bind(this)}
->>>>>>> FinalMergeConflict
-              />
-            ) : null}
+            {/* {this.state.projectData && ( */}
+            {/* <SearchBar
+              projectData={this.state.projectData}
+              selectProject={this.selectProject}
+              handleInput={this.handleInput}
+            /> */}
+            {/* ) : null} */}
           </div>
           <div className="featured">
             {this.state.selectedProject ? (
@@ -106,12 +92,10 @@ class ProjectDashBoard extends React.Component {
             ) : (
               <img className="featured" src={ctdlogo} />
             )}
-<<<<<<< HEAD
-          </div>{" "}
-          */}
-          {this.state.selectedProject ? (
+          </div>
+          {/* {this.state.selectedProject ? (
             <FeatureCard project={this.state.selectedProject} />
-          ) : null}
+          ) : null} */}
           <button
             className="button-style"
             onClick={this.togglePopup.bind(this)}
@@ -130,24 +114,6 @@ class ProjectDashBoard extends React.Component {
               selectProject={this.selectProject}
               // filterProject={filterProject}
             />
-=======
-          </div>
-          {this.state.projectData && (
-            <div className="sidebar-menu">
-              <SideBarOpen
-                projectData={this.state.projectData}
-                selectProject={this.selectProject}
-                filterProject={filterProject}
-                handleInput={this.handleInput}
-              >
-                <SearchBar
-                  projectData={this.state.projectData}
-                  selectProject={this.selectProject}
-                  // handleInput={this.handleInput}
-                />
-              </SideBarOpen>
-            </div>
->>>>>>> FinalMergeConflict
           )}
         </div>
       </div>
