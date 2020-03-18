@@ -1,5 +1,5 @@
 import React from "react";
-import myimage from "../../assets/images/nice-piccy3.jpg";
+//import myimage from "../../assets/images/nice-piccy3.jpg";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
@@ -14,7 +14,10 @@ class ListItem extends React.Component {
       article: [],
       username: "",
       TotallComment: "",
-      totalcount: ""
+        totalcount: "",
+        isOldestFirst: true,
+      sortType:"asc"
+
     };
   }
   openPost(e, article) {
@@ -25,28 +28,69 @@ class ListItem extends React.Component {
       params: article.uid,
       state: { article }
     });
-  }
+    }
+  /*  sortByDate() {
+        const { article } = this.props
+        let newArticleList = article
+        if (this.state.isOldestFirst) {
+            newArticleList = article.sort((a, b) => a.date > b.timeCreated)
+        } else {
+            newArticleList = article.sort((a, b) => a.date < b.date)
+        }
+        this.setState({
+            isOldestFirst: !this.state.isOldestFirst,
+            article: newArticleList
+        })
+       
+    }*/
+  
   componentDidMount() {
     const { article } = this.props;
-    this.props.firebase
-      .comments()
-      .where("articleId", "==", article.uid)
-      .onSnapshot(snapshot => {
-        const TotallComment = [];
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          TotallComment.push(data);
-        });
-        this.setState({ TotallComment: TotallComment });
-        const totalcount = TotallComment.length;
-        this.setState({ totalcount: totalcount });
-      });
-  }
+      this.props.firebase
+          .comments()
+          .where("articleId", "==", article.uid)
+          .onSnapshot(snapshot => {
+              const TotallComment = [];
+              snapshot.forEach(doc => {
+                  const data = doc.data();
+                  TotallComment.push(data);
+              });
+              this.setState({ TotallComment: TotallComment });
+              const totalcount = TotallComment.length;
+              this.setState({ totalcount: totalcount });
+
+              this.setState({
+                  isOldestFirst: true,
+                  article: article
+              })
+          })
+     
+
+              
+      
+
+      
+      
+      let autherId = article.userId;
+      this.unsubscribe = this.props.firebase
+          .user(autherId)
+          .get()
+          .then(doc => {
+              // console.log("userdata", doc.data())
+              let user = doc.data()
+              this.setState({ username: user.username })
+          })
+    }
+
+
+
 
   render() {
-    const { upvotes } = this.state;
-    const { downvotes } = this.state;
-    const { article } = this.props;
+    //const { upvotes } = this.state;
+     // const { downvotes } = this.state;
+      const { article } = this.props;
+     
+      
     return (
       <AuthUserContext.Consumer>
         {authUser => (
@@ -59,7 +103,7 @@ class ListItem extends React.Component {
                     <i className="fa fa-user"></i>
                   </span>
                   <span>
-                    posted by {this.state.username} {article.timeCreated}
+             posted by {this.state.username} {article.timeCreated} 
                   </span>
                 </div>
               </div>
@@ -79,7 +123,8 @@ class ListItem extends React.Component {
                   className="button"
                   onClick={e => this.openPost(e, article)}
                 >
-                  <i className="fa fa-comment">
+                                <i className="fa fa-comment">
+
                     {" "}
                     {this.state.totalcount} {" comment "}
                   </i>

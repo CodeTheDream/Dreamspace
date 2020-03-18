@@ -1,7 +1,7 @@
 import React from "react";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
-import { withRouter } from "react-router-dom";
+//import { withRouter } from "react-router-dom";
 import { AuthUserContext } from "../Session";
 //import "./searchbar.scss";
 class SearchBar extends React.Component {

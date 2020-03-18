@@ -114,20 +114,25 @@ class Createarticle extends Component {
     return (
       <AuthUserContext.Consumer>
         {authUser => (
+
           <div>
             <button className="button-secondary1"
+
               onClick={this.togglePopup}>
               Post New Article
               </button>  
             {this.state.showPopup ? (
               <Dialog closePopup={this.togglePopup}>
                 
+
+
                 <div >
                   <div >
                    {/* <div style={{fontSize:"legend"}}>Create new post</div>*/} 
                     <legend className="devedit-form-legend1">Create New Post</legend>
                     <div >
                       <div >
+
                         <ul>
                           <li>
                             <form
