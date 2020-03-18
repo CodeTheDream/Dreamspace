@@ -2,7 +2,7 @@ import React from "react";
 import { withFirebase } from "../Firebase";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
-import AddReplys from "../AddReplys";
+import AddReplys1 from "../AddReplys1";
 const moment = require("moment");
 
 class ReplyComment extends React.Component {
@@ -26,7 +26,7 @@ class ReplyComment extends React.Component {
     this.setState({ showPopup: false });
   };
 
-  renderReplycomment = () => {
+ /* renderReplycomment = () => {
     // console.log("this is the replys in renderreplys func", this.props.replys);
     const { comment, timeCreated } = this.props;
 
@@ -42,11 +42,11 @@ class ReplyComment extends React.Component {
         );
       });
     }
-  };
+  };*/
 
   render() {
-    const { reply, timeCreated, commentId, userName } = this.props;
-   // console.log("poted by", userName);
+    const { reply, timeCreated, commentId, userName ,replysId} = this.props;
+   //console.log("replyId at replycomment", replysId);
     //console.log("show popup", this.state.showPopup);
     return (
       <div>
@@ -65,7 +65,7 @@ class ReplyComment extends React.Component {
         {this.state.showPopup ? (
           <div>
             {this.props.replys.map(reply => {
-              console.log("this is the the reply in the reply function", reply);
+              //console.log("this is the the reply in the reply function", reply);
               return (
                 <div>
                   <div className="replystayle">
@@ -76,7 +76,7 @@ class ReplyComment extends React.Component {
                     </p>
                     <p>{reply.reply}</p>
                   </div>
-                  <AddReplys type="child" />
+                  <AddReplys1 commentId={commentId} replysId={replysId}/>
                 </div>
               );
             })}

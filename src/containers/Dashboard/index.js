@@ -50,7 +50,7 @@ class Dashboard extends React.Component {
       return (
         article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
         article.title.toLowerCase().includes(this.state.search.toLowerCase()),
-        article.description.toLowerCase().includes(this.state.search.toLowerCase())
+       article.description.toLowerCase().includes(this.state.search.toLowerCase())
       );
     });
     return (
