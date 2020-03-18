@@ -15,12 +15,12 @@ class Comment extends React.Component {
     this.state = {
       comments: [],
       showAll: false,
-      replies: [],
-      // isOldestFirst: "",
       commentId: "",
       replys: [],
       timeCreated: "",
-      totallReplys: 0
+      totallReplys: 0,
+      sortType:'asc',
+      replysID:""
     };
   }
 
@@ -32,14 +32,23 @@ class Comment extends React.Component {
       //.where("commentId", "==", commentId)
       .onSnapshot(snapshot => {
         const Replys = [];
+        let replysId = "";
         snapshot.forEach(doc => {
+         
           const data = doc.data();
+         // console.log("doc data",data)
+          replysId = doc.id;
+          data.replysId = replysId;
           Replys.push(data);
         });
-        console.log("this is my replys using spesific commentId", Replys);
-        this.setState({ replys: Replys });
+       //console.log("this is my replysID using spesific commentId", replysId);
+        this.setState({ 
+          replys: Replys,
+          replysId:replysId
+         });
+
         const totallCountReplys = Replys.length;
-        console.log("totalcountReplys", totallCountReplys);
+        //console.log("totalcountReplys", totallCountReplys);
         this.setState({ totallReplys: totallCountReplys });
       });
   };
@@ -49,12 +58,19 @@ class Comment extends React.Component {
 
   render() {
 
-    const { comment, limited, timeCreated, commentId,userName } = this.props;
-    const { showAll } = this.state;
+    const { comment, limited, timeCreated, commentId,userName ,} = this.props;
+    const { showAll,replys,sortType,replysId} = this.state;
     let commentContent = comment.comment;
-    //  const { reply } = this.state;
-    // console.log("Here is your comment ID", comment.commentId)
+ 
+  //console.log("Here is your  replyID", replysId)
 
+    if(replys){
+      replys.sort((a,b) =>{
+       const  isReversed = (sortType === 'dsc') ? 1 :-1;
+       return  isReversed * a.timeCreated.localeCompare(b.timeCreated)
+     })
+     //console.log("sortedComment",sortedcomments)
+         }
     if (comment.comment && comment.comment.length <= limited) {
       // console.log("IF", comment.comment, comment.comment.length);
       return (
@@ -81,6 +97,8 @@ class Comment extends React.Component {
                         comment={comment}
                         totallReplys={this.state.totallReplys}
                         userName={userName}
+                        replysId={replysId}
+                        
                       />
                     </div>
                   </div>
