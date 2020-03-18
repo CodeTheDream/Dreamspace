@@ -94,7 +94,7 @@ class ListItem extends React.Component {
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <div className="card">
+          <div className="cardarticle">
             <ListItem1 article={article} />
             <div className="maincontent" id="content">
               <div className="auther">
