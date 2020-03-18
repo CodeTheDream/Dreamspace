@@ -22,22 +22,7 @@ class ListItem1 extends React.Component {
     };
   }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            article: [],
-            upvotes: [],
-            downvotes: [],
-            calculatedvote: "",
-            upvotecolor: 'gray',
-            downvotecolor: 'gray',
-            username: "",
-            TotallComment: "",
-           totalcount:0
-
-        };
-    }
-  
+    
     
       
     componentDidMount() {

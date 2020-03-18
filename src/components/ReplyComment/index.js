@@ -29,23 +29,20 @@ class ReplyComment extends React.Component {
   renderReplycomment = () => {
     // console.log("this is the replys in renderreplys func", this.props.replys);
     const { comment, timeCreated } = this.props;
-      {this.props.replys &&
-      this.props.replys.map(reply => {
+
+    if (this.props.replys) {
+      this.props.replys.map((reply,i)=> {
         console.log("this is the the reply in the reply function", reply);
         return (
           <div>
-            <ReplyComment reply={reply.reply} timeCreated={timeCreated} />
-
-    
+            <ReplyComment timeCreated={reply.timeCreated} reply={reply.reply} />
 
             <AddReplys type="child" />
           </div>
         );
-      })
-      }
+      });
+    }
   };
-
-  
 
   render() {
     const { reply, timeCreated, commentId, userName } = this.props;

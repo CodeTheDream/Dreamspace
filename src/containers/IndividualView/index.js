@@ -4,11 +4,9 @@ import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import Comment from "../../components/Comment";
-import ListItem1 from "../../components/ListItem1";
-<<<<<<< HEAD
+import ListItem1 from '../../components/ListItem1'
 import ReplyComment from "../../components/ReplyComment";
-=======
->>>>>>> newpostarticle1
+import AddReplys from  "../../components/AddReplys"
 const moment = require("moment");
 class IndividualView extends React.Component {
   constructor(props) {
@@ -19,20 +17,14 @@ class IndividualView extends React.Component {
       limited: 450,
       TotallComment: "",
       totalcount: "",
-      isOldestFirst: true,
-<<<<<<< HEAD
-      commentId: ""
-=======
-      commentId: "",
-      username: "",
-      sortType:'asc'
->>>>>>> newpostarticle1
+      isOldestFirst:true,
+     commentId:""
     };
   }
 
   componentDidMount = () => {
+    //this.sortByDtate(Comment)
     let articleId = this.props.match.params.articleId;
-
     this.unsubscribe = this.props.firebase
       .comments()
 
@@ -43,17 +35,19 @@ class IndividualView extends React.Component {
 
       .onSnapshot(snapshot => {
         const comments = [];
-        let commentId = "";
+        let commentId ="";
         snapshot.forEach(doc => {
           const data = doc.data();
-          commentId = doc.id;
-          data.commentId = commentId;
+          commentId=doc.id
+          data.commentId= commentId
           comments.push(data);
-          this.setState({
-            comments: comments
-          });
+              this.setState({
+                comments:comments,
+            });
         });
+
       });
+   
 
     //get the ID for a particular article
     // console.log("articleId", this.props.match.params);
@@ -61,30 +55,19 @@ class IndividualView extends React.Component {
 
     this.unsubscribe = this.props.firebase
       .article(articleId)
-
+      
       .onSnapshot(doc => {
         if (doc.exists) {
-          // console.log(" this is my article", doc.data());
+         // console.log(" this is my article", doc.data());
           this.setState({
-            article: doc.data()
-          });
-          this.setState({
+            article: doc.data()})
+            this.setState({
             timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  `)
           }); // set data to local state
-          // console.log("this is a state article:" , this.state.article)
+         // console.log("this is a state article:" , this.state.article)
         } else {
           console.log("No such document!");
         }
-
-        let autherId = this.state.article.userId;
-        this.unsubscribe = this.props.firebase
-          .user(autherId)
-          .get()
-          .then(doc => {
-            // console.log("userdata", doc.data())
-            let user = doc.data();
-            this.setState({ username: user.username });
-          });
       });
     //This Helps to find the total commets for spesific articleId
     this.unsubscribe = this.props.firebase
@@ -98,10 +81,13 @@ class IndividualView extends React.Component {
         });
 
         this.setState({ TotallComment: TotallComment });
-        const totalcount = TotallComment.length;
-        this.setState({ totalcount: totalcount });
+        const totalcount = TotallComment.length
+        this.setState({totalcount:totalcount})
       });
+     
   };
+
+  
 
   createComment = (comment, article) => {
     //  console.log("here create comment", comment, this.state.articleId);
@@ -117,110 +103,110 @@ class IndividualView extends React.Component {
   };
 
 
+ sortByDate() {
+  const {comment} = this.state
+  let newPostList = comment
+ // console.log("this is the sorted data",newPostList)
+  if (this.state.isOldestFirst) {
+    newPostList = comment.sort((a, b) => a.date > b.date)
+  } else {
+    newPostList = comment.sort((a, b) => a.date < b.date)
+    //console.log("this is the sorted data",newPostList)
+  }
+  this.setState({
+    isOldestFirst: !this.state.isOldestFirsts,
+    comments: newPostList
   
-
-
+  })
+     // console.log("this is the sorted data",newPostList)
+}
   render() {
     // Access to local component state
     const {
       article,
       comment,
-      comments,
+   
       timeCreated,
-
-      limited,
-      sortType
+     
+      limited
     } = this.state;
-   // console.log("unsorted comments",comments)
-    if(comments){
- comments.sort((a,b) =>{
-  const  isReversed = (sortType === 'dsc') ? 1 :-1;
-  return  isReversed * a.timeCreated.localeCompare(b.timeCreated)
-})
-//console.log("sortedComment",sortedcomments)
-    }
+   
+if(article){
+    return (
+      <div className="container-individual ">
+        <div className="card-individual">
 
-
-    if (article) {
-      return (
-        <div className="container-individual ">
-          <div className="card-individual">
-            <ListItem1 article={article} isIndividualView={true} />
-
-            <div className="auther-name-individual">
-              <div className="autherstyle-individual">
-
-                <i className="fa fa-user"></i>{" "}
-                <span>
-                  posted by {this.state.username} {} {article.timeCreated}
-                </span>
-              </div>
-            </div>
-
-            <div className="grid-subject2">
-              <a href={article.url}>{article.title}</a>
-            </div>
-
-            <div className="grid-description">
-              <p>{article.description}</p>
-            </div>
-
-            <div className="stylebutton">
-              <button
-                style={{ justifyContent: "spacebitween" }}
-                type="button"
-                //onClick={this.handleSubmit}
-                className="disabled"
-              >
-                <i className="fa fa-comment-alt"> </i> {this.state.totalcount}{" "}
-
-                Comment
-              </button>
-              <button
-                type="button"
-                onClick={this.handleRemove}
-                className="disabled"
-              >
-                Save
-              </button>
-
+          <ListItem1 article={article }  isIndividualView = {true}/>
+         
+          <div className="auther-name-individual">
+            <div className="autherstyle-individual">
+              <i className="fa fa-user"></i>
+              <span>posted by {article.timeCreated}</span>
             </div>
           </div>
 
-          <div>
-            <AddComment comment={comment} onCreate={this.createComment} />
+          <div className="grid-subject2">
+            <a href={article.url}>{article.title}</a>
           </div>
 
-          <div>
-            {this.state.comments &&
-              this.state.comments.map((comment, index) => {
-                {
-                  /* console.log(comment) */
-                }
-                return (
-                  <div className="card-comment">
-                    <Comment
-                      comment={comment}
-                      key={index}
-                      limited={limited}
-                      timeCreated={timeCreated}
+          <div className="grid-description">
+            <p>{article.description}</p>
+          </div>
 
-
-                      commentId={comment.commentId}
-                      userName={this.state.username}
-                    />
-                    {/* <ReplyComment     commentId={comment.commentId}/>*/}
-
-                  </div>
-                );
-              })}
+          <div className="stylebutton">
+            <button style={{justifyContent:"spacebitween"}}
+              type="button"
+              //onClick={this.handleSubmit}
+              className="disabled"
+            >
+              <i className="fa fa-comment"> </i>
+              {" "}
+              {this.state.totalcount}
+              {" "}
+              Comment
+            </button>
+            <button type="button" onClick={this.handleRemove} className="disabled">
+              Save
+            </button>
           </div>
         </div>
-      );
-    } else {
-      console.log("no article");
-      return null;
-    }
+
+        <div>
+          <AddComment comment={comment} onCreate={this.createComment} />
+        </div>
+
+        <div>
+          {this.state.comments &&
+            this.state.comments.map((comment,index) => {
+              {/* console.log(comment) */}
+              return (
+               <div  className="card-comment">
+               <Comment 
+                  comment={comment}
+                  key={index}
+                  limited={limited}
+                  timeCreated={timeCreated}
+                  commentId={comment.commentId}
+              />
+             {/* <ReplyComment     commentId={comment.commentId}/>*/}
+             
+                </div>
+                );
+               
+            })}
+         
+        </div>
+        
+      </div>
+    );
+          }
+          else {
+          
+            console.log("no article")
+            return(
+            null)
+
+          }
   }
 }
 
