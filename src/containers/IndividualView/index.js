@@ -18,8 +18,7 @@ class IndividualView extends React.Component {
       TotallComment: "",
       totalcount: "",
       isOldestFirst:true,
-        commentId: "",
-  sortType:"dsc"
+     commentId:""
     };
   }
 
@@ -46,8 +45,6 @@ class IndividualView extends React.Component {
                 comments:comments,
             });
         });
-
-
 
       });
    
@@ -87,7 +84,7 @@ class IndividualView extends React.Component {
         const totalcount = TotallComment.length
         this.setState({totalcount:totalcount})
       });
-    
+     
   };
 
   
@@ -106,7 +103,7 @@ class IndividualView extends React.Component {
   };
 
 
- /*sortByDate() {
+ sortByDate() {
   const {comment} = this.state
   let newPostList = comment
  // console.log("this is the sorted data",newPostList)
@@ -122,30 +119,20 @@ class IndividualView extends React.Component {
   
   })
      // console.log("this is the sorted data",newPostList)
-}*/
+}
   render() {
     // Access to local component state
-     
     const {
       article,
-        comment,
-     comments,
-   sortType,
+      comment,
+   
       timeCreated,
      
       limited
     } = this.state;
-
-      if (comments) {
-          comments.sort((a, b) => {
-              const isReversed = (sortType === "asc") ? 1 : -1;
-              return isReversed * a.timeCreated.localeCompare(b.timeCreated)
-          })
-          //console.log("sortedComment",sortedcomments)
-      }
+   
 if(article){
     return (
-       
       <div className="container-individual ">
         <div className="card-individual">
 
@@ -154,7 +141,7 @@ if(article){
           <div className="auther-name-individual">
             <div className="autherstyle-individual">
               <i className="fa fa-user"></i>
-                        <span>posted by {article.timeCreated} </span>
+              <span>posted by {article.timeCreated}</span>
             </div>
           </div>
 
