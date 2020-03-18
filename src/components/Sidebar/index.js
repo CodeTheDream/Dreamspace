@@ -39,8 +39,8 @@ class Sidebar extends React.Component {
                 <div className="sidebar">
                    
                     <div className="closebtn"  > <button onClick={() => this.onClose()}><i class="far fa-times"></i></button></div>
-                    <Link className="linkstyle" to={ROUTES.HOME}>Home</Link>
-                    <Link className="linkstyle" to={ROUTES.ACCOUNT}>Account</Link>
+                        <Link className="linkstyle" to={ROUTES.HOME}>Home</Link>
+                        <Link className="linkstyle" to={ROUTES.ACCOUNT}>Account</Link>
                     <div className="linkstyle">    <SignOutButton/></div>
                                         
                  </div>   
