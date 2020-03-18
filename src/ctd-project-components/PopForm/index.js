@@ -19,26 +19,24 @@ class PopFrom extends React.Component {
   push2AirTable = async e => {
     e.preventDefault();
     const {
-      Name,
-      Repo,
-      Notes,
-      External,
-      Website,
-      //   Current_Team,
-      Meeting_Time,
-      Project_Description
+      Name
+      // Repo,
+      // Notes,
+      // External,
+      // Website,
+      // Meeting_Time,
+      // Project_Description
     } = this.state;
 
     let fields = {
       fields: {
-        Name,
-        Repo,
-        Notes,
-        External,
-        Website,
-        // Current_Team,
-        Meeting_Time,
-        Project_Description
+        Name
+        // Repo,
+        // Notes,
+        // External,
+        // Website,
+        // Meeting_Time,
+        // Project_Description
       }
     };
 
@@ -56,31 +54,31 @@ class PopFrom extends React.Component {
     e.preventDefault();
     const {
       Name,
-      Repo,
-      Notes,
-      External,
-      Website,
+      Repo
+      // Notes,
+      // External,
+      // Website,
       //   Current_Team,
-      Meeting_Time,
-      Project_Description
+      // Meeting_Time,
+      // Project_Description
     } = this.state;
     console.log(
       "Name: ",
       Name,
       " Repo: ",
-      Repo,
-      " Notes: ",
-      Notes,
-      " External: ",
-      External,
-      "website",
-      Website,
-      "CT",
-      //   Current_Team,
-      "MT",
-      Meeting_Time,
-      "PD",
-      Project_Description
+      Repo
+      // " Notes: ",
+      // Notes,
+      // " External: ",
+      // External,
+      // "website",
+      // Website,
+      // "CT",
+      // //   Current_Team,
+      // "MT",
+      // Meeting_Time,
+      // "PD",
+      // Project_Description
     );
   };
 
@@ -97,8 +95,33 @@ class PopFrom extends React.Component {
       <div className="popup">
         <div className="popup\_inner">
           <h1>{this.props.text}</h1>
-          <form className="form-content" onSubmit={this.push2AirTable}>
-            <li className="form-li">
+          <form className="form-content" onSubmit={this.tryingThis}>
+            <input
+              name="Name"
+              placeholder="Project Title"
+              value={this.state.Name}
+              onChange={this.handleChange}
+            />
+            <input
+              name="Repo"
+              placeholder="Repository"
+              value={this.state.Repo}
+              onChange={this.handleChange}
+            />
+            <input
+              name="Website"
+              placeholder="Project Website"
+              value={this.state.Website}
+              onChange={this.handleChange}
+            />
+            <input
+              name="Meeting_Time"
+              placeholder="Meeting_time"
+              type="datetime-local"
+              value={this.state.Meeting_Time}
+              onChange={this.handleChange}
+            />
+            {/*} <li className="form-li">
               <label className="form-lable">
                 Project Name:
                 <input
@@ -176,7 +199,7 @@ class PopFrom extends React.Component {
                   onChange={this.handleChange}
                 />
               </label>
-            </li>
+            </li> */}
 
             <button className="form-button-style" type="submit" value="Submit">
               Submit
