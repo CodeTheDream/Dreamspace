@@ -1,5 +1,6 @@
 import React from "react";
 import ctdlogo from "../../assets/images/ctd-labs-logo.png";
+import axios from "axios";
 import {
   FeatureCard,
   PopForm,
@@ -45,20 +46,32 @@ class ProjectDashBoard extends React.Component {
     });
   };
 
-  getAirTable() {
-    const url = "https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects";
+  getAirTable = async () => {
+    const url = `https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects?api_key=${process.env.REACT_APP_AIRTABLE_KEY}`;
 
-    fetch(url, {
-      headers: { Authorization: "Bearer " + process.env.REACT_APP_AIRTABLE_KEY }
-    })
-      .then(response => response.json())
-      .then(responseData => {
-        console.log("data from Airtable", responseData);
-        const projectData = responseData.records;
-        console.log("projectData ", projectData);
-        this.setState({ projectData: projectData });
+    try {
+      const response = await axios(url);
+      console.log("airtable from GET: ", response);
+      const projectData = response.data.records;
+      this.setState({
+        projectData
       });
-  }
+    } catch (error) {
+      console.log(error);
+    }
+    // const url = "https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects";
+
+    // fetch(url, {
+    //   headers: { Authorization: "Bearer " + process.env.REACT_APP_AIRTABLE_KEY }
+    // })
+    //   .then(response => response.json())
+    //   .then(responseData => {
+    //     console.log("data from Airtable", responseData);
+    //     const projectData = responseData.records;
+    //     console.log("projectData ", projectData);
+    //     this.setState({ projectData: projectData });
+    //   });
+  };
 
   render() {
     // Filtering out the side bar Menu
