@@ -15,13 +15,12 @@ class Comment extends React.Component {
     this.state = {
       comments: [],
       showAll: false,
-     // replies: [],
+      replies: [],
       // isOldestFirst: "",
       commentId: "",
       replys: [],
       timeCreated: "",
-      totallReplys: 0,
-      sortType:'asc'
+      totallReplys: 0
     };
   }
 
@@ -37,10 +36,10 @@ class Comment extends React.Component {
           const data = doc.data();
           Replys.push(data);
         });
-        //console.log("this is my replys using spesific commentId", Replys);
+        console.log("this is my replys using spesific commentId", Replys);
         this.setState({ replys: Replys });
         const totallCountReplys = Replys.length;
-        //console.log("totalcountReplys", totallCountReplys);
+        console.log("totalcountReplys", totallCountReplys);
         this.setState({ totallReplys: totallCountReplys });
       });
   };
@@ -50,19 +49,12 @@ class Comment extends React.Component {
 
   render() {
 
-    const { comment, limited, timeCreated, commentId,userName ,} = this.props;
-    const { showAll,replys,sortType } = this.state;
+    const { comment, limited, timeCreated, commentId,userName } = this.props;
+    const { showAll } = this.state;
     let commentContent = comment.comment;
     //  const { reply } = this.state;
     // console.log("Here is your comment ID", comment.commentId)
 
-    if(replys){
-      replys.sort((a,b) =>{
-       const  isReversed = (sortType === 'dsc') ? 1 :-1;
-       return  isReversed * a.timeCreated.localeCompare(b.timeCreated)
-     })
-     //console.log("sortedComment",sortedcomments)
-         }
     if (comment.comment && comment.comment.length <= limited) {
       // console.log("IF", comment.comment, comment.comment.length);
       return (
