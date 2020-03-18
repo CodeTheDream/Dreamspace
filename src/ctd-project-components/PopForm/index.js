@@ -22,24 +22,24 @@ class PopFrom extends React.Component {
   push2AirTable = async e => {
     e.preventDefault();
     const {
-      Name
-      // Repo,
-      // Notes,
-      // External,
-      // Website,
+      Name,
+      Repo,
+      Notes,
+      External,
+      Website,
       // Meeting_Time,
-      // Project_Description
+      Project_Description
     } = this.state;
 
     let fields = {
       fields: {
-        Name
-        // Repo,
-        // Notes,
-        // External,
-        // Website,
+        Name,
+        Repo,
+        Notes,
+        External,
+        Website,
         // Meeting_Time,
-        // Project_Description
+        Project_Description
       }
     };
 
@@ -54,38 +54,6 @@ class PopFrom extends React.Component {
     }
   };
 
-  tryingThis = e => {
-    e.preventDefault();
-    const {
-      Name,
-      Repo
-      // Notes,
-      // External,
-      // Website,
-      //   Current_Team,
-      // Meeting_Time,
-      // Project_Description
-    } = this.state;
-    console.log(
-      "Name: ",
-      Name,
-      " Repo: ",
-      Repo
-      // " Notes: ",
-      // Notes,
-      // " External: ",
-      // External,
-      // "website",
-      // Website,
-      // "CT",
-      // //   Current_Team,
-      // "MT",
-      // Meeting_Time,
-      // "PD",
-      // Project_Description
-    );
-  };
-
   handleChange = e => {
     const target = e.target;
     //incase a check box feild is used
@@ -97,116 +65,68 @@ class PopFrom extends React.Component {
 
   render() {
     return (
-      <div className="popup">
-        <div className="popup\_inner">
-          <h1>{this.props.text}</h1>
-          <form className="form-content" onSubmit={this.tryingThis}>
+      <div className="modal-wrapper-postarticle">
+        <div className="dialogstyle devedit-form">
+          <button
+            className=" dialogCloseButonStayle"
+            onClick={this.props.closePopup}
+          >
+            X
+          </button>
+          <h4>{this.props.text}</h4>
+          <form className="dialog_inner" onSubmit={this.push2AirTable}>
             <input
               name="Name"
               placeholder="Project Title"
+              type="text"
               value={this.state.Name}
               onChange={this.handleChange}
             />
             <input
               name="Repo"
               placeholder="Repository"
+              type="text"
               value={this.state.Repo}
               onChange={this.handleChange}
             />
             <input
               name="Website"
               placeholder="Project Website"
+              type="text"
               value={this.state.Website}
               onChange={this.handleChange}
             />
-            <input
+            {/* <input
               name="Meeting_Time"
               placeholder="Meeting_time"
               type="datetime-local"
               value={this.state.Meeting_Time}
               onChange={this.handleChange}
+            /> */}
+            <textarea
+              name="Project_Description"
+              style={{ height: "50px" }}
+              placeholder="Project Description"
+              type="text"
+              value={this.state.Project_Description}
+              onChange={this.handleChange}
             />
-            {/*} <li className="form-li">
-              <label className="form-lable">
-                Project Name:
-                <input
-                  className="project-name"
-                  name="Name"
-                  value={this.state.Name}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </li>
-            <li className="form-li">
-              <label className="form-lable">
-                Project Repo:
-                <input
-                  className="project-repo"
-                  name="Repo"
-                  value={this.state.Repo}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </li>
-            <li className="form-li">
-              <label className="form-lable">
-                Project Website:
-                <input
-                  className="project-web"
-                  name="Website"
-                  value={this.state.Website}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </li>
-            <li className="form-li">
-              <label className="form-lable">
-                Meeting Time:
-                <input
-                  className="project-time"
-                  name="Meeting_Time"
-                  type="datetime-local"
-                  value={this.state.Meeting_Time}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </li>
-            <li className="form-li">
-              <label className="form-lable">
-                Project Description:
-                <textarea
-                  className="project-des"
-                  name="Project_Description"
-                  value={this.state.Project_Description}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </li>
-            <li className="form-li">
-              <label className="form-lable">
-                Project Notes:
-                <textarea
-                  className="project-notes"
-                  name="Notes"
-                  value={this.state.Notes}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </li>
-            <li className="form-li">
-              <label className="form-lable">
-                External:
-                <input
-                  className="project-extern"
-                  name="External"
-                  type="checkbox"
-                  checked={this.state.External}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </li> */}
-
-            <button className="form-button-style" type="submit" value="Submit">
+            <textarea
+              name="Notes"
+              style={{ height: "50px" }}
+              placeholder="Project Notes"
+              type="text"
+              value={this.state.Notes}
+              onChange={this.handleChange}
+            />
+            {/* <input
+              name="External"
+              placeholder="External"
+              type="checkbox"
+              checked={this.state.External}
+              onChange={this.handleChange}
+            /> */}
+            <button className="button-tertiary" type="submit" value="Submit">
               Submit
             </button>
             {/* <button
