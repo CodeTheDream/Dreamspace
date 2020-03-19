@@ -72,21 +72,6 @@ class ProjectDashBoard extends React.Component {
     return (
       <div className="dashboard">
         <div className="dashboard-content">
-          <div>
-            {/* {this.state.projectData && (
-              <Header
-                projectData={this.state.projectData}
-                selectProject={this.selectProject}
-              />
-            )} */}
-            {/* {this.state.projectData && ( */}
-            {/* <SearchBar
-              projectData={this.state.projectData}
-              selectProject={this.selectProject}
-              handleInput={this.handleInput}
-            /> */}
-            {/* ) : null} */}
-          </div>
           <div className="featured">
             {this.state.selectedProject ? (
               <FeatureCard project={this.state.selectedProject} />
@@ -94,15 +79,6 @@ class ProjectDashBoard extends React.Component {
               <img className="featured" src={ctdlogo} />
             )}
           </div>
-          {/* {this.state.selectedProject ? (
-            <FeatureCard project={this.state.selectedProject} />
-          ) : null} */}
-          <button
-            className="button-style"
-            onClick={this.togglePopup.bind(this)}
-          >
-            Add Project
-          </button>
           {this.state.showPopup ? (
             <PopForm
               text="Enter Project Data"
@@ -113,9 +89,16 @@ class ProjectDashBoard extends React.Component {
             <SideBarOpen
               projectData={this.state.projectData}
               selectProject={this.selectProject}
-              // filterProject={filterProject}
             />
           )}
+          {/* <div className="dashboard-button-container"> */}
+          <button
+            className="button-style"
+            onClick={this.togglePopup.bind(this)}
+          >
+            Add Project
+          </button>
+          {/* </div> */}
         </div>
       </div>
     );
