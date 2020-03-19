@@ -62,7 +62,7 @@ class Comment extends React.Component {
     const { showAll,replys,sortType,replysId} = this.state;
     let commentContent = comment.comment;
  
-  //console.log("Here is your  replyID", replysId)
+//console.log("Here is your  commentID", commentId)
 
     if(replys){
       replys.sort((a,b) =>{
@@ -93,7 +93,7 @@ class Comment extends React.Component {
                       <ReplyComment
                         replys={this.state.replys}
                         timeCreated={timeCreated}
-                        commentID={comment.commentId}
+                        commentID={commentId}
                         comment={comment}
                         totallReplys={this.state.totallReplys}
                         userName={userName}

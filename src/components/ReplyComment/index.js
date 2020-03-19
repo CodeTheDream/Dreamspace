@@ -45,8 +45,8 @@ class ReplyComment extends React.Component {
   };*/
 
   render() {
-    const { reply, timeCreated, commentId, userName ,replysId} = this.props;
-   //console.log("replyId at replycomment", replysId);
+    const { reply, timeCreated, commentID, userName ,replysId} = this.props;
+ // console.log("commentId at replycomment", commentID);
     //console.log("show popup", this.state.showPopup);
     return (
       <div>
@@ -76,7 +76,7 @@ class ReplyComment extends React.Component {
                     </p>
                     <p>{reply.reply}</p>
                   </div>
-                  <AddReplys1 commentId={commentId} replysId={replysId}/>
+                  <AddReplys1 commentID={commentID} replysId={replysId}/>
                 </div>
               );
             })}
