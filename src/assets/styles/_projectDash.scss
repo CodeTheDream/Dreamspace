@@ -17,12 +17,8 @@
   grid-column-gap: 10px;
   box-sizing: border-box;
 }
-
 .slide-container {
   grid-area: header;
-}
-.addButton {
-  grid-area: AddButton;
 }
 .featured {
   grid-area: featured;
