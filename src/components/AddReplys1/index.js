@@ -33,11 +33,11 @@ class AddReplys1 extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { commentId } = this.props;
+    const { commentID } = this.props;
     const { replysId } = this.props;
-    //console.log("this is the commentId for the reply at addreplys1", commentId);
+   // console.log("this is the commentId for the reply at addreplys1", commentID);
     this.props.firebase
-      .replys(replysId)
+      .replys(commentID,replysId)
       .add({
         reply: this.state.reply,
         timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `)
