@@ -38,8 +38,8 @@ class SampleForm extends React.Component {
             </legend>
             <textarea name="field3" placeholder="About Your School"></textarea>
           </fieldset>
-          <button className="button-main" type="submit" value="Apply" >Apply</button>
-          <button className="button-secondary" type="submit" value="Apply" >Apply</button>
+        { /* <button className="button-main" type="submit" value="Apply" >Apply</button>
+          <button className="button-secondary" type="submit" value="Apply" >Apply</button>*/}
           <button className="button-tertiary" type="submit" value="Apply" >Apply</button>
 
         </form>
