@@ -105,7 +105,7 @@ class SignUpFormBase extends Component {
       username === "";
 
     return (
-      <div className="view-container">
+      <div className="view-container-signup">
       <form onSubmit={this.onSubmit}  className="devedit-form" >
         <fieldset >
         <input
