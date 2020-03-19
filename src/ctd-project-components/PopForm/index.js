@@ -15,6 +15,10 @@ class PopFrom extends React.Component {
     };
   }
 
+  refresh = () => {
+    window.location.reload(false);
+  };
+
   push2AirTable = async e => {
     e.preventDefault();
     const {
@@ -44,6 +48,7 @@ class PopFrom extends React.Component {
     try {
       const response = await axios.post(url, fields);
       console.log("airtables response \n", response);
+      this.refresh();
     } catch (error) {
       console.log(error);
     }
@@ -51,9 +56,10 @@ class PopFrom extends React.Component {
 
   handleChange = e => {
     const target = e.target;
+    //incase a check box feild is used
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-
+    //gets the event target and event value of different fields
     this.setState({ [name]: value });
   };
 
