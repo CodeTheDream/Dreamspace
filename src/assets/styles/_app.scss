@@ -34,12 +34,18 @@
   max-width: $maxWidth;
   margin: 0 auto;
 }
-
-/*.view-container-signup {
+@media screen and (min-width: 120px){
+.view-container-signup {
   // padding-top: 5em;
   max-width: $maxWidth;
   margin: 0 20em;
-}*/
+}}
+@media screen and (max-width: 1200px){
+  .view-container-signup {
+    // padding-top: 5em;
+    max-width: $maxWidth;
+    margin: 0 auto;
+  }}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
