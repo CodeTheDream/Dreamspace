@@ -303,16 +303,7 @@ class ListItem1 extends React.Component {
         }
     }
     render() {
-        //const {upvotes }  = this.state
-      //const  { sortType } = this.state
 
-        /*if (upvotes) {
-            upvotes.sort((a, b) => {
-                const isReversed = (sortType === 'dsc') ? 1 : -1;
-                return isReversed * a.timeCreated.localeCompare(b.timeCreated)
-            })
-            //console.log("sortedComment",sortedcomments)
-        }*/
       
         if(this.props.isIndividualView === true){
         return (

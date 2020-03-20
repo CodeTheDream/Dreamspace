@@ -22,7 +22,7 @@
         margin-right: auto;
         
     }
-    .cardarticle {
+    .card {
         width: 100%;
         max-width: 1200px;
         position: relative;
@@ -99,7 +99,7 @@
 
 .maincontent {
     width: 100%;
-    object-fit: contain;
+   // object-fit: contain;
 
 
     .auther {
@@ -119,7 +119,7 @@
     padding-right: 12px;
     text-align: left;
     font-weight: normal;
-    line-height: normal;
+    line-height:normal;
 }
 
 div.description-style:hover {
@@ -179,12 +179,11 @@ i.custom {
     font-family: "Helvetica";
     color: #173E43;
     font-size: 15px;
-     background-color: white;
+    background-color: white;
     border: 0px solid;
     border-color: #173E43;
-    border-radius:9px;
+    border-radius: 9px;
     position: relative;
- 
 }
 
 .button:hover {

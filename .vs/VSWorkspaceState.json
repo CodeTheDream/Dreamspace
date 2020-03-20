@@ -6,11 +6,11 @@
     "\\src\\assets\\styles",
     "\\src\\components",
     "\\src\\components\\ListItem",
-    "\\src\\components\\Navigation",
+    "\\src\\components\\SignOut",
     "\\src\\containers",
-    "\\src\\containers\\Create-article",
-    "\\src\\containers\\Dashboard",
-    "\\src\\containers\\IndividualView"
+    "\\src\\containers\\Account",
+    "\\src\\ctd-project-components",
+    "\\src\\ctd-project-components\\FeatureCard"
   ],
   "SelectedNode": "\\src\\assets\\styles\\_nav.scss",
   "PreviewInSolutionExplorer": false
