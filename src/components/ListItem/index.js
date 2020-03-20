@@ -105,7 +105,7 @@ class ListItem extends React.Component {
                 {this.props.article.description}
               </div>
             </div>
-
+<br/>
             <div id="commentarea">
               <span style={{ float: "right" }}>
                 <button
