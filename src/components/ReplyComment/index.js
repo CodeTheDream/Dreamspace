@@ -11,7 +11,7 @@ class ReplyComment extends React.Component {
     this.state = {
       timeCreated: "",
       replys: [],
-      limit: 5,
+      //limit: 5,
       showAll: false,
       showPopup: false
     };
@@ -44,6 +44,9 @@ class ReplyComment extends React.Component {
     }
   };*/
 
+  showMore = () => this.setState({ showAll: true });
+  showLess = () => this.setState({ showAll: false });
+
   render() {
     const { reply, timeCreated, commentID, userName ,replysId} = this.props;
  // console.log("commentId at replycomment", commentID);
@@ -64,6 +67,7 @@ class ReplyComment extends React.Component {
         </div>
         {this.state.showPopup ? (
           <div>
+          <div>
             {this.props.replys.map(reply => {
               //console.log("this is the the reply in the reply function", reply);
               return (
@@ -77,10 +81,20 @@ class ReplyComment extends React.Component {
                     <p>{reply.reply}</p>
                   </div>
                   <AddReplys1 commentID={commentID} replysId={replysId}/>
+
                 </div>
               );
-            })}
+            })
+            }
           </div>
+              <div className="replypage-hide">
+              <i
+             className="fas fa-angle-up " 
+              
+           onClick={this.cancle}>{" "}Hide {" "} viwe</i>
+           
+            </div>
+            </div>
         ) : null}
       </div>
     );
