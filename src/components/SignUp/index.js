@@ -7,7 +7,7 @@ import * as ROLES from "../../constants/roles";
 
 const SignUpPage = () => (
   <div style={{ marginTop: "3.5em" }}>
-    <h1>SignUp</h1>
+    <h2>SignUp</h2>
     <SignUpForm />
   </div>
 );
@@ -104,8 +104,10 @@ class SignUpFormBase extends Component {
       email === "" ||
       username === "";
 
-    return (
-      <form onSubmit={this.onSubmit}>
+      return (
+          <div className="view-container">
+              <form onSubmit={this.onSubmit} className="devedit-form">
+              <fieldset>
         <input
           name="username"
           value={username}
@@ -135,12 +137,14 @@ class SignUpFormBase extends Component {
           placeholder="Confirm Password"
         />
 
-        <button disabled={isInvalid} type="submit">
+            <button className="button-main" disabled={isInvalid} type="submit">
           Sign Up
         </button>
 
-        {error && <p>{error.message}</p>}
-      </form>
+              {error && <p>{error.message}</p>}
+              </fieldset>
+        </form>
+    </div>
     );
   }
 }

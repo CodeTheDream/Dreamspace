@@ -30,15 +30,27 @@
 }
 
 .view-container {
-  // max-width: $maxWidth;
+   max-width: $maxWidth;
   margin: 0 auto;
+ // padding-top:5em;
+}
+.view-container-signup {
+    max-width: $maxWidth;
+    margin: 0 20em;
+    
 }
 
+
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
+  .view-container account-page{
+
+  }
+ 

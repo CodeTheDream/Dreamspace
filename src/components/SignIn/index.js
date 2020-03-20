@@ -67,8 +67,10 @@ class SignInFormBase extends Component {
 
     const isInvalid = password === '' || email === '';
 
-    return (
-      <form onSubmit={this.onSubmit}>
+      return (
+        <div className="view-container">
+              <form onSubmit={this.onSubmit} className="devedit-form">
+                  <fieldset>
         <input
           name="email"
           value={email}
@@ -83,12 +85,14 @@ class SignInFormBase extends Component {
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+                  <button className="button-main" disabled={isInvalid} type="submit">
           Sign In
         </button>
 
-        {error && <p>{error.message}</p>}
-      </form>
+                      {error && <p>{error.message}</p>}
+                      </fieldset>
+              </form>
+              </div>
     );
   }
 }
