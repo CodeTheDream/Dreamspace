@@ -50,7 +50,18 @@
         transform: rotate(360deg);
     }
 }
-  .view-container account-page{
+@media screen and (min-width: 120px) {
+    .view-container-signup {
+        // padding-top: 5em;
+        max-width: $maxWidth;
+        margin: 0 20em;
+    }
+}
 
-  }
- 
+@media screen and (max-width: 1200px) {
+    .view-container-signup {
+        // padding-top: 5em;
+        max-width: $maxWidth;
+        margin: 0 auto;
+    }
+}

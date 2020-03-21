@@ -23,15 +23,17 @@ class Dashboard extends React.Component {
     };
   }
 
-  componentDidMount() {
-    // let articles =this.props.firebase.articles()
-    this.unsubscribe = this.props.firebase.articles().onSnapshot(snapshot => {
-      let articles = [];
-      snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
+    componentDidMount() {
+        // let articles =this.props.firebase.articles()
+        this.unsubscribe = this.props.firebase.articles().onSnapshot(snapshot => {
+            let articles = [];
+            snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
 
-      // console.log("Articles loaded here yo!", articles);
-      this.setState({ articles });
-    });
+            // console.log("Articles loaded here yo!", articles);
+            this.setState({ articles });
+        });
+        let { calculatedvote } = this.props;
+    
   }
 
 
@@ -70,6 +72,15 @@ class Dashboard extends React.Component {
             })
 
         }
+        /*if (filteredArticles) {
+            filteredArticles.sort((a, b) => {
+                const isReversed = (sortType === 'dsc') ? 1 : -1;
+                return isReversed * a.title.localCompare(b.title)
+            })
+
+        }*/
+
+
     return (
       <div className="wrapper">
         <div className="main-class">
