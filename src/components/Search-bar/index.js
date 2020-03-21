@@ -36,6 +36,7 @@ class SearchBar extends React.Component {
       showPopup: !this.state.showPopup
     });
   };
+
   render() {
     return (
       <AuthUserContext.Consumer>
@@ -52,12 +53,12 @@ class SearchBar extends React.Component {
               />
             </div>
            
-            {this.state.showPopup ? (
+            {/*{this.state.showPopup ? (
                <Popover closePopup={this.togglePopup}>
              <div >
             <p></p>
              </div>
-          </Popover> ) : null}
+            </Popover> ) : null}*/}
           </div>
         )}
       </AuthUserContext.Consumer>
