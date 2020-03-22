@@ -19,7 +19,7 @@ class Dashboard extends React.Component {
     this.state = {
       articles: [],
         search: "" ,
-        sortType: "asc",
+       sortType: "dsc",
       calculatedvote:[],
     };
   }
@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
     componentDidMount() {
         // let articles =this.props.firebase.articles()
         this.unsubscribe = this.props.firebase.articles()
-            .orderBy('timeCreated','asc')
+           // .orderBy('timeCreated','asc')
             .onSnapshot(snapshot => {
             let articles = [];
             snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
@@ -69,13 +69,13 @@ class Dashboard extends React.Component {
       )
         });
         
-       /* if (filteredArticles) {
+        if (filteredArticles) {
             filteredArticles.sort((a, b) => {
-                const isReversed = (sortType === 'dsc') ? 1 : -1;
+                const isReversed = (sortType === 'asc') ? 1 : -1;
                 return isReversed * a.timeCreated.localeCompare(b.timeCreated)
             })
 
-        }*/
+        }
       
 
       
