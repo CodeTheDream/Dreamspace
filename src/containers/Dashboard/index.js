@@ -18,20 +18,24 @@ class Dashboard extends React.Component {
     this.state = {
       articles: [],
         search: "" ,
-      sortType:"asc",
+        sortType: "asc",
+      calculatedvote:[],
     };
   }
 
     componentDidMount() {
         // let articles =this.props.firebase.articles()
-        this.unsubscribe = this.props.firebase.articles().onSnapshot(snapshot => {
+        this.unsubscribe = this.props.firebase.articles()
+            .orderBy('timeCreated','asc')
+            .onSnapshot(snapshot => {
             let articles = [];
             snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
-
+           // { collection: 'article',limit:5, orderBy: ['calculatedvote', 'des'] },
+            
             // console.log("Articles loaded here yo!", articles);
             this.setState({ articles });
         });
-        let { calculatedvote } = this.props;
+       // let { calculatedvote } = this.props;
     
   }
 
@@ -50,7 +54,7 @@ class Dashboard extends React.Component {
   };
     render() {
         const { sortType } = this.state;
-        
+     
 
         let filteredArticles = this.state.articles.filter(article => {
            
@@ -64,21 +68,16 @@ class Dashboard extends React.Component {
       )
         });
         
-        if (filteredArticles) {
+       /* if (filteredArticles) {
             filteredArticles.sort((a, b) => {
                 const isReversed = (sortType === 'dsc') ? 1 : -1;
                 return isReversed * a.timeCreated.localeCompare(b.timeCreated)
             })
 
-        }
-        /*if (filteredArticles) {
-            filteredArticles.sort((a, b) => {
-                const isReversed = (sortType === 'dsc') ? 1 : -1;
-                return isReversed * a.title.localCompare(b.title)
-            })
-
         }*/
+      
 
+      
 
     return (
       <div className="wrapper">
