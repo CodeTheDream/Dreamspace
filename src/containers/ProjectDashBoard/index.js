@@ -11,13 +11,20 @@ class ProjectDashBoard extends React.Component {
     super(props);
     this.state = {
       projectData: [],
-      searchName: ""
+      searchName: "",
+      crewDirectory: []
       // selectedProject: {}
     };
   }
   componentDidMount() {
     this.getAirTable();
+    this.directoryAirTable();
   }
+
+  // getPersonnelDirectory = (id) => {
+  //   const personnel = this.state.crewDirectory;
+  //   console.log("id", id);
+  // }
 
   selectProject = id => {
     const allProjects = this.state.projectData;
@@ -36,8 +43,24 @@ class ProjectDashBoard extends React.Component {
     });
   };
 
+  directoryAirTable() {
+    const directoryUrl = "https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory";
+
+    fetch(directoryUrl, {
+      header: { Authorization: "Bearer " + process.env.REACT_APP_AIRTABLE_KEY  }
+    })
+    .then(response => response.json())
+    .then(responseData => {
+      console.log("directory data ", responseData);
+      const crewDirectory = responseData.records;
+      console.log("crewDirectory ", crewDirectory);
+      this.setState({crewDirectory: crewDirectory})
+    });
+  }
+
   getAirTable() {
     const url = "https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects";
+
 
     fetch(url, {
       headers: { Authorization: "Bearer " + process.env.REACT_APP_AIRTABLE_KEY }
@@ -47,9 +70,9 @@ class ProjectDashBoard extends React.Component {
         console.log("data from Airtable", responseData);
         const projectData = responseData.records;
         console.log("projectData ", projectData);
-        this.setState({ projectData: projectData });
+        this.setState({ projectData: projectData});
       });
-  }
+    }
 
   render() {
     // Filtering out the side bar Menu
@@ -103,3 +126,6 @@ class ProjectDashBoard extends React.Component {
 }
 
 export default ProjectDashBoard;
+
+
+// %20directory   // from the second fetch, ignore if your not nick.
