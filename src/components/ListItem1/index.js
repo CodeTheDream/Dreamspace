@@ -97,6 +97,7 @@ class ListItem1 extends React.Component {
         // console.log("upvotestotal", upvotesTotal)
         //console.log("downvotestotal", downvotesTotal)
         this.setState({ calculatedvote: finalTotal })
+       
     }
     handleUpvote = (authUser) => {
 
@@ -306,15 +307,15 @@ class ListItem1 extends React.Component {
         }
     }
     render() {
-        const { articles } = this.props;
+        /*const { article } = this.props;
         const {sortType}=this.state
-        if (articles) {
-            articles.sort((a, b) => {
+        if (article) {
+            article.sort((a, b) => {
                 const isReversed = (sortType === 'dsc') ? 1 : -1;
                 return isReversed * a.calculatedvote.localeCompare(b.calculatedvote)
             })
 
-        }
+        }*/
 
 
         if (this.props.isIndividualView === true) {
