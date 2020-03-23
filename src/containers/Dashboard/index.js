@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
     componentDidMount() {
         // let articles =this.props.firebase.articles()
         this.unsubscribe = this.props.firebase.articles()
-           // .orderBy('timeCreated','asc')
+            //.orderBy('TimeCreated','desc')
             .onSnapshot(snapshot => {
             let articles = [];
             snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
