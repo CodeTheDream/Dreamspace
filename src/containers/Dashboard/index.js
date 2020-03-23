@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
     componentDidMount() {
         // let articles =this.props.firebase.articles()
         this.unsubscribe = this.props.firebase.articles()
-            //.orderBy('TimeCreated','desc')
+           .orderBy("calculatedvote","asc")// here i have tried to  sort using the calculated vote
             .onSnapshot(snapshot => {
             let articles = [];
             snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
@@ -69,13 +69,14 @@ class Dashboard extends React.Component {
       )
         });
         
-        if (filteredArticles) {
+     
+       /* if (filteredArticles) {
             filteredArticles.sort((a, b) => {
                 const isReversed = (sortType === 'asc') ? 1 : -1;
                 return isReversed * a.timeCreated.localeCompare(b.timeCreated)
             })
-
-        }
+            //console.log("sortedComment",sortedcomments)
+        }*/
       
 
       
