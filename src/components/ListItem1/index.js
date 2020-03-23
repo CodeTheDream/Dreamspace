@@ -151,7 +151,7 @@ class ListItem1 extends React.Component {
                         .article(article.uid)
                         .set({
                             ...article,
-                            calculatedvote: this.state.calculatedvote + 1,
+                            calculatedvote: this.state.calculatedvote + 1,////here i tried to put the updated calculated vote on firebase
                             upvotes: updatedUpvotes
                         })
 
@@ -238,7 +238,7 @@ class ListItem1 extends React.Component {
                         .article(article.uid)
                         .set({
                             ...article,
-                            calculatedvote: this.state.calculatedvote - 1,
+                            calculatedvote: this.state.calculatedvote - 1,//here i tried to put the updated calculated vote on firebase
                             downvotes: updatedDownvotes
                         })
 
