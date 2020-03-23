@@ -24,19 +24,7 @@ class ListItem1 extends React.Component {
 
         };
     }
-    /*sortByDate () {
-         const {article}= this.state
-         let newArticleList = article
-       if(this.state.isOldestFirst){
-         newArticleList.sort((a,b) => a.date < b.date)
-       }
-       else {
-         newArticleList.sort((a,b) =>a.date> b.date)
-       
-       }
-       this.setState({article:newArticleList.sort((a,b) => a.date >b.date)})
-       }*/
-
+   
 
 
 
@@ -59,8 +47,6 @@ class ListItem1 extends React.Component {
                 this.setState({ username: user.username })
             })
    
-        //  this.sortByDate()
-
 
     }
 
@@ -96,7 +82,15 @@ class ListItem1 extends React.Component {
         let finalTotal = upvotesTotal - downvotesTotal;
         // console.log("upvotestotal", upvotesTotal)
         //console.log("downvotestotal", downvotesTotal)
-        this.setState({ calculatedvote: finalTotal })
+        this.setState({ calculatedvote: finalTotal }) 
+        const { article } = this.props;
+        this.props.firebase
+            .article(article.uid)
+            .set({
+                ...article,
+                calculatedvote: finalTotal
+            })
+            
        
     }
     handleUpvote = (authUser) => {
