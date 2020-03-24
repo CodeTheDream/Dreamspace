@@ -18,19 +18,25 @@ class Dashboard extends React.Component {
     this.state = {
       articles: [],
         search: "" ,
-      sortType:"asc",
+       sortType: "dsc",
+      calculatedvote:[],
     };
   }
 
-  componentDidMount() {
-    // let articles =this.props.firebase.articles()
-    this.unsubscribe = this.props.firebase.articles().onSnapshot(snapshot => {
-      let articles = [];
-      snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
-
-      // console.log("Articles loaded here yo!", articles);
-      this.setState({ articles });
-    });
+    componentDidMount() {
+        // let articles =this.props.firebase.articles()
+        this.unsubscribe = this.props.firebase.articles()
+           .orderBy("calculatedvote","desc")// here i have tried to  sort using the calculated vote
+            .onSnapshot(snapshot => {
+            let articles = [];
+            snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
+           // { collection: 'article',limit:5, orderBy: ['calculatedvote', 'des'] },
+            
+            // console.log("Articles loaded here yo!", articles);
+            this.setState({ articles });
+        });
+       // let { calculatedvote } = this.props;
+    
   }
 
 
@@ -48,7 +54,7 @@ class Dashboard extends React.Component {
   };
     render() {
         const { sortType } = this.state;
-        
+     
 
         let filteredArticles = this.state.articles.filter(article => {
            
@@ -62,13 +68,18 @@ class Dashboard extends React.Component {
       )
         });
         
-        if (filteredArticles) {
+     
+       /* if (filteredArticles) {
             filteredArticles.sort((a, b) => {
-                const isReversed = (sortType === 'dsc') ? 1 : -1;
+                const isReversed = (sortType === 'asc') ? 1 : -1;
                 return isReversed * a.timeCreated.localeCompare(b.timeCreated)
             })
+            //console.log("sortedComment",sortedcomments)
+        }*/
+      
 
-        }
+      
+
     return (
       <div className="wrapper">
         <div className="main-class">

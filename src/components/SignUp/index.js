@@ -105,7 +105,7 @@ class SignUpFormBase extends Component {
       username === "";
 
       return (
-          <div className="view-container">
+          <div className="view-container-signup">
               <form onSubmit={this.onSubmit} className="devedit-form">
               <fieldset>
         <input
@@ -137,7 +137,7 @@ class SignUpFormBase extends Component {
           placeholder="Confirm Password"
         />
 
-            <button className="button-main" disabled={isInvalid} type="submit">
+                      <button className="button-tertiary" disabled={isInvalid} type="submit">
           Sign Up
         </button>
 

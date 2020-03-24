@@ -4,7 +4,6 @@ import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import { AuthUserContext } from "../Session";
-
 import ListItem1 from "../ListItem1";
 class ListItem extends React.Component {
   constructor(props) {
@@ -15,9 +14,7 @@ class ListItem extends React.Component {
       username: "",
       TotallComment: "",
         totalcount: "",
-        isOldestFirst: true,
-      sortType:"asc"
-
+        sortType:"asc"
     };
   }
   openPost(e, article) {
@@ -43,8 +40,7 @@ class ListItem extends React.Component {
         })
        
     }*/
-  
-  componentDidMount() {
+   componentDidMount() {
     const { article } = this.props;
       this.props.firebase
           .comments()
@@ -63,14 +59,12 @@ class ListItem extends React.Component {
                   isOldestFirst: true,
                   article: article
               })
-          })
-     
+          }) 
 
-              
-      
 
-      
-      
+
+
+
       let autherId = article.userId;
       this.unsubscribe = this.props.firebase
           .user(autherId)
@@ -81,16 +75,10 @@ class ListItem extends React.Component {
               this.setState({ username: user.username })
           })
     }
-
-
-
-
   render() {
     //const { upvotes } = this.state;
      // const { downvotes } = this.state;
       const { article } = this.props;
-     
-      
     return (
       <AuthUserContext.Consumer>
         {authUser => (
@@ -122,8 +110,8 @@ class ListItem extends React.Component {
               <span style={{ float: "right" }}>
                 <button
                   className="button"
-                  onClick={e => this.openPost(e, article)}
-                >
+                  onClick={e => this.openPost(e, article)}>
+                
                                 <i className="fa fa-comment">
 
                     {" "}
