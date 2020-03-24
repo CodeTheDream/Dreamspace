@@ -1,138 +1,88 @@
-
-
-  .dialogstyle{
+@media screen {
+  .dialogstyle {
     z-index: 999;
     width: 55%;
     max-width: 100%;
     margin: auto;
-    position: absolute;
+    position: fixed;
     left: 35%;
     right: 35%;
-    top: 10%; 
+    top: 40%;
     padding: 10px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    transform: translate(-26%, -26%);
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-   
+    transform: translate(-35%, -35%);
   }
-  
-  .dialogCloseButonStayle {
-    margin-bottom:15px;
-    padding: 3px 8px;
-    cursor: pointer;
-    border-radius: 50%;
-    border:none;
-    width: 30px;
-    height: 30px;
-    font-weight: bold;
-    align-self: flex-end;
-    background: $main-color;
+}
+.dialogCloseButonStayle {
+  margin-bottom: 15px;
+  padding: 3px 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  align-self: flex-end;
+  background: $main-color;
   // background: $secondary-color;
-    //color:green;
+  color: lightgray;
   // background-color: yellow;
-  
-  }
-  
-  .modal-wrapper{
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 500;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    margin: 0;
-    min-height:120em;
-     
+}
+.modal-wrapper-postarticle {
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  min-height: 120em;
+}
+.button-tertiary {
+  background: $main-color;
+  color: lightgrey;
+  text-align: center;
+}
 
-  }
-  
-  .button-tertiary {
-    background: $main-color;
-    color:black;
+@media screen and (min-width: 320px) {
+  .button-secondary1 {
+    margin-top: 10px;
+    font-size: 18px;
     text-align: center;
-}
-
-@media screen {
+    font-style: normal;
+    width: 8.5em;
+    margin-bottom: 10px;
+    background: #3fb0ac;
+    float: right;
+    color: #fae596;
+    border-radius: 8px;
+    position: relative;
+    padding: 8px;
+  }
   .dialogstyle {
-      z-index: 999;
-      width: 90%;
-      max-width: 100%;
-      margin: auto;
-      position: fixed;
-      left: 35%;
-      right: 35%;
-      top: 40%;
-      padding: 10px;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      transform: translate(-35%, -35%);
+    z-index: 999;
+    width: 90%;
+    max-width: 100%;
+    margin: auto;
+    position: fixed;
+    left: 35%;
+    right: 35%;
+    top: 37%;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-35%, -35%);
   }
+  #popform {
+    width: 70%;
+    margin-left: 5%;
+    // justify-content: cent;
+  }
+  //.devedit-form-legend1 {
+  // font-size: 1em;
+  //}
 }
-  .dialogCloseButonStayle {
-      margin-bottom: 15px;
-      padding: 3px 8px;
-      cursor: pointer;
-      border-radius: 50%;
-      border: none;
-      width: 30px;
-      height: 30px;
-      font-weight: bold;
-      align-self: flex-end;
-      background: $main-color;
-      // background: $secondary-color;
-      color: lightgray;
-      // background-color: yellow;
-  }
-  .modal-wrapper-postarticle {
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 500;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: 0;
-      min-height: 120em;
-  }
-  .button-tertiary {
-      background: $main-color;
-      color: lightgrey;
-      text-align: center;
-  }
-
-  @media screen and (min-width:320px) {
-      .button-secondary1 {
-          margin-top: 10px;
-          font-size: 18px;
-          text-align: center;
-          font-style: normal;
-          width: 8.5em;
-          margin-bottom: 10px;
-          background: #3FB0AC;
-          float: right;
-          color: #FAE596;
-          border-radius: 8px;
-          position: relative;
-          padding: 8px;
-      }
-      .dialogstyle {
-          z-index: 999;
-          width: 55%;
-          max-width: 100%;
-          margin: auto;
-          position: fixed;
-          left: 35%;
-          right: 35%;
-          top: 37%;
-          padding: 10px;
-          border-radius: 8px;
-          display: flex;
-          flex-direction: column;
-          transform: translate(-35%, -35%);
-      }
-      //.devedit-form-legend1 {
-         // font-size: 1em;
-      //}
-  }
-
