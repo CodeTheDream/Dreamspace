@@ -23,18 +23,19 @@
   background-color: white;
 }
 .button-style {
-  position: absolute;
-  margin-top: 20px;
+  margin-top: 15px;
   font-size: 18px;
   text-align: center;
   font-style: normal;
   width: 8.5em;
-  margin-bottom: 38px;
+  margin-bottom: 10px;
   background: #3fb0ac;
+  float: right;
   color: #fae596;
   border-radius: 8px;
-  position: relative;
-  margin-left: inherit;
+  position: absolute;
+  padding: 8px;
+  margin-left: 88vw;
 }
 .form-content {
   list-style: none;
