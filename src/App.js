@@ -12,7 +12,9 @@ import SignUp from "./components/SignUp";
 import SignInPage from "./components/SignIn";
 import { withAuthentication } from "./components/Session";
 import ProjectDashBoard from "./containers/ProjectDashBoard";
-import Sidebar from "./components/Sidebar";
+import Directory from "./containers/Directory";
+// import Sidebar from "./components/Sidebar";
+// import DirectoryDashboard from "./containers/DirectoryDashboard";
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
           <Route exact path={ROUTES.HOME} component={Dashboard} />
           <Route exact path={ROUTES.ABOUT} component={About} />
           <Route exact path={ROUTES.PROJECT} component={ProjectDashBoard} />
+          <Route exact path={ROUTES.DIRECTORY} component={Directory} />
           {/* <Route exact path={ROUTES.CREATEARTICLE} component={Createarticle} />*/}
           <Route exact path={ROUTES.ACCOUNT} component={Account} />
           <Route exact path={ROUTES.SIGNUP} component={SignUp} />

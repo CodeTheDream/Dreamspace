@@ -11,6 +11,7 @@ import { withFirebase } from "../../components/Firebase";
 import ListItems from "../../components/ListItems";
 import Create_article from "../Create-article";
 import SearchBar from "../../components/Search-bar";
+import Directory from "../Directory";
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -76,6 +77,11 @@ class Dashboard extends React.Component {
             //recipes={this.state.recipes}
           />
         </div>
+        {/* <div>
+          <Directory 
+            crewDirectory={this.state.crewDirectory}
+          />
+        </div> */}
       </div>
     );
   }

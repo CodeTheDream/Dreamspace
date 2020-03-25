@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes.js";
 import Logo from "../../assets/images/ctd-logo.png";
 import SignOutButton from "../SignOut";
-import Sidebar from "../Sidebar";
+// import Sidebar from "../Sidebar";
+// import StaffDirectory from "../../ctd-project-components/StaffDirectory";
 
 import { AuthUserContext } from "../Session";
 
@@ -28,6 +29,9 @@ const NavigationAuth = () => (
       </li>
       <li>
         <Link to={ROUTES.PROJECT}>Projects</Link>
+      </li>
+      <li>
+        <Link to={ROUTES.DIRECTORY}>Directory</Link>
       </li>
       <li>
         {" "}

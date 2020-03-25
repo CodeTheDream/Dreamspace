@@ -7,3 +7,4 @@ export const SIGN_IN = "/signin";
 export const PROJECT = "/projects";
 export const PASSWORD_FORGET = "/pw-forget";
 export const INDIVIDUAL_VIEW = "/articles/:articleId";
+export const DIRECTORY = "/directory";

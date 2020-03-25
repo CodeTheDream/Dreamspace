@@ -53,5 +53,13 @@
   font-weight: 200;
 }
 
+@media screen and (max-width: 979px) {
+  .dashboard-content {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+}
+
 
 
