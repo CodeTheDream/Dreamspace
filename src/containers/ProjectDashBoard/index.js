@@ -79,12 +79,12 @@ class ProjectDashBoard extends React.Component {
               <img className="featured" src={ctdlogo} />
             )}
           </div>
-          {this.state.showPopup ? (
+          {/* {this.state.showPopup ? (
             <PopForm
               text="Enter Project Data"
               closePopup={this.togglePopup.bind(this)}
             />
-          ) : null}
+          ) : null} */}
           {this.state.projectData && (
             <SideBarOpen
               projectData={this.state.projectData}
@@ -92,12 +92,12 @@ class ProjectDashBoard extends React.Component {
             />
           )}
           {/* <div className="dashboard-button-container"> */}
-          <button
+          {/* <button
             className="button-style"
             onClick={this.togglePopup.bind(this)}
           >
             Add Project
-          </button>
+          </button> */}
           {/* </div> */}
         </div>
       </div>
