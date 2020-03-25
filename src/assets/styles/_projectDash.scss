@@ -32,6 +32,7 @@
   border-right: solid;
   border-color: #0066cc;
   color: #f15c39;
+<<<<<<< HEAD
   width: 100%;
 }
 
@@ -49,6 +50,17 @@
   // background: #0066cc;
   display: grid;
   grid-template-columns: auto 200px;
+=======
+  width: 15vw;
+  // padding: 23px;
+}
+
+.menu-container {
+  list-style: none;
+  width: 15vw;
+  // position: left;
+  // cursor: pointer;
+>>>>>>> CommentedOutAddFrom
 }
 
 
