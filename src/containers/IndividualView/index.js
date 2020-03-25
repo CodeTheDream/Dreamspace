@@ -5,6 +5,7 @@ import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import Comment from "../../components/Comment";
 import ListItem1 from "../../components/ListItem1";
+import Comments from "../../components/Comments/comments";
 const moment = require("moment");
 class IndividualView extends React.Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class IndividualView extends React.Component {
       isOldestFirst: true,
       commentId: "",
       username: "",
-      sortType: "asc"
+      sortType: "asc",
+      commentList: []
     };
   }
 
@@ -69,6 +71,7 @@ class IndividualView extends React.Component {
         }
 
         let autherId = this.state.article.userId;
+        //console.log("autherId of  acomment",autherId)
         this.unsubscribe = this.props.firebase
           .user(autherId)
           .get()
@@ -107,13 +110,6 @@ class IndividualView extends React.Component {
         //console.log("Document written with ID: ", docRef.id);
       });
   };
-  /* sortByDate () {
-    const { timeCreated } = this.state.comments;
-    console.log("sorted time",timeCreated)
-    timeCreated.sort((a, b) => a - b)    
-    this.setState({comments:timeCreated })
-    console.log("sorted articles",this.state.comments)
-  }*/
 
   render() {
     // Access to local component state
@@ -122,14 +118,15 @@ class IndividualView extends React.Component {
       comment,
       comments,
       timeCreated,
-
+      articleId,
       limited,
-      sortType
+      sortType,
+      commentId
     } = this.state;
     // console.log("unsorted comments",comments)
     if (comments) {
       comments.sort((a, b) => {
-        const isReversed = sortType === "dsc" ? 1 : -1;
+        const isReversed = sortType === "asc" ? 1 : -1;
         return isReversed * a.timeCreated.localeCompare(b.timeCreated);
       });
       //console.log("sortedComment",sortedcomments)
@@ -177,17 +174,15 @@ class IndividualView extends React.Component {
               </button>
             </div>
           </div>
-
+          {/*}
           <div>
             <AddComment comment={comment} onCreate={this.createComment} />
           </div>
 
           <div>
-            {this.state.comments &&
+         {this.state.comments &&
               this.state.comments.map((comment, index) => {
-                {
-                  /* console.log(comment) */
-                }
+                
                 return (
                   <div className="card-comment">
                     <Comment
@@ -196,12 +191,22 @@ class IndividualView extends React.Component {
                       limited={limited}
                       timeCreated={timeCreated}
                       commentId={comment.commentId}
-                      userName={this.state.username}
+                      
                     />
-                    {/* <ReplyComment     commentId={comment.commentId}/>*/}
+                   
                   </div>
                 );
               })}
+          </div>*/}
+          <div>
+            <Comments
+              comments={comments}
+              comment={comment}
+              onCreate={this.createComment}
+              articleId={articleId}
+              commentId={commentId}
+              
+            />
           </div>
         </div>
       );

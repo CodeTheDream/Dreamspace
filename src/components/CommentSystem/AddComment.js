@@ -3,7 +3,7 @@ import { withFirebase } from "../Firebase";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import * as ROUTES from "../../constants/routes";
-
+import { AuthUserContext } from "../Session";
 const moment = require("moment");
 class AddComment extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class AddComment extends React.Component {
       timeCreated: "",
       comment: "",
       limit: 5,
-      
+      userId:""
     };
   }
 
@@ -25,27 +25,30 @@ class AddComment extends React.Component {
     //console.log("Here is my comments refrence", this.unsubscribe);
   };
 
-  handleChange = event => {
-    const { name, value } = event.target;
+  handleChange =(e,authUser) => {
+    const { name, value } = e.target;
     this.setState({
-      
       [name]: value,
-      timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `)
-     
+      timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `),
+      userId: authUser.uid
     });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit = (e,authUser) => {
+    e.preventDefault();
 
     this.props.onCreate(this.state)
-    this.setState({ comment: "" });
+    this.setState({ comment: "" ,
+  
+  });
   };
 
  
   render() {
     const { comment } = this.state;
     return (
+      <AuthUserContext.Consumer>
+        {authUser => (
       <form className="card-addcomment" onSubmit={this.handleSubmit}>
         <div className="commentgrid">
         
@@ -57,7 +60,7 @@ class AddComment extends React.Component {
               name="comment"
               placeholder="Write your comment here! "
               autoFocus={true}
-              onChange={this.handleChange}
+              onChange={e=>this.handleChange(e,authUser)}
             ></textarea>
          
 
@@ -71,6 +74,8 @@ class AddComment extends React.Component {
           </button>
         </div>
       </form>
+        )}
+        </AuthUserContext.Consumer>
     );
   }
 }

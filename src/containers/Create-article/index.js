@@ -39,9 +39,10 @@ class Createarticle extends Component {
       url: "",
       downvotes: 0,
       upvotes: 0,
-      authorID: "",
+      //authorID: "",
       timeCreated: "",
-      userName:""
+      userName:"",
+      calculatedvote: 0,
        
     };
     
@@ -90,6 +91,7 @@ class Createarticle extends Component {
         url: this.state.url,
         downvotes: this.state.downvotes,
         upvotes: this.state.upvotes,
+        calculatedvote: this.state.calculatedvote,
         timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  UTC-6`)
       })
       .then(docRef => {
