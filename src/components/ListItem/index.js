@@ -64,7 +64,7 @@ class ListItem extends React.Component {
                   </span>
                 </div>
               </div>
-             {/*} <div> {this.props.article.tags}</div>*/}
+             <div> {this.props.article.tags}</div>
               <div className="auther-style">
                 <a href={this.props.article.url}>{this.props.article.title}</a>
               </div>

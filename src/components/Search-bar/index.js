@@ -42,23 +42,27 @@ class SearchBar extends React.Component {
       <AuthUserContext.Consumer>
         {authUser => (
           <div className="mainsearch">
-            <div className="input-icons">
-              <i className="fa fa-search"></i>
-              <input
-                className="input-field"
-                type="search"
-                placeholder="search..."
-                onChange={this.props.handleInput}
-                onClick={this.togglePopup}
-              />
+            <div className="popover__wrapper">
+              <div className="input-icons">
+                <i className="fa fa-search"></i>
+                <input
+                  className="input-field"
+                  type="search"
+                  placeholder="search..."
+                  onChange={this.props.handleInput}
+                  onClick={this.togglePopup}
+                />
+              </div>
+              <div className="popover__content">
+                <div className="popover__message">
+                  Search by 
+                  <p>Title</p>
+                  <p>Tags</p>
+                  <p>Description</p>
+                </div>
+              </div>
             </div>
            
-            {/*{this.state.showPopup ? (
-               <Popover closePopup={this.togglePopup}>
-             <div >
-            <p></p>
-             </div>
-            </Popover> ) : null}*/}
           </div>
         )}
       </AuthUserContext.Consumer>
@@ -66,17 +70,3 @@ class SearchBar extends React.Component {
   }
 }
 export default compose(withFirebase)(SearchBar);
-/* <div className="popover__wrapper">
-              <a href="#">
-                <h2 >Hover:me</h2>
-              </a>
-              <div className="popover__content">
-                <p className="popover__message">
-                  Joseph Francis "Joey" Tribbiani, Jr.
-                </p>
-                <img
-                  alt="Joseph Francis Joey Tribbiani, Jr."
-                  src="https://media.giphy.com/media/11SIBu3s72Co8w/giphy.gif"
-                />
-              </div>
-            </div>*/
