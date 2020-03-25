@@ -97,7 +97,11 @@ class Firebase {
 
   //*** Comments API ***
 
-  comment = uid => this.db.doc(`comments/${uid}`);
+  comment = (uid) => {
+    console.log('UID', uid)
+    return this.db.doc(`comments/${uid}`);
+  
+  }
 
   comments = () => this.db.collection("comments");
   //*** Reply API ***
