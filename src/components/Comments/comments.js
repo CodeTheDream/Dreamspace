@@ -53,6 +53,7 @@ class Comments extends Component {
             {comments &&
               comments.map((comment, index) => {
             /* if (!comment.commen) ){//if ther is no reposes for this comment just print the singlecomment only*/
+              
                 return(
                 <Fragment>
                    
