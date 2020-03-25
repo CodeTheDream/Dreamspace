@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { compose } from "recompose";
 import {
   AuthUserContext,
@@ -20,7 +20,8 @@ class Comment extends React.Component {
       timeCreated: "",
       totallReplys: 0,
       sortType:'asc',
-      replysID:""
+      replysID:"",
+      username:""
     };
   }
 
@@ -51,6 +52,18 @@ class Comment extends React.Component {
         //console.log("totalcountReplys", totallCountReplys);
         this.setState({ totallReplys: totallCountReplys });
       });
+      let {comment}= this.props;
+      let autherId = comment.userId;
+      this.unsubscribe = this.props.firebase
+        .user(autherId)
+        .get()
+        .then(doc => {
+          // console.log("userdata", doc.data())
+          let user = doc.data();
+          this.setState({ username: user.username });
+        });
+       
+       
   };
 
   showMore = () => this.setState({ showAll: true });
@@ -61,12 +74,12 @@ class Comment extends React.Component {
     const { comment, limited, timeCreated, commentId,userName ,} = this.props;
     const { showAll,replys,sortType,replysId} = this.state;
     let commentContent = comment.comment;
- 
-//console.log("Here is your  commentID", commentId)
+    
+//console.log("Here is your  replysId", replysId)
 
     if(replys){
       replys.sort((a,b) =>{
-       const  isReversed = (sortType === 'dsc') ? 1 :-1;
+       const  isReversed = (sortType === 'asc') ? 1 :-1;
        return  isReversed * a.timeCreated.localeCompare(b.timeCreated)
      })
      //console.log("sortedComment",sortedcomments)
@@ -81,9 +94,10 @@ class Comment extends React.Component {
                 <div className="commentDisplay">
                   <p className="styleDisplay">
                   <i className="fa fa-user"></i>{" "}
-                    posted By {userName}
+                    posted By {this.state.username}
                     {comment.timeCreated} <br />
                     {comment.comment}{" "}
+                    
                   </p>
 
                   <div>
@@ -96,7 +110,6 @@ class Comment extends React.Component {
                         commentID={commentId}
                         comment={comment}
                         totallReplys={this.state.totallReplys}
-                        userName={userName}
                         replysId={replysId}
                         
                       />
@@ -149,4 +162,4 @@ class Comment extends React.Component {
     }
   }
 }
-export default compose(withFirebase)(Comment);
+export default compose(withFirebase)(Comment);*/
