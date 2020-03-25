@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { withFirebase } from "../Firebase";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
@@ -10,10 +10,12 @@ class ReplyComment extends React.Component {
     super(props);
     this.state = {
       timeCreated: "",
-      replys: [],
+      //replys: [],
       //limit: 5,
       showAll: false,
-      showPopup: false
+      showPopup: false,
+      username:"",
+      reply:""
     };
   }
 
@@ -26,6 +28,36 @@ class ReplyComment extends React.Component {
     this.setState({ showPopup: false });
   };
 
+  componentDidMount = () => {
+   
+const {replysId} = this.props
+console.log("replyId at replycomment  componentdidmount",replysId)     
+     
+       this.unsubscribe = this.props.firebase
+       .replys(replysId)
+ 
+       .onSnapshot(doc => {
+         if (doc.exists) {
+         // console.log(" this is my article", doc.data());
+           this.setState({
+           
+             reply: doc.data()
+             
+           });
+          }})
+         // console.log("reply",this.state.reply)
+    let autherId = this.state.reply.userId;
+    //console.log("autherId of  a reply",autherId)
+    this.unsubscribe = this.props.firebase
+      .user(autherId)
+      .get()
+      .then(doc => {
+        // console.log("userdata", doc.data())
+        let user = doc.data();
+        //this.setState({ username: user.username });
+      })
+  
+  }
  /* renderReplycomment = () => {
     // console.log("this is the replys in renderreplys func", this.props.replys);
     const { comment, timeCreated } = this.props;
@@ -42,14 +74,16 @@ class ReplyComment extends React.Component {
         );
       });
     }
-  };*/
+  };
+  
 
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
 
   render() {
-    const { reply, timeCreated, commentID, userName ,replysId} = this.props;
- // console.log("commentId at replycomment", commentID);
+    const {  timeCreated, commentID, userName ,replysId} = this.props;
+    
+ console.log("replyId at replycomment11", replysId);
     //console.log("show popup", this.state.showPopup);
     return (
       <div>
@@ -75,7 +109,8 @@ class ReplyComment extends React.Component {
                   <div className="replystayle">
                     <p>
                       {" "}
-                      <i className="fa fa-user"></i> posted By {userName}{" "}
+                      <i className="fa fa-user"></i> posted By {this.state.userName}{" "}
+                      
                       {reply.timeCreated}
                     </p>
                     <p>{reply.reply}</p>
@@ -90,6 +125,7 @@ class ReplyComment extends React.Component {
               <div className="replypage-hide">
               <i
              className="fas fa-angle-up " 
+             style={{ width: "10em" }}
               
            onClick={this.cancle}>{" "}Hide {" "} viwe</i>
            
@@ -101,4 +137,4 @@ class ReplyComment extends React.Component {
   }
 }
 
-export default compose(withFirebase, withRouter)(ReplyComment);
+export default compose(withFirebase, withRouter)(ReplyComment);*/
