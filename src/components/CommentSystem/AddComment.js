@@ -28,7 +28,6 @@ class AddComment extends React.Component {
   handleChange =(e,authUser) => {
     const { name, value } = e.target;
     this.setState({
-      
       [name]: value,
       timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `),
       userId: authUser.uid
