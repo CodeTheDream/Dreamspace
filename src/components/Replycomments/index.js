@@ -36,7 +36,6 @@ const {replysId} = this.props
    
      this.unsubscribe = this.props.firebase
      .replys(replysId)
-
      .onSnapshot(doc => {
        if (doc.exists) {
        // console.log(" this is my article", doc.data());
@@ -57,7 +56,6 @@ const {replysId} = this.props
       let user = doc.data();
       //this.setState({ username: user.username });
     })
-
 }*/
  renderReplycomment = () => {
   // console.log("this is the replys in renderreplys func", this.props.replys);
@@ -112,4 +110,8 @@ return(
     );
   }
 }
+<<<<<<< HEAD
 export default compose(withFirebase, withRouter)(ReplyComments);
+=======
+export default compose(withFirebase, withRouter)(ReplyComments);
+>>>>>>> new update
