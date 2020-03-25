@@ -7,7 +7,7 @@ import Singlecomment from "../../components/Singlecomment"
 
 const moment = require("moment");
 
-class ReplyComment extends Component {
+class ReplyComments extends Component {
   constructor(props) {
     super(props);
     this.state = {timeCreated: "",
@@ -77,7 +77,7 @@ return(
           articleId={articleId}
           onCreate={this.props.onCreate}
         />
-   {  /*<ReplyComments comments={comments} articleId={articleId}/>*/}
+       <ReplyComments comments={comments} articleId={articleId}/> 
       </Fragment>
       
 );
@@ -112,4 +112,4 @@ return(
     );
   }
 }
-export default compose(withFirebase, withRouter)(ReplyComment);
+export default compose(withFirebase, withRouter)(ReplyComments);

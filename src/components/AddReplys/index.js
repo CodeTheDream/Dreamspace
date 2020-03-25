@@ -37,14 +37,19 @@ class AddReplys extends React.Component {
     console.log("this is the commentId for the reply", commentId)
     this.props.firebase
       //.replys(commentId)
-      .comments(commentId)
+      .comments()
       .add({
         // commentId:commentId,
         reply: this.state.reply,
         timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `),
-        userId:authUser.uid
+        userId:authUser.uid,
+        parentCommentId: commentId
       })
       .then(docRef => {
+        console.log('DOC REF', docRef.id)
+        this.props.firebase.comment(commentId).update({
+          childCommentId: docRef.id
+        //console.log(" this is the replysID ", docRef.id)
         //console.log(" this is the replysID ", docRef.id)
       });
 
@@ -52,7 +57,8 @@ class AddReplys extends React.Component {
       reply: "",
       showPopup: false
     });
-  };
+  });
+}
   handleChange = e => {
     console.log(e.target.value);
     this.setState({
