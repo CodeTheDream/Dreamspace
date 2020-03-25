@@ -91,7 +91,8 @@ class ProjectDashBoard extends React.Component {
               selectProject={this.selectProject}
               closePopup={this.togglePopup.bind(this)}
             />
-          ) : null}
+          ) : null}{" "}
+          */}
           {this.state.projectData && (
             <SideBarOpen
               projectData={this.state.projectData}
