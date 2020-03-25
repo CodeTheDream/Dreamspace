@@ -111,7 +111,11 @@ return(
   }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default compose(withFirebase, withRouter)(ReplyComments);
 =======
 export default compose(withFirebase, withRouter)(ReplyComments);
 >>>>>>> new update
+=======
+export default compose(withFirebase, withRouter)(ReplyComments);
+>>>>>>> new commit
