@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { withFirebase } from "../Firebase";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
@@ -9,14 +9,9 @@ class AddReplys extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: [],
-      showAll: false,
-      replies: [],
-      // isOldestFirst: "",
-      //commentId:"",
       reply: "",
-      timeCreated: ""
-      // showPopup:true
+      timeCreated: "",
+ 
     };
   }
 
@@ -34,7 +29,7 @@ class AddReplys extends React.Component {
   handleSubmit =(e,authUser)=> {
     e.preventDefault();
     const commentId = this.props.commentId;
-    console.log("this is the commentId for the reply", commentId)
+   // console.log("this is the commentId for the reply", commentId)
     this.props.firebase
       //.replys(commentId)
       .comments()
@@ -46,10 +41,11 @@ class AddReplys extends React.Component {
         parentCommentId: commentId
       })
       .then(docRef => {
+     
         console.log('DOC REF', docRef.id)
         this.props.firebase.comment(commentId).update({
           childCommentId: docRef.id
-        //console.log(" this is the replysID ", docRef.id)
+       //console.log(" this is the replysID ", )
         //console.log(" this is the replysID ", docRef.id)
       });
 
@@ -69,7 +65,7 @@ class AddReplys extends React.Component {
   render() {
     // const { comment, limited, timeCreated,commentId } = this.props;
     const { commentId} = this.props;
-    console .log("this is the comment Id i have from comment",commentId)
+    //console .log("this is the comment Id i have from comment",commentId)
     return (
       <AuthUserContext.Consumer>
       {authUser => (
@@ -98,7 +94,7 @@ class AddReplys extends React.Component {
               </button>
             { /* <button className="submit-btn" onClick={this.cancle}>
                 cancle
-        </button>*/}
+        </button>
             </div>
           </form>
         ) : null}
@@ -109,4 +105,4 @@ class AddReplys extends React.Component {
   }
 }
 
-export default compose(withFirebase, withRouter)(AddReplys);
+export default compose(withFirebase, withRouter)(AddReplys);*/
