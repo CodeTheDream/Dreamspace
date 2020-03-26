@@ -1,0 +1,29 @@
+.directory-container {
+  margin-top: 57px;
+  display: flex;
+  flex-direction: row;
+}
+
+.list-container {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-gap: 10px;
+  width: 95%;
+  margin: 0 auto;
+  font-size: 15px;
+  list-style: none;
+  // border-style: solid;
+}
+
+.list {
+  border-style: solid;
+  background-color: white;
+  border-radius: 10px;
+  border-color: white;
+  padding: 25px;
+  text-align: left;
+}
+
+.search-contain {
+  width: 25%;
+}
