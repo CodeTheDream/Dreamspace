@@ -22,22 +22,6 @@
         margin-right: auto;
         
     }
-    .sharecard {
-        width:300px;
-        height: 210px;
-        background-color: ghostwhite; 
-        margin: auto;
-     position: absolute;
-        left: 82%;
-        right: 18%;
-        top: 42%;
-        padding: 10px;
-        border-radius: 8px;
-        display: flex;
-      //float: right;
-        transform: translate(-50%, -50%); 
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
-     }
     .card {
         width: 100%;
         max-width: 1200px;
@@ -50,7 +34,7 @@
         position: relative;
         padding-right: 3em;
         border-radius: 10px;
-        overflow:auto;
+        overflow:hidden;
         margin-left: 6em;
         //margin-right: 3em;
     }
@@ -186,7 +170,7 @@ i.custom {
     text-align: left;
     font-weight: bold;
     line-height: 14px;
-    padding-left: 5px;
+    padding-left: 10px;
     margin-top: 0px;
 }
 
@@ -207,18 +191,12 @@ i.custom {
     opacity: 0.6;
     text-align: center;
 }
-
-
 .user-profile {
     position: relative;
     top: 4px;
     // right: 10px;
-   // padding-left: 2px;
+    padding-left: 2px;
     width: 25px;
     height: 25px;
     border-radius: 50%;
 }
-/*@keyframes socialShareAnimation {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}*/
