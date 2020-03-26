@@ -52,7 +52,7 @@
         position: relative;
         padding-right: 3em;
         border-radius: 10px;
-        overflow:auto;
+        overflow:hidden;
         margin-left: 6em;
         //margin-right: 3em;
     }
@@ -188,7 +188,7 @@ i.custom {
     text-align: left;
     font-weight: bold;
     line-height: 14px;
-    padding-left: 5px;
+    padding-left: 10px;
     margin-top: 0px;
 }
 
@@ -215,7 +215,7 @@ i.custom {
     position: relative;
     top: 4px;
     // right: 10px;
-   // padding-left: 2px;
+    padding-left: 2px;
     width: 25px;
     height: 25px;
     border-radius: 50%;
