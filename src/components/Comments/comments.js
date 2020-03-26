@@ -41,9 +41,9 @@ class Comments extends Component {
 
   render() {
     const { comment, timeCreated } = this.state;
-    const { comments, articleId, commentId } = this.props;
+    const { comments, articleId, commentId , childCommentId} = this.props;
 
-    console.log("comments", comments);
+   console.log(" childCommentId from props",  childCommentId);
     return (
       <AuthUserContext.Consumer>
         {authUser => (
@@ -66,9 +66,11 @@ class Comments extends Component {
                     timeCreated={timeCreated}
                     commentId={comment.commentId}
                     articleId={articleId}
-                    onCreate={this.props.onCreate}
+                    onCreate={this.props.onCreateChild}
+                    childCommentId={ childCommentId}
+                    
                   />
-                  <ReplyComments comments={comments} articleId={articleId}/>
+                  <ReplyComments comments={comments} commentId={commentId} articleId={articleId} childCommentId={childCommentId}/>
                 </Fragment>
                 
                 );
