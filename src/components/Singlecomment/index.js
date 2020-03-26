@@ -11,10 +11,10 @@ class Singlecomment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        timeCreated: "",
-        comment: "",
        // limit: 5,
-        userId: ""
+        userId: "",
+       reply: "",
+      timeCreated: "",
     };
   }
   togglePopup = () => {
@@ -24,9 +24,54 @@ class Singlecomment extends Component {
     });
     //console.log("this is the commentId", commentId)
   };
- /* cancle = () => {
+  cancle = () => {
     this.setState({ showPopup: false });
+  };
+
+  /*handleSubmit =(e,authUser)=> {
+    e.preventDefault();
+    const commentId = this.props.commentId;
+   // console.log("this is the commentId for the reply", commentId)
+    this.props.firebase
+      //.replys(commentId)
+      .comments()
+      .add({
+        // commentId:commentId,
+        reply: this.state.reply,
+        timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `),
+        userId:authUser.uid,
+        parentCommentId: commentId
+      })
+      .then(docRef => {
+     
+        console.log('DOC REF', docRef.id)
+        this.props.firebase.comment(commentId).update({
+          childCommentId: docRef.id
+       //console.log(" this is the replysID ", )
+        //console.log(" this is the replysID ", docRef.id)
+      });
+
+    this.setState({
+      reply: "",
+      showPopup: false
+    });
+  });
+}*/
+handleSubmit = (e, authUser) => {
+  e.preventDefault();
+
+  this.props.onCreate(this.state);
+  this.setState({
+    reply: ""
+  });
+};
+  /*handleChange = e => {
+    console.log(e.target.value);
+    this.setState({
+      reply: e.target.value
+    });
   };*/
+
   handleChange = (e, authUser) => {
     const { name, value } = e.target;
     this.setState({
@@ -35,19 +80,10 @@ class Singlecomment extends Component {
       userId: authUser.uid
     });
   };
-
-  handleSubmit = (e, authUser) => {
-    e.preventDefault();
-
-    this.props.onCreate(this.state);
-    this.setState({
-      comment: "",
-      showPopup:false
-
-    });
-  };
   render() {
-      const {comment,commentId} = this.props;
+    const {reply}=this.state
+      const {comment,commentId, childCommentId} = this.props;
+      //console.log(" childCommentId in single comment", childCommentId)
     return (
         <AuthUserContext.Consumer>
         {authUser => (
@@ -56,37 +92,38 @@ class Singlecomment extends Component {
           <i className="fa fa-user"></i> posted By {this.state.username}
           {comment.timeCreated} <br />
           {comment.comment}{" "}
-          <AddReplys commentId={commentId}/>
+         {/* <AddReplys commentId={commentId}/>*/}
         </Fragment>
 
         
-             
-      {/*     
-        <form className="card-addcomment" onSubmit={this.handleSubmit}>
-              <div className="commentgrid">
-                <textarea
-                  className="commentContent"
-                  id="comment"
-                  type="text"
-                  value={comment}
-                  name="comment"
-                  placeholder="Write your comment here! "
-                  autoFocus={true}
-                  onChange={e => this.handleChange(e, authUser)}
-               />
+        <div className="Reply">
+          <button onClick={this.togglePopup}>
+            <i className="fa fa-comment-alt"> </i> Reply
+          </button>
+        </div>
+        {this.state.showPopup ? (
+          <form className="card-addcomment" onSubmit={this.handleSubmit}>
+            <div className="commentgrid">
+              <textarea
+                className="commentContent"
+                // id="reply"
+                type="text"
+                value={reply}
+                name="reply"
+                placeholder="Write your Reply here! "
+                autoFocus={true}
+                onChange={e => this.handleChange(e, authUser)}
+              ></textarea>
 
-                <button
-                  className="submit-btn"
-                  type="submit"
-                  value=" Comment"
-                  disabled={!this.state.comment}
-                >
-                  Comment
-                </button>
-              </div>
-            </form>
-      */}
-       
+              <button className="submit-btn" type="submit">
+                Reply
+              </button>
+            { /* <button className="submit-btn" onClick={this.cancle}>
+                cancle
+        </button>*/}
+            </div>
+          </form>
+        ) : null}
       </div>
        )}
        </AuthUserContext.Consumer>

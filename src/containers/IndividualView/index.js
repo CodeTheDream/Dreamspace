@@ -20,7 +20,8 @@ class IndividualView extends React.Component {
       commentId: "",
       username: "",
       sortType: "asc",
-      commentList: []
+      commentList: [],
+      childCommentId:""
     };
   }
 
@@ -41,9 +42,11 @@ class IndividualView extends React.Component {
         snapshot.forEach(doc => {
           const data = doc.data();
           commentId = doc.id;
+          //console.log("new commentId",commentId)
           data.commentId = commentId;
           comments.push(data);
           this.setState({
+            commentId:commentId,
             comments: comments
           });
         });
@@ -110,6 +113,30 @@ class IndividualView extends React.Component {
         //console.log("Document written with ID: ", docRef.id);
       });
   };
+  
+  createChildComment = (reply, article) => {
+    let {commentId}=this.state.commentId
+ // console.log("here create commentId", this.state.commentId );
+    this.props.firebase
+      .comments()
+      .add({
+        ...reply,
+        parentCommentId: this.state.commentId
+      })
+      //.then(function(docRef) {
+        //console.log("Document written with ID: ", docRef.id);
+      //});
+      .then(docRef => {
+        this.setState({childCommentId:docRef.id})
+        console.log('ChildCommentId', this.state.childCommentId)
+        this.props.firebase.comment(this.state.commentId).update({
+         
+          childCommentId: docRef.id
+       //console.log(" this is the replysID ", )
+        //console.log(" this is the replysID ", docRef.id)
+      });
+    });
+  };
 
   render() {
     // Access to local component state
@@ -123,7 +150,7 @@ class IndividualView extends React.Component {
       sortType,
       commentId
     } = this.state;
-    // console.log("unsorted comments",comments)
+  
     if (comments) {
       comments.sort((a, b) => {
         const isReversed = sortType === "asc" ? 1 : -1;
@@ -205,7 +232,8 @@ class IndividualView extends React.Component {
               onCreate={this.createComment}
               articleId={articleId}
               commentId={commentId}
-              
+              onCreateChild={this.createChildComment}
+              childCommentId ={this.state.childCommentId}
             />
           </div>
         </div>
