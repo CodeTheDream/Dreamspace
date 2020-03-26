@@ -9,15 +9,9 @@ import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
     <div className="wrapper">
-       
-            
-            
-            <p className="btn-text"><b>Sign in with google</b></p>
-        
-    
-        <SignInGoogle />
-       
-        {/* <SignInForm />
+        <h1>SignIn</h1>
+        <SignInForm />
+        {/* <SignInGoogle />
     <SignInFacebook />
     <SignInTwitter /> */}
         {/* <PasswordForgetLink /> */}
@@ -41,7 +35,7 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
   your personal account page.
 `;
 
-/*class SignInFormBase extends Component {
+class SignInFormBase extends Component {
     constructor(props) {
         super(props);
 
@@ -101,59 +95,56 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
             </div>
         );
     }
-}*/
+}
 
-class SignInGoogleBase extends Component {
-  constructor(props) {
-   super(props);
+// class SignInGoogleBase extends Component {
+//   constructor(props) {
+//     super(props);
 
-     this.state = { error: null };
-  }
+//     this.state = { error: null };
+//   }
 
-  onSubmit = event => {
-      this.props.firebase
-          .doSignInWithGoogle()
-      .then(socialAuthUser => {
-       // Create a user in your Firebase Realtime Database too
-        return this.props.firebase.user(socialAuthUser.user.uid).set(
-            {
+//   onSubmit = event => {
+//     this.props.firebase
+//       .doSignInWithGoogle()
+//       .then(socialAuthUser => {
+//         // Create a user in your Firebase Realtime Database too
+//         return this.props.firebase.user(socialAuthUser.user.uid).set(
+//           {
+//             username: socialAuthUser.user.displayName,
+//             email: socialAuthUser.user.email,
+//             roles: {},
+//           },
+//           { merge: true },
+//         );
+//       })
+//       .then(() => {
+//         this.setState({ error: null });
+//         this.props.history.push(ROUTES.HOME);
+//       })
+//       .catch(error => {
+//         if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
+//           error.message = ERROR_MSG_ACCOUNT_EXISTS;
+//         }
 
-                username: socialAuthUser.user.displayName,
-                photoUrl: socialAuthUser.user.photoURL,
-             email: socialAuthUser.user.email,
-            roles: {},
-          },
-           { merge: true },
-          )
-      })
-          .then(() => {
-              this.setState({ error: null });
-        this.props.history.push(ROUTES.HOME);
-     })
-      .catch(error => {
-       if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
-         error.message = ERROR_MSG_ACCOUNT_EXISTS;
-         }
+//         this.setState({ error });
+//       });
 
-          this.setState({ error });
-      });
+//     event.preventDefault();
+//   };
 
-     event.preventDefault();
-   };
+//   render() {
+//     const { error } = this.state;
 
-  render() {
-    const { error } = this.state;
+//     return (
+//       <form onSubmit={this.onSubmit}>
+//         <button type="submit">Sign In with Google</button>
 
-    return (
-      <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Google</button>
-
-        {error && <p>{error.message}</p>}
-      </form>
-      );
-
-  }
- }
+//         {error && <p>{error.message}</p>}
+//       </form>
+//     );
+//   }
+// }
 
 // class SignInFacebookBase extends Component {
 //   constructor(props) {
@@ -253,15 +244,15 @@ class SignInGoogleBase extends Component {
 //   }
 // }
 
-/*const SignInForm = compose(
+const SignInForm = compose(
     withRouter,
     withFirebase,
-)(SignInFormBase);*/
+)(SignInFormBase);
 
- const SignInGoogle = compose(
-   withRouter,
-   withFirebase,
- )(SignInGoogleBase);
+// const SignInGoogle = compose(
+//   withRouter,
+//   withFirebase,
+// )(SignInGoogleBase);
 
 // const SignInFacebook = compose(
 //   withRouter,
@@ -275,4 +266,4 @@ class SignInGoogleBase extends Component {
 
 export default SignInPage;
 
-export { SignInGoogle };
+export { SignInForm };
