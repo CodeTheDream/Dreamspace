@@ -1,4 +1,4 @@
-/*import React from "react";
+import React from "react";
 import { withFirebase } from "../Firebase";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
@@ -41,18 +41,10 @@ class AddReplys extends React.Component {
         parentCommentId: commentId
       })
       .then(docRef => {
-<<<<<<< HEAD
-     
-        console.log('DOC REF', docRef.id)
-        this.props.firebase.comment(commentId).update({
-          childCommentId: docRef.id
-       //console.log(" this is the replysID ", )
-=======
         console.log('DOC REF', docRef.id)
         this.props.firebase.comment(commentId).update({
           childCommentId: docRef.id
         //console.log(" this is the replysID ", docRef.id)
->>>>>>> comment-reply-workbranch
         //console.log(" this is the replysID ", docRef.id)
       });
 
@@ -101,7 +93,7 @@ class AddReplys extends React.Component {
               </button>
             { /* <button className="submit-btn" onClick={this.cancle}>
                 cancle
-        </button>
+        </button>*/}
             </div>
           </form>
         ) : null}
@@ -112,4 +104,4 @@ class AddReplys extends React.Component {
   }
 }
 
-export default compose(withFirebase, withRouter)(AddReplys);*/
+export default compose(withFirebase, withRouter)(AddReplys);
