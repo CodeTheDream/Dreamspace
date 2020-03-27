@@ -1,18 +1,12 @@
 import React from 'react'
 
 const DirectorySearchBar = (props) => {
-  let searchDirectory = props.crewDirectory;
-  console.log('searchDirectory ', searchDirectory)
-  let staffNames = searchDirectory.map((justNames) => justNames.fields);
-  console.log('staffNames ', staffNames)
+  let test = props.filterDirectory;
+  console.log('test ', test)
   return(
     <div className = 'search-contain'>
-      <form>
-        <label>
-          <input type="text" name="name" />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <input onChange={props.filterDirectory} type="text" name="name" />
+      <input type="submit" value="Submit" />
     </div>
   )
 }
