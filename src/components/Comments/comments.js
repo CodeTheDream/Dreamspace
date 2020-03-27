@@ -31,7 +31,7 @@ class Comments extends Component {
   getSingleComment = (id) => {
     this.props.firebase.comment(id)
     .onSnapshot(snapshot => {
-      console.log('getting comment', snapshot.id)
+      //console.log('getting comment', snapshot.id)
       
 
       // console.log("Articles loaded here yo!", articles);
@@ -50,9 +50,9 @@ class Comments extends Component {
 
   render() {
     const { comment, timeCreated } = this.state;
-    const { comments, articleId, commentId } = this.props;
+    const { comments, articleId, commentId,childCommentId,parentCommentId } = this.props;
 
-    console.log("comments", comments);
+    //console.log("comments", comments);
     return (
       <AuthUserContext.Consumer>
         {authUser => (
@@ -63,17 +63,17 @@ class Comments extends Component {
 
             {comments &&
               comments.map((comment, index) => {
-                console.log('comment', comment)
+               console.log('comment', comment)
                 const childComment = {}
             /* if (!comment.commen) ){//if ther is no reposes for this comment just print the singlecomment only*/
               if (comment.childCommentId) {
                 console.log('im a comment with a child', comment)
                 this.getSingleComment(comment.childCommentId)
                 return (
-                  <div>these comments need recursion</div>
+                  <div> <ReplyComments comments={comments} childCommentId={childCommentId} parentCommentId={parentCommentId} commentId={commentId}/> </div>
                 )
               } else {
-                console.log('i have no children', comment)
+                //console.log('i have no children', comment)
                 return(
                 <Fragment>
                    
@@ -86,7 +86,7 @@ class Comments extends Component {
                     articleId={articleId}
                     onCreate={this.props.onCreate}
                   />
-                  {/* <ReplyComments comments={comments} articleId={articleId}/> */}
+                 
                 </Fragment>
                 
                 );

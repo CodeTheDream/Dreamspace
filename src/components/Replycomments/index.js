@@ -1,35 +1,36 @@
-import React,{ Component, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import { withFirebase } from "../Firebase";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { AuthUserContext } from "../Session";
-import Singlecomment from "../../components/Singlecomment"
+import Singlecomment from "../../components/Singlecomment";
 
 const moment = require("moment");
 
-class ReplyComment extends Component {
+class ReplyComments extends Component {
   constructor(props) {
     super(props);
-    this.state = {timeCreated: "",
-    //replys: [],
-    //limit: 5,
-    showAll: false,
-    showPopup: false,
-    username:"",
-    reply:""
+    this.state = {
+      timeCreated: "",
+      //replys: [],
+      //limit: 5,
+      showAll: false,
+      showPopup: false,
+      username: "",
+      reply: ""
+    };
+  }
+
+  togglePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   };
-}
+  cancle = () => {
+    this.setState({ showPopup: false });
+  };
 
-togglePopup = () => {
-  this.setState({
-    showPopup: !this.state.showPopup
-  });
-};
-cancle = () => {
-  this.setState({ showPopup: false });
-};
-
-/*componentDidMount = () => {
+  /*componentDidMount = () => {
  
 const {replysId} = this.props
 //console.log("replyId at replycomment  componentdidmount",replysId)     
@@ -59,35 +60,25 @@ const {replysId} = this.props
     })
 
 }*/
- renderReplycomment = () => {
-  // console.log("this is the replys in renderreplys func", this.props.replys);
-  const { comment, timeCreated,articleId ,comments} = this.props;
+  renderReplycomment = () => {
+    // console.log("this is the replys in renderreplys func", this.props.replys);
+    const { comment, timeCreated, articleId, comments } = this.props;
 
-  
-  this.props.comments && this.props.comments.map((comment, index) => {
-return(
-      <Fragment>
-      
-        <Singlecomment
-          comment={comment}
-          key={index}
-          //limited={limited}
-          timeCreated={timeCreated}
-          commentId={comment.commentId}
-          articleId={articleId}
-          onCreate={this.props.onCreate}
-        />
-   {  /*<ReplyComments comments={comments} articleId={articleId}/>*/}
-      </Fragment>
-      
-);
-      //}
-    })
-
-};
+    this.props.comments &&
+      this.props.comments.map((comment, index) => {
+        return (
+          <Fragment>
+           <Singlecomment />
+            <ReplyComments comments={comment} articleId={articleId} />
+          </Fragment>
+        );
+        //}
+      });
+  };
 
   render() {
-    const {  timeCreated, commentID, userName ,replysId} = this.props;
+    const { timeCreated, commentID, userName, replysId, comments } = this.props;
+    console.log("total comments in Replycomments",comments)
     return (
       <AuthUserContext.Consumer>
         {authUser => (
@@ -105,11 +96,12 @@ return(
               </i>
             </div>
 
-{this.renderReplycomment}
+        {this.renderReplycomment}
+       
           </div>
         )}
       </AuthUserContext.Consumer>
     );
   }
 }
-export default compose(withFirebase, withRouter)(ReplyComment);
+export default compose(withFirebase, withRouter)(ReplyComments);
