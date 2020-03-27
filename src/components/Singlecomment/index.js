@@ -28,35 +28,7 @@ class Singlecomment extends Component {
     this.setState({ showPopup: false });
   };
 
-  /*handleSubmit =(e,authUser)=> {
-    e.preventDefault();
-    const commentId = this.props.commentId;
-   // console.log("this is the commentId for the reply", commentId)
-    this.props.firebase
-      //.replys(commentId)
-      .comments()
-      .add({
-        // commentId:commentId,
-        reply: this.state.reply,
-        timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `),
-        userId:authUser.uid,
-        parentCommentId: commentId
-      })
-      .then(docRef => {
-     
-        console.log('DOC REF', docRef.id)
-        this.props.firebase.comment(commentId).update({
-          childCommentId: docRef.id
-       //console.log(" this is the replysID ", )
-        //console.log(" this is the replysID ", docRef.id)
-      });
-
-    this.setState({
-      reply: "",
-      showPopup: false
-    });
-  });
-}*/
+  
 handleSubmit = (e, authUser) => {
   e.preventDefault();
 
@@ -65,12 +37,7 @@ handleSubmit = (e, authUser) => {
     reply: ""
   });
 };
-  /*handleChange = e => {
-    console.log(e.target.value);
-    this.setState({
-      reply: e.target.value
-    });
-  };*/
+ 
 
   handleChange = (e, authUser) => {
     const { name, value } = e.target;
