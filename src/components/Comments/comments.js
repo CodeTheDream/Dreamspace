@@ -28,6 +28,17 @@ class Comments extends Component {
     });
   };
 
+  getSingleComment = (id) => {
+    this.props.firebase.comment(id)
+    .onSnapshot(snapshot => {
+      console.log('getting comment', snapshot.id)
+      
+
+      // console.log("Articles loaded here yo!", articles);
+      
+    });
+  }
+
   handleSubmit = (e, authUser) => {
     e.preventDefault();
 
@@ -54,8 +65,21 @@ class Comments extends Component {
 
             {comments &&
               comments.map((comment, index) => {
+                console.log('comment', comment)
+                const childComment = {}
             /* if (!comment.commen) ){//if ther is no reposes for this comment just print the singlecomment only*/
+<<<<<<< HEAD
               
+=======
+              if (comment.childCommentId) {
+                console.log('im a comment with a child', comment)
+                this.getSingleComment(comment.childCommentId)
+                return (
+                  <div>these comments need recursion</div>
+                )
+              } else {
+                console.log('i have no children', comment)
+>>>>>>> comment-reply-workbranch
                 return(
                 <Fragment>
                    
@@ -70,10 +94,15 @@ class Comments extends Component {
                     childCommentId={ childCommentId}
                     
                   />
+<<<<<<< HEAD
                   <ReplyComments comments={comments} commentId={commentId} articleId={articleId} childCommentId={childCommentId}/>
+=======
+                  {/* <ReplyComments comments={comments} articleId={articleId}/> */}
+>>>>>>> comment-reply-workbranch
                 </Fragment>
                 
                 );
+              }
                 //}
               })}
 
