@@ -53,7 +53,7 @@ class Singlecomment extends Component {
       timeCreated: "",
     };
   }
-  togglePopup = () => {
+ /* togglePopup = () => {
     //const{commentId}=this.props
     this.setState({
       showPopup: !this.state.showPopup
@@ -82,7 +82,7 @@ handleSubmit = (e, authUser) => {
       timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `),
       userId: authUser.uid
     });
-  };
+  };*/
   render() {
     const {reply}=this.state
       const {comment,commentId, childCommentId} = this.props;
@@ -95,10 +95,10 @@ handleSubmit = (e, authUser) => {
           <i className="fa fa-user"></i> posted By {this.state.username}
           {comment.timeCreated} <br />
           {comment.comment}{" "}
-         {/* <AddReplys commentId={commentId}/>*/}
+          <AddReplys commentId={commentId}/>
         </Fragment>
 
-        
+       { /*
         <div className="Reply">
           <button onClick={this.togglePopup}>
             <i className="fa fa-comment-alt"> </i> Reply
@@ -123,11 +123,11 @@ handleSubmit = (e, authUser) => {
               </button>
             { /* <button className="submit-btn" onClick={this.cancle}>
                 cancle
-        </button>*/}
+        </button>
             </div>
           </form>
-        ) : null}
-      </div>
+        ) : null}*/}
+        </div>
        )}
        </AuthUserContext.Consumer>
     )
