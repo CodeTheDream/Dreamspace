@@ -68,9 +68,6 @@ class Comments extends Component {
                 console.log('comment', comment)
                 const childComment = {}
             /* if (!comment.commen) ){//if ther is no reposes for this comment just print the singlecomment only*/
-<<<<<<< HEAD
-              
-=======
               if (comment.childCommentId) {
                 console.log('im a comment with a child', comment)
                 this.getSingleComment(comment.childCommentId)
@@ -79,7 +76,6 @@ class Comments extends Component {
                 )
               } else {
                 console.log('i have no children', comment)
->>>>>>> comment-reply-workbranch
                 return(
                 <Fragment>
                    
@@ -94,11 +90,7 @@ class Comments extends Component {
                     childCommentId={ childCommentId}
                     
                   />
-<<<<<<< HEAD
-                  <ReplyComments comments={comments} commentId={commentId} articleId={articleId} childCommentId={childCommentId}/>
-=======
                   {/* <ReplyComments comments={comments} articleId={articleId}/> */}
->>>>>>> comment-reply-workbranch
                 </Fragment>
                 
                 );
