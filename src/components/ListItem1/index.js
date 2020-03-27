@@ -42,12 +42,12 @@ class ListItem1 extends React.Component {
             .user(autherId)
             .get()
             .then(doc => {
-                 //console.log("userdata", doc.data())
+                 console.log("userdata", doc.data())
                 let user = doc.data()
               
                 this.setState({
-                    //username: user.username,
-                    //photoUrl: user.photoUrl,
+                    username: user.username,
+                    photoUrl: user.photoUrl,
                 })
             })
    
