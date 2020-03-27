@@ -28,6 +28,17 @@ class Comments extends Component {
     });
   };
 
+  getSingleComment = (id) => {
+    this.props.firebase.comment(id)
+    .onSnapshot(snapshot => {
+      console.log('getting comment', snapshot)
+      
+
+      // console.log("Articles loaded here yo!", articles);
+      
+    });
+  }
+
   handleSubmit = (e, authUser) => {
     e.preventDefault();
 
@@ -52,7 +63,12 @@ class Comments extends Component {
 
             {comments &&
               comments.map((comment, index) => {
+                console.log('comment', comment)
+                const childComment = {}
             /* if (!comment.commen) ){//if ther is no reposes for this comment just print the singlecomment only*/
+              if (comment.childCommentId) {
+                this.getSingleComment(comment.childCommentId)
+              }
                 return(
                 <Fragment>
                    
@@ -65,7 +81,7 @@ class Comments extends Component {
                     articleId={articleId}
                     onCreate={this.props.onCreate}
                   />
-                  <ReplyComments comments={comments} articleId={articleId}/>
+                  {/* <ReplyComments comments={comments} articleId={articleId}/> */}
                 </Fragment>
                 
                 );
