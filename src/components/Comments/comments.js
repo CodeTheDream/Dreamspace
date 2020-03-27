@@ -31,7 +31,7 @@ class Comments extends Component {
   getSingleComment = (id) => {
     this.props.firebase.comment(id)
     .onSnapshot(snapshot => {
-      console.log('getting comment', snapshot)
+      console.log('getting comment', snapshot.id)
       
 
       // console.log("Articles loaded here yo!", articles);
@@ -67,8 +67,13 @@ class Comments extends Component {
                 const childComment = {}
             /* if (!comment.commen) ){//if ther is no reposes for this comment just print the singlecomment only*/
               if (comment.childCommentId) {
+                console.log('im a comment with a child', comment)
                 this.getSingleComment(comment.childCommentId)
-              }
+                return (
+                  <div>these comments need recursion</div>
+                )
+              } else {
+                console.log('i have no children', comment)
                 return(
                 <Fragment>
                    
@@ -85,6 +90,7 @@ class Comments extends Component {
                 </Fragment>
                 
                 );
+              }
                 //}
               })}
 
