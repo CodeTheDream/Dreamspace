@@ -44,7 +44,7 @@ class ListItem1 extends React.Component {
             .then(doc => {
                 // console.log("userdata", doc.data())
                 let user = doc.data()
-                this.setState({ username: user.username })
+                //this.setState({ username: user.username })
             })
    
 
