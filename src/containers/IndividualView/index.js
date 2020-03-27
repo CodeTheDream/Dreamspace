@@ -5,8 +5,8 @@ import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import Comment from "../../components/Comment";
 import ListItem1 from '../../components/ListItem1'
-import ReplyComment from "../../components/ReplyComment";
-import AddReplys from  "../../components/AddReplys"
+//import ReplyComment from "../../components/ReplyComment";
+//import AddReplys from  "../../components/AddReplys"
 const moment = require("moment");
 class IndividualView extends React.Component {
   constructor(props) {
@@ -19,7 +19,10 @@ class IndividualView extends React.Component {
       totalcount: "",
       isOldestFirst:true,
         commentId: "",
-  sortType:"dsc"
+        sortType: "dsc",
+        photoUrl: " ",
+        commentList: [],
+        childCommentId:""
     };
   }
 
@@ -42,7 +45,8 @@ class IndividualView extends React.Component {
           commentId=doc.id
           data.commentId= commentId
           comments.push(data);
-              this.setState({
+            this.setState({
+                  commentId:commentId,
                 comments:comments,
             });
         });
@@ -72,6 +76,19 @@ class IndividualView extends React.Component {
           console.log("No such document!");
         }
       });
+
+
+
+
+
+
+
+
+
+
+
+
+
     //This Helps to find the total commets for spesific articleId
     this.unsubscribe = this.props.firebase
       .comments()
@@ -153,7 +170,9 @@ if(article){
          
           <div className="auther-name-individual">
             <div className="autherstyle-individual">
-              <i className="fa fa-user"></i>
+
+                        <img src={this.state.photoUrl} className="user-profile"
+                        />
                         <span>posted by {article.timeCreated} </span>
             </div>
           </div>

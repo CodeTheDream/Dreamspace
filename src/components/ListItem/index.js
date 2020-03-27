@@ -65,36 +65,13 @@ class ListItem extends React.Component {
                 this.setState({
 
                     username: user.username,
-                    //photoURL: user.photoURL,
-                    //photoUrl: user.photoURL,
+                 
+                    photoUrl: user.photoUrl,
                 })
-               // console.log("userphoto" + user.photoURL)
+                console.log("userphoto" + user.photoUrl)
+               // photoUrl = user.photoURL;
               // console.log( user.photoURL)
             })
-
-
-
-            
-
-          
-
-            
-
-
-       /*function authUser () {
-            authUser.providerData.forEach(function (profile) {
-                console.log("Sign-in provider: " + profile.providerId);
-                console.log("  Provider-specific UID: " + profile.uid);
-                console.log("  Name: " + profile.displayName);
-                console.log("  Email: " + profile.email);
-                console.log("  Photo URL: " + profile.photoURL);
-            });
-
-
-
-        }*/
-
-
 
     }
     render() {
