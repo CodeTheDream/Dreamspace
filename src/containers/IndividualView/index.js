@@ -117,7 +117,7 @@ let {childCommentId}=this.state
       });
   };
   
-  createChildComment = (reply, article) => {
+ /* createChildComment = (reply, article) => {
     let {commentId,childCommentId}=this.state.commentId
  // console.log("here create commentId", this.state.commentId );
     this.props.firebase
@@ -143,7 +143,7 @@ let {childCommentId}=this.state
       });
     });
   };
-
+*/
    updateComment = (newcomment) =>{
     //this.setState({commentList:commentList.add(newcomment)})
   }
