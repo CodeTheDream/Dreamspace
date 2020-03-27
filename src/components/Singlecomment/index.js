@@ -27,7 +27,7 @@ class Singlecomment extends Component {
  /* cancle = () => {
     this.setState({ showPopup: false });
   };*/
-  handleChange = (e, authUser) => {
+  /*handleChange = (e, authUser) => {
     const { name, value } = e.target;
     this.setState({
       [name]: value,
@@ -45,7 +45,7 @@ class Singlecomment extends Component {
       showPopup:false
 
     });
-  };
+  };*/
   render() {
       const {comment,commentId} = this.props;
     return (
