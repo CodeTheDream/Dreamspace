@@ -1,5 +1,6 @@
 import React from "react";
 import ctdlogo from "../../assets/images/ctd-labs-logo.png";
+import axios from "axios";
 import {
   FeatureCard,
   PopForm,
@@ -45,20 +46,20 @@ class ProjectDashBoard extends React.Component {
     });
   };
 
-  getAirTable() {
-    const url = "https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects";
+  getAirTable = async () => {
+    const url = `https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects?api_key=${process.env.REACT_APP_AIRTABLE_KEY}`;
 
-    fetch(url, {
-      headers: { Authorization: "Bearer " + process.env.REACT_APP_AIRTABLE_KEY }
-    })
-      .then(response => response.json())
-      .then(responseData => {
-        console.log("data from Airtable", responseData);
-        const projectData = responseData.records;
-        console.log("projectData ", projectData);
-        this.setState({ projectData: projectData });
+    try {
+      const response = await axios(url);
+      console.log("airtable from GET: ", response);
+      const projectData = response.data.records;
+      this.setState({
+        projectData
       });
-  }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   render() {
     // Filtering out the side bar Menu
@@ -71,21 +72,6 @@ class ProjectDashBoard extends React.Component {
     return (
       <div className="dashboard">
         <div className="dashboard-content">
-          <div>
-            {/* {this.state.projectData && (
-              <Header
-                projectData={this.state.projectData}
-                selectProject={this.selectProject}
-              />
-            )} */}
-            {/* {this.state.projectData && ( */}
-            {/* <SearchBar
-              projectData={this.state.projectData}
-              selectProject={this.selectProject}
-              handleInput={this.handleInput}
-            /> */}
-            {/* ) : null} */}
-          </div>
           <div className="featured">
             {this.state.selectedProject ? (
               <FeatureCard project={this.state.selectedProject} />
@@ -93,15 +79,6 @@ class ProjectDashBoard extends React.Component {
               <img className="featured" src={ctdlogo} />
             )}
           </div>
-          {/* {this.state.selectedProject ? (
-            <FeatureCard project={this.state.selectedProject} />
-          ) : null} */}
-          <button
-            className="button-style"
-            onClick={this.togglePopup.bind(this)}
-          >
-            Add Project
-          </button>
           {this.state.showPopup ? (
             <PopForm
               text="Enter Project Data"
@@ -112,9 +89,16 @@ class ProjectDashBoard extends React.Component {
             <SideBarOpen
               projectData={this.state.projectData}
               selectProject={this.selectProject}
-              // filterProject={filterProject}
             />
           )}
+          {/* <div className="dashboard-button-container"> */}
+          <button
+            className="button-style"
+            onClick={this.togglePopup.bind(this)}
+          >
+            Add Project
+          </button>
+          {/* </div> */}
         </div>
       </div>
     );
