@@ -14,7 +14,7 @@ class ReplyComments extends Component {
       timeCreated: "",
       //replys: [],
       //limit: 5,
-      showAll: false,
+      //showAll: false,
       showPopup: false,
       username: "",
       childcomments: ""
@@ -33,14 +33,14 @@ class ReplyComments extends Component {
   componentDidMount = () => {
  
 const {childCommentId,commentId,ParentCommentID} = this.props
-//console.log("chiledComentID  componentdidmount",childCommentId)     
+console.log("chiledComentID  componentdidmount",childCommentId)     
    
-     this.props.firebase
+this.unsubscribe = this.props.firebase
      .comments()
      //.where(commentId, "==" , ParentCommentID)
      .onSnapshot(doc => {
        if (doc.exists) {
-        //console.log(" this is my childcomments", doc.data());
+        console.log(" this is my childcomments", doc.data());
          this.setState({
          
            childcomments: doc.data()
@@ -59,12 +59,12 @@ const {childCommentId,commentId,ParentCommentID} = this.props
       //this.setState({ username: user.username });
     })
 }
-  renderReplycomment = () => {
+  renderReplyComment = () => {
     // console.log("this is the replys in renderreplys func", this.props.replys);
     const { comment, timeCreated, articleId, comments } = this.props;
-
+//let comments=null;
     this.props.comments &&
-      this.props.comments.map((comment, index) => {
+     this.props.comments.map((comment, index) => {
         return (
           <Fragment>
             <Singlecomment
@@ -72,19 +72,22 @@ const {childCommentId,commentId,ParentCommentID} = this.props
               key={index}
               //limited={limited}
               timeCreated={timeCreated}
-              commentId={comment.commentId}
-              articleId={articleId}
-              onCreate={this.props.onCreate}
+             // commentId={comment.commentId}
+              //articleId={articleId}
+              //onCreate={this.props.onCreate}
             />
             {/*<ReplyComments comments={comments} articleId={articleId} />*/}
           </Fragment>
         );
         //}
       });
+    
   };
+  
 
   render() {
-    const { timeCreated, commentID, userName, replysId } = this.props;
+    const { timeCreated, commentID, userName, } = this.props;
+
     return (
       <AuthUserContext.Consumer>
         {authUser => (
@@ -102,7 +105,7 @@ const {childCommentId,commentId,ParentCommentID} = this.props
               </i>
             </div>
 
-            {this.renderReplycomment}
+            {this.renderReplyComment}
           </div>
         )}
       </AuthUserContext.Consumer>
