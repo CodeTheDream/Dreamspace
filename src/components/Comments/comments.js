@@ -32,8 +32,10 @@ class Comments extends Component {
     e.preventDefault();
 
     this.props.onCreate(this.state);
+   this. props.refreshFunction(this.state)
     this.setState({
       comment: ""
+      
     });
   };
 
