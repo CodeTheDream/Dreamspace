@@ -32,15 +32,15 @@ class ReplyComments extends Component {
 
   componentDidMount = () => {
  
-const {childCommentId} = this.props
-console.log("chiledComentID  componentdidmount",childCommentId)     
+const {childCommentId,commentId,ParentCommentID} = this.props
+//console.log("chiledComentID  componentdidmount",childCommentId)     
    
      this.props.firebase
-     .comments(childCommentId)
-     //.where(commentId=== ParentCommentID)
+     .comments()
+     //.where(commentId, "==" , ParentCommentID)
      .onSnapshot(doc => {
        if (doc.exists) {
-        console.log(" this is my childcomments", doc.data());
+        //console.log(" this is my childcomments", doc.data());
          this.setState({
          
            childcomments: doc.data()

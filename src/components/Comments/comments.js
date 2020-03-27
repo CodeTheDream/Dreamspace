@@ -41,7 +41,7 @@ class Comments extends Component {
     const { comment, timeCreated } = this.state;
     const { comments, articleId, commentId , childCommentId} = this.props;
 
-   console.log(" childCommentId from props",  childCommentId);
+   //console.log(" childCommentId from props",  childCommentId);
     return (
       <AuthUserContext.Consumer>
         {authUser => (

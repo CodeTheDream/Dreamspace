@@ -128,7 +128,7 @@ class IndividualView extends React.Component {
       //});
       .then(docRef => {
         this.setState({childCommentId:docRef.id})
-        console.log('ChildCommentId', this.state.childCommentId)
+        //console.log('ChildCommentId', this.state.childCommentId)
         this.props.firebase.comment(this.state.commentId).update({
          
           childCommentId: docRef.id
