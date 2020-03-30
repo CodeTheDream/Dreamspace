@@ -5,8 +5,12 @@ const DirectorySearchBar = (props) => {
   console.log('test ', test)
   return(
     <div className = 'search-contain'>
-      <input onChange={props.filterDirectory} type="text" name="name" />
-      <input type="submit" value="Submit" />
+      <input 
+        className = 'style-input'
+        onChange = {props.handleInput} 
+        type = "text" 
+        placeholder = "Search..."
+        /> 
     </div>
   )
 }

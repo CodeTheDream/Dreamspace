@@ -1,5 +1,5 @@
 import React from "react";
-import OpenClose from "../OpenClose";
+// import OpenClose from "../OpenClose";
 import SearchBar from '../SearchBar';
 // import '../../../src/'
 
@@ -44,7 +44,7 @@ const SideBarOpen = props => {
     );
 
     
-  };
+};
 
 
   // console.log("check for today's ", sideBarMenu);
