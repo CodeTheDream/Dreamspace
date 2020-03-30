@@ -11,16 +11,43 @@ class ReplyComments extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timeCreated: "",
-      //replys: [],
-      //limit: 5,
       showAll: false,
       showPopup: false,
       username: "",
-      reply: ""
+      childComments:[],
+      parentCommentId:""
     };
   }
-
+  
+  componentDidMount = () => {
+  const {childCommentId}=this.props
+  console.log("chidCommentId in replycomment",childCommentId)
+    this.unsubscribe = this.props.firebase
+      .comments()
+      //.where("commentId", "==", parentCommentId)
+     
+      .onSnapshot(snapshot => {
+        const childcomments = [];
+        let parentCommentId = "";
+        snapshot.forEach(doc => {
+          const data = doc.data();
+         // console.log("doc.id",doc.id)
+          parentCommentId = doc.id;
+          data.ParentCommentId = parentCommentId;
+          childcomments.push(data);
+        });
+        this.setState({
+          childComments: childcomments,
+          parentCommontId:parentCommentId
+        });
+       
+       console.log(
+          "this is my childcomments  in addreplys commponent",
+          this.state.childComments
+        );
+        console.log("my parentCommentId is here",this.state.parentCommentId)
+      });
+  };
   togglePopup = () => {
     this.setState({
       showPopup: !this.state.showPopup
@@ -29,56 +56,36 @@ class ReplyComments extends Component {
   cancle = () => {
     this.setState({ showPopup: false });
   };
-
-  /*componentDidMount = () => {
- 
-const {replysId} = this.props
-//console.log("replyId at replycomment  componentdidmount",replysId)     
-   
-     this.unsubscribe = this.props.firebase
-     .replys(replysId)
-
-     .onSnapshot(doc => {
-       if (doc.exists) {
-       // console.log(" this is my article", doc.data());
-         this.setState({
-         
-           reply: doc.data()
-           
-         });
-        }})
-       // console.log("reply",this.state.reply)
-  let autherId = this.state.reply.userId;
-  //console.log("autherId of  a reply",autherId)
-  this.unsubscribe = this.props.firebase
-    .user(autherId)
-    .get()
-    .then(doc => {
-      // console.log("userdata", doc.data())
-      let user = doc.data();
-      //this.setState({ username: user.username });
-    })
-
-}*/
-  renderReplycomment = () => {
-    // console.log("this is the replys in renderreplys func", this.props.replys);
-    const { comment, timeCreated, articleId, comments } = this.props;
-
-    this.props.comments &&
-      this.props.comments.map((comment, index) => {
-        return (
-          <Fragment>
-           <Singlecomment />
-            <ReplyComments comments={comment} articleId={articleId} />
-          </Fragment>
-        );
-        //}
-      });
-  };
-
+  renderReplycomment = ()=>{
+  // const childComments = this.state.childComments
+    console.log("comment1",this.state.childComments);
+    const {commentId,comments,timeCreated,childCommentId}=this.props
+    console.log("childCommentId",childCommentId)
+ this.state. childComments &&
+  this.state.childComments.map((comment, index) => (
+    
+    <React.Fragment>
+  
+   { commentId===comment.parentCommentId && 
+      
+        <div>
+           <Singlecomment
+           comment={comment}
+           key={index}
+           //limited={limited}
+           timeCreated={timeCreated}
+          commentId={comment.commentId}
+          />
+          <ReplyComments childComments={this.state.childComments}  />
+        </div>
+  }
+    </React.Fragment>
+  ));
+}
   render() {
     const { timeCreated, commentID, userName, replysId, comments } = this.props;
-    console.log("total comments in Replycomments",comments)
+    //  console.log("total comments in Replycomments",comments)
+    const myFunction=this.renderReplycomment()
     return (
       <AuthUserContext.Consumer>
         {authUser => (
@@ -96,8 +103,11 @@ const {replysId} = this.props
               </i>
             </div>
 
-        {this.renderReplycomment}
-       
+            {this.state.showPopup ?(
+              <div>
+           {myFunction}
+           </div>
+            ):null}
           </div>
         )}
       </AuthUserContext.Consumer>

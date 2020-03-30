@@ -5,7 +5,7 @@ import { compose } from "recompose";
 import * as ROUTES from "../../constants/routes";
 import { AuthUserContext } from "../Session";
 import Singlecomment from "../../components/Singlecomment";
-import ReplyComments from "../../components/Replycomments"
+import ReplyComments from "../../components/Replycomments";
 const moment = require("moment");
 
 class Comments extends Component {
@@ -15,10 +15,12 @@ class Comments extends Component {
       timeCreated: "",
       comment: "",
       limit: 5,
-      userId: ""
+      userId: "",
+      childCommentId:""
     };
   }
-
+  
+  
   handleChange = (e, authUser) => {
     const { name, value } = e.target;
     this.setState({
@@ -28,16 +30,14 @@ class Comments extends Component {
     });
   };
 
-  getSingleComment = (id) => {
-    this.props.firebase.comment(id)
-    .onSnapshot(snapshot => {
-      //console.log('getting comment', snapshot.id)
-      
-
-      // console.log("Articles loaded here yo!", articles);
-      
+  getSingleComment = id => {
+    this.props.firebase.comment(id).onSnapshot(snapshot => {
+      console.log('getting comment', snapshot.id)
+    //  this.setState({childCommentId:snapshot.id})
+    // console.log("Articles loaded here yo!", articles);
+   // console.log("childcommentID",this.state.childCommentId)
     });
-  }
+  };
 
   handleSubmit = (e, authUser) => {
     e.preventDefault();
@@ -49,48 +49,67 @@ class Comments extends Component {
   };
 
   render() {
-    const { comment, timeCreated } = this.state;
-    const { comments, articleId, commentId,childCommentId,parentCommentId } = this.props;
-
+    const { comment, timeCreated , childCommentId,} = this.state;
+    const {
+      comments,
+      articleId,
+      commentId,
+     
+      parentCommentId
+    } = this.props;
+  //  console.log("childCommentId in a comments",childCommentId)
     //console.log("comments", comments);
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <div>
+          <div className="card-comment">
             <br />
             <p>replys</p>
             <hr />
 
             {comments &&
               comments.map((comment, index) => {
-               console.log('comment', comment)
-                const childComment = {}
-            /* if (!comment.commen) ){//if ther is no reposes for this comment just print the singlecomment only*/
-              if (comment.childCommentId) {
-                console.log('im a comment with a child', comment)
-                this.getSingleComment(comment.childCommentId)
-                return (
-                  <div> <ReplyComments comments={comments} childCommentId={childCommentId} parentCommentId={parentCommentId} commentId={commentId}/> </div>
-                )
-              } else {
-                //console.log('i have no children', comment)
-                return(
-                <Fragment>
-                   
-                  <Singlecomment
-                    comment={comment}
-                    key={index}
-                    //limited={limited}
-                    timeCreated={timeCreated}
-                    commentId={comment.commentId}
-                    articleId={articleId}
-                    onCreate={this.props.onCreate}
-                  />
-                 
-                </Fragment>
-                
-                );
-              }
+                //console.log('comment', comment)
+                const childComment = {};
+                /* if (!comment.commen) ){//if ther is no reposes for this comment just print the singlecomment only*/
+                if (comment.childCommentId) {
+                 console.log("im a comment with a child ", Comment);
+                  this.getSingleComment(comment.childCommentId);
+                  return (
+                    <div>
+                      <Singlecomment
+                        comment={comment}
+                        key={index}
+                        //limited={limited}
+                        timeCreated={timeCreated}
+                       commentId={comment.commentId}
+                       articleId={articleId}
+                       onCreate={this.props.onCreate}
+                      />
+                      <ReplyComments
+                        
+                        childCommentId={comment.childCommentId}                        
+                        commentId={commentId}
+                        timeCreated={timeCreated}
+                      />
+                    </div>
+                  );
+                } else {
+                  //console.log('i have no children', comment)
+                  return (
+                    <Fragment>
+                      <Singlecomment
+                        comment={comment}
+                        key={index}
+                        //limited={limited}
+                        timeCreated={timeCreated}
+                        commentId={comment.commentId}
+                        articleId={articleId}
+                        onCreate={this.props.onCreate}
+                      />
+                    </Fragment>
+                  );
+                }
                 //}
               })}
 
