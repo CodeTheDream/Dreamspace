@@ -20,13 +20,14 @@ class IndividualView extends React.Component {
       commentId: "",
       username: "",
       sortType: "asc",
-      commentList: []
+      commentList: [],
+      childCommentId: "",
+      parentCommentId: ""
     };
   }
 
   componentDidMount = () => {
     let articleId = this.props.match.params.articleId;
-
     this.unsubscribe = this.props.firebase
       .comments()
 
@@ -41,9 +42,12 @@ class IndividualView extends React.Component {
         snapshot.forEach(doc => {
           const data = doc.data();
           commentId = doc.id;
+         // console.log("new commentId",commentId)
           data.commentId = commentId;
           comments.push(data);
+         console.log("comments have posted",comments)
           this.setState({
+            commentId: commentId,
             comments: comments
           });
         });
@@ -90,6 +94,7 @@ class IndividualView extends React.Component {
         snapshot.forEach(doc => {
           const data = doc.data();
           TotallComment.push(data);
+          //console.log("totall cimment at individual",TotallComment)
         });
 
         this.setState({ TotallComment: TotallComment });
@@ -111,6 +116,35 @@ class IndividualView extends React.Component {
       });
   };
 
+ /* createChildComment = (reply, article) => {
+    let { commentId, childCommentId } = this.state.commentId;
+    // console.log("here create commentId", this.state.commentId );
+    this.props.firebase
+      .comments()
+      .add({
+        ...reply,
+        parentCommentId: this.state.commentId
+      })
+      //.then(function(docRef) {
+      //console.log("Document written with ID: ", docRef.id);
+      //});
+      .then(docRef => {
+        
+        this.setState({
+          childCommentId: docRef.id,
+          
+          parentCommentId: docRef.parentCommentId
+        });
+        console.log("My ChildCommentId", this.state.childCommentId);
+        console.log("My ParentommentId", this.state.parentCommentId);
+        this.props.firebase.comment(this.state.commentId).update({
+          childCommentId: docRef.id
+          //console.log(" this is the replysID ", )
+          //console.log(" this is the replysID ", docRef.id)
+        });
+      });
+  };*/
+
   render() {
     // Access to local component state
     const {
@@ -123,10 +157,10 @@ class IndividualView extends React.Component {
       sortType,
       commentId
     } = this.state;
-    // console.log("unsorted comments",comments)
+
     if (comments) {
       comments.sort((a, b) => {
-        const isReversed = sortType === "asc" ? 1 : -1;
+        const isReversed = sortType === "desc" ? 1 : -1;
         return isReversed * a.timeCreated.localeCompare(b.timeCreated);
       });
       //console.log("sortedComment",sortedcomments)
@@ -205,7 +239,9 @@ class IndividualView extends React.Component {
               onCreate={this.createComment}
               articleId={articleId}
               commentId={commentId}
-              
+              onCreateChild={this.createChildComment}
+              childCommentId={this.state.childCommentId}
+              parentCommentId={this.state.parentCommentId}
             />
           </div>
         </div>
