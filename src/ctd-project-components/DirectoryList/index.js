@@ -3,7 +3,7 @@ import React from 'react';
 
 const DirectoryList = (props) => {
   // all ctd staff info
-  let staffList = props.filterDirectory;
+  let staffList = props.filterTheWholeDirectory;
   console.log('staffList ', staffList);
   // opt in members list
   let optInStaffMembers = staffList.filter(filterList  => 
