@@ -17,10 +17,28 @@ class Directory extends React.Component {
     console.log('look at ', id)                                                      
     let selectStaffMember = allStaffMembers.find(x => x.id === id);
     console.log('selectStaffMember ', selectStaffMember)                                      
-    this.setState({                                                                      
-      selectStaffMember                                                                
-    })                                                                              
-  }                                                                                
+    this.setState({                                                                 selectStaffMember                                                    
+    })                                                                } 
+    
+  filterTheWholeDirectory = text => {
+    const { crewDirectory } = this.state;
+    const showResults = crewDirectory.filter(search => {
+      const grabData = (
+        search.Name +
+        search.Phone +
+        search.id
+      )
+      .replace (/[^a-zA-Z0-9]/g, "")     // need to read up more on regex
+      .toLowerCase();
+
+      const textFormatted = text.toLowerCase()
+      return grabData.indexOf(textFormatted.replace(/\s/g, "")) > -1;   // i dont understand the regex.
+    })
+    this.setState({
+      directorySearch: showResults,
+      text
+    });
+  };
 
   handleInput = e => {
     console.log(e.target.value);
@@ -28,6 +46,13 @@ class Directory extends React.Component {
       searchDirectory: e.target.value
     })
   };
+
+// filterList = text => {
+//   const {crewDirectory} = this.state;
+//   const allResults = crewDirectory.filter(search => {
+//     const lookAtData = 
+//   })
+// }
 
   directoryAirTable() {
     const url = "https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory";
@@ -44,10 +69,10 @@ class Directory extends React.Component {
     }
 
   render() {
-    let filterDirectory = this.state.crewDirectory.filter(search => {
-      return search.fields.Name.toUpperCase().includes(this.state.searchDirectory.toUpperCase()
-      );
-    })
+    // let filterDirectory = this.state.crewDirectory.filter(search => {
+    //   return search.fields.Name.toUpperCase().includes(this.state.searchDirectory.toUpperCase()
+    //   );
+    // })
 
    
     // let filterNumber = this.state.crewDirectory.filter(phone => {
@@ -60,12 +85,14 @@ class Directory extends React.Component {
           crewDirectory={this.state.crewDirectory}
           selectedStaffMember={this.selectedStaffMember}
           handleInput={this.handleInput}
+          filterTheWholeDirectory={this.filterTheWholeDirectory}
         />
         )}
         {this.state.crewDirectory && (<DirectoryList 
           crewDirectory={this.state.crewDirectory}
           selectedStaffMember={this.selectedStaffMember}
-          filterDirectory={filterDirectory}
+          filterTheWholeDirectory={this.filterTheWholeDirectory}
+          // filterDirectory={filterDirectory}
           // filterNumbers={filterNumber}                                                 // Part of the phone number filter.
         />)}
      </div>
