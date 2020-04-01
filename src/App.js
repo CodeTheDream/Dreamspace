@@ -13,6 +13,7 @@ import SignInPage from "./components/SignIn";
 import { withAuthentication } from "./components/Session";
 import ProjectDashBoard from "./containers/ProjectDashBoard";
 import Sidebar from "./components/Sidebar";
+import SignOut from "./components/SignOut";
 
 function App() {
   return (
@@ -24,10 +25,10 @@ function App() {
           <Route exact path={ROUTES.HOME} component={Dashboard} />
           <Route exact path={ROUTES.ABOUT} component={About} />
           <Route exact path={ROUTES.PROJECT} component={ProjectDashBoard} />
-          {/* <Route exact path={ROUTES.CREATEARTICLE} component={Createarticle} />*/}
           <Route exact path={ROUTES.ACCOUNT} component={Account} />
           <Route exact path={ROUTES.SIGNUP} component={SignUp} />
           <Route exact path={ROUTES.SIGN_IN} component={SignInPage} />
+       { /* <Route exact path={ROUTES.DASHBOARD} component={Dashboard} />*/}
           <Route
             exact
             path={ROUTES.INDIVIDUAL_VIEW}

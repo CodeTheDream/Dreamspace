@@ -58,7 +58,7 @@ class ReplyComments extends Component {
   };
   renderReplycomment = ()=>{
   // const childComments = this.state.childComments
-    console.log("comment1",this.state.childComments);
+    console.log("list of ChildComments ",this.state.childComments);
     const {commentId,comments,timeCreated,childCommentId}=this.props
     console.log("childCommentId",childCommentId)
  this.state. childComments &&
@@ -67,7 +67,6 @@ class ReplyComments extends Component {
     <React.Fragment>
   
    { commentId===comment.parentCommentId && 
-      
         <div>
            <Singlecomment
            comment={comment}
@@ -76,7 +75,7 @@ class ReplyComments extends Component {
            timeCreated={timeCreated}
           commentId={comment.commentId}
           />
-          <ReplyComments childComments={this.state.childComments}  />
+          <ReplyComments comment={comment}  />
         </div>
   }
     </React.Fragment>
