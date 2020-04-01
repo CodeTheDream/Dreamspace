@@ -17,40 +17,7 @@ class Singlecomment extends Component {
       timeCreated: "",
     };
   }
-<<<<<<< HEAD
   
-=======
- /* togglePopup = () => {
-    //const{commentId}=this.props
-    this.setState({
-      showPopup: !this.state.showPopup
-    });
-    //console.log("this is the commentId", commentId)
-  };
-  cancle = () => {
-    this.setState({ showPopup: false });
-  };
-
-  
-handleSubmit = (e, authUser) => {
-  e.preventDefault();
-
-  this.props.onCreate(this.state);
-  this.setState({
-    reply: ""
-  });
-};
- 
-
-  handleChange = (e, authUser) => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value,
-      timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `),
-      userId: authUser.uid
-    });
-  };*/
->>>>>>> devpostarticle
   render() {
     const {reply}=this.state
       const {comment,commentId, childCommentId} = this.props;
@@ -66,41 +33,8 @@ handleSubmit = (e, authUser) => {
           <AddReplys commentId={commentId}/>
         </Fragment>
 
-<<<<<<< HEAD
        
       </div>
-=======
-       { /*
-        <div className="Reply">
-          <button onClick={this.togglePopup}>
-            <i className="fa fa-comment-alt"> </i> Reply
-          </button>
-        </div>
-        {this.state.showPopup ? (
-          <form className="card-addcomment" onSubmit={this.handleSubmit}>
-            <div className="commentgrid">
-              <textarea
-                className="commentContent"
-                // id="reply"
-                type="text"
-                value={reply}
-                name="reply"
-                placeholder="Write your Reply here! "
-                autoFocus={true}
-                onChange={e => this.handleChange(e, authUser)}
-              ></textarea>
-
-              <button className="submit-btn" type="submit">
-                Reply
-              </button>
-            { /* <button className="submit-btn" onClick={this.cancle}>
-                cancle
-        </button>
-            </div>
-          </form>
-        ) : null}*/}
-        </div>
->>>>>>> devpostarticle
        )}
        </AuthUserContext.Consumer>
     )
