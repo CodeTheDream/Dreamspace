@@ -3,8 +3,8 @@ import ctdlogo from "../../assets/images/ctd-labs-logo.png";
 import axios from "axios";
 import {
   FeatureCard,
-  PopForm,
-  SearchBar,
+  // PopForm,
+  // SearchBar,
   SideBarOpen
 } from "../../ctd-project-components";
 
@@ -72,13 +72,17 @@ class ProjectDashBoard extends React.Component {
     return (
       <div className="dashboard">
         <div className="dashboard-content">
-          <div className="featured">
-            {this.state.selectedProject ? (
-              <FeatureCard project={this.state.selectedProject} />
-            ) : (
-              <img className="featured" src={ctdlogo} />
-            )}
-          </div>
+          {/* <div className="menu-container"> */}
+          {this.state.selectedProject ? (
+            // <div className="card-container">
+            <FeatureCard project={this.state.selectedProject} />
+          ) : (
+            // </div>
+            // <div>
+            <img src={ctdlogo} />
+            // </div>
+          )}
+          {/* </div> */}
           {/* {this.state.showPopup ? (
             <PopForm
               text="Enter Project Data"

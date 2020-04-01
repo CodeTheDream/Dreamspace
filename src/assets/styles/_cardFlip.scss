@@ -4,17 +4,8 @@
   justify-content: center;
   grid-area: featured;
   margin-bottom: 35px;
-
-  // background-color: transparent;
-  // border-radius: 15px;
-  // justify-content: center;
-  // align-items: center;
-  // margin: 0;
-  width: 50vw;
-  height: 65vh;
-  // perspective: 100%;
-  // margin-bottom: 80px;
-  // grid-area: featured;
+  width: 800px;
+  height: 500px;
 }
 
 .flip-card-inner {
@@ -63,17 +54,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // background: #173e43;
-  // background-color: #dddfd4;
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
   border-radius: 15px;
   color: whitesmoke;
   transform: rotateY(180deg);
   overflow-y: auto;
   .header {
-    // padding: 60px;
     background-color: #173e43;
     height: 100%;
     width: 100%;
@@ -83,8 +68,6 @@
     padding-top: 60px;
     padding-bottom: 10px;
     justify-content: center;
-    // background: #3fb0ac;
-    // color: whitesmoke;
   }
   .contanier {
     max-width: 805px;
@@ -93,25 +76,16 @@
   .grid-row {
     display: flex;
     flex-flow: row wrap;
-    // justify-content: space-around;
-    // align-content: center;
   }
   .grid-item {
     height: 20px;
     padding: 20px;
     flex-shrink: 1;
-    // align-self: baseline;
-    // flex-basis: 10%;
-    // -ms-flex: auto;
-    // width: 190px;
-    // position: relative;
-    // padding: 10px;
     box-sizing: border-box;
   }
 }
 @media (max-width: 420px) {
   .grid-item {
-    // flex-basis: 100%;
     flex-wrap: wrap;
   }
 }
