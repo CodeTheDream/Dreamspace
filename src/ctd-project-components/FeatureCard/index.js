@@ -62,23 +62,35 @@ const FeatureCard = props => {
                 </div>
               )}
             </div>
-          </div>
+            {/* </div> */}
 
-          {/* {project.fields.Type && (
+            {/* {project.fields.Type && (
               <>
                 <div className="card-type">Type</div>
                 <div className="card-type-info">{project.fields.Type}</div>
               </>
             )} */}
-
-          {/* {project.fields.Notes && (
+            {/* {project.fields.Repo && (
+              <>
+                <div className="card-repo">Repo</div>
+                <div className="card-repo-info">{project.fields.Repo}</div>
+              </>
+            )} */}
+            {/* {project.fields.Notes && (
               <>
                 <div className="card-note">Notes</div>
                 <div className="card-note-info">{project.fields.Notes}</div>
               </>
             )} */}
-
-          {/* {project.fields.Project_Description && (
+            {/* {project.fields.Meeting_Time && (
+              <>
+                <div className="card-time">Meeting Time</div>
+                <div className="card-time-info">
+                  {moment(project.fields.Meeting_Time).format("dddd @ h:mm a")}
+                </div>
+              </>
+            )} */}
+            {/* {project.fields.Project_Description && (
               <>
                 <div className="card-des">Project Description</div>
                 <div className="card-des-info">
@@ -86,7 +98,7 @@ const FeatureCard = props => {
                 </div>
               </>
             )} */}
-          {/* {project.fields.Website && (
+            {/* {project.fields.Website && (
               <>
                 <div className="card-website">Website</div>
                 <div className="card-website-info">
@@ -94,6 +106,7 @@ const FeatureCard = props => {
                 </div>
               </>
             )} */}
+          </div>
         </div>
       </div>
     </div>

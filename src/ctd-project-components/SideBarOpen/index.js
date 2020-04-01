@@ -17,23 +17,25 @@ const SideBarOpen = props => {
   return (
     <div className="sidebar-menu">
       {/* <OpenClose /> */} {/* I don't need at this time or if at all */}
-      <div className="search-container">
-        <SearchBar
-          projectData={props.projectData}
-          selectProject={props.selectProject}
-          handleInput={props.handleInput}
-        />
-      </div>
-      <div className="menu-container">
-        {filterList.map(sideBar => (
-          <li
-            key={sideBar.fields.Name}
-            onClick={() => props.selectProject(sideBar.id)}
-            className="menu-container"
-          >
-            {sideBar.fields.Name.toUpperCase()}
-          </li>
-        ))}
+      <div className="collapse-container">
+        <div className="search-container">
+          <SearchBar
+            projectData={props.projectData}
+            selectProject={props.selectProject}
+            handleInput={props.handleInput}
+          />
+        </div>
+        <div className="menu-container">
+          {filterList.map(sideBar => (
+            <li
+              key={sideBar.fields.Name}
+              onClick={() => props.selectProject(sideBar.id)}
+              className="menu-container"
+            >
+              {sideBar.fields.Name.toUpperCase()}
+            </li>
+          ))}
+        </div>
       </div>
     </div>
   );
