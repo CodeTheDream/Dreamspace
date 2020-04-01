@@ -9,45 +9,114 @@
   grid-template-areas:
     "header header"
     "sidebar-menu featured";
-  grid-template-rows: 1fr 6fr;
-  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 5px 1fr;
+  grid-template-columns: 250px 1fr;
   max-width: 100%;
   width: 100%;
   height: 100vh;
   grid-column-gap: 10px;
   box-sizing: border-box;
 }
+
 .slide-container {
   grid-area: header;
 }
-.featured {
-  grid-area: featured;
-  margin-top: 30px;
-}
+
 .sidebar-menu {
   display: grid;
+  grid-template-rows: 124px auto;
   grid-area: sidebar-menu;
   box-sizing: border-box;
-  background-color: whitesmoke;
+  background-color: #fff;
   border-right: solid;
   border-color: #0066cc;
-  // border-radius: 8px;
   color: #f15c39;
-  width: 15vw;
-  // padding: 23px;
+  width: 100%;
+  padding-top: 90px;
 }
-
-.menu-container {
-  list-style: none;
-  width: 15vw;
-  // position: left;
-  // cursor: pointer;
+.card-container {
+  display: flex;
 }
-
+.card-placeholder {
+  align-content: center;
+}
 .sidebar-menu li {
   padding: 5px;
 }
 
-// .search-container {
-//   margin-top: 20px;
+.footer {
+  // background: #0066cc;
+  display: grid;
+  grid-template-columns: auto 200px;
+}
+
+.today {
+  margin-top: 8px;
+}
+
+.style-day,
+.style-time,
+.footer-content {
+  font-weight: 200;
+}
+
+@media screen and (max-width: 979px) {
+  // .dashboard-content {
+  //   display: flex;
+  //   flex-direction: column-reverse;
+  // }
+}
+
+// .dashboard {
+//   width: 100%;
+//   overflow-x: hidden;
+//   overflow-y: hidden;
 // }
+
+// .dashboard-content {
+//   display: grid;
+//   grid-template-areas:
+//     "header header"
+//     "sidebar-menu featured";
+//   grid-template-rows: 1fr 6fr;
+//   grid-template-columns: 1fr 3fr;
+//   max-width: 100%;
+//   width: 100%;
+//   height: 100vh;
+//   grid-column-gap: 10px;
+//   box-sizing: border-box;
+// }
+// .slide-container {
+//   grid-area: header;
+// }
+// .featured {
+//   grid-area: featured;
+//   margin-top: 30px;
+// }
+// .sidebar-menu {
+//   display: grid;
+//   grid-area: sidebar-menu;
+//   box-sizing: border-box;
+//   background-color: whitesmoke;
+//   border-right: solid;
+//   border-color: #0066cc;
+//   // border-radius: 8px;
+//   color: #f15c39;
+//   width: 15vw;
+//   // padding: 23px;
+// }
+
+// .menu-container {
+//   list-style: none;
+//   width: 15vw;
+//   // position: left;
+//   // cursor: pointer;
+// }
+
+// .sidebar-menu li {
+//   padding: 5px;
+// }
+
+// // .search-container {
+// //   margin-top: 20px;
+// // }
