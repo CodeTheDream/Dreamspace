@@ -190,3 +190,19 @@ i.custom {
     opacity: 0.6;
     text-align: center;
 }
+
+.sharecard {
+   width:300px;
+   height: 210px;
+   background-color: lightgrey; 
+   margin: auto;
+   position: absolute;
+   left: 82%;
+   right: 18%;
+   top: 42%;
+   padding: 10px;
+   border-radius: 8px;
+   display: flex;
+ // float: right;
+   transform: translate(-50%, -50%); 
+}

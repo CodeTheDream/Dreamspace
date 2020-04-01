@@ -1,9 +1,10 @@
 import React from "react";
-//import myimage from "../../assets/images/nice-piccy3.jpg";
+import { EmailIcon, FacebookIcon, LinkedinIcon,FacebookShareCount } from "react-share";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import { AuthUserContext } from "../Session";
+
 import ListItem1 from "../ListItem1";
 class ListItem extends React.Component {
   constructor(props) {
@@ -13,8 +14,7 @@ class ListItem extends React.Component {
       article: [],
       username: "",
       TotallComment: "",
-        totalcount: "",
-        sortType:"asc"
+      totalcount: ""
     };
   }
   openPost(e, article) {
@@ -25,106 +25,131 @@ class ListItem extends React.Component {
       params: article.uid,
       state: { article }
     });
-    }
-  /*  sortByDate() {
-        const { article } = this.props
-        let newArticleList = article
-        if (this.state.isOldestFirst) {
-            newArticleList = article.sort((a, b) => a.date > b.timeCreated)
-        } else {
-            newArticleList = article.sort((a, b) => a.date < b.date)
-        }
-        this.setState({
-            isOldestFirst: !this.state.isOldestFirst,
-            article: newArticleList
-        })
-       
-    }*/
-   componentDidMount() {
+  }
+  componentDidMount() {
     const { article } = this.props;
-      this.props.firebase
-          .comments()
-          .where("articleId", "==", article.uid)
-          .onSnapshot(snapshot => {
-              const TotallComment = [];
-              snapshot.forEach(doc => {
-                  const data = doc.data();
-                  TotallComment.push(data);
-              });
-              this.setState({ TotallComment: TotallComment });
-              const totalcount = TotallComment.length;
-              this.setState({ totalcount: totalcount });
-
-              this.setState({
-                  isOldestFirst: true,
-                  article: article
-              })
-          }) 
-
-
-
-
-
-      let autherId = article.userId;
-      this.unsubscribe = this.props.firebase
-          .user(autherId)
-          .get()
-          .then(doc => {
-              // console.log("userdata", doc.data())
-              let user = doc.data()
-              //this.setState({ username: user.username })
-          })
-    }
+    this.props.firebase
+      .comments()
+      .where("articleId", "==", article.uid)
+      .onSnapshot(snapshot => {
+        const TotallComment = [];
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          TotallComment.push(data);
+        });
+        this.setState({ TotallComment: TotallComment });
+        const totalcount = TotallComment.length;
+        this.setState({ totalcount: totalcount });
+      });
+    let autherId = article.userId;
+    this.unsubscribe = this.props.firebase
+      .user(autherId)
+      .get()
+      .then(doc => {
+        // console.log("userdata", doc.data())
+        let user = doc.data();
+        this.setState({
+          username: user.username,
+          authorPhoto: user.email
+        });
+        console.log("authorPhoto", this.state.authorPhoto);
+      });
+  }
+  togglePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  };
+ 
+  
+  fbClicked () {
+    
+    this.props.sharedBy('fb')
+  }
   render() {
-    //const { upvotes } = this.state;
-     // const { downvotes } = this.state;
-      const { article } = this.props;
+    const { upvotes } = this.state;
+    const { downvotes } = this.state;
+    const { article } = this.props;
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <div className="card">
-            <ListItem1 article={article} />
-                    <div className="maincontent" id="content">
-                       
-              <div className="auther">
+          <div>
+            <div className="card">
+              <ListItem1 article={article} />
+              <div className="maincontent" id="content">
+                <div className="auther">
+                  <div className="auther-style">
+                    <span>
+                      <i className="fa fa-user"></i>
+                    </span>
+                    <span>
+                      posted by {this.state.username} {article.timeCreated}
+                    </span>
+                  </div>
+                </div>
+                
                 <div className="auther-style">
-                  <span>
-                    <i className="fa fa-user"></i>
-                  </span>
-                  <span>
-             posted by {this.state.username} {article.timeCreated} 
-                  </span>
+                  <a href={this.props.article.url}>
+                    {this.props.article.title}
+                  </a>
+                </div>
+
+                <div className="description-style">
+                  {this.props.article.description}
                 </div>
               </div>
-             <div> {this.props.article.tags}</div>
-              <div className="auther-style">
-                <a href={this.props.article.url}>{this.props.article.title}</a>
-              </div>
-
-              <div className="description-style">
-                {this.props.article.description}
-              </div>
-            </div>
-<br/>
-            <div id="commentarea">
-              <span style={{ float: "right" }}>
-                <button
-                  className="button"
-                  onClick={e => this.openPost(e, article)}>
-                
-                                <i className="fa fa-comment">
-
-                    {" "}
-                    {this.state.totalcount} {" comment "}
-                  </i>
-                </button>
+              <br />
+              <div id="commentarea">
                 <span style={{ float: "right" }}>
-                  <button className="button">
-                    <i className="fa fa-share">share...</i>
+                  <button
+                    className="button"
+                    onClick={e => this.openPost(e, article)}
+                  >
+                    <i
+                      className="fa fa-comment-alt
+"
+                    >
+                      {" "}
+                      {this.state.totalcount} {" comment "}
+                    </i>
                   </button>
+                  <span style={{ float: "right" }}>
+                    <button className="button" onClick={this.togglePopup}>
+                      <i className="fa fa-share">share...</i>
+                    </button>
+                  </span>
                 </span>
-              </span>
+              </div>
             </div>
+            <span style={{ float: "right" }}>
+              <div>
+                {this.state.showPopup ? (
+                  <div className="sharecard">
+                    
+                     <a
+                      href="https://www.facebook.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FacebookIcon url={this.props.article.url}  size={32} round={true} onClick={this.fbClicked} >
+                      {shareCount => <span className="myShareCountWrapper">{shareCount}</span>}
+                      </FacebookIcon>
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <LinkedinIcon url={this.props.article.url}  size={32} round={true}>
+                      {shareCount => <span className="myShareCountWrapper">{shareCount}</span>}
+                        </LinkedinIcon>
+                    </a>
+                    <EmailIcon   size={32} round={true}/>
+                  
+                  </div>
+                ) : null}
+              </div>
+            </span>
           </div>
         )}
       </AuthUserContext.Consumer>

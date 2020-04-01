@@ -3,14 +3,18 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes.js";
 import Logo from "../../assets/images/ctd-logo.png";
 import SignOutButton from "../SignOut";
-import Sidebar from "../Sidebar";
-
+import {Redirect} from "react-router-dom"
 import { AuthUserContext } from "../Session";
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
     {authUser =>
-      authUser ? <NavigationAuth authUser={authUser} /> : <NavigationNonAuth />
+      authUser ? <NavigationAuth authUser={authUser} /> :
+      <div>
+        <NavigationNonAuth />
+         <Redirect to="/about"/>
+      {/*} <Redirect to="/signIn"/>*/}
+      </div> 
     }
   </AuthUserContext.Consumer>
 );
@@ -32,10 +36,15 @@ const NavigationAuth = () => (
       <li>
         {" "}
         <Link to={ROUTES.ACCOUNT}>Account</Link>
+
       </li>
       <li>
         <SignOutButton />
+        {/*<Link to={ROUTES.HOME}>SignOut</Link>*/}
+        
+        
       </li>
+      
     </ul>
   </header>
 );
@@ -50,7 +59,7 @@ const NavigationNonAuth = () => (
 
     <ul className="menu">
       <li>
-        <Link to={ROUTES.ABOUT}>About</Link>
+{/* <Link to={ROUTES.ABOUT}>About</Link>*/}
       </li>
       <li>
         {" "}
