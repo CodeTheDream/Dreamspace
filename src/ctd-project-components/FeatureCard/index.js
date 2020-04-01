@@ -47,13 +47,13 @@ const FeatureCard = props => {
               )}
               {project.fields.Repo && (
                 <div className="grid-row">
-                  <div className="grid-item">Repo</div>
+                  <div className="grid-item">Repo:</div>
                   <div className="grid-item">{project.fields.Repo}</div>
                 </div>
               )}
               {project.fields.Meeting_Time && (
                 <div className="grid-row">
-                  <div className="grid-item">Meeting Time</div>
+                  <div className="grid-item">Meeting Time:</div>
                   <div className="grid-item">
                     {moment(project.fields.Meeting_Time).format(
                       "dddd @ h:mm a"
