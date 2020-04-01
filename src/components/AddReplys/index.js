@@ -9,11 +9,6 @@ class AddReplys extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: [],
-      showAll: false,
-      replies: [],
-      // isOldestFirst: "",
-      //commentId:"",
       reply: "",
       timeCreated: "",
       // showPopup:true
@@ -37,10 +32,13 @@ class AddReplys extends React.Component {
   handleSubmit = (e, authUser) => {
     e.preventDefault();
     const commentId = this.props.commentId;
-    console.log("this is the commentId for the reply", commentId);
+
+
+   // console.log("this is the commentId for the reply", commentId)
+
     this.props.firebase
       //.replys(commentId)
-      .comments(commentId)
+      .comments()
       .add({
         // commentId:commentId,
         reply: this.state.reply,
@@ -71,8 +69,11 @@ class AddReplys extends React.Component {
 
   render() {
     // const { comment, limited, timeCreated,commentId } = this.props;
-    const { commentId } = this.props;
+
     // console .log("this is the comment Id i have from comment",commentId)
+
+    const { commentId} = this.props;
+    //console .log("this is the comment Id i have from comment",commentId)
     return (
       <AuthUserContext.Consumer>
         {authUser => (

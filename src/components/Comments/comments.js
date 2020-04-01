@@ -43,22 +43,18 @@ class Comments extends Component {
     e.preventDefault();
 
     this.props.onCreate(this.state);
+   this. props.refreshFunction(this.state)
     this.setState({
       comment: ""
+      
     });
   };
 
   render() {
-    const { comment, timeCreated , childCommentId,} = this.state;
-    const {
-      comments,
-      articleId,
-      commentId,
-     
-      parentCommentId
-    } = this.props;
-  //  console.log("childCommentId in a comments",childCommentId)
-    //console.log("comments", comments);
+    const { comment, timeCreated } = this.state;
+    const { comments, articleId, commentId , childCommentId} = this.props;
+
+   //console.log(" childCommentId from props",  childCommentId);
     return (
       <AuthUserContext.Consumer>
         {authUser => (
