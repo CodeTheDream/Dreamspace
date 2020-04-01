@@ -72,17 +72,17 @@ class ProjectDashBoard extends React.Component {
     return (
       <div className="dashboard">
         <div className="dashboard-content">
-          {/* <div className="menu-container"> */}
-          {this.state.selectedProject ? (
-            // <div className="card-container">
-            <FeatureCard project={this.state.selectedProject} />
-          ) : (
-            // </div>
-            // <div>
-            <img src={ctdlogo} />
-            // </div>
-          )}
-          {/* </div> */}
+          <div className="flip-card-container">
+            {this.state.selectedProject ? (
+              // <div className="card-container">
+              <FeatureCard project={this.state.selectedProject} />
+            ) : (
+              // </div>
+              // <div>
+              <img src={ctdlogo} style={{ width: "50vw", height: "auto" }} />
+              // </div>
+            )}
+          </div>
           {/* {this.state.showPopup ? (
             <PopForm
               text="Enter Project Data"

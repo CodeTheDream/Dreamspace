@@ -19,3 +19,11 @@
   position: left;
   cursor: pointer;
 }
+@media screen and (max-width: 979px) {
+  .collapse-container {
+    display: block;
+  }
+  // .menu-container {
+  //   display: none;
+  // }
+}
