@@ -31,8 +31,7 @@
   border-right: solid;
   border-color: #0066cc;
   color: #f15c39;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   width: 100%;
   padding-top: 90px;
 }
@@ -50,33 +49,17 @@
   // background: #0066cc;
   display: grid;
   grid-template-columns: auto 200px;
-=======
-  width: 15vw;
-  // padding: 23px;
-}
-
-.menu-container {
-  list-style: none;
-  width: 15vw;
-  // position: left;
-  // cursor: pointer;
->>>>>>> CommentedOutAddFrom
 }
 
 .today {
   margin-top: 8px;
 }
 
-=======
-  width: 100%;
-  padding-top: 90px;
-}
-.card-container {
-  display: flex;
-}
-.card-placeholder {
-  align-content: center;
-}
+// =======
+//   width: 100%;
+//   padding-top: 90px;
+// }
+
 .sidebar-menu li {
   padding: 5px;
 }
@@ -90,8 +73,6 @@
 .today {
   margin-top: 8px;
 }
-
->>>>>>> [WIP]
 .style-day,
 .style-time,
 .footer-content {
@@ -99,16 +80,9 @@
 }
 
 @media screen and (max-width: 979px) {
-<<<<<<< HEAD
   .sidebar-menu {
     display: none;
   }
-=======
-  // .dashboard-content {
-  //   display: flex;
-  //   flex-direction: column-reverse;
-  // }
->>>>>>> [WIP]
 }
 
 // .dashboard {
@@ -132,19 +106,11 @@
 // }
 // .slide-container {
 //   grid-area: header;
-<<<<<<< HEAD
 // }
 // .featured {
 //   grid-area: featured;
 //   margin-top: 30px;
 // }
-=======
-// }
-// .featured {
-//   grid-area: featured;
-//   margin-top: 30px;
-// }
->>>>>>> [WIP]
 // .sidebar-menu {
 //   display: grid;
 //   grid-area: sidebar-menu;
