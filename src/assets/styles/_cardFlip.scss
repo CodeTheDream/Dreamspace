@@ -59,3 +59,8 @@
 .card-content {
   font-family: 'Noto Sans TC', sans-serif;
 }
+@media (max-width: 360px) {
+  .grid-item {
+    font-size: 3.5vw;
+  }
+}
