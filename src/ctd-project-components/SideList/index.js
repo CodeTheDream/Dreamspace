@@ -30,20 +30,20 @@ class SideList extends React.Component {
     console.log("finalFilter", finalFitler);
     return (
       <div className="modal-wrapper-postarticle">
-        <div className="dialogstyle devedit-form" id="popform">
+        <div className="side-style devedit-form" id="popform">
           <button
             className=" dialogCloseButonStayle"
             onClick={this.props.closePopup}
           >
             X
           </button>
-          <h4>{this.props.text}</h4>
+          {/* <h4>{this.props.text}</h4> */}
           <div className="pop-Side">
             {finalFitler.map(sideBar => (
               <li
                 key={sideBar.fields.Name}
                 onClick={() => this.props.selectProject(sideBar.id)}
-                className="menu-container"
+                className="side-item"
               >
                 {sideBar.fields.Name.toUpperCase()}
               </li>
