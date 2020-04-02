@@ -33,6 +33,7 @@
   // padding-top: 5em;
   max-width: $maxWidth;
   margin: 0 auto;
+ // padding-top:5em;
 }
 @media screen and (min-width: 120px){
 .view-container-signup {
@@ -47,12 +48,13 @@
     margin: 0 auto;
   }}
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 .view-container account-page {
   padding-top: 1.8em;
