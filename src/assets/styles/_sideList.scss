@@ -5,7 +5,7 @@
   max-width: 35%;
   margin: auto;
   position: fixed;
-  left: 5%;
+  left: 10vw;
   //   right: 35%;
   top: 40%;
   padding: 10px;
@@ -26,7 +26,34 @@
 }
 .side-item {
   //   flex: 1 1 auto;
+  //   font-size: 3vw;
   padding: 5px;
   color: #3fb0ac;
   //   flex-direction: column;
+}
+.side-button {
+  visibility: hidden;
+}
+@media (max-width: 979px) {
+  .side-button {
+    visibility: visible;
+    margin-top: 15px;
+    font-size: 12px;
+    text-align: center;
+    font-style: normal;
+    width: 7.5em;
+    margin-bottom: 10px;
+    background: #3fb0ac;
+    float: left;
+    color: #fae596;
+    border-radius: 8px;
+    position: absolute;
+    padding: 8px;
+    margin-right: 88vw;
+  }
+}
+@media (max-width: 600px) {
+  .side-item {
+    font-size: 3vw;
+  }
 }

@@ -31,7 +31,7 @@ const FeatureCard = props => {
           {/* </div> */}
           <div className="header">
             <img src={ctd} alt={ctdlogo} />
-            <h4>{project.fields.Name}</h4>
+            <h5>{project.fields.Name}</h5>
             <div className="container">
               {project.fields.Current_Team && (
                 <div className="grid-row">

@@ -12,19 +12,10 @@
   justify-content: center;
   grid-area: featured;
   margin-bottom: 35px;
-
-  // background-color: transparent;
-  // border-radius: 15px;
-  // justify-content: center;
-  // align-items: center;
-  // margin: 0;
-  min-width: 350px;
-  min-height: auto;
-  width: 50vw;
+  // min-width: 350px;
+  // min-height: auto;
+  width: 75vw;
   height: 65vh;
-  // perspective: 100%;
-  // margin-bottom: 80px;
-  // grid-area: featured;
 }
 
 .flip-card-inner {
@@ -109,7 +100,7 @@
   .grid-item {
     height: 20px;
     padding: 20px;
-    flex-shrink: 1;
+    flex-shrink: 3;
     // align-self: baseline;
     // flex-basis: 10%;
     // -ms-flex: auto;
@@ -124,5 +115,10 @@
     margin-left: 15vw;
     margin-right: 15vw;
     margin-top: 10vh;
+  }
+}
+@media (max-width: 360px) {
+  .grid-item {
+    font-size: 3.5vw;
   }
 }
