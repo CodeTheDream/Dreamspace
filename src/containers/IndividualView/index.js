@@ -88,7 +88,7 @@ class IndividualView extends React.Component {
     //This Helps to find the total commets for spesific articleId
     this.unsubscribe = this.props.firebase
       .comments()
-     .where("articleId", "==", articleId)
+      .where("articleId", "==", articleId)
       .onSnapshot(snapshot => {
         const TotallComment = [];
         snapshot.forEach(doc => {
@@ -110,7 +110,6 @@ class IndividualView extends React.Component {
       .add({
         ...comment,
         articleId: this.state.articleId
-        
       })
       .then(function(docRef) {
         //console.log("Document written with ID: ", docRef.id);
@@ -158,6 +157,7 @@ class IndividualView extends React.Component {
       sortType,
       commentId
     } = this.state;
+
     if (comments) {
       comments.sort((a, b) => {
         const isReversed = sortType === "desc" ? 1 : -1;
@@ -212,7 +212,6 @@ class IndividualView extends React.Component {
           <div>
             <AddComment comment={comment} onCreate={this.createComment} />
           </div>
-
           <div>
          {this.state.comments &&
               this.state.comments.map((comment, index) => {

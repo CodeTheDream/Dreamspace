@@ -2,16 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\assets",
-    "\\src\\assets\\styles",
     "\\src\\components",
-    "\\src\\components\\ListItem",
-    "\\src\\components\\Navigation",
+    "\\src\\components\\ListItem1",
+    "\\src\\components\\SignIn",
+    "\\src\\components\\SignUp",
     "\\src\\containers",
-    "\\src\\containers\\Create-article",
     "\\src\\containers\\Dashboard",
-    "\\src\\containers\\IndividualView"
+    "\\src\\ctd-project-components",
+    "\\src\\ctd-project-components\\FeatureCard"
   ],
-  "SelectedNode": "\\src\\assets\\styles\\_nav.scss",
+  "SelectedNode": "\\src\\components\\SignIn\\copyofindex.js",
   "PreviewInSolutionExplorer": false
 }
