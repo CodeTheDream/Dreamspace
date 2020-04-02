@@ -1,10 +1,9 @@
 import React from "react";
-import { EmailIcon, FacebookIcon, LinkedinIcon,FacebookShareCount } from "react-share";
+import { EmailIcon, FacebookIcon, LinkedinIcon } from "react-share";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import { AuthUserContext } from "../Session";
-
 import ListItem1 from "../ListItem1";
 class ListItem extends React.Component {
   constructor(props) {
@@ -14,7 +13,9 @@ class ListItem extends React.Component {
       article: [],
       username: "",
       TotallComment: "",
-      totalcount: ""
+      totalcount: "",
+      sortType: "asc",
+      photoUrl: " "
     };
   }
   openPost(e, article) {
@@ -50,9 +51,9 @@ class ListItem extends React.Component {
         let user = doc.data();
         this.setState({
           username: user.username,
-          authorPhoto: user.email
+          photoUrl: user.photoUrl
         });
-        console.log("authorPhoto", this.state.authorPhoto);
+        // console.log("authorPhoto", this.state.authorPhoto);
       });
   }
   togglePopup = () => {
@@ -60,11 +61,8 @@ class ListItem extends React.Component {
       showPopup: !this.state.showPopup
     });
   };
- 
-  
-  fbClicked () {
-    
-    this.props.sharedBy('fb')
+  fbClicked() {
+    this.props.article.url.sharedBy("fb");
   }
   render() {
     const { upvotes } = this.state;
@@ -79,21 +77,19 @@ class ListItem extends React.Component {
               <div className="maincontent" id="content">
                 <div className="auther">
                   <div className="auther-style">
+                    <span></span>
+                    <img src={this.state.photoUrl} className="user-profile" />
                     <span>
-                      <i className="fa fa-user"></i>
-                    </span>
-                    <span>
+                      {" "}
                       posted by {this.state.username} {article.timeCreated}
                     </span>
                   </div>
                 </div>
-                
                 <div className="auther-style">
                   <a href={this.props.article.url}>
                     {this.props.article.title}
                   </a>
                 </div>
-
                 <div className="description-style">
                   {this.props.article.description}
                 </div>
@@ -125,27 +121,21 @@ class ListItem extends React.Component {
               <div>
                 {this.state.showPopup ? (
                   <div className="sharecard">
-                    
-                     <a
+                    <a
                       href="https://www.facebook.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FacebookIcon url={this.props.article.url}  size={32} round={true} onClick={this.fbClicked} >
-                      {shareCount => <span className="myShareCountWrapper">{shareCount}</span>}
-                      </FacebookIcon>
-                    </a>
+                      <FacebookIcon onClick={this.fbClicked} />
+                    </a>{" "}
                     <a
                       href="https://www.linkedin.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <LinkedinIcon url={this.props.article.url}  size={32} round={true}>
-                      {shareCount => <span className="myShareCountWrapper">{shareCount}</span>}
-                        </LinkedinIcon>
-                    </a>
-                    <EmailIcon   size={32} round={true}/>
-                  
+                      <LinkedinIcon url={this.props.article.url} />
+                    </a>{" "}
+                    <EmailIcon />
                   </div>
                 ) : null}
               </div>
@@ -157,3 +147,4 @@ class ListItem extends React.Component {
   }
 }
 export default compose(withFirebase, withRouter)(ListItem);
+

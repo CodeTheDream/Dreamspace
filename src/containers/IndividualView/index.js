@@ -21,14 +21,13 @@ class IndividualView extends React.Component {
       username: "",
       sortType: "asc",
       commentList: [],
-      childCommentId:"",
-      parentCommentId:""
+      childCommentId: "",
+      parentCommentId: ""
     };
   }
 
   componentDidMount = () => {
     let articleId = this.props.match.params.articleId;
-let {childCommentId}=this.state
     this.unsubscribe = this.props.firebase
       .comments()
 
@@ -43,11 +42,12 @@ let {childCommentId}=this.state
         snapshot.forEach(doc => {
           const data = doc.data();
           commentId = doc.id;
-          //console.log("new commentId",commentId)
+         // console.log("new commentId",commentId)
           data.commentId = commentId;
           comments.push(data);
+         console.log("comments have posted",comments)
           this.setState({
-            commentId:commentId,
+            commentId: commentId,
             comments: comments
           });
         });
@@ -88,7 +88,7 @@ let {childCommentId}=this.state
     //This Helps to find the total commets for spesific articleId
     this.unsubscribe = this.props.firebase
       .comments()
-     .where("articleId", "==", articleId)
+      .where("articleId", "==", articleId)
       .onSnapshot(snapshot => {
         const TotallComment = [];
         snapshot.forEach(doc => {
@@ -110,16 +110,15 @@ let {childCommentId}=this.state
       .add({
         ...comment,
         articleId: this.state.articleId
-        
       })
       .then(function(docRef) {
         //console.log("Document written with ID: ", docRef.id);
       });
   };
-  
+
  /* createChildComment = (reply, article) => {
-    let {commentId,childCommentId}=this.state.commentId
- // console.log("here create commentId", this.state.commentId );
+    let { commentId, childCommentId } = this.state.commentId;
+    // console.log("here create commentId", this.state.commentId );
     this.props.firebase
       .comments()
       .add({
@@ -127,26 +126,25 @@ let {childCommentId}=this.state
         parentCommentId: this.state.commentId
       })
       //.then(function(docRef) {
-        //console.log("Document written with ID: ", docRef.id);
+      //console.log("Document written with ID: ", docRef.id);
       //});
       .then(docRef => {
-        this.setState({childCommentId:docRef.id,
-          parentCommentId:docRef.parentCommentId
-        })
-        console.log('ChildCommentId', this.state.childCommentId)
-       // console.log('ParentommentId', this.state.parentCommentId)
+        
+        this.setState({
+          childCommentId: docRef.id,
+          
+          parentCommentId: docRef.parentCommentId
+        });
+        console.log("My ChildCommentId", this.state.childCommentId);
+        console.log("My ParentommentId", this.state.parentCommentId);
         this.props.firebase.comment(this.state.commentId).update({
-         
           childCommentId: docRef.id
-       //console.log(" this is the replysID ", )
-        //console.log(" this is the replysID ", docRef.id)
+          //console.log(" this is the replysID ", )
+          //console.log(" this is the replysID ", docRef.id)
+        });
       });
-    });
-  };
-*/
-   updateComment = (newcomment) =>{
-    //this.setState({commentList:commentList.add(newcomment)})
-  }
+  };*/
+
   render() {
     // Access to local component state
     const {
@@ -159,10 +157,10 @@ let {childCommentId}=this.state
       sortType,
       commentId
     } = this.state;
-  
+
     if (comments) {
       comments.sort((a, b) => {
-        const isReversed = sortType === "asc" ? 1 : -1;
+        const isReversed = sortType === "desc" ? 1 : -1;
         return isReversed * a.timeCreated.localeCompare(b.timeCreated);
       });
       //console.log("sortedComment",sortedcomments)
@@ -214,7 +212,6 @@ let {childCommentId}=this.state
           <div>
             <AddComment comment={comment} onCreate={this.createComment} />
           </div>
-
           <div>
          {this.state.comments &&
               this.state.comments.map((comment, index) => {
@@ -242,8 +239,8 @@ let {childCommentId}=this.state
               articleId={articleId}
               commentId={commentId}
               onCreateChild={this.createChildComment}
-              childCommentId ={this.state.childCommentId}
-              refeshFunction={this.updateComment}
+              childCommentId={this.state.childCommentId}
+              parentCommentId={this.state.parentCommentId}
             />
           </div>
         </div>
