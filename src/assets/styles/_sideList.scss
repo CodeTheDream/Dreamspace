@@ -1,8 +1,32 @@
-.SideList {
-  width: 200px;
-  //   color: black;
-  //   li {
+.side-style {
+  z-index: 999;
+  // width: 55%;
+  background-color: #dddfd4;
+  max-width: 35%;
+  margin: auto;
+  position: fixed;
+  left: 5%;
+  //   right: 35%;
+  top: 40%;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transform: translate(-35%, -35%);
+}
+
+.pop-Side {
+  display: flex;
+  //   flex: 1;
+  //   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   list-style: none;
-  color: green;
-  //   }
+}
+.side-item {
+  //   flex: 1 1 auto;
+  padding: 5px;
+  color: #3fb0ac;
+  //   flex-direction: column;
 }
