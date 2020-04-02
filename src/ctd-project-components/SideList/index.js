@@ -24,11 +24,11 @@ class SideList extends React.Component {
     const dumList = this.props.projectData;
     console.log("dumList", dumList);
     const probList = dumList.filter(
-      listItem => listItem.fields.Status !== "Probable"
+      (listItem) => listItem.fields.Status !== "Probable"
     );
     console.log("probList", probList);
     const finalFitler = probList.filter(
-      listItem => listItem.fields.Status !== "Complete"
+      (listItem) => listItem.fields.Status !== "Complete"
     );
     console.log("finalFilter", finalFitler);
     return (
@@ -42,7 +42,7 @@ class SideList extends React.Component {
           </button>
           {/* <h4>{this.props.text}</h4> */}
           <div className="pop-Side">
-            {finalFitler.map(sideBar => (
+            {finalFitler.map((sideBar) => (
               <li
                 key={sideBar.fields.Name}
                 onClick={() => this.props.selectProject(sideBar.id)}
