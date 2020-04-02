@@ -5,7 +5,8 @@ import {
   FeatureCard,
   // PopForm,
   // SearchBar,
-  SideBarOpen
+  SideBarOpen,
+  SideList
 } from "../../ctd-project-components";
 
 class ProjectDashBoard extends React.Component {
@@ -83,12 +84,14 @@ class ProjectDashBoard extends React.Component {
               // </div>
             )}
           </div>
-          {/* {this.state.showPopup ? (
-            <PopForm
-              text="Enter Project Data"
+          {this.state.showPopup ? (
+            <SideList
+              text="MoblieList"
+              projectData={this.state.projectData}
+              selectProject={this.selectProject}
               closePopup={this.togglePopup.bind(this)}
             />
-          ) : null} */}
+          ) : null}
           {this.state.projectData && (
             <SideBarOpen
               projectData={this.state.projectData}
@@ -96,12 +99,12 @@ class ProjectDashBoard extends React.Component {
             />
           )}
           {/* <div className="dashboard-button-container"> */}
-          {/* <button
+          <button
             className="button-style"
             onClick={this.togglePopup.bind(this)}
           >
-            Add Project
-          </button> */}
+            ProjectList
+          </button>
           {/* </div> */}
         </div>
       </div>
