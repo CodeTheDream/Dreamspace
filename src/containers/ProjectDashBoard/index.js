@@ -99,10 +99,7 @@ class ProjectDashBoard extends React.Component {
             />
           )}
           {/* <div className="dashboard-button-container"> */}
-          <button
-            className="button-style"
-            onClick={this.togglePopup.bind(this)}
-          >
+          <button className="side-button" onClick={this.togglePopup.bind(this)}>
             ProjectList
           </button>
           {/* </div> */}
