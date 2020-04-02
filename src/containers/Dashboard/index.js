@@ -18,87 +18,67 @@ class Dashboard extends React.Component {
 
     this.state = {
       articles: [],
-        search: "" ,
-       sortType: "dsc",
-      calculatedvote:[],
+      search: "",
+      sortType: "dsc",
+      calculatedvote: []
     };
   }
 
-    componentDidMount() {
-        // let articles =this.props.firebase.articles()
-        this.unsubscribe = this.props.firebase.articles()
-           .orderBy("calculatedvote","desc")// here i have tried to  sort using the calculated vote
-            .onSnapshot(snapshot => {
-            let articles = [];
-            snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
-           // { collection: 'article',limit:5, orderBy: ['calculatedvote', 'des'] },
-            
-            // console.log("Articles loaded here yo!", articles);
-            this.setState({ articles });
-        });
-       // let { calculatedvote } = this.props;
-    
-  }
+  componentDidMount() {
+    // let articles =this.props.firebase.articles()
+    this.unsubscribe = this.props.firebase
+      .articles()
+      .orderBy("calculatedvote", "desc") // here i have tried to  sort using the calculated vote
+      .onSnapshot(snapshot => {
+        let articles = [];
+        snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
+        // { collection: 'article',limit:5, orderBy: ['calculatedvote', 'des'] },
 
+        // console.log("Articles loaded here yo!", articles);
+        this.setState({ articles });
+      });
+    // let { calculatedvote } = this.props;
+  }
 
   componentWillUnmount() {
     this.unsubscribe();
   }
 
-
-  
   handleInput = e => {
     console.log(e.target.value);
     this.setState({
       search: e.target.value
     });
   };
-    render() {
-        const { sortType } = this.state;
-     
+  render() {
+    const { sortType } = this.state;
 
-        let filteredArticles = this.state.articles.filter(article => {
-           
+    let filteredArticles = this.state.articles.filter(article => {
       return (
-          article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
-         // article.timeCreated.toLowerCase().includes(this.state.search.toLowerCase()),
-        article.title.toLowerCase().includes(this.state.search.toLowerCase())
-       // article.description
-         // .toLowerCase()
-         // .includes(this.state.search.toLowerCase())
-      )
-        });
-        
-     
-       /* if (filteredArticles) {
-            filteredArticles.sort((a, b) => {
-                const isReversed = (sortType === 'asc') ? 1 : -1;
-                return isReversed * a.timeCreated.localeCompare(b.timeCreated)
-            })
-            //console.log("sortedComment",sortedcomments)
-        }*/
-      
-
-      
-
+        article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
+        article.title.toLowerCase().includes(this.state.search.toLowerCase()),
+        article.description
+          .toLowerCase()
+          .includes(this.state.search.toLowerCase())
+      );
+    });
     return (
       <div className="wrapper">
         <div className="main-class">
-        <div className="search-bar" >
-          <SearchBar handleInput={this.handleInput} />
-        </div>
-        <div className="create-post">
-          <Create_article />
-        </div>
-        
+          <div className="search-bar">
+            <SearchBar handleInput={this.handleInput} />
+          </div>
+          <div className="create-post">
+            <Create_article />
+          </div>
         </div>
         <div className="popular-title">
           <p style={{ float: "left" }}>Popular Posts</p>
         </div>
         <div>
           <ListItems
-                    filteredArticles={filteredArticles}
-                  
+            filteredArticles={filteredArticles}
+
             //recipes={this.state.recipes}
           />
         </div>
