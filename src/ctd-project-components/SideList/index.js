@@ -16,7 +16,10 @@ class SideList extends React.Component {
     //   External: false
     // };
   }
-
+  // doubleFunction = () => {
+  //   this.props.closePopup;
+  //   this.props.selectProject(sideBar.id);
+  // };
   render() {
     const dumList = this.props.projectData;
     console.log("dumList", dumList);
