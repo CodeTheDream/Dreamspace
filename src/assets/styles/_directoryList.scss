@@ -17,7 +17,7 @@
   // border-style: solid;
 }
 
-.list {
+.list, .back-of-list {
   width: 100%;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -35,12 +35,23 @@
  background-color:#333;
  img {
    width: 100%;
-   height:auto;
+   height: auto;
    background-color:#333;
  }
 }
+.image-rear-contain {
+  width: 100%;
+ height: 291px;
+ overflow: hidden;
+ background-color:#333;
+ img {
+   width: 100%;
+   height: auto;
+   background-color: #333;
+ }
+}
 
-.staff, .job, .number, .email {
+.staff, .job, .number, .email, .primary-job {
   text-align: center;
   padding: 10px 20px;
   font-family: 'Oxygen', sans-serif;
@@ -59,7 +70,6 @@
 
 .search-fa {
   position: fixed;
- 
 }
 
 @media screen and (max-width: 1160px) {
