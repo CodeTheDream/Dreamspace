@@ -50,8 +50,8 @@ class ListItem extends React.Component {
                // console.log("userdata", doc.data())
                 let user = doc.data()
                 this.setState({ 
-                  username: user.username,
-                  authorPhoto:user.email
+                  username: 'broken for tomrau@gmail.com',
+                  authorPhoto:'same'
                  })
                  console.log("authorPhoto",this.state.authorPhoto)
             })

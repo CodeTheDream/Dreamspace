@@ -30,13 +30,26 @@ class Comments extends Component {
     });
   };
 
-  getSingleComment = id => {
-    this.props.firebase.comment(id).onSnapshot(snapshot => {
-      console.log('getting comment', snapshot.id)
-    //  this.setState({childCommentId:snapshot.id})
-    // console.log("Articles loaded here yo!", articles);
-   // console.log("childcommentID",this.state.childCommentId)
-    });
+  getSingleComment = async id => {
+    let comment = {}
+  //   this.props.firebase.comment(id).onSnapshot(snapshot => {
+  //     console.log('getting comment', snapshot)
+  //     comment = snapshot
+
+  //   //  this.setState({childCommentId:snapshot.id})
+  //   // console.log("Articles loaded here yo!", articles);
+  //  // console.log("childcommentID",this.state.childCommentId)
+  //   });
+  //   return comment
+  await this.props.firebase.comment(id)
+    .get()
+    .then(doc => {
+      comment = doc.data()
+      console.log('hey tom, am i resolved', comment);
+      // return comment
+    })
+    return comment
+
   };
 
   handleSubmit = (e, authUser) => {
@@ -46,7 +59,52 @@ class Comments extends Component {
     this.setState({
       comment: ""
     });
-  };
+  }
+  
+  renderReplies = (comments, comment) => {
+    console.log('comments from RR', comment)
+      
+      // let childComment = this.getSingleComment(comment.commentId);
+      let childComment = comments.filter((commentsComment) => {
+
+        console.log('commentsComment', comments, commentsComment.commentId, comment.childCommentId)
+        return (commentsComment.commentId == comment.childCommentId)})
+      // console.log('TOM', childComment)
+      if (childComment.commentId) {
+      console.log("im a comment with a child ", childComment);
+      
+       return (
+
+         <div>
+           <Singlecomment
+             comment={childComment}
+             key={childComment.commentId}
+             timeCreated={childComment.timeCreated}
+            commentId={childComment.commentId}
+            articleId={childComment.articleId}
+            onCreate={this.props.onCreate}
+           />
+          { this.renderReplies(childComment.childCommentId)}
+           </div>
+       )
+    } else {
+      console.log('reply wiht no child', childComment)
+      return (
+        <div>
+        <Singlecomment
+             comment={childComment}
+             key={childComment.commentId}
+             //limited={limited}
+             timeCreated={childComment.timeCreated}
+            commentId={childComment.commentId}
+            articleId={childComment.articleId}
+            onCreate={this.props.onCreate}
+           />
+           </div>
+      )
+    }
+  }
+  
 
   render() {
     const { comment, timeCreated , childCommentId,} = this.state;
@@ -69,48 +127,49 @@ class Comments extends Component {
 
             {comments &&
               comments.map((comment, index) => {
-                //console.log('comment', comment)
-                const childComment = {};
+                console.log('all comments', comments)
+                // const childComment = {};
                 /* if (!comment.commen) ){//if ther is no reposes for this comment just print the singlecomment only*/
                 if (comment.childCommentId) {
-                 console.log("im a comment with a child ", Comment);
-                  this.getSingleComment(comment.childCommentId);
+                //  console.log("im a comment with a child ", comment);
+                  // this.getSingleComment(comment.childCommentId);
                   return (
                     <div>
                       <Singlecomment
                         comment={comment}
-                        key={index}
+                        key={comment.commentId}
                         //limited={limited}
-                        timeCreated={timeCreated}
+                        timeCreated={comment.timeCreated}
                        commentId={comment.commentId}
-                       articleId={articleId}
+                       articleId={comment.articleId}
                        onCreate={this.props.onCreate}
                       />
-                      <ReplyComments
-                        
+                      {/* this.renderReplies(comments) */}
+                      {/* <ReplyComments
+                        childComment={this.getSingleComment(comment.childCommentId)}
                         childCommentId={comment.childCommentId}                        
                         commentId={commentId}
                         timeCreated={timeCreated}
-                      />
+                      /> */}
+                      {this.renderReplies(comments, comment)}
                     </div>
                   );
                 } else {
                   //console.log('i have no children', comment)
                   return (
-                    <Fragment>
+                    // <Fragment>
                       <Singlecomment
                         comment={comment}
                         key={index}
                         //limited={limited}
                         timeCreated={timeCreated}
                         commentId={comment.commentId}
-                        articleId={articleId}
+                        articleId={comment.articleId}
                         onCreate={this.props.onCreate}
                       />
-                    </Fragment>
+                    // </Fragment>
                   );
                 }
-                //}
               })}
 
             <form className="card-addcomment" onSubmit={this.handleSubmit}>

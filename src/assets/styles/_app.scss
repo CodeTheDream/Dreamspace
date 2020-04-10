@@ -57,3 +57,16 @@
 .view-container account-page {
   padding-top: 1.8em;
 }
+
+.home-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+} 
+
+.home-link {
+  height: 250px;
+  width: 250px;
+  border: 1px solid blue;
+  margin: .5em;
+}

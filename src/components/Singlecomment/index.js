@@ -20,21 +20,22 @@ class Singlecomment extends Component {
   
   render() {
       const {comment,commentId} = this.props;
+      console.log('from single comment', comment)
     return (
-        <AuthUserContext.Consumer>
-        {authUser => (
+        // <AuthUserContext.Consumer>
+        // {authUser => (
                <div> 
         <Fragment>
-          <i className="fa fa-user"></i> posted By {this.state.username}
-          {comment.timeCreated} <br />
-          {comment.comment}{" "}
-          <AddReplys commentId={commentId}/>
+          {/* <i className="fa fa-user"></i> posted By {this.state.username} */}
+          <div>{comment.timeCreated}</div> <br />
+          <div>{comment.comment + " "}</div>
+          <AddReplys comment={comment}/>
         </Fragment>
 
        
       </div>
-       )}
-       </AuthUserContext.Consumer>
+      //  )}
+      //  </AuthUserContext.Consumer>
     )
   }
 }

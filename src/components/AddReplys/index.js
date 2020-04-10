@@ -36,24 +36,28 @@ class AddReplys extends React.Component {
 
   handleSubmit = (e, authUser) => {
     e.preventDefault();
-    const commentId = this.props.commentId;
+    const commentId = this.props.comment.commentId;
     console.log("this is the commentId for the reply", commentId);
     this.props.firebase
       //.replys(commentId)
       .comments(commentId)
       .add({
         // commentId:commentId,
+        comment: this.state.reply,
         reply: this.state.reply,
         timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `),
         userId: authUser.uid,
-        parentCommentId: commentId
+        parentCommentId: commentId,
+        articleId: this.props.comment.articleId
       })
       .then(docRef => {
         console.log("ChildCommnetId", docRef.id);
 
         this.props.firebase.comment(commentId).update({
           childCommentId: docRef.id,
-          parentCommentId:docRef.id
+        });
+        this.props.firebase.comment(docRef.id).update({
+          commentId: docRef.id
         });
 
         this.setState({

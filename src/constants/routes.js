@@ -1,4 +1,5 @@
-export const HOME = "/";
+export const LANDING = "/";
+export const HOME = "/home"
 export const ABOUT = "/about";
 /*export const CREATEARTICLE = '/createarticle'*/
 export const ACCOUNT = "/account";
@@ -7,3 +8,4 @@ export const SIGN_IN = "/signin";
 export const PROJECT = "/projects";
 export const PASSWORD_FORGET = "/pw-forget";
 export const INDIVIDUAL_VIEW = "/articles/:articleId";
+export const ARTICLES ="/articles";

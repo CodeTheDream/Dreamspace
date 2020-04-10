@@ -67,7 +67,8 @@ class ListItem1 extends React.Component {
       .then(doc => {
         // console.log("userdata", doc.data())
         let user = doc.data();
-        this.setState({ username: user.username });
+        console.log(user);
+        this.setState({ username: 'tom, this was breakign, saying user undefined' });
       });
   }
 

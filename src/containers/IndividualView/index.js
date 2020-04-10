@@ -28,7 +28,7 @@ class IndividualView extends React.Component {
 
   componentDidMount = () => {
     let articleId = this.props.match.params.articleId;
-    this.unsubscribe = this.props.firebase
+    this.props.firebase
       .comments()
 
       .where("articleId", "==", articleId)
@@ -57,14 +57,16 @@ class IndividualView extends React.Component {
     // console.log("articleId", this.props.match.params);
     this.setState({ articleId });
 
-    this.unsubscribe = this.props.firebase
+    this.props.firebase
       .article(articleId)
 
       .onSnapshot(doc => {
         if (doc.exists) {
+          let article = doc.data()
+          console.log('article', article);
           // console.log(" this is my article", doc.data());
           this.setState({
-            article: doc.data()
+            article: article
           });
           this.setState({
             timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  `)
@@ -76,17 +78,17 @@ class IndividualView extends React.Component {
 
         let autherId = this.state.article.userId;
         //console.log("autherId of  acomment",autherId)
-        this.unsubscribe = this.props.firebase
+        this.props.firebase
           .user(autherId)
           .get()
           .then(doc => {
             // console.log("userdata", doc.data())
             let user = doc.data();
-            this.setState({ username: user.username });
+            this.setState({ username: 'broken for user tomrau@gmail.com' });
           });
       });
     //This Helps to find the total commets for spesific articleId
-    this.unsubscribe = this.props.firebase
+    this.props.firebase
       .comments()
       .where("articleId", "==", articleId)
       .onSnapshot(snapshot => {
@@ -109,10 +111,14 @@ class IndividualView extends React.Component {
       .comments()
       .add({
         ...comment,
-        articleId: this.state.articleId
+        articleId: this.state.articleId,
       })
-      .then(function(docRef) {
-        //console.log("Document written with ID: ", docRef.id);
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+        this.props.firebase.comment(docRef.id).update({
+          commentId: docRef.id,
+          // parentCommentId:docRef.id
+        });
       });
   };
 
