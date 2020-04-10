@@ -14,13 +14,18 @@ const config = {
 class Firebase {
   constructor() {
     console.log("API KEY", process.env.REACT_APP_API_KEY);
-    app.initializeApp(config);
+      app.initializeApp(config);
+
+
+      
 
     /* Helper */
 
     this.fieldValue = app.firestore.FieldValue;
     this.emailAuthProvider = app.auth.EmailAuthProvider;
 
+      /* Social Sign In Method Provider */
+      this.googleProvider = new app.auth.GoogleAuthProvider();
     /* Firebase APIs */
 
     this.auth = app.auth();
@@ -29,12 +34,20 @@ class Firebase {
 
   // *** Auth API ***
 
-  doCreateUserWithEmailAndPassword = (email, password) =>
+ doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
+    doSignInWithGoogle = () =>
+     this.googleProvider = new app.auth.GoogleAuthProvider();
 
+   
+
+
+
+    doSignInWithGoogle = () =>
+    this.auth.signInWithPopup(this.googleProvider);
   doSignOut = () => this.auth.signOut();
 
   doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
@@ -44,8 +57,10 @@ class Firebase {
       url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT
     });
 
-  doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
+    doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
+
+          
   // *** Merge Auth and DB User API *** //
 
   onAuthUserListener = (next, fallback) =>
@@ -57,9 +72,21 @@ class Firebase {
             const dbUser = snapshot.data();
 
             // default empty roles
-            if (!dbUser.roles) {
+           if (!dbUser.roles) {
               dbUser.roles = {};
-            }
+              }
+              
+             /*authUser.providerData.forEach(function (profile) {
+                 //onsole.log("Sign-in provider: " + profile.providerId);
+                  //nsole.log("  Provider-specific UID: " + profile.uid);
+                  console.log("  Name: " + profile.displayName);
+                 //onsole.log("  Email: " + profile.email);
+                  console.log("  Photo URL: " + profile.photoURL);
+              });*/
+      
+             
+          
+
 
             // merge auth and db user
             authUser = {
@@ -67,6 +94,7 @@ class Firebase {
               email: authUser.email,
               emailVerified: authUser.emailVerified,
               providerData: authUser.providerData,
+              photoUrl: authUser.photoURL,
               ...dbUser
             };
 
@@ -76,7 +104,7 @@ class Firebase {
         fallback();
       }
     });
-
+    
   // *** User API ***
 
   user = uid => this.db.doc(`users/${uid}`);
@@ -91,7 +119,11 @@ class Firebase {
 
   //*** Comments API ***
 
-  comment = uid => this.db.doc(`comments/${uid}`);
+  comment = (uid) => {
+    console.log('UID', uid)
+    return this.db.doc(`comments/${uid}`);
+  
+  }
 
   comments = () => this.db.collection("comments");
   //*** Reply API ***

@@ -1,10 +1,14 @@
-import React from "react";
-import myimage from "../../assets/images/nice-piccy3.jpg";
+import React, { Share } from "react";
+import {
+  EmailIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  TwitterIcon
+} from "react-share";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import { AuthUserContext } from "../Session";
-
 import ListItem1 from "../ListItem1";
 class ListItem extends React.Component {
   constructor(props) {
@@ -15,10 +19,13 @@ class ListItem extends React.Component {
       username: "",
       TotallComment: "",
       totalcount: "",
-      authorPhoto:""
+      sortType: "asc",
+      photoUrl: " ",
+      result: "",
+      showPopup: false
     };
   }
-  openPost(e, article) {
+ /* openPost(e, article) {
     // console.log("ARTICLE", article)
     e.preventDefault();
     this.props.history.push({
@@ -26,7 +33,7 @@ class ListItem extends React.Component {
       params: article.uid,
       state: { article }
     });
-  }
+  }*/
   componentDidMount() {
     const { article } = this.props;
     this.props.firebase
@@ -42,71 +49,130 @@ class ListItem extends React.Component {
         const totalcount = TotallComment.length;
         this.setState({ totalcount: totalcount });
       });
-      let autherId = article.userId;
-        this.unsubscribe = this.props.firebase
-            .user(autherId)
-            .get()
-            .then(doc => {
-               // console.log("userdata", doc.data())
-                let user = doc.data()
-                this.setState({ 
-                  username: user.username,
-                  authorPhoto:user.email
-                 })
-                 console.log("authorPhoto",this.state.authorPhoto)
-            })
-        
+    let autherId = article.userId;
+    this.unsubscribe = this.props.firebase
+  
+      .user(autherId)
+      .get()
+      .then(doc => {
+        // console.log("userdata", doc.data())
+        let user = doc.data();
+        this.setState({
+          username: user.username,
+          photoUrl: user.photoUrl
+        });
+        // console.log("authorPhoto", this.state.authorPhoto);
+      });
   }
+  togglePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  };
 
+  closePopup = () => {
+    this.setState({
+      showPopup: false
+    });
+  };
   render() {
-    const { upvotes } = this.state;
+    const { upvotes, result } = this.state;
     const { downvotes } = this.state;
     const { article } = this.props;
+    const url = this.props.article.url;
+
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?url=${url}`;
+    const linkedinUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}`;
+
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <div className="card">
-            <ListItem1 article={article} />
-            <div className="maincontent" id="content">
-              <div className="auther">
+          <div>
+            <div className="card">
+              <ListItem1 article={article} />
+              <div className="maincontent" id="content">
+                <div className="auther">
+                  <div className="auther-style">
+                    <span></span>
+                    <img src={this.state.photoUrl} className="user-profile" />
+                    <span>
+                      {" "}
+                      posted by {this.state.username} {article.timeCreated}
+                    </span>
+                  </div>
+                </div>
                 <div className="auther-style">
-                  <span>
-                    <i className="fa fa-user"></i>
-                  </span>
-                  <span>
-                    posted by {this.state.username} {article.timeCreated}
-                  </span>
+                  <a href={this.props.article.url}>
+                    {this.props.article.title}
+                  </a>
+                </div>
+                <div className="description-style">
+                  {this.props.article.description}
                 </div>
               </div>
-             {/*} <div> {this.props.article.tags}</div>*/}
-              <div className="auther-style">
-                <a href={this.props.article.url}>{this.props.article.title}</a>
-              </div>
-
-              <div className="description-style">
-                {this.props.article.description}
-              </div>
-            </div>
-<br/>
-            <div id="commentarea">
-              <span style={{ float: "right" }}>
-                <button
-                  className="button"
-                  onClick={e => this.openPost(e, article)}
-                >
-                  <i className="fa fa-comment-alt
-">
-                    {" "}
-                    {this.state.totalcount} {" comment "}
-                  </i>
-                </button>
+              <br />
+              <div id="commentarea">
                 <span style={{ float: "right" }}>
-                  <button className="button">
-                    <i className="fa fa-share">share...</i>
+                  <button
+                    className="button"
+                    onClick={e => this.openPost(e, article)}
+                  >
+                    <i
+                      className="fa fa-comment-alt
+"
+                    >
+                      {" "}
+                      {this.state.totalcount} {" comment "}
+                    </i>
                   </button>
+                  <span style={{ float: "right" }}>
+                    <button className="button" onClick={this.togglePopup}>
+                      <i className="fa fa-share">share...</i>
+                    </button>
+                  </span>
                 </span>
-              </span>
+              </div>
             </div>
+            <span style={{ float: "right" }}>
+              <div>
+                {this.state.showPopup ? (
+                  <div className="sharecard">
+                    <a href={facebookUrl} target="_blank">
+                      {" "}
+                      <FacebookIcon
+                        size={32}
+                        round={true}
+                        onClick={this.closePopup}
+                      />
+                    </a>
+                    <a href={linkedinUrl} target="_blank">
+                      <LinkedinIcon
+                        size={32}
+                        round={true}
+                        onClick={this.closePopup}
+                      />
+                    </a>
+                    <a href={twitterUrl} target="_blank">
+                      {" "}
+                      <TwitterIcon
+                        size={32}
+                        round={true}
+                        onClick={this.closePopu}
+                      />
+                    </a>
+                    <a href={twitterUrl} target="_blank">
+                      {" "}
+                      <EmailIcon
+                        size={32}
+                        round={true}
+                        onClick={this.closePopu}
+                      />
+                    </a>
+                  </div>
+                ) : null}
+              </div>
+            </span>
           </div>
         )}
       </AuthUserContext.Consumer>

@@ -12,7 +12,7 @@ body {
 /*********/
 .header {
   background-color: #3fb0ac;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+  //box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 100%;
   z-index: 5;
@@ -23,7 +23,7 @@ body {
   padding: 0;
   list-style: none;
   overflow: hidden;
-  background-color: #fff;
+ //background-color: #fff;
 }
 
 .header li a {
@@ -123,7 +123,7 @@ body {
     line-height: 1.58;
     margin-top: 3em;
     justify-content: center;
-    max-width: 1000px;
+    max-width: 1500px;
     align-self: center;
     display: flex;
     flex-direction: column;
@@ -149,6 +149,7 @@ body {
     overflow: hidden;
     margin-left: 2em;
     margin-right: auto;
+  
   }
   .popular-title {
     margin-top: 5px;
@@ -157,7 +158,24 @@ body {
     color: black;
     margin-left: 2em;
     margin-right: 3em;
-  }
+  } 
+   .sharecard {
+    width:250px;
+   // height: 210px;
+    background-color: ghostwhite; 
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 75%;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    
+    transform: translate(-50%, -50%); 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+ }
+
 }
 
 /* 48em = 768px @ 16pt font */
@@ -174,6 +192,7 @@ body {
   .header .menu {
     clear: none;
     float: right;
+    margin-right: 4em;
     max-height: none;
   }
 

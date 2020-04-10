@@ -5,6 +5,7 @@ import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import Comment from "../../components/Comment";
 import ListItem1 from "../../components/ListItem1";
+import Comments from "../../components/Comments/comments";
 const moment = require("moment");
 class IndividualView extends React.Component {
   constructor(props) {
@@ -18,13 +19,16 @@ class IndividualView extends React.Component {
       isOldestFirst: true,
       commentId: "",
       username: "",
-      sortType: "asc"
+      sortType: "asc",
+      commentList: [],
+      childCommentId: "",
+      parentCommentId: "",
+      photoUrl: " ",
     };
   }
 
   componentDidMount = () => {
     let articleId = this.props.match.params.articleId;
-
     this.unsubscribe = this.props.firebase
       .comments()
 
@@ -39,9 +43,12 @@ class IndividualView extends React.Component {
         snapshot.forEach(doc => {
           const data = doc.data();
           commentId = doc.id;
+         // console.log("new commentId",commentId)
           data.commentId = commentId;
           comments.push(data);
+         console.log("comments have posted",comments)
           this.setState({
+            commentId: commentId,
             comments: comments
           });
         });
@@ -69,13 +76,17 @@ class IndividualView extends React.Component {
         }
 
         let autherId = this.state.article.userId;
+        //console.log("autherId of  acomment",autherId)
         this.unsubscribe = this.props.firebase
           .user(autherId)
           .get()
           .then(doc => {
             // console.log("userdata", doc.data())
             let user = doc.data();
-            this.setState({ username: user.username });
+            this.setState({ 
+              username: user.username,
+              photoUrl: user.photoUrl
+             });
           });
       });
     //This Helps to find the total commets for spesific articleId
@@ -87,6 +98,7 @@ class IndividualView extends React.Component {
         snapshot.forEach(doc => {
           const data = doc.data();
           TotallComment.push(data);
+          //console.log("totall cimment at individual",TotallComment)
         });
 
         this.setState({ TotallComment: TotallComment });
@@ -107,13 +119,35 @@ class IndividualView extends React.Component {
         //console.log("Document written with ID: ", docRef.id);
       });
   };
-  /* sortByDate () {
-    const { timeCreated } = this.state.comments;
-    console.log("sorted time",timeCreated)
-    timeCreated.sort((a, b) => a - b)    
-    this.setState({comments:timeCreated })
-    console.log("sorted articles",this.state.comments)
-  }*/
+
+ /* createChildComment = (reply, article) => {
+    let { commentId, childCommentId } = this.state.commentId;
+    // console.log("here create commentId", this.state.commentId );
+    this.props.firebase
+      .comments()
+      .add({
+        ...reply,
+        parentCommentId: this.state.commentId
+      })
+      //.then(function(docRef) {
+      //console.log("Document written with ID: ", docRef.id);
+      //});
+      .then(docRef => {
+        
+        this.setState({
+          childCommentId: docRef.id,
+          
+          parentCommentId: docRef.parentCommentId
+        });
+        console.log("My ChildCommentId", this.state.childCommentId);
+        console.log("My ParentommentId", this.state.parentCommentId);
+        this.props.firebase.comment(this.state.commentId).update({
+          childCommentId: docRef.id
+          //console.log(" this is the replysID ", )
+          //console.log(" this is the replysID ", docRef.id)
+        });
+      });
+  };*/
 
   render() {
     // Access to local component state
@@ -122,14 +156,15 @@ class IndividualView extends React.Component {
       comment,
       comments,
       timeCreated,
-
+      articleId,
       limited,
-      sortType
+      sortType,
+      commentId
     } = this.state;
-    // console.log("unsorted comments",comments)
+
     if (comments) {
       comments.sort((a, b) => {
-        const isReversed = sortType === "dsc" ? 1 : -1;
+        const isReversed = sortType === "desc" ? 1 : -1;
         return isReversed * a.timeCreated.localeCompare(b.timeCreated);
       });
       //console.log("sortedComment",sortedcomments)
@@ -143,9 +178,9 @@ class IndividualView extends React.Component {
 
             <div className="auther-name-individual">
               <div className="autherstyle-individual">
-                <i className="fa fa-user"></i>{" "}
+                <span /><img src={this.state.photoUrl} className="user-profile" />{" "}
                 <span>
-                  posted by {this.state.username} {} {article.timeCreated}
+                   {this.state.username} {} {article.timeCreated}
                 </span>
               </div>
             </div>
@@ -177,17 +212,14 @@ class IndividualView extends React.Component {
               </button>
             </div>
           </div>
-
+          {/*}
           <div>
             <AddComment comment={comment} onCreate={this.createComment} />
           </div>
-
           <div>
-            {this.state.comments &&
+         {this.state.comments &&
               this.state.comments.map((comment, index) => {
-                {
-                  /* console.log(comment) */
-                }
+                
                 return (
                   <div className="card-comment">
                     <Comment
@@ -196,12 +228,24 @@ class IndividualView extends React.Component {
                       limited={limited}
                       timeCreated={timeCreated}
                       commentId={comment.commentId}
-                      userName={this.state.username}
+                      
                     />
-                    {/* <ReplyComment     commentId={comment.commentId}/>*/}
+                   
                   </div>
                 );
               })}
+          </div>*/}
+          <div>
+            <Comments
+              comments={comments}
+              comment={comment}
+              onCreate={this.createComment}
+              articleId={articleId}
+              commentId={commentId}
+              onCreateChild={this.createChildComment}
+              childCommentId={this.state.childCommentId}
+              parentCommentId={this.state.parentCommentId}
+            />
           </div>
         </div>
       );

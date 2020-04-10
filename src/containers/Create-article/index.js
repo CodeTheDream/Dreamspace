@@ -39,10 +39,10 @@ class Createarticle extends Component {
       url: "",
       downvotes: 0,
       upvotes: 0,
-      authorID: "",
+      //authorID: "",
       timeCreated: "",
-      userName:""
-       
+      userName:"",
+      calculatedvote:0
     };
     
   }
@@ -78,6 +78,7 @@ class Createarticle extends Component {
   };
   
   handleSubmit = (e, authUser) => {
+   // console.log("username on article submit",authUser.username)
     e.preventDefault();
     this.props.firebase
       .articles()
@@ -89,14 +90,15 @@ class Createarticle extends Component {
         tags: this.state.tags,
         url: this.state.url,
         downvotes: this.state.downvotes,
-        upvotes: this.state.upvotes,
-        timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  UTC-6`)
+          upvotes: this.state.upvotes,
+        calculatedvote:this.state.calculatedvote,
+        timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A`)
       })
       .then(docRef => {
         
-        this.setState({confurmmessage:docRef.id})
-        console.log("Document written with ID: ", this.state.confurmmessage);
-     alert("you've successfully created an article with ID: " + this.state.confurmmessage);
+        this.setState({confirmmessage:docRef.id})
+        console.log("Document written with ID: ", this.state.confirmmessage);
+     alert("you've successfully created an article with ID: " + this.state.confirmmessage);
       
       });
     this.setState({
@@ -105,7 +107,8 @@ class Createarticle extends Component {
       url: "",
       description: "",
       downvotes: 0,
-      upvotes: 0,
+        upvotes: 0,
+      calculatedvote:0,
       showPopup:false
     });
     
@@ -114,20 +117,25 @@ class Createarticle extends Component {
     return (
       <AuthUserContext.Consumer>
         {authUser => (
+
           <div>
             <button className="button-secondary1"
+
               onClick={this.togglePopup}>
               Post New Article
               </button>  
             {this.state.showPopup ? (
               <Dialog closePopup={this.togglePopup}>
                 
+
+
                 <div >
                   <div >
                    {/* <div style={{fontSize:"legend"}}>Create new post</div>*/} 
                     <legend className="devedit-form-legend1">Create New Post</legend>
                     <div >
                       <div >
+
                         <ul>
                           <li>
                             <form

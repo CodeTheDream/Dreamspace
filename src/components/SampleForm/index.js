@@ -1,15 +1,60 @@
 import React from "react";
+import { withFirebase } from "../Firebase";
+import { compose } from "recompose";
+import { withRouter } from "react-router-dom";
+import {
+  AuthUserContext,
+  withAuthorization,
+  withEmailVerification,
+} from "../Session";
 class SampleForm extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      username:"",
+      email:"",
+      aboutYourself:"",
+      interest:"",
+      education:"",
+
+    }
+  }
+
+onSubmit=(e,authUser)=>{
+  e.preventDefault();
+  const autherId = authUser.uid
+  console.log("curentUserId",autherId)
+  this.props.firebase
+    .user(autherId)
+    .update({
+      username:this.state.username
+           
+    })
+    // .onSnapshot(user => {
+    //   console.log('user', user.data())
+    //   // user.update({
+    //   //       username:this.state.username
+           
+    //   //     })
+
+    // })
+}
+onChange= e => {
+this.setState({username:e.target.value})
+}
+
   render() {
     return (
+      <AuthUserContext.Consumer>
+        {(authUser) => (
       <div className="devedit-form">
-        <form>
+        <form onSubmit={e => this.onSubmit(e,authUser)}>
           <fieldset>
             <legend>
               <span className="number">1</span> Candidate Info
             </legend>
-            <input type="text" name="field1" placeholder="Your Name *" />
-            <input type="email" name="field2" placeholder="Your Email *" />
+            <input type="text" name="field1" value={this.state.username} placeholder={authUser.username}onChange={e=>this.onChange(e)} />
+            <input type="email" name="field2" placeholder={authUser.email}/>
             <textarea name="field3" placeholder="About yourself"></textarea>
             <label for="job">Interests:</label>
             <select id="job" name="field4">
@@ -44,8 +89,10 @@ class SampleForm extends React.Component {
 
         </form>
       </div>
+         )}
+         </AuthUserContext.Consumer>
     );
   }
 }
 
-export default SampleForm;
+export default withFirebase(SampleForm);
