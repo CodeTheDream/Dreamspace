@@ -24,16 +24,20 @@ onSubmit=(e,authUser)=>{
   e.preventDefault();
   const autherId = authUser.uid
   console.log("curentUserId",autherId)
-  this.unsubscribe = this.props.firebase
+  this.props.firebase
     .user(autherId)
-   /* .update({
+    .update({
       username:this.state.username
-     
-    })*/
-    .then(docRef => {
-      console.log("Document successfully updated!",docRef);
-  });
-  
+           
+    })
+    // .onSnapshot(user => {
+    //   console.log('user', user.data())
+    //   // user.update({
+    //   //       username:this.state.username
+           
+    //   //     })
+
+    // })
 }
 onChange= e => {
 this.setState({username:e.target.value})
@@ -91,4 +95,4 @@ this.setState({username:e.target.value})
   }
 }
 
-export default SampleForm;
+export default withFirebase(SampleForm);
