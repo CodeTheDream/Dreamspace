@@ -22,7 +22,8 @@ class IndividualView extends React.Component {
       sortType: "asc",
       commentList: [],
       childCommentId: "",
-      parentCommentId: ""
+      parentCommentId: "",
+      photoUrl: " ",
     };
   }
 
@@ -82,7 +83,10 @@ class IndividualView extends React.Component {
           .then(doc => {
             // console.log("userdata", doc.data())
             let user = doc.data();
-            this.setState({ username: user.username });
+            this.setState({ 
+              username: user.username,
+              photoUrl: user.photoUrl
+             });
           });
       });
     //This Helps to find the total commets for spesific articleId
@@ -174,9 +178,9 @@ class IndividualView extends React.Component {
 
             <div className="auther-name-individual">
               <div className="autherstyle-individual">
-                <i className="fa fa-user"></i>{" "}
+                <span /><img src={this.state.photoUrl} className="user-profile" />{" "}
                 <span>
-                  posted by {this.state.username} {} {article.timeCreated}
+                   {this.state.username} {} {article.timeCreated}
                 </span>
               </div>
             </div>

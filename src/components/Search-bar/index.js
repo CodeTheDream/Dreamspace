@@ -50,7 +50,7 @@ class SearchBar extends React.Component {
                   type="search"
                   placeholder="search..."
                   onChange={this.props.handleInput}
-                  onClick={this.togglePopup}
+            
                 />
               </div>
               <div className="popover__content">

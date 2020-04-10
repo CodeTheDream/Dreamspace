@@ -11,6 +11,7 @@ import { withFirebase } from "../../components/Firebase";
 import ListItems from "../../components/ListItems";
 import Create_article from "../Create-article";
 import SearchBar from "../../components/Search-bar";
+import FrontPage from '../../components/FontPage'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -50,7 +51,7 @@ class Dashboard extends React.Component {
     });
   };
   render() {
-    const { sortType } = this.state;
+  //const { sortType } = this.state;
 
     let filteredArticles = this.state.articles.filter(article => {
       return (
@@ -69,6 +70,7 @@ class Dashboard extends React.Component {
           </div>
           <div className="create-post">
             <Create_article />
+        
           </div>
         </div>
         <div className="popular-title">
