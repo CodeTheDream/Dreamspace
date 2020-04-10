@@ -34,13 +34,13 @@ class Firebase {
 
   // *** Auth API ***
 
- // doCreateUserWithEmailAndPassword = (email, password) =>
-   // this.auth.createUserWithEmailAndPassword(email, password);
+ doCreateUserWithEmailAndPassword = (email, password) =>
+    this.auth.createUserWithEmailAndPassword(email, password);
 
-  //doSignInWithEmailAndPassword = (email, password) =>
-   // this.auth.signInWithEmailAndPassword(email, password);
-    //doSignInWithGoogle = () =>
-    // this.googleProvider = new app.auth.GoogleAuthProvider();
+  doSignInWithEmailAndPassword = (email, password) =>
+    this.auth.signInWithEmailAndPassword(email, password);
+    doSignInWithGoogle = () =>
+     this.googleProvider = new app.auth.GoogleAuthProvider();
 
    
 
@@ -72,9 +72,9 @@ class Firebase {
             const dbUser = snapshot.data();
 
             // default empty roles
-           /* if (!dbUser.roles) {
+           if (!dbUser.roles) {
               dbUser.roles = {};
-              }*/
+              }
               
              /*authUser.providerData.forEach(function (profile) {
                  //onsole.log("Sign-in provider: " + profile.providerId);

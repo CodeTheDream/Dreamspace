@@ -1,5 +1,10 @@
-import React from "react";
-import { EmailIcon, FacebookIcon, LinkedinIcon } from "react-share";
+import React, { Share } from "react";
+import {
+  EmailIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  TwitterIcon
+} from "react-share";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
@@ -15,10 +20,12 @@ class ListItem extends React.Component {
       TotallComment: "",
       totalcount: "",
       sortType: "asc",
-      photoUrl: " "
+      photoUrl: " ",
+      result: "",
+      showPopup: false
     };
   }
-  openPost(e, article) {
+ /* openPost(e, article) {
     // console.log("ARTICLE", article)
     e.preventDefault();
     this.props.history.push({
@@ -26,7 +33,7 @@ class ListItem extends React.Component {
       params: article.uid,
       state: { article }
     });
-  }
+  }*/
   componentDidMount() {
     const { article } = this.props;
     this.props.firebase
@@ -44,6 +51,7 @@ class ListItem extends React.Component {
       });
     let autherId = article.userId;
     this.unsubscribe = this.props.firebase
+  
       .user(autherId)
       .get()
       .then(doc => {
@@ -61,13 +69,22 @@ class ListItem extends React.Component {
       showPopup: !this.state.showPopup
     });
   };
-  fbClicked() {
-    this.props.article.url.sharedBy("fb");
-  }
+
+  closePopup = () => {
+    this.setState({
+      showPopup: false
+    });
+  };
   render() {
-    const { upvotes } = this.state;
+    const { upvotes, result } = this.state;
     const { downvotes } = this.state;
     const { article } = this.props;
+    const url = this.props.article.url;
+
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?url=${url}`;
+    const linkedinUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}`;
+
     return (
       <AuthUserContext.Consumer>
         {authUser => (
@@ -121,21 +138,37 @@ class ListItem extends React.Component {
               <div>
                 {this.state.showPopup ? (
                   <div className="sharecard">
-                    <a
-                      href="https://www.facebook.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FacebookIcon onClick={this.fbClicked} />
-                    </a>{" "}
-                    <a
-                      href="https://www.linkedin.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <LinkedinIcon url={this.props.article.url} />
-                    </a>{" "}
-                    <EmailIcon />
+                    <a href={facebookUrl} target="_blank">
+                      {" "}
+                      <FacebookIcon
+                        size={32}
+                        round={true}
+                        onClick={this.closePopup}
+                      />
+                    </a>
+                    <a href={linkedinUrl} target="_blank">
+                      <LinkedinIcon
+                        size={32}
+                        round={true}
+                        onClick={this.closePopup}
+                      />
+                    </a>
+                    <a href={twitterUrl} target="_blank">
+                      {" "}
+                      <TwitterIcon
+                        size={32}
+                        round={true}
+                        onClick={this.closePopu}
+                      />
+                    </a>
+                    <a href={twitterUrl} target="_blank">
+                      {" "}
+                      <EmailIcon
+                        size={32}
+                        round={true}
+                        onClick={this.closePopu}
+                      />
+                    </a>
                   </div>
                 ) : null}
               </div>
@@ -147,4 +180,3 @@ class ListItem extends React.Component {
   }
 }
 export default compose(withFirebase, withRouter)(ListItem);
-

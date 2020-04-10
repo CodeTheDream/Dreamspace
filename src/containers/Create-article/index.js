@@ -78,6 +78,7 @@ class Createarticle extends Component {
   };
   
   handleSubmit = (e, authUser) => {
+   // console.log("username on article submit",authUser.username)
     e.preventDefault();
     this.props.firebase
       .articles()
