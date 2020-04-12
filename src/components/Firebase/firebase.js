@@ -14,26 +14,41 @@ const config = {
 class Firebase {
   constructor() {
     console.log("API KEY", process.env.REACT_APP_API_KEY);
-    app.initializeApp(config);
+      app.initializeApp(config);
+
+
+      
 
     /* Helper */
 
     this.fieldValue = app.firestore.FieldValue;
     this.emailAuthProvider = app.auth.EmailAuthProvider;
 
+      /* Social Sign In Method Provider */
+      this.googleProvider = new app.auth.GoogleAuthProvider();
+      this.facebookProvider = new app.auth.FacebookAuthProvider();
+      this.twitterProvider = new app.auth.TwitterAuthProvider();/*
     /* Firebase APIs */
 
     this.auth = app.auth();
     this.db = app.firestore();
   }
 
-  // *** Auth API ***0
+  // *** Auth API ***
 
-  doCreateUserWithEmailAndPassword = (email, password) =>
+ doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
+    //doSignInWithGoogle = () =>
+     //this.googleProvider = new app.auth.GoogleAuthProvider();
+    doSignInWithGoogle = () =>
+        this.auth.signInWithPopup(this.googleProvider);
+     doSignInWithFacebook = () =>
+        this.auth.signInWithPopup(this.facebookProvider);
+   /* doSignInWithTwitter = () =>
+        this.auth.signInWithPopup(this.twitterProvider);*/
 
   doSignOut = () => this.auth.signOut();
 
@@ -44,8 +59,11 @@ class Firebase {
       url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT
     });
 
-  doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
+    doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
+
+    
+          
   // *** Merge Auth and DB User API *** //
 
   onAuthUserListener = (next, fallback) =>
@@ -57,9 +75,21 @@ class Firebase {
             const dbUser = snapshot.data();
 
             // default empty roles
-            // if (!dbUser.roles) {
-            //   dbUser.roles = {};
-            // }
+           if (!dbUser.roles) {
+              dbUser.roles = {};
+              }
+              
+             /*authUser.providerData.forEach(function (profile) {
+                 //onsole.log("Sign-in provider: " + profile.providerId);
+                  //nsole.log("  Provider-specific UID: " + profile.uid);
+                  console.log("  Name: " + profile.displayName);
+                 //onsole.log("  Email: " + profile.email);
+                  console.log("  Photo URL: " + profile.photoURL);
+              });*/
+      
+             
+          
+
 
             // merge auth and db user
             authUser = {
@@ -67,6 +97,7 @@ class Firebase {
               email: authUser.email,
               emailVerified: authUser.emailVerified,
               providerData: authUser.providerData,
+              photoUrl: authUser.photoURL,
               ...dbUser
             };
 
@@ -76,19 +107,13 @@ class Firebase {
         fallback();
       }
     });
-
+    
   // *** User API ***
 
   user = uid => this.db.doc(`users/${uid}`);
 
   users = () => this.db.collection("users");
 
-  // *** Admin User ***
-  
-  adminUser = uid =>this.db.doc(`adminUsers/${uid}`);
-
-  adminUsers = () => this.db.collection('adminUsers');
-  
   // *** Article API ***
 
   article = uid => this.db.doc(`article/${uid}`);
