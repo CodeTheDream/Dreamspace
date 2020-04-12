@@ -26,6 +26,8 @@ class Firebase {
 
       /* Social Sign In Method Provider */
       this.googleProvider = new app.auth.GoogleAuthProvider();
+      this.facebookProvider = new app.auth.FacebookAuthProvider();
+      this.twitterProvider = new app.auth.TwitterAuthProvider();/*
     /* Firebase APIs */
 
     this.auth = app.auth();
@@ -39,15 +41,15 @@ class Firebase {
 
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
+    //doSignInWithGoogle = () =>
+     //this.googleProvider = new app.auth.GoogleAuthProvider();
     doSignInWithGoogle = () =>
-     this.googleProvider = new app.auth.GoogleAuthProvider();
+        this.auth.signInWithPopup(this.googleProvider);
+     doSignInWithFacebook = () =>
+        this.auth.signInWithPopup(this.facebookProvider);
+   /* doSignInWithTwitter = () =>
+        this.auth.signInWithPopup(this.twitterProvider);*/
 
-   
-
-
-
-    doSignInWithGoogle = () =>
-    this.auth.signInWithPopup(this.googleProvider);
   doSignOut = () => this.auth.signOut();
 
   doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
@@ -60,6 +62,7 @@ class Firebase {
     doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
 
+    
           
   // *** Merge Auth and DB User API *** //
 
