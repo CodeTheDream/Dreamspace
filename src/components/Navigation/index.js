@@ -3,22 +3,19 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes.js";
 import Logo from "../../assets/images/ctd-logo.png";
 import SignOutButton from "../SignOut";
-import { Redirect } from "react-router-dom";
+import {Redirect} from "react-router-dom";
+import  Userprofile  from "../Userprofile";
 import { AuthUserContext } from "../Session";
-import Userprofile from "../Userprofile/index.js";
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
-    {(authUser) =>
-      authUser ? (
-        <NavigationAuth authUser={authUser} />
-      ) : (
-        <div>
-          <NavigationNonAuth />
-          {/* <Redirect to="/frontPage"/>*/}
-          <Redirect to="/signIn" />
-        </div>
-      )
+    {authUser =>
+            authUser ? <NavigationAuth authUser={authUser} /> :
+                <div>
+                    
+                    <NavigationNonAuth />
+                <Redirect to ="/signin"/>
+                    </div>
     }
   </AuthUserContext.Consumer>
 );
@@ -31,23 +28,24 @@ const NavigationAuth = () => (
       <span className="nav-icon"></span>
     </label>
     <ul className="menu">
-      <li>
-        <Link to={ROUTES.HOME}>Home</Link>
+            {/* <li>
+        <Link to={ROUTES.ARTICLES}>Articles</Link>
+      </li>*/}
+            {/* <li>
+        <Link to={ROUTES.PROJECT}>project</Link>
+      </li>*/}
+                {/* <li>
+      
+                <Link to={ROUTES.ACCOUNT}>Account</Link> 
+                
+      </li>*/}
+                < li >
+                <Userprofile />
+               
+                {/* <i className="fa fa-user fa-xs" />{" "}<i className="fa fa-caret-down">  */}
+                    
+          
       </li>
-      <li>
-        <Link to={ROUTES.PROJECT}>Projects</Link>
-      </li>
-      <li>
-        {" "}
-        <Userprofile />
-        {/*  <Link to={ROUTES.ACCOUNT}>Account</Link>*/}
-      </li>
-
-      <li>
-        {/*} <SignOutButton />*/}
-        {/*<Link to={ROUTES.HOME}>SignOut</Link>*/}
-      </li>
-      <li> </li>
     </ul>
   </header>
 );
@@ -71,7 +69,8 @@ const NavigationNonAuth = () => (
       <li>
         {" "}
         <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-      </li>
+            </li>
+          
     </ul>
   </header>
 );
