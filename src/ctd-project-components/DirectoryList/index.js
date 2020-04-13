@@ -35,18 +35,20 @@ const DirectoryList = (props) => {
                   alt = 'Staff Photos'/>
               </div>
                 <li className = 'staff'>{staff.fields.Name.toUpperCase()}</li>
+                <li className = 'location'>{staff.fields.Location}</li>
                 <li className = 'job'>{staff.fields.Title}</li>
                 <li className = 'primary-job'>{staff.fields['Primary Department']}</li>
                 {/* <li className = 'email'>{staff.fields['Email address']}</li> */} 
             </ul> 
 
-        <ul onClick = {handleClick} className = 'back-of-list'>
-            <div className = 'image-rear-contain'>
-              <img src = {pics} alt = 'Staff Photos' />
-            </div>
-            <li className = 'number'>{staff.fields.Phone}</li>
-            <li className = 'email'>{staff.fields['Email address']}</li>
-          </ul>
+            <ul onClick = {handleClick} className = 'back-of-list'>
+                <div className = 'image-rear-contain'>
+                  <img className = 'rear-full-width' src = {pics} alt = 'Staff Photos' />
+                </div>
+                  <li className = 'slack'>Slack Name: {staff.fields['Slack Name']}</li>
+                  <li className = 'number'>{staff.fields.Phone}</li>
+                  <li className = 'email'>{staff.fields['Email address']}</li>
+            </ul>
           </ReactCardFlip> 
         )})}
       </div>
