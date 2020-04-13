@@ -1,6 +1,7 @@
 import React from "react";
 import { EmailIcon, FacebookIcon, LinkedinIcon } from "react-share";
-import { withFirebase } from "../Firebase";
+import { withFirebase ,storage} from "../Firebase";
+//import storage from "../Firebase/firbaseStorage"
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import {
@@ -13,7 +14,6 @@ import * as ROUTES from "../../constants/routes.js";
 import SignOut from "../SignOut";
 import Setting from "../../containers/Account";
 const options = ["username", "profile", "setting"];
-
 class Userprofile extends React.Component {
   constructor(props) {
     // console.log("this is the props value:" + props)
@@ -27,6 +27,9 @@ class Userprofile extends React.Component {
       email: "",
       photoUrl: "",
       selectedFile: null,
+      image: null,
+      url: "",
+      progress: 0,
     };
   }
   /*componentDidUpdate(prevProps) {
@@ -34,33 +37,60 @@ class Userprofile extends React.Component {
         this.setState({ profilePicture: this.props.photoUrl })
     }
 }*/
-  
+
   togglePopup = () => {
     this.setState({
       showPopup: !this.state.showPopup,
     });
   };
-  fileSelctHandler = (e) => {
-    //console.log("photoUrle",e.target.files[0])
-    let image =  e.target.files[0]
-    this.setState({ selectedFile:image
-     });
-    console.log("uploaded file", this.state.selectedFile);
+ 
+  handleChange = (e) => {
+    if (e.target.files[0]) {
+      const image = e.target.files[0];
+      this.setState(() => ({ image }));
+    }
   };
-  onUploadHundler = (e, authUser) => {
+ /* handleUpload = (e,authUser) => {
+    const { image } = this.state;
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // progrss function ....
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        this.setState({ progress });
+      },
+      (error) => {
+        // error function ....
+        console.log(error);
+      },
+      () => {
+        // complete function ....
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then((url) => {
+            console.log(url);
+            this.setState({ url });
+          });
+      }
+    );
     const autherId = authUser.uid;
     e.preventDefault();
     console.log("uploded image",this.state.selectedFile)
     this.props.firebase
     .user(autherId)
-    .Update({
-     photoUrl: this.state.selectedFile
+    .pudate({
+     photoUrl: this.state.url
     })
-    
-  };
+  };*/
   render() {
     const { selectedFile } = this.state;
-   // console.log("authuser", selectedFile);
+    // console.log("authuser", selectedFile);
+   
     return (
       <AuthUserContext.Consumer>
         {(authUser) => (
@@ -77,46 +107,44 @@ class Userprofile extends React.Component {
                     <span>
                       <img src={authUser.photoUrl} className="user-profile11" />
                       <div>
-                        <span  className="PhotoCamera">
-                        <i
-                          className="fa fa-camera"
-                          aria-hidden="true"
-                          onClick={this.togglePopup}
-                        />
+                        <span className="PhotoCamera">
+                          <i
+                            className="fa fa-camera"
+                            aria-hidden="true"
+                            onClick={this.togglePopup}
+                          />
                         </span>
 
                         {this.state.showPopup ? (
                           <div className="prfilecard">
-                            <i
-                              className="fa fa-photo"
-                              style={{
-                                width: "60px",
-                                height: "60px",
-                                padding: "40%",
-                              }}
-                            />
-                            <input
-                              type="file"
-                              onChange={this.fileSelctHandler}
-                            />
-                            <div>
-                              <button
-                                type="submit"
-                                onClick={(e) => this.onUploadHundler(e, authUser)
-                                }
-                              >
-                                uploadFile
+                            
+
+                           {/* <div className="style">
+                              <progress value={this.state.progress} max="100" />
+                              <br />
+                              <input type="file" onChange={this.handleChange} />
+                              <button onClick={this.handleUpload}>
+                                Upload
                               </button>
-                            </div>
+                              <br />
+                              <img
+                                src={
+                                  this.state.url ||
+                                  "http://via.placeholder.com/400x300"
+                                }
+                                alt="Uploaded images"
+                                height="300"
+                                width="400"
+                              />
+                              </div>*/}
                           </div>
                         ) : null}
                       </div>
-                      </span>
-                      {"   "}
+                    </span>
+                    {"   "}
 
-                      <p>{authUser.username}</p>
-                      <p>{authUser.email}</p>
-                   
+                    <p>{authUser.username}</p>
+                    <p>{authUser.email}</p>
                   </div>
 
                   <div>
@@ -137,4 +165,4 @@ class Userprofile extends React.Component {
     );
   }
 }
-export default Userprofile;
+export default withFirebase(Userprofile);

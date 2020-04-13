@@ -11,12 +11,15 @@ const SignUpPage = () => (
 );
 const INITIAL_STATE = {
   username: "name",
-    email: "",
-    photoUrl: "https://ya-webdesign.com/images250_/placeholder-image-png-1.png",
+   email: "",
+  photoUrl: "https://ya-webdesign.com/images250_/placeholder-image-png-1.png",
   passwordOne: "",
   passwordTwo: "",
   isAdmin: false,
-  error: null
+  error: null,
+  education:"",
+  interest:"",
+  aboutyourself:""
 };
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 const ERROR_MSG_ACCOUNT_EXISTS = `
@@ -32,8 +35,8 @@ class SignUpFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
   onSubmit = event => {
-    const { username, email, passwordOne, isAdmin } = this.state;
-    const roles = {};
+    const { username, email, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
+   const roles = {};
     if (isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
     }
@@ -49,7 +52,10 @@ class SignUpFormBase extends Component {
           {
             username,
                 email,
-                roles
+                roles,
+                education,
+                interest,
+                aboutyourself
           },
           { merge: true }
         );
@@ -82,7 +88,8 @@ class SignUpFormBase extends Component {
       passwordOne,
       passwordTwo,
       isAdmin,
-      error
+      error,
+     
     } = this.state;
     const isInvalid =
       passwordOne !== passwordTwo ||

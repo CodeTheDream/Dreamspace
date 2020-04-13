@@ -25,7 +25,7 @@ class ListItem extends React.Component {
       showPopup: false
     };
   }
- /* openPost(e, article) {
+ openPost(e, article) {
     // console.log("ARTICLE", article)
     e.preventDefault();
     this.props.history.push({
@@ -33,7 +33,7 @@ class ListItem extends React.Component {
       params: article.uid,
       state: { article }
     });
-  }*/
+  }
   componentDidMount() {
     const { article } = this.props;
     this.props.firebase
