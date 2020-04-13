@@ -19,7 +19,8 @@ class Directory extends React.Component {
     console.log('selectStaffMember ', selectStaffMember)                                      
     this.setState({                                                                
        selectStaffMember                                                    
-    })                                                                
+    })  
+    console.log(selectStaffMember)                                                              
   } 
   
   directoryAirTable() {
