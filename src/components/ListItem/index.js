@@ -3,7 +3,7 @@ import {
   EmailIcon,
   FacebookIcon,
   LinkedinIcon,
-  TwitterIcon
+    TwitterIcon, FacebookShareButton, LinkedinShareButton, TwitterShareButton, EmailShareButton
 } from "react-share";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
@@ -79,11 +79,11 @@ class ListItem extends React.Component {
     const { upvotes, result } = this.state;
     const { downvotes } = this.state;
     const { article } = this.props;
-    const url = this.props.article.url;
+    //const url = this.props.article.url;
 
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-    const twitterUrl = `https://twitter.com/intent/tweet?url=${url}`;
-    const linkedinUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}`;
+    //const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+   // const twitterUrl = `https://twitter.com/intent/tweet?url=${url}`;
+    //const linkedinUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}`; 
 
     return (
       <AuthUserContext.Consumer>
@@ -138,37 +138,41 @@ class ListItem extends React.Component {
               <div>
                 {this.state.showPopup ? (
                   <div className="sharecard">
-                    <a href={facebookUrl} target="_blank">
-                      {" "}
-                      <FacebookIcon
-                        size={32}
-                        round={true}
-                        onClick={this.closePopup}
-                      />
-                    </a>
-                    <a href={linkedinUrl} target="_blank">
-                      <LinkedinIcon
-                        size={32}
-                        round={true}
-                        onClick={this.closePopup}
-                      />
-                    </a>
-                    <a href={twitterUrl} target="_blank">
-                      {" "}
-                      <TwitterIcon
-                        size={32}
-                        round={true}
-                        onClick={this.closePopu}
-                      />
-                    </a>
-                    <a href={twitterUrl} target="_blank">
-                      {" "}
-                      <EmailIcon
-                        size={32}
-                        round={true}
-                        onClick={this.closePopu}
-                      />
-                    </a>
+                                 
+                                    <FacebookShareButton
+                                        url={this.props.article.url}>                                              
+                                        <FacebookIcon 
+                                        size={32}
+                                        round={true}
+                                        onClick={this.closePopup}/>
+                                    </FacebookShareButton>        
+                    
+                                    <LinkedinShareButton
+                                        url={this.props.article.url}>
+                                    <LinkedinIcon
+                                      size={32}
+                                      round={true}
+                                            onClick={this.closePopup} />
+                                            </LinkedinShareButton>
+                               
+           
+                                        <TwitterShareButton
+                                            url={this.props.article.url}>
+                                            <TwitterIcon
+                                                size={32}
+                                                round={true}
+                                                onClick={this.closePopup}/>
+                                                 </TwitterShareButton>
+          
+                                            <EmailShareButton
+                                                url={this.props.article.url}> 
+                                                <EmailIcon                                             
+                                                size={32}
+                                                round={true}
+                                            onClick={this.closePopup} />
+                                           </ EmailShareButton>
+                  
+                
                   </div>
                 ) : null}
               </div>

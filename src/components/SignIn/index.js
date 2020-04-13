@@ -12,7 +12,7 @@ const SignInPage = () => (
         <p style={{fontSize:"28px"}}>SignIn</p>
         <SignInGoogle /> 
         <SignInFacebook />
-        <SignInTwitter/>
+        <SignInGithub/>
 
         <p style={{ textAlign: "center" }}>Or sign in manually:</p>
 
@@ -158,7 +158,7 @@ class SignInGoogleBase extends Component {
             
                 <p style={{ textAlighn: "" }}> Login with Google+</p> </button>*/}
 
- <button button type="submit" className="googlebtn" style={{ fontSize: "24px" }}><i class="fa fa-google fa-fw"> </i> Login with Google
+              <button button type="submit" className="googlebtn" style={{ fontSize: "20px" }}><i class="fa fa-google fa-fw" > </i> Login with Google
  
   
 </button>
@@ -216,7 +216,7 @@ class SignInGoogleBase extends Component {
 
      return (
        <form onSubmit={this.onSubmit}>
-             <button type="submit" style={{ fontSize: "24px" }} className="fb"><i class="fa fa-facebook fa-fw"/>Sign In with Facebook</button>
+             <button type="submit" style={{ fontSize: "20px" }} className="fb"><i class="fa fa-facebook fa-fw" />Sign In with Facebook</button>
 
        {error && <p>{error.message}</p>}
       </form>
@@ -224,7 +224,7 @@ class SignInGoogleBase extends Component {
    }
  }
 
- class SignInTwitterBase extends Component {
+class SignInGithubBase extends Component {
   constructor(props) {
      super(props);
 
@@ -233,12 +233,12 @@ class SignInGoogleBase extends Component {
 
   onSubmit = event => {
     this.props.firebase
-       .doSignInWithTwitter()
+        .doSignInWithGithub()
        .then(socialAuthUser => {
         // Create a user in your Firebase Realtime Database too
          return this.props.firebase.user(socialAuthUser.user.uid).set(
            {
-           username: socialAuthUser.additionalUserInfo.profile.name,
+                 username: socialAuthUser.additionalUserInfo.profile.name,
                  email: socialAuthUser.additionalUserInfo.profile.email,
                  roles: {},
           },
@@ -265,8 +265,9 @@ class SignInGoogleBase extends Component {
 
    return (
        <form onSubmit={this.onSubmit}>
-           <button type="submit">Sign In with Twitter</button>
-
+           <button type="submit" style={{ fontSize: "20px" }} className="github"><i class="fa fa-github" />{" "}Sign In with Github</button>
+         
+      
        {error && <p>{error.message}</p>}
       </form>
     );
@@ -288,14 +289,14 @@ const SignInGoogle = compose(
   withFirebase,
 )(SignInFacebookBase);
 
- const SignInTwitter = compose(
+const SignInGithub = compose(
   withRouter,
   withFirebase,
- )(SignInTwitterBase);
+)(SignInGithubBase);
 
 export default SignInPage;
 
 export { SignInGoogle };
 export { SignInForm };
 export { SignInFacebook };
-export { SignInTwitter };
+export { SignInGithub };

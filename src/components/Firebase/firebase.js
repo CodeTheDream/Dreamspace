@@ -27,7 +27,7 @@ class Firebase {
       /* Social Sign In Method Provider */
       this.googleProvider = new app.auth.GoogleAuthProvider();
       this.facebookProvider = new app.auth.FacebookAuthProvider();
-      this.twitterProvider = new app.auth.TwitterAuthProvider();/*
+      this.githubProvider = new app.auth.GithubAuthProvider();
     /* Firebase APIs */
 
     this.auth = app.auth();
@@ -47,8 +47,8 @@ class Firebase {
         this.auth.signInWithPopup(this.googleProvider);
      doSignInWithFacebook = () =>
         this.auth.signInWithPopup(this.facebookProvider);
-   /* doSignInWithTwitter = () =>
-        this.auth.signInWithPopup(this.twitterProvider);*/
+    doSignInWithGithub = () =>
+        this.auth.signInWithPopup(this.githubProvider);
 
   doSignOut = () => this.auth.signOut();
 
@@ -75,9 +75,9 @@ class Firebase {
             const dbUser = snapshot.data();
 
             // default empty roles
-           if (!dbUser.roles) {
+          /* if (!dbUser.roles) {
               dbUser.roles = {};
-              }
+              }*/
               
              /*authUser.providerData.forEach(function (profile) {
                  //onsole.log("Sign-in provider: " + profile.providerId);
