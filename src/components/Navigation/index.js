@@ -22,7 +22,7 @@ const Navigation = () => (
 
 const NavigationAuth = () => (
   <header className="header">
-    <img src={Logo} className="logo-wrapper" />
+        <Link to={ROUTES.HOME}><img src={Logo} className="logo-wrapper" /></Link>
     <input className="menu-btn" type="checkbox" id="menu-btn" />
     <label className="menu-icon" for="menu-btn">
       <span className="nav-icon"></span>
