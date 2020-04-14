@@ -40,7 +40,7 @@ class AddReplys extends React.Component {
     console.log("this is the commentId for the reply", commentId);
     this.props.firebase
       //.replys(commentId)
-      .comments(commentId)
+      .comments()
       .add({
         // commentId:commentId,
         reply: this.state.reply,
