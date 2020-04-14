@@ -11,15 +11,17 @@ class Singlecomment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        timeCreated: "",
-        comment: "",
        // limit: 5,
-        userId: ""
+        userId: "",
+       reply: "",
+      timeCreated: "",
     };
   }
   
   render() {
-      const {comment,commentId} = this.props;
+    const {reply}=this.state
+      const {comment,commentId, childCommentId} = this.props;
+      //console.log(" childCommentId in single comment", childCommentId)
     return (
         <AuthUserContext.Consumer>
         {authUser => (
@@ -28,7 +30,7 @@ class Singlecomment extends Component {
           <i className="fa fa-user"></i> posted By {this.state.username}
           {comment.timeCreated} <br />
           {comment.comment}{" "}
-          <AddReplys commentId={commentId}/>
+         {/* <AddReplys commentId={commentId}/>*/}
         </Fragment>
 
        

@@ -115,6 +115,30 @@ class IndividualView extends React.Component {
         //console.log("Document written with ID: ", docRef.id);
       });
   };
+  
+  createChildComment = (reply, article) => {
+    let {commentId}=this.state.commentId
+ // console.log("here create commentId", this.state.commentId );
+    this.props.firebase
+      .comments()
+      .add({
+        ...reply,
+        parentCommentId: this.state.commentId
+      })
+      //.then(function(docRef) {
+        //console.log("Document written with ID: ", docRef.id);
+      //});
+      .then(docRef => {
+        this.setState({childCommentId:docRef.id})
+        console.log('ChildCommentId', this.state.childCommentId)
+        this.props.firebase.comment(this.state.commentId).update({
+         
+          childCommentId: docRef.id
+       //console.log(" this is the replysID ", )
+        //console.log(" this is the replysID ", docRef.id)
+      });
+    });
+  };
 
  /* createChildComment = (reply, article) => {
     let { commentId, childCommentId } = this.state.commentId;
@@ -157,7 +181,6 @@ class IndividualView extends React.Component {
       sortType,
       commentId
     } = this.state;
-
     if (comments) {
       comments.sort((a, b) => {
         const isReversed = sortType === "desc" ? 1 : -1;

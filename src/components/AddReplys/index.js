@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { withFirebase } from "../Firebase";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
@@ -9,11 +9,6 @@ class AddReplys extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: [],
-      showAll: false,
-      replies: [],
-      // isOldestFirst: "",
-      //commentId:"",
       reply: "",
       timeCreated: "",
       // showPopup:true
@@ -104,15 +99,15 @@ class AddReplys extends React.Component {
                   </button>
                   {/* <button className="submit-btn" onClick={this.cancle}>
                 cancle
-        </button>*/}
-                </div>
-              </form>
-            ) : null}
-          </div>
-        )}
+        </button>
+            </div>
+          </form>
+        ) : null}
+      </div>
+      )}
       </AuthUserContext.Consumer>
     );
   }
 }
 
-export default compose(withFirebase, withRouter)(AddReplys);
+export default compose(withFirebase, withRouter)(AddReplys);*/
