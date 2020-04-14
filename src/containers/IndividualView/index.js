@@ -117,7 +117,7 @@ class IndividualView extends React.Component {
       });
   };
   
-  createChildComment = (reply, article) => {
+ /* createChildComment = (reply, article) => {
     let {commentId,childCommentId}=this.state.commentId
  // console.log("here create commentId", this.state.commentId );
     this.props.firebase
