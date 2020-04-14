@@ -4,25 +4,39 @@
   display: flex;
   flex-direction: row;
   overflow-x: hidden;
+  background-color: transparent;
+  perspective: 1000px;
 }
 
 .list-container {
   display: grid;
   grid-template-columns: 30% 30% 30%;
+  position: relative;
+  // background-color: transparent;
   grid-gap: 25px;
   width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
   margin: 0 auto;
   font-size: 15px;
   list-style: none;
+  
   // border-style: solid;
 }
 
+.list:hover .back-of-list {
+  transform: rotateY(180deg);
+}
+
 .list, .back-of-list {
+  // position: absolute;
   width: 100%;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 25px;
 }
+
 
 .search-contain {
   width: 25%;
@@ -37,17 +51,6 @@
    width: 100%;
    height: auto;
    background-color:#333;
- }
-}
-.image-rear-contain {
-  width: 100%;
- height: 291px;
- overflow: hidden;
- background-color:#333;
- img {
-   width: 100%;
-   height: auto;
-   background-color: #333;
  }
 }
 
