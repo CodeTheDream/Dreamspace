@@ -30,7 +30,7 @@ class Singlecomment extends Component {
           <i className="fa fa-user"></i> posted By {this.state.username}
           {comment.timeCreated} <br />
           {comment.comment}{" "}
-         {/* <AddReplys commentId={commentId}/>*/}
+          <AddReplys commentId={commentId}/>
         </Fragment>
 
        
