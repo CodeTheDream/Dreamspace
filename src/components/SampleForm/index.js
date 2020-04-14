@@ -8,8 +8,8 @@ import {
   withEmailVerification,
 } from "../Session";
 class SampleForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: "",
       email: "",
@@ -20,12 +20,13 @@ class SampleForm extends React.Component {
 			loading: true,
     };
   }
-/*componentDidMount = () => {
-    const autherId = authUser.uid;
-    //console.log("curentUserId", autherId);
+componentDidMount = () => {
+    const userInfo = this.props.children
+    //const autherId = authUser.uid
+   console.log("curentUserId", userInfo);
     this.props.firebase
 
-      .user(autherId)
+      .user(userInfo)
       .get()
       .then((doc) => {
         // console.log("userdata", doc.data())
@@ -36,9 +37,10 @@ class SampleForm extends React.Component {
           aboutYourSelf: user.aboutYourSelf,
           interest: user.interest,
           education: user.education,
+          
         });
       });
-  };*/
+  };
 
   //componentDidUpdate( prevState) {
   // if (prevState.authUser !== this.state) {
@@ -99,20 +101,20 @@ class SampleForm extends React.Component {
                   type="text"
                   name="field1"
                   value={username}
-                  placeholder={authUser.username}
+                  placeholder={username}
                   onChange={(e) => this.onUserNameChange(e)}
                 />
                 <input
                   type="email"
                   name="field2"
                   value={email}
-                  placeholder={authUser.email}
+                  placeholder={email}
                   onChange={this.onEmailChange}
                 />
                 <textarea
                   name="field3"
                   value={aboutYourSelf}
-                  placeholder={authUser.aboutYourSelf}
+                  placeholder={aboutYourSelf}
                   onChange={this.onAboutYoureSelfChange}
                 ></textarea>
                 <label for="job">Interests:</label>
@@ -120,7 +122,7 @@ class SampleForm extends React.Component {
                   id="job"
                   name="field4"
                   value={interest}
-                  placeholder={authUser.interest}
+                  placeholder={interest}
                   onChange={this.onInterstChange}
                 >
                   <optgroup label="Indoors">
@@ -149,7 +151,7 @@ class SampleForm extends React.Component {
                 <textarea
                   name="field3"
                   value={education}
-                  placeholder={authUser.education}
+                  placeholder={education}
                   onChange={this.onEducationChange}
                 ></textarea>
               </fieldset>

@@ -28,15 +28,43 @@ class Userprofile extends React.Component {
       photoUrl: "",
       selectedFile: null,
       image: null,
-      url: "",
+      url:"https://avatars3.githubusercontent.com/u/54107158?s=400&u=7d1a895b87fdfdb4d2de1fb52fec5f1ec8073233&v=4",
       progress: 0,
+      crewDirectory: [],
+    searchDirectory: "",
     };
   }
-  /*componentDidUpdate(prevProps) {
-    if (this.props.photoUrl && prevProps.photoUrl !== this.props.photoUrl) {
-        this.setState({ profilePicture: this.props.photoUrl })
+  /*
+  componentDidMount() {
+    this.directoryAirTable();
+  }
+  selectedStaffMember = (id) => {                                                  
+    let allStaffMembers = this.state.crewDirectory;                                
+    console.log('look at ', id)                                                      
+    let selectStaffMember = allStaffMembers.find(x => x.id === id);
+    console.log('selectStaffMember ', selectStaffMember)                                      
+    this.setState({                                                                
+       selectStaffMember                                                    
+    })  
+    console.log(selectStaffMember)                                                              
+  } 
+  directoryAirTable() {
+    const url = "https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory";
+      fetch(url, {
+        headers: { Authorization: "Bearer " + process.env.REACT_APP_DIRECTORY_AIRTABLE_KEY  }
+      })
+      .then(response => response.json())
+      .then(responseData => {
+        console.log("directory data ", responseData);
+        const crewDirectory = responseData.records;
+        console.log("crewDirectory ", crewDirectory);
+        this.setState({
+          crewDirectory: crewDirectory, 
+          allDirectory: crewDirectory,
+        })
+      });
     }
-}*/
+*/
 
   togglePopup = () => {
     this.setState({
@@ -44,51 +72,23 @@ class Userprofile extends React.Component {
     });
   };
  
-  handleChange = (e) => {
-    if (e.target.files[0]) {
-      const image = e.target.files[0];
-      this.setState(() => ({ image }));
+  /*handleChange = (e) => {
+   
     }
-  };
- /* handleUpload = (e,authUser) => {
-    const { image } = this.state;
-    const uploadTask = storage.ref(`images/${image.name}`).put(image);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        // progrss function ....
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        this.setState({ progress });
-      },
-      (error) => {
-        // error function ....
-        console.log(error);
-      },
-      () => {
-        // complete function ....
-        storage
-          .ref("images")
-          .child(image.name)
-          .getDownloadURL()
-          .then((url) => {
-            console.log(url);
-            this.setState({ url });
-          });
-      }
-    );
-    const autherId = authUser.uid;
-    e.preventDefault();
-    console.log("uploded image",this.state.selectedFile)
-    this.props.firebase
-    .user(autherId)
-    .pudate({
-     photoUrl: this.state.url
-    })
   };*/
+ 
+  handleUpload = (e, authUser) => {
+    console.log("authUser1", authUser)
+    e.preventDefault();
+    const autherId = authUser.uid;
+
+    this.props.firebase.user(autherId).update({
+     
+      photoUrl: this.state.url
+    });
+  };
   render() {
-    const { selectedFile } = this.state;
+    const { selectedFile,url } = this.state;
     // console.log("authuser", selectedFile);
    
     return (
@@ -119,16 +119,16 @@ class Userprofile extends React.Component {
                           <div className="prfilecard">
                             
 
-                           {/* <div className="style">
+                            <div className="style">
                               <progress value={this.state.progress} max="100" />
                               <br />
-                              <input type="file" onChange={this.handleChange} />
-                              <button onClick={this.handleUpload}>
+                             {/* <input type="link" onChange={this.handleChange}/>*/}
+                              <button onClick={e => this.handleUpload(e,authUser)}>
                                 Upload
                               </button>
                               <br />
                               <img
-                                src={
+                               src={
                                   this.state.url ||
                                   "http://via.placeholder.com/400x300"
                                 }
@@ -136,7 +136,7 @@ class Userprofile extends React.Component {
                                 height="300"
                                 width="400"
                               />
-                              </div>*/}
+                              </div>
                           </div>
                         ) : null}
                       </div>
