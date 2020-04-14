@@ -88,7 +88,7 @@ class IndividualView extends React.Component {
     //This Helps to find the total commets for spesific articleId
     this.unsubscribe = this.props.firebase
       .comments()
-      .where("articleId", "==", articleId)
+     .where("articleId", "==", articleId)
       .onSnapshot(snapshot => {
         const TotallComment = [];
         snapshot.forEach(doc => {
@@ -110,6 +110,7 @@ class IndividualView extends React.Component {
       .add({
         ...comment,
         articleId: this.state.articleId
+        
       })
       .then(function(docRef) {
         //console.log("Document written with ID: ", docRef.id);
@@ -117,7 +118,7 @@ class IndividualView extends React.Component {
   };
   
   createChildComment = (reply, article) => {
-    let {commentId}=this.state.commentId
+    let {commentId,childCommentId}=this.state.commentId
  // console.log("here create commentId", this.state.commentId );
     this.props.firebase
       .comments()
@@ -129,8 +130,11 @@ class IndividualView extends React.Component {
         //console.log("Document written with ID: ", docRef.id);
       //});
       .then(docRef => {
-        this.setState({childCommentId:docRef.id})
-        //console.log('ChildCommentId', this.state.childCommentId)
+        this.setState({childCommentId:docRef.id,
+          parentCommentId:docRef.parentCommentId
+        })
+        console.log('ChildCommentId', this.state.childCommentId)
+       // console.log('ParentommentId', this.state.parentCommentId)
         this.props.firebase.comment(this.state.commentId).update({
          
           childCommentId: docRef.id

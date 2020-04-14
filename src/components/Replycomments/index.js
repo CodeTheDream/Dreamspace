@@ -102,11 +102,7 @@ class ReplyComments extends Component {
               </i>
             </div>
 
-            {this.state.showPopup ?(
-              <div>
-           {myFunction}
-           </div>
-            ):null}
+            {this.renderReplyComment}
           </div>
         )}
       </AuthUserContext.Consumer>
