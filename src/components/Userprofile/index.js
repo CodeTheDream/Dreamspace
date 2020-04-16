@@ -1,6 +1,6 @@
 import React from "react";
 import { EmailIcon, FacebookIcon, LinkedinIcon } from "react-share";
-import { withFirebase ,storage} from "../Firebase";
+import { withFirebase, storage } from "../Firebase";
 //import storage from "../Firebase/firbaseStorage"
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
@@ -21,49 +21,34 @@ class Userprofile extends React.Component {
     this.state = {
       article: [],
       username: "",
-
-      photoUrl: " ",
+      //photoUrl: " ",
       name: "",
       email: "",
-      photoUrl: "",
       selectedFile: null,
       image: null,
-      url:"https://avatars3.githubusercontent.com/u/54107158?s=400&u=7d1a895b87fdfdb4d2de1fb52fec5f1ec8073233&v=4",
       progress: 0,
       crewDirectory: [],
-    searchDirectory: "",
+      searchDirectory: "",
+      file: "",
     };
   }
-  /*
-  componentDidMount() {
-    this.directoryAirTable();
-  }
-  selectedStaffMember = (id) => {                                                  
-    let allStaffMembers = this.state.crewDirectory;                                
-    console.log('look at ', id)                                                      
-    let selectStaffMember = allStaffMembers.find(x => x.id === id);
-    console.log('selectStaffMember ', selectStaffMember)                                      
-    this.setState({                                                                
-       selectStaffMember                                                    
-    })  
-    console.log(selectStaffMember)                                                              
-  } 
-  directoryAirTable() {
-    const url = "https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory";
-      fetch(url, {
-        headers: { Authorization: "Bearer " + process.env.REACT_APP_DIRECTORY_AIRTABLE_KEY  }
-      })
-      .then(response => response.json())
-      .then(responseData => {
-        console.log("directory data ", responseData);
-        const crewDirectory = responseData.records;
-        console.log("crewDirectory ", crewDirectory);
+ /* componentDidMount = () => {
+    const userInfo = this.props.children
+    //const autherId = authUser.uid
+   console.log("curentUserId", userInfo);
+    this.props.firebase
+
+      .user(userInfo)
+      .get()
+      .then((doc) => {
+        // console.log("userdata", doc.data())
+        let user = doc.data();
         this.setState({
-          crewDirectory: crewDirectory, 
-          allDirectory: crewDirectory,
-        })
+          file:user.photoUrl
+          
+        });
       });
-    }
+  };
 */
 
   togglePopup = () => {
@@ -71,26 +56,29 @@ class Userprofile extends React.Component {
       showPopup: !this.state.showPopup,
     });
   };
- 
-  /*handleChange = (e) => {
-   
-    }
-  };*/
- 
-  handleUpload = (e, authUser) => {
-    console.log("authUser1", authUser)
+
+  uploadSingleFile = (e) => {
+    this.setState({
+      file: URL.createObjectURL(e.target.files[0]),
+    });
+  
+  };
+
+  upload = (e, authUser) => {
     e.preventDefault();
+    console.log("my new url", this.state.file);
     const autherId = authUser.uid;
 
     this.props.firebase.user(autherId).update({
-     
-      photoUrl: this.state.url
+      photoUrl: this.state.file,
     });
   };
   render() {
-    const { selectedFile,url } = this.state;
-    // console.log("authuser", selectedFile);
-   
+    const { selectedFile, url } = this.state;
+    let imgPreview;
+    if (this.state.file) {
+      imgPreview = <img src={this.state.file} alt="" />;
+    }
     return (
       <AuthUserContext.Consumer>
         {(authUser) => (
@@ -101,6 +89,7 @@ class Userprofile extends React.Component {
                   {" "}
                   <img src={authUser.photoUrl} className="user-profile1" />
                 </i>{" "}
+                
                 <i className="fa fa-caret-down" style={{ Color: "#fae596" }} />
                 <div className="dropdown-content">
                   <div>
@@ -117,26 +106,23 @@ class Userprofile extends React.Component {
 
                         {this.state.showPopup ? (
                           <div className="prfilecard">
-                            
+                            <form>
+                              <div className="uploadImage">{imgPreview}</div>
 
-                            <div className="style">
-                              <progress value={this.state.progress} max="100" />
-                              <br />
-                             {/* <input type="link" onChange={this.handleChange}/>*/}
-                              <button onClick={e => this.handleUpload(e,authUser)}>
+                              <div   className="inputIageProfie">
+                                <input
+                                  type="file"
+                                
+                                  onChange={this.uploadSingleFile}
+                                />
+                              </div>
+                              <button
+                                type="button"
+                                onClick={(e) => this.upload(e, authUser)}
+                              >
                                 Upload
                               </button>
-                              <br />
-                              <img
-                               src={
-                                  this.state.url ||
-                                  "http://via.placeholder.com/400x300"
-                                }
-                                alt="Uploaded images"
-                                height="300"
-                                width="400"
-                              />
-                              </div>
+                            </form>
                           </div>
                         ) : null}
                       </div>

@@ -81,6 +81,32 @@
      transform: translate(-50%, -50%);
  
    }*/
+   .prfilecard{
+
+    z-index: 999;
+    width: 100%;
+    max-width: 40em;
+    height: 40em;
+  margin:auto;
+   position:fixed;
+    left: 55%;
+    right: 50%;
+    top: 50%;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-50%, -50%);
+    background-color:#ddd;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .uploadImage {
+    width: 300px;
+    height: 200px;
+    margin-bottom: 40px;
+  }
    }
    @media only screen  and (min-width:320px){
     .navbar {
@@ -164,6 +190,33 @@
         transform: translate(-50%, -50%);
     
       }*/
+      .prfilecard{
+
+        z-index: 999;
+        width: 100%;
+        max-width: 50em;
+        height: 50em;
+      margin:auto;
+       position:fixed;
+        left: 55%;
+        right: 50%;
+        top: 60%;
+        padding: 10px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        transform: translate(-50%, -50%);
+        background-color:#ddd;
+        align-items: center;
+        justify-content: center;
+        
+      }
+      .uploadImage {
+        width: 10em;
+        height: 8em;
+        margin-bottom: 200px;
+        
+      }
    }
    .user-profile1 {
     position: relative;
@@ -183,35 +236,12 @@
   height: 40px;
   border-radius: 50%;
 }
-.prfilecard{
 
-  z-index: 999;
-  width: 100%;
-  max-width: 600px;
-  height: 600px;
-margin:auto;
- position:fixed;
-  left: 50%;
-  right: 50%;
-  top: 50%;
-  padding: 10px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  transform: translate(-50%, -50%);
-  background-color: whitesmoke;
-  
-}
 /*.PhotoCamera {
   left: 80%;
   right: 20%;
   top: 20%;
   transform: translate(-50%, -50%);
 }*/
-.style {
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+
+

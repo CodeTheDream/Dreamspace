@@ -135,20 +135,20 @@ class ListItem extends React.Component {
               </div>
             </div>
             <span style={{ float: "right" }}>
-              <div>
+              
                 {this.state.showPopup ? (
                   <div className="sharecard">
                     <a href={facebookUrl} target="_blank">
                       {" "}
                       <FacebookIcon
-                        size={32}
+                        size={60}
                         round={true}
                         onClick={this.closePopup}
                       />
                     </a>
                     <a href={linkedinUrl} target="_blank">
                       <LinkedinIcon
-                        size={32}
+                        size={60}
                         round={true}
                         onClick={this.closePopup}
                       />
@@ -156,7 +156,7 @@ class ListItem extends React.Component {
                     <a href={twitterUrl} target="_blank">
                       {" "}
                       <TwitterIcon
-                        size={32}
+                        size={60}
                         round={true}
                         onClick={this.closePopu}
                       />
@@ -164,14 +164,14 @@ class ListItem extends React.Component {
                     <a href={twitterUrl} target="_blank">
                       {" "}
                       <EmailIcon
-                        size={32}
+                        size={60}
                         round={true}
                         onClick={this.closePopu}
                       />
                     </a>
                   </div>
                 ) : null}
-              </div>
+              
             </span>
           </div>
         )}
