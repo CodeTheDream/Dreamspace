@@ -137,6 +137,7 @@ class ListItem extends React.Component {
             <span style={{ float: "right" }}>
               
                 {this.state.showPopup ? (
+                 /* <div className="modal-wrapper-postarticle">*/
                   <div className="sharecard">
                     <a href={facebookUrl} target="_blank">
                       {" "}
@@ -169,11 +170,13 @@ class ListItem extends React.Component {
                         onClick={this.closePopu}
                       />
                     </a>
-                  </div>
+                </div>
+                 /* </div>*/
                 ) : null}
               
             </span>
           </div>
+         
         )}
       </AuthUserContext.Consumer>
     );
