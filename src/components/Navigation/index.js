@@ -28,12 +28,12 @@ const NavigationAuth = () => (
       <span className="nav-icon"></span>
     </label>
     <ul className="menu">
-            {/* <li>
+             <li>
         <Link to={ROUTES.ARTICLES}>Articles</Link>
-      </li>*/}
-            {/* <li>
+      </li>
+             <li>
         <Link to={ROUTES.PROJECT}>project</Link>
-      </li>*/}
+      </li>
                 {/* <li>
       
                 <Link to={ROUTES.ACCOUNT}>Account</Link> 

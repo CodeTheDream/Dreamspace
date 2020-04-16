@@ -120,16 +120,7 @@ class Userprofile extends React.Component {
                   </div>
 
                                 <div>
-                                    <Link to={ROUTES.ARTICLES}>
-                                        {" "}
-                                        Articles {" "}
-                                        </Link>
-                                        <Link to={ROUTES.PROJECT}>
-                                            {" "}
-                                    Projects {" "} </Link>
-                                            <Link to={ROUTES.PROJECT}>
-                                                {" "}
-                                        CompanyDirectory {" "} </Link>
+                                    
                     <Link to={ROUTES.ACCOUNT}>
                       {" "}
                       <i className="fal fa-cog" style={{ Color: "#fae596" }} />
