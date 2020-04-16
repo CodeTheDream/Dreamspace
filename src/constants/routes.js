@@ -1,5 +1,5 @@
-export const LANDING= "/";
-export const HOME = "/home";
+export const LANDING= "/home";
+export const HOME = "/";
 export const ABOUT = "/about";
 /*export const CREATEARTICLE = '/createarticle'*/
 export const ACCOUNT = "/account";
