@@ -1,6 +1,6 @@
-import app from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
+import app from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -8,49 +8,59 @@ const config = {
   databaseURL: process.env.REACT_APP_DATABASE_URL,
   projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 };
 
 class Firebase {
   constructor() {
-      console.log("API KEY", process.env.REACT_APP_API_KEY)
-    app.initializeApp(config);
+    console.log("API KEY", process.env.REACT_APP_API_KEY);
+      app.initializeApp(config);
+
+
+      
 
     /* Helper */
 
     this.fieldValue = app.firestore.FieldValue;
     this.emailAuthProvider = app.auth.EmailAuthProvider;
 
+      /* Social Sign In Method Provider */
+      this.googleProvider = new app.auth.GoogleAuthProvider();
     /* Firebase APIs */
 
     this.auth = app.auth();
     this.db = app.firestore();
-
-
   }
 
   // *** Auth API ***
 
-  doCreateUserWithEmailAndPassword = (email, password) =>
+ doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
+    doSignInWithGoogle = () =>
+     this.googleProvider = new app.auth.GoogleAuthProvider();
+
+   
 
 
 
+    doSignInWithGoogle = () =>
+    this.auth.signInWithPopup(this.googleProvider);
   doSignOut = () => this.auth.signOut();
 
   doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
 
   doSendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
-      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT,
+      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT
     });
 
-  doPasswordUpdate = password =>
-    this.auth.currentUser.updatePassword(password);
+    doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
+
+          
   // *** Merge Auth and DB User API *** //
 
   onAuthUserListener = (next, fallback) =>
@@ -62,9 +72,21 @@ class Firebase {
             const dbUser = snapshot.data();
 
             // default empty roles
-            if (!dbUser.roles) {
+           if (!dbUser.roles) {
               dbUser.roles = {};
-            }
+              }
+              
+             /*authUser.providerData.forEach(function (profile) {
+                 //onsole.log("Sign-in provider: " + profile.providerId);
+                  //nsole.log("  Provider-specific UID: " + profile.uid);
+                  console.log("  Name: " + profile.displayName);
+                 //onsole.log("  Email: " + profile.email);
+                  console.log("  Photo URL: " + profile.photoURL);
+              });*/
+      
+             
+          
+
 
             // merge auth and db user
             authUser = {
@@ -72,7 +94,8 @@ class Firebase {
               email: authUser.email,
               emailVerified: authUser.emailVerified,
               providerData: authUser.providerData,
-              ...dbUser,
+              photoUrl: authUser.photoURL,
+              ...dbUser
             };
 
             next(authUser);
@@ -81,45 +104,44 @@ class Firebase {
         fallback();
       }
     });
-
+    
   // *** User API ***
 
   user = uid => this.db.doc(`users/${uid}`);
 
-  users = () => this.db.collection('users');
+  users = () => this.db.collection("users");
 
   // *** Article API ***
 
   article = uid => this.db.doc(`article/${uid}`);
-  
-  articles = () => this.db.collection('article');
+
+  articles = () => this.db.collection("article");
 
   //*** Comments API ***
 
-  comment = uid => this.db.doc(`comments/${uid}`);
+  comment = (uid) => {
+    console.log('UID', uid)
+    return this.db.doc(`comments/${uid}`);
   
-  comments = () => this.db.collection('comments');
+  }
+
+  comments = () => this.db.collection("comments");
   //*** Reply API ***
 
- // reply = uid => this.db.doc(`replies/${uid}`);
+  // reply = uid => this.db.doc(`replies/${uid}`);
 
- // replies = () => this.db.collection('replies')
+  // replies = () => this.db.collection('replies')
   //*** Reply API ***
 
- replys = (commentId) => this.db.collection(`comments/${commentId}/replys`);
-  reply = (commentId, replyId) => this.db.collection(`comments/${commentId}/replys/${replyId}`);
+  replys = commentId => this.db.collection(`comments/${commentId}/replys`);
+  reply = (commentId, replyId) =>
+    this.db.collection(`comments/${commentId}/replys/${replyId}`);
 
- // reply = uid => this.db.doc(`replies/${uid}`);
-  
- // replies = () => this.db.collection('replies');
-
-
-//*** Tags API ***
+  //*** Tags API ***
 
   tag = uid => this.db.doc(`tags/${uid}`);
-  
-  tags = () => this.db.collection('tags');
-  
+
+  tags = () => this.db.collection("tags");
 }
 
 export default Firebase;

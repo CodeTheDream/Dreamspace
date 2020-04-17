@@ -1,22 +1,27 @@
-.repypage{
+.replypage{
     margin: 10px;
-   padding-right: 75%;
+   padding-right: 72%;
    color: #3FB0AC;
-   font-size: 20px;
+   font-size: 16px;
    cursor: pointer
 }
-.angle-down  {
-    
-}
+
 
 .replystayle{
     line-height: 22px;
     text-align: left;
-     padding: 5px 50px;
+     padding: 5px 40px;
      font-size: 1em;
      line-height: 1.5;
      font-family: Helvetica;
      //float: left;
      cursor: pointer;
      
+}
+.replypage-hide {
+    margin: 10px;
+    padding-right: 78%;
+    color: #3FB0AC;
+    font-size: 16px;
+    cursor: pointer
 }

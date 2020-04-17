@@ -1,0 +1,78 @@
+.popup {
+  position: fixed;
+  width: 80%;
+  height: 80%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  color: #fae596;
+  z-index: 99999;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 2px #888888;
+  background-color: rgba(63, 176, 172, 1);
+}
+.popup\_inner {
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  margin: auto;
+  border-radius: 20px;
+  background-color: white;
+}
+.button-style {
+  margin-top: 15px;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  width: 8.5em;
+  margin-bottom: 10px;
+  background: #3fb0ac;
+  float: right;
+  color: #fae596;
+  border-radius: 8px;
+  position: absolute;
+  padding: 8px;
+  margin-left: 88vw;
+}
+.form-content {
+  list-style: none;
+}
+.form-li {
+  font-size: 20px;
+  padding: 5px;
+}
+.form-lable {
+  padding: 10%;
+}
+.project-name,
+.project-repo,
+.project-web,
+.project-time {
+  width: 50%;
+  border-radius: 8px;
+}
+.project-des,
+.project-notes {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 25%;
+  width: 50%;
+  height: 20%;
+  border-radius: 8px;
+}
+.form-button-style {
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  width: 8.5em;
+  margin-bottom: 38px;
+  color: #3fb0ac;
+  background: #fae596;
+  border-radius: 8px;
+  position: relative;
+  margin-left: inherit;
+}

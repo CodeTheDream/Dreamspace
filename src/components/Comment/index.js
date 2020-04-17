@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { compose } from "recompose";
 import {
   AuthUserContext,
@@ -15,12 +15,13 @@ class Comment extends React.Component {
     this.state = {
       comments: [],
       showAll: false,
-      replies: [],
-      // isOldestFirst: "",
       commentId: "",
       replys: [],
       timeCreated: "",
-      totallReplys: 0
+      totallReplys: 0,
+      sortType:'asc',
+      replysID:"",
+      username:""
     };
   }
 
@@ -32,28 +33,57 @@ class Comment extends React.Component {
       //.where("commentId", "==", commentId)
       .onSnapshot(snapshot => {
         const Replys = [];
+        let replysId = "";
         snapshot.forEach(doc => {
+         
           const data = doc.data();
+         // console.log("doc data",data)
+          replysId = doc.id;
+          data.replysId = replysId;
           Replys.push(data);
         });
-        console.log("this is my replys using spesific commentId", Replys);
-        this.setState({ replys: Replys });
+       //console.log("this is my replysID using spesific commentId", replysId);
+        this.setState({ 
+          replys: Replys,
+          replysId:replysId
+         });
+
         const totallCountReplys = Replys.length;
-        console.log("totalcountReplys", totallCountReplys);
+        //console.log("totalcountReplys", totallCountReplys);
         this.setState({ totallReplys: totallCountReplys });
       });
+      let {comment}= this.props;
+      let autherId = comment.userId;
+      this.unsubscribe = this.props.firebase
+        .user(autherId)
+        .get()
+        .then(doc => {
+          // console.log("userdata", doc.data())
+          let user = doc.data();
+          this.setState({ username: user.username });
+        });
+       
+       
   };
 
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
 
   render() {
-    const { comment, limited, timeCreated, commentId } = this.props;
-    const { showAll } = this.state;
-    let commentContent = comment.comment;
-    //  const { reply } = this.state;
-    // console.log("Here is your comment ID", comment.commentId)
 
+    const { comment, limited, timeCreated, commentId,userName ,} = this.props;
+    const { showAll,replys,sortType,replysId} = this.state;
+    let commentContent = comment.comment;
+    
+//console.log("Here is your  replysId", replysId)
+
+    if(replys){
+      replys.sort((a,b) =>{
+       const  isReversed = (sortType === 'asc') ? 1 :-1;
+       return  isReversed * a.timeCreated.localeCompare(b.timeCreated)
+     })
+     //console.log("sortedComment",sortedcomments)
+         }
     if (comment.comment && comment.comment.length <= limited) {
       // console.log("IF", comment.comment, comment.comment.length);
       return (
@@ -63,8 +93,11 @@ class Comment extends React.Component {
               <div>
                 <div className="commentDisplay">
                   <p className="styleDisplay">
+                  <i className="fa fa-user"></i>{" "}
+                    posted By {this.state.username}
                     {comment.timeCreated} <br />
                     {comment.comment}{" "}
+                    
                   </p>
 
                   <div>
@@ -74,9 +107,11 @@ class Comment extends React.Component {
                       <ReplyComment
                         replys={this.state.replys}
                         timeCreated={timeCreated}
-                        commentID={comment.commentId}
+                        commentID={commentId}
                         comment={comment}
                         totallReplys={this.state.totallReplys}
+                        replysId={replysId}
+                        
                       />
                     </div>
                   </div>
@@ -127,4 +162,4 @@ class Comment extends React.Component {
     }
   }
 }
-export default compose(withFirebase)(Comment);
+export default compose(withFirebase)(Comment);*/
