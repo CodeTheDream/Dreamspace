@@ -66,7 +66,7 @@ class PopFrom extends React.Component {
   render() {
     return (
       <div className="modal-wrapper-postarticle">
-        <div className="dialogstyle devedit-form">
+        <div className="dialogstyle devedit-form" id="popform">
           <button
             className=" dialogCloseButonStayle"
             onClick={this.props.closePopup}
