@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactCardFlip from 'react-card-flip';
 
 const DirectoryList = (props) => {
+  // all ctd projects
+  let projects = props.projectData;
+  console.log('projects ', projects);
+  const getKey = props.selectedStaffMember;
+  console.log('key ', getKey)
   // all ctd staff info
   let staffList = props.crewDirectory;
   console.log('staffList ', staffList);
@@ -10,15 +15,13 @@ const DirectoryList = (props) => {
   let optInStaffMembers = staffList.filter(filterList  => 
     filterList.fields.Directory === "YES, Include my contact info in CTD Team Directory")
     console.log("optInStaffMembers ", optInStaffMembers);
+
+  // Names sorted by first from a-z
     let sortNames = optInStaffMembers;
     console.log('let\'s see the names', sortNames)
-    sortNames.sort((a, b) => (a.fields['First Name'] > a.fields['Last Name']) ? 1 : -1);
-
-    // begin code for card flip
-    const [isFlipped, setIsFlipped] = useState(false);
-    const handleClick = () => {
-      setIsFlipped(!isFlipped)
-    }
+    sortNames.sort((a, b) => (a.fields['First Name'] > b.fields['First Name']) ? 1 : -1);
+    
+  
     return(
       <div className = 'list-container'>
           {sortNames.map(staff => {
@@ -28,19 +31,18 @@ const DirectoryList = (props) => {
             }
             
             return(
-             <ReactCardFlip isFlipped = {isFlipped} flipDirection = 'horizontal'>  
-            
-  
+             <ReactCardFlip isFlipped = {props.isFlipped}  flipDirection = 'vertical'>  
               <ul
                 className = 'list'
-                onClick = {handleClick}
-                key = {staff.fields}>
+                onClick = {() => props.handleClick(getKey)}
+                // key = {staff.fields.id}
+                >
                 <div className = 'image-contain'>
                   <img 
                     src = {pics}
                     alt = 'Staff Photos'/>
                 </div>
-                  <li className = 'staff'>{staff.fields.Name}</li>
+                  <li className = 'staff' style = {{fontSize: '15px', fontWeight: 'bold'}}>{staff.fields.Name}</li>
                   <li className = 'location'>{staff.fields.Location}</li>
                   <li className = 'job'>{staff.fields.Title}</li>
                   <li className = 'primary-job'>{staff.fields['Primary Department']}</li>
@@ -48,15 +50,11 @@ const DirectoryList = (props) => {
               </ul> 
   
               <ul className = 'back-of-list'
-                  onClick ={handleClick}>
-                  <div className = 'rear-contain'
-                       style = {{paddingTop: '234px'}}>
-
-
-                  </div>
-                <li className = 'slack'>Slack Name: {staff.fields['Slack Name']}</li>
-                <li className = 'number'>{staff.fields.Phone}</li>
-                <li className = 'email'>{staff.fields['Email address']}</li>
+                  onClick = {() => props.handleClick(getKey)}>
+                  <h4 className = 'project' style = {{textAlign: 'center', fontWeight: 'bold'}}>Current Project</h4>
+                  <li className = 'slack'>Slack Name: {staff.fields['Slack Name']}</li>
+                  <li className = 'number'>{staff.fields.Phone}</li>
+                  <li className = 'email'>{staff.fields['Email address']}</li>
               </ul>
             
              </ReactCardFlip> 
@@ -66,7 +64,11 @@ const DirectoryList = (props) => {
     }
   
     export default DirectoryList;
+
+            
+  
      
+              
       
     
 
