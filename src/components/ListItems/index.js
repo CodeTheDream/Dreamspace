@@ -1,5 +1,5 @@
 import React from "react";
-import myimage from "../../assets/images/nice-piccy3.jpg";
+//import myimage from "../../assets/images/nice-piccy3.jpg";
 import ListItem from "../ListItem";
 
 class ListItems extends React.Component {
@@ -8,7 +8,8 @@ class ListItems extends React.Component {
   }
 
   render() {
-    let articles = this.props.filteredArticles;
+      let articles = this.props.filteredArticles;
+    
    // console.log(articles);
 
     if (articles !== undefined || articles !== null || articles !=="") {
@@ -17,11 +18,12 @@ class ListItems extends React.Component {
         //console.log(article);
         return <div>
         
-          <ListItem   key={index} article={article}></ListItem>
+            <ListItem key={index} article={article} > </ListItem>
         </div>;
 
       });
     
+
 // return(
 //     <div>TESTING</div>
 // )
