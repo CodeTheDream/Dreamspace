@@ -6,7 +6,7 @@ import {
   // PopForm,
   // SearchBar,
   SideBarOpen,
-  SideList
+  SideList,
 } from "../../ctd-project-components";
 
 class ProjectDashBoard extends React.Component {
@@ -15,14 +15,14 @@ class ProjectDashBoard extends React.Component {
     this.state = {
       projectData: [],
       searchName: "",
-      showPopup: false
+      showPopup: false,
       // selectedProject: {}
     };
   }
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
@@ -30,20 +30,20 @@ class ProjectDashBoard extends React.Component {
     this.getAirTable();
   }
 
-  selectProject = id => {
+  selectProject = (id) => {
     const allProjects = this.state.projectData;
     console.log("see", id);
-    const selectedProject = allProjects.find(x => x.id === id);
+    const selectedProject = allProjects.find((x) => x.id === id);
     console.log(selectedProject);
     this.setState({
-      selectedProject
+      selectedProject,
     });
   };
 
-  handleInput = e => {
+  handleInput = (e) => {
     console.log(e.target.value);
     this.setState({
-      searchName: e.target.value
+      searchName: e.target.value,
     });
   };
 
@@ -55,7 +55,7 @@ class ProjectDashBoard extends React.Component {
       console.log("airtable from GET: ", response);
       const projectData = response.data.records;
       this.setState({
-        projectData
+        projectData,
       });
     } catch (error) {
       console.log(error);
@@ -64,7 +64,7 @@ class ProjectDashBoard extends React.Component {
 
   render() {
     // Filtering out the side bar Menu
-    let filterProject = this.state.projectData.filter(sideBarFilter => {
+    let filterProject = this.state.projectData.filter((sideBarFilter) => {
       return sideBarFilter.fields.Name.toUpperCase().includes(
         this.state.searchName.toUpperCase()
       );
@@ -80,7 +80,7 @@ class ProjectDashBoard extends React.Component {
             ) : (
               // </div>
               // <div>
-              <img src={ctdlogo} style={{ width: "50vw", height: "auto" }} />
+              <img className="placeholderImg" src={ctdlogo} />
               // </div>
             )}
           </div>

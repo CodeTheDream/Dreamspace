@@ -4,7 +4,7 @@ import moment from "moment";
 import ctdlogo from "../../assets/images/ctd-logo.png";
 import ctd from "../../assets/images/ctd-labs-horiz.png";
 
-const FeatureCard = props => {
+const FeatureCard = (props) => {
   const { project } = props;
 
   return (
@@ -13,10 +13,7 @@ const FeatureCard = props => {
         <div className="flip-card-front">
           <div className="row">
             <div className="side">
-              {/* <div className="flip-card-content"> */}
               <h2>{project.fields.Name}</h2>
-              {/* <br></br> */}
-              {/* </div> */}
 
               <img src={ctdlogo} id="flip-card-logo" alt={ctd} />
             </div>
