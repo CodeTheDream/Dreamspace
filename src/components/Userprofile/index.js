@@ -28,9 +28,33 @@ class Userprofile extends React.Component {
       image: null,
       progress: 0,
       crewDirectory: [],
-      searchDirectory: "",
       file: "",
+      pics:"",
+      photoUrl:""
     };
+  }
+  componentDidMount() {
+    this.directoryAirTable();
+  }
+  directoryAirTable() {
+    const url =
+      "https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory";
+    fetch(url, {
+      headers: {
+        Authorization: "Bearer " + process.env.REACT_APP_DIRECTORY_AIRTABLE_KEY,
+      },
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        console.log("directory data ", responseData);
+        const crewDirectory = responseData.records;
+        console.log("crewDirectory ", crewDirectory);
+        this.setState({
+          crewDirectory: crewDirectory,
+          allDirectory: crewDirectory,
+        });
+        console.log(" crewDirectory", this.state.crewDirectory);
+      });
   }
  /* componentDidMount = () => {
     const userInfo = this.props.children
@@ -48,8 +72,8 @@ class Userprofile extends React.Component {
           
         });
       });
-  };
-*/
+  };*/
+
 
   togglePopup = () => {
     this.setState({
@@ -57,25 +81,43 @@ class Userprofile extends React.Component {
     });
   };
 
-  uploadSingleFile = (e) => {
-    this.setState({
-      file: URL.createObjectURL(e.target.files[0]),
-    });
-  
-  };
+  postPics = (e) => {
 
-  upload = (e, authUser) => {
+    let pics= "https://ya-webdesign.com/images250_/placeholder-image-png-1.png"; 
+    {this.state.crewDirectory &&
+      this.state.crewDirectory.map((staffPhoto,id) => {
+        console.log("stafphoto", staffPhoto.fields.Photo);
+        if (staffPhoto.fields.Photo) {
+          this.setState({
+          pics : staffPhoto.fields.Photo[0].url
+          })
+         
+        }
+      })}
+  
+    
+  };
+  selectImage = (e)=>{
+    if(this.state.pics){
+      this.setState({photoUrl:this.state.pics})
+    }
+    console.log("photoUrl",this.state.photoUrl)
+  }
+
+ /* upload = (e, authUser) => {
     e.preventDefault();
-    console.log("my new url", this.state.file);
+    console.log("my new url", authUser.uid);
     const autherId = authUser.uid;
 
     this.props.firebase.user(autherId).update({
-      photoUrl: this.state.file,
+      photoUrl: this.state.pics,
     });
-  };
+  };*/
   render() {
-    const { selectedFile, url } = this.state;
+    const { selectedFile, url, crewDirectory,pics } = this.state;
+    console.log("pics1",pics)
     let imgPreview;
+    let id;
     if (this.state.file) {
       imgPreview = <img src={this.state.file} alt="" />;
     }
@@ -83,13 +125,13 @@ class Userprofile extends React.Component {
       <AuthUserContext.Consumer>
         {(authUser) => (
           <div>
+           
             <div className="dropdown">
               <div className="dropbtn">
                 <i style={{ Color: "#fae596" }}>
                   {" "}
                   <img src={authUser.photoUrl} className="user-profile1" />
                 </i>{" "}
-                
                 <i className="fa fa-caret-down" style={{ Color: "#fae596" }} />
                 <div className="dropdown-content">
                   <div>
@@ -106,23 +148,11 @@ class Userprofile extends React.Component {
 
                         {this.state.showPopup ? (
                           <div className="prfilecard">
-                            <form>
-                              <div className="uploadImage">{imgPreview}</div>
-
-                              <div   className="inputIageProfie">
-                                <input
-                                  type="file"
-                                
-                                  onChange={this.uploadSingleFile}
-                                />
-                              </div>
-                              <button
-                                type="button"
-                                onClick={(e) => this.upload(e, authUser)}
-                              >
-                                Upload
-                              </button>
-                            </form>
+                      
+                            <button onClick={this.postPics}>Upload your photo</button>
+                              <img src={pics} alt="Staff Photos" style={{width:"100px",height:"100px"}}onClick={this.selectImage}/>
+                              <button  onClick={this.upload}>set as profile photo</button>
+                          
                           </div>
                         ) : null}
                       </div>
