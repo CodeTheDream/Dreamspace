@@ -13,7 +13,7 @@ import SignInPage from "./components/SignIn";
 import HomePage from "./containers/HomePage";
 import ProjectDashBoard from "./containers/ProjectDashBoard";
 import { withAuthentication } from "./components/Session";
-import FrontPage from "./components/FontPage";
+//import FrontPage from "./components/FontPage";
 //import Sidebar from "./components/Sidebar";
 
 function App() {

@@ -1,4 +1,4 @@
-import React, { Share } from "react";
+import React from "react";
 import {
   EmailIcon,
   FacebookIcon,

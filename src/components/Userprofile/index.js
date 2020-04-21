@@ -1,8 +1,7 @@
 import React from "react";
-import { EmailIcon, FacebookIcon, LinkedinIcon } from "react-share";
-import { withFirebase } from "../Firebase";
-import { compose } from "recompose";
-import { withRouter } from "react-router-dom";
+//import { withFirebase } from "../Firebase";
+//import { compose } from "recompose";
+//import { withRouter } from "react-router-dom";
 import {
   AuthUserContext,
   withAuthorization,
@@ -11,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes.js";
 import SignOut from "../SignOut";
-import Setting from "../../containers/Account";
+//import Setting from "../../containers/Account";
 const options = ["username", "profile", "setting"];
 
 class Userprofile extends React.Component {
