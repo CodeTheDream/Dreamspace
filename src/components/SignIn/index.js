@@ -239,6 +239,11 @@ class SignInGithubBase extends Component {
            {
                  username: socialAuthUser.additionalUserInfo.profile.name,
                  email: socialAuthUser.additionalUserInfo.profile.email,
+                 //roles: {},
+                 //username: socialAuthUser.user.displayName,
+                 //username: socialAuthUser.user.displayName,
+                 photoUrl: socialAuthUser.user.photoURL,
+                 //email: socialAuthUser.user.email,
                  roles: {},
           },
           { merge: true },
