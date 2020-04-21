@@ -29,11 +29,11 @@ class Userprofile extends React.Component {
       progress: 0,
       crewDirectory: [],
       file: "",
-      pics:"",
-      photoUrl:""
+      pics: [],
+      url: "",
     };
   }
-  componentDidMount() {
+  /*componentDidMount() {
     this.directoryAirTable();
   }
   directoryAirTable() {
@@ -55,67 +55,49 @@ class Userprofile extends React.Component {
         });
         console.log(" crewDirectory", this.state.crewDirectory);
       });
-  }
- /* componentDidMount = () => {
-    const userInfo = this.props.children
-    //const autherId = authUser.uid
-   console.log("curentUserId", userInfo);
-    this.props.firebase
-
-      .user(userInfo)
-      .get()
-      .then((doc) => {
-        // console.log("userdata", doc.data())
-        let user = doc.data();
-        this.setState({
-          file:user.photoUrl
-          
-        });
-      });
-  };*/
-
+  }*/
+ 
 
   togglePopup = () => {
     this.setState({
       showPopup: !this.state.showPopup,
     });
   };
-
+/*
   postPics = (e) => {
-
-    let pics= "https://ya-webdesign.com/images250_/placeholder-image-png-1.png"; 
-    {this.state.crewDirectory &&
-      this.state.crewDirectory.map((staffPhoto,id) => {
-        console.log("stafphoto", staffPhoto.fields.Photo);
-        if (staffPhoto.fields.Photo) {
+    let pics =
+      "https://ya-webdesign.com/images250_/placeholder-image-png-1.png";
+    {
+      this.state.crewDirectory &&
+        this.state.crewDirectory.map((staffPhoto, id) => {
+          console.log("stafphoto", staffPhoto.fields.Photo);
+          //if (staffPhoto.fields.Photo) {
           this.setState({
-          pics : staffPhoto.fields.Photo[0].url
-          })
-         
-        }
-      })}
-  
+            pics: staffPhoto.fields.Photo,
+          });
+
+          //  }
+        });
+    }
+  };*/
+  onUrlChange = (e) => {
+    this.setState({
+      url: e.target.value
+    })
     
   };
-  selectImage = (e)=>{
-    if(this.state.pics){
-      this.setState({photoUrl:this.state.pics})
-    }
-    console.log("photoUrl",this.state.photoUrl)
-  }
 
- /* upload = (e, authUser) => {
+  upload = (e, authUser) => {
     e.preventDefault();
     console.log("my new url", authUser.uid);
     const autherId = authUser.uid;
-
     this.props.firebase.user(autherId).update({
-      photoUrl: this.state.pics,
+      photoUrl: this.state.url,
     });
-  };*/
+  };
   render() {
-    const { selectedFile, url, crewDirectory,pics } = this.state;
-    console.log("pics1",pics)
+    const { selectedFile, url, crewDirectory, pics } = this.state;
+    console.log("pics1", url);
     let imgPreview;
     let id;
     if (this.state.file) {
@@ -125,7 +107,6 @@ class Userprofile extends React.Component {
       <AuthUserContext.Consumer>
         {(authUser) => (
           <div>
-           
             <div className="dropdown">
               <div className="dropbtn">
                 <i style={{ Color: "#fae596" }}>
@@ -148,12 +129,49 @@ class Userprofile extends React.Component {
 
                         {this.state.showPopup ? (
                           <div className="prfilecard">
-                      
-                            <button onClick={this.postPics}>Upload your photo</button>
-                              <img src={pics} alt="Staff Photos" style={{width:"100px",height:"100px"}}onClick={this.selectImage}/>
-                              <button  onClick={this.upload}>set as profile photo</button>
-                          
-                          </div>
+                            {/*<button onClick={this.postPics}>
+                              Upload your photo
+                            </button>
+                            {pics &&
+                              pics.map((pic, id) => {
+                                return (
+                                  <div>
+                                    <img
+                                      src={pic.url}
+                                      key={pic.id}
+                                      alt="Staff Photos"
+                                      style={{
+                                        width: "100px",
+                                        height: "100px",
+                                      }}
+                                      onClick={this.handlOnchange}
+                                    />
+                                  </div>
+                                );
+                              })}
+
+                            <button onClick={this.upload}>
+                              set as profile photo
+                            </button>*/}
+                           <input
+                                    type="text"
+                                    placeholder="Image-URl"
+                                    value={this.state.url}
+                                    onChange={this.onUrlChange}
+                                    required
+                                  />
+                            <button onClick={e=>this.upload(e,authUser)}>upload</button>
+                            <br/>
+                            <img
+                                src={
+                                  this.state.url ||
+                                  "http://via.placeholder.com/100x100"
+                                }
+                                alt="Uploaded images"
+                                height="50"
+                                width="50"
+                              />
+                            </div>
                         ) : null}
                       </div>
                     </span>
