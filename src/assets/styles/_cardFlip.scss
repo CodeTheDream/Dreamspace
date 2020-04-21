@@ -16,6 +16,10 @@
   height: 500px;
 }
 
+.placeholderImg {
+  width: 800px;
+  height: 550px;
+}
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -94,12 +98,23 @@
 }
 @media screen and (max-width: 979px) {
   .flip-card-container {
-    margin-left: 15vw;
-    margin-right: 15vw;
+    margin-left: 15%;
+    margin-right: 15%;
     margin-top: 10vh;
+    display: flex;
+    width: 300px;
+    justify-content: center;
   }
 }
 @media (max-width: 360px) {
+  .flip-card {
+    width: 350px;
+    height: 350px;
+  }
+  .placeholderImg {
+    width: 300px;
+    height: 250px;
+  }
   .grid-item {
     font-size: 3.5vw;
   }
