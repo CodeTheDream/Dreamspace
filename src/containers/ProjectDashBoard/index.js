@@ -3,9 +3,10 @@ import ctdlogo from "../../assets/images/ctd-labs-logo.png";
 import axios from "axios";
 import {
   FeatureCard,
-  PopForm,
-  SearchBar,
-  SideBarOpen
+  // PopForm,
+  // SearchBar,
+  SideBarOpen,
+  SideList,
 } from "../../ctd-project-components";
 
 class ProjectDashBoard extends React.Component {
@@ -14,14 +15,14 @@ class ProjectDashBoard extends React.Component {
     this.state = {
       projectData: [],
       searchName: "",
-      showPopup: false
+      showPopup: false,
       // selectedProject: {}
     };
   }
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
@@ -29,20 +30,20 @@ class ProjectDashBoard extends React.Component {
     this.getAirTable();
   }
 
-  selectProject = id => {
+  selectProject = (id) => {
     const allProjects = this.state.projectData;
     console.log("see", id);
-    const selectedProject = allProjects.find(x => x.id === id);
+    const selectedProject = allProjects.find((x) => x.id === id);
     console.log(selectedProject);
     this.setState({
-      selectedProject
+      selectedProject,
     });
   };
 
-  handleInput = e => {
+  handleInput = (e) => {
     console.log(e.target.value);
     this.setState({
-      searchName: e.target.value
+      searchName: e.target.value,
     });
   };
 
@@ -54,7 +55,7 @@ class ProjectDashBoard extends React.Component {
       console.log("airtable from GET: ", response);
       const projectData = response.data.records;
       this.setState({
-        projectData
+        projectData,
       });
     } catch (error) {
       console.log(error);
@@ -63,7 +64,7 @@ class ProjectDashBoard extends React.Component {
 
   render() {
     // Filtering out the side bar Menu
-    let filterProject = this.state.projectData.filter(sideBarFilter => {
+    let filterProject = this.state.projectData.filter((sideBarFilter) => {
       return sideBarFilter.fields.Name.toUpperCase().includes(
         this.state.searchName.toUpperCase()
       );
@@ -72,16 +73,22 @@ class ProjectDashBoard extends React.Component {
     return (
       <div className="dashboard">
         <div className="dashboard-content">
-          <div className="featured">
+          <div className="flip-card-container">
             {this.state.selectedProject ? (
+              // <div className="card-container">
               <FeatureCard project={this.state.selectedProject} />
             ) : (
-              <img className="featured" src={ctdlogo} />
+              // </div>
+              // <div>
+              <img className="placeholderImg" src={ctdlogo} />
+              // </div>
             )}
           </div>
           {this.state.showPopup ? (
-            <PopForm
-              text="Enter Project Data"
+            <SideList
+              text="MoblieList"
+              projectData={this.state.projectData}
+              selectProject={this.selectProject}
               closePopup={this.togglePopup.bind(this)}
             />
           ) : null}
@@ -92,11 +99,8 @@ class ProjectDashBoard extends React.Component {
             />
           )}
           {/* <div className="dashboard-button-container"> */}
-          <button
-            className="button-style"
-            onClick={this.togglePopup.bind(this)}
-          >
-            Add Project
+          <button className="side-button" onClick={this.togglePopup.bind(this)}>
+            ProjectList
           </button>
           {/* </div> */}
         </div>
