@@ -1,8 +1,6 @@
 import React from 'react'
 
 const DirectorySearchBar = (props) => {
-  let test = props.filterDirectory;
-  console.log('test ', test)
   return(
     <div className = 'search-contain'>
       <input 
