@@ -33,7 +33,7 @@ class Userprofile extends React.Component {
       url: "",
     };
   }
-  /*componentDidMount() {
+  componentDidMount() {
     this.directoryAirTable();
   }
   directoryAirTable() {
@@ -55,7 +55,7 @@ class Userprofile extends React.Component {
         });
         console.log(" crewDirectory", this.state.crewDirectory);
       });
-  }*/
+  }
  
 
   togglePopup = () => {
@@ -63,7 +63,7 @@ class Userprofile extends React.Component {
       showPopup: !this.state.showPopup,
     });
   };
-/*
+
   postPics = (e) => {
     let pics =
       "https://ya-webdesign.com/images250_/placeholder-image-png-1.png";
@@ -79,7 +79,7 @@ class Userprofile extends React.Component {
           //  }
         });
     }
-  };*/
+  };
   onUrlChange = (e) => {
     this.setState({
       url: e.target.value
@@ -129,7 +129,7 @@ class Userprofile extends React.Component {
 
                         {this.state.showPopup ? (
                           <div className="prfilecard">
-                            {/*<button onClick={this.postPics}>
+                            <button onClick={this.postPics}>
                               Upload your photo
                             </button>
                             {pics &&
@@ -152,7 +152,7 @@ class Userprofile extends React.Component {
 
                             <button onClick={this.upload}>
                               set as profile photo
-                            </button>*/}
+                            </button>
                            <input
                                     type="text"
                                     placeholder="Image-URl"
@@ -160,7 +160,7 @@ class Userprofile extends React.Component {
                                     onChange={this.onUrlChange}
                                     required
                                   />
-                            <button onClick={e=>this.upload(e,authUser)}>upload</button>
+                        
                             <br/>
                             <img
                                 src={
@@ -168,9 +168,11 @@ class Userprofile extends React.Component {
                                   "http://via.placeholder.com/100x100"
                                 }
                                 alt="Uploaded images"
-                                height="50"
-                                width="50"
+                                height="20"
+                                width="20"
                               />
+                              <br/>
+                                  <button onClick={e=>this.upload(e,authUser)}>upload Image</button>
                             </div>
                         ) : null}
                       </div>
