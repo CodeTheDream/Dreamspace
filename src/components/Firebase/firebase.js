@@ -15,11 +15,18 @@ class Firebase {
   constructor() {
     console.log("API KEY", process.env.REACT_APP_API_KEY);
       app.initializeApp(config);
+
+
+      
+
     /* Helper */
     this.fieldValue = app.firestore.FieldValue;
     this.emailAuthProvider = app.auth.EmailAuthProvider;
+
       /* Social Sign In Method Provider */
       this.googleProvider = new app.auth.GoogleAuthProvider();
+      this.facebookProvider = new app.auth.FacebookAuthProvider();
+      this.githubProvider = new app.auth.GithubAuthProvider();
     /* Firebase APIs */
     this.auth = app.auth();
     this.db = app.firestore();
@@ -29,17 +36,27 @@ class Firebase {
     this.auth.createUserWithEmailAndPassword(email, password);
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
+    //doSignInWithGoogle = () =>
+     //this.googleProvider = new app.auth.GoogleAuthProvider();
     doSignInWithGoogle = () =>
-     this.googleProvider = new app.auth.GoogleAuthProvider();
-    doSignInWithGoogle = () =>
-    this.auth.signInWithPopup(this.googleProvider);
+        this.auth.signInWithPopup(this.googleProvider);
+     doSignInWithFacebook = () =>
+        this.auth.signInWithPopup(this.facebookProvider);
+    doSignInWithGithub = () =>
+        this.auth.signInWithPopup(this.githubProvider);
+
   doSignOut = () => this.auth.signOut();
   doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
   doSendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
       url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT
     });
+
     doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
+
+
+    
+          
   // *** Merge Auth and DB User API *** //
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(authUser => {

@@ -106,11 +106,16 @@ body {
   top: 0;
 }
 .logo-wrapper {
-  width: 150px;
-  top: 10px;
-  left: 10px;
-  position: relative;
-  float: left;
+    width: 150px;
+    top: 10px;
+    left: 10px;
+    position: relative;
+    float: left;
+
+   
+}
+.logo-wrapper:hover {
+    zoom: 120%;
 }
 
 .header .menu-btn:checked ~ .menu-icon .nav-icon:after {

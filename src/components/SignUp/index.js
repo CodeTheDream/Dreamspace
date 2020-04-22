@@ -11,8 +11,8 @@ const SignUpPage = () => (
 );
 const INITIAL_STATE = {
   username: "name",
-   email: "",
-  photoUrl: "https://ya-webdesign.com/images250_/placeholder-image-png-1.png",
+    email: "",
+    photoUrl: "https://ya-webdesign.com/images250_/placeholder-image-png-1.png",
   passwordOne: "",
   passwordTwo: "",
   isAdmin: false,
