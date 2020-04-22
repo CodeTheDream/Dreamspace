@@ -53,38 +53,6 @@ const FeatureCard = (props) => {
                 </div>
               )}
             </div>
-            {/* </div> */}
-
-            {/* {project.fields.Type && (
-              <>
-                <div className="card-type">Type</div>
-                <div className="card-type-info">{project.fields.Type}</div>
-              </>
-            )} */}
-
-            {/* {project.fields.Notes && (
-              <>
-                <div className="card-note">Notes</div>
-                <div className="card-note-info">{project.fields.Notes}</div>
-              </>
-            )} */}
-
-            {/* {project.fields.Project_Description && (
-              <>
-                <div className="card-des">Project Description</div>
-                <div className="card-des-info">
-                  {project.fields.Project_Description}
-                </div>
-              </>
-            )} */}
-            {/* {project.fields.Website && (
-              <>
-                <div className="card-website">Website</div>
-                <div className="card-website-info">
-                  {project.fields.Website}
-                </div>
-              </>
-            )} */}
           </div>
         </div>
       </div>
