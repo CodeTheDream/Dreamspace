@@ -23,9 +23,6 @@ const SignInPage = () => (
 
 
 
-
-        {/* <SignInFacebook />
-    <SignInTwitter /> */}
          <PasswordForgetLink /> 
         <SignUpLink />
     </div>

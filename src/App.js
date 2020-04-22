@@ -13,6 +13,7 @@ import SignInPage from "./components/SignIn";
 import HomePage from "./containers/HomePage";
 import ProjectDashBoard from "./containers/ProjectDashBoard";
 import { withAuthentication } from "./components/Session";
+import { PasswordForgetLink } from "./components/PasswordForget";
 //import FrontPage from "./components/FontPage";
 //import Sidebar from "./components/Sidebar";
 
@@ -30,6 +31,7 @@ function App() {
           <Route exact path={ROUTES.SIGNUP} component={SignUp} />
           <Route exact path={ROUTES.SIGN_IN} component={SignInPage} />
           <Route exact path={ROUTES.HOME} component={HomePage} /> 
+          <Route exact path={ ROUTES.PASSWORD_FORGET } component={PasswordForgetLink} /> 
           <Route
             exact
             path={ROUTES.INDIVIDUAL_VIEW}

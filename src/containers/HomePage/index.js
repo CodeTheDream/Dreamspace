@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import Article from "../../assets/images/Article.jpg;
-//import Logo from "../../assets/images/ctd-logo.png";
+
 const HomePage = () => {
     return (
         <div className="wrapper1">
