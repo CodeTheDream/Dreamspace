@@ -6,19 +6,6 @@ import { PasswordForgetLink } from "../PasswordForget";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 const SignInPage = () => (
-<<<<<<< HEAD
-  <div className="wrapper">
-    <h3>SignIn</h3>
-    <SignInGoogle />
-    <p style={{ textAlign: "center" }}>Or sign in manually:</p>
-    <SignInForm />
-    {/*<p className="btn-text"><b>Sign in with google</b></p>*/}
-    {/* <SignInFacebook />
-<SignInTwitter /> */}
-    {/* <PasswordForgetLink /> */}
-    <SignUpLink />
-  </div>
-=======
     <div className="wrapper">
         <p style={{fontSize:"28px"}}>SignIn</p>
         <SignInGoogle /> 
@@ -41,26 +28,15 @@ const SignInPage = () => (
         {/* <PasswordForgetLink /> */}
         <SignUpLink />
     </div>
->>>>>>> 32b420213c0ed521a30f361db03c83a60314d9f0
 );
 const INITIAL_STATE = {
-<<<<<<< HEAD
-  email: "",
-  password: "",
-  error: null,
-=======
     email: '',
     password: '',
     error: null,
->>>>>>> 32b420213c0ed521a30f361db03c83a60314d9f0
 };
 const ERROR_CODE_ACCOUNT_EXISTS =
-<<<<<<< HEAD
-  "auth/account-exists-with-different-credential";
-=======
     'auth/account-exists-with-different-credential';
 
->>>>>>> 32b420213c0ed521a30f361db03c83a60314d9f0
 const ERROR_MSG_ACCOUNT_EXISTS = `
 An account with an E-Mail address to
 this social account already exists. Try to login from

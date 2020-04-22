@@ -1,4 +1,4 @@
-/*import React, { Fragment } from "react";
+import React, { Fragment } from "react";
 import AddComment from "../../components/CommentSystem/AddComment";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
@@ -39,7 +39,7 @@ class IndividualView extends React.Component {
 
       .onSnapshot(snapshot => {
         const comments = [];
-        let commentId ="";
+        let commentId = "";
         snapshot.forEach(doc => {
           const data = doc.data();
           commentId = doc.id;
@@ -52,11 +52,7 @@ class IndividualView extends React.Component {
             comments: comments
           });
         });
-
-
-
       });
-   
 
     //get the ID for a particular article
     // console.log("articleId", this.props.match.params);
@@ -64,16 +60,17 @@ class IndividualView extends React.Component {
 
     this.unsubscribe = this.props.firebase
       .article(articleId)
-      
+
       .onSnapshot(doc => {
         if (doc.exists) {
-         // console.log(" this is my article", doc.data());
+          // console.log(" this is my article", doc.data());
           this.setState({
-            article: doc.data()})
-            this.setState({
+            article: doc.data()
+          });
+          this.setState({
             timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  `)
           }); // set data to local state
-         // console.log("this is a state article:" , this.state.article)
+          // console.log("this is a state article:" , this.state.article)
         } else {
           console.log("No such document!");
         }
@@ -92,19 +89,6 @@ class IndividualView extends React.Component {
              });
           });
       });
-
-
-
-
-
-
-
-
-
-
-
-
-
     //This Helps to find the total commets for spesific articleId
     this.unsubscribe = this.props.firebase
       .comments()
@@ -118,13 +102,10 @@ class IndividualView extends React.Component {
         });
 
         this.setState({ TotallComment: TotallComment });
-        const totalcount = TotallComment.length
-        this.setState({totalcount:totalcount})
+        const totalcount = TotallComment.length;
+        this.setState({ totalcount: totalcount });
       });
-    
   };
-
-  
 
   createComment = (comment, article) => {
     //  console.log("here create comment", comment, this.state.articleId);
@@ -165,7 +146,6 @@ class IndividualView extends React.Component {
       });
     });
   };
-
  /* createChildComment = (reply, article) => {
     let { commentId, childCommentId } = this.state.commentId;
     // console.log("here create commentId", this.state.commentId );
@@ -194,10 +174,9 @@ class IndividualView extends React.Component {
         });
       });
   };*/
-/*
+
   render() {
     // Access to local component state
-     
     const {
       article,
       comment,
@@ -235,11 +214,10 @@ class IndividualView extends React.Component {
             <div className="grid-subject2">
               <a href={article.url}>{article.title}</a>
             </div>
-          </div>
 
-          <div className="grid-subject2">
-            <a href={article.url}>{article.title}</a>
-          </div>
+            <div className="grid-description">
+              <p>{article.description}</p>
+            </div>
 
             <div className="stylebutton">
               <button
@@ -260,7 +238,7 @@ class IndividualView extends React.Component {
               </button>
             </div>
           </div>
-          /*
+          {/*}
           <div>
             <AddComment comment={comment} onCreate={this.createComment} />
           </div>
@@ -282,8 +260,8 @@ class IndividualView extends React.Component {
                   </div>
                 );
               })}
-          </div>*/
-        /*  <div>
+          </div>*/}
+          <div>
             <Comments
               comments={comments}
               comment={comment}
@@ -296,18 +274,12 @@ class IndividualView extends React.Component {
             />
           </div>
         </div>
-        
-      </div>
-    );
-          }
-          else {
-          
-            console.log("no article")
-            return(
-            null)
-
-          }
+      );
+    } else {
+      console.log("no article");
+      return null;
+    }
   }
 }
 
-export default compose(withFirebase, withRouter)(IndividualView);*/
+export default compose(withFirebase, withRouter)(IndividualView);

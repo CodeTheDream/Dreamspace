@@ -6,7 +6,7 @@ import SignOutButton from "../SignOut";
 import {Redirect} from "react-router-dom";
 import  Userprofile  from "../Userprofile";
 import { AuthUserContext } from "../Session";
-import Userprofile from "../Userprofile/index.js";
+
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
