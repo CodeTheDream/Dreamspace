@@ -6,20 +6,7 @@ import SideListContent from "../SideListContent";
 class SideList extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   Name: "",
-    //   Repo: "",
-    //   Website: "",
-    //   // Meeting_Time: "",
-    //   Project_Description: "",
-    //   Notes: "",
-    //   External: false
-    // };
   }
-  // doubleFunction = () => {
-  //   this.props.closePopup;
-  //   this.props.selectProject(sideBar.id);
-  // };
   render() {
     const dumList = this.props.projectData;
     console.log("dumList", dumList);
@@ -40,7 +27,6 @@ class SideList extends React.Component {
           >
             X
           </button>
-          {/* <h4>{this.props.text}</h4> */}
           <div className="pop-Side">
             {finalFitler.map((sideBar) => (
               <li
