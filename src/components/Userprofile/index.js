@@ -129,7 +129,7 @@ class Userprofile extends React.Component {
 
                         {this.state.showPopup ? (
                           <div className="prfilecard">
-                            <button onClick={this.postPics}>
+                          { /* <button onClick={this.postPics}>
                               Upload your photo
                             </button>
                             {pics &&
@@ -142,6 +142,8 @@ class Userprofile extends React.Component {
                                       alt="Staff Photos"
                                      
                                       onClick={this.handlOnchange}
+                                      width="40"
+                                      height="40"
                                     />
                                   </div>
                                 );
@@ -149,27 +151,33 @@ class Userprofile extends React.Component {
 
                             <button onClick={this.upload}>
                               set as profile photo
-                            </button>
+                            </button>*/}
+                            <div className="uploadimage">
                            <input
+                           className="imageinput"
                                     type="text"
                                     placeholder="Image-URl"
                                     value={this.state.url}
                                     onChange={this.onUrlChange}
                                     required
+                                    style={{width:"40em",height:"3em"}}
                                   />
+                                  <button className="imageupload" onClick={e=>this.upload(e,authUser)}style={{width:"8em",height:"3em"}} >upload Image</button>
                         
+                        </div>
                             <br/>
-                            <img
+                           
+                              <img
                                 src={
                                   this.state.url ||
-                                  "http://via.placeholder.com/"
+                                  "http://via.placeholder.com/400x300"
                                 }
                                 alt="Uploaded images"
-                                
-                                
+                                height="300"
+                                width="400"
+ 
                               />
-                              <br/>
-                                  <button onClick={e=>this.upload(e,authUser)}>upload Image</button>
+                                  
                             </div>
                         ) : null}
                       </div>
