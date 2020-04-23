@@ -153,7 +153,7 @@ class SignInGoogleBase extends Component {
             
                 <p style={{ textAlighn: "" }}> Login with Google+</p> </button>*/}
 
-              <button button type="submit" className="googlebtn" style={{ fontSize: "20px" }}><i class="fa fa-google fa-fw" > </i> Login with Google
+              <button type="submit" className="googlebtn" style={{ fontSize: "20px" }}><i className="fa fa-google fa-fw" > </i> Login with Google
  
   
 </button>
@@ -211,7 +211,7 @@ class SignInGoogleBase extends Component {
 
      return (
        <form onSubmit={this.onSubmit}>
-             <button type="submit" style={{ fontSize: "20px" }} className="fb"><i class="fa fa-facebook fa-fw" />Sign In with Facebook</button>
+             <button type="submit" style={{ fontSize: "20px" }} className="fb"><i className="fa fa-facebook fa-fw" />Sign In with Facebook</button>
 
        {error && <p>{error.message}</p>}
       </form>
@@ -260,7 +260,7 @@ class SignInGithubBase extends Component {
 
    return (
        <form onSubmit={this.onSubmit}>
-           <button type="submit" style={{ fontSize: "20px" }} className="github"><i class="fa fa-github" />{" "}Sign In with Github</button>
+           <button type="submit" style={{ fontSize: "20px" }} className="github"><i className="fa fa-github" />{" "}Sign In with Github</button>
          
       
        {error && <p>{error.message}</p>}

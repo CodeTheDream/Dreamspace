@@ -138,12 +138,9 @@ class Userprofile extends React.Component {
                                   <div>
                                     <img
                                       src={pic.url}
-                                      key={pic.id}
+                                      
                                       alt="Staff Photos"
-                                      style={{
-                                        width: "100px",
-                                        height: "100px",
-                                      }}
+                                     
                                       onClick={this.handlOnchange}
                                     />
                                   </div>
@@ -165,11 +162,11 @@ class Userprofile extends React.Component {
                             <img
                                 src={
                                   this.state.url ||
-                                  "http://via.placeholder.com/100x100"
+                                  "http://via.placeholder.com/"
                                 }
                                 alt="Uploaded images"
-                                height="20"
-                                width="20"
+                                
+                                
                               />
                               <br/>
                                   <button onClick={e=>this.upload(e,authUser)}>upload Image</button>
