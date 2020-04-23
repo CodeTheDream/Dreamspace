@@ -8,6 +8,8 @@ export const SIGNOUT = "/signOut";
 export const SIGN_IN = "/signin";
 export const PROJECT = "/projects";
 export const ARTICLES = "/articles";
-export const PASSWORD_FORGET = "/pw-forget";
+export const PASSWORD_FORGET = "/pwforget";
+
+
 export const INDIVIDUAL_VIEW = "/articles/:articleId";
 export const USERPROFILE= "/userprofile";
