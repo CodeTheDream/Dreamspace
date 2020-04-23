@@ -43,8 +43,8 @@
        color:  #fae596;
        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
        z-index: 1;
-      left: 50%;
-       right: 50%;
+      left: 26%;
+       right: 74%;
        top: 100%;
        padding: 10px;
      }
@@ -86,12 +86,12 @@
     z-index: 999;
     width: 100%;
     max-width: 20em;
-    height: 20em;
+    height: 25em;
     margin: auto;
     position: fixed;
     left: 52%;
     right: 48%;
-    top: 75%;
+    top: 60%;
     padding: 10px;
     border-radius: 8px;
     display: flex;
@@ -107,7 +107,21 @@
     height: 200px;
     margin-bottom: 40px;
   }
+  .uploadimage {
+    display: inline-block;
+  }
+.imageupload{
+  width:20px;
+  height:12px;
+} 
+.imageinput {
+width:50px;
+height:12px;
+} 
    }
+
+
+
    @media only screen  and (min-width:800px){
     .navbar {
       overflow: hidden;
@@ -217,6 +231,18 @@
         margin-bottom: 200px;
         
       }
+      .uploadimage {
+        display: inline-block;
+      }
+      .imageupload{
+        width:8em;
+        height:3em;
+      } 
+      .imageinput{
+      width:40em;
+      height:3em;
+      }
+      
    }
    .user-profile1 {
     position: relative;
@@ -243,4 +269,3 @@
   top: 20%;
   transform: translate(-50%, -50%);
 }*/
-
