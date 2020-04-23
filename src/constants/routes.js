@@ -11,3 +11,4 @@ export const ARTICLES = "/articles";
 export const PASSWORD_FORGET = "/pw-forget";
 export const INDIVIDUAL_VIEW = "/articles/:articleId";
 export const USERPROFILE= "/userprofile";
+//export const FRONTPAGE= "/frontPage";

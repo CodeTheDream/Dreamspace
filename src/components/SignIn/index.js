@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { compose } from 'recompose';
-
-import { SignUpLink } from '../SignUp';
-import { PasswordForgetLink } from '../PasswordForget';
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
-
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { compose } from "recompose";
+import { SignUpLink } from "../SignUp";
+import { PasswordForgetLink } from "../PasswordForget";
+import { withFirebase } from "../Firebase";
+import * as ROUTES from "../../constants/routes";
 const SignInPage = () => (
     <div className="wrapper">
         <p style={{fontSize:"28px"}}>SignIn</p>
@@ -31,23 +29,20 @@ const SignInPage = () => (
         <SignUpLink />
     </div>
 );
-
 const INITIAL_STATE = {
     email: '',
     password: '',
     error: null,
 };
-
 const ERROR_CODE_ACCOUNT_EXISTS =
     'auth/account-exists-with-different-credential';
 
 const ERROR_MSG_ACCOUNT_EXISTS = `
-  An account with an E-Mail address to
-  this social account already exists. Try to login from
-  this account instead and associate your social accounts on
-  your personal account page.
+An account with an E-Mail address to
+this social account already exists. Try to login from
+this account instead and associate your social accounts on
+your personal account page.
 `;
-
 class SignInFormBase extends Component {
     constructor(props) {
         super(props);
@@ -158,7 +153,7 @@ class SignInGoogleBase extends Component {
             
                 <p style={{ textAlighn: "" }}> Login with Google+</p> </button>*/}
 
-              <button button type="submit" className="googlebtn" style={{ fontSize: "20px" }}><i class="fa fa-google fa-fw" > </i> Login with Google
+              <button type="submit" className="googlebtn" style={{ fontSize: "20px" }}><i className="fa fa-google fa-fw" > </i> Login with Google
  
   
 </button>
@@ -216,7 +211,7 @@ class SignInGoogleBase extends Component {
 
      return (
        <form onSubmit={this.onSubmit}>
-             <button type="submit" style={{ fontSize: "20px" }} className="fb"><i class="fa fa-facebook fa-fw" />Sign In with Facebook</button>
+             <button type="submit" style={{ fontSize: "20px" }} className="fb"><i className="fa fa-facebook fa-fw" />Sign In with Facebook</button>
 
        {error && <p>{error.message}</p>}
       </form>
@@ -265,7 +260,7 @@ class SignInGithubBase extends Component {
 
    return (
        <form onSubmit={this.onSubmit}>
-           <button type="submit" style={{ fontSize: "20px" }} className="github"><i class="fa fa-github" />{" "}Sign In with Github</button>
+           <button type="submit" style={{ fontSize: "20px" }} className="github"><i className="fa fa-github" />{" "}Sign In with Github</button>
          
       
        {error && <p>{error.message}</p>}

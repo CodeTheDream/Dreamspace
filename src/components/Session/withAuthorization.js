@@ -10,7 +10,7 @@ const withAuthorization = condition => Component => {
       console.log("Running with Authorization")
       this.listener = this.props.firebase.onAuthUserListener(
         authUser => {
-          console.log(authUser)
+         // console.log(authUser)
           if (!condition(authUser)) {
             console.log("I think not")
             this.props.history.push(ROUTES.SIGN_IN);
