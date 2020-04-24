@@ -19,7 +19,12 @@ const DirectoryList = (props) => {
     let sortNames = optInStaffMembers;
     console.log('let\'s see the names', sortNames)
     sortNames.sort((a, b) => (a.fields['First Name'] > b.fields['First Name']) ? 1 : -1);
-    
+
+  // Randomize the flip direction on the cards
+    const getFlip = ['vertical', 'horizontal'];
+    let randomFlip = getFlip[Math.floor(Math.random() * 2)];
+    console.log('get ', randomFlip);
+   
     return(
       <div className = 'list-container'>
           {sortNames.map(staff => {
@@ -29,22 +34,20 @@ const DirectoryList = (props) => {
             }
             
             return(
-             <ReactCardFlip isFlipped = {staff.id === props.isFlipped} flipDirection = 'vertical'>  
+             <ReactCardFlip isFlipped = {staff.id === props.isFlipped} flipDirection = {randomFlip}>  
               <ul
-                className = 'list'
-                
-                onClick = {() => props.selectedStaffMember(staff.id)}
-                >
+                className = 'list' onClick = {() => props.selectedStaffMember(staff.id)}>
                 <div className = 'image-contain'>
                   <img 
                     src = {pics}
                     alt = 'Staff Photos'/>
                 </div>
-                  <li className = 'staff' style = {{fontSize: '15px', fontWeight: 'bold'}}>{staff.fields.Name}</li>
+                <div className = 'list-card-wrap'>
+                  <li className = 'staff'>{staff.fields.Name}</li>
                   <li className = 'location'>{staff.fields.Location}</li>
                   <li className = 'job'>{staff.fields.Title}</li>
-                  <li className = 'primary-job'>{staff.fields['Primary Department']}</li>
-                  {/* <li className = 'email'>{staff.fields['Email address']}</li> */} 
+                  <li className = 'primary-job'>{staff.fields['Primary Department']}</li> 
+                </div>
               </ul> 
   
               <ul className = 'back-of-list'
@@ -54,15 +57,17 @@ const DirectoryList = (props) => {
                   <li className = 'number'>{staff.fields.Phone}</li>
                   <li className = 'email'>{staff.fields['Email address']}</li>
               </ul>
-            
              </ReactCardFlip> 
-              
           )})}
         </div>
      )
     }
   
     export default DirectoryList;
+                
+
+            
+              
               
 
   

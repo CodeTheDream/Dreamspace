@@ -10,31 +10,16 @@ class Directory extends React.Component {
       searchDirectory: "",
       isFlipped: false,
     }
-    // this.handleClick = this.handleClick.bind(this);
   }
 
-  // getCards() {
-  //  let cardId = this.state.crewDirectory;
-  //  console.log('cardId ', cardId);
-  // }
-  
-  handleClick() {
-  }
-  
   componentDidMount() {
     this.directoryAirTable();
     this.projectAirTable();
   }
   
   selectedStaffMember = id => {
-    // const allStaffMember = this.state.crewDirectory;
     console.log("see", id);
     this.setState({isFlipped: id});
-    // const selectStaffMember = allStaffMember.find(x => x.id === id);
-    // console.log(selectStaffMember);
-    // if(this.handleClick()) {
-    //   this.setState({selectStaffMember});
-    // }
   }
 
   
@@ -104,7 +89,6 @@ class Directory extends React.Component {
           crewDirectory={this.state.crewDirectory}
           selectedStaffMember={this.selectedStaffMember}
           projectData={this.state.projectData}
-          // handleClick={this.handleClick}
           isFlipped={this.state.isFlipped}
         />)}
      </div>
