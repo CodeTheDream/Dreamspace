@@ -1,18 +1,18 @@
 
 import React, { Component } from 'react';
-/*import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';*/
+import * as ROUTES from '../../constants/routes';
 
 
 
-const pwforget = () => {
-    return (
-        <div>
-            <h1>PasswordForget </h1>
+const PasswordForgetLink = () => (
 
-        </div>
-    )
-};
-export default pwforget
+
+    <p>
+        <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
+    </p>
+
+);
+export default PasswordForgetLink
