@@ -65,7 +65,10 @@ class Directory extends React.Component {
       let grabData = (
         person.fields.Name +
         person.fields.Phone +
-        person.fields['Email Address']
+        person.fields['Email Address'] +
+        person.fields.Location +
+        person.fields.Title +
+        person.fields.State
       )
       .replace(/[^a-zA-Z0-9]/g, "")
       .toLowerCase();
