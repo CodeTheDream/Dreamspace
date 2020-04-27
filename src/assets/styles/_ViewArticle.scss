@@ -31,7 +31,8 @@ body {
   border-bottom: solid 0.1px lightgrey;
   overflow: auto;
   border-radius: 10px;
-  // width: 900px;
+  width: 800px;
+  //margin: 0 10em 0;
 }
 
 .auther-name-individual {
@@ -46,7 +47,7 @@ body {
 }
 
 .grid-subject2 {
-  padding: 12px 40px;
+ padding: 12px 40px;
   //  background-color: white;
   border-bottom-style: hidden;
   text-align: left;
@@ -130,6 +131,7 @@ textarea {
   margin-top: 4px;
   border-bottom: solid 0.2px lightgray;
   border-radius: 10px;
+  ;
 }
 
 .styleDisplay {
