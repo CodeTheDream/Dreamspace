@@ -56,7 +56,6 @@ class Userprofile extends React.Component {
         console.log(" crewDirectory", this.state.crewDirectory);
       });
   }
- 
 
   togglePopup = () => {
     this.setState({
@@ -82,9 +81,8 @@ class Userprofile extends React.Component {
   };
   onUrlChange = (e) => {
     this.setState({
-      url: e.target.value
-    })
-    
+      url: e.target.value,
+    });
   };
 
   upload = (e, authUser) => {
@@ -94,6 +92,7 @@ class Userprofile extends React.Component {
     this.props.firebase.user(autherId).update({
       photoUrl: this.state.url,
     });
+    this.setState({showPopup:false})
   };
   render() {
     const { selectedFile, url, crewDirectory, pics } = this.state;
@@ -129,7 +128,7 @@ class Userprofile extends React.Component {
 
                         {this.state.showPopup ? (
                           <div className="prfilecard">
-                          { /* <button onClick={this.postPics}>
+                            {/* <button onClick={this.postPics}>
                               Upload your photo
                             </button>
                             {pics &&
@@ -153,32 +152,33 @@ class Userprofile extends React.Component {
                               set as profile photo
                             </button>*/}
                             <div className="uploadimage">
-                           <input
-                           className="imageinput"
-                                    type="text"
-                                    placeholder="Image-URl"
-                                    value={this.state.url}
-                                    onChange={this.onUrlChange}
-                                    required
-                                    style={{width:"40em",height:"3em"}}
-                                  />
-                                  <button className="imageupload" onClick={e=>this.upload(e,authUser)}style={{width:"8em",height:"3em"}} >upload Image</button>
-                        
-                        </div>
-                            <br/>
-                           
-                              <img
-                                src={
-                                  this.state.url ||
-                                  "http://via.placeholder.com/400x300"
-                                }
-                                alt="Uploaded images"
-                                height="300"
-                                width="400"
- 
+                              <input
+                                className="imageinput"
+                                type="text"
+                                placeholder="Drage and drop your Image-URl"
+                                value={this.state.url}
+                                onChange={this.onUrlChange}
+                                required
                               />
-                                  
+                              <button
+                                className="imageupload"
+                                onClick={(e) => this.upload(e, authUser)}
+                              >
+                                upload Image
+                              </button>
                             </div>
+                            <br />
+
+                            <img
+                              src={
+                                this.state.url ||
+                                "http://via.placeholder.com/100x100"
+                              }
+                              alt="Uploaded images"
+                             // height="100"
+                              //width="100"
+                            />
+                          </div>
                         ) : null}
                       </div>
                     </span>
