@@ -211,10 +211,11 @@ class IndividualView extends React.Component {
                                 </span>
                             </div>
                         </div>
-
+                        <br />
                         <div className="grid-subject2">
                             <a href={article.url}>{article.title}</a>
                         </div>
+                     
 
                         <div className="grid-description">
                             <p>{article.description}</p>
