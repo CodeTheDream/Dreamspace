@@ -110,7 +110,11 @@ class SignInGoogleBase extends Component {
   constructor(props) {
    super(props);
 
-     this.state = { error: null };
+     this.state = {
+        error: null,
+        photoURL:""
+     };
+     
   }
 
   onSubmit = event => {
@@ -118,6 +122,8 @@ class SignInGoogleBase extends Component {
           .doSignInWithGoogle()
       .then(socialAuthUser => {
        // Create a user in your Firebase Realtime Database too
+       if(socialAuthUser.user.photoURL===""){
+         console.log("photoUrl",socialAuthUser.user.photoURL,)
         return this.props.firebase.user(socialAuthUser.user.uid).set(
             {
 
@@ -127,7 +133,19 @@ class SignInGoogleBase extends Component {
             roles: {},
           },
            { merge: true },
-          )
+          )}
+          else{
+            return this.props.firebase.user(socialAuthUser.user.uid).set(
+              {
+  
+                  username: socialAuthUser.user.displayName,
+                 //photoUrl: socialAuthUser.user.photoURL,
+               email: socialAuthUser.user.email,
+              roles: {},
+            },
+             { merge: true },
+            )
+          }
       })
           .then(() => {
               this.setState({ error: null });
@@ -178,6 +196,7 @@ class SignInGoogleBase extends Component {
       .doSignInWithFacebook()
        .then(socialAuthUser => {
         // Create a user in your Firebase Realtime Database too
+        if(socialAuthUser.additionalUserInfo.profile.photoURL===""){
          return this.props.firebase.user(socialAuthUser.user.uid).set(
            {
                  username: socialAuthUser.additionalUserInfo.profile.name,
@@ -190,7 +209,21 @@ class SignInGoogleBase extends Component {
                  roles: {},*/
           },
            { merge: true },
-         );
+         )} else{
+          return this.props.firebase.user(socialAuthUser.user.uid).set(
+            {
+                  username: socialAuthUser.additionalUserInfo.profile.name,
+                 // photoUrl: socialAuthUser.additionalUserInfo.profile.photoURL,
+             email: socialAuthUser.additionalUserInfo.profile.email,
+             roles: {},
+                  /*username: socialAuthUser.user.displayName,
+                  photoUrl: socialAuthUser.user.photoURL,
+                  email: socialAuthUser.user.email,
+                  roles: {},*/
+           },
+            { merge: true },
+          )
+         }
        })
     .then(() => {
         this.setState({ error: null });
