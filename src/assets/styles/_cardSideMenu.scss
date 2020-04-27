@@ -1,0 +1,14 @@
+.collapse-container {
+  cursor: pointer;
+  width: 100%;
+}
+.menu-container {
+  list-style: none;
+  position: left;
+  cursor: pointer;
+}
+@media screen and (max-width: 979px) {
+  .collapse-container {
+    display: block;
+  }
+}
