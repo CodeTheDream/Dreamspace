@@ -94,6 +94,9 @@ class Userprofile extends React.Component {
     });
     this.setState({showPopup:false})
   };
+  cancleButton = (e) => {
+    this.setState({ showPopup: false });
+  }
   render() {
     const { selectedFile, url, crewDirectory, pics } = this.state;
     console.log("pics1", url);
@@ -102,6 +105,7 @@ class Userprofile extends React.Component {
     if (this.state.file) {
       imgPreview = <img src={this.state.file} alt="" />;
     }
+    ;
     return (
       <AuthUserContext.Consumer>
         {(authUser) => (
@@ -127,7 +131,10 @@ class Userprofile extends React.Component {
                         </span>
 
                         {this.state.showPopup ? (
+                         
                           <div className="prfilecard">
+                            <div className=" canclebutton"> <button onClick={e => this.cancleButton(e)}>x</button></div>
+                            <br/>
                             {/* <button onClick={this.postPics}>
                               Upload your photo
                             </button>
@@ -182,7 +189,7 @@ class Userprofile extends React.Component {
                         ) : null}
                       </div>
                     </span>
-                    {"   "}
+                    <br/>
 
                     <p>{authUser.username}</p>
                     <p>{authUser.email}</p>
