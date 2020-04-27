@@ -98,8 +98,10 @@
     flex-direction: column;
     transform: translate(-50%, -50%);
     background-color: ghostwhite;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     align-items: center;
     justify-content: center;
+    border:1px solid lightgrey;
     
   }
   .uploadImage {
@@ -220,9 +222,11 @@ height:3em;
         display: flex;
         flex-direction: column;
         transform: translate(-50%, -50%);
-        background-color:whitesmoke;
+        background-color:ghostwhite;;
         align-items: center;
         justify-content: center;
+        border:1px solid lightgrey;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         
       }
       .uploadImage {
@@ -258,13 +262,32 @@ height:3em;
   top: 4px;
   // right: 10px;
  // padding-left: 2px;
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
 }
-/*.PhotoCamera {
-  left: 80%;
-  right: 20%;
-  top: 20%;
-  transform: translate(-50%, -50%);
-}*/
+.PhotoCamera {
+   padding-left: 10%; 
+  background-color: white;
+  color: black;
+border-radius: 50%;
+}
+.PhotoCamera i{
+padding-right: 30px;
+}
+
+.canclebutton{
+  margin-bottom: 15px;
+  padding: 3px 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-weight: bold;
+  align-self: flex-end;
+  background: $main-color;
+  // background: $secondary-color;
+  color:#3fb0ac;
+  // background-color: yellow;
+}
