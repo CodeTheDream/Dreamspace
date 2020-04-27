@@ -1,15 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
-    "\\components",
-    "\\components\\Firebase",
-    "\\components\\ListItem",
-    "\\constants",
-    "\\containers",
     "\\containers\\Account",
-    "\\containers\\Create-article"
+    "\\containers\\Create-article",
+    "\\containers\\IndividualView"
   ],
-  "SelectedNode": "\\components\\ListItem\\index.js",
+  "SelectedNode": "\\assets",
   "PreviewInSolutionExplorer": false
 }
