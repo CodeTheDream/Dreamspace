@@ -10,11 +10,13 @@ import IndividualView from "./containers/IndividualView";
 import Account from "./containers/Account";
 import SignUp from "./components/SignUp";
 import SignInPage from "./components/SignIn";
-import { withAuthentication } from "./components/Session";
+import HomePage from "./containers/HomePage";
 import ProjectDashBoard from "./containers/ProjectDashBoard";
-import Directory from "./containers/Directory";
-// import Sidebar from "./components/Sidebar";
-// import DirectoryDashboard from "./containers/DirectoryDashboard";
+import { withAuthentication } from "./components/Session";
+import FrontPage from "./components/FontPage";
+//import Sidebar from "./components/Sidebar";
+// import ProjectDashBoard from "./containers/ProjectDashBoard";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
@@ -23,10 +25,17 @@ function App() {
         <Navigation />
 
         <Switch>
+          <Route exact path={ROUTES.ARTICLES} component={Dashboard} />
+          <Route exact path={ROUTES.ABOUT} component={About} />
+          <Route exact path={ROUTES.PROJECT} component={ProjectDashBoard} />
+          {/* <Route exact path={ROUTES.FRONTPAGE} component={FrontPage} />*/}
+          <Route exact path={ROUTES.ACCOUNT} component={Account} />
+          <Route exact path={ROUTES.SIGNUP} component={SignUp} />
+          <Route exact path={ROUTES.SIGN_IN} component={SignInPage} />
+          <Route exact path={ROUTES.HOME} component={HomePage} />
           <Route exact path={ROUTES.HOME} component={Dashboard} />
           <Route exact path={ROUTES.ABOUT} component={About} />
           <Route exact path={ROUTES.PROJECT} component={ProjectDashBoard} />
-          <Route exact path={ROUTES.DIRECTORY} component={Directory} />
           {/* <Route exact path={ROUTES.CREATEARTICLE} component={Createarticle} />*/}
           <Route exact path={ROUTES.ACCOUNT} component={Account} />
           <Route exact path={ROUTES.SIGNUP} component={SignUp} />

@@ -1,10 +1,14 @@
-export const HOME = "/";
+export const LANDING= "/";
+export const HOME = "/home";
 export const ABOUT = "/about";
 /*export const CREATEARTICLE = '/createarticle'*/
 export const ACCOUNT = "/account";
 export const SIGNUP = "/signup";
+export const SIGNOUT = "/signOut";
 export const SIGN_IN = "/signin";
 export const PROJECT = "/projects";
+export const ARTICLES = "/articles";
 export const PASSWORD_FORGET = "/pw-forget";
 export const INDIVIDUAL_VIEW = "/articles/:articleId";
-export const DIRECTORY = "/directory";
+export const USERPROFILE= "/userprofile";
+//export const FRONTPAGE= "/frontPage";

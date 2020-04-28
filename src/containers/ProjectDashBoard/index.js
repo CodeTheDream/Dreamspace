@@ -1,12 +1,14 @@
 import React from "react";
+import ctdlogo from "../../assets/images/ctd-labs-logo.png";
+import axios from "axios";
 import {
   FeatureCard,
-  Header,
+  // PopForm,
   SearchBar,
-  SideBarOpen
+  SideBarOpen,
+  SideList,
+  Header,
 } from "../../ctd-project-components";
-
-
 
 class ProjectDashBoard extends React.Component {
   constructor(props) {
@@ -14,17 +16,20 @@ class ProjectDashBoard extends React.Component {
     this.state = {
       projectData: [],
       searchName: "",
+      showPopup: false,
       // selectedProject: {}
     };
   }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup,
+    });
+  }
+
   componentDidMount() {
     this.getAirTable();
   }
-
-  // getPersonnelDirectory = (id) => {
-  //   const personnel = this.state.crewDirectory;
-  //   console.log("id", id);
-  // }
 
   selectProject = id => {
     const allProjects = this.state.projectData;
@@ -45,6 +50,7 @@ class ProjectDashBoard extends React.Component {
 
   getAirTable() {
     const url = "https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects";
+
     fetch(url, {
       headers: { Authorization: "Bearer " + process.env.REACT_APP_AIRTABLE_KEY }
     })
@@ -53,72 +59,52 @@ class ProjectDashBoard extends React.Component {
         console.log("data from Airtable", responseData);
         const projectData = responseData.records;
         console.log("projectData ", projectData);
-        this.setState({ projectData: projectData});
+        this.setState({ projectData: projectData });
       });
-    }
+  }
 
-    render() {
-      // Filtering out the side bar Menu
-      let filterProject = this.state.projectData.filter(sideBarFilter => {
-        return sideBarFilter.fields.Name.toUpperCase().includes(
-          this.state.searchName.toUpperCase()
-        );
-      });
-  
-      return (
-        <div className="view-container dashboard">
-          <div className="dashboard-content">
-            {/* <div>
-              {/* {this.state.projectData && (
-                <Header
-                  projectData={this.state.projectData}
-                  selectProject={this.selectProject}
-                />
-              )} */}
-            {/*this.state.projectData && (
-                <SearchBar
-                  projectData={this.state.projectData}
-                  selectProject={this.selectProject}
-                  handleInput={this.handleInput}
-                />
-              )}
-            </div> */}
-  
-            {this.state.selectedProject ? (
-              <FeatureCard project={this.state.selectedProject} />
-            ) : null}
-  
+  render() {
+    // Filtering out the side bar Menu
+    let filterProject = this.state.projectData.filter(sideBarFilter => {
+      return sideBarFilter.fields.Name.toUpperCase().includes(
+        this.state.searchName.toUpperCase()
+      );
+    });
+
+    return (
+      <div className="view-container dashboard">
+        <div className="dashboard-content">
+          <div>
             {this.state.projectData && (
-              <SideBarOpen
+              <Header
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
-                filterProject={filterProject}
-                handleInput={this.handleInput}
-              >
-                <SearchBar
-                  projectData={this.state.projectData}
-                  selectProject={this.selectProject}
-                  // handleInput={this.handleInput}
-                />
-              </SideBarOpen>
-              
-            )}
-            {/* {this.state.crewDirectory && (
-              <StaffDirectory 
-                crewDirectory = {this.state.crewDirectory}
               />
-            )} */}
+            )}
+            {this.state.projectData && (
+              <SearchBar
+                projectData={this.state.projectData}
+                selectProject={this.selectProject}
+                handleInput={this.handleInput}
+              />
+            )}
           </div>
+
+          {this.state.selectedProject ? (
+            <FeatureCard project={this.state.selectedProject} />
+          ) : null}
+
+          {this.state.projectData && (
+            <SideBarOpen
+              projectData={this.state.projectData}
+              selectProject={this.selectProject}
+              filterProject={filterProject}
+            />
+          )}
         </div>
-      );
-    }
+      </div>
+    );
   }
-  
-  
-  export default ProjectDashBoard;
-  
+}
 
-    
-
-
-// %20directory   // from the second fetch, ignore if your not nick.
+export default ProjectDashBoard;

@@ -31,7 +31,9 @@
   border-right: solid;
   border-color: #0066cc;
   color: #f15c39;
+
   width: 100%;
+  padding-top: 90px;
 }
 
 .sidebar-menu li {
@@ -39,27 +41,34 @@
 }
 
 .footer {
-  // background: #0066cc;
   display: grid;
   grid-template-columns: auto 200px;
 }
-
 
 .today {
   margin-top: 8px;
 }
 
-.style-day, .style-time, .footer-content {
+.sidebar-menu li {
+  padding: 5px;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: auto 200px;
+}
+
+.today {
+  margin-top: 8px;
+}
+.style-day,
+.style-time,
+.footer-content {
   font-weight: 200;
 }
 
 @media screen and (max-width: 979px) {
-  .dashboard-content {
-    display: flex;
-    flex-direction: column-reverse;
+  .sidebar-menu {
+    display: none;
   }
-
 }
-
-
-
