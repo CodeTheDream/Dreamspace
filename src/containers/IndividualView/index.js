@@ -37,19 +37,19 @@ class IndividualView extends React.Component {
       //.orderBy('timeCreated','desc')
       .limit(8)
 
-      .onSnapshot((snapshot) => {
+      .onSnapshot(snapshot => {
         const comments = [];
         let commentId = "";
-        snapshot.forEach((doc) => {
+        snapshot.forEach(doc => {
           const data = doc.data();
           commentId = doc.id;
-          // console.log("new commentId",commentId)
+         // console.log("new commentId",commentId)
           data.commentId = commentId;
           comments.push(data);
-          console.log("comments have posted", comments);
+         console.log("comments have posted",comments)
           this.setState({
             commentId: commentId,
-            comments: comments,
+            comments: comments
           });
         });
       });
@@ -61,14 +61,14 @@ class IndividualView extends React.Component {
     this.unsubscribe = this.props.firebase
       .article(articleId)
 
-      .onSnapshot((doc) => {
+      .onSnapshot(doc => {
         if (doc.exists) {
           // console.log(" this is my article", doc.data());
           this.setState({
-            article: doc.data(),
+            article: doc.data()
           });
           this.setState({
-            timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  `),
+            timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  `)
           }); // set data to local state
           // console.log("this is a state article:" , this.state.article)
         } else {
@@ -80,22 +80,22 @@ class IndividualView extends React.Component {
         this.unsubscribe = this.props.firebase
           .user(autherId)
           .get()
-          .then((doc) => {
+          .then(doc => {
             // console.log("userdata", doc.data())
             let user = doc.data();
-            this.setState({
+            this.setState({ 
               username: user.username,
-              photoUrl: user.photoUrl,
-            });
+              photoUrl: user.photoUrl
+             });
           });
       });
     //This Helps to find the total commets for spesific articleId
     this.unsubscribe = this.props.firebase
       .comments()
       .where("articleId", "==", articleId)
-      .onSnapshot((snapshot) => {
+      .onSnapshot(snapshot => {
         const TotallComment = [];
-        snapshot.forEach((doc) => {
+        snapshot.forEach(doc => {
           const data = doc.data();
           TotallComment.push(data);
           //console.log("totall cimment at individual",TotallComment)
@@ -113,14 +113,14 @@ class IndividualView extends React.Component {
       .comments()
       .add({
         ...comment,
-        articleId: this.state.articleId,
+        articleId: this.state.articleId
       })
-      .then(function (docRef) {
+      .then(function(docRef) {
         //console.log("Document written with ID: ", docRef.id);
       });
   };
-
-  /* createChildComment = (reply, article) => {
+  
+ /* createChildComment = (reply, article) => {
     let {commentId,childCommentId}=this.state.commentId
  // console.log("here create commentId", this.state.commentId );
     this.props.firebase
@@ -185,7 +185,7 @@ class IndividualView extends React.Component {
       articleId,
       limited,
       sortType,
-      commentId,
+      commentId
     } = this.state;
 
     if (comments) {
@@ -201,29 +201,24 @@ class IndividualView extends React.Component {
         <div className="container-individual ">
           <div className="card-individual">
             <ListItem1 article={article} isIndividualView={true} />
-            
-              <div className="auther-name-individual">
-                <div className="autherstyle-individual">
-                  <span />
-                  <img
-                    src={this.state.photoUrl}
-                    className="user-profile"
-                  />{" "}
-                  <span>
-                    {this.state.username} {} {article.timeCreated}
-                  </span>
-                </div>
-              </div>
-              <br/>
 
-              <div className="grid-subject2">
-                <a href={article.url}>{article.title}</a>
+            <div className="auther-name-individual">
+              <div className="autherstyle-individual">
+                <span /><img src={this.state.photoUrl} className="user-profile" />{" "}
+                <span>
+                   {this.state.username} {} {article.timeCreated}
+                </span>
               </div>
+            </div>
 
-              <div className="grid-description">
-                <p>{article.description}</p>
-              </div>
-          
+            <div className="grid-subject2">
+              <a href={article.url}>{article.title}</a>
+            </div>
+
+            <div className="grid-description">
+              <p>{article.description}</p>
+            </div>
+
             <div className="stylebutton">
               <button
                 style={{ justifyContent: "spacebitween" }}

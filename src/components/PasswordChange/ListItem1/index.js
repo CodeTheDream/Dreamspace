@@ -19,12 +19,12 @@ class ListItem1 extends React.Component {
             TotallComment: "",
             totalcount: 0,
             sortType: 'asc',
-            photoUrl: " "
+              photoUrl: " "
 
 
         };
     }
-
+   
 
 
 
@@ -38,19 +38,19 @@ class ListItem1 extends React.Component {
         this.calculatedvote(upvotes, downvotes)
         let autherId = article.userId;
         this.unsubscribe = this.props.firebase
-
+            
             .user(autherId)
             .get()
             .then(doc => {
-                console.log("userdata", doc.data())
+                 console.log("userdata", doc.data())
                 let user = doc.data()
-
+              
                 this.setState({
                     username: user.username,
                     photoUrl: user.photoUrl,
                 })
             })
-
+   
 
     }
 
@@ -86,7 +86,7 @@ class ListItem1 extends React.Component {
         let finalTotal = upvotesTotal - downvotesTotal;
         // console.log("upvotestotal", upvotesTotal)
         //console.log("downvotestotal", downvotesTotal)
-        this.setState({ calculatedvote: finalTotal })
+        this.setState({ calculatedvote: finalTotal }) 
         const { article } = this.props;
         this.props.firebase
             .article(article.uid)
@@ -94,8 +94,8 @@ class ListItem1 extends React.Component {
                 ...article,
                 calculatedvote: finalTotal
             })
-
-
+            
+       
     }
     handleUpvote = (authUser) => {
 
@@ -312,6 +312,7 @@ class ListItem1 extends React.Component {
                 const isReversed = (sortType === 'dsc') ? 1 : -1;
                 return isReversed * a.calculatedvote.localeCompare(b.calculatedvote)
             })
+
         }*/
 
 
@@ -401,3 +402,4 @@ class ListItem1 extends React.Component {
     }
 }
 export default compose(withFirebase, withRouter)(ListItem1);
+
