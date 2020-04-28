@@ -3,14 +3,12 @@
     "",
     "\\src",
     "\\src\\components",
+    "\\src\\components\\Comments",
     "\\src\\components\\ListItem1",
-    "\\src\\components\\SignIn",
-    "\\src\\components\\SignUp",
-    "\\src\\containers",
+    "\\src\\components\\PasswordForget",
     "\\src\\containers\\Dashboard",
-    "\\src\\ctd-project-components",
     "\\src\\ctd-project-components\\FeatureCard"
   ],
-  "SelectedNode": "\\src\\components\\SignIn\\copyofindex.js",
+  "SelectedNode": "\\src\\components\\PasswordForget\\index.js",
   "PreviewInSolutionExplorer": false
 }
