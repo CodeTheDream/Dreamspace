@@ -65,22 +65,7 @@
      .dropdown:hover .dropdown-content {
        display: block;
      }
- /*  .settingtoggle { 
-     z-index: 999;
-     width: 100%;
-     max-width: 1200px;
-     margin: auto;
-     position: fixed;
-     left: 50%;
-     right: 50%;
-     top: 50%;
-     padding: 10px;
-     border-radius: 8px;
-     display: flex;
-     flex-direction: column;
-     transform: translate(-50%, -50%);
  
-   }*/
    .prfilecard{
 
     z-index: 999;
@@ -91,7 +76,7 @@
     position: fixed;
     left: 52%;
     right: 48%;
-    top: 60%;
+    top: 50%;
     padding: 10px;
     border-radius: 8px;
     display: flex;
@@ -113,13 +98,43 @@
     display: inline-block;
   }
 .imageupload{
-  //width:5em;
+  // width:8em;
   height:3em;
+  //margin-top: 2px;
+  //font-size: 18px;
+  text-align: center;
+  font-style: normal;
+ // width: 8em;
+  margin-bottom: 10px;
+  background: #3fb0ac;
+  float: right;
+  color: #fae596;
+  border-radius: 8px;
+  position: relative;
+  //padding: 8px;
 } 
 .imageinput {
 width:15em;
 height:3em;
 } 
+.canclebutton{
+  margin-bottom: 15px;
+  margin-left: 20em;
+  padding: 3px 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  //align-self: flex-end;
+  background: $main-color;
+  
+  // background: $secondary-color;
+  color: lightgray;
+  // background-color: yellow;
+  
+}
    }
 
 
@@ -174,38 +189,11 @@ height:3em;
        padding: 10px;
      }
      
-    /* .dropdown-content a {
-       float: none;
-       color: black;
-       padding: 12px 16px;
-       text-decoration: none;
-       display: block;
-       text-align: left;
-     }
-     
-     .dropdown-content a:hover {
-       background-color: #ddd;
-     }
-     */
+   
      .dropdown:hover .dropdown-content {
        display: block;
      }
-    /*.settingtoggle { 
-        z-index: 999;
-        width: 100%;
-        max-width: 1200px;
-        margin: auto;
-       ~position: fixed;
-        left: 50%;
-        right: 50%;
-        top: 100%;
-        padding: 10px;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        transform: translate(-50%, -50%);
-    
-      }*/
+   
       .prfilecard{
 
         z-index: 999;
@@ -229,24 +217,55 @@ height:3em;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         
       }
-      .uploadImage {
+     /* .uploadImage {
         width: 10em;
         height: 8em;
         margin-bottom: 200px;
         
-      }
+      }*/
       .uploadimage {
         display: inline-block;
       }
       .imageupload{
         width:8em;
         height:3em;
+        //margin-top: 2px;
+      //  font-size: 18px;
+        text-align: center;
+        font-style: normal;
+        width: 8em;
+        margin-bottom: 10px;
+        background: #3fb0ac;
+        float: right;
+        color: #fae596;
+        border-radius: 8px;
+        position: relative;
+        //padding: 8px
+
       } 
       .imageinput{
       width:40em;
       height:3em;
       }
       
+      .canclebutton{
+        margin-bottom: 15px;
+        margin-left: 55em;
+        padding: 3px 8px;
+        cursor: pointer;
+        border-radius: 50%;
+        border: none;
+        width: 30px;
+        height: 30px;
+        font-weight: bold;
+        //align-self: flex-end;
+        background: $main-color;
+        
+        // background: $secondary-color;
+        color: lightgray;
+        // background-color: yellow;
+        
+      }
    }
    .user-profile1 {
     position: relative;
@@ -267,27 +286,47 @@ height:3em;
   border-radius: 50%;
 }
 .PhotoCamera {
-   padding-left: 10%; 
+  padding-left: 10%;
   background-color: white;
-  color: black;
-border-radius: 50%;
+  //color: black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -28px;
+  margin-left: 52%;
+  position: absolute
 }
 .PhotoCamera i{
-padding-right: 30px;
+  margin-top: 10px;
+  margin-left: -30px;
 }
-
+/*
 .canclebutton{
   margin-bottom: 15px;
+  margin-left: 55em;
   padding: 3px 8px;
   cursor: pointer;
   border-radius: 50%;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   font-weight: bold;
-  align-self: flex-end;
+  //align-self: flex-end;
   background: $main-color;
+  
   // background: $secondary-color;
-  color:#3fb0ac;
+  color: lightgray;
   // background-color: yellow;
+  
+}*/
+.profilewraper{
+  background: rgba(0,0,0 ,0.507);
+  z-index: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  min-height: 120em;
 }

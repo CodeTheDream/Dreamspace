@@ -121,8 +121,8 @@ class Userprofile extends React.Component {
                   <div>
                     <span>
                       <img src={authUser.photoUrl} className="user-profile11" />
-                      <div>
-                        <span className="PhotoCamera">
+                      <div className="PhotoCamera">
+                        <span >
                           <i
                             className="fa fa-camera"
                             aria-hidden="true"
@@ -131,9 +131,9 @@ class Userprofile extends React.Component {
                         </span>
 
                         {this.state.showPopup ? (
-                         
+                         <div className="profilewraper">
                           <div className="prfilecard">
-                            <div className=" canclebutton"> <button onClick={e => this.cancleButton(e)}>x</button></div>
+                            <div  > <button className="canclebutton"onClick={e => this.cancleButton(e)}>x</button></div>
                             <br/>
                             {/* <button onClick={this.postPics}>
                               Upload your photo
@@ -168,8 +168,10 @@ class Userprofile extends React.Component {
                                 required
                               />
                               <button
+
                                 className="imageupload"
                                 onClick={(e) => this.upload(e, authUser)}
+                                
                               >
                                 upload Image
                               </button>
@@ -186,10 +188,14 @@ class Userprofile extends React.Component {
                               //width="100"
                             />
                           </div>
+                          </div>
                         ) : null}
                       </div>
+                      
                     </span>
-                    <br/>
+                    
+                    <br/><br/>
+
 
                     <p>{authUser.username}</p>
                     <p>{authUser.email}</p>
