@@ -34,8 +34,11 @@ const NavigationAuth = () => (
              <li>
         <Link to={ROUTES.PROJECT}>project</Link>
       </li>
-                {/* <li>
-      
+               
+      <li>
+        <Link to={ROUTES.DIRECTORY}>Directory</Link>
+            </li>
+            {/* <li>
                 <Link to={ROUTES.ACCOUNT}>Account</Link> 
                 
       </li>*/}

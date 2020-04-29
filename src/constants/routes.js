@@ -9,8 +9,8 @@ export const SIGN_IN = "/signin";
 export const PROJECT = "/projects";
 export const ARTICLES = "/articles";
 export const PASSWORD_FORGET = "/passwordforget";
-export const DIRECTORY= "/directory";
 
+export const DIRECTORY = "/directory";
 
 export const INDIVIDUAL_VIEW = "/articles/:articleId";
 export const USERPROFILE= "/userprofile";
