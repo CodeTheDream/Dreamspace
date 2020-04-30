@@ -116,6 +116,8 @@ body {
 }
 .logo-wrapper:hover {
     zoom: 120%;
+  //transform: scale(1.2) ;
+
 }
 
 .header .menu-btn:checked ~ .menu-icon .nav-icon:after {
