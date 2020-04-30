@@ -54,7 +54,7 @@ const NavigationAuth = () => (
 
 const NavigationNonAuth = () => (
   <header className="header">
-    <img src={Logo} className="logo-wrapper" />
+  <button className="mylogo"> <img src={Logo} className="logo-wrapper" /></button> 
     <input className="menu-btn" type="checkbox" id="menu-btn" />
     <label className="menu-icon" for="menu-btn">
       <span className="nav-icon"></span>
