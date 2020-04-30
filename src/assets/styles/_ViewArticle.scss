@@ -1,4 +1,4 @@
-* {
+/* {
   box-sizing: border-box;
   content: width= device-width, initial-scale=1;
 }
@@ -116,6 +116,180 @@
   color: #fae596;
   display: inline-block;
   margin:2px;
+}
+
+textarea {
+  width: 98%;
+  height: 12em;
+  padding: 4px;
+  outline: none;
+  border: hidden;
+}
+
+//THIS IS THE LIST OF COMMENTS CSS
+.card-comment {
+  //box-shadow: 0 1px 2px rgba(0,0,0, 0.4);
+  background-color: ghostwhite;
+  margin-top: 4px;
+  border-bottom: solid 0.2px lightgray;
+  border-radius: 10px;
+}
+
+.styleDisplay {
+  border: hidden;
+  text-align: left;
+  line-height: 22px;
+  padding: 12px;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.Reply button {
+  margin-right: 73%;
+  background-color: whitesmoke;
+  font-family: Helvetica;
+  opacity: 0.6;
+  color: #173e43;
+  font-weight: bold;
+  border: hidden;
+}
+
+//This Css is for votes
+
+.likes-individual {
+  position: absolute;
+  // background-color: lightgrey;
+  padding-top: 0;
+  padding-right: 0.3em;
+  padding-left: 0.3em;
+  border-radius: 6px;
+  display: -moz-inline-grid;
+}
+
+.upvote-individual:hover {
+  background-color: lightcoral;
+}
+
+.downvote-individual:hover {
+  background-color: deepskyblue;
+  background-size: 10px;
+}*/
+* {
+  box-sizing: border-box;
+  content: width= device-width, initial-scale=1;
+}
+body {
+  background-color: #e8eeef;
+
+  
+}
+//MAIN CONTAINER CODE
+.container-individual {
+  margin: auto;
+  display: grid;
+  grid-gap: 10px;
+  padding: 30px 10px 20px 10px;
+  width: 100%;
+  justify-content: center;
+  max-width: 1000px;
+  align-self: center;
+  margin-bottom: 1px;
+  font-family: Helvetica;
+  margin-top: 3em;
+  // background-color: gray;;
+}
+
+//THIS IS THE INDUVIDWAL VIWE CSS
+
+.card-individual {
+  // box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  background-color: ghostwhite;
+  border-bottom: solid 0.1px lightgrey;
+  overflow: auto;
+  border-radius: 10px;
+  // width: 900px;
+}
+
+.auther-name-individual {
+  padding: 12px 40px;
+}
+
+.autherstyle-individual {
+  text-align: left;
+  float: left;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.grid-subject2 {
+
+  padding: 12px 40px;
+  //  background-color: white;
+  border-bottom-style: hidden;
+  text-align: left;
+  font-weight: bold;
+}
+
+.grid-description {
+  padding: 0 15px 14px 40px;
+  text-align: left;
+  font-weight: normal;
+  line-height: normal;
+}
+
+.stylebutton {
+  float: left;
+  padding-left: 70px;
+}
+.stylebutton button {
+  font-family: Helvetica;
+  color: #173e43;
+  font-size: 9pt;
+  background-color: white;
+  border: hidden;
+  //font-weight: bold;
+  border-radius: 1px;
+  position: relative;
+  font-weight: bold;
+}
+.cancle-btn {
+  font-family: Helvetica;
+  color: #173e43;
+  font-size: 9pt;
+  background-color: white;
+  border: hidden;
+  //font-weight: bold;
+  border-radius: 1px;
+  position: relative;
+  font-weight: bold;
+}
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+//THIS IS ADD COMMENT CSS
+.card-addcomment {
+  // box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  background-color: ghostwhite;
+  padding: 4px 4px 30px 4px;
+  transform: 1.5;
+  border-bottom: solid 0.2px lightgray;
+  border-radius: 10px;
+}
+.card-addcomment:hover {
+  // box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.9) !important;
+  border: solid 1px gray;
+}
+
+.submit-btn {
+  background-color: #3fb0ac;
+  font-size: 12px;
+  font-weight: bold;
+  width: 80px;
+  height: 25px;
+  cursor: pointer;
+  float: right;
+  color: #fae596;
 }
 
 textarea {
