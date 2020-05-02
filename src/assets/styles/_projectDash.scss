@@ -34,7 +34,6 @@
   color: #f15c39;
 
   width: 100%;
-  padding-top: 90px;
 }
 
 .menu-container {
@@ -48,34 +47,38 @@
 }
 
 .footer {
+  // background: #0066cc;
   display: grid;
-  grid-template-columns: auto ;
+  grid-template-columns: auto 200px;
+
+  //width: 15vw;
+  // padding: 23px;
 }
+
+.menu-container {
+  list-style: none;
+  width: 15vw;
+  // position: left;
+  // cursor: pointer;
+
+}
+
 
 .today {
   margin-top: 8px;
 }
 
-.sidebar-menu li {
-  padding: 5px;
-}
-
-.footer {
-  display: grid;
-  grid-template-columns: auto ;
-}
-
-.today {
-  margin-top: 8px;
-}
-.style-day,
-.style-time,
-.footer-content {
+.style-day, .style-time, .footer-content {
   font-weight: 200;
 }
 
 @media screen and (max-width: 979px) {
-  .sidebar-menu {
-    display: none;
+  .dashboard-content {
+    display: flex;
+    flex-direction: column-reverse;
   }
+
 }
+
+
+

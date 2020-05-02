@@ -14,4 +14,3 @@ export const DIRECTORY = "/directory";
 
 export const INDIVIDUAL_VIEW = "/articles/:articleId";
 export const USERPROFILE= "/userprofile";
-//export const FRONTPAGE= "/frontPage";

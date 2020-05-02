@@ -7,7 +7,6 @@ import {Redirect} from "react-router-dom";
 import  Userprofile  from "../Userprofile";
 import { AuthUserContext } from "../Session";
 
-
 const Navigation = () => (
   <AuthUserContext.Consumer>
     {authUser =>
@@ -50,7 +49,6 @@ const NavigationAuth = () => (
                     
           
       </li>
-      <li> </li>
     </ul>
   </header>
 );
