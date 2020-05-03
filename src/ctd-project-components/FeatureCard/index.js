@@ -20,7 +20,7 @@ const FeatureCard = props => {
         <div className="flip-card-back">
           <div className="flip-card-bun">
             {/* <div className="scroll-tip"> */}
-            <img src={ctd} id="flip-card-logo-title" alt={ctdlogo} />
+            <img className = 'back-img' src={ctd} id="flip-card-logo-title" alt={ctdlogo} />
             {/* <div className="scroll-tip-text">
                 Card is scrollable depending on size of content
               </div> */}
