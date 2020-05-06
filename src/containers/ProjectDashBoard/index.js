@@ -60,9 +60,9 @@ class ProjectDashBoard extends React.Component {
     render() {
       // Filtering out the side bar Menu
       let filterProject = this.state.projectData.filter(sideBarFilter => {
-        return sideBarFilter.fields.Name.toUpperCase().includes(
+       /* return sideBarFilter.fields.Name.toUpperCase().includes(
           this.state.searchName.toUpperCase()
-        );
+        );*/
       });
   
       return (

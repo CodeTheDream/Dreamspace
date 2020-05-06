@@ -11,16 +11,43 @@ class ReplyComments extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timeCreated: "",
-      //replys: [],
-      //limit: 5,
-      //showAll: false,
+      showAll: false,
       showPopup: false,
       username: "",
-      childcomments: ""
+      childComments:[],
+      parentCommentId:""
     };
   }
-
+  
+  componentDidMount = () => {
+  const {childCommentId}=this.props
+  console.log("chidCommentId in replycomment",childCommentId)
+    this.unsubscribe = this.props.firebase
+      .comments()
+      //.where("commentId", "==", parentCommentId)
+     
+      .onSnapshot(snapshot => {
+        const childcomments = [];
+        let parentCommentId = "";
+        snapshot.forEach(doc => {
+          const data = doc.data();
+         // console.log("doc.id",doc.id)
+          parentCommentId = doc.id;
+          data.ParentCommentId = parentCommentId;
+          childcomments.push(data);
+        });
+        this.setState({
+          childComments: childcomments,
+          parentCommontId:parentCommentId
+        });
+       
+       console.log(
+          "this is my childcomments  in addreplys commponent",
+          this.state.childComments
+        );
+        console.log("my parentCommentId is here",this.state.parentCommentId)
+      });
+  };
   togglePopup = () => {
     this.setState({
       showPopup: !this.state.showPopup
@@ -29,65 +56,35 @@ class ReplyComments extends Component {
   cancle = () => {
     this.setState({ showPopup: false });
   };
-
-  componentDidMount = () => {
- 
-const {childCommentId,commentId,ParentCommentID} = this.props
-console.log("chiledComentID  componentdidmount",childCommentId)     
-   
-this.unsubscribe = this.props.firebase
-     .comments()
-     //.where(commentId, "==" , ParentCommentID)
-     .onSnapshot(doc => {
-       if (doc.exists) {
-        console.log(" this is my childcomments", doc.data());
-         this.setState({
-         
-           childcomments: doc.data()
-           
-         });
-        }})
-       // console.log("reply",this.state.reply)
-  let autherId = this.state.childcomments.userId;
-  //console.log("autherId of  a reply",autherId)
-  this.unsubscribe = this.props.firebase
-    .user(autherId)
-    .get()
-    .then(doc => {
-      // console.log("userdata", doc.data())
-      let user = doc.data();
-      //this.setState({ username: user.username });
-    })
-}
-  renderReplyComment = () => {
-    // console.log("this is the replys in renderreplys func", this.props.replys);
-    const { comment, timeCreated, articleId, comments } = this.props;
-//let comments=null;
-    this.props.comments &&
-     this.props.comments.map((comment, index) => {
-        return (
-          <Fragment>
-            <Singlecomment
-              comment={comment}
-              key={index}
-              //limited={limited}
-              timeCreated={timeCreated}
-             // commentId={comment.commentId}
-              //articleId={articleId}
-              //onCreate={this.props.onCreate}
-            />
-            {/*<ReplyComments comments={comments} articleId={articleId} />*/}
-          </Fragment>
-        );
-        //}
-      });
+  renderReplycomment = ()=>{
+  // const childComments = this.state.childComments
+    console.log("list of ChildComments ",this.state.childComments);
+    const {commentId,comments,timeCreated,childCommentId}=this.props
+    console.log("childCommentId",childCommentId)
+ this.state. childComments &&
+  this.state.childComments.map((comment, index) => (
     
-  };
+    <React.Fragment>
   
-
+   { commentId===comment.parentCommentId && 
+        <div>
+           <Singlecomment
+           comment={comment}
+           key={index}
+           //limited={limited}
+           timeCreated={timeCreated}
+          commentId={comment.commentId}
+          />
+          <ReplyComments comment={comment}  />
+        </div>
+  }
+    </React.Fragment>
+  ));
+}
   render() {
-    const { timeCreated, commentID, userName, } = this.props;
-
+    const { timeCreated, commentID, userName, replysId, comments } = this.props;
+    //  console.log("total comments in Replycomments",comments)
+    const myFunction=this.renderReplycomment()
     return (
       <AuthUserContext.Consumer>
         {authUser => (
