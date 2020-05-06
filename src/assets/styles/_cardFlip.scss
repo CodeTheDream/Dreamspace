@@ -6,6 +6,7 @@
   justify-content: center;
   grid-area: featured;
   margin-bottom: 35px;
+  overflow-y: hidden;
 }
 
 .flip-card-inner {
@@ -40,7 +41,9 @@
   /* position: relative; */
   overflow-y: hidden;
   padding-top: 75px;
-  box-shadow: 0 0 10px;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
 }
 
 .flip-card-back {
@@ -55,7 +58,9 @@
   color: #3fb0ac;
   transform: rotateY(180deg);
   overflow-y: auto;
-  box-shadow: 0 0 10px;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
 }
 
 .card-content {

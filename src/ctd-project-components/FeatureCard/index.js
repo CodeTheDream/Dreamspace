@@ -85,7 +85,7 @@ const FeatureCard = props => {
           </div>
         </div>
       </div>
-    </div>
+    </div>    
   );
 };
 

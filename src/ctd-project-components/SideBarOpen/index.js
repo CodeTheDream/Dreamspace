@@ -5,13 +5,14 @@ import SearchBar from '../SearchBar';
 
 
 const SideBarOpen = props => {
-  let sideBarMenu = props.filterProject
+  let sideBarMenu = props.projectData;
   let probableList = sideBarMenu.filter(filterProjectList =>
     filterProjectList.fields.Status !== 'Probable'
     );
 
     let filteredList = probableList.filter(project => 
-      project.fields.Status !== 'Complete')
+      project.fields.Status !== 'Paused')
+    
   console.log('sideBarMenu ', sideBarMenu)
   console.log('probableList ', probableList)
   console.log('filteredList ', filteredList)
@@ -24,6 +25,7 @@ const SideBarOpen = props => {
                   projectData={props.projectData}
                   selectProject={props.selectProject}
                   handleInput={props.handleInput}
+                  handleClick={props.handleClick}
                 />
             </div>
               
@@ -32,11 +34,11 @@ const SideBarOpen = props => {
         <div className = 'menu-container'>
         {filteredList.map(sideBar => (
           <li
+            // style={{backgroundColor: '#fae596'}}
             key={sideBar.fields.Name}
             onClick={() => props.selectProject(sideBar.id)}
-            className="menu-container"
-          >
-            {sideBar.fields.Name.toUpperCase()}
+            className="menu">
+            {sideBar.fields.Name}
           </li>
         ))}
         </div>

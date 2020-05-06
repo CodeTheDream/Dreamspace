@@ -3,7 +3,7 @@ import {
   FeatureCard,
   Header,
   SearchBar,
-  SideBarOpen
+  SideBarOpen,
 } from "../../ctd-project-components";
 
 
@@ -15,10 +15,17 @@ class ProjectDashBoard extends React.Component {
       projectData: [],
       searchName: "",
       // selectedProject: {}
+      closeSideBar: false,
     };
+    this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
     this.getAirTable();
+  }
+
+  handleClick = () => {
+    console.log('click');
+    this.setState(prevState => ({closeSideBar: !prevState.closeSideBar}));
   }
 
   // getPersonnelDirectory = (id) => {
@@ -59,15 +66,17 @@ class ProjectDashBoard extends React.Component {
 
     render() {
       // Filtering out the side bar Menu
-      let filterProject = this.state.projectData.filter(sideBarFilter => {
-        return sideBarFilter.fields.Name.toUpperCase().includes(
-          this.state.searchName.toUpperCase()
-        );
-      });
+      // let filterProject = this.state.projectData.filter(sideBarFilter => {
+      //   console.log('side bar filter', sideBarFilter);
+      //   return sideBarFilter.fields.Name.toUpperCase().includes(
+      //     this.state.searchName.toUpperCase()
+      //   );
+      // });
   
       return (
         <div className="view-container dashboard">
           <div className="dashboard-content">
+         
             {/* <div>
               {/* {this.state.projectData && (
                 <Header
@@ -84,25 +93,25 @@ class ProjectDashBoard extends React.Component {
               )}
             </div> */}
   
-            {this.state.selectedProject ? (
-              <FeatureCard project={this.state.selectedProject} />
-            ) : null}
-  
+            {this.state.selectedProject ? (<FeatureCard project={this.state.selectedProject}/>) : null}          
             {this.state.projectData && (
               <SideBarOpen
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
-                filterProject={filterProject}
+                // filterProject={filterProject}
                 handleInput={this.handleInput}
               >
                 <SearchBar
                   projectData={this.state.projectData}
                   selectProject={this.selectProject}
                   // handleInput={this.handleInput}
+                  handleClick={this.handleClick}
+                  closeSideBar={this.state.closeSideBar}
                 />
               </SideBarOpen>
-              
+          
             )}
+            
             {/* {this.state.crewDirectory && (
               <StaffDirectory 
                 crewDirectory = {this.state.crewDirectory}
@@ -113,12 +122,4 @@ class ProjectDashBoard extends React.Component {
       );
     }
   }
-  
-  
   export default ProjectDashBoard;
-  
-
-    
-
-
-// %20directory   // from the second fetch, ignore if your not nick.
