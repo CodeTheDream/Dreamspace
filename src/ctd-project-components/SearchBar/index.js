@@ -17,7 +17,7 @@ const SearchBar = props => {
         color: '#fff',
         }}
         onClick = {props.handleClick}
-        type = 'button'>{props.closeSideBar ? 'Open' : 'Close'}</button>
+        type = 'button'>Close</button>
     </div>
 
       {/* <input onChange = {() => props.selectProject} type = 'submit' />  button is not working properly */}
