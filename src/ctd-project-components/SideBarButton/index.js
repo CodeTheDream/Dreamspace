@@ -3,6 +3,7 @@ import React from 'react';
 const SideBarOpenButton = props => (
   <div className = 'side-btn-container'>
     <button 
+    onClick = {props.handleClick}
     style = {{
       height: '35px',
       width: '75px',

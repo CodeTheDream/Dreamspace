@@ -32,7 +32,7 @@ const Header = props => {
             style={{ width: "73%" }}
             className="card"
           >
-            {project.fields.Name.toUpperCase()}
+            {/* {project.fields.Name.toUpperCase()} */}
           </li>
         ))}
       </Zoom>
