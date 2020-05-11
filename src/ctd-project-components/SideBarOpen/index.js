@@ -2,6 +2,8 @@ import React from "react";
 // import OpenClose from "../OpenClose";
 import SearchBar from '../SearchBar';
 // import '../../../src/'
+import SideBarCloseButton from '../SideBarCloseButton';
+
 
 const SideBarOpen = props => {
   let sideBarMenu = props.projectData;
@@ -24,8 +26,8 @@ const SideBarOpen = props => {
                   projectData={props.projectData}
                   selectProject={props.selectProject}
                   handleInput={props.handleInput}
-                  handleClick={props.handleClick}
                 />
+              <SideBarCloseButton handleCloseClick = {props.handleCloseClick}/>
             </div>
               
             

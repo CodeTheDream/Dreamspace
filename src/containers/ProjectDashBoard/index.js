@@ -6,6 +6,7 @@ import {
   SideBarOpen,
 } from "../../ctd-project-components";
 import SideBarClose from "../../ctd-project-components/SideBarClose";
+// import SideBarOpenButton from '../../ctd-project-components/SideBarButton'
 
 
 
@@ -16,9 +17,10 @@ class ProjectDashBoard extends React.Component {
       projectData: [],
       searchName: "",
       // selectedProject: {}
-      closeSideBar: false,
+      openSideBar: false,
     };
-    // this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleCloseClick = this.handleCloseClick.bind(this);
   }
   componentDidMount() {
     this.getAirTable();
@@ -27,8 +29,11 @@ class ProjectDashBoard extends React.Component {
   handleClick = () => {
     console.log('click');
     this.setState(prevState => {
-      return{closeSideBar: !prevState.closeSideBar}
+      return{openSideBar: !prevState.openSideBar}
     })
+  }
+  handleCloseClick = () => {
+    this.setState({openSideBar: false})
   }
 
   // getPersonnelDirectory = (id) => {
@@ -96,6 +101,34 @@ class ProjectDashBoard extends React.Component {
       //     this.state.searchName.toUpperCase()
       //   );
       // });
+      let close, open;
+      if(this.handleCloseClick) {
+         close = <SideBarClose handleClick = {this.handleClick}/>
+      }
+
+      if (this.handleClick) {
+        open = this.state.projectData && (
+          <SideBarOpen
+            projectData={this.state.projectData}
+            selectProject={this.selectProject}
+            // filterProject={filterProject}
+            handleInput={this.handleInput}
+            handleCloseClick={this.handleCloseClick}
+            openSideBar = {this.state.openSideBar}
+          >
+            <SearchBar
+              projectData={this.state.projectData}
+              selectProject={this.selectProject}
+              // handleInput={this.handleInput}
+              handleCloseClick={this.handleCloseClick}
+              openSideBar={this.state.openSideBar}
+            />
+          </SideBarOpen>
+      
+        )
+      }
+    
+    
   
       return (
         <div className="view-container dashboard">
@@ -117,7 +150,13 @@ class ProjectDashBoard extends React.Component {
               )}
             </div> */}
   
-            {this.state.selectedProject ? (<FeatureCard project={this.state.selectedProject}/>) : null}          
+            {this.state.selectedProject ? (<FeatureCard project={this.state.selectedProject}/>) : null}  
+            {/* {open}
+            {close}  */}
+            
+            {/* <SideBarClose handleClick = {this.handleClick}/> */}
+            {close}
+            {open}
             {/* {this.state.projectData && (
               <SideBarOpen
                 projectData={this.state.projectData}
@@ -130,14 +169,13 @@ class ProjectDashBoard extends React.Component {
                   projectData={this.state.projectData}
                   selectProject={this.selectProject}
                   // handleInput={this.handleInput}
-                  handleClick={this.handleClick}
-                  closeSideBar={this.state.closeSideBar}
+                  handleCloseClick={this.handleCloseClick}
+                  openSideBar={this.state.openSideBar}
                 />
               </SideBarOpen>
           
-            )} */}
+            )}  */}
 
-            <SideBarClose/>
             
             {/* {this.state.crewDirectory && (
               <StaffDirectory 
