@@ -10,7 +10,6 @@ const SideBarCloseButton = props => {
         fontSize:'15px', 
         backgroundColor: '#3fb0ac',
         color: '#fff',
-        margin: '3px',
         }}
         onClick = {props.handleCloseClick}
         type = 'button'>Close</button>

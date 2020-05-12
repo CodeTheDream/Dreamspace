@@ -28,9 +28,28 @@
   justify-content: center;
 }
 
+.menu {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.menu-container {
+  margin-top: 10px;
+}
+
+.closed-side-bar {
+  position: absolute;
+}
+
+.side-btn-container {
+  position: relative;
+  right: 4px;
+  //margin-bottom: 10px;
+}
+
 .sidebar-menu {
   display: grid;
-  grid-template-rows: 124px auto;
+  grid-template-rows: 118px 55px auto;
   grid-area: sidebar-menu;
   box-sizing: border-box;
   background-color: #fff;
@@ -42,18 +61,6 @@
 .sidebar-menu li {
   padding: 5px;
 }
-
-// .closed-side-bar {
-//   position: absolute;
-//   left: 5px;
-//   top: 0px;
-//   z-index: 1;
-// }
-
-// .side-btn-container {
-//   display: none;
-// }
-
 
 .footer {
   display: grid;
@@ -82,21 +89,20 @@
   font-weight: 200;
 }
 
-
 @media screen and (max-width: 979px) {
   .dashboard-content {
     display: grid;
-    grid-template-columns: 227px 65% 15%;
+    grid-template-columns: 250px auto;
   }
-  
-  // .search {
-  //   padding-left: 45px;
-  // }
 
   .search-container {
     width: 227px;
     display: flex;
     justify-content: center;
+  }
+
+  .card-content {
+    padding-top: 40px;
   }
 
   .flip-card-inner {
@@ -119,23 +125,16 @@
   .flip-card-header {
     font-size: 35px;
   }
-}
 
-@media screen and (max-width: 862px) {
-  .dashboard-content {
-    display: grid;
+  .project-name-on-card {
+    font-size: 40px;
   }
-  // .closed-side-bar {
-  //   position: absolute;
-  //   left: 26px;
-  //   top: 0px;
-  // }
 }
 
 @media screen and (max-width: 827px) {
   .dashboard-content {
     display: grid;
-    grid-template-columns: 20% 70%;
+    grid-template-columns: 250px auto;
   }
 
   .search-container {
@@ -144,41 +143,55 @@
     justify-content: center;
   }
 
+  .card-content {
+    padding-top: 30px;
+  }
+
+  .project-name-on-card {
+    font-size: 40px;
+  }
+
 }
 
-// @media screen and (max-width: 722px) {
-//   .dashboard-content {
-//     display: grid;
-//     grid-template-columns: 25% 75%;
-//   }
+@media screen and (max-width: 765px) {
+  .dashboard-content {
+    display: grid;
+    grid-template-columns: auto;
+  }
 
-//   .search-container {
-//     width: 25%;
-//     display: flex;
-//     justify-content: center;
-//   }
+  .search-container {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+  }
 
-//   .flip-card-inner {
-//     width: 450px;
-//     height: 250px;
-//   }
+  .card-content {
+    padding-top: 45px;
+  }
 
-//   .flip-card-front {
-//     font-size: 25px;
-//     padding-top: 7.5px;
-//   }
+  .flip-card-inner {
+    width: 450px;
+    height: 250px;
+    margin-right: 14px;
+  }
 
-//   .back-img {
-//     padding-top: 23.5px;
-//   }
+  .flip-card-front {
+    font-size: 25px;
+    padding-top: 7.5px;
+  }
 
-//   .project-name-on-card {
-//     padding-top: 12.5px;
-//     font-size: 45px;
-//   }
+  .back-img {
+    padding-top: 14px;
+  }
 
-//   .flip-card-header {
-//     font-size: 40px;
-//   }
-// }
+  .project-name-on-card {
+    padding-top: 12.5px;
+    font-size: 35px;
+  }
+
+  .flip-card-header {
+    font-size: 30px;
+  }
+
+}
 
