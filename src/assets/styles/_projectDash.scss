@@ -56,6 +56,12 @@
   color: #f15c39;
   box-shadow: 8px 0 10px -6px black;
   width: 100%;
+  transform: translate(-100);
+  transition: transform 0.36s ease-out;
+}
+
+ sidebar-menu.open {
+   transform: translateX(0);
 }
 
 .sidebar-menu li {
@@ -159,6 +165,10 @@
     grid-template-columns: auto;
   }
 
+  .sidebar-menu {
+    width: 250px;
+  }
+
   .search-container {
     width: 25%;
     display: flex;
@@ -193,5 +203,226 @@
     font-size: 30px;
   }
 
+}
+
+@media screen and (max-width: 721px) {
+  .dashboard-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .open-side-bar {
+    position: relative;
+    left: 222px
+  }
+
+  .flip-card {
+    position: relative;
+    margin: 0 auto;
+    height: 534px;
+  }
+
+  .flip-card-inner {
+    height: 422px;
+    width: 400px;
+  }
+
+  .card-content {
+    padding-top: 115px;
+  }
+
+  .flip-card-bun {
+    padding-top: 90px;
+  }
+
+  .search-container {
+    padding: 0;
+    margin-top: -13px;
+    .search-container {
+      padding: 0;
+    }
+  }
+
+  .closed-side-bar {
+    position: fixed;
+    right: 0;
+    top: 6.75%;
+  }
+
+  .sidebar-menu {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    margin-top: 59px;
+    height: 340px;
+    box-shadow: 0 10px 10px -7px #000;
+  }
+
+  .menu-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    margin: 0;
+    margin-top: -20px;
+  }
+
+  .menu {
+    margin: 0;
+    font-size :15px;
+    margin: 5px;
+  }
+
+  .menu-container .menu {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .side-btn-container {
+    position: fixed;
+    right: 4px;
+  }
+
+}
+
+@media screen and (max-width: 687px) {
+  .sidebar-menu {
+    height: 354px;
+  }
+}
+
+@media screen and (max-width: 638px) {
+  .sidebar-menu {
+    height: 370px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .menu-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+  }
+
+  .sidebar-menu {
+    height: 380px;
+  }
+
+  .flip-card {
+    margin: 0 auto;
+    height: 83%;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 85px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .menu {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .today {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .sidebar-menu {
+    height: 390px;
+  }
+}
+
+@media screen and (max-width: 476px) {
+  .flip-card {
+    width: 400px;
+    height: 600px;
+    margin: 0 auto;
+  }
+
+  .flip-card-inner {
+    width: 450px;
+    height: 422px;
+    margin: 0;
+  }
+
+  .menu-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;  
+  }
+
+  .sidebar-menu {
+  height: 395px;
+  padding-bottom: 8px;
+  box-shadow: 0 10px 10px -7px #000;
+
+  }
+
+  .menu {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 439px) {
+  .sidebar-menu {
+    height: 410px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .card-content {
+    padding-top: 136px;
+  }
+
+  .flip-card-bun {
+    padding-top: 65px;
+  }
+  .flip-card-inner {
+   width: 373px;
+   height: 427px;
+  }
+
+}
+
+@media screen and (max-width: 394px) {
+  .menu {
+    margin:0;
+    margin: 2.5px;
+  }
+
+  .flip-card, .flip-card-inner {
+    margin: 0 auto;
+  }
+
+  .flip-card-inner {
+    width: 90%;
+    height:70%;
+  }
+
+  .sidebar-menu {
+    height: 400px;
+  }
+
+}
+
+@media screen and (max-width: 316px) {
+  .flip-card {
+    margin: 0;
+  }
+
+  .menu-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin:0;
+    padding: 0;
+  }
+
+  .sidebar-menu {
+    height: 610px;
+  }
 }
 

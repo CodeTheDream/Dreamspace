@@ -118,3 +118,21 @@
     }
   }
 }
+
+@media screen and (max-width: 721px) {
+  .search-container {
+    .search {
+      width: 60px;
+      height: 60px;
+    }
+    .input {
+      &:focus ~ .search {
+        &::after {
+          width: 12px;
+          height: 12px;
+        }
+        
+      }
+    }
+  }
+}
