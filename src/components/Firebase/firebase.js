@@ -145,6 +145,7 @@ class Firebase {
   tag = uid => this.db.doc(`tags/${uid}`);
 
   tags = () => this.db.collection("tags");
+  
 }
 
 export default Firebase;
