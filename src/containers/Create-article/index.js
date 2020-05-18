@@ -8,9 +8,11 @@ import {
 } from "../../components/Session";
 import { withFirebase } from "../../components/Firebase";
 import { messaging } from "firebase";
-const options = ["Select Tag", "React", "Ruby", "Javascript"];
+//const options = ["Select Tag", "React", "Ruby", "Javascript"];
+const options = [{name:"React"}, {name:"Ruby"}, {name:"Javascript"}];
 const moment = require("moment");
 
+  
 const getSuggestions = (value) => {
   
   const inputValue = value.trim().toLowerCase();
@@ -18,10 +20,11 @@ const getSuggestions = (value) => {
 
   return inputLength === 0
     ? []
-    : this.props.tags.filter(
+    : options.filter(
         (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
       );
 };
+
 
 const getSuggestionValue = (suggestion) => suggestion.name;
 
@@ -94,7 +97,7 @@ class Createarticle extends Component {
       suggestions: [],
     });
   };
-  togglePopup = () => {
+  togglePopup = ()=>{
     this.setState({
       showPopup: !this.state.showPopup,
     });
