@@ -40,12 +40,12 @@ class ProjectDashBoard extends React.Component {
     });
   };
 
-  handleInput = (e) => {
-    console.log(e.target.value);
-    this.setState({
-      searchName: e.target.value,
-    });
-  };
+  // handleInput = (e) => {
+  //   console.log(e.target.value);
+  //   this.setState({
+  //     searchName: e.target.value,
+  //   });
+  // };
 
   getAirTable = async () => {
     const url = `https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects?api_key=${process.env.REACT_APP_AIRTABLE_KEY}`;
@@ -64,11 +64,11 @@ class ProjectDashBoard extends React.Component {
 
   render() {
     // Filtering out the side bar Menu
-    let filterProject = this.state.projectData.filter((sideBarFilter) => {
-      return sideBarFilter.fields.Name.toUpperCase().includes(
-        this.state.searchName.toUpperCase()
-      );
-    });
+    // let filterProject = this.state.projectData.filter((sideBarFilter) => {
+    //   return sideBarFilter.fields.Name.toUpperCase().includes(
+    //     this.state.searchName.toUpperCase()
+    //   );
+    // });
 
     return (
       <div className="dashboard">
