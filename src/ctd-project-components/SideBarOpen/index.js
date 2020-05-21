@@ -3,12 +3,12 @@ import React from "react";
 import SearchBar from '../SearchBar';
 // import '../../../src/'
 
-
 const SideBarOpen = props => {
-  let sideBarMenu = props.filterProject
-  let probableList = sideBarMenu.filter(filterProjectList =>
-    filterProjectList.fields.Status !== 'Probable'
-    );
+  console.log(props);
+  let sideBarMenu = props.projectData;
+  let probableList = sideBarMenu.filter(probable => probable.fields.Status !== 'Probable' && probable.fields.Status !== 'Paused');
+  probableList.sort((a, b) => (a.fields.Name > b.fields.Name) ? 1 : -1);
+  console.log(probableList)
 
     let filteredList = probableList.filter(project => 
       project.fields.Status !== 'Complete')
@@ -20,12 +20,13 @@ const SideBarOpen = props => {
         <div className="btn-home">
           {/* <OpenClose /> */}       {/* I don't need at this time or if at all */}
           <div className = 'search-container'>
-                <SearchBar
-                  projectData={props.projectData}
-                  selectProject={props.selectProject}
-                  handleInput={props.handleInput}
-                />
-            </div>
+                  <SearchBar
+                    projectData={props.projectData}
+                    selectProject={props.selectProject}
+                    filterProjectList={props.filterProjectList}
+                    // handleInput={props.handleInput}
+                  />
+              </div>
               
             
         </div>

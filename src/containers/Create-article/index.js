@@ -20,7 +20,7 @@ const getSuggestions = (value) => {
 
   return inputLength === 0
     ? []
-    : options.filter(
+    :this.props.children.filter(
         (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
       );
 };
@@ -229,7 +229,7 @@ class Createarticle extends Component {
                                   />
                                 </li>
                                 <li>
-                                  <getSuggestions tags={this.state.tags} />
+                                  <getSuggestions>{this.state.tags}</getSuggestions>
                                 </li>
                                 <li>
                                   <input
