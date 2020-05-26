@@ -1,12 +1,19 @@
 import React from "react";
 import SearchBar from '../SearchBar';
 import SideBarButton from '../SideBarButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+library.add(faTimes);
+
 
 const SideBarOpen = props => {
   console.log(props);
   let sideBarMenu = props.projectData;
   let probableList = sideBarMenu.filter(probable => probable.fields.Status !== 'Probable' && probable.fields.Status !== 'Paused');
-      console.log('sideBarMenu ', sideBarMenu)
+  probableList.sort((a, b) => (a.fields.Name > b.fields.Name) ? 1 : -1);
+  console.log(probableList)
+
       return (
         <div className= 'sidebar-menu'>
           <div className="btn-home">
@@ -20,9 +27,12 @@ const SideBarOpen = props => {
                   />
               </div>
           </div>
-              <SideBarButton handleClick = {() => props.handleClick()} title = {'Close'}/>
+              <SideBarButton handleClick = {() => props.handleClick()} title = {<FontAwesomeIcon className = 'times' icon = {faTimes} size =' 4x'/>}/>
           <div className = 'menu-container'>
-          {probableList.map(sideBar => (
+          {probableList.map(sideBar => {
+            console.log('x');
+
+          return(
             <li
               // style={{backgroundColor: '#fae596'}}
               key={sideBar.id}
@@ -30,7 +40,7 @@ const SideBarOpen = props => {
               className="menu">
               {sideBar.fields.Name}
             </li>
-          ))}
+          )})}
           </div>
         </div>
       );

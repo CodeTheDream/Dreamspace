@@ -31,9 +31,16 @@
 .menu {
   text-align: left;
   margin-left: 20px;
+  font-size: 15px;
+}
+
+.menu:hover {
+  color: #3fb0ac
 }
 
 .menu-container {
+  height: 455px;
+  overflow-y: auto;
   margin-top: 10px;
 }
 
@@ -42,9 +49,9 @@
 }
 
 .side-btn-container {
-  position: relative;
-  right: 4px;
-  //margin-bottom: 10px;
+  position: fixed;
+  left: 4px;
+  top: 27px;
 }
 
 .sidebar-menu {
@@ -94,6 +101,17 @@
 .footer-content {
   font-weight: 200;
 }
+
+.times, .bars {
+  color: #3fb0ac;
+  font-size: 30px;
+  cursor: pointer;
+  //margin-top: 15px;
+  //margin-left: 10px;
+}
+
+
+
 
 @media screen and (max-width: 979px) {
   .dashboard-content {
@@ -167,6 +185,7 @@
 
   .sidebar-menu {
     width: 250px;
+    height: auto;
   }
 
   .search-container {
@@ -206,11 +225,18 @@
 }
 
 @media screen and (max-width: 721px) {
-  .dashboard-content {
-    width: 100%;
-    display: flex;
-    flex-direction: column-reverse;
-  }
+  // .dashboard-content {
+  //   width: 100%;
+  //   display: flex;
+  //   flex-direction: column-reverse;
+  // }
+
+  // .btn-home {
+  //   margin-top: 12px;
+  //   width: 50%;
+  //   position: relative;
+  //   left: 24vw;
+  // }
 
   .open-side-bar {
     position: relative;
@@ -218,9 +244,7 @@
   }
 
   .flip-card {
-    position: relative;
-    margin: 0 auto;
-    height: 534px;
+    height: auto;
   }
 
   .flip-card-inner {
@@ -239,9 +263,6 @@
   .search-container {
     padding: 0;
     margin-top: -13px;
-    .search-container {
-      padding: 0;
-    }
   }
 
   .closed-side-bar {
@@ -249,66 +270,75 @@
     right: 0;
     top: 6.75%;
   }
-
+  
   .sidebar-menu {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    margin-top: 59px;
-    height: 340px;
-    box-shadow: 0 10px 10px -7px #000;
+    width: 250px;
+    height: auto;
   }
-
+  
   .menu-container {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    margin: 0;
-    margin-top: -20px;
+    display: flex;
+    flex-direction: column;
+    height: 510px;
   }
-
+    
   .menu {
     margin: 0;
     font-size :15px;
-    margin: 5px;
+    margin-left: 20px;
   }
-
-  .menu-container .menu {
-    text-align: center;
-    text-transform: uppercase;
-  }
-
+  
   .side-btn-container {
     position: fixed;
-    right: 4px;
+    left: 4px;
   }
-
 }
 
 @media screen and (max-width: 687px) {
   .sidebar-menu {
-    height: 354px;
+    height: auto;
+    width: 250px;
+  }
+
+  .menu-container {
+    margin-top: -30px;
   }
 }
 
 @media screen and (max-width: 638px) {
   .sidebar-menu {
-    height: 370px;
+    height: auto;
+  }
+
+  .menu-container {
+    margin-top: -30px;
   }
 }
 
 @media screen and (max-width: 570px) {
+  .dashboard-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
   .menu-container {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 50% 50%;
+    
   }
 
   .sidebar-menu {
-    height: 380px;
+    height: 615px;
+    width: 100%;
+    box-shadow: 0 10px 10px -7px #000;
+    position: fixed;
+    top: 57px;
   }
 
   .flip-card {
     margin: 0 auto;
-    height: 83%;
+    height: 86%;
   }
 
   .footer {
@@ -320,8 +350,9 @@
   }
 
   .menu {
-    padding: 10px;
-    font-size: 15px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
   }
 
   .today {
@@ -332,7 +363,7 @@
 
 @media screen and (max-width: 510px) {
   .sidebar-menu {
-    height: 390px;
+    height: 615px;
   }
 }
 
@@ -351,11 +382,12 @@
 
   .menu-container {
     display: grid;
-    grid-template-columns: 33% 33% 33%;  
+    grid-template-columns: 50% 50%;  
+    overflow: auto;
   }
 
   .sidebar-menu {
-  height: 395px;
+  height: 615px;
   padding-bottom: 8px;
   box-shadow: 0 10px 10px -7px #000;
 
@@ -368,11 +400,15 @@
 
 @media screen and (max-width: 439px) {
   .sidebar-menu {
-    height: 410px;
+    height: 615px;
   }
 }
 
 @media screen and (max-width: 420px) {
+  .btn-home {
+    position: relative;
+    left: 19vw;
+  }
   .card-content {
     padding-top: 136px;
   }
@@ -385,30 +421,62 @@
    height: 427px;
   }
 
+  .sidebar-menu {
+    height: 615px;
+  }
+
 }
 
 @media screen and (max-width: 394px) {
+  .btn-home {
+    position: relative;
+    left: 20vw;
+  }
+
   .menu {
     margin:0;
     margin: 2.5px;
   }
 
-  .flip-card, .flip-card-inner {
-    margin: 0 auto;
-  }
-
-  .flip-card-inner {
+  .flip-card {
     width: 90%;
-    height:70%;
+    height:100%;
+    margin-left: 20px;
   }
 
   .sidebar-menu {
-    height: 400px;
+    height: 600px;
   }
+  
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    margin-top: -45px;
+  }
+}
 
+@media screen and (max-width: 382px) {
+  .btn-home {
+    position: relative;
+    left: 17vw;
+  }
+}
+
+@media screen and (max-width: 357px) {
+  .btn-home {
+    position: relative;
+    left: 15.5vw;
+  }
 }
 
 @media screen and (max-width: 316px) {
+  .btn-home {
+    position: relative;
+    left: 12vw;
+  }
+
   .flip-card {
     margin: 0;
   }
@@ -419,10 +487,27 @@
     flex-direction: column;
     margin:0;
     padding: 0;
+    margin-top: -45px;
   }
 
   .sidebar-menu {
-    height: 610px;
+    height: 600px;
   }
 }
+
+@media screen and (max-width: 286px) {
+  .btn-home {
+    position: relative;
+    left: 8vw;
+  }
+}
+
+@media screen and (max-width: 283px) {
+  .btn-home {
+    position: relative;
+    left: 6.5vw;
+  }
+}
+
+
 

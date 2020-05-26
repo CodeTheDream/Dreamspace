@@ -6,6 +6,10 @@ import {
   SideBarOpen,
 } from "../../ctd-project-components";
 import SideBarButton from '../../ctd-project-components/SideBarButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+library.add(faBars);
 class ProjectDashBoard extends React.Component {
   constructor(props) {
     super(props);
@@ -64,18 +68,20 @@ class ProjectDashBoard extends React.Component {
       let projects = this.state.allProjects;
       console.log('project ', projects);
       const formattedSearch = search.toLowerCase();
-      console.log(projects);
-
-      const getResults = projects.filter(result => {
-        console.log(result)
-        let grabResults = (result.fields.Name)
-        .replace(/[^a-zA-Z0-9]/g, "")
-        .toLowerCase();
-        return grabResults.indexOf(formattedSearch) > -1;
+      // console.log(projects);
+      let getResults = projects.filter(result => {
+        console.log('result', result) 
+        if(!result.fields.Name) {
+          return false;
+        }
+        else {
+          let grabResults = result.fields.Name.toLowerCase();
+          return grabResults.indexOf(formattedSearch) > -1;
+        }
       })
       console.log('ccccc ', getResults);
       this.setState({projectData: getResults});
-    }
+}
 
     render() {
       // Filtering out the side bar Menu
@@ -128,7 +134,7 @@ class ProjectDashBoard extends React.Component {
           
             )} </>) : (<div 
                           className = 'closed-side-bar'>
-                          <SideBarButton handleClick = {this.handleClick} title = {'Open'}/>
+                          <SideBarButton handleClick = {this.handleClick} title = {<FontAwesomeIcon className = 'bars' icon = {faBars} size =' 2x'/>}/>
                         </div>)}
             {/* {this.state.projectData && (
               <SideBarOpen
@@ -136,7 +142,7 @@ class ProjectDashBoard extends React.Component {
                 selectProject={this.selectProject}
                 // filterProject={filterProject}
                 handleInput={this.handleInput}
-                handleCloseClick={this.handleCloseClick}
+                handleCloseClick={this.handleCloseClick}  
               >
                 <SearchBar
                   projectData={this.state.projectData}

@@ -76,7 +76,7 @@ class Directory extends React.Component {
     })
     console.log(results)
     this.setState({ crewDirectory: results })
-    }
+  }
   render() {
     return(
       <div className = 'directory-container'>
