@@ -16,7 +16,7 @@ class ProjectDashBoard extends React.Component {
     this.state = {
       projectData: [],
       searchName: "",
-      openSideBar: false,
+      openSideBar: true,
     };
   }
 
@@ -112,6 +112,7 @@ class ProjectDashBoard extends React.Component {
               )}
             </div> */}
   
+
             {this.state.selectedProject ? (<FeatureCard project={this.state.selectedProject}/>) : null}  
        
             {this.state.openSideBar ? (<>{this.state.projectData && (
