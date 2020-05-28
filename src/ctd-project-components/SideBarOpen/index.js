@@ -31,7 +31,7 @@ const SideBarOpen = (props) => {
               onClick={() => props.selectProject(sideBar.id)}
               className="menu-container"
             >
-              {sideBar.fields.Name.toUpperCase()}
+              {sideBar.fields.Name}
             </li>
           ))}
         </div>
