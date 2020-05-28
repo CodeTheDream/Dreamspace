@@ -5,7 +5,7 @@ import {
   SearchBar,
   SideBarOpen,
 } from "../../ctd-project-components";
-import SideBarButton from '../../ctd-project-components/SideBarButton';
+//import SideBarButton from '../../ctd-project-components/SideBarButton';
 class ProjectDashBoard extends React.Component {
   constructor(props) {
     super(props);
@@ -119,7 +119,7 @@ class ProjectDashBoard extends React.Component {
               </SideBarOpen>
             )} </>) : (<div 
                           className = 'closed-side-bar'>
-                          <SideBarButton handleClick = {this.handleClick} title = {'Open'}/>
+                          {/* <SideBarButton handleClick = {this.handleClick} title = {'Open'}/> */}
                         </div>)}
 
 

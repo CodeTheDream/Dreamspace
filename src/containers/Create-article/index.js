@@ -8,19 +8,20 @@ import {
 } from "../../components/Session";
 import { withFirebase } from "../../components/Firebase";
 import { messaging } from "firebase";
-//const options = ["Select Tag", "React", "Ruby", "Javascript"];
-const options = [{name:"React"}, {name:"Ruby"}, {name:"Javascript"}];
+//const options = [ "React", "Ruby", "Javascript"];
+export const options = [];
+//export const options = [{name:"React"}, {name:"Ruby"}, {name:"Javascript"}];
 const moment = require("moment");
 
   
-const getSuggestions = (value) => {
-  
+  const getSuggestions = (value) => {
+  //const{tags1}=this.props
   const inputValue = value.trim().toLowerCase();
   const inputLength = inputValue.length;
 
   return inputLength === 0
     ? []
-    :this.props.children.filter(
+    :options.filter(
         (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
       );
 };
@@ -55,17 +56,17 @@ class Createarticle extends Component {
     this.state = {
       title: "",
       description: "",
-      tags: "Select an Option",
+      tags: "",
       url: "",
       downvotes: 0,
       upvotes: 0,
-      //authorID: "",
       timeCreated: "",
       userName: "",
-      calculatedvote: 0,
       suggestions: [],
       value: "",
-      tags: [],
+      inputTag:"",
+      calculatedvote:0,
+
     };
   }
 
@@ -74,13 +75,16 @@ class Createarticle extends Component {
       const totalTags = [];
       snapshot.forEach((doc) => {
         const data = doc.data();
-        totalTags.push(data);
+       // totalTags.push(data);
+        options.push(data)
       });
-
-      this.setState({ tags: totalTags });
+console.log("tags from api call",options)
+      //this.setState({ tags1: totalTags },()=>console.log("Tags1",totalTags));
     });
+    
   };
-  onChange = (event, { newValue }) => {
+  onChange = (e, { newValue }) => {
+
     this.setState({
       value: newValue,
     });
@@ -108,11 +112,14 @@ class Createarticle extends Component {
       url: e.target.value,
     });
   };
-  onTagChange = (e) => {
-    this.setState({
-      tags: e.target.value,
-    });
-  };
+  // onTagChange = (e) => {
+  //   console.log("Tag on change",e.target.value)
+  //   this.setState({
+      
+  //     tags: e.target.value,
+  //   });
+  //   getSuggestions.push(this.state.tags)
+  // };
   onTitleChange = (e) => {
     this.setState({
       title: e.target.value,
@@ -124,42 +131,55 @@ class Createarticle extends Component {
     });
   };
 
+  
   handleSubmit = (e, authUser) => {
+    const newtag1=this.state.value;
+    const newtag=[{name:"newtag1"}]
     // console.log("username on article submit",authUser.username)
-    e.preventDefault();
-    this.props.firebase
-      .articles()
-      .add({
-        userId: authUser.uid,
+     e.preventDefault();
+     this.props.firebase
+       .articles()
+       .add({
+         userId: authUser.uid,
         // userName:this.state.userName,
-        title: this.state.title,
-        description: this.state.description,
-        tags: this.state.tags,
-        url: this.state.url,
-        downvotes: this.state.downvotes,
-        upvotes: this.state.upvotes,
-        calculatedvote: this.state.calculatedvote,
-        timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A`),
-      })
-      .then((docRef) => {
-        this.setState({ confirmmessage: docRef.id });
-        console.log("Document written with ID: ", this.state.confirmmessage);
-        alert(
-          "you've successfully created an article with ID: " +
-            this.state.confirmmessage
-        );
-      });
-    this.setState({
-      tags: "",
-      title: "",
-      url: "",
-      description: "",
-      downvotes: 0,
-      upvotes: 0,
-      calculatedvote: 0,
-      showPopup: false,
-    });
-  };
+         title: this.state.title,
+         description: this.state.description,
+         tags: this.state.value,
+         url: this.state.url,
+         downvotes: this.state.downvotes,
+           upvotes: this.state.upvotes,
+         calculatedvote:this.state.calculatedvote,
+         timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A`)
+       })
+       .then(docRef => {
+         
+         this.setState({confirmmessage:docRef.id})
+         console.log("Document written with ID: ", this.state.confirmmessage);
+      alert("you've successfully created an article with ID: " + this.state.confirmmessage);
+       
+       });
+       if(newtag.name !== options.name){
+         
+            this.props.firebase
+            .tags()
+            .add({
+              name:this.state.value
+            })
+          };
+        
+     this.setState({
+       value: "",
+       title: "",
+       url: "",
+       description: "",
+       downvotes: 0,
+         upvotes: 0,
+       calculatedvote:0,
+       showPopup:false,
+       options:""
+     });
+     
+   }
   render() {
     const { value, suggestions } = this.state;
 
@@ -215,6 +235,7 @@ class Createarticle extends Component {
                                       );
                                     })}
                                   </select>*/}
+                                  <div className="autosuggest_list">
                                   <Autosuggest
                                     suggestions={suggestions}
                                     onSuggestionsFetchRequested={
@@ -227,9 +248,10 @@ class Createarticle extends Component {
                                     renderSuggestion={renderSuggestion}
                                     inputProps={inputProps}
                                   />
+                                  </div>
                                 </li>
                                 <li>
-                                  <getSuggestions>{this.state.tags}</getSuggestions>
+                                
                                 </li>
                                 <li>
                                   <input
