@@ -35,13 +35,19 @@
 }
 
 .menu:hover {
-  color: #3fb0ac
+  color: #3fb0ac;
 }
 
 .menu-container {
   height: 455px;
   overflow-y: auto;
-  margin-top: 10px;
+  // margin-top: 10px;
+  position: absolute;
+    right: 0;
+    left: 0;
+    top: 0; 
+    bottom: 0;
+    margin-top: 10em;
 }
 
 .closed-side-bar {
@@ -52,6 +58,7 @@
   position: fixed;
   left: 4px;
   top: 27px;
+  display: none;
 }
 
 .sidebar-menu {
@@ -109,9 +116,6 @@
   //margin-top: 15px;
   //margin-left: 10px;
 }
-
-
-
 
 @media screen and (max-width: 979px) {
   .dashboard-content {
@@ -291,6 +295,7 @@
   .side-btn-container {
     position: fixed;
     left: 4px;
+    display: block;
   }
 }
 
@@ -301,7 +306,13 @@
   }
 
   .menu-container {
-    margin-top: -30px;
+    // margin-top: -30px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0; 
+    bottom: 0;
+    margin-top: 7.5em;
   }
 }
 
@@ -311,7 +322,13 @@
   }
 
   .menu-container {
-    margin-top: -30px;
+    // margin-top: -30px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0; 
+    bottom: 0;
+    margin-top: 7.5em;
   }
 }
 
@@ -325,15 +342,32 @@
   .menu-container {
     display: grid;
     grid-template-columns: 50% 50%;
-    
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    height: 175px;
+    overflow: auto;
+    top: 70px;
   }
 
   .sidebar-menu {
-    height: 615px;
+    position: relative;
+    height: 250px;
     width: 100%;
     box-shadow: 0 10px 10px -7px #000;
     position: fixed;
     top: 57px;
+  }
+
+  .btn-home {
+    position: fixed;
+    // margin-top: 6px;
+    // height: 25px;
+    width: 50%;
+    // top: 0;
+    // bottom: 0;
+    // right: 0;
+    // left: 0;
   }
 
   .flip-card {
@@ -361,11 +395,6 @@
   }
 }
 
-@media screen and (max-width: 510px) {
-  .sidebar-menu {
-    height: 615px;
-  }
-}
 
 @media screen and (max-width: 476px) {
   .flip-card {
@@ -386,12 +415,12 @@
     overflow: auto;
   }
 
-  .sidebar-menu {
-  height: 615px;
-  padding-bottom: 8px;
-  box-shadow: 0 10px 10px -7px #000;
+  // .sidebar-menu {
+  // height: 615px;
+  // padding-bottom: 8px;
+  // box-shadow: 0 10px 10px -7px #000;
 
-  }
+  // }
 
   .menu {
     font-size: 15px;
@@ -399,9 +428,9 @@
 }
 
 @media screen and (max-width: 439px) {
-  .sidebar-menu {
-    height: 615px;
-  }
+  // .sidebar-menu {
+  //   height: 615px;
+  // }
 }
 
 @media screen and (max-width: 420px) {
@@ -421,9 +450,9 @@
    height: 427px;
   }
 
-  .sidebar-menu {
-    height: 615px;
-  }
+  // .sidebar-menu {
+  //   height: 615px;
+  // }
 
 }
 
@@ -435,7 +464,7 @@
 
   .menu {
     margin:0;
-    margin: 2.5px;
+    // margin: 2.5px;
   }
 
   .flip-card {
@@ -445,7 +474,7 @@
   }
 
   .sidebar-menu {
-    height: 600px;
+    height: 275px;
   }
   
   .menu-container {
@@ -453,7 +482,13 @@
     flex-direction: column;
     margin: 0;
     padding: 0;
-    margin-top: -45px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    margin-top: 4.5em;
+    // margin-top: -45px;
   }
 }
 

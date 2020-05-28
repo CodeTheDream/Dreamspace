@@ -6,13 +6,14 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 library.add(faTimes);
 
-
 const SideBarOpen = props => {
   console.log(props);
   let sideBarMenu = props.projectData;
   let probableList = sideBarMenu.filter(probable => probable.fields.Status !== 'Probable' && probable.fields.Status !== 'Paused');
   probableList.sort((a, b) => (a.fields.Name > b.fields.Name) ? 1 : -1);
   console.log(probableList)
+  // let checkPhoto = probableList.fields.photo[0];
+  // console.log('check ', checkPhoto);
 
       return (
         <div className= 'sidebar-menu'>
@@ -44,7 +45,7 @@ const SideBarOpen = props => {
           </div>
         </div>
       );
-    };
+};
   export default SideBarOpen;
    
                     
