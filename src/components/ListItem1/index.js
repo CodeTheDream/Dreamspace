@@ -65,7 +65,7 @@ class ListItem1 extends React.Component {
     checkurl = () => {
         // console.log("check url", this.props.article.url)
         if (this.props.article.url === true) {
-            return <a href="{this.props.article.url}">Related link</a>
+            return <a href="{this.props.article.url}"  target="_blank" >Related link</a>
         }
         else {
             return null

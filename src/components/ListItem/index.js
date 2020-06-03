@@ -103,7 +103,7 @@ class ListItem extends React.Component {
                   </div>
                 </div>
                 <div className="auther-style">
-                  <a href={this.props.article.url}>
+                  <a href={this.props.article.url} target="_blank">
                     {this.props.article.title}
                   </a>
                 </div>

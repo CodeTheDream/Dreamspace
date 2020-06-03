@@ -123,13 +123,13 @@ class SignInGoogleBase extends Component {
       .then(socialAuthUser => {
        // Create a user in your Firebase Realtime Database too
        if(socialAuthUser.user.photoURL===""){
-         console.log("photoUrl",socialAuthUser.user.photoURL,)
+         console.log("photoUrl",socialAuthUser.user.photoURL)
         return this.props.firebase.user(socialAuthUser.user.uid).set(
             {
 
                 username: socialAuthUser.user.displayName,
                 photoUrl: socialAuthUser.user.photoURL,
-             email: socialAuthUser.user.email,
+                email: socialAuthUser.user.email,
             roles: {},
           },
            { merge: true },
@@ -201,7 +201,7 @@ class SignInGoogleBase extends Component {
            {
                  username: socialAuthUser.additionalUserInfo.profile.name,
                  photoUrl: socialAuthUser.additionalUserInfo.profile.photoURL,
-            email: socialAuthUser.additionalUserInfo.profile.email,
+                 email: socialAuthUser.additionalUserInfo.profile.email,
             roles: {},
                  /*username: socialAuthUser.user.displayName,
                  photoUrl: socialAuthUser.user.photoURL,
