@@ -76,7 +76,7 @@
            
         }
 
-    .card1 button {
+   /* .card1 button {
         border: none;
         outline: 0;
         padding: 12px;
@@ -86,11 +86,11 @@
         cursor: pointer;
         width: 100%;
         font-size: 18px;
-    }
+    }*/
 
-    .card1 button:hover {
+    /*.card1 button:hover {
         opacity: 0.7;
-    }
+    }*/
     .card1:hover {
         -ms-transform: scale(1.5); 
     -webkit-transform: scale(1.5); 
@@ -99,4 +99,24 @@
 
 
     }
-    
+    .pagecontainer {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+       // height:30px;
+      }
+      .pagecontainer .pagecontent {
+        position: absolute;
+        bottom: 0;
+        background: rgb(0, 0, 0); /* Fallback color */
+        background: rgba(0, 0, 0, 0.1); /* Black background with 0.5 opacity */
+        color: #3fb0ac;;
+        width: 100%;
+        padding: 20px;
+      } 
+      pageformat{
+      font-size: 3.6rem;
+      line-height: 1.25;
+      margin-bottom: 4.0rem
+      }
+          
