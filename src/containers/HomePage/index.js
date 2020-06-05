@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 //import directory from "./assets/images/Directorypage.gif"
 import directory from '../../assets/images/directorypage1.gif';
 import article from '../../assets/images/articles.gif';
+import project from '../../assets/images/projects.gif';
 const HomePage = () => {
     return (
         <div className="wrapper1">
@@ -13,7 +14,7 @@ const HomePage = () => {
                 <Link to="/articles"><img src={article} alt="article" className="myprofile" /></Link>
                 {/*<Link to="/articles"><img src="https://images.idgesg.net/images/article/2017/06/reactjs_code_coding_thinkstock-100725807-large.jpg" alt="articles"className="myprofile" /></Link>*/}
                 <div className="pagecontent">
-                <Link to="/articles"> <h2 classname="pageformat">Articles</h2></Link>
+                <Link to="/articles"> <h2 className="pageformat">Articles</h2></Link>
             </div>
             </div>
             </div>
@@ -22,7 +23,7 @@ const HomePage = () => {
                
 
                
-                <Link to="/projects"><img src="https://stackify.com/wp-content/uploads/2013/08/best-dev-websites-2-793x397.jpg"
+                <Link to="/projects"><img src={project}
                  alt="projects" className="myprofile" /></Link>
                    <div className="pagecontent">
                    <Link to="/projects">  <h2 className="pageformat">Projects</h2></Link>

@@ -112,7 +112,7 @@ class SignInGoogleBase extends Component {
 
      this.state = {
         error: null,
-        photoURL:""
+        //photoURL:""
      };
      
   }
@@ -122,9 +122,38 @@ class SignInGoogleBase extends Component {
           .doSignInWithGoogle()
       .then(socialAuthUser => {
        // Create a user in your Firebase Realtime Database too
-       if(socialAuthUser.user.photoURL===""){
-         console.log("photoUrl",socialAuthUser.user.photoURL)
-        return this.props.firebase.user(socialAuthUser.user.uid).set(
+      /* if(socialAuthUser.user.photoURL===""){
+         console.log("photoUrl",socialAuthUser.user.photoURL)*/
+        
+          //         // Create a user in your Firebase Realtime Database too
+                 return this.props.firebase.user(socialAuthUser.user.uid).set(
+                     {
+                       username: socialAuthUser.user.displayName,
+                       email: socialAuthUser.user.email,
+                       roles: {},
+                     },
+                     { merge: true },
+                   );
+                 })
+                 .then(() => {
+                   this.setState({ error: null });
+                   this.props.history.push(ROUTES.HOME);
+                 })
+                 .catch(error => {
+                   if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
+                     error.message = ERROR_MSG_ACCOUNT_EXISTS;
+                   }
+          
+                  this.setState({ error });
+                 });
+          
+               event.preventDefault();
+             };
+          
+
+
+
+       /* return this.props.firebase.user(socialAuthUser.user.uid).set(
             {
 
                 username: socialAuthUser.user.displayName,
@@ -134,7 +163,7 @@ class SignInGoogleBase extends Component {
           },
            { merge: true },
           )}
-          else{
+          else{/*
             return this.props.firebase.user(socialAuthUser.user.uid).set(
               {
   
@@ -145,8 +174,9 @@ class SignInGoogleBase extends Component {
             },
              { merge: true },
             )
-          }
-      })
+          })
+          
+     
           .then(() => {
               this.setState({ error: null });
         this.props.history.push(ROUTES.HOME);
@@ -160,7 +190,7 @@ class SignInGoogleBase extends Component {
       });
 
      event.preventDefault();
-   };
+   };*/
 
   render() {
     const { error } = this.state;
