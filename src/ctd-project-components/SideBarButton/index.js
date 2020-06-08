@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const SideBarButton = props => {
   console.log('test for ',props)
   return(

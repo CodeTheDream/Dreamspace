@@ -3,12 +3,14 @@
 }
 
 .back-img {
-  padding-top: 47px;
+  padding-top: 25px;
 }
 
 .flip-card-header {
-  font-size: 50px;
-  padding-top: 15px;
+  font-size: 40px;
+  padding-top: 5px;
+  text-decoration: underline;
+  padding-bottom: 15px;
   
 }
 
@@ -16,29 +18,123 @@
   padding-top: 25px;
 }
 
-.card-team {
-  font-size: 30px;
-  padding-top: 10px;
+.project-image-container {
+  margin-left: -11px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 58px;
+  bottom: 25px;
+  cursor: pointer;
 }
+
+.card-client, .website, .project-desc {
+  font-size: 20px;
+  text-align: left;
+  color: rgba(0,0,0,0.4);
+  text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-bottom: 10px;
+}
+
+.card-team {
+  font-size: 20px;
+  padding-top: 15px;
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 15px;
+}
+
 
 .card-team-info {
   font-size: 20px;
   padding-top: 5px;
+  position: relative;
+  left: -0.6em;
+  top: -2em;
+  margin-top: 15px;
 }
 
 .card-status {
-  font-size: 30px;
+  font-size: 21px;
   padding-top: 15px;
+  position: absolute;
+  top: 11.8em;
+  left: 0;
+  margin-left: 10px;
+  margin-top: 10px;
   
 }
 
 .card-status-info {
-  font-size: 20px;
+  font-size: 18px;
   padding-top: 5px;
+  position: absolute;
+  left: 5.5em;
+  top: 15em;
 }
 .flip-card-header, .project-name-on-card, .card-team, .card-team-info, .card-status, .card-status-info {
   color: rgba(0,0,0,0.4);
   text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
+}
+
+@media screen and (max-width: 979px) {
+  .card-status {
+    margin-top: 1em;
+  }
+
+  .card-status-info { 
+    margin-top: 12px;
+  }
+
+  .card-team-info {
+    width: 300px;
+    left: 7.5em;
+  }
+
+  .project-image-container {
+    left: 28em;
+  }
+}
+
+@media screen and (max-width: 826px) {
+  .card-status {
+    margin-top: 1.5em;
+  }
+
+  .card-status-info {
+    margin-top: 1.2em;
+  }
+  .project-image-container {
+    left: 22em;
+    bottom: 1px;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .card-status {
+    margin-top: 7px;
+  }
+
+  .card-status-info {
+    margin-top: -2px;
+  }
+
+  .project-image-container {
+    left: 4em;
+    bottom: 1em;
+  }
+}
+
+@media screen and (max-width: 721px) {
+  .card-status {
+    margin-top: 12px;
+  }
+
+  .card-status-info {
+    margin-top: 0;
+  }
 }
 
 

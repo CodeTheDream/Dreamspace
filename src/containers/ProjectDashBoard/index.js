@@ -8,8 +8,8 @@ import {
 import SideBarButton from '../../ctd-project-components/SideBarButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-library.add(faBars);
+import { faColumns} from '@fortawesome/free-solid-svg-icons';
+library.add(faColumns);
 class ProjectDashBoard extends React.Component {
   constructor(props) {
     super(props);
@@ -17,35 +17,62 @@ class ProjectDashBoard extends React.Component {
       projectData: [],
       searchName: "",
       openSideBar: true,
+      enlargeImage: false
     };
   }
 
   componentDidMount() {
     this.getAirTable();
+    window.addEventListener('resize', this.updateWindowDimensions);
+    this.loadWithOutSideBarForMobileView();
   }
 
+// open, closes sidebar automatically at set width below
+  updateWindowDimensions = () => {
+    console.log('yy', window.innerWidth);
+    let viewPortWidth = window.innerWidth;
+    if(viewPortWidth >= 722) {
+      this.setState({openSideBar: true})
+    }
+    if(viewPortWidth <= 601) {
+      this.setState({openSideBar: null});
+    }
+  }
+
+// loads page without the side bar for over head menu
+  loadWithOutSideBarForMobileView = () => {
+    let loadClosed = window.innerWidth;
+    if(loadClosed <= 570) {
+      this.setState(prevState => ({openSideBar: !prevState.openSideBar}));
+    }
+  }
+
+// handles the image clicked on the project cards
+  handleImageClick = () => {
+    console.log('hello world');
+    this.setState(prevState => ({enlargeImage: !prevState.enlargeImage}),
+    () => console.log(this.state.enlargeImage));
+  }
+
+// handles side bar open and close buttons
   handleClick = () => {
     console.log('click');
-    this.setState(prevState => ({openSideBar: !prevState.openSideBar}),() => console.log(this.state.openSideBar));
+    this.setState(prevState => ({openSideBar: !prevState.openSideBar}),
+    () => console.log(this.state.openSideBar));
   }
 
+// handles the selection of projects.
   selectProject = id => {
     const allProjects = this.state.projectData;
-    console.log("see", id);
+    // console.log("see", id);
     const selectedProject = allProjects.find(x => x.id === id);
-    console.log(selectedProject);
+    // console.log(selectedProject);
     this.setState({
       selectedProject
     });
   };
   
-  // handleInput = e => {
-  //   console.log(e.target.value);
-  //   this.setState({
-  //     searchName: e.target.value
-  //   });
-  // };
-
+// grabs air table project data
   getAirTable() {
     const url = "https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects";
     fetch(url, {
@@ -53,19 +80,14 @@ class ProjectDashBoard extends React.Component {
     })
       .then(response => response.json())
       .then(responseData => {
-        console.log("data from Airtable", responseData);
+        // console.log("data from Airtable", responseData);
         const projectData = responseData.records;
-        console.log("projectData ", projectData);
+        // console.log("projectData ", projectData);
         this.setState({ projectData: projectData, allProjects: projectData});
       });
     }
 
-    // filterProject = locate => {
-    //   locate = this.state.projectData.filter(locates => {
-    //     return locates.fields.Name.includes(this.state.searchName)
-    //   })
-    // }
-
+// filters the project list
     filterProjectList = search => {
       console.log('search ', search);
       let projects = this.state.allProjects;
@@ -73,7 +95,7 @@ class ProjectDashBoard extends React.Component {
       const formattedSearch = search.toLowerCase();
       // console.log(projects);
       let getResults = projects.filter(result => {
-        console.log('result', result) 
+        // console.log('result', result) 
         if(!result.fields.Name) {
           return false;
         }
@@ -84,17 +106,9 @@ class ProjectDashBoard extends React.Component {
       })
       console.log('ccccc ', getResults);
       this.setState({projectData: getResults});
-}
+    }
 
     render() {
-      // Filtering out the side bar Menu
-      // let filterProject = this.state.projectData.filter(sideBarFilter => {
-      //   console.log('side bar filter', sideBarFilter);
-      //   return sideBarFilter.fields.Name.toUpperCase().includes(
-      //     this.state.searchName.toUpperCase()
-      //   );
-      // });
-  
       return (
         <div className="view-container dashboard">
           <div className="dashboard-content">
@@ -115,30 +129,26 @@ class ProjectDashBoard extends React.Component {
               )}
             </div> */}
   
-
-            {this.state.selectedProject ? (<FeatureCard project={this.state.selectedProject}/>) : null}  
+            {/* {this.state.projectData.length > 0 ? (<FeatureCard project={this.state.selectedProject}/>) : null}  */}
+            
+            {this.state.selectedProject ? (<FeatureCard project={this.state.selectedProject} handleImageClick={this.handleImageClick}/>) : null} 
        
             {this.state.openSideBar ? (<>{this.state.projectData && (
               <SideBarOpen
+                openSideBar={this.state.openSideBar}
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
                 handleClick={this.handleClick}
                 filterProjectList={this.filterProjectList}
-                // slide={this.state.openSideBar}
-                // filterProjectList={this.filterProjectList}
-               >
+                slideOpen={this.updateWindowDimensions}>
                 <SearchBar
-                  // projectData={this.state.projectData}
-                  // selectProject={this.selectProject}
-                  handleInput={this.handleInput}
                   handleClick={this.handleClick}
-                  openSideBar={this.state.openSideBar}
-                />
+                  openSideBar={this.state.openSideBar}/>
               </SideBarOpen>
           
             )} </>) : (<div 
                           className = 'closed-side-bar'>
-                          <SideBarButton handleClick = {this.handleClick} title = {<FontAwesomeIcon className = 'bars' icon = {faBars} size =' 2x'/>}/>
+                          <SideBarButton handleClick = {this.handleClick} title = {<FontAwesomeIcon className = 'column' icon = {faColumns} />}/>
                         </div>)}
             {/* {this.state.projectData && (
               <SideBarOpen
