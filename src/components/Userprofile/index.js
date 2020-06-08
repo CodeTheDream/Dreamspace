@@ -166,7 +166,9 @@ class Userprofile extends React.Component {
                                 value={this.state.url}
                                 onChange={this.onUrlChange}
                                 required
+                          
                               />
+                             
                               <button
 
                                 className="imageupload"

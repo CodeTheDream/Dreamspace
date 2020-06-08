@@ -1,4 +1,4 @@
-/*import React from "react";
+import React from "react";
 import { compose } from "recompose";
 import {
   AuthUserContext,
@@ -18,7 +18,7 @@ class Comment extends React.Component {
       commentId: "",
       replys: [],
       timeCreated: "",
-      totallReplys: 0,
+      totallReplys: "",
       sortType:'asc',
       replysID:"",
       username:""
@@ -29,7 +29,7 @@ class Comment extends React.Component {
     const commentId = this.props.commentId;
     //console.log("this is commentId", commentId);
     this.unsubscribe = this.props.firebase
-      .replys(commentId)
+      .comments(commentId)
       //.where("commentId", "==", commentId)
       .onSnapshot(snapshot => {
         const Replys = [];
@@ -37,10 +37,13 @@ class Comment extends React.Component {
         snapshot.forEach(doc => {
          
           const data = doc.data();
-         // console.log("doc data",data)
+
+          //console.log("doc data",data)
           replysId = doc.id;
           data.replysId = replysId;
-          Replys.push(data);
+        
+          Replys.push(data)
+          
         });
        //console.log("this is my replysID using spesific commentId", replysId);
         this.setState({ 
@@ -75,15 +78,15 @@ class Comment extends React.Component {
     const { showAll,replys,sortType,replysId} = this.state;
     let commentContent = comment.comment;
     
-//console.log("Here is your  replysId", replysId)
+//console.log("Here is your  parentCommentId", comment.uid)
 
-    if(replys){
-      replys.sort((a,b) =>{
-       const  isReversed = (sortType === 'asc') ? 1 :-1;
-       return  isReversed * a.timeCreated.localeCompare(b.timeCreated)
-     })
-     //console.log("sortedComment",sortedcomments)
-         }
+    // if(replys){
+    //   replys.sort((a,b) =>{
+    //    const  isReversed = (sortType === 'asc') ? 1 :-1;
+    //    return  isReversed * a.timeCreated.localeCompare(b.timeCreated)
+    //  })
+    //  //console.log("sortedComment",sortedcomments)
+    //      }
     if (comment.comment && comment.comment.length <= limited) {
       // console.log("IF", comment.comment, comment.comment.length);
       return (
@@ -107,7 +110,7 @@ class Comment extends React.Component {
                       <ReplyComment
                         replys={this.state.replys}
                         timeCreated={timeCreated}
-                        commentID={commentId}
+                      commentId={commentId}
                         comment={comment}
                         totallReplys={this.state.totallReplys}
                         replysId={replysId}
@@ -162,4 +165,4 @@ class Comment extends React.Component {
     }
   }
 }
-export default compose(withFirebase)(Comment);*/
+export default compose(withFirebase)(Comment);

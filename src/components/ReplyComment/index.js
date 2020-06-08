@@ -1,4 +1,4 @@
-/*import React from "react";
+import React from "react";
 import { withFirebase } from "../Firebase";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
@@ -31,10 +31,10 @@ class ReplyComment extends React.Component {
   componentDidMount = () => {
    
 const {replysId} = this.props
-console.log("replyId at replycomment  componentdidmount",replysId)     
+//console.log("replyId at replycomment  componentdidmount",replysId)     
      
        this.unsubscribe = this.props.firebase
-       .replys(replysId)
+       .comment()
  
        .onSnapshot(doc => {
          if (doc.exists) {
@@ -58,32 +58,52 @@ console.log("replyId at replycomment  componentdidmount",replysId)
       })
   
   }
- /* renderReplycomment = () => {
-    // console.log("this is the replys in renderreplys func", this.props.replys);
-    const { comment, timeCreated } = this.props;
+  // renderReplycomment = () => {
+  //   // console.log("this is the replys in renderreplys func", this.props.replys);
+  //   const { comment, timeCreated } = this.props;
 
-    if (this.props.replys) {
-      this.props.replys.map((reply,i)=> {
-        console.log("this is the the reply in the reply function", reply);
-        return (
-          <div>
-            <ReplyComment timeCreated={reply.timeCreated} reply={reply.reply} />
+  //   if (this.props.replys) {
+  //     this.props.replys.map((reply,i)=> {
+  //       console.log("this is the the reply in the reply function", reply);
+  //       return (
+  //         <div>
+  //           <ReplyComment timeCreated={reply.timeCreated} reply={reply.reply} />
 
-            <AddReplys type="child" />
-          </div>
-        );
-      });
-    }
-  };
+  //          { /* <AddReplys type="child" />*/}
+  //          </div>
+  //       );
+  //     });
+  //   }
+  // };
   
 
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
 
   render() {
-    const {  timeCreated, commentID, userName ,replysId} = this.props;
-    
- console.log("replyId at replycomment11", replysId);
+    const {  timeCreated, commentId, userName ,replysId,replys} = this.props;
+    // let totallReplys=""
+    // replys.map(reply => {
+    //   console.log("this is the the ParentcommentId in replys", reply.parentCommentId);
+    //   if(commentId===reply.parentCommentId){
+    //     totallReplys=totallReplys +1;
+    //     console.log("totallReplys in reply comment",totallReplys)
+    //   // return (
+    //   //   <div>
+    //   //     <div className="replystayle">
+    //   //       <p>
+    //   //         {" "}
+    //   //         <i className="fa fa-user"></i> posted By {this.state.userName}{" "}
+              
+    //   //         {reply.timeCreated}
+    //   //       </p>
+    //   //       <p>{reply.reply}</p>
+    //   //     </div>
+        
+    //   //   </div>
+    //   // );
+    //   }})
+ //console.log("parent coments",replys);
     //console.log("show popup", this.state.showPopup);
     return (
       <div>
@@ -102,8 +122,9 @@ console.log("replyId at replycomment  componentdidmount",replysId)
         {this.state.showPopup ? (
           <div>
           <div>
-            {this.props.replys.map(reply => {
-              //console.log("this is the the reply in the reply function", reply);
+            {replys.map(reply => {
+              console.log("this is the the ParentcommentId in replys", reply.parentCommentId);
+              if(commentId===reply.parentCommentId){
               return (
                 <div>
                   <div className="replystayle">
@@ -115,10 +136,10 @@ console.log("replyId at replycomment  componentdidmount",replysId)
                     </p>
                     <p>{reply.reply}</p>
                   </div>
-                  <AddReplys1 commentID={commentID} replysId={replysId}/>
-
+                
                 </div>
               );
+              }
             })
             }
           </div>
@@ -137,4 +158,4 @@ console.log("replyId at replycomment  componentdidmount",replysId)
   }
 }
 
-export default compose(withFirebase, withRouter)(ReplyComment);*/
+export default compose(withFirebase, withRouter)(ReplyComment);
