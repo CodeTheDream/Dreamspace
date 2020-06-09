@@ -41,6 +41,7 @@ const FeatureCard = props => {
                 <div className="card-team-info">
                   {project.fields.Current_Team}
                 </div>
+                {/* <ProjectImageModal onClick = {props.handleImageClick} /> */}
 
               </>
             )}
@@ -103,3 +104,5 @@ const FeatureCard = props => {
 };
 
 export default FeatureCard;
+
+

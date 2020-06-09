@@ -1,10 +1,11 @@
 import React from "react";
 import {
   FeatureCard,
-  Header,
+  // Header,
   SearchBar,
   SideBarOpen,
 } from "../../ctd-project-components";
+import ProjectImageModal from '../../ctd-project-components/ProjecImageModal'
 import SideBarButton from '../../ctd-project-components/SideBarButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -109,6 +110,14 @@ class ProjectDashBoard extends React.Component {
     }
 
     render() {
+      let modalScreen = <ProjectImageModal handleImageClick = {this.handleImageClick}
+      projectCanvas = {this.state.selectedProject}
+      />
+
+      if(this.state.enlargeImage === true) {
+        return modalScreen;
+      }
+    
       return (
         <div className="view-container dashboard">
           <div className="dashboard-content">
@@ -131,7 +140,13 @@ class ProjectDashBoard extends React.Component {
   
             {/* {this.state.projectData.length > 0 ? (<FeatureCard project={this.state.selectedProject}/>) : null}  */}
             
-            {this.state.selectedProject ? (<FeatureCard project={this.state.selectedProject} handleImageClick={this.handleImageClick}/>) : null} 
+            {this.state.selectedProject ? (
+              <FeatureCard 
+                project={this.state.selectedProject} 
+                handleImageClick={this.handleImageClick}>
+                {modalScreen}
+              </FeatureCard>) : null} 
+            
        
             {this.state.openSideBar ? (<>{this.state.projectData && (
               <SideBarOpen
