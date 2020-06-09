@@ -5,13 +5,13 @@
   height: 100%;
   overflow: hidden;
 }
+
 .modal-image-container {
   width: 50%;
   box-shadow: 0 1px 1px rgba(0,0,0,0.15), 
               0 2px 2px rgba(0,0,0,0.15), 
               0 4px 4px rgba(0,0,0,0.15), 
               0 8px 8px rgba(0,0,0,0.15);
-  // border-style: solid;
   margin: 0 auto;
   margin-top: 3%;
   background-color: #fff;
@@ -31,6 +31,4 @@
   width: 10%;
   position: absolute;
   right: 20em;
- 
-
 }
