@@ -130,6 +130,7 @@ class SignInGoogleBase extends Component {
                      {
                        username: socialAuthUser.user.displayName,
                        email: socialAuthUser.user.email,
+                       photoUrl: socialAuthUser.user.photoURL,
                        roles: {},
                      },
                      { merge: true },
@@ -139,6 +140,7 @@ class SignInGoogleBase extends Component {
                    this.setState({ error: null });
                    this.props.history.push(ROUTES.HOME);
                  })
+
                  .catch(error => {
                    if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
                      error.message = ERROR_MSG_ACCOUNT_EXISTS;
