@@ -227,7 +227,7 @@ class SignInGoogleBase extends Component {
    }
  }
 
-class SignInGithubBase extends Component {
+ class SignInGithubBase extends Component {
   constructor(props) {
      super(props);
 
@@ -241,9 +241,13 @@ class SignInGithubBase extends Component {
         // Create a user in your Firebase Realtime Database too
          return this.props.firebase.user(socialAuthUser.user.uid).set(
            {
-                 username: socialAuthUser.user.Name,
+                 username: socialAuthUser.additionalUserInfo.profile.name,
+                 email: socialAuthUser.additionalUserInfo.profile.email,
+                 //roles: {},
+                 //username: socialAuthUser.user.displayName,
+                 //username: socialAuthUser.user.displayName,
                  photoUrl: socialAuthUser.user.photoURL,
-                 email: socialAuthUser.user.email,
+                 //email: socialAuthUser.user.email,
                  roles: {},
           },
           { merge: true },
@@ -277,6 +281,7 @@ class SignInGithubBase extends Component {
     );
   }
  }
+
 
 const SignInForm = compose(
     withRouter,
