@@ -3,13 +3,16 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import { SignUpLink } from '../SignUp';
-import { PasswordForgetLink } from '../PasswordForget';
+//import { PasswordForgetLink } from '../PasswordForget';
+import  PasswordForgetLink  from '../PasswordForgetForm'; 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
     <div className="wrapper">
-        <p style={{fontSize:"28px"}}>SignIn</p>
+       {/* <p style={{fontSize:"28px"}}>SignIn</p>*/}
+     
+    <h2 className="signin">SignIn</h2>
 
       
 <div className="outer">
@@ -21,16 +24,7 @@ const SignInPage = () => (
 
 
         <SignInForm />
-
-        {/*<p className="btn-text"><b>Sign in with google</b></p>*/}
-
-
-
-
-
-        {/* <SignInFacebook />
-    <SignInTwitter /> */}
-        {/* <PasswordForgetLink /> */}
+         <PasswordForgetLink /> 
         <SignUpLink />
     </div>
 );
