@@ -42,11 +42,12 @@
     border: 1px solid black;
 }
 @media screen and (min-width:800px) {
+	
 .outer
 {
     //width:100%;
     text-align: center;
-    margin-left:5em;
+    //margin-left:5em;
 }
 .inner
 {
@@ -128,9 +129,23 @@
 }
 .signin{
 line-height: 0.2em;
+margin-top: 0.4em;
 }
 .signinpage{
-    background-image: url("http://blog.hostbaby.com/wp-content/uploads/2014/03/SeeingSpots_1400x900-1024x658.jpg");
+	background-image:  url("https://mcdn.wallpapersafari.com/medium/55/22/P5ABoL.jpg");
+	//background-position: center;
+    background-repeat: no-repeat;
+	background-size: cover;
+	margin-left: 5.5em;
+}
+.signuppage{
+	background-image:  url("https://mcdn.wallpapersafari.com/medium/55/22/P5ABoL.jpg");
+	background-position: center;
+    background-repeat: no-repeat;
+	//background-size: cover;
+	margin-left: 5.5em;	
+	margin-top:6em;
+
 }
 }
 @media screen and (max-width:800px) {

@@ -5,6 +5,7 @@ import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
 const SignUpPage = () => (
   <div style={{ marginTop: "4.8em" }}>
+    <div className="signup"></div>
     <h2 className="signin">SignUp</h2>
     <SignUpForm />
   </div>
