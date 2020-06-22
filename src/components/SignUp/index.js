@@ -4,8 +4,9 @@ import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
 const SignUpPage = () => (
-  <div style={{ marginTop: "3.5em" }}>
-    <h2>SignUp</h2>
+  <div style={{ marginTop: "4.8em" }}>
+    <div className="signup"></div>
+    <h2 className="signin">SignUp</h2>
     <SignUpForm />
   </div>
 );
@@ -98,7 +99,7 @@ class SignUpFormBase extends Component {
       username === "";
       return (
           <div className="view-container-signup">
-              <form onSubmit={this.onSubmit} className="devedit-form">
+              <form  className="form" onSubmit={this.onSubmit} >
               <fieldset>
         <input
           name="username"

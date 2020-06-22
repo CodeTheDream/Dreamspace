@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Helvetica, sans-serif;
- // background-color: #bbb;
+ //background-color:blue;
 }
 
 .li a {
@@ -109,13 +109,15 @@ body {
     width: 150px;
     top: 10px;
     left: 10px;
-    position: relative;
+    position: absolute;
     float: left;
 
    
 }
 .logo-wrapper:hover {
     zoom: 120%;
+  //transform: scale(1.2) ;
+
 }
 
 .header .menu-btn:checked ~ .menu-icon .nav-icon:after {

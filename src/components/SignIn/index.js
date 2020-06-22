@@ -1,30 +1,32 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
+
 import { SignUpLink } from '../SignUp';
-import  PasswordForgetLink  from '../PasswordForgetForm';
+//import { PasswordForgetLink } from '../PasswordForget';
+import  PasswordForgetLink  from '../PasswordForgetForm'; 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
     <div className="wrapper">
-        <p style={{fontSize:"28px"}}>SignIn</p>
-        <SignInGoogle /> 
-        <SignInFacebook />
-        <SignInGithub/>
+       {/* <p style={{fontSize:"28px"}}>SignIn</p>*/}
+     <div className="signinpage">
+    <h2 className="signin">SignIn</h2>
 
+      
+<div className="outer">
+   <div className="inner">    <SignInGoogle /></div> 
+      <div className="inner"> <SignInFacebook /></div>
+       <div className="inner"> <SignInGithub/></div>
+</div>
         <p style={{ textAlign: "center" }}>Or sign in manually:</p>
 
 
         <SignInForm />
-
-        {/*<p className="btn-text"><b>Sign in with google</b></p>*/}
-
-
-
-
          <PasswordForgetLink /> 
         <SignUpLink />
+    </div>
     </div>
 );
 
@@ -78,8 +80,8 @@ class SignInFormBase extends Component {
 
         return (
             <div className="view-container">
-                <form onSubmit={this.onSubmit} className="devedit-form">
-                    <fieldset>
+                <form onSubmit={this.onSubmit} className="form">
+                    
                         <input
                             name="email"
                             value={email}
@@ -99,7 +101,7 @@ class SignInFormBase extends Component {
         </button>
 
                         {error && <p>{error.message}</p>}
-                    </fieldset>
+                    
                 </form>
             </div>
         );
@@ -110,11 +112,7 @@ class SignInGoogleBase extends Component {
   constructor(props) {
    super(props);
 
-     this.state = {
-        error: null,
-        photoURL:""
-     };
-     
+     this.state = { error: null };
   }
 
   onSubmit = event => {
@@ -122,8 +120,6 @@ class SignInGoogleBase extends Component {
           .doSignInWithGoogle()
       .then(socialAuthUser => {
        // Create a user in your Firebase Realtime Database too
-       if(socialAuthUser.user.photoURL===""){
-         console.log("photoUrl",socialAuthUser.user.photoURL,)
         return this.props.firebase.user(socialAuthUser.user.uid).set(
             {
 
@@ -133,19 +129,7 @@ class SignInGoogleBase extends Component {
             roles: {},
           },
            { merge: true },
-          )}
-          else{
-            return this.props.firebase.user(socialAuthUser.user.uid).set(
-              {
-  
-                  username: socialAuthUser.user.displayName,
-                 //photoUrl: socialAuthUser.user.photoURL,
-               email: socialAuthUser.user.email,
-              roles: {},
-            },
-             { merge: true },
-            )
-          }
+          )
       })
           .then(() => {
               this.setState({ error: null });
@@ -172,7 +156,7 @@ class SignInGoogleBase extends Component {
             
                 <p style={{ textAlighn: "" }}> Login with Google+</p> </button>*/}
 
-              <button type="submit" className="googlebtn" style={{ fontSize: "20px" }}><i className="fa fa-google fa-fw" > </i> Login with Google
+              <button type="submit" className="googlebtn" style={{ fontSize: "20px" }}><i class="fa fa-google fa-fw" > </i> 
  
   
 </button>
@@ -196,34 +180,19 @@ class SignInGoogleBase extends Component {
       .doSignInWithFacebook()
        .then(socialAuthUser => {
         // Create a user in your Firebase Realtime Database too
-        if(socialAuthUser.additionalUserInfo.profile.photoURL===""){
          return this.props.firebase.user(socialAuthUser.user.uid).set(
            {
-                 username: socialAuthUser.additionalUserInfo.profile.name,
-                 photoUrl: socialAuthUser.additionalUserInfo.profile.photoURL,
-            email: socialAuthUser.additionalUserInfo.profile.email,
-            roles: {},
+                 username: socialAuthUser.user.displayName,
+                 photoUrl: socialAuthUser.user.photoURL,
+                 email: socialAuthUser.user.email,
+                 roles: {},
                  /*username: socialAuthUser.user.displayName,
                  photoUrl: socialAuthUser.user.photoURL,
                  email: socialAuthUser.user.email,
                  roles: {},*/
           },
            { merge: true },
-         )} else{
-          return this.props.firebase.user(socialAuthUser.user.uid).set(
-            {
-                  username: socialAuthUser.additionalUserInfo.profile.name,
-                 // photoUrl: socialAuthUser.additionalUserInfo.profile.photoURL,
-             email: socialAuthUser.additionalUserInfo.profile.email,
-             roles: {},
-                  /*username: socialAuthUser.user.displayName,
-                  photoUrl: socialAuthUser.user.photoURL,
-                  email: socialAuthUser.user.email,
-                  roles: {},*/
-           },
-            { merge: true },
-          )
-         }
+         );
        })
     .then(() => {
         this.setState({ error: null });
@@ -245,7 +214,7 @@ class SignInGoogleBase extends Component {
 
      return (
        <form onSubmit={this.onSubmit}>
-             <button type="submit" style={{ fontSize: "20px" }} className="fb"><i className="fa fa-facebook fa-fw" />Sign In with Facebook</button>
+             <button type="submit" style={{ fontSize: "20px" }} className="fb"><i class="fa fa-facebook fa-fw" /></button>
 
        {error && <p>{error.message}</p>}
       </form>
@@ -253,7 +222,7 @@ class SignInGoogleBase extends Component {
    }
  }
 
-class SignInGithubBase extends Component {
+ class SignInGithubBase extends Component {
   constructor(props) {
      super(props);
 
@@ -299,7 +268,7 @@ class SignInGithubBase extends Component {
 
    return (
        <form onSubmit={this.onSubmit}>
-           <button type="submit" style={{ fontSize: "20px" }} className="github"><i className="fa fa-github" />{" "}Sign In with Github</button>
+           <button type="submit" style={{ fontSize: "20px" }} className="github"><i class="fa fa-github" />{" "}</button>
          
       
        {error && <p>{error.message}</p>}
@@ -307,6 +276,7 @@ class SignInGithubBase extends Component {
     );
   }
  }
+
 
 const SignInForm = compose(
     withRouter,

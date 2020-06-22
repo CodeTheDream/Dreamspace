@@ -2,11 +2,10 @@
   box-sizing: border-box;
   content: width= device-width, initial-scale=1;
 }
-body {
-  background-color: #e8eeef;
-
+// body {
+//   background-color: #e8eeef;
   
-}
+// }
 //MAIN CONTAINER CODE
 .container-individual {
   margin: auto;
@@ -22,45 +21,37 @@ body {
   margin-top: 3em;
   // background-color: gray;;
 }
-
 //THIS IS THE INDUVIDWAL VIWE CSS
-
 .card-individual {
   // box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   background-color: ghostwhite;
   border-bottom: solid 0.1px lightgrey;
   overflow: auto;
   border-radius: 10px;
-   width: 800px;
+  // width: 900px;
 }
-
 .auther-name-individual {
   padding: 12px 40px;
 }
-
 .autherstyle-individual {
   text-align: left;
   float: left;
   font-weight: bold;
   font-size: 15px;
 }
-
 .grid-subject2 {
-
   padding: 12px 40px;
   //  background-color: white;
   border-bottom-style: hidden;
   text-align: left;
   font-weight: bold;
 }
-
 .grid-description {
   padding: 0 15px 14px 40px;
   text-align: left;
   font-weight: normal;
   line-height: normal;
 }
-
 .stylebutton {
   float: left;
   padding-left: 70px;
@@ -104,7 +95,6 @@ body {
   // box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.9) !important;
   border: solid 1px gray;
 }
-
 .submit-btn {
   background-color: #3fb0ac;
   font-size: 12px;
@@ -115,7 +105,6 @@ body {
   float: right;
   color: #fae596;
 }
-
 textarea {
   width: 98%;
   height: 12em;
@@ -123,7 +112,6 @@ textarea {
   outline: none;
   border: hidden;
 }
-
 //THIS IS THE LIST OF COMMENTS CSS
 .card-comment {
   //box-shadow: 0 1px 2px rgba(0,0,0, 0.4);
@@ -132,7 +120,6 @@ textarea {
   border-bottom: solid 0.2px lightgray;
   border-radius: 10px;
 }
-
 .styleDisplay {
   border: hidden;
   text-align: left;
@@ -141,7 +128,6 @@ textarea {
   font-size: 1em;
   line-height: 1.5;
 }
-
 .Reply button {
   margin-right: 73%;
   background-color: whitesmoke;
@@ -151,9 +137,7 @@ textarea {
   font-weight: bold;
   border: hidden;
 }
-
 //This Css is for votes
-
 .likes-individual {
   position: absolute;
   // background-color: lightgrey;
@@ -163,12 +147,14 @@ textarea {
   border-radius: 6px;
   display: -moz-inline-grid;
 }
-
 .upvote-individual:hover {
   background-color: lightcoral;
 }
-
 .downvote-individual:hover {
   background-color: deepskyblue;
   background-size: 10px;
 }
+
+
+
+

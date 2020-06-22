@@ -4,13 +4,13 @@
     "\\src",
     "\\src\\components",
     "\\src\\components\\ListItem1",
-    "\\src\\components\\SignIn",
+    "\\src\\components\\Navigation",
     "\\src\\components\\SignUp",
     "\\src\\containers",
     "\\src\\containers\\Dashboard",
     "\\src\\ctd-project-components",
     "\\src\\ctd-project-components\\FeatureCard"
   ],
-  "SelectedNode": "\\src\\components\\SignIn\\index.js",
+  "SelectedNode": "\\src\\components\\ListItem1\\index.js",
   "PreviewInSolutionExplorer": false
 }

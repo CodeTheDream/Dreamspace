@@ -13,7 +13,7 @@ const DrawBottomLine = ({color}) => (
   <hr style = 
     {{color: color, 
       backgroundColor: color, 
-      height: 2, 
+      height: 1, 
       position: 'relative', 
       top: '23.3em',
       marginTop: '16px'
