@@ -33,29 +33,29 @@ class Userprofile extends React.Component {
       url: "",
     };
   }
-  componentDidMount() {
-    this.directoryAirTable();
-  }
-  directoryAirTable() {
-    const url =
-      "https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory";
-    fetch(url, {
-      headers: {
-        Authorization: "Bearer " + process.env.REACT_APP_DIRECTORY_AIRTABLE_KEY,
-      },
-    })
-      .then((response) => response.json())
-      .then((responseData) => {
-        console.log("directory data ", responseData);
-        const crewDirectory = responseData.records;
-        console.log("crewDirectory ", crewDirectory);
-        this.setState({
-          crewDirectory: crewDirectory,
-          allDirectory: crewDirectory,
-        });
-        console.log(" crewDirectory", this.state.crewDirectory);
-      });
-  }
+  // componentDidMount() {
+  //   this.directoryAirTable();
+  // }
+  // directoryAirTable() {
+  //   const url =
+  //     "https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory";
+  //   fetch(url, {
+  //     headers: {
+  //       Authorization: "Bearer " + process.env.REACT_APP_DIRECTORY_AIRTABLE_KEY,
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((responseData) => {
+  //       console.log("directory data ", responseData);
+  //       const crewDirectory = responseData.records;
+  //       console.log("crewDirectory ", crewDirectory);
+  //       this.setState({
+  //         crewDirectory: crewDirectory,
+  //         allDirectory: crewDirectory,
+  //       });
+  //       console.log(" crewDirectory", this.state.crewDirectory);
+  //     });
+  // }
 
   togglePopup = () => {
     this.setState({
@@ -63,22 +63,21 @@ class Userprofile extends React.Component {
     });
   };
 
-  postPics = (e) => {
-    let pics =
-      "https://ya-webdesign.com/images250_/placeholder-image-png-1.png";
-    {
-      this.state.crewDirectory &&
-        this.state.crewDirectory.map((staffPhoto, id) => {
-          console.log("stafphoto", staffPhoto.fields.Photo);
-          //if (staffPhoto.fields.Photo) {
-          this.setState({
-            pics: staffPhoto.fields.Photo,
-          });
+  // postPics = (e) => {
+  //   let pics ="https://ya-webdesign.com/images250_/placeholder-image-png-1.png";
+  //   {
+  //     this.state.crewDirectory &&
+  //       this.state.crewDirectory.map((staffPhoto, id) => {
+  //         console.log("stafphoto", staffPhoto.fields.Photo);
+  //         //if (staffPhoto.fields.Photo) {
+  //         this.setState({
+  //           pics: staffPhoto.fields.Photo,
+  //         });
 
-          //  }
-        });
-    }
-  };
+  //         //  }
+  //       });
+  //   }
+  // };
   onUrlChange = (e) => {
     this.setState({
       url: e.target.value,
@@ -87,7 +86,7 @@ class Userprofile extends React.Component {
 
   upload = (e, authUser) => {
     e.preventDefault();
-    console.log("my new url", authUser.uid);
+   // console.log("my new url", authUser.uid);
     const autherId = authUser.uid;
     this.props.firebase.user(autherId).update({
       photoUrl: this.state.url,
@@ -161,7 +160,7 @@ class Userprofile extends React.Component {
                             <div className="uploadimage">
                               <input
                                 className="imageinput"
-                                type="text"
+                                type="url"
                                 placeholder="Drage and drop your Image-URl"
                                 value={this.state.url}
                                 onChange={this.onUrlChange}

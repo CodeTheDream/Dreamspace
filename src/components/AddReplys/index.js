@@ -11,7 +11,7 @@ class AddReplys extends React.Component {
     this.state = {
       reply: "",
       timeCreated: "",
- 
+ totalreply:0
     };
   }
 
@@ -27,6 +27,8 @@ class AddReplys extends React.Component {
   };
 
   handleSubmit =(e,authUser)=> {
+    let add = 0
+    add +=1;
     e.preventDefault();
     const commentId = this.props.commentId;
    // console.log("this is the commentId for the reply", commentId)
@@ -50,8 +52,9 @@ class AddReplys extends React.Component {
 
     this.setState({
       reply: "",
-      showPopup: false
-    });
+      showPopup: false,
+      totalreply:add
+    },()=>console.log("add",this.state.totalreply));
   });
 }
   handleChange = e => {

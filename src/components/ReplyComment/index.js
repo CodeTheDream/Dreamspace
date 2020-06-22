@@ -1,7 +1,11 @@
 import React from "react";
 import { withFirebase } from "../Firebase";
-import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
+import {
+  AuthUserContext,
+  withAuthorization,
+  withEmailVerification,
+} from "../../components/Session";
 import AddReplys1 from "../AddReplys1";
 const moment = require("moment");
 
@@ -15,7 +19,8 @@ class ReplyComment extends React.Component {
       showAll: false,
       showPopup: false,
       username:"",
-      reply:""
+      reply:"",
+      photoUrl:""
     };
   }
 
@@ -28,90 +33,46 @@ class ReplyComment extends React.Component {
     this.setState({ showPopup: false });
   };
 
-  componentDidMount = () => {
-   
-const {replysId} = this.props
-//console.log("replyId at replycomment  componentdidmount",replysId)     
-     
-       this.unsubscribe = this.props.firebase
-       .comment()
- 
-       .onSnapshot(doc => {
-         if (doc.exists) {
-         // console.log(" this is my article", doc.data());
-           this.setState({
-           
-             reply: doc.data()
-             
-           });
-          }})
-         // console.log("reply",this.state.reply)
-    let autherId = this.state.reply.userId;
-    //console.log("autherId of  a reply",autherId)
-    this.unsubscribe = this.props.firebase
-      .user(autherId)
-      .get()
-      .then(doc => {
-        // console.log("userdata", doc.data())
-        let user = doc.data();
-        //this.setState({ username: user.username });
-      })
+  componentDidMount = (authUser) => { 
+  // this.replyCommentUser(authUser)
   
   }
-  // renderReplycomment = () => {
-  //   // console.log("this is the replys in renderreplys func", this.props.replys);
-  //   const { comment, timeCreated } = this.props;
-
-  //   if (this.props.replys) {
-  //     this.props.replys.map((reply,i)=> {
-  //       console.log("this is the the reply in the reply function", reply);
-  //       return (
-  //         <div>
-  //           <ReplyComment timeCreated={reply.timeCreated} reply={reply.reply} />
-
-  //          { /* <AddReplys type="child" />*/}
-  //          </div>
-  //       );
-  //     });
-  //   }
-  // };
+   replyCommentUser = (e, authUser) => {
+    //e.preventDefault();
+    console.log("my new url", authUser);
+    //const autherId = authUser.uid;
+    this.props.firebase
+    .user()
+   .get()
+   .then((doc) => {
+     console.log("userdata in comment", doc.data())
+     let user = doc.data();
+     this.setState({
+       // username: user.username,
+       // photoUrl: user.photoUrl
+        });
+      })
+  };
   
 
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
 
   render() {
-    const {  timeCreated, commentId, userName ,replysId,replys} = this.props;
-    // let totallReplys=""
-    // replys.map(reply => {
-    //   console.log("this is the the ParentcommentId in replys", reply.parentCommentId);
-    //   if(commentId===reply.parentCommentId){
-    //     totallReplys=totallReplys +1;
-    //     console.log("totallReplys in reply comment",totallReplys)
-    //   // return (
-    //   //   <div>
-    //   //     <div className="replystayle">
-    //   //       <p>
-    //   //         {" "}
-    //   //         <i className="fa fa-user"></i> posted By {this.state.userName}{" "}
-              
-    //   //         {reply.timeCreated}
-    //   //       </p>
-    //   //       <p>{reply.reply}</p>
-    //   //     </div>
-        
-    //   //   </div>
-    //   // );
-    //   }})
- //console.log("parent coments",replys);
-    //console.log("show popup", this.state.showPopup);
+    const {  timeCreated, commentId, userName ,replysId,replys,replyUserId,totallReply} = this.props;
+    
+ console.log("replyUserID at reply render",replyUserId)
     return (
+      <AuthUserContext.Consumer>
+      {(authUser) => (
       <div>
-        <div className="replypage">
+        <div className="replypage"  >
           <i
             className="fas fa-angle-down "
             style={{ width: "10em" }}
-            onClick={() => this.togglePopup()}
+            onClick={() =>{ this.togglePopup()}
+         // this.replyCommentUser(authUser)
+        }
           >
             {" "}
             view{""} {this.props.totallReplys}
@@ -123,14 +84,17 @@ const {replysId} = this.props
           <div>
           <div>
             {replys.map(reply => {
-              console.log("this is the the ParentcommentId in replys", reply.parentCommentId);
+             // console.log("this is the the ParentcommentId in replys", reply.parentCommentId);
+             
+             
               if(commentId===reply.parentCommentId){
+                
               return (
                 <div>
                   <div className="replystayle">
                     <p>
                       {" "}
-                      <i className="fa fa-user"></i> posted By {this.state.userName}{" "}
+                      <span /><img src={reply.photoUrl} className="user-profile" />{" "} posted By {this.state.userName}{" "}
                       
                       {reply.timeCreated}
                     </p>
@@ -154,8 +118,10 @@ const {replysId} = this.props
             </div>
         ) : null}
       </div>
+       )}
+       </AuthUserContext.Consumer>
     );
   }
 }
 
-export default compose(withFirebase, withRouter)(ReplyComment);
+export default compose(withFirebase)(ReplyComment);
