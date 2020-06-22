@@ -81,7 +81,7 @@ class SignInFormBase extends Component {
         return (
             <div className="view-container">
                 <form onSubmit={this.onSubmit} className="form">
-                    <fieldset>
+                    
                         <input
                             name="email"
                             value={email}
@@ -101,7 +101,7 @@ class SignInFormBase extends Component {
         </button>
 
                         {error && <p>{error.message}</p>}
-                    </fieldset>
+                    
                 </form>
             </div>
         );
