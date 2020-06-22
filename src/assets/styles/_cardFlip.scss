@@ -6,6 +6,7 @@
   justify-content: center;
   grid-area: featured;
   margin-bottom: 35px;
+  overflow-y: hidden;
 }
 
 .flip-card-inner {
@@ -33,27 +34,33 @@
 }
 
 .flip-card-front {
-  background-color: #043e78;
+  background-color: #3fb0ac;
   border: 1px solid #ccc;
   border-radius: 15px;
-  color: whitesmoke;
+  color: #f15c39;
   /* position: relative; */
-  overflow-y: auto;
-  padding: 63px;
+  overflow-y: hidden;
+  padding-top: 75px;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
 }
 
 .flip-card-back {
   /* background-image: url("../styles/images/ctdLiving.jpg"); */
   /* filter: blur(8px); */
-  background-color: slategray;
+  background-color: #fae596;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   /* border: 1px solid #ccc; */
   border-radius: 15px;
-  color: whitesmoke;
+  color: #3fb0ac;
   transform: rotateY(180deg);
   overflow-y: auto;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
 }
 
 .card-content {

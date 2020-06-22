@@ -16,8 +16,6 @@
 }
 
 #flip-card-logo-title {
-  height: 5vmin;
-  padding: 10px;
   color: white;
   padding-left: 10px;
   padding-right: 10px;
@@ -43,20 +41,20 @@
 .flip-card-header:hover {
   text-shadow: 11px 2px 11px rgba(33, 33, 33, 0.2);
 }
-.card-team {
-  grid-area: team;
-  font-size: 25px;
-  width: 50%;
-  height: auto;
-  color: silver;
-}
-.card-team-info {
-  grid-area: team-info;
-  font-size: 50px;
-  width: 50%;
-  height: auto;
-  color: whitesmoke;
-}
+// .card-team {
+//   grid-area: team;
+//   font-size: 50px;
+//   width: 50%;
+//   height: auto;
+//   color: silver;
+// }
+// .card-team-info {
+//   grid-area: team-info;
+//   font-size: 50px;
+//   width: 50%;
+//   height: auto;
+//   color: whitesmoke;
+// }
 .card-team-info:hover {
   text-shadow: 11px 2px 11px rgba(33, 33, 33, 0.2);
 }
@@ -79,10 +77,10 @@
   text-shadow: 11px 2px 11px rgba(33, 33, 33, 0.2);
 }
 
-h2 {
-  font-size: 4.6rem;
-  margin-top: 1em;
-}
+// h2 {
+//   font-size: 3.6rem;
+//   margin-top: 1em;
+// }
 
 @keyframes shake {
   0% {

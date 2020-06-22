@@ -1,6 +1,7 @@
 .search-container {
   position: absolute;
   padding-top: 17px;
+  padding-left: 10px;
   // margin-top: 20px;
   // top: 0;
   // left: 0;
@@ -17,7 +18,8 @@
     left: 0;
     width: 80px;
     height: 80px;
-    background: #0066cc;
+      background: #3fb0ac ;
+      // background: #0066cc;
     border-radius: 50%;
     transition: all 1s;
     z-index: 4;
@@ -91,7 +93,7 @@
     }
     &:focus ~ .search {
       right: -200px;
-      background: #0066cc;
+      background: #fae596 ;
       z-index: 6;
       &::before {
         top: 0;
@@ -113,6 +115,24 @@
       color: white;
       opacity: 0.5;
       font-weight: bolder;
+    }
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .search-container {
+    .search {
+      width: 60px;
+      height: 60px;
+    }
+    .input {
+      &:focus ~ .search {
+        &::after {
+          width: 12px;
+          height: 12px;
+        }
+        
+      }
     }
   }
 }
