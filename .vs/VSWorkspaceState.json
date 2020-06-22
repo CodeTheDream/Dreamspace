@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\assets",
     "\\src\\components",
+    "\\src\\components\\ListItem1",
     "\\src\\components\\Navigation",
     "\\src\\components\\SignUp",
     "\\src\\containers",
@@ -11,6 +11,6 @@
     "\\src\\ctd-project-components",
     "\\src\\ctd-project-components\\FeatureCard"
   ],
-  "SelectedNode": "\\src\\components\\Navigation\\index.js",
+  "SelectedNode": "\\src\\components\\ListItem1\\index.js",
   "PreviewInSolutionExplorer": false
 }
