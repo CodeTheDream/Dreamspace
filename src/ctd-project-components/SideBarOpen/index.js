@@ -15,7 +15,7 @@ const DrawBottomLine = ({color}) => (
       backgroundColor: color, 
       height: 2, 
       position: 'relative', 
-      top: '27.3em',
+      top: '23.3em',
       marginTop: '16px'
     }}/>
 );
