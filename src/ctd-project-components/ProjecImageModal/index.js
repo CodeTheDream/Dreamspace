@@ -6,8 +6,8 @@ import { faTimes} from '@fortawesome/free-solid-svg-icons';
 library.add(faTimes);
 
 const ProjectImageModal = props => {
-  let getProps = props;
-  console.log('hello props ', getProps);
+  // let getProps = props;
+  // console.log('hello props ', getProps);
 
   // declared a stock image, then called conditional to set up proper images.
   let canvas = 'https://ya-webdesign.com/images250_/placeholder-image-png-1.png';
