@@ -214,7 +214,7 @@ class SignInGoogleBase extends Component {
        <form onSubmit={this.onSubmit}>
              <button type="submit" style={{ fontSize: "20px" }} className="fb"><i class="fa fa-facebook fa-fw" /></button>
 
-       {error && <p>{error.message}</p>}
+       {error && <div className="errormessage">{error.message}</div>}
       </form>
      );
    }
@@ -269,7 +269,7 @@ class SignInGoogleBase extends Component {
            <button type="submit" style={{ fontSize: "20px" }} className="github"><i class="fa fa-github" />{" "}</button>
          
       
-       {error && <p className="format">{error.message}</p>}
+       {error && <div className="errormessage">{error.message}</div>}
       </form>
     );
   }
