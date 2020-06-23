@@ -1,0 +1,137 @@
+.entire-width-of-page {
+  width: 100%;
+  // margin-top: 3.3em;
+  background-color: #414a4c;
+  height: 100%;
+  overflow: hidden;
+}
+
+.modal-image-container {
+  width: 700px;
+  height: 600px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.15), 
+              0 2px 2px rgba(0,0,0,0.15), 
+              0 4px 4px rgba(0,0,0,0.15), 
+              0 8px 8px rgba(0,0,0,0.15);
+  margin: 0 auto;
+  margin-top: 68px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding-top: 15px;
+  text-align: center;
+}
+
+.modal-image {
+  width: 600px;
+  height: 600px;
+  padding-top: 91px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.exit-modal {
+  position: relative;
+  left: 17em;
+}
+
+@media screen and (max-width: 702px) {
+  .modal-image-container {
+    width: 550px;
+  }
+
+  .exit-modal {
+    left: 13em;
+  }
+
+  .modal-image {
+    width: 550px;
+  }
+}
+
+@media screen and (max-width: 556px) {
+  .modal-image-container {
+    width: 500px;
+    height: 570px;
+  }
+
+  .modal-image {
+    width: 500px;
+  }
+
+  .exit-modal {
+    left: 11em;
+  }
+}
+
+@media screen and (max-width: 507px) {
+  .modal-image-container {
+    width: 475px;
+  }
+
+  .modal-image {
+    width: 475px;
+  }
+}
+
+@media screen  and (max-width: 476px) {
+  .modal-image-container {
+    width: 450px;
+  }
+
+  .modal-image {
+    width: 450px;
+  }
+}
+
+@media screen and (max-width: 457px) {
+  .modal-image-container {
+    width: 425px;
+  }
+
+  .modal-image {
+    width: 425px;
+  }
+
+  .exit-modal {
+    left: 9em;
+  }
+}
+
+@media screen and (max-width: 434px) {
+  .modal-image-container {
+    width: 400px;
+  }
+
+  .modal-image {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .modal-image-container {
+    width: 350px
+  }
+
+  .modal-image {
+    width: 350px;
+  }
+
+  .exit-modal {
+    left: 8em;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .modal-image-container {
+    width: 300px;
+  }
+
+  .modal-image {
+    width: 300px;
+  }
+
+  .exit-modal {
+    left: 7em;
+  }
+}
+

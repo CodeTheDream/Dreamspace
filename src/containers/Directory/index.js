@@ -76,15 +76,14 @@ class Directory extends React.Component {
     })
     console.log(results)
     this.setState({ crewDirectory: results })
-    }
+  }
   render() {
-      // let flipIndividually = 
     return(
       <div className = 'directory-container'>
         {this.state.crewDirectory && (<DirectorySearchBar 
           crewDirectory={this.state.crewDirectory}
           selectedStaffMember={this.selectedStaffMember}
-          handleInput={this.handleInput}
+          // handleInput={this.handleInput}
           filterDirectory={this.filterDirectory}
         />
         )}

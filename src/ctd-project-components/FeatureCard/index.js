@@ -6,9 +6,14 @@ import ctd from "../../assets/images/ctd-labs-horiz.png";
 
 const FeatureCard = props => {
   const { project } = props;
+  // console.log('check the cards ', project);
+  // console.log('look at ', props)
+  let images = 'https://ya-webdesign.com/images250_/placeholder-image-png-1.png';
+  if(project.fields.photo) {
+    images = project.fields.photo[0].url;
+  }
 
   return (
-    
     <div className="flip-card">
       <div className="flip-card-inner">
         <div className="flip-card-front">
@@ -20,24 +25,28 @@ const FeatureCard = props => {
         <div className="flip-card-back">
           <div className="flip-card-bun">
             {/* <div className="scroll-tip"> */}
-            <img src={ctd} id="flip-card-logo-title" alt={ctdlogo} />
+            <img className = 'back-img' src={ctd} id="flip-card-logo-title" alt={ctdlogo} />
             {/* <div className="scroll-tip-text">
                 Card is scrollable depending on size of content
               </div> */}
             {/* </div> */}
-            <div className="flip-card-header">{project.fields.Name}</div>
+            <div className="flip-card-header"><strong>{project.fields.Name}</strong></div>
             {project.fields.Current_Team && (
               <>
-                <div className="card-team">Current Team</div>
-                <div className="card-team-info">
-                  {project.fields.Current_Team}
-                </div>
+                <div className = 'card-client'><strong>Client{'(s):\n'}</strong>{project.fields.Client}</div>
+                <div className = 'website'><strong>Website:</strong> {project.fields.Website}</div>
+                <div className = 'desc-container'><div className = 'project-desc'><strong>Description:</strong> {project.fields.Project_Description}</div></div>
+                <div className="card-team"><strong>Current Team:</strong>{'\n'}{project.fields.Current_Team}</div>
+                {/* <ProjectImageModal onClick = {props.handleImageClick} /> */}
+
               </>
             )}
             {project.fields.Status && (
               <>
-                <div className="card-status">Status</div>
-                <div className="card-status-info">{project.fields.Status}</div>
+                <div className="card-status"><strong>Status:</strong>{'\n'}{project.fields.Status}</div>
+                <div className = 'project-image-container'>
+                  <img onClick = {props.handleImageClick} style = {{width: '100px', height: '100px', cursor: 'pointer'}}src = {images} alt = 'Project Images' />
+                </div>
               </>
             )}
             {/* {project.fields.Type && (
@@ -85,8 +94,10 @@ const FeatureCard = props => {
           </div>
         </div>
       </div>
-    </div>
+    </div>    
   );
 };
 
 export default FeatureCard;
+
+

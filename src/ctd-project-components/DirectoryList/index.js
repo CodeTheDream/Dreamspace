@@ -15,7 +15,7 @@ const DirectoryList = (props) => {
     filterList.fields.Directory === "YES, Include my contact info in CTD Team Directory")
     console.log("optInStaffMembers ", optInStaffMembers);
 
-  // Names sorted by first from a-z
+  // Names sorted from a-z
     let sortNames = optInStaffMembers;
     console.log('let\'s see the names', sortNames)
     sortNames.sort((a, b) => (a.fields['First Name'] > b.fields['First Name']) ? 1 : -1);
@@ -34,7 +34,7 @@ const DirectoryList = (props) => {
             }
             
             return(
-             <ReactCardFlip isFlipped = {staff.id === props.isFlipped} flipDirection = {randomFlip}>  
+             <ReactCardFlip key = {staff.id} isFlipped = {staff.id === props.isFlipped} flipDirection = {randomFlip}>  
               <ul
                 className = 'list' onClick = {() => props.selectedStaffMember(staff.id)}>
                 <div className = 'image-contain'>
