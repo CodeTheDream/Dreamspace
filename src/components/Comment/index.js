@@ -57,6 +57,7 @@ class Comment extends React.Component {
         this.state.replys.map(reply => {
         let totallReply = [];
         let replyUserId ="";
+        // console.log('replies', reply)
           if(commentId===reply.parentCommentId){
            // totallReplys1 = totallReplys1 + 1;
             replyUserId=reply.userId
@@ -130,6 +131,7 @@ class Comment extends React.Component {
                     <AddReplys commentId={comment.commentId} />
 
                     <div>
+                      {replyUserId &&
                       <ReplyComment
                         replys={this.state.replys}
                         timeCreated={timeCreated}
@@ -138,9 +140,8 @@ class Comment extends React.Component {
                        // totallReplys={this.state.totallReplys}
                         replysId={replysId}
                         replyUserId={replyUserId}
-                        totallReply={totallReply}
-                        
-                      />
+                        totallReply={totallReply} 
+                      /> }
                     </div>
                   </div>
                 </div>

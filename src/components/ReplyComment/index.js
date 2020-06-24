@@ -33,23 +33,25 @@ class ReplyComment extends React.Component {
     this.setState({ showPopup: false });
   };
 
-  componentDidMount = (authUser) => { 
-  // this.replyCommentUser(authUser)
-  
+  componentDidMount = () => { 
+    this.getReplyUserDetails()
+    console.log('reply user id', this.props.replyUserId)
+
   }
-   replyCommentUser = (e, authUser) => {
+
+
+   getReplyUserDetails = () => {
     //e.preventDefault();
-    console.log("my new url", authUser);
     //const autherId = authUser.uid;
     this.props.firebase
-    .user()
+    .user(this.props.replyUserId)
    .get()
    .then((doc) => {
      console.log("userdata in comment", doc.data())
      let user = doc.data();
      this.setState({
-       // username: user.username,
-       // photoUrl: user.photoUrl
+       username: user.username,
+       photoUrl: user.photoUrl
         });
       })
   };
@@ -61,7 +63,7 @@ class ReplyComment extends React.Component {
   render() {
     const {  timeCreated, commentId, userName ,replysId,replys,replyUserId,totallReply} = this.props;
     
- console.log("replyUserID at reply render",replyUserId)
+//  console.log("replyUserID at reply render",replyUserId)
     return (
       <AuthUserContext.Consumer>
       {(authUser) => (
@@ -94,7 +96,7 @@ class ReplyComment extends React.Component {
                   <div className="replystayle">
                     <p>
                       {" "}
-                      <span /><img src={reply.photoUrl} className="user-profile" />{" "} posted By {this.state.userName}{" "}
+                      <span /><img src={this.state.photoUrl} className="user-profile" />{" "} posted By {this.state.username}{" "}
                       
                       {reply.timeCreated}
                     </p>
