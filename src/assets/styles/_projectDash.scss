@@ -42,16 +42,11 @@
 }
 
 .menu-container {
-  margin-top: 12em;
-  height: 437px;
+  margin-top: .5em;
   overflow-y: auto;
   width: 250px;
-  position: absolute;
-    right: 0;
-    left: 0;
-    top: 0; 
-    bottom: 0;
-  opacity: 07521;
+
+  // opacity: 07521;
 }
 
 .closed-side-bar {
@@ -67,7 +62,7 @@
 
 .sidebar-menu {
   display: grid;
-  grid-template-rows: 118px 55px auto;
+  grid-template-rows: 135px 1fr;
   grid-area: sidebar-menu;
   box-sizing: border-box;
   background-color: #fff;
