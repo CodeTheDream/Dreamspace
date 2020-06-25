@@ -111,9 +111,9 @@ class Comment extends React.Component {
 
                   <div>
                     <AddReplys commentId={comment.commentId} />
-                    {/* {replys &&
+                    {replys &&
                       replys.map((reply) =>
-                        commentId === reply.parentCommentId ? ( */}
+                        commentId === reply.parentCommentId ? ( 
                         
                           <div>
                             {replyUserId && (
@@ -129,8 +129,8 @@ class Comment extends React.Component {
                               />
                             )}
                           </div>
-                            {/* ) : null
-                      )}   */}
+                            ) : null
+                      )}  
                   </div>
                 </div>
               </div>
