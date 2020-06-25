@@ -1,5 +1,5 @@
 import React from "react";
-import SideBarCloseButton from '../SideBarCloseButton';
+// import SideBarCloseButton from '../SideBarCloseButton';
 
 
 const SearchBar = props => {
