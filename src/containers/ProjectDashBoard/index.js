@@ -5,7 +5,10 @@ import {
   SearchBar,
   SideBarOpen,
 } from "../../ctd-project-components";
-//import SideBarButton from '../../ctd-project-components/SideBarButton';
+import SideBarClose from "../../ctd-project-components/SideBarClose";
+
+
+
 class ProjectDashBoard extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +18,7 @@ class ProjectDashBoard extends React.Component {
       // selectedProject: {}
       closeSideBar: false,
     };
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
     this.getAirTable();
@@ -23,7 +26,9 @@ class ProjectDashBoard extends React.Component {
 
   handleClick = () => {
     console.log('click');
-    this.setState(prevState => ({closeSideBar: !prevState.closeSideBar}));
+    this.setState(prevState => {
+      return{closeSideBar: !prevState.closeSideBar}
+    })
   }
 
   // getPersonnelDirectory = (id) => {
@@ -113,7 +118,7 @@ class ProjectDashBoard extends React.Component {
             </div> */}
   
             {this.state.selectedProject ? (<FeatureCard project={this.state.selectedProject}/>) : null}          
-            {this.state.projectData && (
+            {/* {this.state.projectData && (
               <SideBarOpen
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
@@ -130,7 +135,9 @@ class ProjectDashBoard extends React.Component {
                 />
               </SideBarOpen>
           
-            )}
+            )} */}
+
+            <SideBarClose/>
             
             {/* {this.state.crewDirectory && (
               <StaffDirectory 

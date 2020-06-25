@@ -1,11 +1,7 @@
 import React from 'react';
-import SideBarOpen from '../'
+import SideBarButton from '../SideBarButton';
 
 const SideBarClose = props => {
-  return(
-    <div className = 'closed-side-bar'>
-      <SideBarOpen/>
-    </div>
-  )
+  return(<div style = {{height: '100%', backgroundColor: '#fff',}}className = 'closed-side-bar'><SideBarButton/></div>)
 }
 export default SideBarClose;
