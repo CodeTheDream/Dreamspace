@@ -55,6 +55,22 @@
         margin: 0 auto;
     }
 }
+@media screen and (min-width: 120px) {
+    .view-container-signin {
+        // padding-top: 5em;
+        max-width: $maxWidth;
+        margin: 0 20em;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .view-container-signin {
+        // padding-top: 5em;
+        max-width: $maxWidth;
+        margin: 0 auto;
+    }
+}
+
 
 @keyframes App-logo-spin {
     from {

@@ -12,7 +12,7 @@ const SignInPage = () => (
     <div className="wrapper">
        {/* <p style={{fontSize:"28px"}}>SignIn</p>*/}
      <div className="signinpage">
-    <h2 className="signin">SignIn</h2>
+    <h3 className="signin">SignIn</h3>
 
       
 <div className="outer">
@@ -224,8 +224,22 @@ class SignInGoogleBase extends Component {
   constructor(props) {
      super(props);
 
-    this.state = { error: null };
+    this.state = { error: null,
+      showPopup:false
+     };
   }
+ /* togglePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  };*/
+
+  /*closePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup
+         });
+    this.myFormRef.reset();
+  };*/
 
   onSubmit = event => {
     this.props.firebase
@@ -265,12 +279,18 @@ class SignInGoogleBase extends Component {
     const { error } = this.state;
 
    return (
-       <form onSubmit={this.onSubmit}>
-           <button type="submit" style={{ fontSize: "20px" }} className="github"><i class="fa fa-github" />{" "}</button>
-         
-      
-       {error && <div className="errormessage">{error.message}</div>}
+   
+       <form onSubmit={this.onSubmit}  ref={(el) => (this.myFormRef = el)}>
+         <div>  <button type="submit" style={{ fontSize: "20px" }} className="github"  >
+             <i class="fa fa-github" />{" "}</button></div>
+   <div className="message">
+      {error && <div className="errormessage">
+        {error.message} </div>}
+  </div>
+  
+     
       </form>
+     
     );
   }
  }

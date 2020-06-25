@@ -79,7 +79,7 @@
 	padding: 1em;
 	//padding: 10px 20px;
     background: $white;
-    width:60%;
+    width:80%;
 	margin: 10px auto  ;
 	padding: 20px;
 	background: $white;
@@ -150,14 +150,16 @@
 }
 .signin{
 line-height: 0.1em;
-margin-top: 0.1em;
+margin-top: 0.3em;
+margin-bottom: 2rem;
 }
+
 .signinpage{
 	background-image:  url("https://mcdn.wallpapersafari.com/medium/55/22/P5ABoL.jpg");
 	//background-position: center;
 	
    margin: 0 auto;
-   padding: 0.5em;
+   //padding: 0.5em;
     background-repeat: no-repeat;
 	background-size: cover;
 	//margin-left: 5.5em;
@@ -166,19 +168,24 @@ margin-top: 0.1em;
 .format{
 	margin-top:2em;
 }
+/*.message{
+text-align: center;
+    //line-height: 1.5em;
+    margin-left: 1em;
+}*/
 .errormessage {
-    width:250px;
-    height: 120px;
-    background-color: ghostwhite; 
-    margin-top: -110px;
+	width: 300px;
+    height: 69px;
+    background-color: ghostwhite;
+    margin-top:-80px;
     position: relative;
     left: 50%;
     right: 50%;
-    top: 75%;
     padding: 10px;
     border-radius: 8px;
-    display: block;
+    //display: flex;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
     
-    transform: translate(-50%, -50%); 
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
  }
+
