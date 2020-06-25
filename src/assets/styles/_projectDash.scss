@@ -28,10 +28,13 @@
   justify-content: center;
 }
 
-.menu {
+.menu  {
+  // margin: 0;
+  // line-height: 0;
   text-align: left;
   margin-left: 20px;
   font-size: 15px;
+  // width: 36%;
 }
 
 .menu:hover {
@@ -39,15 +42,16 @@
 }
 
 .menu-container {
-  height: 455px;
+  margin-top: 11em;
+  height: 533px;
   overflow-y: auto;
-  // margin-top: 10px;
+  width: 250px;
   position: absolute;
     right: 0;
     left: 0;
     top: 0; 
     bottom: 0;
-    margin-top: 10em;
+  opacity: 07521;
 }
 
 .closed-side-bar {
@@ -82,6 +86,11 @@
   padding: 5px;
 }
 
+.top-line-container {
+  margin: 0;
+  padding: 0;
+}
+
 .footer {
   display: grid;
   grid-template-columns: auto 200px;
@@ -91,11 +100,8 @@
   margin-top: 8px;
 }
 
-.sidebar-menu li {
-  padding: 5px;
-}
-
 .footer {
+  z-index: 1;
   display: grid;
   grid-template-columns: auto 200px;
 }
@@ -109,7 +115,7 @@
   font-weight: 200;
 }
 
-.times, .bars {
+.times, .column {
   color: #3fb0ac;
   font-size: 30px;
   cursor: pointer;
@@ -134,8 +140,8 @@
   }
 
   .flip-card-inner {
-    width: 500px;
-    height: 300px;
+    width: 600px;
+    height: 450px;
   }
 
   .flip-card-front {
@@ -171,6 +177,11 @@
     justify-content: center;
   }
 
+  .flip-card-inner {
+    width: 500px;
+    height: 450px;
+  }
+
   .card-content {
     padding-top: 30px;
   }
@@ -204,7 +215,7 @@
 
   .flip-card-inner {
     width: 450px;
-    height: 250px;
+    height: 450px;
     margin-right: 14px;
   }
 
@@ -229,19 +240,6 @@
 }
 
 @media screen and (max-width: 721px) {
-  // .dashboard-content {
-  //   width: 100%;
-  //   display: flex;
-  //   flex-direction: column-reverse;
-  // }
-
-  // .btn-home {
-  //   margin-top: 12px;
-  //   width: 50%;
-  //   position: relative;
-  //   left: 24vw;
-  // }
-
   .open-side-bar {
     position: relative;
     left: 222px
@@ -252,8 +250,8 @@
   }
 
   .flip-card-inner {
-    height: 422px;
-    width: 400px;
+    height: 500px;
+    width: 450px;
   }
 
   .card-content {
@@ -261,35 +259,13 @@
   }
 
   .flip-card-bun {
-    padding-top: 90px;
-  }
-
-  .search-container {
-    padding: 0;
-    margin-top: -13px;
+    padding-top: 0;
   }
 
   .closed-side-bar {
     position: fixed;
     right: 0;
     top: 6.75%;
-  }
-  
-  .sidebar-menu {
-    width: 250px;
-    height: auto;
-  }
-  
-  .menu-container {
-    display: flex;
-    flex-direction: column;
-    height: 510px;
-  }
-    
-  .menu {
-    margin: 0;
-    font-size :15px;
-    margin-left: 20px;
   }
   
   .side-btn-container {
@@ -299,80 +275,16 @@
   }
 }
 
-@media screen and (max-width: 687px) {
-  .sidebar-menu {
-    height: auto;
-    width: 250px;
-  }
-
-  .menu-container {
-    // margin-top: -30px;
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: 0; 
-    bottom: 0;
-    margin-top: 7.5em;
-  }
-}
-
-@media screen and (max-width: 638px) {
-  .sidebar-menu {
-    height: auto;
-  }
-
-  .menu-container {
-    // margin-top: -30px;
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: 0; 
-    bottom: 0;
-    margin-top: 7.5em;
-  }
-}
-
 @media screen and (max-width: 570px) {
-  .dashboard-content {
-    width: 100%;
-    display: flex;
-    flex-direction: column-reverse;
-  }
-
-  .menu-container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    height: 175px;
-    overflow: auto;
-    top: 70px;
-  }
-
   .sidebar-menu {
     position: relative;
-    height: 250px;
-    width: 100%;
-    box-shadow: 0 10px 10px -7px #000;
-    position: fixed;
-    top: 57px;
-  }
-
-  .btn-home {
-    position: fixed;
-    // margin-top: 6px;
-    // height: 25px;
-    width: 50%;
-    // top: 0;
-    // bottom: 0;
-    // right: 0;
-    // left: 0;
   }
 
   .flip-card {
+    position: absolute;
     margin: 0 auto;
-    height: 86%;
+    height: 93%;
+    width: 100%;
   }
 
   .footer {
@@ -383,23 +295,27 @@
     padding-bottom: 10px;
   }
 
-  .menu {
-    padding: 0;
-    margin: 0;
-    text-align: center;
-  }
-
   .today {
     display: grid;
     grid-template-columns: auto auto;
   }
 }
 
+@media screen and (max-width: 513px) {
+  .sidebar-menu {
+    position: relative;
+  }
+  
+  .flip-card {
+    position: absolute;
+    z-index: -2;
+  }
+}
+
 
 @media screen and (max-width: 476px) {
+
   .flip-card {
-    width: 400px;
-    height: 600px;
     margin: 0 auto;
   }
 
@@ -408,36 +324,9 @@
     height: 422px;
     margin: 0;
   }
-
-  .menu-container {
-    display: grid;
-    grid-template-columns: 50% 50%;  
-    overflow: auto;
-  }
-
-  // .sidebar-menu {
-  // height: 615px;
-  // padding-bottom: 8px;
-  // box-shadow: 0 10px 10px -7px #000;
-
-  // }
-
-  .menu {
-    font-size: 15px;
-  }
-}
-
-@media screen and (max-width: 439px) {
-  // .sidebar-menu {
-  //   height: 615px;
-  // }
 }
 
 @media screen and (max-width: 420px) {
-  .btn-home {
-    position: relative;
-    left: 19vw;
-  }
   .card-content {
     padding-top: 136px;
   }
@@ -449,100 +338,171 @@
    width: 373px;
    height: 427px;
   }
-
-  // .sidebar-menu {
-  //   height: 615px;
-  // }
-
 }
 
-@media screen and (max-width: 394px) {
-  .btn-home {
+@media screen and (max-width: 414px) {
+  .top-line-container {
+    display: none;
+  }
+
+  .sidebar-menu, .search-container {
+    margin: 0;
+    padding: 0;
+  }
+
+  .search-container {
     position: relative;
-    left: 20vw;
+    left: 2.85em;
+    top: 0;
+  }
+
+  .side-btn-container {
+    margin: 0;
+    margin: 0;
+  }
+
+  .sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 3.32em;
+    height: 15em;
+  }
+
+  .dashboard-content {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flip-card {
+    margin-top: 14em;
+    height: 65%;
+    width: 100%;
+  }
+
+  .flip-card-inner {
+    width: 389px;
+    height: 275px;
+  }
+
+  .card-content {
+   padding: 0;
+  }
+
+  .menu-container {
+    margin: 0;
+    height: auto;
+    width: 100%;
+    margin-top: 5em;
+    margin-bottom: 1em;
   }
 
   .menu {
-    margin:0;
-    // margin: 2.5px;
+    text-align: center;
   }
 
-  .flip-card {
-    width: 90%;
-    height:100%;
-    margin-left: 20px;
-  }
 
-  .sidebar-menu {
-    height: 275px;
-  }
-  
-  .menu-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    top: 0;
-    margin-top: 4.5em;
-    // margin-top: -45px;
-  }
-}
-
-@media screen and (max-width: 382px) {
   .btn-home {
-    position: relative;
-    left: 17vw;
-  }
-}
-
-@media screen and (max-width: 357px) {
-  .btn-home {
-    position: relative;
-    left: 15.5vw;
-  }
-}
-
-@media screen and (max-width: 316px) {
-  .btn-home {
-    position: relative;
-    left: 12vw;
-  }
-
-  .flip-card {
-    margin: 0;
-  }
-
-  .menu-container {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin:0;
+    // justify-content: center;
+  }
+}
+
+@media screen and (max-width: 411px) {
+  .top-line-container {
+    display: none;
+  }
+
+  .sidebar-menu, .search-container {
+    margin: 0;
     padding: 0;
-    margin-top: -45px;
+  }
+
+  .search-container {
+    position: relative;
+    left: 2.85em;
+    top: 0;
+  }
+
+  .side-btn-container {
+    margin: 0;
+    margin: 0;
   }
 
   .sidebar-menu {
-    height: 600px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 3.32em;
+    height: 15em;
+  }
+
+  .dashboard-content {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flip-card {
+    margin-top: 14em;
+    height: 71%;
+    width: 100%;
+  }
+
+  .flip-card-inner {
+    width: 389px;
+    height: 377px;
+  }
+
+  .menu-container {
+    margin: 0;
+    height: auto;
+    width: 100%;
+    margin-top: 5em;
+    margin-bottom: 1em;
+  }
+
+  .menu {
+    text-align: center;
+  }
+
+
+  .btn-home {
+    width: 100%;
+    // justify-content: center;
   }
 }
 
-@media screen and (max-width: 286px) {
-  .btn-home {
+@media screen and (max-width: 375px) {
+  .search-container {
     position: relative;
-    left: 8vw;
+    left: 2.28em;
+  }
+
+  .flip-card {
+    width: 100%;
+    height:63%;
+   
+  }
+
+  .flip-card-inner {
+    width: 350px;
+    height: 225px;
+  }
+
+  .card-content {
+    padding:25px;
+    
   }
 }
 
-@media screen and (max-width: 283px) {
-  .btn-home {
-    position: relative;
-    left: 6.5vw;
-  }
-}
 
 
 
