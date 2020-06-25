@@ -18,101 +18,80 @@ class Comment extends React.Component {
       commentId: "",
       replys: [],
       timeCreated: "",
-     // totallReplys: "",
       sortType: "asc",
       replysID: "",
       username: "",
-      photoUrl:"",
-      totallReply:[],
-      replyUserId:"",
-
+      photoUrl: "",
+      replyUserId: "",
+      reply:""
     };
   }
 
   componentDidMount = () => {
     const commentId = this.props.commentId;
-    //console.log("this is commentId", commentId);
     this.unsubscribe = this.props.firebase
       .comments(commentId)
-      //.where("commentId", "==", commentId)
       .onSnapshot((snapshot) => {
         const Replys = [];
         let replysId = "";
         snapshot.forEach((doc) => {
           const data = doc.data();
-
-          //console.log("doc data",data)
           replysId = doc.id;
           data.replysId = replysId;
-
           Replys.push(data);
         });
-        //console.log("this is my replysID using spesific commentId", replysId);
-        this.setState({
-          replys: Replys,
-          replysId: replysId,
-        },//()=>console.log("replys",Replys)
+        this.setState(
+          {
+            replys: Replys,
+            replysId: replysId,
+          } 
         );
-     
-        this.state.replys.map(reply => {
-        let totallReply = [];
-        let replyUserId ="";
-          if(commentId===reply.parentCommentId){
-           // totallReplys1 = totallReplys1 + 1;
-            replyUserId=reply.userId
-          // console.log("replyUserId",replyUserId)
-            totallReply.push(reply)
-            this.setState({ 
-              totallReply: totallReply,
-              replyUserId:replyUserId
-             }
-             )
-            
-             }
-        })
-      
+
+        this.state.replys.map((reply) => {
+          let replyUserId = "";
+          if (commentId === reply.parentCommentId) {
+            replyUserId = reply.userId;
+            this.setState({
+              replyUserId: replyUserId,
+              reply:reply
+            });
+          }
+        });
       });
-        
 
     let { comment } = this.props;
     let autherId = comment.userId;
-   // console.log("the author of the commnet",comment.userId)
+    // console.log("the author of the commnet",comment.userId)
     this.props.firebase
       .user(autherId)
       .get()
       .then((doc) => {
-         //console.log("userdata in comment", doc.data())
+        //console.log("userdata in comment", doc.data())
         let user = doc.data();
         this.setState({
-           username: user.username,
-           photoUrl: user.photoUrl
-           });
+          username: user.username,
+          photoUrl: user.photoUrl,
+        });
       });
- 
-    
-
-  }
-
+  };
 
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
 
   render() {
     const { comment, limited, timeCreated, commentId, userName } = this.props;
-    const { showAll, replys, sortType, replysId ,replyUserId,totallReply} = this.state;
+    const { showAll, replys, sortType, replysId, replyUserId ,reply} = this.state;
     let commentContent = comment.comment;
-
-  
-
+//console.log("reply from state",reply)
     // if(replys){
     //   replys.sort((a,b) =>{
     //    const  isReversed = (sortType === 'asc') ? 1 :-1;
     //    return  isReversed * a.timeCreated.localeCompare(b.timeCreated)
-    //  })
-    // console.log("sortedComment",sortedcomments)
+    //  })}
+    //  console.log("Total",totallReply.length)
     //      }
     if (comment.comment && comment.comment.length <= limited) {
-     //  console.log("IF", comment.comment, comment.comment.length);
+      //  console.log("IF", comment.comment, comment.comment.length);
       return (
         <AuthUserContext.Consumer>
           {(authUser) => (
@@ -120,7 +99,11 @@ class Comment extends React.Component {
               <div>
                 <div className="commentDisplay">
                   <p className="styleDisplay">
-                  <span /><img src={this.state.photoUrl} className="user-profile" />{" "}
+                    <span />
+                    <img
+                      src={this.state.photoUrl} alt=""
+                      className="user-profile"
+                    />{" "}
                     {this.state.username}
                     {comment.timeCreated} <br />
                     {comment.comment}{" "}
@@ -128,20 +111,26 @@ class Comment extends React.Component {
 
                   <div>
                     <AddReplys commentId={comment.commentId} />
-
-                    <div>
-                      <ReplyComment
-                        replys={this.state.replys}
-                        timeCreated={timeCreated}
-                        commentId={commentId}
-                        comment={comment}
-                       // totallReplys={this.state.totallReplys}
-                        replysId={replysId}
-                        replyUserId={replyUserId}
-                        totallReply={totallReply}
+                    {/* {replys &&
+                      replys.map((reply) =>
+                        commentId === reply.parentCommentId ? ( */}
                         
-                      />
-                    </div>
+                          <div>
+                            {replyUserId && (
+                              <ReplyComment
+                                reply={reply}
+                                replys={this.state.replys}
+                                timeCreated={timeCreated}
+                                commentId={commentId}
+                                comment={comment}
+                                replysId={replysId}
+                                replyUserId={replyUserId}
+                                limited={limited}
+                              />
+                            )}
+                          </div>
+                            {/* ) : null
+                      )}   */}
                   </div>
                 </div>
               </div>
@@ -150,13 +139,17 @@ class Comment extends React.Component {
         </AuthUserContext.Consumer>
       );
     } else {
-       // console.log("ELSE", comment.comment, comment.comment.length);
+      // console.log("ELSE", comment.comment, comment.comment.length);
 
       if (showAll) {
         return (
-          <div className="card-comment">
+          // <div className="card-comment">
             <div className="commentDisplay">
               <p className="styleDisplay">
+                <span>
+                  <img src={this.state.photoUrl} className="user-profile" />{" "}
+                  {this.state.username}
+                </span>
                 {comment.timeCreated} <br />
                 {comment.comment}
                 <a onClick={this.showLess} style={{ color: "darkblue" }}>
@@ -164,7 +157,7 @@ class Comment extends React.Component {
                 </a>
               </p>
             </div>
-          </div>
+          // </div>
         );
       }
     }
@@ -173,9 +166,14 @@ class Comment extends React.Component {
 
     if (toShow) {
       return (
-        <div className="card-comment">
+        <div //className="card-comment"
+        >
           <div className="commentDisplay ">
             <p className="styleDisplay">
+              <span>
+                <img src={this.state.photoUrl} alt="" className="user-profile" />{" "}
+                {this.state.username}
+              </span>
               {comment.timeCreated} <br />
               {toShow}
               <a onClick={this.showMore} style={{ color: "darkblue" }}>

@@ -46,8 +46,7 @@ class AddReplys extends React.Component {
         console.log('DOC REF', docRef.id)
         this.props.firebase.comment(commentId).update({
           childCommentId: docRef.id
-        //console.log(" this is the replysID ", docRef.id)
-        //console.log(" this is the replysID ", docRef.id)
+      
       });
 
     this.setState({
@@ -94,9 +93,9 @@ class AddReplys extends React.Component {
               <button className="submit-btn" type="submit">
                 Reply
               </button>
-            { /* <button className="submit-btn" onClick={this.cancle}>
+             <button className="submit-btn" onClick={this.cancle}>
                 cancle
-        </button>*/}
+        </button>
             </div>
           </form>
         ) : null}

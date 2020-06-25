@@ -299,7 +299,7 @@ class IndividualView extends React.Component {
     this.state = {
       comments: null,
       limit: "",
-      limited: 450,
+      limited: 350,
       TotallComment: "",
       totalcount: "",
       isOldestFirst: true,
@@ -481,9 +481,9 @@ class IndividualView extends React.Component {
           <div>
             {this.state.comments &&
               this.state.comments.map((comment, index) => {
-                {
+                
                   /* console.log(comment) */
-                }
+                
                 return (
                   <div className="card-comment">
                     <Comment
