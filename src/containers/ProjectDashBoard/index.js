@@ -12,16 +12,25 @@ class ProjectDashBoard extends React.Component {
     this.state = {
       projectData: [],
       searchName: "",
-      openSideBar: false,
+      // selectedProject: {}
+      closeSideBar: false,
     };
+    this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
     this.getAirTable();
   }
+
   handleClick = () => {
     console.log('click');
-    this.setState(prevState => ({openSideBar: !prevState.openSideBar}),() => console.log(this.state.openSideBar));
+    this.setState(prevState => ({closeSideBar: !prevState.closeSideBar}));
   }
+
+  // getPersonnelDirectory = (id) => {
+  //   const personnel = this.state.crewDirectory;
+  //   console.log("id", id);
+  // }
+
   selectProject = id => {
     const allProjects = this.state.projectData;
     console.log("see", id);
@@ -82,9 +91,11 @@ class ProjectDashBoard extends React.Component {
       //     this.state.searchName.toUpperCase()
       //   );
       // });
+  
       return (
         <div className="view-container dashboard">
           <div className="dashboard-content">
+         
             {/* <div>
               {this.state.projectData && (
                 <Header
@@ -100,30 +111,9 @@ class ProjectDashBoard extends React.Component {
                 />
               )}
             </div> */}
-            {this.state.openSideBar ? (<>{this.state.projectData && (
-              <SideBarOpen
-                projectData={this.state.projectData}
-                selectProject={this.selectProject}
-                handleClick={this.handleClick}
-                filterProjectList={this.filterProjectList}
-                // slide={this.state.openSideBar}
-                // filterProjectList={this.filterProjectList}
-               >
-                <SearchBar
-                  // projectData={this.state.projectData}
-                  // selectProject={this.selectProject}
-                  handleInput={this.handleInput}
-                  handleClick={this.handleClick}
-                  openSideBar={this.state.openSideBar}
-                />
-              </SideBarOpen>
-            )} </>) : (<div 
-                          className = 'closed-side-bar'>
-                          {/* <SideBarButton handleClick = {this.handleClick} title = {'Open'}/> */}
-                        </div>)}
-
-
-            {/* {this.state.projectData && (
+  
+            {this.state.selectedProject ? (<FeatureCard project={this.state.selectedProject}/>) : null}          
+            {this.state.projectData && (
               <SideBarOpen
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
@@ -135,11 +125,13 @@ class ProjectDashBoard extends React.Component {
                   projectData={this.state.projectData}
                   selectProject={this.selectProject}
                   // handleInput={this.handleInput}
-                  handleCloseClick={this.handleCloseClick}
-                  openSideBar={this.state.openSideBar}
+                  handleClick={this.handleClick}
+                  closeSideBar={this.state.closeSideBar}
                 />
               </SideBarOpen>
-            )}  */}
+          
+            )}
+            
             {/* {this.state.crewDirectory && (
               <StaffDirectory 
                 crewDirectory = {this.state.crewDirectory}

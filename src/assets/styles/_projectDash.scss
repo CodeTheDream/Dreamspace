@@ -22,6 +22,12 @@
   grid-area: header;
 }
 
+.search-container {
+  width: 250px;
+  display: flex;
+  justify-content: center;
+}
+
 .sidebar-menu {
   display: grid;
   grid-template-rows: 124px auto;
@@ -29,14 +35,24 @@
   box-sizing: border-box;
   background-color: #fff;
   color: #f15c39;
-
+  box-shadow: 8px 0 10px -6px black;
   width: 100%;
-
 }
 
 .sidebar-menu li {
   padding: 5px;
 }
+
+.closed-side-bar {
+  position: absolute;
+  left: 5px;
+  top: 0px;
+}
+
+// .side-btn-container {
+//   display: none;
+// }
+
 
 .footer {
   display: grid;
@@ -65,10 +81,103 @@
   font-weight: 200;
 }
 
+
 @media screen and (max-width: 979px) {
-  .sidebar-menu {
-    display: none;
+  .dashboard-content {
+    display: grid;
+    grid-template-columns: 227px 65% 15%;
+  }
+  
+  // .search {
+  //   padding-left: 45px;
+  // }
+
+  .search-container {
+    width: 227px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .flip-card-inner {
+    width: 500px;
+    height: 300px;
+  }
+
+  .flip-card-front {
+    padding-top: 20px;
+  }
+
+  .flip-card-back {
+    padding: 0;
+  }
+
+  .back-img {
+    padding-top: 30px;
+  }
+
+  .flip-card-header {
+    font-size: 35px;
   }
 }
 
+@media screen and (max-width: 862px) {
+  .dashboard-content {
+    display: grid;
+  }
+  // .closed-side-bar {
+  //   position: absolute;
+  //   left: 26px;
+  //   top: 0px;
+  // }
+}
+
+@media screen and (max-width: 827px) {
+  .dashboard-content {
+    display: grid;
+    grid-template-columns: 20% 70%;
+  }
+
+  .search-container {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
+// @media screen and (max-width: 722px) {
+//   .dashboard-content {
+//     display: grid;
+//     grid-template-columns: 25% 75%;
+//   }
+
+//   .search-container {
+//     width: 25%;
+//     display: flex;
+//     justify-content: center;
+//   }
+
+//   .flip-card-inner {
+//     width: 450px;
+//     height: 250px;
+//   }
+
+//   .flip-card-front {
+//     font-size: 25px;
+//     padding-top: 7.5px;
+//   }
+
+//   .back-img {
+//     padding-top: 23.5px;
+//   }
+
+//   .project-name-on-card {
+//     padding-top: 12.5px;
+//     font-size: 45px;
+//   }
+
+//   .flip-card-header {
+//     font-size: 40px;
+//   }
+// }
 

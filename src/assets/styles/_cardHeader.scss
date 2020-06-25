@@ -3,17 +3,44 @@
 }
 
 .back-img {
-  padding-top: 80px;
+  padding-top: 47px;
 }
 
 .flip-card-header {
-  font-size: 60px;
-  padding-top: 25px;
+  font-size: 50px;
+  padding-top: 15px;
+  
 }
 
 .project-name-on-card {
-  padding-top: 32px;
+  padding-top: 25px;
 }
+
+.card-team {
+  font-size: 30px;
+  padding-top: 10px;
+}
+
+.card-team-info {
+  font-size: 20px;
+  padding-top: 5px;
+}
+
+.card-status {
+  font-size: 30px;
+  padding-top: 15px;
+  
+}
+
+.card-status-info {
+  font-size: 20px;
+  padding-top: 5px;
+}
+.flip-card-header, .project-name-on-card, .card-team, .card-team-info, .card-status, .card-status-info {
+  color: rgba(0,0,0,0.4);
+  text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
+}
+
 
 
 // .card {

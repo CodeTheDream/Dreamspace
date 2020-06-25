@@ -4,14 +4,14 @@ import SearchBar from '../SearchBar';
 // import '../../../src/'
 
 const SideBarOpen = props => {
-  console.log(props);
   let sideBarMenu = props.projectData;
-  let probableList = sideBarMenu.filter(probable => probable.fields.Status !== 'Probable' && probable.fields.Status !== 'Paused');
-  probableList.sort((a, b) => (a.fields.Name > b.fields.Name) ? 1 : -1);
-  console.log(probableList)
+  let probableList = sideBarMenu.filter(filterProjectList =>
+    filterProjectList.fields.Status !== 'Probable'
+    );
 
     let filteredList = probableList.filter(project => 
-      project.fields.Status !== 'Complete')
+      project.fields.Status !== 'Paused')
+    
   console.log('sideBarMenu ', sideBarMenu)
   console.log('probableList ', probableList)
   console.log('filteredList ', filteredList)
@@ -20,24 +20,24 @@ const SideBarOpen = props => {
         <div className="btn-home">
           {/* <OpenClose /> */}       {/* I don't need at this time or if at all */}
           <div className = 'search-container'>
-                  <SearchBar
-                    projectData={props.projectData}
-                    selectProject={props.selectProject}
-                    filterProjectList={props.filterProjectList}
-                    // handleInput={props.handleInput}
-                  />
-              </div>
+                <SearchBar
+                  projectData={props.projectData}
+                  selectProject={props.selectProject}
+                  handleInput={props.handleInput}
+                  handleClick={props.handleClick}
+                />
+            </div>
               
             
         </div>
         <div className = 'menu-container'>
         {filteredList.map(sideBar => (
           <li
+            // style={{backgroundColor: '#fae596'}}
             key={sideBar.fields.Name}
             onClick={() => props.selectProject(sideBar.id)}
-            className="menu-container"
-          >
-            {sideBar.fields.Name.toUpperCase()}
+            className="menu">
+            {sideBar.fields.Name}
           </li>
         ))}
         </div>
