@@ -6,21 +6,16 @@ import {
   SideBarOpen,
 } from "../../ctd-project-components";
 import SideBarButton from '../../ctd-project-components/SideBarButton';
-// import SideBarOpenButton from '../../ctd-project-components/SideBarButton'
-
-
-
 class ProjectDashBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       projectData: [],
       searchName: "",
-      // selectedProject: {}
       openSideBar: false,
     };
-
   }
+
   componentDidMount() {
     this.getAirTable();
   }
@@ -29,14 +24,6 @@ class ProjectDashBoard extends React.Component {
     console.log('click');
     this.setState(prevState => ({openSideBar: !prevState.openSideBar}),() => console.log(this.state.openSideBar));
   }
-  // handleCloseClick = () => {
-  //   this.setState({openSideBar: false})
-  // }
-
-  // getPersonnelDirectory = (id) => {
-  //   const personnel = this.state.crewDirectory;
-  //   console.log("id", id);
-  // }
 
   selectProject = id => {
     const allProjects = this.state.projectData;
@@ -47,6 +34,7 @@ class ProjectDashBoard extends React.Component {
       selectedProject
     });
   };
+  
   // handleInput = e => {
   //   console.log(e.target.value);
   //   this.setState({
@@ -76,20 +64,19 @@ class ProjectDashBoard extends React.Component {
       let projects = this.state.allProjects;
       console.log('project ', projects);
       const formattedSearch = search.toLowerCase();
-      // console.log(projects);
-      let getResults = projects.filter(result => {
-        console.log('result', result) 
-        if(!result.fields.Name) {
-          return false;
-        }
-        else {
-          let grabResults = result.fields.Name.toLowerCase();
-          return grabResults.indexOf(formattedSearch) > -1;
-        }
+      console.log(projects);
+
+      const getResults = projects.filter(result => {
+        console.log(result)
+        let grabResults = (result.fields.Name)
+        .replace(/[^a-zA-Z0-9]/g, "")
+        .toLowerCase();
+        return grabResults.indexOf(formattedSearch) > -1;
       })
       console.log('ccccc ', getResults);
       this.setState({projectData: getResults});
-}
+    }
+
     render() {
       // Filtering out the side bar Menu
       // let filterProject = this.state.projectData.filter(sideBarFilter => {
@@ -125,14 +112,15 @@ class ProjectDashBoard extends React.Component {
               <SideBarOpen
                 projectData={this.state.projectData}
                 selectProject={this.selectProject}
-                // filterProject={filterProject}
-                handleInput={this.handleInput}
                 handleClick={this.handleClick}
+                filterProjectList={this.filterProjectList}
+                // slide={this.state.openSideBar}
+                // filterProjectList={this.filterProjectList}
                >
                 <SearchBar
-                  projectData={this.state.projectData}
-                  selectProject={this.selectProject}
-                  // handleInput={this.handleInput}
+                  // projectData={this.state.projectData}
+                  // selectProject={this.selectProject}
+                  handleInput={this.handleInput}
                   handleClick={this.handleClick}
                   openSideBar={this.state.openSideBar}
                 />
@@ -173,3 +161,9 @@ class ProjectDashBoard extends React.Component {
     }
   }
   export default ProjectDashBoard;
+                
+                  
+                  
+                  
+                 
+                  
