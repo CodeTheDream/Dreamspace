@@ -1,15 +1,16 @@
 import React from 'react'
 
 const DirectorySearchBar = (props) => {
-  console.log('bar ', props)
+  let searchDirectory = props.crewDirectory;
+  console.log('searchDirectory ', searchDirectory)
   return(
-    <div className = 'search-contain'>
-      <input 
-        className = 'style-input'
-        onChange = {(e) => props.filterDirectory(e.target.value)} 
-        type = "text" 
-        placeholder = "Search..."
-        /> 
+    <div>
+      <form>
+        <label>
+          <input type="text" name="name" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
     </div>
   )
 }
