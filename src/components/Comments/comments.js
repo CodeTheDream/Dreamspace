@@ -39,24 +39,8 @@
 //     });
 //   };
 
-<<<<<<< HEAD
 //   handleSubmit = (e, authUser) => {
 //     e.preventDefault();
-=======
-  getSingleComment = (id) => {
-    this.props.firebase.comment(id)
-    .onSnapshot(snapshot => {
-      console.log('getting comment', snapshot.id)
-      
-
-      // console.log("Articles loaded here yo!", articles);
-      
-    });
-  }
-
-  handleSubmit = (e, authUser) => {
-    e.preventDefault();
->>>>>>> new update
 
 //     this.props.onCreate(this.state);
 //   // this. props.refreshFunction(this.state)

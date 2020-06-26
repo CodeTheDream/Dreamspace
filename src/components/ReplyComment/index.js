@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import {
@@ -13,11 +13,20 @@ class ReplyComment extends React.Component {
     super(props);
     this.state = {
       timeCreated: "",
+<<<<<<< HEAD
       showAll: false,
       showPopup: false,
       username: "",
      // reply: "",
       photoUrl: "",
+=======
+      //replys: [],
+      //limit: 5,
+      showAll: false,
+      showPopup: false,
+      username:"",
+      reply:""
+>>>>>>>  new commit for  rebuilding of the comment system
     };
   }
 
@@ -34,6 +43,7 @@ class ReplyComment extends React.Component {
    // console.log("reply user id", this.props.replyUserId);
   };
 
+<<<<<<< HEAD
   getReplyUserDetails = () => {
     //e.preventDefault();
     //const autherId = authUser.uid;
@@ -49,11 +59,62 @@ class ReplyComment extends React.Component {
         });
       });
   };
+=======
+  componentDidMount = () => {
+   
+const {replysId} = this.props
+console.log("replyId at replycomment  componentdidmount",replysId)     
+     
+       this.unsubscribe = this.props.firebase
+       .replys(replysId)
+ 
+       .onSnapshot(doc => {
+         if (doc.exists) {
+         // console.log(" this is my article", doc.data());
+           this.setState({
+           
+             reply: doc.data()
+             
+           });
+          }})
+         // console.log("reply",this.state.reply)
+    let autherId = this.state.reply.userId;
+    //console.log("autherId of  a reply",autherId)
+    this.unsubscribe = this.props.firebase
+      .user(autherId)
+      .get()
+      .then(doc => {
+        // console.log("userdata", doc.data())
+        let user = doc.data();
+        //this.setState({ username: user.username });
+      })
+  
+  }
+ /* renderReplycomment = () => {
+    // console.log("this is the replys in renderreplys func", this.props.replys);
+    const { comment, timeCreated } = this.props;
+
+    if (this.props.replys) {
+      this.props.replys.map((reply,i)=> {
+        console.log("this is the the reply in the reply function", reply);
+        return (
+          <div>
+            <ReplyComment timeCreated={reply.timeCreated} reply={reply.reply} />
+
+            <AddReplys type="child" />
+          </div>
+        );
+      });
+    }
+  };
+  
+>>>>>>>  new commit for  rebuilding of the comment system
 
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
 
   render() {
+<<<<<<< HEAD
     const { commentId, replys, limited, reply, showAll } = this.props;
     let commentReply = reply.reply;
     //console.log("showMore", this.showMore);
@@ -88,10 +149,37 @@ class ReplyComment extends React.Component {
           {this.state.showPopup ? (
             <div>
               <div>
+=======
+    const {  timeCreated, commentID, userName ,replysId} = this.props;
+    
+ console.log("replyId at replycomment11", replysId);
+    //console.log("show popup", this.state.showPopup);
+    return (
+      <div>
+        <div className="replypage">
+          <i
+            className="fas fa-angle-down "
+            style={{ width: "10em" }}
+            onClick={() => this.togglePopup()}
+          >
+            {" "}
+            view{""} {this.props.totallReplys}
+            {" more "}
+            {" Replys "}
+          </i>
+        </div>
+        {this.state.showPopup ? (
+          <div>
+          <div>
+            {this.props.replys.map(reply => {
+              //console.log("this is the the reply in the reply function", reply);
+              return (
+>>>>>>>  new commit for  rebuilding of the comment system
                 <div>
                   <div className="replystayle">
                     <p>
                       {" "}
+<<<<<<< HEAD
                       <span />
                       <img
                         src={this.state.photoUrl}
@@ -99,6 +187,11 @@ class ReplyComment extends React.Component {
                         className="user-profile"
                       />{" "}
                       posted By {this.state.username} {reply.timeCreated}
+=======
+                      <i className="fa fa-user"></i> posted By {this.state.userName}{" "}
+                      
+                      {reply.timeCreated}
+>>>>>>>  new commit for  rebuilding of the comment system
                     </p>
                     <p>{reply.reply}</p>
                   </div>
@@ -124,6 +217,7 @@ class ReplyComment extends React.Component {
           <div>
             <div className="replypage">
               <i
+<<<<<<< HEAD
                 className="fas fa-angle-down "
                 style={{ width: "10em" }}
                 onClick={() => {
@@ -136,6 +230,13 @@ class ReplyComment extends React.Component {
                 {" More "}
                 {" Replys "}
               </i>
+=======
+             className="fas fa-angle-up " 
+             style={{ width: "10em" }}
+              
+           onClick={this.cancle}>{" "}Hide {" "} viwe</i>
+           
+>>>>>>>  new commit for  rebuilding of the comment system
             </div>
             {this.state.showPopup ? (
               <div>
@@ -246,4 +347,8 @@ class ReplyComment extends React.Component {
   }
 }
 
+<<<<<<< HEAD
 export default compose(withFirebase)(ReplyComment);
+=======
+export default compose(withFirebase, withRouter)(ReplyComment);*/
+>>>>>>>  new commit for  rebuilding of the comment system
