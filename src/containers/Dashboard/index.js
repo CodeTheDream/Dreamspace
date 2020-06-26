@@ -55,8 +55,8 @@ class Dashboard extends React.Component {
 
     let filteredArticles = this.state.articles.filter(article => {
       return (
-          article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
-         // article.timeCreated.toLowerCase().includes(this.state.search.toLowerCase()),
+         // article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
+          article.timeCreated.toLowerCase().includes(this.state.search.toLowerCase()),
         article.title.toLowerCase().includes(this.state.search.toLowerCase())
        // article.description
          // .toLowerCase()
