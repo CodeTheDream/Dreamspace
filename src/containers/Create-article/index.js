@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import { compose } from "recompose";
-import Autosuggest from "react-autosuggest";
 import {
   AuthUserContext,
   withAuthorization,
-  withEmailVerification,
+  withEmailVerification
 } from "../../components/Session";
 import { withFirebase } from "../../components/Firebase";
 import { messaging } from "firebase";
-//const options = [ "React", "Ruby", "Javascript"];
-export const options = [];
-//export const options = [{name:"React"}, {name:"Ruby"}, {name:"Javascript"}];
+const options = ["Select Tag", "React", "Ruby", "Javascript"];
 const moment = require("moment");
 
   
@@ -35,17 +32,17 @@ class Dialog extends React.Component {
   render() {
     return (
       <div className="modal-wrapper-postarticle">
-        <div className="dialogstyle devedit-form">
-          <button
-            className=" dialogCloseButonStayle"
-            onClick={this.props.closePopup}
-          >
-            X
-          </button>
-          <div className="diglog_inner">
-            <h4>{this.props.children}</h4>
-          </div>
+      <div className="dialogstyle devedit-form">
+        <button
+          className=" dialogCloseButonStayle"
+          onClick={this.props.closePopup}
+        >
+          X
+        </button>
+        <div className="diglog_inner">
+          <h4>{this.props.children}</h4>
         </div>
+      </div>
       </div>
     );
   }
@@ -56,10 +53,11 @@ class Createarticle extends Component {
     this.state = {
       title: "",
       description: "",
-      tags: "",
+      tags: "Select an Option",
       url: "",
       downvotes: 0,
       upvotes: 0,
+      //authorID: "",
       timeCreated: "",
       userName: "",
       suggestions: [],
@@ -100,36 +98,31 @@ console.log("tags from api call",options)
 
   onSuggestionsClearRequested = () => {
     this.setState({
-      suggestions: [],
+      showPopup: !this.state.showPopup
+      
     });
-  };
-  togglePopup = ()=>{
+    
+  }
+
+  onUrlChange = e => {
     this.setState({
-      showPopup: !this.state.showPopup,
+      url: e.target.value
     });
   };
 
   onUrlChange = (e) => {
     this.setState({
-      url: e.target.value,
+      tags: e.target.value
     });
   };
-  // onTagChange = (e) => {
-  //   console.log("Tag on change",e.target.value)
-  //   this.setState({
-      
-  //     tags: e.target.value,
-  //   });
-  //   getSuggestions.push(this.state.tags)
-  // };
-  onTitleChange = (e) => {
+  onTitleChange = e => {
     this.setState({
-      title: e.target.value,
+      title: e.target.value
     });
   };
-  onBodyChange = (e) => {
+  onBodyChange = e => {
     this.setState({
-      description: e.target.value,
+      description: e.target.value
     });
   };
 
@@ -196,28 +189,35 @@ console.log("tags from api call",options)
 
     return (
       <AuthUserContext.Consumer>
-        {(authUser) => (
+        {authUser => (
+
           <div>
-            <button className="button-secondary1" onClick={this.togglePopup}>
+            <button className="button-secondary1"
+
+              onClick={this.togglePopup}>
               Post New Article
-            </button>
+              </button>  
             {this.state.showPopup ? (
               <Dialog closePopup={this.togglePopup}>
-                <div>
-                  <div>
-                    {/* <div style={{fontSize:"legend"}}>Create new post</div>*/}
-                    <legend className="devedit-form-legend1">
-                      Create New Post
-                    </legend>
-                    <div>
-                      <div>
+                
+
+
+                <div >
+                  <div >
+                   {/* <div style={{fontSize:"legend"}}>Create new post</div>*/} 
+                    <legend className="devedit-form-legend1">Create New Post</legend>
+                    <div >
+                      <div >
+
                         <ul>
                           <li>
                             <form
-                              onSubmit={(e) => this.handleSubmit(e, authUser)}
+                              
+                              onSubmit={e => this.handleSubmit(e, authUser)}
+                             
                             >
                               <ul>
-                                <li>
+                              <li>
                                   <input
                                     type="text"
                                     placeholder="Title"
@@ -228,7 +228,7 @@ console.log("tags from api call",options)
                                   
                                 </li>
                                 <li>
-                                  {/*<select
+                                  <select
                                     value={this.state.tags}
                                     onChange={this.onTagChange}
                                   >
@@ -239,27 +239,11 @@ console.log("tags from api call",options)
                                         </option>
                                       );
                                     })}
-                                  </select>*/}
-                                  <div className="autosuggest_list">
-                                  <Autosuggest
-                                    suggestions={suggestions}
-                                    onSuggestionsFetchRequested={
-                                      this.onSuggestionsFetchRequested
-                                    }
-                                    onSuggestionsClearRequested={
-                                      this.onSuggestionsClearRequested
-                                    }
-                                    getSuggestionValue={getSuggestionValue}
-                                    renderSuggestion={renderSuggestion}
-                                    inputProps={inputProps}
-                                  />
-                                  </div>
+                                  </select>
                                 </li>
+
                                 <li>
-                                
-                                </li>
-                                <li>
-                                  <input
+                                <input
                                     type="text"
                                     placeholder="URl"
                                     value={this.state.url}
@@ -275,18 +259,15 @@ console.log("tags from api call",options)
                                     value={this.state.description}
                                     onChange={this.onBodyChange}
                                     required
+                                    
                                   />
+                                
                                 </li>
                                 <li>
-                                  <button
-                                    className="button-tertiary"
-                                    type="submit"
-                                    onClick={this.closeSelf}
-                                  >
-                                    {" "}
-                                    Post
-                                  </button>
+                                  
+                                  <button className="button-tertiary" type="submit" onClick={this.closeSelf}> Post</button>
                                 </li>
+
                               </ul>
                             </form>
                           </li>
