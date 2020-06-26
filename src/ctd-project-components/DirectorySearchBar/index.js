@@ -3,6 +3,8 @@ import React from 'react'
 const DirectorySearchBar = (props) => {
   let searchDirectory = props.crewDirectory;
   console.log('searchDirectory ', searchDirectory)
+  let staffNames = searchDirectory.map((justNames) => justNames.fields);
+  console.log('staffNames ', staffNames)
   return(
     <div>
       <form>
