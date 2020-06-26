@@ -78,8 +78,8 @@ class SignInFormBase extends Component {
 
         return (
             <div className="view-container">
-                <form onSubmit={this.onSubmit} className="devedit-form">
-                    <fieldset>
+                <form onSubmit={this.onSubmit} className="form">
+                    
                         <input
                             name="email"
                             value={email}
@@ -99,7 +99,7 @@ class SignInFormBase extends Component {
         </button>
 
                         {error && <p>{error.message}</p>}
-                    </fieldset>
+                    
                 </form>
             </div>
         );

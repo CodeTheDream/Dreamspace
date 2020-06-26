@@ -41,7 +41,26 @@
     border-radius: 50%;
     border: 1px solid black;
 }
-@media screen and (min-width:800px) {
+.wrapper {
+        
+	width: 100%;
+	line-height: 1.58;
+	margin-top:4em;
+	justify-content: center;
+	//max-width: 8000px;
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	display: -ms-flexbox;
+	margin-bottom: 1px;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+	}
+	
+	
+
+
 	
 .outer
 {
@@ -54,7 +73,11 @@
     display: inline-block;
 }
 .form{
-	padding: 10px 20px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 1em;
+	//padding: 10px 20px;
     background: $white;
     width:60%;
 	margin: 10px auto  ;
@@ -63,9 +86,7 @@
 	border-radius: 8px;
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
-.form fieldset{
-	border: none;
-}
+
 .form input[type="text"],
 .form input[type="password"],
 .form input[type="email"],
@@ -128,118 +149,18 @@
     color: $tertiary-color !important;
 }
 .signin{
-line-height: 0.2em;
-margin-top: 0.4em;
+line-height: 0.1em;
+margin-top: 0.1em;
 }
 .signinpage{
 	background-image:  url("https://mcdn.wallpapersafari.com/medium/55/22/P5ABoL.jpg");
 	//background-position: center;
+	
+   margin: 0 auto;
+   padding: 0.5em;
     background-repeat: no-repeat;
 	background-size: cover;
-	margin-left: 5.5em;
+	//margin-left: 5.5em;
 }
-.signuppage{
-	background-image:  url("https://mcdn.wallpapersafari.com/medium/55/22/P5ABoL.jpg");
-	background-position: center;
-    background-repeat: no-repeat;
-	//background-size: cover;
-	margin-left: 5.5em;	
-	margin-top:6em;
-
-}
-}
-@media screen and (max-width:800px) {
-.outer
-{
-    //width:100%;
-    text-align: center;
-    margin-left:5em;
-}
-.inner
-{
-    display: inline-block;
-}
-.form{
-	padding: 10px 20px;
-    background: $white;
-    width:60%;
-	margin: 10px auto  ;
-	padding: 20px;
-	background: $white;
-	border-radius: 8px;
-	font-family: Georgia, "Times New Roman", Times, serif;
-}
-.form fieldset{
-	border: none;
-}
-.form input[type="text"],
-.form input[type="password"],
-.form input[type="email"],
-.form select {
-	font-family: Georgia, "Times New Roman", Times, serif;
-	background: rgba(255,255,255,.1);
-	border: none;
-	border-radius: 4px;
-	font-size: 15px;
-	margin: 0;
-	outline: 0;
-	padding: 10px;
-	width: 100%;
-	box-sizing: border-box; 
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box; 
-	background-color: #e8eeef;
-	color:#8a97a0;
-	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-	margin-bottom: 30px;
-}
-.form input[type="text"]:focus,
-.form input[type="password"]:focus,
-.form select:focus{
-	background: #d2d9dd;
-}
-.form select{
-	-webkit-appearance: menulist-button;
-	height:35px;
-}
-
-
-.button-main,
-.button-secondary,
-.button-tertiary,
-.button-secondary {
-	position: relative;
-	display: block;
-	padding: 19px 39px 18px 39px;
-	color: #FFF;
-	margin: 0 auto;
-	font-size: 18px;
-	text-align: center;
-	font-style: normal;
-	width: 100%;
-	// border: 1px solid $secondary-color;
-	// border-width: 1px 1px 3px;
-	margin-bottom: 10px;
-}
-
-.button-main {
-	background: $main-color;
-}
-.button-main:hover {
-	background: $tertiary-color;
-}
-.button-secondary {
-    //background:$secondary-color; 
-    color: $tertiary-color !important;
-}
-.signin{
-line-height: 0.2em;
-}
-.signinpage{
-    background-image: url("http://blog.hostbaby.com/wp-content/uploads/2014/03/SeeingSpots_1400x900-1024x658.jpg");
-}
-}
-
 
 
