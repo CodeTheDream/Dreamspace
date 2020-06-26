@@ -22,7 +22,7 @@ const Navigation = () => (
 
 const NavigationAuth = () => (
   <header className="header">
-        <Link to={ROUTES.HOME}><img src={Logo} className="logo-wrapper" /></Link>
+        <Link to={ROUTES.HOME}><img src={Logo} className="logo-wrapper" /></Link> 
     <input className="menu-btn" type="checkbox" id="menu-btn" />
     <label className="menu-icon" for="menu-btn">
       <span className="nav-icon"></span>
@@ -55,7 +55,7 @@ const NavigationAuth = () => (
 
 const NavigationNonAuth = () => (
   <header className="header">
-  <button className="mylogo"> <img src={Logo} className="logo-wrapper" /></button> 
+  <img src={Logo} className="logo-wrapper" />
     <input className="menu-btn" type="checkbox" id="menu-btn" />
     <label className="menu-icon" for="menu-btn">
       <span className="nav-icon"></span>

@@ -2,17 +2,23 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\assets",
     "\\src\\components",
     "\\src\\components\\Comments",
     "\\src\\components\\ListItem1",
     "\\src\\components\\PasswordForget",
+    "\\src\\components\\Navigation",
+    "\\src\\components\\SignUp",
+    "\\src\\containers",
     "\\src\\containers\\Dashboard",
     "\\src\\ctd-project-components\\FeatureCard"
   ],
-<<<<<<< HEAD
+
   "SelectedNode": "\\src\\components\\SignIn\\index.js",
-=======
+
   "SelectedNode": "\\src\\components\\PasswordForget\\index.js",
->>>>>>> update project
+
+  "SelectedNode": "\\src\\components\\Navigation\\index.js",
+
   "PreviewInSolutionExplorer": false
 }
