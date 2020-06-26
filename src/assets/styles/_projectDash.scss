@@ -3,7 +3,6 @@
   overflow-x: hidden;
   overflow-y: hidden;
 }
-
 .dashboard-content {
   display: grid;
   grid-template-areas:
@@ -20,79 +19,71 @@
 .slide-container {
   grid-area: header;
 }
-.featured {
-  grid-area: featured;
-  margin-top: 30px;
+.search-container {
+  width: 250px;
+  display: flex;
+  justify-content: center;
 }
-
+.menu  {
+  // margin: 0;
+  // line-height: 0;
+  text-align: left;
+  margin-left: 20px;
+  font-size: 15px;
+  // width: 36%;
+}
+.menu:hover {
+  color: #3fb0ac;
+}
 .menu-container {
-  margin-top: .5em;
+  // margin-top: .5em;
   overflow-y: auto;
   width: 250px;
-
-  // opacity: 07521;
+  height: 505px;
 }
-
 .closed-side-bar {
   position: absolute;
 }
-
 .side-btn-container {
   position: fixed;
   left: 4px;
   top: 27px;
   display: none;
 }
-
-.sidebar-menu {
+.sidebar-menuname {
   display: grid;
   grid-template-rows: 135px 1fr;
   grid-area: sidebar-menu;
   box-sizing: border-box;
-  background-color: whitesmoke;
-  border-right: solid;
-  border-color: #0066cc;
+  background-color: #fff;
   color: #f15c39;
   box-shadow: 8px 0 10px -6px black;
   width: 100%;
   transform: translate(-100);
   transition: transform 0.36s ease-out;
 }
-
- sidebar-menu.open {
+ sidebar-menuname.open {
    transform: translateX(0);
 }
-
-.menu-container {
-  list-style: none;
-  // position: left;
-  // cursor: pointer;
-}
-
-.sidebar-menu li {
+.sidebar-menuname li {
   padding: 5px;
 }
-
 .top-line-container {
   margin: 0;
   padding: 0;
 }
-
 .footer {
   display: grid;
-  grid-template-columns: auto ;
+  grid-template-columns: auto 200px;
 }
-
 .today {
   margin-top: 8px;
 }
-
 .footer {
   z-index: 1;
   display: grid;
-  grid-template-columns: auto ;
+  grid-template-columns: auto 200px;
 }
-
 .today {
   margin-top: 8px;
 }
@@ -101,7 +92,6 @@
 .footer-content {
   font-weight: 200;
 }
-
 .times, .column {
   color: #3fb0ac;
   font-size: 30px;
@@ -109,172 +99,139 @@
   //margin-top: 15px;
   //margin-left: 10px;
 }
-
+.btn-line {
+}
 @media screen and (max-width: 979px) {
   .dashboard-content {
     display: grid;
     grid-template-columns: 250px auto;
   }
-
   .search-container {
     width: 227px;
     display: flex;
     justify-content: center;
   }
-
   .card-content {
     padding-top: 96px;
   }
-
   .flip-card-inner {
     width: 600px;
     height: 450px;
   }
-
   .flip-card-front {
     padding-top: 20px;
   }
-
   .flip-card-back {
     padding: 0;
     padding-right: 3px;
   }
-
   .back-img {
     padding-top: 30px;
   }
-
   .flip-card-header {
     font-size: 35px;
   }
-
   .project-name-on-card {
     font-size: 40px;
   }
 }
-
 @media screen and (max-width: 827px) {
   .dashboard-content {
     display: grid;
     grid-template-columns: 250px auto;
   }
-
   .search-container {
     width: 20%;
     display: flex;
     justify-content: center;
   }
-
   .flip-card-inner {
     width: 500px;
     height: 450px;
   }
-
   .card-content {
     padding-top: 100px;
   }
-
   .project-name-on-card {
     font-size: 40px;
   }
-
 }
-
 @media screen and (max-width: 765px) {
   .dashboard-content {
     display: grid;
     grid-template-columns: auto;
   }
-
   .sidebar-menu {
     width: 250px;
     height: auto;
   }
-
   .search-container {
     width: 25%;
     display: flex;
     justify-content: center;
   }
-
   .card-content {
     padding-top: 140px;
   }
-
   .flip-card-inner {
     width: 450px;
     height: 450px;
     margin-right: 14px;
   }
-
   .flip-card-front {
     font-size: 25px;
     padding-top: 7.5px;
   }
-
   .back-img {
     padding-top: 14px;
   }
-
   .project-name-on-card {
     padding-top: 12.5px;
     font-size: 35px;
   }
-
   .flip-card-header {
     font-size: 30px;
   }
-
 }
-
 @media screen and (max-width: 721px) {
   .open-side-bar {
     position: relative;
     left: 222px
   }
-
   .flip-card {
     height: auto;
   }
-
   .flip-card-inner {
     height: 500px;
     width: 450px;
   }
-
   .card-content {
     padding-top: 140px;
   }
-
   .flip-card-bun {
     padding-top: 0;
   }
-
   .closed-side-bar {
     position: fixed;
     right: 0;
     top: 6.75%;
   }
-  
   .side-btn-container {
     position: fixed;
     left: 4px;
     display: block;
   }
 }
-
 @media screen and (max-width: 570px) {
   .sidebar-menu {
     position: relative;
   }
-
   .flip-card {
     position: absolute;
     margin: 0 auto;
     height: 93%;
     width: 100%;
   }
-
   .footer {
     display: flex;
     flex-direction: column-reverse;
@@ -282,35 +239,27 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
-
   .today {
     display: grid;
     grid-template-columns: auto auto;
   }
 }
-
 @media screen and (max-width: 513px) {
   .sidebar-menu {
     position: relative;
   }
-  
   .flip-card {
     position: absolute;
     // z-index: -2;
   }
 }
-
-
 @media screen and (max-width: 476px) {
-
   .flip-card-bun {
     padding: 10px;
   }
-
   .flip-card {
     margin: 0 auto;
   }
-
   .flip-card-inner {
     width: 450px;
     height: 500px;
@@ -319,12 +268,10 @@
     margin-right: auto;
   }
 }
-
 @media screen and (max-width: 420px) {
   .card-content {
     padding-top: 136px;
   }
-
   // .flip-card-bun {
   //   padding-top: 65px;
   // }
@@ -335,28 +282,26 @@
    height: 517px;
   }
 }
-
 @media screen and (max-width: 414px) {
-  .top-line-container {
+  .top-line-container hr {
     display: none;
   }
-
+  .btn-line {
+    display: none;
+  }
   .sidebar-menu, .search-container {
     margin: 0;
     padding: 0;
   }
-
   .search-container {
     position: relative;
     left: 2.85em;
     top: 0;
   }
-
   .side-btn-container {
     margin: 0;
     margin: 0;
   }
-
   .sidebar-menu {
     display: flex;
     flex-direction: column;
@@ -364,7 +309,6 @@
     margin-top: 3.32em;
     height: 15em;
   }
-
   .dashboard-content {
     margin: 0;
     padding: 0;
@@ -373,23 +317,19 @@
     display: flex;
     flex-direction: column;
   }
-
   .flip-card {
     margin-top: 1em;
     height: 100%;
     width: 100%;
   }
-
   .flip-card-inner {
     width: 389px;
     height: 517px;
   }
-
   .card-content {
    padding: 0;
    padding-top: 2em;
   }
-
   .menu-container {
     margin: 0;
     height: auto;
@@ -397,39 +337,31 @@
     margin-top: 5em;
     margin-bottom: 1em;
   }
-
   .menu {
     text-align: center;
   }
-
-
   .btn-home {
     width: 100%;
     // justify-content: center;
   }
 }
-
 @media screen and (max-width: 411px) {
   .top-line-container {
     display: none;
   }
-
   .sidebar-menu, .search-container {
     margin: 0;
     padding: 0;
   }
-
   .search-container {
     position: relative;
     left: 2.85em;
     top: 0;
   }
-
   .side-btn-container {
     margin: 0;
     margin: 0;
   }
-
   .sidebar-menu {
     display: flex;
     flex-direction: column;
@@ -437,7 +369,6 @@
     margin-top: 3.32em;
     height: 15em;
   }
-
   .dashboard-content {
     margin: 0;
     padding: 0;
@@ -446,71 +377,56 @@
     display: flex;
     flex-direction: column;
   }
-
   .flip-card {
     margin-top: 1em;
     height: 100%;
     width: 100%;
   }
-
   .flip-card-inner {
     width: 389px;
     height: 523px;
   }
-
   .menu-container {
     margin: 0;
     height: auto;
     width: 100%;
-    margin-top: 5em;
-    margin-bottom: 1em;
+    margin-top: 4px;
+    margin-bottom: 4px;
   }
-
   .menu {
     text-align: center;
   }
-
-
   .btn-home {
     width: 100%;
     // justify-content: center;
   }
 }
-
 @media screen and (max-width: 375px) {
   .search-container {
     position: relative;
     left: 2.28em;
   }
-
   .flip-card {
     width: 100%;
     height:100%;
-   
   }
-
   .flip-card-inner {
     width: 350px;
     height: 525px;
   }
-
   .card-content {
     padding: 0;
     margin: 0;
     padding-top: 1.5em;
-    
   }
 }
-
 @media screen and (max-width: 360px) {
   .card-content {
     padding-top: 4em;
   }
-
   .search-container {
     left: 35px;
   }
-
   .flip-card {
     margin: 0;
     padding: 0;
@@ -518,18 +434,15 @@
     width: 100%;
     padding-top: 1.5em;
   }
-
   .flip-card-inner {
     width: 340px;
     height: 525px;
   }
 }
-
 @media screen and (max-width: 325px) {
   .search-container {
     left: 25px;
   }
-
   .flip-card {
     padding-top: 1.5em;
     height: 100%;
@@ -537,15 +450,9 @@
     margin-left: auto;
     margin-right: auto;
   }
-
 }
-
 @media screen and (max-width: 316px) {
   .flip-card {
     padding-top: 1.5em;
   }
 }
-
-
-
-

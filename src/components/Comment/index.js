@@ -73,16 +73,16 @@ class Comment extends React.Component {
           photoUrl: user.photoUrl,
         });
       });
-      let {comment}= this.props;
-      let autherId = comment.userId;
-      this.unsubscribe = this.props.firebase
-        .user(autherId)
-        .get()
-        .then(doc => {
-          // console.log("userdata", doc.data())
-          let user = doc.data();
-          this.setState({ username: user.username });
-        });
+      // let {comment}= this.props;
+      // let autherId = comment.userId;
+      // this.unsubscribe = this.props.firebase
+      //   .user(autherId)
+      //   .get()
+      //   .then(doc => {
+      //     // console.log("userdata", doc.data())
+      //     let user = doc.data();
+      //     this.setState({ username: user.username });
+      //   });
        
        
   };
@@ -201,4 +201,4 @@ class Comment extends React.Component {
     }
   }
 }
-export default compose(withFirebase)(Comment);*/
+export default compose(withFirebase)(Comment);

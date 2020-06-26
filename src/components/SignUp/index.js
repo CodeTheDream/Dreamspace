@@ -100,7 +100,7 @@ class SignUpFormBase extends Component {
       return (
           <div className="view-container-signup">
               <form  className="form" onSubmit={this.onSubmit} >
-              <fieldset>
+              
         <input
           name="username"
           value={username}
@@ -133,7 +133,7 @@ class SignUpFormBase extends Component {
           Sign Up
         </button>
               {error && <p>{error.message}</p>}
-              </fieldset>
+              
         </form>
     </div>
     );

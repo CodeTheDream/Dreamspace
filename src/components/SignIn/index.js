@@ -177,7 +177,7 @@ class SignInGoogleBase extends Component {
             
                 <p style={{ textAlighn: "" }}> Login with Google+</p> </button>*/}
 
-              <button type="submit" className="googlebtn" style={{ fontSize: "20px" }}><i className="fa fa-google fa-fw" > </i> Login with Google
+              <button type="submit" className="googlebtn" style={{ fontSize: "20px" }}><i className="fa fa-google fa-fw" > </i> 
  
   
 </button>
@@ -304,7 +304,7 @@ class SignInGoogleBase extends Component {
 
    return (
        <form onSubmit={this.onSubmit}>
-           <button type="submit" style={{ fontSize: "20px" }} className="github"><i className="fa fa-github" />{" "}Sign In with Github</button>
+           <button type="submit" style={{ fontSize: "20px" }} className="github"><i className="fa fa-github" /></button>
          
       
        {error && <p>{error.message}</p>}

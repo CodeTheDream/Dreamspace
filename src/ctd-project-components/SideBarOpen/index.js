@@ -30,7 +30,7 @@ const DrawBottomLine = ({color}) => (
     // console.log('check ', checkPhoto);
 
       return (
-        <div className= 'sidebar-menu'>
+        <div className= 'sidebar-menuname'>
          
           <div className="btn-home">
             {/* <OpenClose /> */}       {/* I don't need at this time or if at all */}
