@@ -24,8 +24,29 @@
   grid-area: featured;
   margin-top: 30px;
 }
+
+.menu-container {
+  margin-top: .5em;
+  overflow-y: auto;
+  width: 250px;
+
+  // opacity: 07521;
+}
+
+.closed-side-bar {
+  position: absolute;
+}
+
+.side-btn-container {
+  position: fixed;
+  left: 4px;
+  top: 27px;
+  display: none;
+}
+
 .sidebar-menu {
   display: grid;
+  grid-template-rows: 135px 1fr;
   grid-area: sidebar-menu;
   box-sizing: border-box;
   background-color: whitesmoke;

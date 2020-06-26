@@ -31,6 +31,7 @@ const DrawBottomLine = ({color}) => (
 
       return (
         <div className= 'sidebar-menu'>
+         
           <div className="btn-home">
             {/* <OpenClose /> */}       {/* I don't need at this time or if at all */}
             <div className = 'search-container'>
@@ -41,10 +42,11 @@ const DrawBottomLine = ({color}) => (
                     // handleInput={props.handleInput}
                   />
               </div>
+              <SideBarButton handleClick = {() => props.handleClick()} title = {<FontAwesomeIcon className = 'times' icon = {faTimes} />}/>
+              <div className = 'top-line-container'><DrawLines color = '#3fb0ac'/></div>
           </div>
-          <SideBarButton handleClick = {() => props.handleClick()} title = {<FontAwesomeIcon className = 'times' icon = {faTimes} />}/>
-            <div className = 'top-line-container'><DrawLines color = '#3fb0ac'/></div>
-              <div className = 'menu-container'>
+
+          <div className = 'menu-container'>
               {probableList.map(sideBar => {
             // console.log('x');
             return(
@@ -56,8 +58,9 @@ const DrawBottomLine = ({color}) => (
                 {sideBar.fields.Name}
               </li> 
             )})}
+            <div><DrawBottomLine color = '#3fb0ac'/></div>
           </div>
-          <div><DrawBottomLine color = '#3fb0ac'/></div>
+          
         </div>
       );
 };
