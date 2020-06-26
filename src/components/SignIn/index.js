@@ -9,7 +9,7 @@ import * as ROUTES from '../../constants/routes';
 const SignInPage = () => (
     <div className="wrapper">
        {/* <p style={{fontSize:"28px"}}>SignIn</p>*/}
-     
+     <div className="signinpage">
     <h2 className="signin">SignIn</h2>
 
       
@@ -24,6 +24,7 @@ const SignInPage = () => (
         <SignInForm />
          <PasswordForgetLink /> 
         <SignUpLink />
+    </div>
     </div>
 );
 
