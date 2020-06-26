@@ -6,23 +6,23 @@ import DirectoryList from '../../ctd-project-components/DirectoryList';
 class Directory extends React.Component {
   state = {
     crewDirectory: [],
-    searchDirectory: '',
+    searchDirectory: "",
   }
   componentDidMount() {
     this.directoryAirTable();
   }
-///////////////////////////////////////////////////////////////////////////////////  \
-  // selectedStaffMember = (id) => {                                                  \
-  //   let allStaffMembers = this.state.crewDirectory;                                 \
-  //   console.log('look at ', id)                                                      \
-  //   let selectStaffMember = allStaffMembers.find(x => x.id === id);
-  //   console.log('selectStaffMember ', selectStaffMember)                                  /       // I don't need
-  //   this.setState({                                                                      /
-  //     selectStaffMember                                                                /
-  //   })                                                                               /
-  // }                                                                                /
-//////////////////////////////////////////////////////////////////////////////////  /
-  handleInput = (e) => {
+
+  selectedStaffMember = (id) => {                                                  
+    let allStaffMembers = this.state.crewDirectory;                                
+    console.log('look at ', id)                                                      
+    let selectStaffMember = allStaffMembers.find(x => x.id === id);
+    console.log('selectStaffMember ', selectStaffMember)                                      
+    this.setState({                                                                      
+      selectStaffMember                                                                
+    })                                                                              
+  }                                                                                
+
+  handleInput = e => {
     console.log(e.target.value);
     this.setState({
       searchDirectory: e.target.value
@@ -49,17 +49,24 @@ class Directory extends React.Component {
       );
     })
 
+   
+    // let filterNumber = this.state.crewDirectory.filter(phone => {
+    //   return phone.fields.Phone.includes(this.state.searchDirectory)                 // Part of the phone number filter attempt. Check DirectoryList.js
+    // })
+
     return(
       <div className = 'directory-container'>
         {this.state.crewDirectory && (<DirectorySearchBar 
           crewDirectory={this.state.crewDirectory}
           selectedStaffMember={this.selectedStaffMember}
-        />)}
+          handleInput={this.handleInput}
+        />
+        )}
         {this.state.crewDirectory && (<DirectoryList 
           crewDirectory={this.state.crewDirectory}
-          handleInput={this.handleInput}
           selectedStaffMember={this.selectedStaffMember}
           filterDirectory={filterDirectory}
+          // filterNumbers={filterNumber}                                                 // Part of the phone number filter.
         />)}
      </div>
    

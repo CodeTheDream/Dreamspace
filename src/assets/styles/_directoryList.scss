@@ -3,6 +3,7 @@
   margin-top: 88px;
   display: flex;
   flex-direction: row;
+  overflow-x: hidden;
 }
 
 .list-container {
@@ -48,4 +49,74 @@
 .staff {
   font-weight: bold;
   font-size: 20px;
+}
+
+.style-input {
+  width: 85%;
+  height: 34px;
+  font-size: 15px;
+}
+
+.search-fa {
+  position: fixed;
+ 
+}
+
+@media screen and (max-width: 1160px) {
+  .directory-container {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .list-container {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    margin-left: 2.5%;
+  }
+
+  .search-contain {
+    width: 100%;
+    margin-top: 26px;
+    margin-bottom: 25px;
+  }
+
+}
+
+@media screen and (max-width: 730px) {
+  .list-container {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    margin-left: 3.5%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .list-container {
+    display: grid;
+    grid-template-columns: 45%, 45%;
+  }
+}
+
+@media screen and (max-width: 635px) {
+  .list-container {
+    display: grid;
+    grid-template-columns: 45% 45%;
+  }
+}
+
+@media screen and (max-width: 400px ) {
+  .directory-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+
 }
