@@ -191,6 +191,26 @@ class ProjectDashBoard extends React.Component {
               />
             )} */}
           </div>
+          {this.state.showPopup ? (
+            <SideList
+              text="MoblieList"
+              projectData={this.state.projectData}
+              selectProject={this.selectProject}
+              closePopup={this.togglePopup.bind(this)}
+            />
+          ) : null}{" "}
+          */}
+          {this.state.projectData && (
+            <SideBarOpen
+              projectData={this.state.projectData}
+              selectProject={this.selectProject}
+            />
+          )}
+          {/* <div className="dashboard-button-container"> */}
+          <button className="side-button" onClick={this.togglePopup.bind(this)}>
+            ProjectList
+          </button>
+          {/* </div> */}
         </div>
       );
     }
