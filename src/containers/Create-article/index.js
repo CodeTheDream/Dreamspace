@@ -63,6 +63,7 @@ class Createarticle extends Component {
       timeCreated: "",
       userName: "",
       suggestions: [],
+     
       value: "",
       inputTag:"",
       calculatedvote:0,
@@ -144,6 +145,7 @@ console.log("tags from api call",options)
          userId: authUser.uid,
         // userName:this.state.userName,
          title: this.state.title,
+        
          description: this.state.description,
          tags: this.state.value,
          url: this.state.url,
