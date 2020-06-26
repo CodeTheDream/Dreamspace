@@ -5,8 +5,7 @@ const DirectoryList = (props) => {
   // all ctd projects
   let projects = props.projectData;
   console.log('projects ', projects);
-  const getKey = props.selectedStaffMember;
-  console.log('key ', getKey)
+  
   // all ctd staff info
   let staffList = props.crewDirectory;
   console.log('staffList ', staffList);
@@ -21,7 +20,6 @@ const DirectoryList = (props) => {
     console.log('let\'s see the names', sortNames)
     sortNames.sort((a, b) => (a.fields['First Name'] > b.fields['First Name']) ? 1 : -1);
     
-  
     return(
       <div className = 'list-container'>
           {sortNames.map(staff => {
@@ -31,11 +29,11 @@ const DirectoryList = (props) => {
             }
             
             return(
-             <ReactCardFlip isFlipped = {props.isFlipped}  flipDirection = 'vertical'>  
+             <ReactCardFlip isFlipped = {staff.id === props.isFlipped} flipDirection = 'vertical'>  
               <ul
                 className = 'list'
-                onClick = {() => props.handleClick(getKey)}
-                // key = {staff.fields.id}
+                
+                onClick = {() => props.selectedStaffMember(staff.id)}
                 >
                 <div className = 'image-contain'>
                   <img 
@@ -50,7 +48,7 @@ const DirectoryList = (props) => {
               </ul> 
   
               <ul className = 'back-of-list'
-                  onClick = {() => props.handleClick(getKey)}>
+                  onClick = {() => props.selectedStaffMember(null)}>
                   <h4 className = 'project' style = {{textAlign: 'center', fontWeight: 'bold'}}>Current Project</h4>
                   <li className = 'slack'>Slack Name: {staff.fields['Slack Name']}</li>
                   <li className = 'number'>{staff.fields.Phone}</li>
@@ -58,12 +56,16 @@ const DirectoryList = (props) => {
               </ul>
             
              </ReactCardFlip> 
+              
           )})}
         </div>
      )
     }
   
     export default DirectoryList;
+              
+
+  
 
             
   

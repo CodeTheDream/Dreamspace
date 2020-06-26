@@ -1,5 +1,4 @@
 import React from 'react';
-// import { compose } from "recompose";
 import DirectorySearchBar from '../../ctd-project-components/DirectorySearchBar';
 import DirectoryList from '../../ctd-project-components/DirectoryList';
 
@@ -11,29 +10,33 @@ class Directory extends React.Component {
       searchDirectory: "",
       isFlipped: false,
     }
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
+
+  // getCards() {
+  //  let cardId = this.state.crewDirectory;
+  //  console.log('cardId ', cardId);
+  // }
   
-  handleClick(e) {
-    e.preventDefault();
-    this.setState(prevState => ({isFlipped: !prevState.isFlipped}));
+  handleClick() {
   }
   
   componentDidMount() {
     this.directoryAirTable();
     this.projectAirTable();
   }
+  
+  selectedStaffMember = id => {
+    // const allStaffMember = this.state.crewDirectory;
+    console.log("see", id);
+    this.setState({isFlipped: id});
+    // const selectStaffMember = allStaffMember.find(x => x.id === id);
+    // console.log(selectStaffMember);
+    // if(this.handleClick()) {
+    //   this.setState({selectStaffMember});
+    // }
+  }
 
-  selectedStaffMember = (id) => {                                                  
-    let allStaffMembers = this.state.crewDirectory;                                
-    console.log('look at ', id)                                                      
-    let selectStaffMember = allStaffMembers.find(x => x.id === id);
-    console.log(selectStaffMember)                                                              
-                                      
-    this.setState({                                                                
-       selectStaffMember                                                    
-    })  
-  } 
   
   directoryAirTable() {
     const url = "https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory";
@@ -87,7 +90,7 @@ class Directory extends React.Component {
     this.setState({ crewDirectory: results })
     }
   render() {
-    
+      // let flipIndividually = 
     return(
       <div className = 'directory-container'>
         {this.state.crewDirectory && (<DirectorySearchBar 
@@ -101,7 +104,7 @@ class Directory extends React.Component {
           crewDirectory={this.state.crewDirectory}
           selectedStaffMember={this.selectedStaffMember}
           projectData={this.state.projectData}
-          handleClick={this.handleClick}
+          // handleClick={this.handleClick}
           isFlipped={this.state.isFlipped}
         />)}
      </div>
@@ -112,3 +115,4 @@ class Directory extends React.Component {
 }
 
 export default Directory 
+  
