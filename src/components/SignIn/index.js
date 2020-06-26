@@ -254,7 +254,7 @@ class SignInGoogleBase extends Component {
    }
  }
 
-class SignInGithubBase extends Component {
+ class SignInGithubBase extends Component {
   constructor(props) {
      super(props);
 
@@ -308,6 +308,7 @@ class SignInGithubBase extends Component {
     );
   }
  }
+
 
 const SignInForm = compose(
     withRouter,
