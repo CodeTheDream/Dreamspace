@@ -21,56 +21,24 @@
 .slide-container {
   grid-area: header;
 }
-
-.search-container {
-  width: 250px;
-  display: flex;
-  justify-content: center;
+.addButton {
+  grid-area: AddButton;
 }
-
-.menu  {
-  // margin: 0;
-  // line-height: 0;
-  text-align: left;
-  margin-left: 20px;
-  font-size: 15px;
-  // width: 36%;
+.featured {
+  grid-area: featured;
+  margin-top: 30px;
 }
-
-.menu:hover {
-  color: #3fb0ac;
-}
-
-.menu-container {
-  margin-top: 11em;
-  height: 450px;
-  overflow-y: auto;
-  width: 250px;
-  position: absolute;
-    right: 0;
-    left: 0;
-    top: 0; 
-    bottom: 0;
-  opacity: 07521;
-}
-
-.closed-side-bar {
-  position: absolute;
-}
-
-.side-btn-container {
-  position: fixed;
-  left: 4px;
-  top: 27px;
-  display: none;
-}
-
 .sidebar-menu {
   display: grid;
-  grid-template-rows: 118px 55px auto;
+  // grid-template-areas:
+  //   "searchBar searchBar"
+  //   "listItem"
+  //   "listItem";
   grid-area: sidebar-menu;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: whitesmoke;
+  border-right: solid;
+  border-color: #0066cc;
   color: #f15c39;
   box-shadow: 8px 0 10px -6px black;
   width: 100%;
@@ -80,6 +48,12 @@
 
  sidebar-menu.open {
    transform: translateX(0);
+}
+
+.menu-container {
+  list-style: none;
+  // position: left;
+  // cursor: pointer;
 }
 
 .sidebar-menu li {
