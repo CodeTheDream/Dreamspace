@@ -6,7 +6,7 @@ const DirectorySearchBar = (props) => {
   let staffNames = searchDirectory.map((justNames) => justNames.fields);
   console.log('staffNames ', staffNames)
   return(
-    <div>
+    <div className = 'search-contain'>
       <form>
         <label>
           <input type="text" name="name" />

@@ -10,9 +10,23 @@ const DirectoryList = (props) => {
     console.log("optInStaffMembers ", optInStaffMembers);
   let getImage = optInStaffMembers.map(( renderImage ) => renderImage.fields.Photo);
   console.log('getImage ', getImage)
+  // const array = Object.keys(getImage);
+  // console.log('array', array)
+  // const putListInOrder = getImage.keys()
+  // for (const key of putListInOrder) {
+  //   console.log('key ', key)
+  // }
+  // let test = getImage[0];
+  // console.log('test', test)
+  // const pleaseWork = getImage.map((post) => post.filename);
+  // console.log('pleaseWork ', pleaseWork)
+  // const tryList = getImage.entries()
+  // console.log('tryList ', tryList.next().value);
+  // const digDeeper = getImage.map(muchDeeper => muchDeeper.filename)
+  // console.log('digDeeper ', digDeeper);
   // let grabPhoto = optInStaffMembers.fields.Photo[0].url
   // console.log('grabPhoto ', grabPhoto)
-
+  
     return(
       <div className = 'list-container'>
       {/* {getImage.map(getImageDetails => (
@@ -22,20 +36,39 @@ const DirectoryList = (props) => {
           src = {getImageDetails.url} />
       ))} */}
         {optInStaffMembers.map(renderTheList => (
-          <li
+          <ul
+            key = {getImage['filename']}
             className = 'list'>
-              {renderTheList.fields.Name.toUpperCase()}
-            </li>
+              <img className = 'image-contain'
+                   src = {getImage['filename']}
+                   alt = 'Staff Photos'></img>
+                   {console.log('test key ', getImage['filename'])}
+              <li>{renderTheList.fields.Name.toUpperCase()}</li>
+              {/* <li>{renderTheList.fields['Slack Name'].toUpperCase()}</li> */}
+              <li>{renderTheList.fields.Phone}</li>
+              <li>{renderTheList.fields['Email address']}</li>
+
+            </ul>
+          
         ))}
+       
         
       </div>
     )
+  }
+          
+  export default DirectoryList;
+          
+        
+           
+        
+  
+  
+
+
   
 
   
-}
-        
-export default DirectoryList;
     
     
   
