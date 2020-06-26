@@ -132,7 +132,7 @@ class Userprofile extends React.Component {
                         {this.state.showPopup ? (
                          <div className="profilewraper">
                           <div className="prfilecard">
-                            <div  > <button className="canclebutton"onClick={e => this.cancleButton(e)}>x</button></div>
+                            <div  > <button className=" canclebutton" onClick={e => this.cancleButton(e)}>x</button></div>
                             <br/>
                             {/* <button onClick={this.postPics}>
                               Upload your photo
