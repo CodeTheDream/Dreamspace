@@ -7,26 +7,22 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
-    <div className="wrapper">
-        <p style={{fontSize:"28px"}}>SignIn</p>
-        <SignInGoogle /> 
-        <SignInFacebook />
-        <SignInGithub/>
-
-        <p style={{ textAlign: "center" }}>Or sign in manually:</p>
-
-
-        <SignInForm />
-
-        {/*<p className="btn-text"><b>Sign in with google</b></p>*/}
-
-
-
-
-         <PasswordForgetLink /> 
-        <SignUpLink />
-    </div>
-);
+  <div className="wrapper">
+     {/* <p style={{fontSize:"28px"}}>SignIn</p>*/}
+   <div className="signinpage">
+  <h3 className="signin">SignIn</h3>
+<div className="outer">
+ <div className="inner">    <SignInGoogle /></div> 
+   {/* <div className="inner"> <SignInFacebook /></div>*/}
+     <div className="inner"> <SignInGithub/></div>
+</div>
+      <p style={{ textAlign: "center" }}>Or sign in manually:</p>
+      <SignInForm />
+       <PasswordForgetLink /> 
+      <SignUpLink />
+  </div>
+  </div>
+)
 
 const INITIAL_STATE = {
     email: '',
@@ -112,7 +108,7 @@ class SignInGoogleBase extends Component {
 
      this.state = {
         error: null,
-        //photoURL:""
+        photoURL:""
      };
      
   }
@@ -121,68 +117,37 @@ class SignInGoogleBase extends Component {
       this.props.firebase
           .doSignInWithGoogle()
       .then(socialAuthUser => {
-       // Create a user in your Firebase Realtime Database too
-       if(socialAuthUser.user.photoURL===""){
-         console.log("photoUrl",socialAuthUser.user.photoURL)
+      // Create a user in your Firebase Realtime Database too
+      if(socialAuthUser.user.photoURL===""){
+
+         console.log("photoUrl",socialAuthUser)
         return this.props.firebase.user(socialAuthUser.user.uid).set(
        
-      /* if(socialAuthUser.user.photoURL===""){
-         console.log("photoUrl",socialAuthUser.user.photoURL)*/
-        
-          //         // Create a user in your Firebase Realtime Database too
-                 return this.props.firebase.user(socialAuthUser.user.uid).set(
-                     {
-                       username: socialAuthUser.user.displayName,
-                       email: socialAuthUser.user.email,
-                       photoUrl: socialAuthUser.user.photoURL,
-                       roles: {},
-                     },
-                     { merge: true },
-                   );
-                 })
-                 .then(() => {
-                   this.setState({ error: null });
-                   this.props.history.push(ROUTES.HOME);
-                 })
-
-                 .catch(error => {
-                   if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
-                     error.message = ERROR_MSG_ACCOUNT_EXISTS;
-                   }
-          
-                  this.setState({ error });
-                 });
-          
-               event.preventDefault();
-             };
-          
-
-
-
-       /* return this.props.firebase.user(socialAuthUser.user.uid).set(
             {
 
                 username: socialAuthUser.user.displayName,
                 photoUrl: socialAuthUser.user.photoURL,
-                email: socialAuthUser.user.email,
+             email: socialAuthUser.user.email,
             roles: {},
           },
            { merge: true },
-          )}
-          else{/*
+          )
+        }
+          else{
+            console.log("photoUrl on time of login",socialAuthUser)
             return this.props.firebase.user(socialAuthUser.user.uid).set(
+             
               {
   
                   username: socialAuthUser.user.displayName,
-                 //photoUrl: socialAuthUser.user.photoURL,
+               //  photoUrl: socialAuthUser.user.photoURL,
                email: socialAuthUser.user.email,
               roles: {},
             },
              { merge: true },
             )
-          })
-          
-     
+          }
+      })
           .then(() => {
               this.setState({ error: null });
         this.props.history.push(ROUTES.HOME);
@@ -196,7 +161,7 @@ class SignInGoogleBase extends Component {
       });
 
      event.preventDefault();
-   };*/
+   };
 
   render() {
     const { error } = this.state;
@@ -237,7 +202,7 @@ class SignInGoogleBase extends Component {
            {
                  username: socialAuthUser.additionalUserInfo.profile.name,
                  photoUrl: socialAuthUser.additionalUserInfo.profile.photoURL,
-                 email: socialAuthUser.additionalUserInfo.profile.email,
+            email: socialAuthUser.additionalUserInfo.profile.email,
             roles: {},
                  /*username: socialAuthUser.user.displayName,
                  photoUrl: socialAuthUser.user.photoURL,
