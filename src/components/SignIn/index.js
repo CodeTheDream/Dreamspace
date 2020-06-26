@@ -7,22 +7,25 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
-  <div className="wrapper">
-     {/* <p style={{fontSize:"28px"}}>SignIn</p>*/}
-   <div className="signinpage">
-  <h3 className="signin">SignIn</h3>
+    <div className="wrapper">
+       {/* <p style={{fontSize:"28px"}}>SignIn</p>*/}
+     
+    <h2 className="signin">SignIn</h2>
+
+      
 <div className="outer">
  <div className="inner">    <SignInGoogle /></div> 
    {/* <div className="inner"> <SignInFacebook /></div>*/}
      <div className="inner"> <SignInGithub/></div>
 </div>
-      <p style={{ textAlign: "center" }}>Or sign in manually:</p>
-      <SignInForm />
-       <PasswordForgetLink /> 
-      <SignUpLink />
-  </div>
-  </div>
-)
+        <p style={{ textAlign: "center" }}>Or sign in manually:</p>
+
+
+        <SignInForm />
+         <PasswordForgetLink /> 
+        <SignUpLink />
+    </div>
+);
 
 const INITIAL_STATE = {
     email: '',

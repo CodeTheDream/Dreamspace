@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes.js";
 import Logo from "../../assets/images/ctd-logo.png";
-import SignOutButton from "../SignOut";
+//import SignOutButton from "../SignOut";
 import {Redirect} from "react-router-dom";
 import  Userprofile  from "../Userprofile";
 import { AuthUserContext } from "../Session";
@@ -14,7 +14,7 @@ const Navigation = () => (
                 <div>
                     
                     <NavigationNonAuth />
-                <Redirect to ="/signin"/>
+               <Redirect to ="/signin"/>
                     </div>
     }
   </AuthUserContext.Consumer>
@@ -22,7 +22,8 @@ const Navigation = () => (
 
 const NavigationAuth = () => (
   <header className="header">
-        <Link to={ROUTES.HOME}><img src={Logo} className="logo-wrapper" /></Link> 
+   
+        <Link to={ROUTES.HOME}><img src={Logo} className="logo-wrapper" alt="home" /></Link> 
     <input className="menu-btn" type="checkbox" id="menu-btn" />
     <label className="menu-icon" for="menu-btn">
       <span className="nav-icon"></span>
@@ -55,7 +56,7 @@ const NavigationAuth = () => (
 
 const NavigationNonAuth = () => (
   <header className="header">
-  <img src={Logo} className="logo-wrapper" />
+  <img src={Logo} className="logo-wrapper"  alt="hi"/>
     <input className="menu-btn" type="checkbox" id="menu-btn" />
     <label className="menu-icon" for="menu-btn">
       <span className="nav-icon"></span>
