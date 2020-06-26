@@ -15,7 +15,7 @@ class Comment extends React.Component {
     this.state = {
       comments: [],
       showAll: false,
-     // replies: [],
+      replies: [],
       // isOldestFirst: "",
       commentId: "",
       replys: [],
