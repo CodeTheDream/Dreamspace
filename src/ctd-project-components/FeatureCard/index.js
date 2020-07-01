@@ -35,7 +35,7 @@ const FeatureCard = props => {
               <>
                 <div className = 'card-client'><strong>Client{'(s):\n'}</strong>{project.fields.Client}</div>
                 <div className = 'website'><strong>Website:</strong> {project.fields.Website}</div>
-                <div className = 'desc-container'><div className = 'project-desc'><strong>Description:</strong> {project.fields.Project_Description}</div></div>
+                {/* <div className = 'desc-container'><div className = 'project-desc'><strong>Description:</strong> {project.fields.Project_Description}</div></div> */}
                 <div className="card-team"><strong>Current Team:</strong>{'\n'}{project.fields.Current_Team}</div>
                 {/* <ProjectImageModal onClick = {props.handleImageClick} /> */}
 

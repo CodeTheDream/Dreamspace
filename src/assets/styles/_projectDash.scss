@@ -28,7 +28,7 @@
   justify-content: center;
 }
 
-.menu  {
+.menu-project  {
   // margin: 0;
   // line-height: 0;
   text-align: left;
@@ -37,16 +37,15 @@
   // width: 36%;
 }
 
-.menu:hover {
+.menu-project:hover {
   color: #3fb0ac;
 }
 
 .menu-container {
-  margin-top: .5em;
+  // margin-top: .5em;
   overflow-y: auto;
   width: 250px;
-
-  // opacity: 07521;
+  height: 505px;
 }
 
 .closed-side-bar {
@@ -77,8 +76,8 @@
    transform: translateX(0);
 }
 
-.sidebar-menu li {
-  padding: 5px;
+.sidebar-menu > li {                                /* this class name was switch from .sidebar-menu li, to .sidebar-menu > li */
+  padding: 2px;
 }
 
 .top-line-container {
@@ -117,6 +116,10 @@
   //margin-top: 15px;
   //margin-left: 10px;
 }
+
+// .btn-line {
+
+// }
 
 @media screen and (max-width: 979px) {
   .dashboard-content {
@@ -345,7 +348,10 @@
 }
 
 @media screen and (max-width: 414px) {
-  .top-line-container {
+  .top-line-container hr {
+    display: none;
+  }
+  .btn-line {
     display: none;
   }
 
@@ -395,7 +401,7 @@
 
   .card-content {
    padding: 0;
-   padding-top: 2em;
+   padding-top: 6em;
   }
 
   .menu-container {
@@ -470,8 +476,8 @@
     margin: 0;
     height: auto;
     width: 100%;
-    margin-top: 5em;
-    margin-bottom: 1em;
+    margin-top: 4px;
+    margin-bottom: 4px;
   }
 
   .menu {
@@ -505,7 +511,7 @@
   .card-content {
     padding: 0;
     margin: 0;
-    padding-top: 1.5em;
+    padding-top: 6.5em;
     
   }
 }

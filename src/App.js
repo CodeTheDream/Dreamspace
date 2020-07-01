@@ -32,8 +32,8 @@ function App() {
           <Route exact path={ROUTES.SIGNUP} component={SignUp} />
           <Route exact path={ROUTES.SIGN_IN} component={SignInPage} />
           <Route exact path={ROUTES.HOME} component={HomePage} /> 
-                  <Route exact path={ROUTES.PASSWORD_FORGET} component={password} /> 
-                  <Route exact path={ROUTES.DIRECTORY} component={Directory} />
+          <Route exact path={ROUTES.PASSWORD_FORGET} component={password} /> 
+          <Route exact path={ROUTES.DIRECTORY} component={Directory} />
           <Route
             exact
             path={ROUTES.INDIVIDUAL_VIEW}
