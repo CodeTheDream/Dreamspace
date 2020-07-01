@@ -24,7 +24,7 @@
 .modal-image {
   width: 600px;
   height: 600px;
-  padding-top: 91px;
+  padding-top: 5px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -32,6 +32,17 @@
 .exit-modal {
   position: relative;
   left: 17em;
+}
+
+.project-desc-para {
+  color: #3fb0ac;
+}
+.modal-desc-container {
+  margin-top: 1em;
+  height: 8em;
+  overflow: auto;
+  padding: 1em;
+  box-shadow: inset 0 0 5px 5px #fff;
 }
 
 @media screen and (max-width: 702px) {

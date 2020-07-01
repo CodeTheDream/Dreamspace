@@ -15,7 +15,7 @@ const DrawBottomLine = ({color}) => (
       backgroundColor: color, 
       height: 1, 
       position: 'relative', 
-      top: '23.3em',
+      // top: '-9.7em',
       marginTop: '16px'
     }}/>
 );
@@ -54,12 +54,13 @@ const DrawBottomLine = ({color}) => (
                 // style={{backgroundColor: '#fae596'}}
                 key={sideBar.id}
                 onClick={() => props.selectProject(sideBar.id)}
-                className="menu">
+                className="menu-project">
                 {sideBar.fields.Name}
               </li> 
             )})}
             <div><DrawBottomLine color = '#3fb0ac'/></div>
           </div>
+          
           
         </div>
       );
