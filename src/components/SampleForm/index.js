@@ -47,8 +47,8 @@ this.setState({username:e.target.value})
     return (
       <AuthUserContext.Consumer>
         {(authUser) => (
-      <div className="devedit-form">
-        <form onSubmit={e => this.onSubmit(e,authUser)}>
+      <div  className="view-container-signup">
+        <form className="devedit-form" onSubmit={e => this.onSubmit(e,authUser)}>
           <fieldset>
             <legend>
               <span className="number">1</span> Candidate Info

@@ -40,8 +40,8 @@ class PasswordChangeForm extends Component {
     const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
 
     return (
-      <div className="devedit-form">
-      <form onSubmit={this.onSubmit}>
+      <div  className="view-container-signup">
+      <form className="devedit-form" onSubmit={this.onSubmit}>
         <input
           name="passwordOne"
           value={passwordOne}
