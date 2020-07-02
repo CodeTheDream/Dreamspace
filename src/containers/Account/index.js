@@ -15,8 +15,8 @@ render(){
     <AuthUserContext.Consumer>
         {(authUser) => (
 
-          <div className="view-container account-page">
-          <h2>Account</h2>
+          <div >
+          <h2 >Account</h2>
           {/* <PasswordForgetForm /> */}
           <SampleForm>{authUser.uid}</SampleForm>
           
