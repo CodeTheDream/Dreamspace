@@ -72,7 +72,7 @@ class ProjectDashBoard extends React.Component {
       selectedProject
     });
   };
-  
+
 // grabs air table project data
   getAirTable() {
     const url = "https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects";
@@ -143,7 +143,8 @@ class ProjectDashBoard extends React.Component {
             {this.state.selectedProject ? (
               <FeatureCard 
                 project={this.state.selectedProject} 
-                handleImageClick={this.handleImageClick}>
+                handleImageClick={this.handleImageClick}
+                crewDirectory={this.state.crewDirectory}>
                 {modalScreen}
               </FeatureCard>) : null} 
             

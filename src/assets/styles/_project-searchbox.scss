@@ -81,7 +81,8 @@
     transition: all 1s;
     opacity: 0;
     z-index: 5;
-    font-weight: bolder;
+    font-weight: bold;
+    font-size: 15px;
     letter-spacing: 0.1em;
     &:hover {
       cursor: pointer;

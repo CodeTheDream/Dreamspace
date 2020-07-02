@@ -6,13 +6,15 @@ import ctd from "../../assets/images/ctd-labs-horiz.png";
 
 const FeatureCard = props => {
   const { project } = props;
+  const directoryData = props.crewDirectory;
+  console.log('hey hey hey', directoryData);
   // console.log('check the cards ', project);
   // console.log('look at ', props)
   let images = 'https://ya-webdesign.com/images250_/placeholder-image-png-1.png';
   if(project.fields.photo) {
     images = project.fields.photo[0].url;
   }
-
+  
   return (
     <div className="flip-card">
       <div className="flip-card-inner">
@@ -35,7 +37,7 @@ const FeatureCard = props => {
               <>
                 <div className = 'card-client'><strong>Client{'(s):\n'}</strong>{project.fields.Client}</div>
                 <div className = 'website'><strong>Website:</strong> {project.fields.Website}</div>
-                {/* <div className = 'desc-container'><div className = 'project-desc'><strong>Description:</strong> {project.fields.Project_Description}</div></div> */}
+                <div className = 'desc-container'><div className = 'project-desc'><strong>Description:</strong> {project.fields.Project_Description}</div></div>
                 <div className="card-team"><strong>Current Team:</strong>{'\n'}{project.fields.Current_Team}</div>
                 {/* <ProjectImageModal onClick = {props.handleImageClick} /> */}
 

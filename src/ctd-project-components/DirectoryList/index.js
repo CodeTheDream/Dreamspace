@@ -53,9 +53,9 @@ const DirectoryList = (props) => {
               <ul className = 'back-of-list'
                   onClick = {() => props.selectedStaffMember(null)}>
                   <h4 className = 'project' style = {{textAlign: 'center', fontWeight: 'bold'}}>Current Project</h4>
-                  <li className = 'slack'>Slack Name: {staff.fields['Slack Name']}</li>
-                  <li className = 'number'>{staff.fields.Phone}</li>
-                  <li className = 'email'>{staff.fields['Email address']}</li>
+                  <li className = 'slack'><strong>Slack Name:</strong> {staff.fields['Slack Name']}</li>
+                  <li className = 'number'><strong>Phone Number:</strong> {staff.fields.Phone}</li>
+                  <li className = 'email'><strong>Email:</strong> {staff.fields['Email address']}</li>
               </ul>
              </ReactCardFlip> 
           )})}

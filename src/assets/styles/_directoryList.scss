@@ -26,6 +26,12 @@
   cursor: pointer;
 }
 
+.back-of-list {
+  padding-bottom: 71px;
+  // background-color: #fae596;
+
+}
+
 .list:hover {
   box-shadow: 0 4px 8px 0 #3fb0ac, 0 6px 20px 0 #3fb0ac;
 }
@@ -63,6 +69,16 @@
   text-shadow: 0.2em 0.2em 0.2em rgba(0,0,0,0.2);
   overflow: hidden;
   // padding-bottom: 35px;
+}
+
+.slack, .number, .email {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  margin-left: 4px;
+  font-size: 15px;
+  // color: #3fb0ac;
+  line-height: 1.5;
 }
 
 .staff {

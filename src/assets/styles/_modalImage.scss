@@ -6,6 +6,12 @@
   overflow: hidden;
 }
 
+.image-actual {
+  width: 95%;
+  height: 80%;
+  margin-top: 1em;
+}
+
 .modal-image-container {
   width: 700px;
   height: 600px;
@@ -34,9 +40,6 @@
   left: 17em;
 }
 
-.project-desc-para {
-  color: #3fb0ac;
-}
 .modal-desc-container {
   margin-top: 1em;
   height: 8em;

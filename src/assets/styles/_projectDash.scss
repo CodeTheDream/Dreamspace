@@ -34,6 +34,7 @@
   text-align: left;
   margin-left: 20px;
   font-size: 15px;
+  line-height: 1.5;
   // width: 36%;
 }
 
@@ -43,7 +44,7 @@
 
 .menu-container {
   // margin-top: .5em;
-  overflow-y: auto;
+  overflow-y: scroll;
   width: 250px;
   height: 505px;
 }
