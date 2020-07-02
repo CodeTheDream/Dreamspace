@@ -127,6 +127,7 @@ body {
 @media (max-width: 800px) {
   .wrapper {
     width: 100%;
+    overflow-x: auto;;
     line-height: 1.58;
     margin-top: 3em;
     justify-content: center;
