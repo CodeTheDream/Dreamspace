@@ -63,6 +63,12 @@ class Dashboard extends React.Component {
          // .includes(this.state.search.toLowerCase())
       )
     });
+    if (filteredArticles) {
+      filteredArticles.sort((a, b) => {
+          const isReversed = (sortType === 'dsc') ? 1 : -1;
+          return isReversed * a.timeCreated.localeCompare(b.timeCreated)
+      })
+    }
     return (
       <div className="wrapper">
         <div className="main-class">
