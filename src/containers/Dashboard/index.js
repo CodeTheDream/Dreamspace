@@ -35,6 +35,7 @@ class Dashboard extends React.Component {
         // { collection: 'article',limit:5, orderBy: ['calculatedvote', 'des'] },
 
         // console.log("Articles loaded here yo!", articles);
+        console.log('this state articles initial', articles)
         this.setState({ articles });
       });
     // let { calculatedvote } = this.props;
@@ -50,9 +51,18 @@ class Dashboard extends React.Component {
       search: e.target.value
     });
   };
+
+  // filterByDate = () => {
+  //   let sortedArticles = this.state.articles.sort((a, b) => {
+  //     console.log('sorting', a, b)
+  //     return b.timeCreated - a.timeCreated
+  //   })
+  //   this.setState({articles:sortedArticles})
+  // }
+
   render() {
     const { sortType } = this.state;
-
+    console.log('checking article sort', this.state.articles)
     let filteredArticles = this.state.articles.filter(article => {
       return (
          // article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
@@ -69,6 +79,7 @@ class Dashboard extends React.Component {
           <div className="search-bar">
             <SearchBar handleInput={this.handleInput} />
           </div>
+          {/* <div onClick={this.filterByDate}>Date FIlter</div> */}
           <div className="create-post">
             <Create_article />
           </div>

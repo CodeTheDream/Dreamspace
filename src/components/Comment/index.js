@@ -22,7 +22,6 @@ class Comment extends React.Component {
       replysID: "",
       username: "",
       photoUrl: "",
-      replyUserId: "",
       reply:""
     };
   }
@@ -48,11 +47,8 @@ class Comment extends React.Component {
         );
 
         this.state.replys.map((reply) => {
-          let replyUserId = "";
           if (commentId === reply.parentCommentId) {
-            replyUserId = reply.userId;
             this.setState({
-              replyUserId: replyUserId,
               reply:reply
             });
           }
@@ -128,8 +124,7 @@ class Comment extends React.Component {
                       replys.map((reply) =>
                         commentId === reply.parentCommentId ? ( 
                         
-                          <div>
-                            {replyUserId && (
+                         
                               <ReplyComment
                                 reply={reply}
                                 replys={this.state.replys}
@@ -137,11 +132,9 @@ class Comment extends React.Component {
                                 commentId={commentId}
                                 comment={comment}
                                 replysId={replysId}
-                                replyUserId={replyUserId}
                                 limited={limited}
                               />
-                            )}
-                          </div>
+                          
                             ) : null
                       )}  
                   </div>

@@ -31,14 +31,11 @@ class ReplyComment extends React.Component {
   };
   componentDidMount = () => {
     this.getReplyUserDetails();
-   // console.log("reply user id", this.props.replyUserId);
   };
 
   getReplyUserDetails = () => {
-    //e.preventDefault();
-    //const autherId = authUser.uid;
     this.props.firebase
-      .user(this.props.replyUserId)
+      .user(this.props.reply.userId)
       .get()
       .then((doc) => {
        // console.log("userdata in comment", doc.data());
@@ -50,18 +47,23 @@ class ReplyComment extends React.Component {
       });
   };
 
-  showMore = () => this.setState({ showAll: true });
+  showMore = () => {
+    console.log("show more clicked")
+  this.setState({ showAll: true });
+  }
+
   showLess = () => this.setState({ showAll: false });
 
   render() {
-    const { commentId, replys, limited, reply, showAll } = this.props;
+    const { commentId, replys, limited, reply } = this.props;
+    const {showAll} = this.state;
     let commentReply = reply.reply;
     //console.log("showMore", this.showMore);
     const replyToRender = replys.filter((reply1) =>
       commentId === reply1.parentCommentId ? reply.parentCommentId : null
     );
     const numOfReplys = replyToRender.length;
-   console.log("reply  comment that can be shown:",reply.reply)
+  //  console.log("reply  comment that can be shown:",reply.reply)
 
     // let replycomment = replys.filter((reply) =>
     //   (commentId === reply.parentCommentId )? reply.reply : null
