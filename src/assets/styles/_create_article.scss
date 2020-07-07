@@ -3,7 +3,11 @@
   box-sizing:border-box;
   content: width= device-width ,initial-scale=1;
   }
-
+  .devedit-form-legend1 {
+    font-size: 1em;
+   margin: auto;
+    }
+  
   .button-secondary1 {
     margin-top: 10px;
     font-size: 18px;
@@ -25,14 +29,14 @@
       max-width: 100%;
       margin: auto;
       position: fixed;
-      left: 35%;
+      left: 45%;
       right: 35%;
       top: 40%;
       padding: 10px;
       border-radius: 8px;
       display: flex;
       flex-direction: column;
-      transform: translate(-35%, -35%);
+      transform: translate(-48%, -42%);
     }
     .button-secondary1 {
       margin-top: 10px;
@@ -115,12 +119,15 @@
     // font-size: 1em;
     //}
   }
-  .autosuggest_list{
-    font-size: 0.5em;
-    line-height: 1em;
-    letter-spacing: -0.08em;
-    text-align: start;
-    align-self: flex-start;
-   // padding: 1em;
-  }
-  
+.autosuggest_list{
+  font-size: 0.5em;
+  line-height: 1em;
+  letter-spacing: -0.08em;
+  text-align: start;
+  align-self: flex-start;
+ // padding: 1em;
+}
+
+
+
+
