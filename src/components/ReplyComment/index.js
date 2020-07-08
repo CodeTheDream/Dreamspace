@@ -1,140 +1,242 @@
-/*import React from "react";
+import React from "react";
 import { withFirebase } from "../Firebase";
-import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
-import AddReplys1 from "../AddReplys1";
+import {
+  AuthUserContext,
+  withAuthorization,
+  withEmailVerification,
+} from "../../components/Session";
 const moment = require("moment");
-
 class ReplyComment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       timeCreated: "",
-      //replys: [],
-      //limit: 5,
       showAll: false,
       showPopup: false,
-      username:"",
-      reply:""
+      username: "",
+      // reply: "",
+      photoUrl: "",
     };
   }
-
   togglePopup = () => {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   };
   cancle = () => {
     this.setState({ showPopup: false });
   };
-
   componentDidMount = () => {
-   
-const {replysId} = this.props
-console.log("replyId at replycomment  componentdidmount",replysId)     
-     
-       this.unsubscribe = this.props.firebase
-       .replys(replysId)
- 
-       .onSnapshot(doc => {
-         if (doc.exists) {
-         // console.log(" this is my article", doc.data());
-           this.setState({
-           
-             reply: doc.data()
-             
-           });
-          }})
-         // console.log("reply",this.state.reply)
-    let autherId = this.state.reply.userId;
-    //console.log("autherId of  a reply",autherId)
-    this.unsubscribe = this.props.firebase
-      .user(autherId)
-      .get()
-      .then(doc => {
-        // console.log("userdata", doc.data())
-        let user = doc.data();
-        //this.setState({ username: user.username });
-      })
-  
-  }
- /* renderReplycomment = () => {
-    // console.log("this is the replys in renderreplys func", this.props.replys);
-    const { comment, timeCreated } = this.props;
-
-    if (this.props.replys) {
-      this.props.replys.map((reply,i)=> {
-        console.log("this is the the reply in the reply function", reply);
-        return (
-          <div>
-            <ReplyComment timeCreated={reply.timeCreated} reply={reply.reply} />
-
-            <AddReplys type="child" />
-          </div>
-        );
-      });
-    }
+    this.getReplyUserDetails();
   };
-  
-
-  showMore = () => this.setState({ showAll: true });
+  getReplyUserDetails = () => {
+    this.props.firebase
+      .user(this.props.reply.userId)
+      .get()
+      .then((doc) => {
+        // console.log("userdata in comment", doc.data());
+        let user = doc.data();
+        this.setState({
+          username: user.username,
+          photoUrl: user.photoUrl,
+        });
+      });
+  };
+  showMore = () => {
+    // console.log("show more clicked")
+    this.setState({ showAll: true });
+  };
   showLess = () => this.setState({ showAll: false });
-
   render() {
-    const {  timeCreated, commentID, userName ,replysId} = this.props;
-    
- console.log("replyId at replycomment11", replysId);
-    //console.log("show popup", this.state.showPopup);
-    return (
-      <div>
-        <div className="replypage">
-          <i
-            className="fas fa-angle-down "
-            style={{ width: "10em" }}
-            onClick={() => this.togglePopup()}
-          >
-            {" "}
-            view{""} {this.props.totallReplys}
-            {" more "}
-            {" Replys "}
-          </i>
-        </div>
-        {this.state.showPopup ? (
-          <div>
-          <div>
-            {this.props.replys.map(reply => {
-              //console.log("this is the the reply in the reply function", reply);
-              return (
+    const { commentId, replys, limited, reply } = this.props;
+    const { showAll } = this.state;
+    let commentReply = reply.reply;
+    //console.log("showMore", this.showMore);
+    const replyToRender = replys.filter((reply1) =>
+      commentId === reply1.parentCommentId ? reply1.parentCommentId : null
+    );
+    const numOfReplys = replyToRender.length;
+    // console.log("reply:",reply)
+    // let replycomment = replys.filter((reply) =>
+    //   (commentId === reply.parentCommentId )? reply.reply : null
+    // );
+    // console.log("replycomment",replycomment)
+    if (replyToRender.length <= limited) {
+      return (
+        <div>
+          <div className="replypage">
+            <i
+              className="fas fa-angle-down "
+              style={{ width: "10em" }}
+              onClick={() => {
+                this.togglePopup();
+              }}
+            >
+              {" "}
+              {/* View{""}  */}
+              {numOfReplys}
+              {" More "}
+              {" Replys "}
+            </i>
+          </div>
+          {this.state.showPopup ? (
+            <div>
+              <div>
                 <div>
                   <div className="replystayle">
                     <p>
                       {" "}
-                      <i className="fa fa-user"></i> posted By {this.state.userName}{" "}
-                      
-                      {reply.timeCreated}
+                      <span />
+                      <img
+                        src={this.state.photoUrl}
+                        alt=""
+                        className="user-profile"
+                      />{" "}
+                      posted By {this.state.username} {reply.timeCreated}
                     </p>
                     <p>{reply.reply}</p>
                   </div>
-                  <AddReplys1 commentID={commentID} replysId={replysId}/>
-
                 </div>
-              );
-            })
-            }
-          </div>
+              </div>
               <div className="replypage-hide">
+                <i
+                  className="fas fa-angle-up "
+                  style={{ width: "10em" }}
+                  onClick={this.cancle}
+                >
+                  {" "}
+                  Hide viwe
+                </i>
+              </div>
+            </div>
+          ) : null}
+        </div>
+      );
+    } else {
+      if (showAll) {
+        return (
+          <div>
+            <div className="replypage">
               <i
-             className="fas fa-angle-up " 
-             style={{ width: "10em" }}
-              
-           onClick={this.cancle}>{" "}Hide {" "} viwe</i>
-           
+                className="fas fa-angle-down "
+                style={{ width: "10em" }}
+                onClick={() => {
+                  this.togglePopup();
+                }}
+              >
+                {" "}
+                {/* View{""}  */}
+                {numOfReplys}
+                {" More "}
+                {" Replys "}
+              </i>
             </div>
+            {this.state.showPopup ? (
+              <div>
+                <div>
+                  <div>
+                    <div className="replystayle">
+                      <p>
+                        {" "}
+                        <span />
+                        <img
+                          src={this.state.photoUrl}
+                          alt=""
+                          className="user-profile"
+                        />{" "}
+                        posted By {this.state.username} {reply.timeCreated}
+                      </p>
+                      <p>
+                        {reply.reply}
+                        <a
+                          onClick={this.showLess}
+                          style={{ color: "darkblue" }}
+                        >
+                          Read less
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="replypage-hide">
+                  <i
+                    className="fas fa-angle-up "
+                    style={{ width: "10em" }}
+                    onClick={this.cancle}
+                  >
+                    {" "}
+                    Hide viwe
+                  </i>
+                </div>
+              </div>
+            ) : null}
+          </div>
+        );
+      }
+    }
+
+    //console.log("commentReplys",commentReply)
+    const toShow = commentReply.substring(0, limited) + "....";
+    // console.log("sliced comment Replys", toShow);
+    if (toShow) {
+      return (
+        <div>
+          <div className="replypage">
+            <i
+              className="fas fa-angle-down "
+              style={{ width: "10em" }}
+              onClick={() => {
+                this.togglePopup();
+              }}
+            >
+              {" "}
+              {/* View{""}  */}
+              {numOfReplys}
+              {" More "}
+              {" Replys "}
+            </i>
+          </div>
+          {this.state.showPopup ? (
+            <div>
+              <div>
+                <div>
+                  <div className="replystayle">
+                    <p>
+                      {" "}
+                      <span />
+                      <img
+                        src={this.state.photoUrl}
+                        alt=""
+                        className="user-profile"
+                      />{" "}
+                      posted By {this.state.username} {reply.timeCreated}
+                    </p>
+                    <p>
+                      {toShow}
+                      <a onClick={this.showMore} style={{ color: "darkblue" }}>
+                        {" "}
+                        Read More{" "}
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="replypage-hide">
+                <i
+                  className="fas fa-angle-up "
+                  style={{ width: "10em" }}
+                  onClick={this.cancle}
+                >
+                  {" "}
+                  Hide viwe
+                </i>
+              </div>
             </div>
-        ) : null}
-      </div>
-    );
+          ) : null}
+        </div>
+      );
+    }
   }
 }
-
-export default compose(withFirebase, withRouter)(ReplyComment);*/
+export default compose(withFirebase)(ReplyComment);

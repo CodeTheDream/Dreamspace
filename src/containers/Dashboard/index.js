@@ -28,7 +28,7 @@ class Dashboard extends React.Component {
     // let articles =this.props.firebase.articles()
     this.unsubscribe = this.props.firebase
       .articles()
-      .orderBy("calculatedvote", "desc") // here i have tried to  sort using the calculated vote
+      //.orderBy("calculatedvote", "desc") // here i have tried to  sort using the calculated vote
       .onSnapshot(snapshot => {
         let articles = [];
         snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
@@ -55,14 +55,21 @@ class Dashboard extends React.Component {
 
     let filteredArticles = this.state.articles.filter(article => {
       return (
-         // article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
+         //article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
           article.timeCreated.toLowerCase().includes(this.state.search.toLowerCase()),
-        article.title.toLowerCase().includes(this.state.search.toLowerCase())
-       // article.description
-         // .toLowerCase()
-         // .includes(this.state.search.toLowerCase())
-      )
+        article.title.toLowerCase().includes(this.state.search.toLowerCase()),
+       article.description
+         .toLowerCase()
+         .includes(this.state.search.toLowerCase())
+     )
     });
+    if (filteredArticles) {
+      filteredArticles.sort((a, b) => {
+          const isReversed = (sortType === 'dsc') ? 1 : -1;
+          return isReversed * a.timeCreated.localeCompare(b.timeCreated)
+      })
+
+  }
     return (
       <div className="wrapper">
         <div className="main-class">
