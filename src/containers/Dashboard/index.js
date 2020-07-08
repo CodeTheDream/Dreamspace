@@ -28,7 +28,7 @@ class Dashboard extends React.Component {
       let articles = [];
       snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
 
-      // console.log("Articles loaded here yo!", articles);
+      console.log("Articles loaded here yo!", articles);
       this.setState({ articles });
     });
   }
@@ -47,19 +47,21 @@ class Dashboard extends React.Component {
     });
   };
     render() {
-        const { sortType } = this.state;
+        const { sortType ,articles} = this.state;
         
+        //console.log("articlesfiltered",articles)
 
         let filteredArticles = this.state.articles.filter(article => {
-           
+          console.log("articlefiltered",article)
       return (
-          article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
+         // article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
           article.timeCreated.toLowerCase().includes(this.state.search.toLowerCase()),
         article.title.toLowerCase().includes(this.state.search.toLowerCase()),
-        article.description
+       article.description
           .toLowerCase()
           .includes(this.state.search.toLowerCase())
       )
+
         });
         
         if (filteredArticles) {
