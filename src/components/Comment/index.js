@@ -48,10 +48,10 @@ class Comment extends React.Component {
 
         this.state.replys.map((reply) => {
           if (commentId === reply.parentCommentId) {
-            if(reply.commentID){         
+            if(this.state.replysID){         
                 this.setState({
               reply:reply
-            })};
+            },()=>console.log("reply for the replys",this.state.reply))};
           }
         });
        });
