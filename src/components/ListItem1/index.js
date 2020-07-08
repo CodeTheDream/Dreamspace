@@ -24,10 +24,6 @@ class ListItem1 extends React.Component {
 
         };
     }
-
-
-
-
     componentDidMount() {
 
         const { article } = this.props
@@ -50,11 +46,7 @@ class ListItem1 extends React.Component {
                     photoUrl: user.photoUrl,
                 })
             })
-
-
     }
-
-
     componentDidUpdate = (prevProps) => {
         if (prevProps.article !== this.props.article) {
             this.calculatedvote(this.props.article.upvotes, this.props.article.downvotes)

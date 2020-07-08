@@ -75,19 +75,17 @@ class Dashboard extends React.Component {
         </div>
         <div className="popular-title">
           <p style={{ float: "left" }}>Popular Posts</p>
+          <label>Search by</label>{" "}
+          <button>vote</button>{" "}
+          <button>Date</button>
         </div>
         <div>
           <ListItems
-                    filteredArticles={filteredArticles}
+                    filteredArticles={filteredArticles}/>
                   
-            //recipes={this.state.recipes}
-          />
+         
         </div>
-        {/* <div>
-          <Directory 
-            crewDirectory={this.state.crewDirectory}
-          />
-        </div> */}
+        
       </div>
     );
   }
