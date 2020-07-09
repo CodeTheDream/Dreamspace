@@ -1,4 +1,4 @@
-/*import React from "react";
+import React from "react";
 import { compose } from "recompose";
 import {
   AuthUserContext,
@@ -162,4 +162,4 @@ class Comment extends React.Component {
     }
   }
 }
-export default compose(withFirebase)(Comment);*/
+export default compose(withFirebase)(Comment);
