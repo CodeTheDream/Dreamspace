@@ -33,7 +33,7 @@ const NavigationAuth = () => (
         <Link to={ROUTES.ARTICLES}>Articles</Link>
       </li>
              <li>
-        <Link to={ROUTES.PROJECT}>project</Link>
+        <Link to={ROUTES.PROJECT}>Project</Link>
       </li>
                
       <li>

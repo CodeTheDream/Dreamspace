@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactCardFlip from 'react-card-flip';
+import reactImage from '../../assets/images/react-image.png';
+import rubyImage from '../../assets/images/ruby-on-rails.png';
 
 const DirectoryList = (props) => {
   // all ctd projects
@@ -24,7 +26,7 @@ const DirectoryList = (props) => {
     const getFlip = ['vertical', 'horizontal'];
     let randomFlip = getFlip[Math.floor(Math.random() * 2)];
     console.log('get ', randomFlip);
-   
+
     return(
       <div className = 'list-container'>
           {sortNames.map(staff => {
@@ -52,8 +54,20 @@ const DirectoryList = (props) => {
   
               <ul className = 'back-of-list'
                   onClick = {() => props.selectedStaffMember(null)}>
-                  <h4 className = 'project' style = {{textAlign: 'center', fontWeight: 'bold'}}>Current Project</h4>
-                  <li className = 'slack'><strong>Slack Name:</strong> {staff.fields['Slack Name']}</li>
+                  <div className = 'back-card-directory-image' style = {{
+                    width: '100px', height: '100px', borderRadius: '50%'}}>
+                    <img src = {pics} alt = 'Staff Member' style = {{
+                      width: '100px', height: '100px', borderRadius: '50%', marginLeft: '10px', marginTop: '10px'}}/>
+                  </div>
+                    <div className = 'frontend-or-backend'>
+                      {}
+                    <div>
+                    
+                  </div>
+                    {/* <div>{staff.fields['Primary Department'][0] === 'reactjs' : <img src = {rubyImage} alt = 'second-logo'/>}</div> */}
+                  </div>
+                  {/* <h4 className = 'project' style = {{textAlign: 'center', fontWeight: 'bold'}}>Current Project</h4> */}
+                  <li className = 'slack' style = {{marginTop: '10px'}}><strong>Slack Name:</strong> {staff.fields['Slack Name']}</li>
                   <li className = 'number'><strong>Phone Number:</strong> {staff.fields.Phone}</li>
                   <li className = 'email'><strong>Email:</strong> {staff.fields['Email address']}</li>
               </ul>
