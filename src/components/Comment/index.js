@@ -48,13 +48,14 @@ class Comment extends React.Component {
 
         this.state.replys.map((reply) => {
           if (commentId === reply.parentCommentId) {
-            if(this.state.replysID){         
+            if(reply){         
                 this.setState({
               reply:reply
-            },()=>console.log("reply for the replys",this.state.reply))};
+            })};
           }
         });
        });
+
 
     let { comment } = this.props;
     let autherId = comment.userId;
@@ -94,7 +95,7 @@ class Comment extends React.Component {
   //  {  replys.map((reply) =>
   //       commentId === reply.parentCommentId ? (
   //       reply=reply):null)
-console.log("reply from state",reply)
+//console.log("reply from state",reply)
     // if(replys){
     //   replys.sort((a,b) =>{
     //    const  isReversed = (sortType === 'asc') ? 1 :-1;
@@ -126,9 +127,10 @@ console.log("reply from state",reply)
                     <AddReplys commentId={comment.commentId} />
                     {replys &&
                       replys.map((reply) =>
+                      
                         commentId === reply.parentCommentId ? ( 
                         <div>
-                         {/* <button>view</button> */}
+                         
                          
                               <ReplyComment
                                 reply={reply}
@@ -140,8 +142,8 @@ console.log("reply from state",reply)
                                 limited={limited}
                               />
                          </div>
-                            ) : null
-                     )}   
+                             ) : null
+                     )}    
                   </div>
                 </div>
               </div>

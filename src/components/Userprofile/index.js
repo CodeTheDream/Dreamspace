@@ -159,14 +159,23 @@ class Userprofile extends React.Component {
                               set as profile photo
                             </button>*/}
                             <div className="uploadimage">
-                              <input
+                              {/* <input
                                 className="imageinput"
-                                type="text"
+                               // type="text"
                                 placeholder="Drage and drop your Image-URl"
-                                value={this.state.url}
+                               // value={this.state.url}
                                 onChange={this.onUrlChange}
-                                required
-                              />
+                               // required
+                                
+                              /> */}
+                               <input
+                               className="imageinput"
+                                    type="url"
+                                    placeholder="Drage and drop your Image-URl"
+                                    value={this.state.url}
+                                    onChange={this.onUrlChange}
+                                    required
+                                  />
                               <button
 
                                 className="imageupload"

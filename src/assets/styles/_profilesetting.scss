@@ -1,140 +1,4 @@
-@media only screen  and (max-width:800px){
-  .navbar {
-    overflow: hidden;
-     background-color: #333;
-   }
-   
-   .navbar a {
-    float: left;
-     font-size: 16px;
-     color: white;
-     text-align: center;
-     padding: 14px 16px;
-     text-decoration: none;
-   }
-   .dropdown {
-    // float: left;
-     overflow: hidden;
-    
-   }
-   
-   .dropdown .dropbtn {
-     font-size: 16px;  
-     border: none;
-     outline: none;
-     color:#fae596 ;
-     padding: 14px 16px;
-     background-color: inherit;
-     font-family: inherit;
-     margin: 0;
-   }
-   
-   .navbar a:hover, .dropdown:hover .dropbtn {
-     background-color:#3fb0ac;
-   }
-   
-   .dropdown-content {
-     display: none;
-     position: absolute;
-     background-color:#3fb0ac;
-    min-width: 20em;
-    height: 20em;
-     color:  #fae596;
-     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-     z-index: 1;
-    left: 26%;
-     right: 74%;
-     top: 100%;
-     padding: 10px;
-   }
-   
-   .dropdown-content a {
-     float: none;
-     color: black;
-     padding: 12px 16px;
-     text-decoration: none;
-     display: block;
-     text-align: left;
-   }
-   
-   .dropdown-content a:hover {
-     background-color: #ddd;
-   }
-   
-   .dropdown:hover .dropdown-content {
-     display: block;
-   }
 
- .prfilecard{
-
-  z-index: 999;
-  width: 100%;
-  max-width: 20em;
-  height: 25em;
-  margin: auto;
-  position: fixed;
-  left: 52%;
-  right: 48%;
-  top: 50%;
-  padding: 10px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  transform: translate(-50%, -50%);
-  background-color: ghostwhite;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  align-items: center;
-  justify-content: center;
-  border:1px solid lightgrey;
-  
-}
-.uploadImage {
-  width: 300px;
-  height: 200px;
-  margin-bottom: 40px;
-}
-.uploadimage {
-  display: inline-block;
-}
-.imageupload{
-// width:8em;
-height:3em;
-//margin-top: 2px;
-//font-size: 18px;
-text-align: center;
-font-style: normal;
-// width: 8em;
-margin-bottom: 10px;
-background: #3fb0ac;
-float: right;
-color: #fae596;
-border-radius: 8px;
-position: relative;
-//padding: 8px;
-} 
-.imageinput {
-width:15em;
-height:3em;
-} 
-.canclebutton{
-margin-bottom: 15px;
-margin-left: 20em;
-padding: 3px 8px;
-cursor: pointer;
-border-radius: 50%;
-border: none;
-width: 30px;
-height: 30px;
-font-weight: bold;
-//align-self: flex-end;
-background: $main-color;
-
-// background: $secondary-color;
-color: lightgray;
-// background-color: yellow;
-
-}
- }
 
 
 
@@ -243,8 +107,11 @@ color: lightgray;
 
     } 
     .imageinput{
-    width:40em;
-    height:3em;
+      width: 40em;
+      height: 3em;
+      float: left;
+      margin-right: 5px;
+  
     }
     
     .canclebutton{
@@ -328,7 +195,8 @@ right: 0;
 bottom: 0;
 margin: 0;
 min-height: 120em;
-}@media only screen  and (max-width:800px){
+}
+@media only screen  and (max-width:800px){
   .navbar {
     overflow: hidden;
      background-color: #333;
@@ -398,39 +266,32 @@ min-height: 120em;
  .prfilecard{
 
   z-index: 999;
-  width: 100%;
-  max-width: 25em;
-  height: 25em;
-  margin: auto;
-  position: fixed;
-  left: 52%;
-  right: 48%;
-  top: 50%;
-  padding: 10px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  transform: translate(-50%, -50%);
-  background-color: ghostwhite;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  align-items: center;
-  justify-content: center;
-  border:1px solid lightgrey;
+    width: 100%;
+    max-width: 22em;
+    height: 25em;
+    margin: auto;
+    position: fixed;
+    left: 50%;
+    right: 50%;
+    top: 68%;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-50%, -50%);
+    background-color: ghostwhite;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgrey;
   
 }
-// .uploadImage {
-//   width: 300px;
-//   height: 200px;
-//   margin-bottom: 40px;
-// }
+
 .uploadimage {
   display: inline-block;
 }
 .imageupload{
-// width:8em;
 height:3em;
-//margin-top: 2px;
-//font-size: 18px;
 text-align: center;
 font-style: normal;
 width: 9em;
@@ -440,10 +301,9 @@ float: right;
 color: #fae596;
 border-radius: 8px;
 position: relative;
-//padding: 8px;
 } 
 .imageinput {
-width:14em;
+width:11em;
 height:3em;
 margin-right: 6px;
 float: left;;
@@ -516,193 +376,20 @@ color: lightgray;
     top: 100%;
     padding: 10px;
   }
+   .canclebutton{
+    margin-bottom: 15px;
+    margin-left: 45em;
+    padding: 3px 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    //align-self: flex-end;
+    background: $main-color;
+    // background: $secondary-color;
+    color: lightgray;
+    // background-color: yellow;
+    }}
 
- @media only screen  and (min-width:800px){
-  .navbar {
-    overflow: hidden;
-     background-color: #333;
-   }
-   
-   .navbar a {
-    float: left;
-     font-size: 16px;
-     color: white;
-     text-align: center;
-     padding: 14px 16px;
-     text-decoration: none;
-   }
-   .dropdown {
-    // float: left;
-     overflow: hidden;
-    
-   }
-   
-   .dropdown .dropbtn {
-     font-size: 16px;  
-     border: none;
-     outline: none;
-     color:#fae596 ;
-     padding: 14px 16px;
-     background-color: inherit;
-     font-family: inherit;
-     margin: 0;
-   }
-   
-   .navbar a:hover, .dropdown:hover .dropbtn {
-     background-color:#3fb0ac;
-   }
-   
-   .dropdown-content {
-     display: none;
-     position: absolute;
-     background-color:#3fb0ac;
-    min-width: 20em;
-    height: 20em;
-     color:  #fae596;
-     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-     z-index: 1;
-     left: 80%;
-     right: 20%;
-     top: 100%;
-     padding: 10px;
-   }
-   
- 
-   .dropdown:hover .dropdown-content {
-     display: block;
-   }
- 
-    .prfilecard{
-
-      z-index: 999;
-      width: 100%;
-      max-width: 50em;
-      height: 35em;
-    margin:auto;
-     position:fixed;
-      left: 55%;
-      right: 50%;
-      top: 47%;
-      padding: 10px;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      transform: translate(-50%, -50%);
-      background-color:ghostwhite;;
-      align-items: center;
-      justify-content: center;
-      border:1px solid lightgrey;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      
-    }
-   /* .uploadImage {
-      width: 10em;
-      height: 8em;
-      margin-bottom: 200px;
-      
-    }*/
-    .uploadimage {
-      display: inline-block;
-    }
-    .imageupload{
-    
-      height:3em;
-      //margin-top: 2px;
-    //  font-size: 18px;
-      text-align: center;
-      font-style: normal;
-      width: 9em;
-      margin-bottom: 10px;
-      background: #3fb0ac;
-      float: right;
-      color: #fae596;
-      border-radius: 8px;
-      position: relative;
-      //padding: 8px
-
-    } 
-    .imageinput{
-    width:35em;
-    height:3em;
-    }
-    
-    .canclebutton{
-      margin-bottom: 15px;
-      margin-left: 45em;
-      padding: 3px 8px;
-      cursor: pointer;
-      border-radius: 50%;
-      border: none;
-      width: 30px;
-      height: 30px;
-      font-weight: bold;
-      //align-self: flex-end;
-      background: $main-color;
-      
-      // background: $secondary-color;
-      color: lightgray;
-      // background-color: yellow;
-      
-    }
- }
- .user-profile1 {
-  position: relative;
-  top: 4px;
-  // right: 10px;
- // padding-left: 2px;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-}
-.user-profile11 {
-position: relative;
-top: 4px;
-// right: 10px;
-// padding-left: 2px;
-width: 70px;
-height: 70px;
-border-radius: 50%;
-}
-.PhotoCamera {
-padding-left: 10%;
-background-color: white;
-//color: black;
-border-radius: 50%;
-width: 40px;
-height: 40px;
-margin-top: -28px;
-margin-left: 52%;
-position: absolute
-}
-.PhotoCamera i{
-margin-top: 10px;
-margin-left: -30px;
-}
-
-// .canclebutton{
-// margin-bottom: 15px;
-// margin-left: 45em;
-// padding: 3px 8px;
-// cursor: pointer;
-// border-radius: 50%;
-// border: none;
-// width: 30px;
-// height: 30px;
-// font-weight: bold;
-// //align-self: flex-end;
-// background: $main-color;
-// // background: $secondary-color;
-// color: lightgray;
-// // background-color: yellow;
-// }
-.profilewraper{
-background: rgba(0,0,0 ,0.507);
-z-index: 500;
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-margin: 0;
-min-height: 120em;
-}}

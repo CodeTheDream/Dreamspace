@@ -18,7 +18,7 @@ class ReplyComment extends React.Component {
       username: "",
      // reply: "",
       photoUrl: "",
-
+reply2:""
     };
   }
 
@@ -31,10 +31,13 @@ class ReplyComment extends React.Component {
     this.setState({ showPopup: false });
   };
   componentDidMount = () => {
+    
     this.getReplyUserDetails();
+  
   };
 
   getReplyUserDetails = () => {
+  
     this.props.firebase
       .user(this.props.reply.userId)
       .get()
@@ -42,8 +45,8 @@ class ReplyComment extends React.Component {
        // console.log("userdata in comment", doc.data());
         let user = doc.data();
         this.setState({
-          username: user.username,
-          photoUrl: user.photoUrl,
+          // username: user.username,
+          // photoUrl: user.photoUrl,
         });
       });
 
@@ -58,20 +61,21 @@ class ReplyComment extends React.Component {
 
   render() {
     const { commentId, replys, limited, reply } = this.props;
-    const {showAll} = this.state;
+    const {showAll,reply2} = this.state;
     let commentReply = reply.reply;
     //console.log("showMore", this.showMore);
     const replyToRender = replys.filter((reply1) =>
       commentId === reply1.parentCommentId ? reply1.parentCommentId : null
     );
     const numOfReplys = replyToRender.length;
-   // console.log("reply:",reply)
+    //console.log("reply:",reply2.reply)
 
     // let replycomment = replys.filter((reply) =>
     //   (commentId === reply.parentCommentId )? reply.reply : null
     // );
     // console.log("replycomment",replycomment)
-    if (replyToRender.length <= limited) {
+   
+   if (reply.reply.length <= limited) {
       return (
         <div>
           <div className="replypage">
@@ -245,9 +249,8 @@ class ReplyComment extends React.Component {
             </div>
           ) : null}
         </div>
-      );
+      
+      )
     }
   }
-}
-
-export default compose(withFirebase)(ReplyComment);
+}export default compose(withFirebase)(ReplyComment);
