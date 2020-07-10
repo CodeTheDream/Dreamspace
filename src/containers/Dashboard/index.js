@@ -19,7 +19,7 @@ class Dashboard extends React.Component {
     this.state = {
       articles: [],
       search: "",
-      sortType: "dsc",
+      sortType: "asc",
       calculatedvote: []
     };
   }
@@ -28,7 +28,7 @@ class Dashboard extends React.Component {
     // let articles =this.props.firebase.articles()
     this.unsubscribe = this.props.firebase
       .articles()
-      //.orderBy("calculatedvote", "desc") // here i have tried to  sort using the calculated vote
+      .orderBy("calculatedvote", "desc") // here i have tried to  sort using the calculated vote
       .onSnapshot(snapshot => {
         let articles = [];
         snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
@@ -81,10 +81,9 @@ class Dashboard extends React.Component {
           </div>
         </div>
         <div className="popular-title">
-          <p style={{ float: "left" }}>Popular Posts</p>
-          <label>Search by</label>{" "}
-          <button>vote</button>{" "}
-          <button>Date</button>
+       <button style={{ float: "left",border:"0px",borderRadius: "9px" ,backgroundColor: "white",
+    border:"0px solid",color:"blue"}}> <p >Popular Posts</p></button> 
+         
         </div>
         <div>
           <ListItems
