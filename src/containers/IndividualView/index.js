@@ -139,19 +139,18 @@ class IndividualView extends React.Component {
     const {
       article,
       comment,
-
+comments,
       timeCreated,
      sortType,
       limited,
     } = this.state;
-    if (comment) {
-      comment.sort((a, b) => {
-          const isReversed = (sortType === 'dsc') ? 1 : -1;
-          console.log("ordre comment0",isReversed)
-          return isReversed * a.timeCreated.localeCompare(b.timeCreated)
-      })
-
-  }
+    if (comments) {
+      comments.sort((a, b) => {
+        const isReversed = sortType === "desc" ? 1 : -1;
+        return isReversed * a.timeCreated.localeCompare(b.timeCreated);
+      });
+      //console.log("sortedComment",sortedcomments)
+    }//}
 
     if (article) {
       return (

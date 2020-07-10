@@ -79,7 +79,7 @@ reply2:""
       return (
         <div>
           <div className="replypage">
-            <i
+           <i
               className="fas fa-angle-down "
               style={{ width: "10em" }}
               onClick={() => {
@@ -87,11 +87,11 @@ reply2:""
               }}
             >
               {" "}
-              {/* View{""}  */}
+              {/* View{""} */} 
               {numOfReplys}
               {" More "}
               {" Replys "}
-            </i>
+            </i> 
           </div>
           {this.state.showPopup ? (
             <div>
