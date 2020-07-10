@@ -52,16 +52,7 @@ class SearchBar extends React.Component {
                   onChange={this.props.handleInput}
             
                 />
-               { /*<button
-                  type="button"
-                  name="Vote"           
-                />
-                <button
-                  type="button"
-                  name="date"
-                 
-            
-                />*/}
+           
                 
               </div>
               <div className="popover__content">
