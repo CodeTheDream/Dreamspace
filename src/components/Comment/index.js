@@ -74,6 +74,12 @@ class Comment extends React.Component {
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
 
+  togglePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup,
+    });
+  };
+
   render() {
     const { comment, limited, timeCreated, commentId, userName } = this.props;
     const {
@@ -120,7 +126,22 @@ class Comment extends React.Component {
 </div> */}
                   <div>
                     <AddReplys commentId={comment.commentId} />
-                    {replys &&
+                    <div className="replypage">
+              <i
+                className="fas fa-angle-down "
+                style={{ width: "10em" }}
+                onClick={() => {
+                  this.togglePopup();
+                }}
+              >
+                {" "}
+                {/* View{""}  */}
+                {replys.length}
+                {" More "}
+                {" Replys "}
+              </i>
+            </div>
+                    {replys && this.state.showPopup &&
                       replys.map((reply) =>
                         commentId === reply.parentCommentId ? ( 
                               <ReplyComment

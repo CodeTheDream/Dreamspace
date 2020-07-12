@@ -78,22 +78,6 @@ reply2:""
    if (reply.reply.length <= limited) {
       return (
         <div>
-          <div className="replypage">
-           <i
-              className="fas fa-angle-down "
-              style={{ width: "10em" }}
-              onClick={() => {
-                this.togglePopup();
-              }}
-            >
-              {" "}
-              {/* View{""} */} 
-              {numOfReplys}
-              {" More "}
-              {" Replys "}
-            </i> 
-          </div>
-          {this.state.showPopup ? (
             <div>
               <div>
                 <div>
@@ -123,29 +107,12 @@ reply2:""
                 </i>
               </div>
             </div>
-          ) : null}
         </div>
       );
     } else {
       if (showAll) {
         return (
           <div>
-            <div className="replypage">
-              <i
-                className="fas fa-angle-down "
-                style={{ width: "10em" }}
-                onClick={() => {
-                  this.togglePopup();
-                }}
-              >
-                {" "}
-                {/* View{""}  */}
-                {numOfReplys}
-                {" More "}
-                {" Replys "}
-              </i>
-            </div>
-            {this.state.showPopup ? (
               <div>
                 <div>
                   <div>
@@ -196,22 +163,6 @@ reply2:""
     if (toShow) {
       return (
         <div>
-          <div className="replypage">
-            <i
-              className="fas fa-angle-down "
-              style={{ width: "10em" }}
-              onClick={() => {
-                this.togglePopup();
-              }}
-            >
-              {" "}
-              {/* View{""}  */}
-              {numOfReplys}
-              {" More "}
-              {" Replys "}
-            </i>
-          </div>
-          {this.state.showPopup ? (
             <div>
               <div>
                 <div>
@@ -247,7 +198,7 @@ reply2:""
                 </i>
               </div>
             </div>
-          ) : null}
+         
         </div>
       
       )
