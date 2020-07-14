@@ -45,8 +45,8 @@ reply2:""
        // console.log("userdata in comment", doc.data());
         let user = doc.data();
         this.setState({
-          // username: user.username,
-          // photoUrl: user.photoUrl,
+          username: user.username,
+          photoUrl: user.photoUrl,
         });
       });
 
@@ -92,19 +92,19 @@ reply2:""
                       />{" "}
                       posted By {this.state.username} {reply.timeCreated}
                     </p>
-                    <p>{reply.reply}</p>
+                    <p className="replystyle">{reply.reply}</p>
                   </div>
                 </div>
               </div>
               <div className="replypage-hide">
-                <i
+                {/* <i
                   className="fas fa-angle-up "
                   style={{ width: "10em" }}
                   onClick={this.cancle}
                 >
                   {" "}
                   Hide viwe
-                </i>
+                </i> */}
               </div>
             </div>
         </div>
@@ -127,7 +127,7 @@ reply2:""
                         />{" "}
                         posted By {this.state.username} {reply.timeCreated}
                       </p>
-                      <p>
+                      <p className="replystyle">
                         {reply.reply}
                         <a 
                           onClick={this.showLess}
@@ -141,17 +141,10 @@ reply2:""
                   </div>
                 </div>
                 <div className="replypage-hide">
-                  <i
-                    className="fas fa-angle-up "
-                    style={{ width: "10em" }}
-                    onClick={this.cancle}
-                  >
-                    {" "}
-                    Hide viwe
-                  </i>
+               
                 </div>
               </div>
-            ) : null}
+          
           </div>
         );
       }
@@ -177,7 +170,7 @@ reply2:""
                       />{" "}
                       posted By {this.state.username} {reply.timeCreated}
                     </p>
-                    <p>
+                    <p className="replystyle">
                       {toShow}
                       <a onClick={this.showMore} style={{ color: "darkblue" }}>
                         {" "}
@@ -188,14 +181,8 @@ reply2:""
                 </div>
               </div>
               <div className="replypage-hide">
-                <i
-                  className="fas fa-angle-up "
-                  style={{ width: "10em" }}
-                  onClick={this.cancle}
-                >
-                  {" "}
-                  Hide viwe
-                </i>
+                
+            
               </div>
             </div>
          

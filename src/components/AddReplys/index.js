@@ -91,9 +91,9 @@ class AddReplys extends React.Component {
               <button className="submit-btn" type="submit">
                 Reply
               </button>
-            { /* <button className="submit-btn" onClick={this.cancle}>
+            <button className="submit-btn" onClick={this.cancle}>
                 cancle
-        </button>*/}
+        </button>
             </div>
           </form>
         ) : null}

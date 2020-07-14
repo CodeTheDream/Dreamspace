@@ -49,7 +49,6 @@ class Comment extends React.Component {
             if (reply) {
               this.setState({
                 reply: reply,
-              
               });
             }
           }
@@ -80,17 +79,16 @@ class Comment extends React.Component {
     });
   };
 
+
   render() {
     const { comment, limited, timeCreated, commentId, userName } = this.props;
-    const {
-      showAll,
-      replys,
-      sortType,
-      replysId,
-      reply,
-    } = this.state;
+    const { showAll, replys, sortType, replysId, reply } = this.state;
+    const replyToRender = replys.filter((reply1) =>
+      commentId === reply1.parentCommentId ? reply1.parentCommentId : null
+    );
+    const numOfReplys = replyToRender.length;
     let commentContent = comment.comment;
-// console.log("reply",replysId)
+    // console.log("reply",replysId)
     if (replys) {
       replys.sort((a, b) => {
         const isReversed = sortType === "desc" ? 1 : -1;
@@ -108,54 +106,59 @@ class Comment extends React.Component {
                   <p className="styleDisplay">
                     <span />
                     <img
-                      src={this.state.photoUrl} alt=""
+                      src={this.state.photoUrl}
+                      alt=""
                       className="user-profile"
                     />{" "}
                     {this.state.username}
                     {comment.timeCreated} <br />
-                    {comment.comment}{" "}
-                    
+                    <p className="commentdescription"> {comment.comment}{" "}</p>
+                   
                   </p>
-{/* <div>
-  {replys&&
-  replys.map((reply) =>
-  commentId === reply.parentCommentId ? ( 
-  <button>see replys</button>
-   ) :null)
-}
-</div> */}
+
                   <div>
                     <AddReplys commentId={comment.commentId} />
                     <div className="replypage">
-              <i
-                className="fas fa-angle-down "
-                style={{ width: "10em" }}
-                onClick={() => {
-                  this.togglePopup();
-                }}
-              >
-                {" "}
-                {/* View{""}  */}
-                {replys.length}
-                {" More "}
-                {" Replys "}
-              </i>
-            </div>
-                    {replys && this.state.showPopup &&
-                      replys.map((reply) =>
-                        commentId === reply.parentCommentId ? ( 
-                              <ReplyComment
-                                reply={reply}
-                                replys={this.state.replys}
-                                timeCreated={timeCreated}
-                                commentId={commentId}
-                                comment={comment}
-                                replysId={replysId}
-                                limited={limited}
-                              />
+                      {numOfReplys ? (
+                        <button className="replypage"
                           
-                            ) : null
-                      )}  
+                          style={{ }}
+                          onClick={() => {
+                            this.togglePopup();
+                            
+                          }}
+                        >
+                          {this.state.showPopup ? (
+                            <div>
+                              <i className="fas fa-angle-up" /> {"Hide"}{" "}
+                          {numOfReplys} {" "}{" Replys "}
+                            </div>
+                          ) : (
+                            <div>
+                              <i className="fas fa-angle-down " /> {"View"}{" "}
+                              {numOfReplys}
+                              
+                              {" Replys "}
+                            </div>
+                          )}
+                        </button>
+                      ) : null}
+                    </div>
+                    {replys &&
+                      this.state.showPopup &&
+                      replys.map((reply) =>
+                        commentId === reply.parentCommentId ? (
+                          <ReplyComment
+                            reply={reply}
+                            replys={this.state.replys}
+                            timeCreated={timeCreated}
+                            commentId={commentId}
+                            comment={comment}
+                            replysId={replysId}
+                            limited={limited}
+                          />
+                        ) : null
+                      )}
                   </div>
                 </div>
               </div>
@@ -163,7 +166,7 @@ class Comment extends React.Component {
           )}
         </AuthUserContext.Consumer>
       );
-    }  else {
+    } else {
       // console.log("ELSE", comment.comment, comment.comment.length);
 
       if (showAll) {
@@ -181,8 +184,8 @@ class Comment extends React.Component {
                 Read less
               </a>
             </p>
+            <div></div>
           </div>
-          // </div>
         );
       }
     }
@@ -211,6 +214,23 @@ class Comment extends React.Component {
               </a>
             </p>
             <AddReplys commentId={comment.commentId} />
+            <div className="replypage">
+              {numOfReplys ? (
+                <i
+                  className="fas fa-angle-down "
+                  style={{ width: "10em" }}
+                  onClick={() => {
+                    this.togglePopup();
+                  }}
+                >
+                  {" "}
+                  View{""}
+                  {numOfReplys}
+                  {" More "}
+                  {" Replys "}
+                </i>
+              ) : null}
+            </div>
           </div>
         </div>
       );
