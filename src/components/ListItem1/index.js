@@ -24,10 +24,6 @@ class ListItem1 extends React.Component {
 
         };
     }
-
-
-
-
     componentDidMount() {
 
         const { article } = this.props
@@ -38,30 +34,22 @@ class ListItem1 extends React.Component {
         this.calculatedvote(upvotes, downvotes)
         let autherId = article.userId;
         this.unsubscribe = this.props.firebase
-
             .user(autherId)
             .get()
             .then(doc => {
                 console.log("userdata", doc.data())
                 let user = doc.data()
-
                 this.setState({
                     username: user.username,
                     photoUrl: user.photoUrl,
                 })
             })
-
-
     }
-
-
     componentDidUpdate = (prevProps) => {
         if (prevProps.article !== this.props.article) {
             this.calculatedvote(this.props.article.upvotes, this.props.article.downvotes)
         }
     };
-
-
     checkurl = () => {
         // console.log("check url", this.props.article.url)
         if (this.props.article.url === true) {
@@ -71,7 +59,6 @@ class ListItem1 extends React.Component {
             return null
         }
     }
-
     calculatedvote(upvotes, downvotes) {
 
         if (upvotes === 0) {
@@ -94,8 +81,6 @@ class ListItem1 extends React.Component {
                 ...article,
                 calculatedvote: finalTotal
             })
-
-
     }
     handleUpvote = (authUser) => {
 

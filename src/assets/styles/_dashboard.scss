@@ -1,8 +1,4 @@
 .dashboard {
-
-    // min-height: 90vh;
-
-
     .logo-wrapper {
         //width: 260px;
         //margin: 0 auto;
@@ -14,10 +10,7 @@
             //top: 15px;
         }
     }
-
 }
-
-
 .dashboard-content {
   padding-top: 3em;  
   text-align: center;
@@ -29,3 +22,31 @@
       line-height: 1.2;
   }
 }
+.sortbutton{
+    float:left;
+    //border: 0px;
+    border-radius: 9px;
+    background-color: white;
+    border: none;
+    outline:none;
+   margin-right:16px;
+   color: gray;
+  }
+
+//input[type="button"]{
+   /* button{
+    color: gray;
+    float:left;
+    border: 0px;
+    border-radius: 9px;
+    background-color: white;
+    border: 0px solid white;
+   margin-right:16px;
+  } */ 
+    .activesort{
+        border: none;
+        outline:none;
+    color: orange;
+    
+  }
+ 

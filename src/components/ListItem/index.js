@@ -95,7 +95,7 @@ class ListItem extends React.Component {
                 <div className="auther">
                   <div className="auther-style">
                     <span></span>
-                    <img src={this.state.photoUrl} className="user-profile" />
+                    <img src ={this.state.photoUrl} className="user-profile" />
                     <span>
                       {" "}
                       posted by {this.state.username} {article.timeCreated}
