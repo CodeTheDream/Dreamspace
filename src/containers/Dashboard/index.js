@@ -1,9 +1,9 @@
 import React from "react";
-//import myimage from "../../assets/images/nice-piccy3.jpg";
+
 import { compose } from "recompose";
 import {
   withAuthorization,
-  withEmailVerification
+  withEmailVerification,
 } from "../../components/Session";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes.js";
@@ -12,64 +12,73 @@ import ListItems from "../../components/ListItems";
 import Create_article from "../Create-article";
 import SearchBar from "../../components/Search-bar";
 import Directory from "../Directory";
+
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       articles: [],
+      articlesvotes: [],
       search: "",
       sortType: "asc",
-      calculatedvote: []
+      calculatedvote: [],
+      showPopup: false,
+      orangeButtonId: "null",
+      sortBy: "time",
     };
   }
 
   componentDidMount() {
-    // let articles =this.props.firebase.articles()
+    this.unsubscribe = this.props.firebase.articles().onSnapshot((snapshot) => {
+      let articles = [];
+      snapshot.forEach((doc) => articles.push({ ...doc.data(), uid: doc.id }));
+      this.setState({ articles });
+    });
     this.unsubscribe = this.props.firebase
       .articles()
-      .orderBy("calculatedvote", "desc") // here i have tried to  sort using the calculated vote
-      .onSnapshot(snapshot => {
-        let articles = [];
-        snapshot.forEach(doc => articles.push({ ...doc.data(), uid: doc.id }));
-        // { collection: 'article',limit:5, orderBy: ['calculatedvote', 'des'] },
-
-        // console.log("Articles loaded here yo!", articles);
-        this.setState({ articles });
+      .orderBy("calculatedvote", "desc")
+      .onSnapshot((snapshot) => {
+        let articlesvotes = [];
+        snapshot.forEach((doc) =>
+          articlesvotes.push({ ...doc.data(), uid: doc.id })
+        );
+        this.setState({ articlesvotes }, () =>
+          console.log("sortedvotes", articlesvotes)
+        );
       });
-    // let { calculatedvote } = this.props;
   }
-
+  changeArticleSort = (type) => {
+    this.setState({ sortBy: type });
+  };
   componentWillUnmount() {
     this.unsubscribe();
   }
-
-  handleInput = e => {
+  handleInput = (e) => {
     console.log(e.target.value);
     this.setState({
-      search: e.target.value
+      search: e.target.value,
     });
   };
   render() {
-    const { sortType } = this.state;
-
-    let filteredArticles = this.state.articles.filter(article => {
+    const { sortType, articlesvotes, articles } = this.state;
+    let filteredArticles = articles.filter((article) => {
       return (
-         //article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
-          article.timeCreated.toLowerCase().includes(this.state.search.toLowerCase()),
+        //article.tags.toLowerCase().includes(this.state.search.toLowerCase()),
+        article.timeCreated
+          .toLowerCase()
+          .includes(this.state.search.toLowerCase()),
         article.title.toLowerCase().includes(this.state.search.toLowerCase()),
-       article.description
-         .toLowerCase()
-         .includes(this.state.search.toLowerCase())
-     )
+        article.description
+          .toLowerCase()
+          .includes(this.state.search.toLowerCase())
+      );
     });
     if (filteredArticles) {
       filteredArticles.sort((a, b) => {
-          const isReversed = (sortType === 'dsc') ? 1 : -1;
-          return isReversed * a.timeCreated.localeCompare(b.timeCreated)
-      })
-
-  }
+        const isReversed = sortType === "dsc" ? 1 : -1;
+        return isReversed * a.timeCreated.localeCompare(b.timeCreated);
+      });
+    }
     return (
       <div className="wrapper">
         <div className="main-class">
@@ -81,22 +90,42 @@ class Dashboard extends React.Component {
           </div>
         </div>
         <div className="popular-title">
-       <button style={{ float: "left",border:"0px",borderRadius: "9px" ,backgroundColor: "white",
-    border:"0px solid",color:"blue"}}> <p >Popular Posts</p></button> 
-         
+          <button
+            className={
+              this.state.sortBy === "vote"
+                ? "sortbutton activesort "
+                : "sortbutton"
+            }
+            onClick={() => this.changeArticleSort("vote")}
+          >
+            <i class="fa fa-fire"></i>
+            {""}
+            Popular
+          </button>
+          <button
+            className={
+              this.state.sortBy === "time"
+                ? " sortbutton activesort"
+                : "sortbutton"
+            }
+            onClick={() => this.changeArticleSort("time")}
+          >
+            {" "}
+            <i class="far fa-clock"></i> Timefiltered
+          </button>
         </div>
-        <div>
-          <ListItems
-                    filteredArticles={filteredArticles}/>
-                  
-         
-        </div>
-        
+        {this.state.sortBy === "vote" ? (
+          <div>
+            <ListItems filteredArticles={articlesvotes} />
+          </div>
+        ) : (
+          <ListItems filteredArticles={filteredArticles} />
+        )}
       </div>
     );
   }
 }
 
-const condition = authUser => !!authUser;
+const condition = (authUser) => !!authUser;
 
 export default compose(withFirebase, withAuthorization(condition))(Dashboard);
