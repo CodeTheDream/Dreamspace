@@ -1,7 +1,43 @@
 import React from 'react';
 import ReactCardFlip from 'react-card-flip';
+import reactImage from '../../assets/images/react-image.png';
+import rubyImage from '../../assets/images/ruby-on-rails.png';
+import wordPress from '../../assets/images/wordpress.png';
+import excutive from '../../assets/images/executive-director.png';
 
-const DirectoryList = (props) => {
+const secondaryImage = (staff) => {
+  if(checkDepartment(staff.fields['Primary Department']) === 'react') {
+    return (<img className = 'react-pic' src = {reactImage} alt = 'react' />)
+  }
+  if(checkDepartment(staff.fields['Primary Department']) === 'ruby') {
+    return (<img src = {rubyImage} alt = 'ruby' />); 
+  }
+  if(checkDepartment(staff.fields['Primary Department']) === 'wordpress') {
+    return (<img src = {wordPress} alt = 'word press' />)
+  } 
+  if(checkDepartment(staff.fields['Primary Department']) === 'executive') {
+    return (<img src = {excutive} alt = 'excutive' />)
+  }
+}
+
+const checkDepartment = (departments) => {
+  for(let i = 0; i < departments.length; i++) {
+    if(departments[i] === 'Front End (React JS)') {
+      return 'react';
+    }
+    if(departments[i] === 'Back End (Ruby on Rails)') {
+      return 'ruby';
+    }
+    if(departments[i] === 'Wordpress / Web Dev.') {
+      return 'wordpress';
+    }
+    if(departments[i] === 'Operations Staff') {
+      return 'executive';
+    }
+  }
+}
+
+ const DirectoryList = (props) => {
   // all ctd projects
   let projects = props.projectData;
   console.log('projects ', projects);
@@ -19,12 +55,16 @@ const DirectoryList = (props) => {
     let sortNames = optInStaffMembers;
     console.log('let\'s see the names', sortNames)
     sortNames.sort((a, b) => (a.fields['First Name'] > b.fields['First Name']) ? 1 : -1);
+    sortNames.map(job => {
+      let department = job.fields['Primary Department'];
+      console.log('check this out ', department);
+    });
 
   // Randomize the flip direction on the cards
     const getFlip = ['vertical', 'horizontal'];
     let randomFlip = getFlip[Math.floor(Math.random() * 2)];
     console.log('get ', randomFlip);
-   
+
     return(
       <div className = 'list-container'>
           {sortNames.map(staff => {
@@ -32,7 +72,6 @@ const DirectoryList = (props) => {
             if(staff.fields.Photo) {
               pics = staff.fields.Photo[0].url
             }
-            
             return(
              <ReactCardFlip key = {staff.id} isFlipped = {staff.id === props.isFlipped} flipDirection = {randomFlip}>  
               <ul
@@ -52,8 +91,8 @@ const DirectoryList = (props) => {
   
               <ul className = 'back-of-list'
                   onClick = {() => props.selectedStaffMember(null)}>
-                  <h4 className = 'project' style = {{textAlign: 'center', fontWeight: 'bold'}}>Current Project</h4>
-                  <li className = 'slack'><strong>Slack Name:</strong> {staff.fields['Slack Name']}</li>
+                  <div>{secondaryImage(staff)}</div>
+                  <li className = 'slack' style = {{marginTop: '10px'}}><strong>Slack Name:</strong> {staff.fields['Slack Name']}</li>
                   <li className = 'number'><strong>Phone Number:</strong> {staff.fields.Phone}</li>
                   <li className = 'email'><strong>Email:</strong> {staff.fields['Email address']}</li>
               </ul>

@@ -1,4 +1,3 @@
-
 import React, { Fragment } from "react";
 import AddComment from "../../components/CommentSystem/AddComment";
 import { withRouter } from "react-router-dom";
@@ -28,7 +27,6 @@ class IndividualView extends React.Component {
       photoUrl: " ",
     };
   }
-
   componentDidMount = () => {
     //this.sortByDtate(Comment)
     let articleId = this.props.match.params.articleId;
@@ -98,13 +96,11 @@ class IndividualView extends React.Component {
           const data = doc.data();
           TotallComment.push(data);
         });
-
         this.setState({ TotallComment: TotallComment });
         const totalcount = TotallComment.length;
         this.setState({ totalcount: totalcount });
       });
   };
-
   createComment = (comment, article) => {
     //  console.log("here create comment", comment, this.state.articleId);
     this.props.firebase
@@ -118,22 +114,7 @@ class IndividualView extends React.Component {
       });
   };
 
-  // sortByDate() {
-  //   const { comment } = this.state;
-  //   let newPostList = comment;
-  //   // console.log("this is the sorted data",newPostList)
-  //   if (this.state.isOldestFirst) {
-  //     newPostList = comment.sort((a, b) => a.date > b.date);
-  //   } else {
-  //     newPostList = comment.sort((a, b) => a.date < b.date);
-  //     //console.log("this is the sorted data",newPostList)
-  //   }
-  //   this.setState({
-  //     isOldestFirst: !this.state.isOldestFirsts,
-  //     comments: newPostList,
-  //   });
-  //   // console.log("this is the sorted data",newPostList)
-  // }
+
   render() {
     // Access to local component state
     const {
@@ -157,7 +138,6 @@ comments,
         <div className="container-individual ">
           <div className="card-individual">
             <ListItem1 article={article} isIndividualView={true} />
-
             <div className="auther-name-individual">
               <div className="autherstyle-individual">
                 <span />
@@ -196,7 +176,6 @@ comments,
               </button>
             </div>
           </div>
-
           <div>
             <AddComment comment={comment} onCreate={this.createComment} />
           </div>
@@ -229,5 +208,4 @@ comments,
     }
   }
 }
-
 export default compose(withFirebase, withRouter)(IndividualView);

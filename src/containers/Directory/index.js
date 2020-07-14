@@ -22,7 +22,6 @@ class Directory extends React.Component {
     this.setState({isFlipped: id});
   }
 
-  
   directoryAirTable() {
     const url = "https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory";
       fetch(url, {

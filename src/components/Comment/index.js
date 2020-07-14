@@ -25,7 +25,6 @@ class Comment extends React.Component {
       reply: "",
     };
   }
-
   componentDidMount = () => {
     const commentId = this.props.commentId;
     this.unsubscribe = this.props.firebase
@@ -69,7 +68,6 @@ class Comment extends React.Component {
         });
       });
   };
-
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
 
@@ -115,7 +113,6 @@ class Comment extends React.Component {
                     <p className="commentdescription"> {comment.comment}{" "}</p>
                    
                   </p>
-
                   <div>
                     <AddReplys commentId={comment.commentId} />
                     <div className="replypage">
@@ -191,7 +188,6 @@ class Comment extends React.Component {
     }
     //console.log("this is commentContent",commentContent)
     const toShow = commentContent.slice(0, limited) + "....";
-
     if (toShow) {
       return (
         <div //className="card-comment"

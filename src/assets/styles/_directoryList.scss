@@ -6,6 +6,11 @@
   overflow-x: hidden;
 }
 
+// .react-pic {
+//   width: 50px;
+//   height: 50px;
+// }
+
 .list-container {
   display: grid;
   grid-template-columns: 22.7% 22.7% 22.7% 22.7%;
@@ -27,9 +32,9 @@
 }
 
 .back-of-list {
+  // background-image: url('../images/ctd-labs-logo.png');    // this is not working, Module not found: You attempted to import ../images/ctd-labs-logo.png which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
   padding-bottom: 71px;
   // background-color: #fae596;
-
 }
 
 .list:hover {

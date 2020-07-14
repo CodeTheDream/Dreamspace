@@ -7,7 +7,6 @@ import {
   withEmailVerification,
 } from "../../components/Session";
 const moment = require("moment");
-
 class ReplyComment extends React.Component {
   constructor(props) {
     super(props);
@@ -58,7 +57,6 @@ reply2:""
   }
 
   showLess = () => this.setState({ showAll: false });
-
   render() {
     const { commentId, replys, limited, reply } = this.props;
     const {showAll,reply2} = this.state;
