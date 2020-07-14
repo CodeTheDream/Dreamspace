@@ -65,9 +65,7 @@ class ProjectDashBoard extends React.Component {
 // handles the selection of projects.
   selectProject = id => {
     const allProjects = this.state.projectData;
-    // console.log("see", id);
     const selectedProject = allProjects.find(x => x.id === id);
-    // console.log(selectedProject);
     this.setState({
       selectedProject
     });
@@ -90,13 +88,10 @@ class ProjectDashBoard extends React.Component {
 
 // filters the project list
     filterProjectList = search => {
-      console.log('search ', search);
       let projects = this.state.allProjects;
       console.log('project ', projects);
       const formattedSearch = search.toLowerCase();
-      // console.log(projects);
       let getResults = projects.filter(result => {
-        // console.log('result', result) 
         if(!result.fields.Name) {
           return false;
         }
@@ -110,9 +105,9 @@ class ProjectDashBoard extends React.Component {
     }
 
     render() {
-      let modalScreen = <ProjectImageModal handleImageClick = {this.handleImageClick}
-      projectCanvas = {this.state.selectedProject}
-      />
+      let modalScreen = <ProjectImageModal 
+      handleImageClick = {this.handleImageClick}
+      projectCanvas = {this.state.selectedProject}/>
 
       if(this.state.enlargeImage === true) {
         return modalScreen;

@@ -6,7 +6,6 @@ import wordPress from '../../assets/images/wordpress.png';
 import excutive from '../../assets/images/executive-director.png';
 
 const secondaryImage = (staff) => {
-  console.log('pppp', staff);
   if(checkDepartment(staff.fields['Primary Department']) === 'react') {
     return (<img className = 'react-pic' src = {reactImage} alt = 'react' />)
   }
@@ -22,7 +21,6 @@ const secondaryImage = (staff) => {
 }
 
 const checkDepartment = (departments) => {
-  // console.log('dddddd', departments);
   for(let i = 0; i < departments.length; i++) {
     if(departments[i] === 'Front End (React JS)') {
       return 'react';
@@ -58,7 +56,6 @@ const checkDepartment = (departments) => {
     console.log('let\'s see the names', sortNames)
     sortNames.sort((a, b) => (a.fields['First Name'] > b.fields['First Name']) ? 1 : -1);
     sortNames.map(job => {
-      console.log('hehehehehhehehehhehe', job.fields['Primary Department']);
       let department = job.fields['Primary Department'];
       console.log('check this out ', department);
     });
