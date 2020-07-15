@@ -3,20 +3,22 @@ import ReactCardFlip from 'react-card-flip';
 import reactImage from '../../assets/images/react-image.png';
 import rubyImage from '../../assets/images/ruby-on-rails.png';
 import wordPress from '../../assets/images/wordpress.png';
-import excutive from '../../assets/images/executive-director.png';
+// import executive from '../../assets/images/executive-director.png';
+import directors from '../../assets/images/directors.svg';
+// import teacher from '../../assets/images/mentor.png';
 
 const secondaryImage = (staff) => {
   if(checkDepartment(staff.fields['Primary Department']) === 'react') {
     return (<img className = 'react-pic' src = {reactImage} alt = 'react' />)
   }
   if(checkDepartment(staff.fields['Primary Department']) === 'ruby') {
-    return (<img src = {rubyImage} alt = 'ruby' />); 
+    return (<img className = 'ruby-class' src = {rubyImage} alt = 'ruby' />); 
   }
   if(checkDepartment(staff.fields['Primary Department']) === 'wordpress') {
-    return (<img src = {wordPress} alt = 'word press' />)
+    return (<img className = 'wordpress' src = {wordPress} alt = 'word press' />)
   } 
   if(checkDepartment(staff.fields['Primary Department']) === 'executive') {
-    return (<img src = {excutive} alt = 'excutive' />)
+    return (<img className = 'boss' src = {directors} alt = 'executive' />)
   }
 }
 
@@ -91,10 +93,12 @@ const checkDepartment = (departments) => {
   
               <ul className = 'back-of-list'
                   onClick = {() => props.selectedStaffMember(null)}>
-                  <div>{secondaryImage(staff)}</div>
-                  <li className = 'slack' style = {{marginTop: '10px'}}><strong>Slack Name:</strong> {staff.fields['Slack Name']}</li>
-                  <li className = 'number'><strong>Phone Number:</strong> {staff.fields.Phone}</li>
-                  <li className = 'email'><strong>Email:</strong> {staff.fields['Email address']}</li>
+                  <div className = 'language-container'>{secondaryImage(staff)}</div>
+                  <div className = 'content-container'>
+                    <li className = 'slack' style = {{marginTop: '10px'}}><strong>Slack Name:</strong> {staff.fields['Slack Name']}</li>
+                    <li className = 'number'><strong>Phone Number:</strong> {staff.fields.Phone}</li>
+                    <li className = 'email'><strong>Email:</strong> {staff.fields['Email address']}</li>
+                  </div>
               </ul>
              </ReactCardFlip> 
           )})}
