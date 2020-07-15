@@ -233,6 +233,10 @@
     font-size: 35px;
   }
 
+  .project-image-container {
+    left: 18em;
+  }
+
   .flip-card-header {
     font-size: 30px;
   }
@@ -275,6 +279,12 @@
   }
 }
 
+@media screen and (max-width: 688px) {
+  .project-image-container {
+    left: 17.5em;
+  }
+}
+
 @media screen and (max-width: 570px) {
   .sidebar-menu {
     position: relative;
@@ -298,6 +308,12 @@
   .today {
     display: grid;
     grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (max-width: 619px) {
+  .project-image-container {
+    left: 13em;
   }
 }
 
@@ -451,6 +467,7 @@
     width: 100%;
     margin-top: 3.32em;
     height: 15em;
+    box-shadow: 0 8px 6px 6px black;
   }
 
   .dashboard-content {
@@ -481,7 +498,7 @@
     margin-bottom: 4px;
   }
 
-  .menu {
+  .menu-project {
     text-align: center;
   }
 
@@ -537,6 +554,12 @@
   .flip-card-inner {
     width: 340px;
     height: 525px;
+  }
+}
+
+@media screen and (max-width: 348px) {
+  .project-image-container {
+    left: 13em;
   }
 }
 
