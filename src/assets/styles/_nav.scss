@@ -125,7 +125,7 @@ body {
   top: 0;
 }
 @media (max-width: 800px) {
-  .wrapper {
+  .dashboard_wrapper {
     // overflow-x: scroll;
     // overflow-y: scroll;
     width: 100%;
@@ -156,7 +156,7 @@ body {
     padding-right: 3em;
     border-radius: 10px;
     overflow: hidden;
-    margin-left: 2em;
+    // margin-left: 2em;
     margin-right: auto;
   
   }
