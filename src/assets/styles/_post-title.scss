@@ -4,8 +4,8 @@
     content: width= device-width ,initial-scale=1;
     }
 
-@media only screen and (min-width: 800px) {
-    .wrapper {
+    @media only screen and (min-width: 800px) {
+    .dashbord_wrapper {
         width: 100%;
         line-height: 1.58;
         margin-top:5em;
@@ -21,6 +21,24 @@
         margin-right: auto;
         
     }
+    .sharecard {
+        width:300px;
+        height: 120px;
+        background-color: ghostwhite; 
+        margin-bottom: -120px;
+        margin-top: -120px;
+        position: relative;
+        left: 82%;
+        right: 18%;
+        top: -40%;
+        padding: 10px;
+        border-radius: 8px;
+        display: flex;
+      //float: right;
+        transform: translate(-50%, -50%); 
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+        
+     }
     .card {
         width: 100%;
         max-width: 1200px;
@@ -73,9 +91,9 @@
     width: 90%;
 }
 
-// .wrapper > div {
-//     width: 100%;
-// }
+.dashbord_wrapper > div {
+    width: 80%;
+}
 
 
 

@@ -124,8 +124,8 @@ body {
   transform: rotate(45deg);
   top: 0;
 }
-@media (max-width: 800px) {
-  .wrapper {
+@media only screen and (max-width: 800px) {
+  .dashbord_wrapper {
     // overflow-x: scroll;
     // overflow-y: scroll;
     width: 100%;
