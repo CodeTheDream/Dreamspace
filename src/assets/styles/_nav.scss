@@ -125,6 +125,132 @@ body {
   top: 0;
 }
 @media (max-width: 800px) {
+  body {
+  margin: 0;
+  font-family: Helvetica, sans-serif;
+ //background-color:blue;
+}
+
+.li a {
+  background-color: #3fb0ac;
+}
+
+/* header */
+/*********/
+.header {
+  background-color: #3fb0ac;
+  //box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+ //background-color: #fff;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  //border-right: 1px solid #f4f4f4;
+  text-decoration: none;
+  background-color: $main-color;
+  color: #fae596;
+  //font-weight:bold;
+}
+
+.header a:hover,
+.header .menu-btn:hover {
+  color: #f4f4f4;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .nav-icon {
+  background: #fae596;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background 0.2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .nav-icon:before,
+.header .menu-icon .nav-icon:after {
+  background: #fae596;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .nav-icon:before {
+  top: 5px;
+}
+
+.header .menu-icon .nav-icon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon:before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+.logo-wrapper {
+    width: 150px;
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    float: left;
+
+   
+}
+.logo-wrapper:hover {
+    zoom: 120%;
+  //transform: scale(1.2) ;
+
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon:after {
+  transform: rotate(45deg);
+  top: 0;
+}
   .wrapper {
     // overflow-x: scroll;
     // overflow-y: scroll;
@@ -142,7 +268,7 @@ body {
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     margin-left: auto;
     margin-right: auto;
-    overflow-x: hidden;
+    //overflow-x: hidden;
   }
   .card {
     width: 100%;
