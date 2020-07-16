@@ -33,7 +33,7 @@
   // line-height: 0;
   text-align: left;
   margin-left: 20px;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 1.5;
   // width: 36%;
 }
@@ -165,6 +165,18 @@
   }
 }
 
+@media screen and (max-width: 843px) {
+  .project-image-container {
+    left: 27em;
+  }
+}
+
+@media screen and (max-width: 978px) {
+  .desc-container {
+    height: 110px;
+  }
+}
+
 @media screen and (max-width: 827px) {
   .dashboard-content {
     display: grid;
@@ -190,9 +202,26 @@
     font-size: 40px;
   }
 
+  .project-image-container {
+    left: 22em;
+  }
+
 }
 
 @media screen and (max-width: 765px) {
+  .sidebar-menu {
+    position: relative;
+  }
+
+  .flip-card {
+    position: absolute;
+    margin-top: 9%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
   .dashboard-content {
     display: grid;
     grid-template-columns: auto;
@@ -234,7 +263,7 @@
   }
 
   .project-image-container {
-    left: 18em;
+    left: 19em;
   }
 
   .flip-card-header {
@@ -244,6 +273,10 @@
 }
 
 @media screen and (max-width: 721px) {
+  // .sidebar-menu {
+  //   position: relative;
+  // }
+
   .open-side-bar {
     position: relative;
     left: 222px
@@ -281,20 +314,30 @@
 
 @media screen and (max-width: 688px) {
   .project-image-container {
-    left: 17.5em;
+    left: 19em;
+  }
+}
+
+@media screen and (max-width: 619px) {
+  .project-image-container {
+    left: 19em;
   }
 }
 
 @media screen and (max-width: 570px) {
-  .sidebar-menu {
-    position: relative;
-  }
+  // .sidebar-menu {
+  //   position: relative;
+  // }
 
   .flip-card {
-    position: absolute;
+    // position: absolute;
     margin: 0 auto;
-    height: 93%;
+    height: 100%;
     width: 100%;
+  }
+
+  .flip-card-inner {
+    height: 436px;
   }
 
   .footer {
@@ -311,26 +354,19 @@
   }
 }
 
-@media screen and (max-width: 619px) {
-  .project-image-container {
-    left: 13em;
-  }
-}
-
 @media screen and (max-width: 513px) {
-  .sidebar-menu {
-    position: relative;
-  }
+  // .sidebar-menu {
+  //   position: relative;
+  // }
   
-  .flip-card {
-    position: absolute;
+  // .flip-card {
+  //   position: absolute;
     // z-index: -2;
-  }
+  // }
 }
 
 
 @media screen and (max-width: 476px) {
-
   .flip-card-bun {
     padding: 10px;
   }
@@ -341,7 +377,7 @@
 
   .flip-card-inner {
     width: 450px;
-    height: 500px;
+    height: 436px;
     margin: 0;
     margin-left: auto;
     margin-right: auto;
@@ -353,14 +389,15 @@
     padding-top: 136px;
   }
 
-  // .flip-card-bun {
-  //   padding-top: 65px;
-  // }
   .flip-card-inner {
    margin-left: auto;
    margin-right: auto;
    width: 373px;
-   height: 517px;
+   height: 436px;
+  }
+
+  .project-image-container {
+    left: 15em;
   }
 }
 
@@ -413,7 +450,7 @@
 
   .flip-card-inner {
     width: 389px;
-    height: 517px;
+    height: 436px;
   }
 
   .card-content {
@@ -487,7 +524,7 @@
 
   .flip-card-inner {
     width: 389px;
-    height: 523px;
+    height: 436px;
   }
 
   .menu-container {
@@ -517,13 +554,14 @@
 
   .flip-card {
     width: 100%;
-    height:100%;
+    height: 93%;
    
   }
 
   .flip-card-inner {
     width: 350px;
-    height: 525px;
+    height: 436px;
+    padding-top: 0.5em;
   }
 
   .card-content {
@@ -531,6 +569,20 @@
     margin: 0;
     padding-top: 6.5em;
     
+  }
+
+  .project-image-container {
+    left: 14em;
+  }
+
+  .desc-container {
+    height: 90px;
+  }
+}
+
+@media screen and (max-width: 365px) {
+  .project-image-container {
+    left: 14em;
   }
 }
 
@@ -548,18 +600,28 @@
     padding: 0;
     height: 100%;
     width: 100%;
-    padding-top: 1.5em;
+    padding-top: 0.5em;
   }
 
   .flip-card-inner {
     width: 340px;
-    height: 525px;
+    height: 436px;
+  }
+  
+  .project-image-container {
+    left: 13em;
   }
 }
 
 @media screen and (max-width: 348px) {
   .project-image-container {
     left: 13em;
+  }
+}
+
+@media screen and (max-width: 327px) {
+  .desc-container {
+    height: 50px;
   }
 }
 
@@ -576,11 +638,20 @@
     margin-right: auto;
   }
 
+  .project-image-container {
+    left: 12em;
+    top: 18em;
+  }
+
 }
 
 @media screen and (max-width: 316px) {
   .flip-card {
     padding-top: 1.5em;
+  }
+
+  .project-image-container {
+    left: 11em;
   }
 }
 
