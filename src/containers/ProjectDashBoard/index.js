@@ -35,7 +35,7 @@ class ProjectDashBoard extends React.Component {
     if(viewPortWidth >= 766) {
       this.setState({openSideBar: true})
     }
-    if(viewPortWidth <= 601) {
+    if(viewPortWidth <= 765) {
       this.setState({openSideBar: null});
     }
   }
@@ -43,7 +43,7 @@ class ProjectDashBoard extends React.Component {
 // loads page without the side bar for over head menu
   loadWithOutSideBarForMobileView = () => {
     let loadClosed = window.innerWidth;
-    if(loadClosed <= 570) {
+    if(loadClosed <= 765) {
       this.setState(prevState => ({openSideBar: !prevState.openSideBar}));
     }
   }

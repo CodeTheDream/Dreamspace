@@ -227,6 +227,10 @@
     grid-template-columns: auto;
   }
 
+  .side-btn-container {
+    display: block;
+  }
+
   .sidebar-menu {
     width: 250px;
     height: auto;
@@ -308,7 +312,7 @@
   .side-btn-container {
     position: fixed;
     left: 4px;
-    display: block;
+    
   }
 }
 
