@@ -32,7 +32,7 @@ class ProjectDashBoard extends React.Component {
   updateWindowDimensions = () => {
     console.log('yy', window.innerWidth);
     let viewPortWidth = window.innerWidth;
-    if(viewPortWidth >= 722) {
+    if(viewPortWidth >= 766) {
       this.setState({openSideBar: true})
     }
     if(viewPortWidth <= 601) {
