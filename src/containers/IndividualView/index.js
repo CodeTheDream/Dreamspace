@@ -1,4 +1,3 @@
-
 import React, { Fragment } from "react";
 import AddComment from "../../components/CommentSystem/AddComment";
 import { withRouter } from "react-router-dom";
@@ -204,3 +203,7 @@ class IndividualView extends React.Component {
   }
 }
 export default compose(withFirebase, withRouter)(IndividualView);
+
+
+
+
