@@ -32,9 +32,12 @@ class IndividualView extends React.Component {
     let articleId = this.props.match.params.articleId;
     this.unsubscribe = this.props.firebase
       .comments()
+
       .where("articleId", "==", articleId)
+
       //.orderBy('timeCreated','desc')
       .limit(8)
+
       .onSnapshot((snapshot) => {
         const comments = [];
         let commentId = "";
@@ -48,11 +51,14 @@ class IndividualView extends React.Component {
           });
         });
       });
+
     //get the ID for a particular article
     // console.log("articleId", this.props.match.params);
     this.setState({ articleId });
+
     this.unsubscribe = this.props.firebase
       .article(articleId)
+
       .onSnapshot((doc) => {
         if (doc.exists) {
           // console.log(" this is my article", doc.data());
@@ -128,9 +134,12 @@ class IndividualView extends React.Component {
     const {
       article,
       comment,
+
       timeCreated,
+
       limited,
     } = this.state;
+
     if (article) {
       return (
         <div className="container-individual ">
@@ -146,12 +155,15 @@ class IndividualView extends React.Component {
                 </span>
               </div>
             </div>
+
             <div className="grid-subject2">
               <a href={article.url}>{article.title}</a>
             </div>
+
             <div className="grid-description">
               <p>{article.description}</p>
             </div>
+
             <div className="stylebutton">
               <button
                 style={{ justifyContent: "spacebitween" }}
@@ -174,6 +186,7 @@ class IndividualView extends React.Component {
           <div>
             <AddComment comment={comment} onCreate={this.createComment} />
           </div>
+
           <div>
             {this.state.comments &&
               this.state.comments.map((comment, index) => {

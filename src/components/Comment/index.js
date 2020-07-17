@@ -44,15 +44,17 @@ class Comment extends React.Component {
             replysId: replysId,
           } 
         );
+
         this.state.replys.map((reply) => {
           if (commentId === reply.parentCommentId) {
-            if(this.state.replysID){         
+            if(reply.commentID){         
                 this.setState({
               reply:reply
-            },()=>console.log("reply for the replys",this.state.reply))};
+            })};
           }
         });
        });
+
     let { comment } = this.props;
     let autherId = comment.userId;
     // console.log("the author of the commnet",comment.userId)
@@ -192,7 +194,3 @@ console.log("reply from state",reply)
   }
 }
 export default compose(withFirebase)(Comment);
-
-
-
-

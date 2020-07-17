@@ -15,8 +15,9 @@ class ReplyComment extends React.Component {
       showAll: false,
       showPopup: false,
       username: "",
-      // reply: "",
+     // reply: "",
       photoUrl: "",
+
     };
   }
   togglePopup = () => {
@@ -35,29 +36,33 @@ class ReplyComment extends React.Component {
       .user(this.props.reply.userId)
       .get()
       .then((doc) => {
-        // console.log("userdata in comment", doc.data());
+       // console.log("userdata in comment", doc.data());
         let user = doc.data();
         this.setState({
           username: user.username,
           photoUrl: user.photoUrl,
         });
       });
+
   };
+
   showMore = () => {
-    // console.log("show more clicked")
-    this.setState({ showAll: true });
-  };
+   // console.log("show more clicked")
+  this.setState({ showAll: true });
+  }
+
   showLess = () => this.setState({ showAll: false });
   render() {
     const { commentId, replys, limited, reply } = this.props;
-    const { showAll } = this.state;
+    const {showAll} = this.state;
     let commentReply = reply.reply;
     //console.log("showMore", this.showMore);
     const replyToRender = replys.filter((reply1) =>
       commentId === reply1.parentCommentId ? reply1.parentCommentId : null
     );
     const numOfReplys = replyToRender.length;
-    // console.log("reply:",reply)
+   // console.log("reply:",reply)
+
     // let replycomment = replys.filter((reply) =>
     //   (commentId === reply.parentCommentId )? reply.reply : null
     // );
@@ -149,9 +154,10 @@ class ReplyComment extends React.Component {
                       </p>
                       <p>
                         {reply.reply}
-                        <a
+                        <a 
                           onClick={this.showLess}
                           style={{ color: "darkblue" }}
+                        
                         >
                           Read less
                         </a>
@@ -175,10 +181,10 @@ class ReplyComment extends React.Component {
         );
       }
     }
-
+    
     //console.log("commentReplys",commentReply)
     const toShow = commentReply.substring(0, limited) + "....";
-    // console.log("sliced comment Replys", toShow);
+   // console.log("sliced comment Replys", toShow);
     if (toShow) {
       return (
         <div>
@@ -239,4 +245,5 @@ class ReplyComment extends React.Component {
     }
   }
 }
+
 export default compose(withFirebase)(ReplyComment);
