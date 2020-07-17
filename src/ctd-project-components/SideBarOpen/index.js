@@ -34,14 +34,14 @@ const DrawBottomLine = ({color}) => (
          
           <div className="btn-home">
             {/* <OpenClose /> */}       {/* I don't need at this time or if at all */}
-            <div className = 'search-container'>
+            <>
                   <SearchBar
                     projectData={props.projectData}
                     selectProject={props.selectProject}
                     filterProjectList={props.filterProjectList}
                     // handleInput={props.handleInput}
                   />
-              </div>
+              </>
               <SideBarButton handleClick = {() => props.handleClick()} title = {<FontAwesomeIcon className = 'times' icon = {faTimes} />}/>
               <div className = 'top-line-container'><DrawLines color = '#3fb0ac'/></div>
           </div>

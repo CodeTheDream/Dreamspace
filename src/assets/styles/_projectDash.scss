@@ -22,15 +22,7 @@
   grid-area: header;
 }
 
-.search-container {
-  width: 250px;
-  display: flex;
-  justify-content: center;
-}
-
 .menu-project  {
-  // margin: 0;
-  // line-height: 0;
   text-align: left;
   margin-left: 20px;
   font-size: 12px;
@@ -104,6 +96,7 @@
 .today {
   margin-top: 8px;
 }
+
 .style-day,
 .style-time,
 .footer-content {
@@ -118,20 +111,10 @@
   //margin-left: 10px;
 }
 
-// .btn-line {
-
-// }
-
 @media screen and (max-width: 979px) {
   .dashboard-content {
     display: grid;
     grid-template-columns: 250px auto;
-  }
-
-  .search-container {
-    width: 227px;
-    display: flex;
-    justify-content: center;
   }
 
   .card-content {
@@ -277,10 +260,6 @@
 }
 
 @media screen and (max-width: 721px) {
-  // .sidebar-menu {
-  //   position: relative;
-  // }
-
   .open-side-bar {
     position: relative;
     left: 222px
@@ -358,18 +337,6 @@
   }
 }
 
-@media screen and (max-width: 513px) {
-  // .sidebar-menu {
-  //   position: relative;
-  // }
-  
-  // .flip-card {
-  //   position: absolute;
-    // z-index: -2;
-  // }
-}
-
-
 @media screen and (max-width: 476px) {
   .flip-card-bun {
     padding: 10px;
@@ -403,12 +370,21 @@
   .project-image-container {
     left: 15em;
   }
+
+  menu-project {
+    margin-bottom: 1em;
+  }
 }
 
 @media screen and (max-width: 414px) {
   .top-line-container hr {
     display: none;
   }
+
+  hr {
+    display: none;
+  }
+
   .btn-line {
     display: none;
   }
@@ -419,9 +395,8 @@
   }
 
   .search-container {
-    position: relative;
-    left: 2.85em;
-    top: 0;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .side-btn-container {
@@ -466,18 +441,18 @@
     margin: 0;
     height: auto;
     width: 100%;
-    margin-top: 5em;
+    margin-top: 1em;
     margin-bottom: 1em;
   }
 
-  .menu {
+  .menu-project {
     text-align: center;
+    margin: 0;
   }
-
-
+  
   .btn-home {
     width: 100%;
-    // justify-content: center;
+    height: 4.4em;
   }
 }
 
@@ -492,9 +467,9 @@
   }
 
   .search-container {
-    position: relative;
-    left: 2.85em;
-    top: 0;
+    // position: relative;
+    // left: 2.85em;
+    // top: 0;
   }
 
   .side-btn-container {
@@ -535,8 +510,8 @@
     margin: 0;
     height: auto;
     width: 100%;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 
   .menu-project {
@@ -552,8 +527,8 @@
 
 @media screen and (max-width: 375px) {
   .search-container {
-    position: relative;
-    left: 2.28em;
+    // position: relative;
+    // left: 2.28em;
   }
 
   .flip-card {
@@ -596,7 +571,7 @@
   }
 
   .search-container {
-    left: 35px;
+    // left: 35px;
   }
 
   .flip-card {
@@ -631,7 +606,7 @@
 
 @media screen and (max-width: 325px) {
   .search-container {
-    left: 25px;
+    // left: 25px;
   }
 
   .flip-card {
