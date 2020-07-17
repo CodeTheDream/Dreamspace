@@ -152,7 +152,7 @@ class Userprofile extends React.Component {
                       UserSetting{" "}
                     </Link>
 
-                    <Link to={SignOut.SIGNOUT}>
+                    {/* <Link to={ROUTES.SIGNOUT}>
                       {" "}
                       <i
                         class="fa fa-sign-out"
@@ -161,7 +161,14 @@ class Userprofile extends React.Component {
                       ></i>
                       {"  "}
                       SignOut{" "}
-                    </Link>
+                    </Link> */}
+                   <span> <i
+                        class="fa fa-sign-out"
+                        aria-hidden="true"
+                        style={{ Color: "#fae596" }}
+                      ></i>
+                      <SignOut/>
+                      </span>
                   </div>
                 </div>
               </div>
