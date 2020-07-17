@@ -1,12 +1,11 @@
 * {
   
     box-sizing:border-box;
-    content: width= device-width ,initial-scale=1;
+    content: width = device-width ,initial-scale=1;
     }
 
 @media only screen and (min-width: 800px) {
-    .wrapper {
-       
+    .dashboard_wrapper {
         width: 100%;
         line-height: 1.58;
         margin-top:5em;
@@ -74,9 +73,9 @@
     width: 90%;
 }
 
-// .wrapper > div {
-//     width: 100%;
-// }
+.wrapper > div {
+    width: 80%;
+}
 
 
 

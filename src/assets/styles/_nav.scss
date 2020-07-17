@@ -64,7 +64,7 @@ body {
   display: block;
   height: 2px;
   position: relative;
-  transition: background 0.2s ease-out;
+  transition:background 0.2s ease-out;
   width: 18px;
 }
 
@@ -125,8 +125,9 @@ body {
   top: 0;
 }
 @media (max-width: 800px) {
-  .wrapper {
-    //overflow-x: hidden;
+  .dashboard_wrapper {
+    // overflow-x: scroll;
+    // overflow-y: scroll;
     width: 100%;
     line-height: 1.58;
     margin-top: 3em;
@@ -155,7 +156,7 @@ body {
     padding-right: 3em;
     border-radius: 10px;
     overflow: hidden;
-    margin-left: 2em;
+    // margin-left: 2em;
     margin-right: auto;
   
   }

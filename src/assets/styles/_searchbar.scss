@@ -1,6 +1,6 @@
 .main-class {
   display: flex;
-  // padding-top: 10px;
+  flex-direction: column;
 }
 .card-search {
   width: 10em;
@@ -17,13 +17,10 @@
   .input-icons i {
     position: absolute;
     float: left;
-    //margin-top: 20px;
-    //margin-left: 8.2em;
-    margin-top: 25px;
-    margin-left: 7.3em;
+    margin-top: 20px;
+    margin-left: 8.2em;
   }
 }
-
 @media screen and (min-width: 320px) and (max-width: 650px) {
   .input-icons i {
     position: absolute;
@@ -32,19 +29,17 @@
     margin-left: 2.7em;
   }
 }
-
 @media screen and (min-width: 320px) {
   .input-field {
     // padding: 10px 10px 10px 30px;
     // text-align: left;
     // width: 30em;
-
-    //padding: 10px 10px 10px 30px;
-    //text-align: left;
-    //width: 11.2em;
-    //margin-top: 12px;
-    //margin-left: 3em;
-    //margin-right: 0.5em;
+    padding: 10px 10px 10px 30px;
+    text-align: left;
+    width: 43em;
+    margin-top: 12px;
+    margin-left: 3em;
+    margin-right: 0.5em;
     //background-color: whitesmoke;
   }
   .popover__wrapper {
@@ -88,16 +83,15 @@
     text-align: left;
   }
 }
-@media screen and (min-width: 650px) {
+@media screen and (max-width: 650px) {
   .input-field {
     //background-color: whitesmoke;
     padding: 10px 10px 10px 30px;
     text-align: left;
-    width: 43em;
+    width: 11.2em;
     margin-top: 10px;
-   // margin-left: 10em;
-    margin-left: 7em;
-    margin-right: 1.5em;
+    //margin-left: 10em;
+   // margin-right: 1.5em;
   }
   .popover__wrapper {
     position: relative;
@@ -114,7 +108,7 @@
     background-color: ghostwhite;
     padding: 1.2rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    width:32.5em
+    width:10em;
   }
   .popover__content:before {
     position: absolute;
@@ -140,5 +134,6 @@
     text-align: left;
   }
 }
+
 
 
