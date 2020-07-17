@@ -73,7 +73,6 @@ class Comment extends React.Component {
     });
   };
 
-
   render() {
     const { comment, limited, timeCreated, commentId, userName } = this.props;
     const { showAll, replys, sortType, replysId, reply } = this.state;
@@ -109,7 +108,6 @@ class Comment extends React.Component {
                     <p className="commentdescription"> {comment.comment}{" "}</p>
                    
                   </p>
-
                   <div>
                     <AddReplys commentId={comment.commentId} />
                     <div className="replypage">
