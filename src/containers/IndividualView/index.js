@@ -113,22 +113,8 @@ class IndividualView extends React.Component {
         //console.log("Document written with ID: ", docRef.id);
       });
   };
-  sortByDate() {
-    const { comment } = this.state;
-    let newPostList = comment;
-    // console.log("this is the sorted data",newPostList)
-    if (this.state.isOldestFirst) {
-      newPostList = comment.sort((a, b) => a.date > b.date);
-    } else {
-      newPostList = comment.sort((a, b) => a.date < b.date);
-      //console.log("this is the sorted data",newPostList)
-    }
-    this.setState({
-      isOldestFirst: !this.state.isOldestFirsts,
-      comments: newPostList,
-    });
-    // console.log("this is the sorted data",newPostList)
-  }
+
+  
   render() {
     // Access to local component state
     const {
@@ -136,9 +122,17 @@ class IndividualView extends React.Component {
       comment,
 
       timeCreated,
-
+     sortType,
       limited,
     } = this.state;
+    if (comment) {
+      comment.sort((a, b) => {
+          const isReversed = (sortType === 'dsc') ? 1 : -1;
+          console.log("ordre comment0",isReversed)
+          return isReversed * a.timeCreated.localeCompare(b.timeCreated)
+      })
+
+  }
 
     if (article) {
       return (

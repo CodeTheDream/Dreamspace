@@ -93,13 +93,12 @@ class Comment extends React.Component {
   //       commentId === reply.parentCommentId ? (
   //       reply=reply):null)
 //console.log("reply from state",reply)
-    // if(replys){
-    //   replys.sort((a,b) =>{
-    //    const  isReversed = (sortType === 'asc') ? 1 :-1;
-    //    return  isReversed * a.timeCreated.localeCompare(b.timeCreated)
-    //  })}
-    //  console.log("Total",totallReply.length)
-    //      }
+  //  if(replys){
+  //     replys.sort((a,b) =>{
+  //      const  isReversed = (sortType === 'asc') ? 1 :-1;
+  //      console.log("order reply",isReversed)
+  //      return  isReversed * a.timeCreated.localeCompare(b.timeCreated)
+  //    }) }
     if (comment.comment && comment.comment.length <= limited) {
       //  console.log("IF", comment.comment, comment.comment.length);
       return (
@@ -124,11 +123,13 @@ class Comment extends React.Component {
                     {replys &&
                       replys.map((reply) =>
                       
-                        commentId === reply.parentCommentId ? ( 
+                        commentId === reply.parentCommentId ? (
+                        // replyUserId && 
                         <div>
                          
-                         
+                        
                               <ReplyComment
+                              
                                 reply={reply}
                                 replys={this.state.replys}
                                 timeCreated={timeCreated}
