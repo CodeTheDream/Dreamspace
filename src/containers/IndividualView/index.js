@@ -167,13 +167,13 @@ comments,
                 <i className="fa fa-comment"> </i> {this.state.totalcount}{" "}
                 Comment
               </button>
-              <button
+              {/* <button
                 type="button"
                 onClick={this.handleRemove}
                 className="disabled"
               >
                 Save
-              </button>
+              </button> */}
             </div>
           </div>
           <div>

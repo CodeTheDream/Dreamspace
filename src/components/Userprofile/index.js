@@ -135,39 +135,9 @@ class Userprofile extends React.Component {
                           <div className="prfilecard">
                             <div  > <button className="canclebutton"onClick={e => this.cancleButton(e)}>x</button></div>
                             <br/>
-                            {/* <button onClick={this.postPics}>
-                              Upload your photo
-                            </button>
-                            {pics &&
-                              pics.map((pic, id) => {
-                                return (
-                                  <div>
-                                    <img
-                                      src={pic.url}
-                                      
-                                      alt="Staff Photos"
-                                     
-                                      onClick={this.handlOnchange}
-                                      width="40"
-                                      height="40"
-                                    />
-                                  </div>
-                                );
-                              })}
-
-                            <button onClick={this.upload}>
-                              set as profile photo
-                            </button>*/}
+                           
                             <div className="uploadimage">
-                              {/* <input
-                                className="imageinput"
-                               // type="text"
-                                placeholder="Drage and drop your Image-URl"
-                               // value={this.state.url}
-                                onChange={this.onUrlChange}
-                               // required
-                                
-                              /> */}
+                             
                                <input
                                className="imageinput"
                                     type="url"
@@ -217,7 +187,8 @@ class Userprofile extends React.Component {
                       {"  "}
                       UserSetting{" "}
                     </Link>
-                    <SignOut />
+                    {/* <i class="fa fa-sign-out" aria-hidden="true"></i>*/}
+                    <SignOut /> 
                   </div>
                 </div>
               </div>
