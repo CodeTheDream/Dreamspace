@@ -42,7 +42,6 @@ class Comment extends React.Component {
           replys: Replys,
           replysId: replysId,
         });
-
         this.state.replys.map((reply) => {
           if (commentId === reply.parentCommentId) {
             if (reply) {
@@ -53,10 +52,8 @@ class Comment extends React.Component {
           }
         });
       });
-
     let { comment } = this.props;
     let autherId = comment.userId;
-
     this.props.firebase
       .user(autherId)
       .get()
@@ -70,13 +67,11 @@ class Comment extends React.Component {
   };
   showMore = () => this.setState({ showAll: true });
   showLess = () => this.setState({ showAll: false });
-
   togglePopup = () => {
     this.setState({
       showPopup: !this.state.showPopup,
     });
   };
-
 
   render() {
     const { comment, limited, timeCreated, commentId, userName } = this.props;
@@ -165,7 +160,6 @@ class Comment extends React.Component {
       );
     } else {
       // console.log("ELSE", comment.comment, comment.comment.length);
-
       if (showAll) {
         return (
           // <div className="card-comment">

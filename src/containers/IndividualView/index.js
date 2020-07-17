@@ -114,7 +114,7 @@ class IndividualView extends React.Component {
       });
   };
 
-
+  
   render() {
     // Access to local component state
     const {
@@ -142,7 +142,7 @@ comments,
               <div className="autherstyle-individual">
                 <span />
                 <img src={this.state.photoUrl} className="user-profile" />{" "}
-                <span>
+                <span className="usernamepost">
                   posted by {this.state.username}
                   {article.timeCreated}
                 </span>
@@ -209,3 +209,7 @@ comments,
   }
 }
 export default compose(withFirebase, withRouter)(IndividualView);
+
+
+
+

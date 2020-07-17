@@ -20,7 +20,6 @@ class ReplyComment extends React.Component {
 reply2:""
     };
   }
-
   togglePopup = () => {
     this.setState({
       showPopup: !this.state.showPopup,
@@ -34,7 +33,6 @@ reply2:""
     this.getReplyUserDetails();
   
   };
-
   getReplyUserDetails = () => {
   
     this.props.firebase
