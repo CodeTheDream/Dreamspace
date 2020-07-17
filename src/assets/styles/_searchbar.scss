@@ -1,9 +1,5 @@
 .main-class {
   display: flex;
-<<<<<<< HEAD
-=======
-  flex-direction: column;
->>>>>>> ALERT, i made these changes with Aster
 }
 .card-search {
   width: 10em;
@@ -21,18 +17,10 @@
     position: absolute;
     float: left;
     margin-top: 20px;
-<<<<<<< HEAD
     margin-left: -10.6em;
   }
 }
-
 @media screen and (max-width: 650px) {
-=======
-    margin-left: 8.2em;
-  }
-}
-@media screen and (min-width: 320px) and (max-width: 650px) {
->>>>>>> ALERT, i made these changes with Aster
   .input-icons i {
     position: absolute;
     float: left;
@@ -45,7 +33,6 @@
     // padding: 10px 10px 10px 30px;
     // text-align: left;
     // width: 30em;
-<<<<<<< HEAD
     display: flex;
     padding: 5px 10px 10px 30px;
     text-align: left;
@@ -54,14 +41,6 @@
     margin-left: 18em;
     margin-right: 0.5em;
     border-radius: solid 6px;
-=======
-    padding: 10px 10px 10px 30px;
-    text-align: left;
-    width: 43em;
-    margin-top: 12px;
-    margin-left: 3em;
-    margin-right: 0.5em;
->>>>>>> ALERT, i made these changes with Aster
     //background-color: whitesmoke;
   }
   // .input-icons i {
@@ -70,9 +49,7 @@
   //   margin-top: 20px;
   //  // margin-right: 10em;
   //  margin-left: -10.5em;
-
   // }
-
   .popover__wrapper {
     position: relative;
     //margin-top: 1.5rem;
@@ -118,18 +95,11 @@
   .input-field {
     padding: 7px 10px 10px 30px;
     text-align: left;
-<<<<<<< HEAD
     width: 9.2em;
     margin-top: 1em;
     margin-left: 1em;
     border-radius: 10px;
     margin-right: 0.2em;
-=======
-    width: 11.2em;
-    margin-top: 10px;
-    //margin-left: 10em;
-   // margin-right: 1.5em;
->>>>>>> ALERT, i made these changes with Aster
   }
   // .input-icons i {
   //   position: absolute;
@@ -152,7 +122,7 @@
     background-color: ghostwhite;
     padding: 1.2rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    width:10em;
+    width: 8.7em;
   }
   .popover__content:before {
     position: absolute;
@@ -177,7 +147,4 @@
   .popover__message {
     text-align: left;
   }
-
-
-
-
+}
