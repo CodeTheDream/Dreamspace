@@ -128,8 +128,8 @@ body {
   transform: rotate(45deg);
   top: 0;
 }
-@media only screen and (max-width: 800px) {
-  .dashbord_wrapper {
+@media (max-width: 800px) {
+  .dashboard_wrapper {
     // overflow-x: scroll;
     // overflow-y: scroll;
    
@@ -163,7 +163,7 @@ body {
     padding-right: 3em;
     border-radius: 10px;
     overflow: hidden;
-    margin-left: 0.7em;
+    // margin-left: 2em;
     margin-right: auto;
   
   }

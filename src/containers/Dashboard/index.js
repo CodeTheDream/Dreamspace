@@ -80,7 +80,7 @@ class Dashboard extends React.Component {
       });
     }
     return (
-      <div className="dashbord_wrapper">
+      <div className="dashboard_wrapper">
         <div className="main-class">
           <div className="search-bar">
             <SearchBar handleInput={this.handleInput} />
