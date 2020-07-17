@@ -3,14 +3,18 @@
    padding-right: 72%;
    color: #3FB0AC;
    font-size: 16px;
-   cursor: pointer
+   cursor: pointer;
+   width:10em;
+   border:hidden;
+   outline:none; 
+   background-color:ghostwhite
 }
 
 
 .replystayle{
     line-height: 22px;
     text-align: left;
-     padding: 5px 40px;
+     padding: 5px 55px;
      font-size: 1em;
      line-height: 1.5;
      font-family: Helvetica;
@@ -18,10 +22,6 @@
      cursor: pointer;
      
 }
-.replypage-hide {
-    margin: 10px;
-    padding-right: 78%;
-    color: #3FB0AC;
-    font-size: 16px;
-    cursor: pointer
+.replystyle{
+    padding-left: 32px;
 }
