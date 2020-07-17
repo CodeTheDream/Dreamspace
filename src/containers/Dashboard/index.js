@@ -76,11 +76,7 @@ class Dashboard extends React.Component {
       });
     }
     return (
-<<<<<<< HEAD
-      <div className="dashboard_wrapper">
-=======
       <div className="dashbord_wrapper">
->>>>>>> new update
         <div className="main-class">
           <div className="search-bar">
             <SearchBar handleInput={this.handleInput} />

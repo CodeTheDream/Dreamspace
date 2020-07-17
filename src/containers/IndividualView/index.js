@@ -142,7 +142,7 @@ comments,
               <div className="autherstyle-individual">
                 <span />
                 <img src={this.state.photoUrl} className="user-profile" />{" "}
-                <span>
+                <span className="usernamepost">
                   posted by {this.state.username}
                   {article.timeCreated}
                 </span>

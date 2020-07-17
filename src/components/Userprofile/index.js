@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes.js";
 import SignOut from "../SignOut";
 import Setting from "../../containers/Account";
-const options = ["username", "profile", "setting"];
+// const options = ["username", "profile", "setting"];
 class Userprofile extends React.Component {
   constructor(props) {
     // console.log("this is the props value:" + props)
@@ -33,29 +33,6 @@ class Userprofile extends React.Component {
       url: "",
     };
   }
-  componentDidMount() {
-    this.directoryAirTable();
-  }
-  directoryAirTable() {
-    const url =
-      "https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory";
-    fetch(url, {
-      headers: {
-        Authorization: "Bearer " + process.env.REACT_APP_DIRECTORY_AIRTABLE_KEY,
-      },
-    })
-      .then((response) => response.json())
-      .then((responseData) => {
-        console.log("directory data ", responseData);
-        const crewDirectory = responseData.records;
-        console.log("crewDirectory ", crewDirectory);
-        this.setState({
-          crewDirectory: crewDirectory,
-          allDirectory: crewDirectory,
-        });
-        console.log(" crewDirectory", this.state.crewDirectory);
-      });
-  }
 
   togglePopup = () => {
     this.setState({
@@ -63,22 +40,6 @@ class Userprofile extends React.Component {
     });
   };
 
-  postPics = (e) => {
-    let pics =
-      "https://ya-webdesign.com/images250_/placeholder-image-png-1.png";
-    {
-      this.state.crewDirectory &&
-        this.state.crewDirectory.map((staffPhoto, id) => {
-          console.log("stafphoto", staffPhoto.fields.Photo);
-          //if (staffPhoto.fields.Photo) {
-          this.setState({
-            pics: staffPhoto.fields.Photo,
-          });
-
-          //  }
-        });
-    }
-  };
   onUrlChange = (e) => {
     this.setState({
       url: e.target.value,
@@ -92,20 +53,19 @@ class Userprofile extends React.Component {
     this.props.firebase.user(autherId).update({
       photoUrl: this.state.url,
     });
-    this.setState({showPopup:false})
+    this.setState({ showPopup: false });
   };
   cancleButton = (e) => {
     this.setState({ showPopup: false });
-  }
+  };
   render() {
-    const { selectedFile, url, crewDirectory, pics } = this.state;
+    const { url } = this.state;
     console.log("pics1", url);
     let imgPreview;
     let id;
     if (this.state.file) {
       imgPreview = <img src={this.state.file} alt="" />;
     }
-    ;
     return (
       <AuthUserContext.Consumer>
         {(authUser) => (
@@ -122,7 +82,7 @@ class Userprofile extends React.Component {
                     <span>
                       <img src={authUser.photoUrl} className="user-profile11" />
                       <div className="PhotoCamera">
-                        <span >
+                        <span>
                           <i
                             className="fa fa-camera"
                             aria-hidden="true"
@@ -131,64 +91,77 @@ class Userprofile extends React.Component {
                         </span>
 
                         {this.state.showPopup ? (
-                         <div className="profilewraper">
-                          <div className="prfilecard">
-                            <div  > <button className="canclebutton"onClick={e => this.cancleButton(e)}>x</button></div>
-                            <br/>
-                           
-                            <div className="uploadimage">
-                             
-                               <input
-                               className="imageinput"
-                                    type="url"
-                                    placeholder="Drage and drop your Image-URl"
-                                    value={this.state.url}
-                                    onChange={this.onUrlChange}
-                                    required
-                                  />
-                              <button
+                          <div className="profilewraper">
+                            <div className="prfilecard">
+                              <div>
+                                {" "}
+                                <button
+                                  className="canclebutton"
+                                  onClick={(e) => this.cancleButton(e)}
+                                >
+                                  x
+                                </button>
+                              </div>
+                              <br />
 
-                                className="imageupload"
-                                onClick={(e) => this.upload(e, authUser)}
-                                
-                              >
-                                upload Image
-                              </button>
+                              <div className="uploadimage">
+                                <input
+                                  className="imageinput"
+                                  type="url"
+                                  placeholder="Drage and drop your Image-URl"
+                                  value={this.state.url}
+                                  onChange={this.onUrlChange}
+                                  required
+                                />
+                                <button
+                                  className="imageupload"
+                                  onClick={(e) => this.upload(e, authUser)}
+                                >
+                                  upload Image
+                                </button>
+                              </div>
+                              <br />
+
+                              <img
+                                src={
+                                  this.state.url ||
+                                  "http://via.placeholder.com/100x100"
+                                }
+                                alt="Uploaded images"
+                                // height="100"
+                                //width="100"
+                              />
                             </div>
-                            <br />
-
-                            <img
-                              src={
-                                this.state.url ||
-                                "http://via.placeholder.com/100x100"
-                              }
-                              alt="Uploaded images"
-                             // height="100"
-                              //width="100"
-                            />
-                          </div>
                           </div>
                         ) : null}
                       </div>
-                      
                     </span>
-                    
-                    <br/><br/>
 
+                    <br />
+                    <br />
 
                     <p>{authUser.username}</p>
                     <p>{authUser.email}</p>
                   </div>
 
-                  <div>
+                  <div className="AccountsignOut">
                     <Link to={ROUTES.ACCOUNT}>
                       {" "}
                       <i className="fal fa-cog" style={{ Color: "#fae596" }} />
                       {"  "}
                       UserSetting{" "}
                     </Link>
-                    {/* <i class="fa fa-sign-out" aria-hidden="true"></i>*/}
-                    <SignOut /> 
+
+                    <Link to={SignOut.SIGNOUT}>
+                      {" "}
+                      <i
+                        class="fa fa-sign-out"
+                        aria-hidden="true"
+                        style={{ Color: "#fae596" }}
+                      ></i>
+                      {"  "}
+                      SignOut{" "}
+                    </Link>
                   </div>
                 </div>
               </div>
