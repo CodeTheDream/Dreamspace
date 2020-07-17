@@ -162,11 +162,7 @@ class Userprofile extends React.Component {
                       {"  "}
                       SignOut{" "}
                     </Link> */}
-                   <span> <i
-                        class="fa fa-sign-out"
-                        aria-hidden="true"
-                        style={{ Color: "#fae596" }}
-                      ></i>
+                   <span> 
                       <SignOut/>
                       </span>
                   </div>
