@@ -72,6 +72,8 @@ class Comment extends React.Component {
       showPopup: !this.state.showPopup,
     });
   };
+
+
   render() {
     const { comment, limited, timeCreated, commentId, userName } = this.props;
     const { showAll, replys, sortType, replysId, reply } = this.state;
@@ -107,24 +109,37 @@ class Comment extends React.Component {
                     <p className="commentdescription"> {comment.comment}{" "}</p>
                    
                   </p>
+
                   <div>
                     <AddReplys commentId={comment.commentId} />
                     <div className="replypage">
-              <i
-                className="fas fa-angle-down "
-                style={{ width: "10em" }}
-                onClick={() => {
-                  this.togglePopup();
-                }}
-              >
-                {" "}
-                {/* View{""}  */}
-                {replys.length}
-                {" More "}
-                {" Replys "}
-              </i>
-            </div>
-                    {replys && this.state.showPopup &&
+                      {numOfReplys ? (
+                        <button className="replypage"
+                          
+                          style={{ }}
+                          onClick={() => {
+                            this.togglePopup();
+                            
+                          }}
+                        >
+                          {this.state.showPopup ? (
+                            <div>
+                              <i className="fas fa-angle-up" /> {"Hide"}{" "}
+                          {numOfReplys} {" "}{" Replys "}
+                            </div>
+                          ) : (
+                            <div>
+                              <i className="fas fa-angle-down " /> {"View"}{" "}
+                              {numOfReplys}
+                              
+                              {" Replys "}
+                            </div>
+                          )}
+                        </button>
+                      ) : null}
+                    </div>
+                    {replys &&
+                      this.state.showPopup &&
                       replys.map((reply) =>
                         commentId === reply.parentCommentId ? (
                           <ReplyComment
