@@ -17,7 +17,6 @@
      text-decoration: none;
    }
    .dropdown {
-    // float: left;
      overflow: hidden;
     
    }
@@ -80,34 +79,27 @@
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       
     }
-   /* .uploadImage {
-      width: 10em;
-      height: 8em;
-      margin-bottom: 200px;
-      
-    }*/
+   
     .uploadimage {
       display: inline-block;
     }
     .imageupload{
-      width:8em;
+      
       height:3em;
-      //margin-top: 2px;
-    //  font-size: 18px;
       text-align: center;
       font-style: normal;
-      width: 8em;
+      width: 10em;
       margin-bottom: 10px;
       background: #3fb0ac;
       float: right;
       color: #fae596;
       border-radius: 8px;
       position: relative;
-      //padding: 8px
+      
 
     } 
     .imageinput{
-      width: 40em;
+      width: 35em;
       height: 3em;
       float: left;
       margin-right: 5px;
@@ -124,20 +116,15 @@
       width: 30px;
       height: 30px;
       font-weight: bold;
-      //align-self: flex-end;
       background: $main-color;
-      
-      // background: $secondary-color;
       color: lightgray;
-      // background-color: yellow;
+      
       
     }
  }
  .user-profile1 {
   position: relative;
   top: 4px;
-  // right: 10px;
- // padding-left: 2px;
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -145,8 +132,6 @@
 .user-profile11 {
 position: relative;
 top: 4px;
-// right: 10px;
-// padding-left: 2px;
 width: 70px;
 height: 70px;
 border-radius: 50%;
@@ -154,7 +139,6 @@ border-radius: 50%;
 .PhotoCamera {
 padding-left: 10%;
 background-color: white;
-//color: black;
 border-radius: 50%;
 width: 40px;
 height: 40px;
@@ -177,12 +161,9 @@ border: none;
 width: 30px;
 height: 30px;
 font-weight: bold;
-//align-self: flex-end;
 background: $main-color;
-
-// background: $secondary-color;
 color: lightgray;
-// background-color: yellow;
+
 
 }
 .profilewraper{
@@ -211,7 +192,6 @@ min-height: 120em;
      text-decoration: none;
    }
    .dropdown {
-    // float: left;
      overflow: hidden;
     
    }
@@ -252,7 +232,7 @@ min-height: 120em;
      padding: 12px 16px;
      text-decoration: none;
      display: block;
-     text-align: left;
+    // text-align: left;
    }
    
    .dropdown-content a:hover {
@@ -318,12 +298,8 @@ border: none;
 width: 30px;
 height: 30px;
 font-weight: bold;
-//align-self: flex-end;
 background: $main-color;
-
-// background: $secondary-color;
 color: lightgray;
-// background-color: yellow;
 
 }
  }
@@ -386,10 +362,7 @@ color: lightgray;
     width: 30px;
     height: 30px;
     font-weight: bold;
-    //align-self: flex-end;
     background: $main-color;
-    // background: $secondary-color;
     color: lightgray;
-    // background-color: yellow;
     }}
 
