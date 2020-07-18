@@ -1,193 +1,205 @@
 .googlebtn {
   
-  display:block;
-  margin: 5px ;
-  height: 50px;
-  opacity: 0.85;
-  text-decoration: none;
-  background-color: #dd4b39;
-  color: white;
-  width: 50px;
-  line-height: 20px;
-  border-radius: 50%;
-  border: 1px solid whitesmoke;
+	display:block;
+	margin: 5px ;
+	height: 50px;
+	opacity: 0.85;
+	text-decoration: none;
+	background-color: #dd4b39;
+	color: white;
+	width: 50px;
+	line-height: 20px;
+	border-radius: 50%;
+	border: 1px solid whitesmoke;
+  }
+  
+  
+  .github {
+   
+	  display:block;
+	  height: 50px;
+	  margin: 5px ;
+	  opacity: 0.85;
+	  line-height: 20px;
+	  text-decoration: none;
+	  //background-color: #dd4b39;
+	  color:black;
+	  width: 50px;
+	  border-radius: 50%;
+	  border: 1px solid black;
+  }
+  /*.wrapper {
+		  
+	  width: 100%;
+	  line-height: 1.58;
+	  margin-top:5em;
+	  justify-content: center;
+	  max-width: 60%;
+	  align-self: center;
+	  display: flex;
+	  flex-direction: column;
+	  display: -ms-flexbox;
+	  margin-bottom: 1px;
+	  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+	  margin-left: auto;
+	  margin-right: auto;
+	  }*/
+	  
+	  
+  
+  
+	  
+  .outer
+  {
+	  //width:100%;
+	  text-align: center;
+	  //margin-left:5em;
+  }
+  .inner
+  {
+	  display: inline-block;
+  }
+  .form{
+	  flex: 1;
+	  display: flex;
+	  flex-direction: column;
+	  padding: 1em;
+	  //padding: 10px 20px;
+	  background: $white;
+	  width:60%;
+	  margin: 10px auto  ;
+	  padding: 20px;
+	  background: $white;
+	  border-radius: 8px;
+	  font-family: Georgia, "Times New Roman", Times, serif;
+  }
+  
+  .form input[type="text"],
+  .form input[type="password"],
+  .form input[type="email"],
+  .form select {
+	  font-family: Georgia, "Times New Roman", Times, serif;
+	  background: rgba(255,255,255,.1);
+	  border: none;
+	  border-radius: 4px;
+	  font-size: 15px;
+	  margin: 0;
+	  outline: 0;
+	  padding: 10px;
+	  width: 100%;
+	  box-sizing: border-box; 
+	  -webkit-box-sizing: border-box;
+	  -moz-box-sizing: border-box; 
+	  background-color: #e8eeef;
+	  color:#8a97a0;
+	  -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	  margin-bottom: 30px;
+  }
+  .form input[type="text"]:focus,
+  .form input[type="password"]:focus,
+  .form select:focus{
+	  background: #d2d9dd;
+  }
+  .form select{
+	  -webkit-appearance: menulist-button;
+	  height:35px;
+  }
+  
+  
+  .button-main,
+  .button-secondary,
+  .button-tertiary,
+  .button-secondary {
+	  position: relative;
+	  display: block;
+	  padding: 19px 39px 18px 39px;
+	  color: #FFF;
+	  margin: 0 auto;
+	  font-size: 18px;
+	  text-align: center;
+	  font-style: normal;
+	  width: 100%;
+	  // border: 1px solid $secondary-color;
+	  // border-width: 1px 1px 3px;
+	  margin-bottom: 10px;
+  }
+  
+  .button-main {
+	  background: $main-color;
+  }
+  .button-main:hover {
+	  background: $tertiary-color;
+  }
+  .button-secondary {
+	  //background:$secondary-color; 
+	  color: $tertiary-color !important;
+  }
+  .signin{
+  line-height: 0.1em;
+  margin-top: 0.3em;
+  margin-bottom: 2rem;
+  }
+  @media only screen and (min-width: 800px){
+  .signinpage{
+	  background-image:  url("https://mcdn.wallpapersafari.com/medium/55/22/P5ABoL.jpg");
+	  width:100%;
+	  max-width:50%;
+	 margin: 0 auto;
+	 margin-top:7em;
+	 //padding: 0.5em;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  //margin-left: 5.5em;
+	  
+  }
 }
-
-.fb {
-    
-    display:block;
-    height: 50px;
-    margin: 5px ;
-    opacity: 0.85;
-    text-decoration: none;
-    line-height: 20px;
-    background-color:#3B5998;
-    color: white;
-    width: 50px;
-    border-radius: 50%;
-    border: 1px solid whitesmoke;
-}
-.github {
- 
-    display:block;
-    height: 50px;
-    margin: 5px ;
-    opacity: 0.85;
-    line-height: 20px;
-    text-decoration: none;
-    //background-color: #dd4b39;
-    color:black;
-    width: 50px;
-    border-radius: 50%;
-    border: 1px solid black;
-}
-.wrapper {
-        
-	width: 100%;
-	line-height: 1.58;
-	margin-top:4em;
-	justify-content: center;
-	//max-width: 8000px;
-	align-self: center;
-	display: flex;
-	flex-direction: column;
-	display: -ms-flexbox;
-	margin-bottom: 1px;
-	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
-	margin-left: auto;
-	margin-right: auto;
+@media only screen and (max-width: 800px){
+	.signinpage{
+		background-image:  url("https://mcdn.wallpapersafari.com/medium/55/22/P5ABoL.jpg");
+		width:100%;
+		max-width:88%;
+	   margin:10px auto;
+	   padding:0.5em;
+	   margin-top:5em;
+	   //padding: 0.5em;
+		background-repeat: no-repeat;
+		background-size: cover;
+		//margin-left: 5.5em;
+		
+	}
+	.form{
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		padding: 1em;
+		//padding: 10px 20px;
+		background: $white;
+		width:80%;
+		margin: 10px auto  ;
+		padding: 20px;
+		background: $white;
+		border-radius: 8px;
+		font-family: Georgia, "Times New Roman", Times, serif;
 	}
 	
-	
+  }
+  .format{
+	  margin-top:2em;
+  }
 
-
-	
-.outer
-{
-    //width:100%;
-    text-align: center;
-    //margin-left:5em;
-}
-.inner
-{
-    display: inline-block;
-}
-.form{
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	padding: 1em;
-	//padding: 10px 20px;
-    background: $white;
-    width:80%;
-	margin: 10px auto  ;
-	padding: 20px;
-	background: $white;
-	border-radius: 8px;
-	font-family: Georgia, "Times New Roman", Times, serif;
-}
-
-.form input[type="text"],
-.form input[type="password"],
-.form input[type="email"],
-.form select {
-	font-family: Georgia, "Times New Roman", Times, serif;
-	background: rgba(255,255,255,.1);
-	border: none;
-	border-radius: 4px;
-	font-size: 15px;
-	margin: 0;
-	outline: 0;
-	padding: 10px;
-	width: 100%;
-	box-sizing: border-box; 
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box; 
-	background-color: #e8eeef;
-	color:#8a97a0;
-	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-	margin-bottom: 30px;
-}
-.form input[type="text"]:focus,
-.form input[type="password"]:focus,
-.form select:focus{
-	background: #d2d9dd;
-}
-.form select{
-	-webkit-appearance: menulist-button;
-	height:35px;
-}
-
-
-.button-main,
-.button-secondary,
-.button-tertiary,
-.button-secondary {
-	position: relative;
-	display: block;
-	padding: 19px 39px 18px 39px;
-	color: #FFF;
-	margin: 0 auto;
-	font-size: 18px;
-	text-align: center;
-	font-style: normal;
-	width: 100%;
-	// border: 1px solid $secondary-color;
-	// border-width: 1px 1px 3px;
-	margin-bottom: 10px;
-}
-
-.button-main {
-	background: $main-color;
-}
-.button-main:hover {
-	background: $tertiary-color;
-}
-.button-secondary {
-    //background:$secondary-color; 
-    color: $tertiary-color !important;
-}
-.signin{
-line-height: 0.1em;
-margin-top: 0.3em;
-margin-bottom: 2rem;
-}
-
-.signinpage{
-	background-image:  url("https://mcdn.wallpapersafari.com/medium/55/22/P5ABoL.jpg");
-	//background-position: center;
-	
-  // margin: 0 auto;
-   //padding: 0.5em;
-    background-repeat: no-repeat;
-	background-size: cover;
-	//margin-left: 5.5em;
-margin-right: 20%;
-	margin-left: 20%;
-}
-
-.format{
-	margin-top:2em;
-}
-/*.message{
-text-align: center;
-    //line-height: 1.5em;
-    margin-left: 1em;
-}*/
-.errormessage {
-	width: 300px;
-    height: 69px;
-    background-color: ghostwhite;
-    margin-top:-80px;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    padding: 10px;
-    border-radius: 8px;
-    //display: flex;
-    transform: translate(-50%, -50%);
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
-    
- }
-
+  .errormessage {
+	  width: 300px;
+	  height: 69px;
+	  background-color: ghostwhite;
+	  margin-top:-80px;
+	  position: relative;
+	  left: 50%;
+	  right: 50%;
+	  padding: 10px;
+	  border-radius: 8px;
+	  //display: flex;
+	  transform: translate(-50%, -50%);
+	  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+	  
+   }
