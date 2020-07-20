@@ -25,21 +25,24 @@
         
     }
     .sharecard {
-        width:300px;
-        height: 120px;
-        background-color: ghostwhite; 
-        margin-bottom: -120px;
-        margin-top: -120px;
-        position: relative;
-       // left: 82%;
-        right: 18%;
-        top: -40%;
-        padding: 10px;
-        border-radius: 8px;
-        display: flex;
-      //float: right;
-        transform: translate(-90%, -50%); 
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+      
+            width:300px;
+            height: 120px;
+            background-color: ghostwhite; 
+            margin-bottom: -120px;
+            margin-top: -120px;
+            position: relative;
+           // left: 82%;
+            right: 18%;
+            top: -40%;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+          //float: right;
+            transform: translate(-90%, -50%); 
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+            
+         
         
      }
     .card {
