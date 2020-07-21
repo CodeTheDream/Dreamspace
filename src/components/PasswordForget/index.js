@@ -10,9 +10,11 @@ const password = () => (
     
         <div className="wrapper">
             <p style={{ fontSize: "28px" }}>PasswordForget </p>
-    
+            <h3 style={{marginTop:"2em"}}> Password Reset</h3>
 
                  <PasswordForgetForm />
+               
+                 
             </div>
         );
 
@@ -53,8 +55,10 @@ const password = () => (
             const isInvalid = email === '';
         
               return (
-                  <div className="view-container">
-                <form onSubmit={this.onSubmit} className="devedit-form">
+                  <div className="view-container-signup">
+                   
+                <form onSubmit={this.onSubmit} className="form">
+               
                 <input
                   name="email"
                   value={this.state.email}
