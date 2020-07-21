@@ -10,13 +10,16 @@ import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
    
+       
      <div className="signinpage">
+    
+   
     <h3 className="signin">SignIn</h3>
 
       
 <div className="outer">
    <div className="inner">    <SignInGoogle /></div> 
-     {/* <div className="inner"> <SignInFacebook /></div>*/}
+    
        <div className="inner"> <SignInGithub/></div>
 </div>
         <p style={{ textAlign: "center" }}>Or sign in manually:</p>
@@ -26,6 +29,7 @@ const SignInPage = () => (
          <PasswordForgetLink /> 
         <SignUpLink />
     </div>
+    
     
 );
 
