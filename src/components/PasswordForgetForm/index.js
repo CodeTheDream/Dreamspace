@@ -11,7 +11,7 @@ const PasswordForgetLink = () => (
 
 
     <p>
-        <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
+        <Link className="linkstyle" to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
     </p>
 
 );

@@ -5,7 +5,7 @@ import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
 const SignUpPage = () => (
   <div style={{ marginTop: "4.8em" }}>
-    <div className="signup"></div>
+   < div className="signup"></div>
     <h3 className="signin">SignUp</h3>
     <SignUpForm />
   </div>
@@ -141,7 +141,7 @@ class SignUpFormBase extends Component {
 }
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGNUP}>Sign Up</Link>
+    Don't have an account? <Link className="linkstyle" to={ROUTES.SIGNUP}>Sign Up</Link>
   </p>
 );
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));
