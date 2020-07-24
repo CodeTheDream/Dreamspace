@@ -2,7 +2,7 @@ import React from "react";
 import { withFirebase } from "../Firebase";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
-//import * as ROUTES from "../../constants/routes";
+
 import { AuthUserContext } from "../Session";
 const moment = require("moment");
 class AddReplys extends React.Component {
@@ -16,11 +16,11 @@ class AddReplys extends React.Component {
   }
 
   togglePopup = () => {
-    //const{commentId}=this.props
+   
     this.setState({
       showPopup: !this.state.showPopup
     });
-    //console.log("this is the commentId", commentId)
+  
   };
   cancle = () => {
     this.setState({ showPopup: false });
@@ -29,12 +29,12 @@ class AddReplys extends React.Component {
   handleSubmit =(e,authUser)=> {
     e.preventDefault();
     const commentId = this.props.commentId;
-   // console.log("this is the commentId for the reply", commentId)
+
     this.props.firebase
-      //.replys(commentId)
+     
       .comments()
       .add({
-        // commentId:commentId,
+       
         reply: this.state.reply,
         timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A `),
         userId:authUser.uid,
@@ -44,8 +44,7 @@ class AddReplys extends React.Component {
         console.log('DOC REF', docRef.id)
         this.props.firebase.comment(commentId).update({
           childCommentId: docRef.id
-        //console.log(" this is the replysID ", docRef.id)
-        //console.log(" this is the replysID ", docRef.id)
+      
       });
 
     this.setState({
@@ -62,9 +61,9 @@ class AddReplys extends React.Component {
   };
 
   render() {
-    // const { comment, limited, timeCreated,commentId } = this.props;
+    
     const { commentId} = this.props;
-    //console .log("this is the comment Id i have from comment",commentId)
+
     return (
       <AuthUserContext.Consumer>
       {authUser => (
@@ -79,10 +78,10 @@ class AddReplys extends React.Component {
             <div className="commentgrid">
               <textarea
                 className="commentContent"
-                // id="reply"
+               
                 type="text"
                 value={this.state.reply}
-                //name="reply"
+               
                 placeholder="Write your Reply here! "
                 autoFocus={true}
                 onChange={this.handleChange}

@@ -8,7 +8,6 @@ import {
 import { withFirebase } from "../../components/Firebase";
 import ReplyComment from "../ReplyComment";
 import AddReplys from "../AddReplys";
-// const moment = require("moment");
 class Comment extends React.Component {
   constructor(props) {
     super(props);
@@ -81,7 +80,7 @@ class Comment extends React.Component {
     );
     const numOfReplys = replyToRender.length;
     let commentContent = comment.comment;
-    // console.log("reply",replysId)
+   
     if (replys) {
       replys.sort((a, b) => {
         const isReversed = sortType === "desc" ? 1 : -1;
@@ -89,7 +88,7 @@ class Comment extends React.Component {
       });
     }
     if (comment.comment && comment.comment.length <= limited) {
-      //  console.log("IF", comment.comment, comment.comment.length);
+     
       return (
         <AuthUserContext.Consumer>
           {(authUser) => (
@@ -159,10 +158,10 @@ class Comment extends React.Component {
         </AuthUserContext.Consumer>
       );
     } else {
-      // console.log("ELSE", comment.comment, comment.comment.length);
+     
       if (showAll) {
         return (
-          // <div className="card-comment">
+         
           <div className="commentDisplay">
             <p className="styleDisplay">
               <span>
@@ -180,11 +179,11 @@ class Comment extends React.Component {
         );
       }
     }
-    //console.log("this is commentContent",commentContent)
+    
     const toShow = commentContent.slice(0, limited) + "....";
     if (toShow) {
       return (
-        <div //className="card-comment"
+        <div 
         >
           <div className="commentDisplay ">
             <p className="styleDisplay">

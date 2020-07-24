@@ -15,7 +15,6 @@ class ReplyComment extends React.Component {
       showAll: false,
       showPopup: false,
       username: "",
-     // reply: "",
       photoUrl: "",
 reply2:""
     };
@@ -39,7 +38,6 @@ reply2:""
       .user(this.props.reply.userId)
       .get()
       .then((doc) => {
-       // console.log("userdata in comment", doc.data());
         let user = doc.data();
         this.setState({
           username: user.username,
@@ -50,7 +48,6 @@ reply2:""
   };
 
   showMore = () => {
-   // console.log("show more clicked")
   this.setState({ showAll: true });
   }
 
@@ -59,17 +56,10 @@ reply2:""
     const { commentId, replys, limited, reply } = this.props;
     const {showAll,reply2} = this.state;
     let commentReply = reply.reply;
-    //console.log("showMore", this.showMore);
     const replyToRender = replys.filter((reply1) =>
       commentId === reply1.parentCommentId ? reply1.parentCommentId : null
     );
     const numOfReplys = replyToRender.length;
-    //console.log("reply:",reply2.reply)
-
-    // let replycomment = replys.filter((reply) =>
-    //   (commentId === reply.parentCommentId )? reply.reply : null
-    // );
-    // console.log("replycomment",replycomment)
    
    if (reply.reply.length <= limited) {
       return (
@@ -93,14 +83,7 @@ reply2:""
                 </div>
               </div>
               <div className="replypage-hide">
-                {/* <i
-                  className="fas fa-angle-up "
-                  style={{ width: "10em" }}
-                  onClick={this.cancle}
-                >
-                  {" "}
-                  Hide viwe
-                </i> */}
+               
               </div>
             </div>
         </div>
@@ -145,10 +128,7 @@ reply2:""
         );
       }
     }
-    
-    //console.log("commentReplys",commentReply)
     const toShow = commentReply.substring(0, limited) + "....";
-   // console.log("sliced comment Replys", toShow);
     if (toShow) {
       return (
         <div>
