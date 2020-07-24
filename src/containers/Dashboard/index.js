@@ -111,11 +111,13 @@ class Dashboard extends React.Component {
           </button>
         </div>
         {this.state.sortBy === "vote" ? (
-          <div>
+          <div className="article-container">
             <ListItems filteredArticles={articlesvotes} />
           </div>
         ) : (
-          <ListItems filteredArticles={filteredArticles} />
+          <div className="article-container">
+            <ListItems filteredArticles={filteredArticles} />
+          </div>
         )}
       </div>
     );
