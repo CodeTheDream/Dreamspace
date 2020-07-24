@@ -12,25 +12,18 @@ import { messaging } from "firebase";
 export const options = [];
 //export const options = [{name:"React"}, {name:"Ruby"}, {name:"Javascript"}];
 const moment = require("moment");
-
   
   const getSuggestions = (value) => {
   //const{tags1}=this.props
+ // console.log("options ata authosaugetion",options.name,value)
   const inputValue = value.trim().toLowerCase();
   const inputLength = inputValue.length;
-
-  return inputLength === 0
-    ? []
-    :options.filter(
+  return inputLength === 0 ? [] :options.filter(
         (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
       );
 };
-
-
 const getSuggestionValue = (suggestion) => suggestion.name;
-
 const renderSuggestion = (suggestion) => <div>{suggestion.name}</div>;
-
 class Dialog extends React.Component {
   render() {
     return (
@@ -67,36 +60,31 @@ class Createarticle extends Component {
       inputTag:"",
       calculatedvote:0,
     
-
     };
   }
-
   componentDidMount = () => {
     this.unsubscribe = this.props.firebase.tags().onSnapshot((snapshot) => {
-      const totalTags = [];
+     
       snapshot.forEach((doc) => {
         const data = doc.data();
-       // totalTags.push(data);
+       
         options.push(data)
+        
       });
-console.log("tags from api call",options)
-      //this.setState({ tags1: totalTags },()=>console.log("Tags1",totalTags));
+
     });
     
   };
   onChange = (e, { newValue }) => {
-
     this.setState({
       value: newValue,
     });
   };
-
   onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
       suggestions: getSuggestions(value),
     });
   };
-
   onSuggestionsClearRequested = () => {
     this.setState({
       suggestions: [],
@@ -107,20 +95,19 @@ console.log("tags from api call",options)
       showPopup: !this.state.showPopup,
     });
   };
-
   onUrlChange = (e) => {
     this.setState({
       url: e.target.value,
     });
   };
-  // onTagChange = (e) => {
-  //   console.log("Tag on change",e.target.value)
-  //   this.setState({
+  onTagChange = (e) => {
+    console.log("Tag on change",e.target.value)
+    this.setState({
       
-  //     tags: e.target.value,
-  //   });
-  //   getSuggestions.push(this.state.tags)
-  // };
+      tags: e.target.value,
+    });
+    getSuggestions.push(this.state.tags)
+  };
   onTitleChange = (e) => {
     this.setState({
       title: e.target.value,
@@ -131,18 +118,18 @@ console.log("tags from api call",options)
       description: e.target.value,
     });
   };
-
   
   handleSubmit = (e, authUser) => {
     const newtag1=this.state.value;
     const newtag=[{name:"newtag1"}]
-    // console.log("username on article submit",authUser.username)
+     console.log("Option.name",options.name)
+     console.log("new tag",newtag1)
      e.preventDefault();
      this.props.firebase
        .articles()
        .add({
          userId: authUser.uid,
-        // userName:this.state.userName,
+        
          title: this.state.title,
          description: this.state.description,
          tags: this.state.value,
@@ -160,14 +147,15 @@ console.log("tags from api call",options)
       alert("you've successfully created an article with ID: " + this.state.confirmmessage);
        
        });
-       if(newtag.name !== options.name){
+      options.map(tag =>{
+       if(newtag.name !== tag.name){
          
             this.props.firebase
             .tags()
             .add({
               name:this.state.value
-            })
-          };
+          })
+          }});
         
      this.setState({
        value: "",
@@ -184,14 +172,12 @@ console.log("tags from api call",options)
    }
   render() {
     const { value, suggestions } = this.state;
-
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
       placeholder: "Tags",
       value,
       onChange: this.onChange,
     };
-
     return (
       <AuthUserContext.Consumer>
         {(authUser) => (
@@ -203,7 +189,7 @@ console.log("tags from api call",options)
               <Dialog closePopup={this.togglePopup}>
                 <div>
                   <div>
-                    {/* <div style={{fontSize:"legend"}}>Create new post</div>*/}
+                    
                     <legend className="devedit-form-legend1">
                       Create New Post
                     </legend>
@@ -226,18 +212,6 @@ console.log("tags from api call",options)
                                   
                                 </li>
                                 <li>
-                                  {/*<select
-                                    value={this.state.tags}
-                                    onChange={this.onTagChange}
-                                  >
-                                    {options.map(option => {
-                                      return (
-                                        <option value={option} key={option}>
-                                          {option}
-                                        </option>
-                                      );
-                                    })}
-                                  </select>*/}
                                   <div className="autosuggest_list">
                                   <Autosuggest
                                     suggestions={suggestions}
@@ -301,5 +275,4 @@ console.log("tags from api call",options)
     );
   }
 }
-
 export default compose(withFirebase)(Createarticle);
