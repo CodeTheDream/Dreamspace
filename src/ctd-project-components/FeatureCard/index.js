@@ -7,9 +7,6 @@ import ctd from "../../assets/images/ctd-labs-horiz.png";
 const FeatureCard = props => {
   const { project } = props;
   const directoryData = props.crewDirectory;
-  console.log('hey hey hey', directoryData);
-  // console.log('check the cards ', project);
-  // console.log('look at ', props)
   let images = 'https://ya-webdesign.com/images250_/placeholder-image-png-1.png';
   if(project.fields.photo) {
     images = project.fields.photo[0].url;

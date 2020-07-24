@@ -18,7 +18,6 @@ class Directory extends React.Component {
   }
   
   selectedStaffMember = id => {
-    console.log("see", id);
     this.setState({isFlipped: id});
   }
 
@@ -29,9 +28,9 @@ class Directory extends React.Component {
       })
       .then(response => response.json())
       .then(responseData => {
-        console.log("directory data ", responseData);
+        // console.log("directory data ", responseData);
         const crewDirectory = responseData.records;
-        console.log("crewDirectory ", crewDirectory);
+        // console.log("crewDirectory ", crewDirectory);
         this.setState({
           crewDirectory: crewDirectory, 
           allDirectory: crewDirectory,
@@ -46,21 +45,21 @@ class Directory extends React.Component {
     })
       .then(response => response.json())
       .then(responseData => {
-        console.log("data from Airtable", responseData);
+        // console.log("data from Airtable", responseData);
         const projectData = responseData.records;
-        console.log("projectData ", projectData);
+        // console.log("projectData ", projectData);
         this.setState({projectData: projectData});
       });
     }
 
   filterDirectory = searchTerm => {
-    console.log('searchTerm ', searchTerm)
+    // console.log('searchTerm ', searchTerm)
     let directory = this.state.allDirectory;
     const formattedSearch = searchTerm.toLowerCase();
-    console.log(directory)
+    // console.log(directory)
     
     const results = directory.filter(person => {
-      console.log(person)
+      // console.log(person)
       let grabData = (
         person.fields.Name +
         person.fields.Phone +
@@ -73,7 +72,7 @@ class Directory extends React.Component {
       .toLowerCase();
       return grabData.indexOf(formattedSearch) > -1;
     })
-    console.log(results)
+    // console.log(results)
     this.setState({ crewDirectory: results })
   }
   render() {
