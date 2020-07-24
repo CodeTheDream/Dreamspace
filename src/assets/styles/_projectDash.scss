@@ -526,6 +526,10 @@
 }
 
 @media screen and (max-width: 375px) {
+  .view-container dashboard {
+    overflow-y: hidden;
+  }
+  
   .search-container {
     // position: relative;
     // left: 2.28em;
@@ -557,6 +561,18 @@
   .desc-container {
     height: 90px;
   }
+
+  .footer-content,
+  .style-day,
+  .style-time {
+    font-size: 15px;
+    line-height: 0.5;
+  }
+
+  .footer {
+    height: auto;
+  }
+
 }
 
 @media screen and (max-width: 365px) {

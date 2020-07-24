@@ -42,31 +42,24 @@ const checkDepartment = (departments) => {
  const DirectoryList = (props) => {
   // all ctd projects
   let projects = props.projectData;
-  console.log('projects ', projects);
-  
   // all ctd staff info
   let staffList = props.crewDirectory;
-  console.log('staffList ', staffList);
-
   // opt in members list
   let optInStaffMembers = staffList.filter(filterList  => 
     filterList.fields.Directory === "YES, Include my contact info in CTD Team Directory")
-    console.log("optInStaffMembers ", optInStaffMembers);
 
   // Names sorted from a-z
     let sortNames = optInStaffMembers;
-    console.log('let\'s see the names', sortNames)
+    // console.log('let\'s see the names', sortNames)
     sortNames.sort((a, b) => (a.fields['First Name'] > b.fields['First Name']) ? 1 : -1);
     sortNames.map(job => {
       let department = job.fields['Primary Department'];
-      console.log('check this out ', department);
     });
 
   // Randomize the flip direction on the cards
     const getFlip = ['vertical', 'horizontal'];
     let randomFlip = getFlip[Math.floor(Math.random() * 2)];
-    console.log('get ', randomFlip);
-
+    
     return(
       <div className = 'list-container'>
           {sortNames.map(staff => {

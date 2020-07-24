@@ -50,14 +50,14 @@ class ProjectDashBoard extends React.Component {
 
 // handles the image clicked on the project cards
   handleImageClick = () => {
-    console.log('hello world');
+    // console.log('hello world');
     this.setState(prevState => ({enlargeImage: !prevState.enlargeImage}),
     () => console.log(this.state.enlargeImage));
   }
 
 // handles side bar open and close buttons
   handleClick = () => {
-    console.log('click');
+    // console.log('click');
     this.setState(prevState => ({openSideBar: !prevState.openSideBar}),
     () => console.log(this.state.openSideBar));
   }
@@ -89,7 +89,7 @@ class ProjectDashBoard extends React.Component {
 // filters the project list
     filterProjectList = search => {
       let projects = this.state.allProjects;
-      console.log('project ', projects);
+      // console.log('project ', projects);
       const formattedSearch = search.toLowerCase();
       let getResults = projects.filter(result => {
         if(!result.fields.Name) {
@@ -100,7 +100,7 @@ class ProjectDashBoard extends React.Component {
           return grabResults.indexOf(formattedSearch) > -1;
         }
       })
-      console.log('ccccc ', getResults);
+      // console.log('ccccc ', getResults);
       this.setState({projectData: getResults});
     }
 

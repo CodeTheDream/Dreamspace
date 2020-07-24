@@ -21,13 +21,10 @@ const DrawBottomLine = ({color}) => (
 );
   
   const SideBarOpen = props => {
-    console.log(props);
     let sideBarMenu = props.projectData;
     let probableList = sideBarMenu.filter(probable => probable.fields.Status !== 'Probable' && probable.fields.Status !== 'Paused' && probable.fields.Status);
     probableList.sort((a, b) => (a.fields.Name > b.fields.Name) ? 1 : -1);
-    console.log('see this', probableList)
-    // let checkPhoto = probableList.fields.photo[0];
-    // console.log('check ', checkPhoto);
+    // console.log('see this', probableList)
 
       return (
         <div className= 'sidebar-menu'>

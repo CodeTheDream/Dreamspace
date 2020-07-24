@@ -281,7 +281,7 @@
   }
 }
 
-@media screen and (max-width: 415px) {
+@media screen and (max-width: 480px) {
   .list-container {
     display: grid;
     grid-template-columns: 45% 45%;
@@ -292,12 +292,12 @@
     width: 70%;
     margin: 0 auto;
     margin-bottom: 25px;
-    // height: 200px;
+    height: 24em;
     
   }
 }
 
-@media screen and (max-width: 400px ) {
+@media screen and (max-width: 450px) {
   .directory-container {
     display: flex;
     flex-direction: column;
