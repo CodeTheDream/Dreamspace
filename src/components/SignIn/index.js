@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-
 import { SignUpLink } from '../SignUp';
-//import { PasswordForgetLink } from '../PasswordForget';
-import  PasswordForgetLink  from '../PasswordForgetForm'; 
+import  PasswordForgetLink  from '../PasswordForgetForm';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
-   
+    <div className="wrapper">
+       {/* <p style={{fontSize:"28px"}}>SignIn</p>*/}
      <div className="signinpage">
-    <h3 className="signin">SignIn</h3>
+    <h2 className="signin">SignIn</h2>
 
       
 <div className="outer">
-   <div className="inner">    <SignInGoogle /></div> 
-     {/* <div className="inner"> <SignInFacebook /></div>*/}
-       <div className="inner"> <SignInGithub/></div>
+ <div className="inner">    <SignInGoogle /></div> 
+   {/* <div className="inner"> <SignInFacebook /></div>*/}
+     <div className="inner"> <SignInGithub/></div>
 </div>
         <p style={{ textAlign: "center" }}>Or sign in manually:</p>
 
@@ -26,7 +25,7 @@ const SignInPage = () => (
          <PasswordForgetLink /> 
         <SignUpLink />
     </div>
-    
+    </div>
 );
 
 const INITIAL_STATE = {
@@ -40,7 +39,9 @@ const ERROR_CODE_ACCOUNT_EXISTS =
 
 const ERROR_MSG_ACCOUNT_EXISTS = `
   An account with an E-Mail address to
-  this social account already exists. 
+  this social account already exists. Try to login from
+  this account instead and associate your social accounts on
+  your personal account page.
 `;
 
 class SignInFormBase extends Component {
@@ -109,15 +110,23 @@ class SignInGoogleBase extends Component {
   constructor(props) {
    super(props);
 
-     this.state = { error: null };
+     this.state = {
+        error: null,
+        photoURL:""
+     };
+     
   }
 
   onSubmit = event => {
       this.props.firebase
           .doSignInWithGoogle()
       .then(socialAuthUser => {
-       // Create a user in your Firebase Realtime Database too
+      // Create a user in your Firebase Realtime Database too
+      if(socialAuthUser.user.photoURL===""){
+
+         console.log("photoUrl",socialAuthUser)
         return this.props.firebase.user(socialAuthUser.user.uid).set(
+       
             {
 
                 username: socialAuthUser.user.displayName,
@@ -127,6 +136,21 @@ class SignInGoogleBase extends Component {
           },
            { merge: true },
           )
+        }
+          else{
+            console.log("photoUrl on time of login",socialAuthUser)
+            return this.props.firebase.user(socialAuthUser.user.uid).set(
+             
+              {
+  
+                  username: socialAuthUser.user.displayName,
+               //  photoUrl: socialAuthUser.user.photoURL,
+               email: socialAuthUser.user.email,
+              roles: {},
+            },
+             { merge: true },
+            )
+          }
       })
           .then(() => {
               this.setState({ error: null });
@@ -153,7 +177,7 @@ class SignInGoogleBase extends Component {
             
                 <p style={{ textAlighn: "" }}> Login with Google+</p> </button>*/}
 
-              <button type="submit" className="googlebtn" style={{ fontSize: "20px" }}><i class="fa fa-google fa-fw" > </i> 
+              <button type="submit" className="googlebtn" style={{ fontSize: "20px" }}><i className="fa fa-google fa-fw" > </i> 
  
   
 </button>
@@ -177,19 +201,34 @@ class SignInGoogleBase extends Component {
       .doSignInWithFacebook()
        .then(socialAuthUser => {
         // Create a user in your Firebase Realtime Database too
+        if(socialAuthUser.additionalUserInfo.profile.photoURL===""){
          return this.props.firebase.user(socialAuthUser.user.uid).set(
            {
-                 username: socialAuthUser.user.displayName,
-                 photoUrl: socialAuthUser.user.photoURL,
-                 email: socialAuthUser.user.email,
-                 roles: {},
+                 username: socialAuthUser.additionalUserInfo.profile.name,
+                 photoUrl: socialAuthUser.additionalUserInfo.profile.photoURL,
+            email: socialAuthUser.additionalUserInfo.profile.email,
+            roles: {},
                  /*username: socialAuthUser.user.displayName,
                  photoUrl: socialAuthUser.user.photoURL,
                  email: socialAuthUser.user.email,
                  roles: {},*/
           },
            { merge: true },
-         );
+         )} else{
+          return this.props.firebase.user(socialAuthUser.user.uid).set(
+            {
+                  username: socialAuthUser.additionalUserInfo.profile.name,
+                 // photoUrl: socialAuthUser.additionalUserInfo.profile.photoURL,
+             email: socialAuthUser.additionalUserInfo.profile.email,
+             roles: {},
+                  /*username: socialAuthUser.user.displayName,
+                  photoUrl: socialAuthUser.user.photoURL,
+                  email: socialAuthUser.user.email,
+                  roles: {},*/
+           },
+            { merge: true },
+          )
+         }
        })
     .then(() => {
         this.setState({ error: null });
@@ -211,9 +250,9 @@ class SignInGoogleBase extends Component {
 
      return (
        <form onSubmit={this.onSubmit}>
-             <button type="submit" style={{ fontSize: "20px" }} className="fb"><i class="fa fa-facebook fa-fw" /></button>
+             <button type="submit" style={{ fontSize: "20px" }} className="fb"><i className="fa fa-facebook fa-fw" />Sign In with Facebook</button>
 
-       {error && <div className="errormessage">{error.message}</div>}
+       {error && <p>{error.message}</p>}
       </form>
      );
    }
@@ -223,22 +262,8 @@ class SignInGoogleBase extends Component {
   constructor(props) {
      super(props);
 
-    this.state = { error: null,
-      showPopup:false
-     };
+    this.state = { error: null };
   }
- /* togglePopup = () => {
-    this.setState({
-      showPopup: !this.state.showPopup
-    });
-  };*/
-
-  /*closePopup = () => {
-    this.setState({
-      showPopup: !this.state.showPopup
-         });
-    this.myFormRef.reset();
-  };*/
 
   onSubmit = event => {
     this.props.firebase
@@ -247,13 +272,13 @@ class SignInGoogleBase extends Component {
         // Create a user in your Firebase Realtime Database too
          return this.props.firebase.user(socialAuthUser.user.uid).set(
            {
-                // username: socialAuthUser.additionalUserInfo.profile.name,
-                  //username: socialAuthUser.user.displayName,
-                    //email: socialAuthUser.user.email,
+                 username: socialAuthUser.additionalUserInfo.profile.name,
+                 email: socialAuthUser.additionalUserInfo.profile.email,
                  //roles: {},
-                 username: socialAuthUser.user.displayName,
-                 email: socialAuthUser.user.email,                
-                 photoUrl: socialAuthUser.user.photoURL,               
+                 //username: socialAuthUser.user.displayName,
+                 //username: socialAuthUser.user.displayName,
+                 photoUrl: socialAuthUser.user.photoURL,
+                 //email: socialAuthUser.user.email,
                  roles: {},
           },
           { merge: true },
@@ -278,18 +303,12 @@ class SignInGoogleBase extends Component {
     const { error } = this.state;
 
    return (
-   
-       <form onSubmit={this.onSubmit}  ref={(el) => (this.myFormRef = el)}>
-         <div>  <button type="submit" style={{ fontSize: "20px" }} className="github"  >
-             <i class="fa fa-github" />{" "}</button></div>
-   <div className="message">
-      {error && <div className="errormessage">
-        {error.message} </div>}
-  </div>
-  
-     
+       <form onSubmit={this.onSubmit}>
+           <button type="submit" style={{ fontSize: "20px" }} className="github"><i className="fa fa-github" /></button>
+         
+      
+       {error && <p>{error.message}</p>}
       </form>
-     
     );
   }
  }

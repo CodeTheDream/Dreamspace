@@ -5,8 +5,6 @@ import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import Comment from "../../components/Comment";
 import ListItem1 from "../../components/ListItem1";
-import ReplyComment from "../../components/ReplyComment";
-import AddReplys from "../../components/AddReplys";
 const moment = require("moment");
 class IndividualView extends React.Component {
   constructor(props) {
@@ -18,7 +16,6 @@ class IndividualView extends React.Component {
       TotallComment: "",
       totalcount: "",
       isOldestFirst: true,
-      //  commentId: "",
       username: "",
       sortType: "asc",
       commentList: [],
@@ -28,14 +25,11 @@ class IndividualView extends React.Component {
     };
   }
   componentDidMount = () => {
-    //this.sortByDtate(Comment)
     let articleId = this.props.match.params.articleId;
     this.unsubscribe = this.props.firebase
       .comments()
 
       .where("articleId", "==", articleId)
-
-      //.orderBy('timeCreated','desc')
       .limit(8)
 
       .onSnapshot((snapshot) => {
@@ -52,8 +46,6 @@ class IndividualView extends React.Component {
         });
       });
 
-    //get the ID for a particular article
-    // console.log("articleId", this.props.match.params);
     this.setState({ articleId });
 
     this.unsubscribe = this.props.firebase
@@ -61,24 +53,21 @@ class IndividualView extends React.Component {
 
       .onSnapshot((doc) => {
         if (doc.exists) {
-          // console.log(" this is my article", doc.data());
           this.setState({
             article: doc.data(),
           });
           this.setState({
             timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A  `),
-          }); // set data to local state
-          // console.log("this is a state article:" , this.state.article)
+          });
         } else {
           console.log("No such document!");
         }
         let autherId = this.state.article.userId;
-        // console.log("autherId of Article",autherId)
+
         this.props.firebase
           .user(autherId)
           .get()
           .then((doc) => {
-            // console.log("userdata", doc.data())
             let user = doc.data();
             this.setState({
               username: user.username,
@@ -86,7 +75,7 @@ class IndividualView extends React.Component {
             });
           });
       });
-    //This Helps to find the total commets for spesific articleId
+
     this.unsubscribe = this.props.firebase
       .comments()
       .where("articleId", "==", articleId)
@@ -102,27 +91,22 @@ class IndividualView extends React.Component {
       });
   };
   createComment = (comment, article) => {
-    //  console.log("here create comment", comment, this.state.articleId);
     this.props.firebase
       .comments()
       .add({
         ...comment,
         articleId: this.state.articleId,
       })
-      .then(function (docRef) {
-        //console.log("Document written with ID: ", docRef.id);
-      });
+      .then(function (docRef) {});
   };
 
-  
   render() {
-    // Access to local component state
     const {
       article,
       comment,
-comments,
+      comments,
       timeCreated,
-     sortType,
+      sortType,
       limited,
     } = this.state;
     if (comments) {
@@ -130,8 +114,7 @@ comments,
         const isReversed = sortType === "desc" ? 1 : -1;
         return isReversed * a.timeCreated.localeCompare(b.timeCreated);
       });
-      //console.log("sortedComment",sortedcomments)
-    }//}
+    }
 
     if (article) {
       return (
@@ -161,19 +144,11 @@ comments,
               <button
                 style={{ justifyContent: "spacebitween" }}
                 type="button"
-                //onClick={this.handleSubmit}
                 className="disabled"
               >
                 <i className="fa fa-comment"> </i> {this.state.totalcount}{" "}
                 Comment
               </button>
-              {/* <button
-                type="button"
-                onClick={this.handleRemove}
-                className="disabled"
-              >
-                Save
-              </button> */}
             </div>
           </div>
           <div>
@@ -183,9 +158,6 @@ comments,
           <div>
             {this.state.comments &&
               this.state.comments.map((comment, index) => {
-                
-                  /* console.log(comment) */
-                
                 return (
                   <div className="card-comment">
                     <Comment
@@ -195,7 +167,6 @@ comments,
                       timeCreated={timeCreated}
                       commentId={comment.commentId}
                     />
-                    {/* <ReplyComment     commentId={comment.commentId}/>*/}
                   </div>
                 );
               })}
@@ -209,7 +180,3 @@ comments,
   }
 }
 export default compose(withFirebase, withRouter)(IndividualView);
-
-
-
-

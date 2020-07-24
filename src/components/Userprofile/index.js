@@ -13,15 +13,13 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes.js";
 import SignOut from "../SignOut";
 import Setting from "../../containers/Account";
-// const options = ["username", "profile", "setting"];
+
 class Userprofile extends React.Component {
   constructor(props) {
-    // console.log("this is the props value:" + props)
-    super(props);
+   super(props);
     this.state = {
       article: [],
       username: "",
-      //photoUrl: " ",
       name: "",
       email: "",
       selectedFile: null,
@@ -31,6 +29,7 @@ class Userprofile extends React.Component {
       file: "",
       pics: [],
       url: "",
+      urlError:""
     };
   }
 
@@ -41,19 +40,36 @@ class Userprofile extends React.Component {
   };
 
   onUrlChange = (e) => {
+    
     this.setState({
       url: e.target.value,
     });
+  
   };
-
+validate = () => {
+let urlError= "";
+if(this.state.url === ""){
+urlError="Url cannot be blank"
+}
+if(urlError){
+  this.setState({urlError})
+  return false;
+}
+return true;
+}
   upload = (e, authUser) => {
     e.preventDefault();
-    console.log("my new url", authUser.uid);
     const autherId = authUser.uid;
-    this.props.firebase.user(autherId).update({
-      photoUrl: this.state.url,
-    });
-    this.setState({ showPopup: false });
+    const isValid = this.validate();
+    if (isValid) {
+   this.props.firebase.user(autherId).update({
+     photoUrl: this.state.url,
+    })}
+    if(this.state.url){
+    this.setState({
+     url:"",
+      urlError:""
+    })}
   };
   cancleButton = (e) => {
     this.setState({ showPopup: false });
@@ -113,13 +129,16 @@ class Userprofile extends React.Component {
                                   onChange={this.onUrlChange}
                                   required
                                 />
+                                
                                 <button
                                   className="imageupload"
                                   onClick={(e) => this.upload(e, authUser)}
                                 >
                                   upload Image
                                 </button>
+
                               </div>
+                        <div style={{fontSize:12 ,color:"red"}}>{this.state.urlError}</div>
                               <br />
 
                               <img
@@ -128,8 +147,7 @@ class Userprofile extends React.Component {
                                   "http://via.placeholder.com/100x100"
                                 }
                                 alt="Uploaded images"
-                                // height="100"
-                                //width="100"
+
                               />
                             </div>
                           </div>
@@ -151,17 +169,6 @@ class Userprofile extends React.Component {
                       {"  "}
                       UserSetting{" "}
                     </Link>
-
-                    {/* <Link to={ROUTES.SIGNOUT}>
-                      {" "}
-                      <i
-                        class="fa fa-sign-out"
-                        aria-hidden="true"
-                        style={{ Color: "#fae596" }}
-                      ></i>
-                      {"  "}
-                      SignOut{" "}
-                    </Link> */}
                    <span> 
                       <SignOut/>
                       </span>
