@@ -1,3 +1,4 @@
+//each route represents a page
 export const LANDING= "/home";
 export const HOME = "/";
 export const ABOUT = "/about";

@@ -24,11 +24,9 @@ const INITIAL_STATE = {
 };
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 const ERROR_MSG_ACCOUNT_EXISTS = `
-  An account with this E-Mail address already exists.
-  Try to login with this account instead. If you think the
-  account is already used from one of the social logins, try
-  to sign in with one of them. Afterward, associate your accounts
-  on your personal account page.
+  An account with this email address exists.
+  Sign in instead. If you think the
+  account is already used from one of the social logins, try to sign in with one of them. Afterward, associate your accounts on your personal account page.
 `;
 class SignUpFormBase extends Component {
   constructor(props) {
@@ -101,19 +99,19 @@ class SignUpFormBase extends Component {
           <div className="view-container-signup">
               <form  className="form" onSubmit={this.onSubmit} >
            
-        <input
+         <input
           name="username"
           value={username}
           onChange={this.onChange}
           type="text"
-          placeholder="Full Name"
+          placeholder="Name"
         />
         <input
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
+          placeholder="Email"
         />
         <input
           name="passwordOne"
@@ -130,7 +128,7 @@ class SignUpFormBase extends Component {
           placeholder="Confirm Password"
         />
                       <button className="button-tertiary" disabled={isInvalid} type="submit">
-          Sign Up
+          Submit
         </button>
               {error && <p>{error.message}</p>}
             
