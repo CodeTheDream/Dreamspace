@@ -3,13 +3,24 @@ import { Link } from 'react-router-dom'
 
 
 const About = () => (
+    <div>
     <div className="view-container about ">
         <h3>Code the Dream</h3><br></br>
            
-        <p>Code the Dream (CTD) offers free-intensive front or backend, fullstack, web, mobile and sofware development trainings to individuals primarily from diverse low-income backgrounds.</p><br></br>
-        <p>Coders work with trained and experienced Mentors to increase their technical skills through building digital applications and technological platforms for a wide varity of startups, nonprofits and governmental agencies.</p><br></br>
-        <p>At CTD, our ultimate goal is to create unique win-win outcomes, where Coders gain real-life experiences creating and developing applications.  In doing so, we hope we are making the world a better place, through guiding and launching new careers with enormous opportunity for themselves, their families, and their communities.
-        </p><br></br>
+        <p>Code the Dream (CTD) offers free intensive, web, mobile, front and backend sofware development trainings to individuals primarily from diverse low-income backgrounds.</p><br></br>
+        <p>Coders work with trained and experienced Mentors to increase their technical skills through building digital applications and technological platforms for a wide varity of startups, nonprofits and governmental agencies.</p>
+    </div>
+    <div>
+        <p>At CTD our goals are:
+            <ul>
+            <li>To make the world a better place</li>
+            <li>To create unique win-win professional outcomes</li>
+            <li>To encourage real-life experiences by creating and developing web and mobile applications </li>
+            <li>To guide and launch new career paths with enormous opportunities for themselves, their families and communities.</li>
+            </ul>
+        </p>
+    </div>
+        <br></br>
         <br></br>
         <div className="cta-wrapper">
             <div><a target="_blank" href="https://www.codethedream.org/donate/">Donate</a></div>
