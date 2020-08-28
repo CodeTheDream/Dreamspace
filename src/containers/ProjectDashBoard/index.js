@@ -81,8 +81,11 @@ class ProjectDashBoard extends React.Component {
       .then(responseData => {
         // console.log("data from Airtable", responseData);
         const projectData = responseData.records;
-        // console.log("projectData ", projectData);
-        this.setState({ projectData: projectData, allProjects: projectData});
+         // Only want Active projects. Active_low Active_mid Active_high. Create filter function.// 
+       console.log("project ", projectData);
+       let filteredProjectActive = projectData.filter(active => active.fields.Status == 'Active_slow' || active.fields.Status == 'Active_mid' || active.fields.Status == 'Active_high');
+       console.log('look here' , filteredProjectActive);
+        this.setState({ projectData: filteredProjectActive, allProjects: filteredProjectActive});
       });
     }
 
@@ -135,11 +138,12 @@ class ProjectDashBoard extends React.Component {
   
             {/* {this.state.projectData.length > 0 ? (<FeatureCard project={this.state.selectedProject}/>) : null}  */}
             
-            {this.state.selectedProject ? (
-              <FeatureCard 
-                project={this.state.selectedProject} 
-                handleImageClick={this.handleImageClick}
-                crewDirectory={this.state.crewDirectory}>
+            {this.state.projectDataw ? 
+            this.state.projectData.map(project =>
+              <FeatureCard
+               project={project} 
+              handleImageClick={this.handleImageClick} 
+              >
                 {modalScreen}
               </FeatureCard>) : null} 
             
