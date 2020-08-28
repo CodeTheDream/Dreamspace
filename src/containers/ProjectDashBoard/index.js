@@ -4,9 +4,9 @@ import {
   // Header,
   SearchBar,
   SideBarOpen,
-} from "../../ctd-project-components";
-import ProjectImageModal from '../../ctd-project-components/ProjecImageModal'
-import SideBarButton from '../../ctd-project-components/SideBarButton';
+} from "../../components";
+import ProjectImageModal from '../../components/ProjecImageModal'
+import SideBarButton from '../../components/SideBarButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faColumns} from '@fortawesome/free-solid-svg-icons';
