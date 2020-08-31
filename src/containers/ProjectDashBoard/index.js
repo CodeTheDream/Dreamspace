@@ -129,7 +129,7 @@ class ProjectDashBoard extends React.Component {
                   projectData={this.state.projectData}
                   selectProject={this.selectProject}
                   handleInput={this.handleInput}
-                />
+                /> 
               )}
             </div> */}
   
@@ -197,4 +197,3 @@ class ProjectDashBoard extends React.Component {
                   
                   
                  
-                  
