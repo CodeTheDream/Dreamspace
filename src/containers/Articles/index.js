@@ -14,6 +14,7 @@ import SearchBar from "../../components/Search-bar";
 import Directory from "../Directory";
 
 class Articles extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -126,4 +127,4 @@ class Articles extends React.Component {
 
 const condition = (authUser) => !!authUser;
 
-export default compose(withFirebase, withAuthorization(condition))(Dashboard);
+export default compose(withFirebase, withAuthorization(condition))(Articles);
