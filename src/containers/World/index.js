@@ -22,6 +22,7 @@ const Unimap = () => {
 
 class World extends Component {
   state = {
+    
     pinClick: false,
   };
   getClickOnPin = () => {
