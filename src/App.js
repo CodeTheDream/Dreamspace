@@ -1,6 +1,7 @@
 import React from "react";
 //import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Dashboard from "./containers/Dashboard";
@@ -17,6 +18,9 @@ import  password from "./components/PasswordForget";
 //import FrontPage from "./components/FontPage";
 //import Sidebar from "./components/Sidebar";
 import Directory from "./containers/Directory";
+import World from "./containers/World";
+// import Map from "./components/Map";
+
 function App() {
   return (
     <div className="App">
@@ -34,6 +38,7 @@ function App() {
           <Route exact path={ROUTES.HOME} component={HomePage} /> 
           <Route exact path={ROUTES.PASSWORD_FORGET} component={password} /> 
           <Route exact path={ROUTES.DIRECTORY} component={Directory} />
+          <Route exact path={ROUTES.WORLD} component={World} />
           <Route
             exact
             path={ROUTES.INDIVIDUAL_VIEW}
