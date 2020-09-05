@@ -35,7 +35,7 @@ class World extends Component {
     render () {
     return (
     <div>
-      <Map 
+      <Map
         getClickOnPin = {this.getClickOnPin}
       />
     </div>
