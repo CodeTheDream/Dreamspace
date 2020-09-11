@@ -8,14 +8,14 @@ import {
 } from 'react-google-maps';
 
 
-const Unimap = () => {
-  return(
-      <GoogleMap
-        defaultZoom={10} 
-        defaultCenter={{ lat: 137.090240, lng: -95.712891 }} 
-        />
-    );
-  }
+// const Unimap = () => {
+//   return(
+//       <GoogleMap
+//         defaultZoom={10} 
+//         defaultCenter={{ lat: 137.090240, lng: -95.712891 }} 
+//         />
+//     );
+//   }
 
   const myMap = withScriptjs(withGoogleMap(Map));
 
