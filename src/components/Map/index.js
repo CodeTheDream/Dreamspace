@@ -1,11 +1,14 @@
-import React from 'react';
-import { compose, withProps } from "recompose"
+import React from "react";
+import { compose, withProps } from "recompose";
 import { 
-    GoogleMap, 
+    GoogleMap,
     withScriptjs, 
     withGoogleMap,
-    Marker 
+    Marker,
+    google
+
 } from 'react-google-maps';
+
 
 // import React from "react"
 
@@ -13,7 +16,7 @@ import {
 
 const Map = compose(
   withProps({
-    googleMapURL: `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`,
+    googleMapURL: `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`,
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `700px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
@@ -25,9 +28,24 @@ const Map = compose(
     defaultZoom={8}
     defaultCenter={{ lat: -34.397, lng: 150.644 }}
   >
-    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />}
+    {props.isMarkerShown && <Marker position={{ lat: 35.759575, lng: -79.019302  }} onClick={props.onMarkerClick} />}
   </GoogleMap>
 )
+
+function initMap() {
+  var myLatLng = {lat: -25.363, lng: 131.044};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+}
 
 class MyFancyComponent extends React.PureComponent {
   state = {
@@ -58,28 +76,10 @@ class MyFancyComponent extends React.PureComponent {
     )
   }
 }
+
 export default Map;
-// const Map = () => {
-//     return(
-//       <GoogleMap
-//         defaultZoom={10} 
-//         defaultCenter={{ lat: 137.090240, lng: -95.712891 }}>
-//        </GoogleMap>
-//     );
-//   }
-//   //container for map
-  
-//   const WrappedMap = withScriptjs(withGoogleMap(Map));
-  
-//   export default function MyMap() {
-//        return(
-//            <div style={{width: '100vw', height:'100vh' }}>
-//              <WrappedMap
-//               googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places10key=${process.env.REACT_APP_GOOGLE_KEY}`}
-//               loadingElement={<div style={{ height: "100%" }} />}
-//               containerElement={<div style={{ height: "100%" }} />}
-//               mapElement={<div style={{ height: "100%" }} />}
-//              />
-//           </div>
-//        );
-//    }
+
+
+
+
+
