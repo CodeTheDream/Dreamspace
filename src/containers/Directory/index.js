@@ -1,6 +1,8 @@
 import React from 'react';
 import DirectorySearchBar from '../../components/DirectorySearchBar';
-import DirectoryList from '../../components/DirectoryList';
+import DirectoryList from '../../components/DirectoryList/indexV2';
+/*import indexV2 from '../../components/DirectoryList/indexV2'*/
+
 
 class Directory extends React.Component {
   constructor() {
@@ -76,9 +78,11 @@ class Directory extends React.Component {
     this.setState({ crewDirectory: results })
   }
   render() {
+    
     return(
       <div className = 'directory-container'>
-        {this.state.crewDirectory && (<DirectorySearchBar 
+        <DirectoryList crew={this.state.crewDirectory} />
+        {/*{this.state.crewDirectory && (<DirectorySearchBar 
           crewDirectory={this.state.crewDirectory}
           selectedStaffMember={this.selectedStaffMember}
           // handleInput={this.handleInput}
@@ -90,9 +94,9 @@ class Directory extends React.Component {
           selectedStaffMember={this.selectedStaffMember}
           projectData={this.state.projectData}
           isFlipped={this.state.isFlipped}
-        />)}
-     </div>
-   
+        />)}*/}
+        </div>
+        
     )
     
   }

@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import ReactCardFlip from 'react-card-flip';
 import reactImage from '../../assets/images/react-image.png';
 import rubyImage from '../../assets/images/ruby-on-rails.png';
@@ -99,4 +99,4 @@ const checkDepartment = (departments) => {
      )
     }
   
-    export default DirectoryList;
+    export default DirectoryList;*/

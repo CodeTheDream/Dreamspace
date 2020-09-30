@@ -352,3 +352,20 @@
     
   }
 }
+
+.search-bar{
+  border-radius: 9px;
+}
+
+.binoculars {
+  object-fit: contain;
+  max-width: 41.89px;
+  max-height: 34px;
+  box-shadow: 2px 2px 5px black;
+}
+/*.individual-cards {
+  min-height: 100vh; // height of the browser viewport
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}*/
