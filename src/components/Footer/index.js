@@ -1,5 +1,5 @@
 import React from 'react';
-import DayOfWeek from '../../ctd-project-components/DayOfWeek';
+import DayOfWeek from '../../components/DayOfWeek';
 
 
 const Footer = () => (
