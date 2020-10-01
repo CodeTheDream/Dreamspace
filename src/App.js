@@ -1,7 +1,5 @@
 import React from "react";
-//import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Dashboard from "./containers/Dashboard";
@@ -44,6 +42,7 @@ function App() {
             path={ROUTES.INDIVIDUAL_VIEW}
             component={IndividualView}
           />
+        
         </Switch>
         <Footer />
       </Router>
