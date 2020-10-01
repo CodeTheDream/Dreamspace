@@ -13,6 +13,6 @@ export const ARTICLES = "/articles";
 export const PASSWORD_FORGET = "/passwordforget";
 export const DIRECTORY = "/directory";
 export const WORLD = "/world";
-
+export const PROFILE = "/directory/:username"
 export const INDIVIDUAL_VIEW = "/articles/:articleId";
 export const USERPROFILE= "/userprofile";
