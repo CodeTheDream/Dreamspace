@@ -1,6 +1,6 @@
 import React from 'react';
-import DirectorySearchBar from '../../ctd-project-components/DirectorySearchBar';
-import DirectoryList from '../../ctd-project-components/DirectoryList';
+import DirectorySearchBar from '../../components/DirectorySearchBar';
+import DirectoryList from '../../components/DirectoryList';
 
 class Directory extends React.Component {
   constructor() {

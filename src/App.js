@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import Dashboard from "./containers/Dashboard";
+import Articles from "./containers/Articles";
 import * as ROUTES from "./constants/routes.js";
 import About from "./containers/About";
 import IndividualView from "./containers/IndividualView";
@@ -27,7 +27,7 @@ function App() {
         <Navigation />
 
         <Switch>
-          <Route exact path={ROUTES.ARTICLES} component={Dashboard} />
+          <Route exact path={ROUTES.ARTICLES} component={Articles} />
           <Route exact path={ROUTES.ABOUT} component={About} />
           <Route exact path={ROUTES.PROJECT} component={ProjectDashBoard} />
           <Route exact path={ROUTES.ACCOUNT} component={Account} />
