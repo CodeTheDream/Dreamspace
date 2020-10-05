@@ -1,0 +1,86 @@
+
+                    {
+                     "markers": [
+                       {
+                         "individual": {
+                           "person_id": 1,
+                           "name": "Cruz Nunez"
+                         },
+                         "geometry":{
+                           "type": "point",
+                           "coordinates": [ 20.516960, -100.800262 ]
+                         }
+                        },
+                        {
+                          "individual": {
+                            "person_id": 2,
+                            "name": "Lennda"
+                          },
+                          "geometry":{
+                            "type": "point",
+                            "coordinates": [ 26.483685, 117.924896 ]
+                          }
+                        },
+                        {
+                          "individual": {
+                            "person_id": 3,
+                            "name": "Asiya Bykova"
+                          },
+                          "geometry":{
+                            "type": "point",
+                            "coordinates": [ 53.897690, 27.549420 ]
+                          }
+                        },
+                        {
+                          "individual": {
+                            "person_id": 4,
+                            "name": "Crystal Williams-Brown"
+                          },
+                          "geometry":{
+                            "type": "point",
+                            "coordinates": [ 40.073040, -74.724319 ]
+                          }
+                        },
+                        {
+                          "individual": {
+                            "person_id": 5,
+                            "name": "Chuck Anderson"
+                          },
+                          "geometry":{
+                            "type": "point",
+                            "coordinates": [ 40.8549600, -73.197130 ]
+                          }
+                        },
+                        {
+                          "individual": {
+                            "person_id": 6,
+                            "name": "Aster Ghebreyesus"
+                          },
+                          "geometry":{
+                            "type": "point",
+                            "coordinates": [ 15.339000, 38.937111 ]
+                          }
+                        },
+                        {
+                          "individual": {
+                            "person_id": 7,
+                            "name": "Petra"
+                          },
+                          "geometry":{
+                            "type": "point",
+                            "coordinates": [ 	48.979950, 17.215630 ]
+                          }
+                        },
+                        {
+                          "individual": {
+                            "person_id": 8,
+                            "name": "Sadric Bonner"
+                          },
+                          "geometry":{
+                            "type": "point",
+                            "coordinates": [ 36.72636, -79.791977 ]
+                          }
+                        }
+                     ]
+                    }
+                        
