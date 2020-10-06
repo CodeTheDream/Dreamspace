@@ -14,8 +14,7 @@ import HomePage from "./containers/HomePage";
 import ProjectDashBoard from "./containers/ProjectDashBoard";
 import { withAuthentication } from "./components/Session";
 import  password from "./components/PasswordForget";
-//import FrontPage from "./components/FontPage";
-//import Sidebar from "./components/Sidebar";
+import ProjectPage from "./containers/ProjectPage"
 import Directory from "./containers/Directory";
 
 function App() {
@@ -33,6 +32,7 @@ function App() {
           <Route exact path={ROUTES.SIGNUP} component={SignUp} />
           <Route exact path={ROUTES.SIGN_IN} component={SignInPage} />
           <Route exact path={ROUTES.HOME} component={HomePage} /> 
+          <Route exact path={ROUTES.PROJECTPAGE} component={ProjectPage} />
           <Route exact path={ROUTES.PASSWORD_FORGET} component={password} /> 
           <Route exact path={ROUTES.DIRECTORY} component={Directory} />
           <Route
