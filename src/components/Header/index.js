@@ -30,9 +30,9 @@ const Header = props => {
             key={project.id}
             onClick={() => props.selectProject(project.id)}
             style={{ width: "73%" }}
-            className="card"
-          >
-            {/* {project.fields.Name.toUpperCase()} */}
+            className="Armcard">
+        
+             {project.fields.Name.toUpperCase()} 
           </li>
         ))}
       </Zoom>

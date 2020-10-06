@@ -1,7 +1,7 @@
 import React from "react";
 import {
   FeatureCard,
-  // Header,
+  Header,
   SearchBar,
   SideBarOpen,
 } from "../../components";
@@ -117,7 +117,7 @@ class ProjectDashBoard extends React.Component {
         <div className="view-container dashboard">
           <div className="dashboard-content">
          
-            {/* <div>
+            { <div>
               {this.state.projectData && (
                 <Header
                   projectData={this.state.projectData}
@@ -131,7 +131,7 @@ class ProjectDashBoard extends React.Component {
                   handleInput={this.handleInput}
                 />
               )}
-            </div> */}
+            </div>}
   
             {/* {this.state.projectData.length > 0 ? (<FeatureCard project={this.state.selectedProject}/>) : null}  */}
             
@@ -144,7 +144,7 @@ class ProjectDashBoard extends React.Component {
               </FeatureCard>) : null} 
             
        
-            {this.state.openSideBar ? (<>{this.state.projectData && (
+            {/*this.state.openSideBar ? (<>{this.state.projectData && (
               <SideBarOpen
                 openSideBar={this.state.openSideBar}
                 projectData={this.state.projectData}
@@ -160,7 +160,7 @@ class ProjectDashBoard extends React.Component {
             )} </>) : (<div 
                           className = 'closed-side-bar'>
                           <SideBarButton handleClick = {this.handleClick} title = {<FontAwesomeIcon className = 'column' icon = {faColumns} />}/>
-                        </div>)}
+            </div>)*/}
             {/* {this.state.projectData && (
               <SideBarOpen
                 projectData={this.state.projectData}
