@@ -36,7 +36,7 @@ function App() {
           <Route exact path={ROUTES.HOME} component={HomePage} /> 
           <Route exact path={ROUTES.PASSWORD_FORGET} component={password} /> 
           <Route exact path={ROUTES.DIRECTORY} component={Directory} />
-          <Route exact path={ROUTES.WORLD} component={World} />
+          {/* <Route exact path={ROUTES.WORLD} component={World} /> */}
           <Route
             exact
             path={ROUTES.INDIVIDUAL_VIEW}

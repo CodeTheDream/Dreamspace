@@ -5,3 +5,11 @@
     margin: 0 auto;
     margin-top: 10em;
 }
+
+.map-toggle {
+    position: absolute;
+    z-index: 1000;
+    top: 200px;
+    right: 100px;
+
+}

@@ -68,6 +68,9 @@ const checkDepartment = (departments) => {
               pics = staff.fields.Photo[0].url
             }
             return(
+              // <DirectoryCard
+              // staff={staff}
+              // />
              <ReactCardFlip key = {staff.id} isFlipped = {staff.id === props.isFlipped} flipDirection = {randomFlip}>  
               <ul
                 className = 'list' onClick = {() => props.selectedStaffMember(staff.id)}>
