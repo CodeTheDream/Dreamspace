@@ -124,13 +124,13 @@ class ProjectDashBoard extends React.Component {
                   selectProject={this.selectProject}
                 />
               )} 
-            {this.state.projectData && (
+            {/* {this.state.projectData && (
                 <SearchBar
                   projectData={this.state.projectData}
                   selectProject={this.selectProject}
                   handleInput={this.handleInput}
                 />
-              )}
+              )} */}
             </div>}
   
             {/* {this.state.projectData.length > 0 ? (<FeatureCard project={this.state.selectedProject}/>) : null}  */}
@@ -143,49 +143,7 @@ class ProjectDashBoard extends React.Component {
                 {modalScreen}
               </FeatureCard>) : null} 
             
-       
-            {/*this.state.openSideBar ? (<>{this.state.projectData && (
-              <SideBarOpen
-                openSideBar={this.state.openSideBar}
-                projectData={this.state.projectData}
-                selectProject={this.selectProject}
-                handleClick={this.handleClick}
-                filterProjectList={this.filterProjectList}
-                slideOpen={this.updateWindowDimensions}>
-                <SearchBar
-                  handleClick={this.handleClick}
-                  openSideBar={this.state.openSideBar}/>
-              </SideBarOpen>
-          
-            )} </>) : (<div 
-                          className = 'closed-side-bar'>
-                          <SideBarButton handleClick = {this.handleClick} title = {<FontAwesomeIcon className = 'column' icon = {faColumns} />}/>
-            </div>)*/}
-            {/* {this.state.projectData && (
-              <SideBarOpen
-                projectData={this.state.projectData}
-                selectProject={this.selectProject}
-                // filterProject={filterProject}
-                handleInput={this.handleInput}
-                handleCloseClick={this.handleCloseClick}  
-              >
-                <SearchBar
-                  projectData={this.state.projectData}
-                  selectProject={this.selectProject}
-                  // handleInput={this.handleInput}
-                  handleCloseClick={this.handleCloseClick}
-                  openSideBar={this.state.openSideBar}
-                />
-              </SideBarOpen>
-          
-            )}  */}
-
-            
-            {/* {this.state.crewDirectory && (
-              <StaffDirectory 
-                crewDirectory = {this.state.crewDirectory}
-              />
-            )} */}
+      
           </div>
         </div>
       );
