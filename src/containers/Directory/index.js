@@ -1,6 +1,7 @@
 import React from 'react';
 import DirectorySearchBar from '../../components/DirectorySearchBar';
 import DirectoryList from '../../components/DirectoryList';
+import World from "../../components/World"
 
 class Directory extends React.Component {
   constructor() {
@@ -9,6 +10,7 @@ class Directory extends React.Component {
       crewDirectory: [],
       searchDirectory: "",
       isFlipped: false,
+      isMapView: true,
     }
   }
 
@@ -75,15 +77,32 @@ class Directory extends React.Component {
     // console.log(results)
     this.setState({ crewDirectory: results })
   }
+
+  toggleMap = () => {
+    this.setState({
+      isMapView: !this.state.isMapView
+    })
+  }
+
   render() {
     return(
+      <div>
+      {this.state.isMapView ?
+      <World 
+        toggleMap={this.toggleMap}
+      /> :
       <div className = 'directory-container'>
-        {this.state.crewDirectory && (<DirectorySearchBar 
+
+        {this.state.crewDirectory && (
+        
+        <div><DirectorySearchBar 
           crewDirectory={this.state.crewDirectory}
           selectedStaffMember={this.selectedStaffMember}
           // handleInput={this.handleInput}
           filterDirectory={this.filterDirectory}
         />
+        <div onClick={this.toggleMap}>Toggle Map</div>
+        </div>
         )}
         {this.state.crewDirectory && (<DirectoryList 
           crewDirectory={this.state.crewDirectory}
@@ -91,6 +110,8 @@ class Directory extends React.Component {
           projectData={this.state.projectData}
           isFlipped={this.state.isFlipped}
         />)}
+     </div>
+     }
      </div>
    
     )
