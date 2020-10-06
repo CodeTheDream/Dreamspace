@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { GoogleMap } from 'react-google-maps'; 
 import Map from "../../components/Map";
+
 import { 
   GoogleMap, 
   withScriptjs, 
@@ -41,11 +42,14 @@ class World extends Component {
       
         getClickOnPin = {this.getClickOnPin}
       />
+
     </div>
+
  
     )
-  
+ 
   }
+  
 };
 
 
