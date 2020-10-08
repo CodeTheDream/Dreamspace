@@ -16,7 +16,7 @@ import  password from "./components/PasswordForget";
 //import FrontPage from "./components/FontPage";
 //import Sidebar from "./components/Sidebar";
 import Directory from "./containers/Directory";
-import World from "./containers/World";
+// import World from "./components/World";
 // import Map from "./components/Map";
 
 function App() {

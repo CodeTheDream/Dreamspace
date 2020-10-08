@@ -4,9 +4,10 @@
                        {
                          "individual": {
                            "person_id": 1,
-                           "name": "Cruz Nunez"
+                           "name": "Cruz Nunez",
+                           "greeting": "Hola!"
                          },
-                         "geometry":{
+                         "geometry":{ 
                            "type": "point",
                            "coordinates": [ 20.516960, -100.800262 ]
                          }
@@ -14,7 +15,8 @@
                         {
                           "individual": {
                             "person_id": 2,
-                            "name": "Lennda"
+                            "name": "Lennda",
+                            "gender": "female"
                           },
                           "geometry":{
                             "type": "point",
@@ -24,7 +26,8 @@
                         {
                           "individual": {
                             "person_id": 3,
-                            "name": "Asiya Bykova"
+                            "name": "Asiya Bykova",
+                            "gender": "female"
                           },
                           "geometry":{
                             "type": "point",
@@ -34,7 +37,8 @@
                         {
                           "individual": {
                             "person_id": 4,
-                            "name": "Crystal Williams-Brown"
+                            "name": "Crystal Williams-Brown",
+                            "gender": "female"
                           },
                           "geometry":{
                             "type": "point",
@@ -44,7 +48,8 @@
                         {
                           "individual": {
                             "person_id": 5,
-                            "name": "Chuck Anderson"
+                            "name": "Chuck Anderson",
+                            "gender": "male"
                           },
                           "geometry":{
                             "type": "point",
@@ -54,7 +59,8 @@
                         {
                           "individual": {
                             "person_id": 6,
-                            "name": "Aster Ghebreyesus"
+                            "name": "Aster Ghebreyesus",
+                            "gender": "female"
                           },
                           "geometry":{
                             "type": "point",
@@ -64,7 +70,8 @@
                         {
                           "individual": {
                             "person_id": 7,
-                            "name": "Petra"
+                            "name": "Petra",
+                            "gender": "female"
                           },
                           "geometry":{
                             "type": "point",
@@ -74,7 +81,8 @@
                         {
                           "individual": {
                             "person_id": 8,
-                            "name": "Sadric Bonner"
+                            "name": "Sadric Bonner",
+                            "greeting": "Greetings"
                           },
                           "geometry":{
                             "type": "point",
