@@ -5,18 +5,20 @@
                          "individual": {
                            "person_id": 1,
                            "name": "Cruz Nunez",
-                           "greeting": "Hola!"
+                           "language": "English, Spanish, French" 
                          },
                          "geometry":{ 
                            "type": "point",
                            "coordinates": [ 20.516960, -100.800262 ]
                          }
-                        },
+                                                    
+                       },
+                        
                         {
                           "individual": {
                             "person_id": 2,
                             "name": "Lennda",
-                            "gender": "female"
+                            "language": "English, Spanish, French" 
                           },
                           "geometry":{
                             "type": "point",
@@ -27,7 +29,7 @@
                           "individual": {
                             "person_id": 3,
                             "name": "Asiya Bykova",
-                            "gender": "female"
+                            "language": "English, Spanish, French" 
                           },
                           "geometry":{
                             "type": "point",
@@ -38,7 +40,7 @@
                           "individual": {
                             "person_id": 4,
                             "name": "Crystal Williams-Brown",
-                            "gender": "female"
+                            "language": "English, Spanish, French" 
                           },
                           "geometry":{
                             "type": "point",
@@ -49,7 +51,7 @@
                           "individual": {
                             "person_id": 5,
                             "name": "Chuck Anderson",
-                            "gender": "male"
+                            "language": "English, Spanish, French" 
                           },
                           "geometry":{
                             "type": "point",
@@ -60,7 +62,7 @@
                           "individual": {
                             "person_id": 6,
                             "name": "Aster Ghebreyesus",
-                            "gender": "female"
+                            "language": "English, Tigrigina" 
                           },
                           "geometry":{
                             "type": "point",
@@ -70,8 +72,8 @@
                         {
                           "individual": {
                             "person_id": 7,
-                            "name": "Petra",
-                            "gender": "female"
+                            "name": "Petra Holesinska",
+                            "language": "English, Spanish, French" 
                           },
                           "geometry":{
                             "type": "point",
@@ -82,13 +84,35 @@
                           "individual": {
                             "person_id": 8,
                             "name": "Sadric Bonner",
-                            "greeting": "Greetings"
+                            "language": "English, Spanish, French" 
                           },
                           "geometry":{
                             "type": "point",
                             "coordinates": [ 36.72636, -79.791977 ]
-                          }
+                          }   
+                        },
+                        {
+                          "individual": {
+                            "person_id": 9,
+                            "name": "Kwasi Yeboah",
+                            "language": "English, Spanish, French" 
+                          },
+                          "geometry":{
+                            "type": "point",
+                            "coordinates": [ 6.695070, -1.615800 ]
                         }
-                     ]
+                      },
+                      {
+                        "individual": {
+                          "person_id": 10,
+                          "name": "Elsabeth Kidane",
+                          "language": "English, Tigrigina" 
+                        },
+                        "geometry":{
+                          "type": "point",
+                          "coordinates": [ 15.339000, 38.937111 ]
+                      }
                     }
+                  ]
+                }
                         

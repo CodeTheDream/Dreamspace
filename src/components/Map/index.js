@@ -11,6 +11,7 @@ InfoWindow
 } from "react-google-maps"
 
 
+
 function Map() {
   const [selectedPerson, setSelectedPerson] = useState(null);
   return(
@@ -41,11 +42,11 @@ function Map() {
       }}
       >
           <div>
-          {/* <h3>Hola!</h3> */}
-          <p>{selectedPerson.individual.greeting}</p>
            <p>{selectedPerson.individual.name}</p>
+           <p>{selectedPerson.individual.language}</p>
             
           </div>
+        
         </InfoWindow>
       )}
     </GoogleMap>
