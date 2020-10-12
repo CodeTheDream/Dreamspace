@@ -3,6 +3,8 @@ import DirectorySearchBar from '../../components/DirectorySearchBar';
 import DirectoryList from '../../components/DirectoryList';
 import World from "../../components/World"
 
+
+
 class Directory extends React.Component {
   constructor() {
     super();
@@ -114,9 +116,10 @@ class Directory extends React.Component {
      }
      </div>
    
+ 
     )
-    
-  }
+   }
+  
 }
 
 export default Directory 

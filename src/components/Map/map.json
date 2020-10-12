@@ -5,11 +5,17 @@
                          "individual": {
                            "person_id": 1,
                            "name": "Cruz Nunez",
-                           "language": "English, Spanish, French" 
+                           "language": "English, Spanish, French"
+
                          },
                          "geometry":{ 
                            "type": "point",
-                           "coordinates": [ 20.516960, -100.800262 ]
+                           "city": "Celaya",
+                           "state": "Guanajuato",
+                           "country": "Mexico",
+                           "coordinates": [ 20.516960, -100.800262 ],
+                           "images": "../assets/images/cruzstate.jpg"
+                           
                          }
                                                     
                        },
@@ -17,11 +23,14 @@
                         {
                           "individual": {
                             "person_id": 2,
-                            "name": "Lennda",
-                            "language": "English, Spanish, French" 
+                            "name": "Lennda Chen",
+                            "language": "English, Mandarin, Fuzhounese" 
                           },
                           "geometry":{
                             "type": "point",
+                            "city": "Fuzhou",
+                           "state": "Fujian",
+                           "country": "China",
                             "coordinates": [ 26.483685, 117.924896 ]
                           }
                         },
@@ -29,7 +38,7 @@
                           "individual": {
                             "person_id": 3,
                             "name": "Asiya Bykova",
-                            "language": "English, Spanish, French" 
+                            "language": "English, Russian" 
                           },
                           "geometry":{
                             "type": "point",
@@ -40,7 +49,7 @@
                           "individual": {
                             "person_id": 4,
                             "name": "Crystal Williams-Brown",
-                            "language": "English, Spanish, French" 
+                            "language": "English" 
                           },
                           "geometry":{
                             "type": "point",
@@ -51,7 +60,7 @@
                           "individual": {
                             "person_id": 5,
                             "name": "Chuck Anderson",
-                            "language": "English, Spanish, French" 
+                            "language": "English, Russian"
                           },
                           "geometry":{
                             "type": "point",
@@ -73,7 +82,7 @@
                           "individual": {
                             "person_id": 7,
                             "name": "Petra Holesinska",
-                            "language": "English, Spanish, French" 
+                            "language": "English, Czech" 
                           },
                           "geometry":{
                             "type": "point",
@@ -95,7 +104,7 @@
                           "individual": {
                             "person_id": 9,
                             "name": "Kwasi Yeboah",
-                            "language": "English, Spanish, French" 
+                            "language": "English, Twi" 
                           },
                           "geometry":{
                             "type": "point",

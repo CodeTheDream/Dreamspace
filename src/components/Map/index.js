@@ -1,15 +1,17 @@
 import React, { useState } from "react"
 // import { compose, withProps } from "recompose"
 import * as mapData from "../Map/map.json"
+import cruzstate from './cruzstate.jpg'
+
+
 import { 
 withScriptjs, 
 withGoogleMap, 
 GoogleMap, 
 Marker,
+google,
 InfoWindow
-  
 } from "react-google-maps"
-
 
 
 function Map() {
@@ -17,7 +19,8 @@ function Map() {
   return(
     <GoogleMap 
       defaultZoom={13}
-      defaultCenter={{ lat: 20.516960, lng: -100.800262}} 
+      defaultCenter={{ lat: 20.516960, lng: -100.800262}}
+      
         > 
        {mapData.markers.map((person) => (
       <Marker 
@@ -35,20 +38,33 @@ function Map() {
         <InfoWindow
         position={{
         lat: selectedPerson.geometry.coordinates[0],
-        lng: selectedPerson.geometry.coordinates[1]
+        lng: selectedPerson.geometry.coordinates[1],
+  
       }}
       onCloseClick={() => {
         setSelectedPerson(null);
       }}
+
+      
       >
           <div>
            <p>{selectedPerson.individual.name}</p>
            <p>{selectedPerson.individual.language}</p>
-            
-          </div>
-        
+           <img src={cruzstate} alt="uploaded images"></img>
+          
+           
+            {/* <img src="../images/cruzstate.jpg" margin="auto" alt="cruzstate"></img>    */}
+           </div>
+             
+           
+      
+            {/* <img src="../images/cruzstate.jpg" margin="auto" alt="cruzstate"></img>  */} 
+                  
+          
+  
         </InfoWindow>
       )}
+    
     </GoogleMap>
       );
 }
@@ -68,74 +84,8 @@ export default function MapInit() {
 }
 
 
-// const Map = compose(
-//   withProps({
-//     googleMapURL: `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`,
-//     loadingElement: <div style={{ height: `100%` }} />,
-//     containerElement: <div style={{ height: `890px` }} />,
-//     mapElement: <div style={{ height: `100%` }} />,
-//   }),
-//   withScriptjs,
-//   withGoogleMap
-// )((props) => 
 
 
-//   <GoogleMap
-//     defaultZoom={10}
-//     defaultCenter={{ lat: 20.516960, lng: -100.800262 }}
-    
-//   >
-  
-//    {mapData.markers.map((person) => (
-//      <Marker 
-//      key={person.individual.person_id} 
-//      position={{
-//        lat: person.geometry.coordinates[0],
-//        lng: person.geometry.coordinates[1]
-//       }}
-
-//       />
-      
-//     ))}
-    
-//   </GoogleMap>
-// )
-
-// class MyMapComponent extends React.PureComponent {
-//   state = {
-//     isMarkerShown: false,
-
-//   }
-//   componentDidMount() {
-//     this.delayedShowMarker()
-//   }
-
-//   delayedShowMarker = () => {
-//     setTimeout(() => {
-//       this.setState({ isMarkerShown: true })
-//     }, 3000)
-//   }
-
-//   handleMarkerClick = () => {
-//     this.setState({ isMarkerShown: false })
-//     this.delayedShowMarker()
-//   }
-
-//   render() {
-//     return (
-//       <Map
-//         isMarkerShown={this.state.isMarkerShown}
-//         onMarkerClick={this.handleMarkerClick}
-//       />
-     
-//     )
-
-//   }
-
-// }
-
-
-// export default Map;
 
 
 
