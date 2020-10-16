@@ -14,8 +14,6 @@ InfoWindow
 
 function Map() {
 const [selectedPerson, setSelectedPerson] = useState(null);
-// // let markers = mapData.markers.map((person, index) => { 
-// // let geometry = person.geometry;
   
 return(
 
@@ -76,47 +74,6 @@ export default function MapInit() {
      </div>
    ); 
 }
-
-
-
-
-
-//       onClick={() => {
-//         setSelectedPerson(person);
-//       }}
-
-//       />
-//       ))}
-//       {selectedPerson && (
-//         <InfoWindow
-//         position={{
-//         lat: selectedPerson.geometry.coordinates[0],
-//         lng: selectedPerson.geometry.coordinates[1]
-
-//       }}
-//       onCloseClick={() => {
-//         setSelectedPerson(null);
-//       }}
-//       >
-//           <div>
-//            <p>{selectedPerson.individual.name}</p>
-//            <p>{selectedPerson.individual.language}</p>
-//            <img src={cruzstate} alt="uploaded images"></img>
-
-
-//             {/* <img src="../images/cruzstate.jpg" margin="auto" alt="cruzstate"></img>    */}
-//            </div>
-
-
-
-//             {/* <img src="../images/cruzstate.jpg" margin="auto" alt="cruzstate"></img>  */} 
-
-
-
-                      
-//          </InfoWindow>
-//       )} 
-
 
 
 
