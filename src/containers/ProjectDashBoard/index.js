@@ -5,6 +5,7 @@ import {
   SearchBar,
   SideBarOpen,
 } from "../../components";
+import ProjectCard from "../../components/ProjectCard"
 import ProjectImageModal from '../../components/ProjecImageModal'
 import SideBarButton from '../../components/SideBarButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -114,8 +115,7 @@ class ProjectDashBoard extends React.Component {
       }
     
       return (
-        <div className="view-container dashboard">
-          <div className="dashboard-content">
+        <div className="view-container projects-dashboard">
          
             { <div>
               {this.state.projectData && (
@@ -129,65 +129,32 @@ class ProjectDashBoard extends React.Component {
                   projectData={this.state.projectData}
                   selectProject={this.selectProject}
                   handleInput={this.handleInput}
+                  filterProjectList={this.filterProjectList}
                 />
               )}
             </div>}
   
             {/* {this.state.projectData.length > 0 ? (<FeatureCard project={this.state.selectedProject}/>) : null}  */}
             
-            {this.state.selectedProject ? (
+            {/* {this.state.selectedProject ? (
               <FeatureCard 
                 project={this.state.selectedProject} 
                 handleImageClick={this.handleImageClick}
                 crewDirectory={this.state.crewDirectory}>
                 {modalScreen}
-              </FeatureCard>) : null} 
-            
-       
-            {/*this.state.openSideBar ? (<>{this.state.projectData && (
-              <SideBarOpen
-                openSideBar={this.state.openSideBar}
-                projectData={this.state.projectData}
-                selectProject={this.selectProject}
-                handleClick={this.handleClick}
-                filterProjectList={this.filterProjectList}
-                slideOpen={this.updateWindowDimensions}>
-                <SearchBar
-                  handleClick={this.handleClick}
-                  openSideBar={this.state.openSideBar}/>
-              </SideBarOpen>
-          
-            )} </>) : (<div 
-                          className = 'closed-side-bar'>
-                          <SideBarButton handleClick = {this.handleClick} title = {<FontAwesomeIcon className = 'column' icon = {faColumns} />}/>
-            </div>)*/}
-            {/* {this.state.projectData && (
-              <SideBarOpen
-                projectData={this.state.projectData}
-                selectProject={this.selectProject}
-                // filterProject={filterProject}
-                handleInput={this.handleInput}
-                handleCloseClick={this.handleCloseClick}  
+              </FeatureCard>) : null}  */}
+              {this.state.projectData.map(project => (
+              <ProjectCard 
+                project={project} 
+                handleImageClick={this.handleImageClick}
+                crewDirectory={this.state.crewDirectory}
               >
-                <SearchBar
-                  projectData={this.state.projectData}
-                  selectProject={this.selectProject}
-                  // handleInput={this.handleInput}
-                  handleCloseClick={this.handleCloseClick}
-                  openSideBar={this.state.openSideBar}
-                />
-              </SideBarOpen>
-          
-            )}  */}
+                {modalScreen}
+              </ProjectCard>)
+              )}
 
-            
-            {/* {this.state.crewDirectory && (
-              <StaffDirectory 
-                crewDirectory = {this.state.crewDirectory}
-              />
-            )} */}
+      
           </div>
-        </div>
       );
     }
   }
