@@ -10,16 +10,9 @@
                          },
                          "geometry":{ 
                            "type": "point",
-                           "city": "Celaya",
-                           "state": "Guanajuato",
-                           "country": "Mexico",
-                           "coordinates": [ 20.516960, -100.800262 ]
-                          
-                           
-                         }
-                                                    
+                           "coordinates": [ 20.516960, -100.800262 ]  
+                         }                           
                        },
-                        
                         {
                           "individual": {
                             "person_id": 2,
@@ -28,9 +21,7 @@
                           },
                           "geometry":{
                             "type": "point",
-                            "city": "Fuzhou",
-                           "state": "Fujian",
-                           "country": "China",
+                            
                             "coordinates": [ 26.483685, 117.924896 ]
                           }
                         },
@@ -42,9 +33,7 @@
                           },
                           "geometry":{
                             "type": "point",
-                            "city": "",
-                            "state": "Minsko",
-                            "country": "Belarus",
+                            
                             "coordinates": [ 53.897690, 27.549420 ]
                           }
                         },
@@ -56,9 +45,7 @@
                           },
                           "geometry":{
                             "type": "point",
-                            "city": "Clifford",
-                            "state": "New Jersey",
-                            "country": "United States",
+                           
                             "coordinates": [ 40.073040, -74.724319 ]
                           }
                         },
@@ -70,9 +57,7 @@
                           },
                           "geometry":{
                             "type": "point",
-                            "city": "Smithtown",
-                            "state": "New York",
-                            "country": "United States",
+                            
                             "coordinates": [ 40.8549600, -73.197130 ]
                           }
                         },
@@ -84,9 +69,7 @@
                           },
                           "geometry":{
                             "type": "point",
-                            "city": "Asmara",
-                            "state": "",
-                            "country": "Eritrea",
+                            
                             "coordinates": [ 15.339000, 38.937111 ]
                           }
                         },
@@ -106,18 +89,13 @@
                             "person_id": 8,
                             "name": "Sadric Bonner",
                             "language": "English"
-                          }
                           },
-                          {
                           "geometry":{
                             "type": "point",
-                            "city": "Greensboro",
-                            "state": "North Carolina",
-                            "country": "United State",
-                            "coordinates": [ 36.72636, -79.791977 ]
+                           
+                            "coordinates": [ 36.072701, -79.793900 ]
                           }
                           },   
-                        
                         {
                           "individual": {
                             "person_id": 9,
@@ -126,8 +104,7 @@
                           },
                           "geometry":{
                             "type": "point",
-                            "state": "Kumasi",
-                            "country": "Ghana",
+                            
                             "coordinates": [ 6.695070, -1.615800 ]
                         }
                       },
@@ -139,10 +116,19 @@
                         },
                         "geometry":{
                           "type": "point",
-                          "city": "Asmara",
-                            "state": "",
-                            "country": "Eritrea",
                           "coordinates": [ 15.339000, 38.937111 ]
+                        }
+                      },
+                      {
+                        "individual": {
+                          "person_id": 11,
+                          "name": "Mariandrea Maldonado",
+                          "language": "English, Spanish" 
+                        },
+                        "geometry":{
+                          "type": "point", 
+             
+                          "coordinates": [ 7.768010, -72.228280 ]
                       }
                     }
                   ]

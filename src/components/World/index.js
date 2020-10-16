@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { GoogleMap } from 'react-google-maps'; 
 import Map from "../Map";
 import { 
-  GoogleMap, 
+  // GoogleMap, 
   withScriptjs, 
   withGoogleMap 
 } from 'react-google-maps';
