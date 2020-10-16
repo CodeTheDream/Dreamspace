@@ -21,19 +21,29 @@ const Header = props => {
     project => project.fields.Status !== "Complete"
   );
   console.log("filterList", filterList);
+  let pics = 'https://ya-webdesign.com/images250_/placeholder-image-png-1.png';
+  //if(filterList.fields.photo) {
+   // pics = filterList.fields.photo[0]
+ // }
+          
+            
+            console.log(pics);
 
   return (
     <div className="slide-container">
       <Zoom {...zoomOutProperties}>
         {filterList.map(project => (
-          <li
+          <div
             key={project.id}
             onClick={() => props.selectProject(project.id)}
             style={{ width: "73%" }}
             className="Armcard">
         
-             {project.fields.Name.toUpperCase()} 
-          </li>
+            {project.fields.Name} 
+          
+            {project.fields.photo ? pics=project.fields.photo[0].url : <img src={pics}/>}
+            
+          </div>
         ))}
       </Zoom>
     </div>
