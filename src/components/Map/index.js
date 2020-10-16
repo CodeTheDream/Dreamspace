@@ -1,37 +1,61 @@
-import React from "react"
+import React, { useState } from "react"
 import * as mapData from "../Map/map.json"
-// import cruzstate from './cruzstate.jpg'
+import cruzstate from './cruzstate.jpg'
 
 import { 
 withScriptjs, 
 withGoogleMap, 
 GoogleMap, 
-Marker
-// InfoWindow
+Marker,
+InfoWindow
 } from "react-google-maps"
+// import { faParking } from "@fortawesome/free-solid-svg-icons";
 
 
 function Map() {
-//   const [selectedPerson, setSelectedPerson] = useState(null);
-let markers = mapData.markers.map((person, index) => { 
-let geometry = person.geometry;
+const [selectedPerson, setSelectedPerson] = useState(null);
+// // let markers = mapData.markers.map((person, index) => { 
+// // let geometry = person.geometry;
   
 return(
- <Marker  
-  key={person.individual.person_id} 
-  position={{
-  lat: geometry.coordinates[0],
-  lng: geometry.coordinates[1] 
-   }}
-  /> )
-});
-   return(
+
      <GoogleMap 
        defaultZoom={13}
-       defaultCenter={{ lat: 20.516960, lng: -100.800262 }} 
+       defaultCenter={{ 
+         lat: 20.516960, 
+         lng: -100.800262 }} 
       > 
-      {markers}
-      
+      {mapData.markers.map((person) => (
+        <Marker
+          key={person.individual.person_id}
+          position={{
+            lat: person.geometry.coordinates[0],
+            lng: person.geometry.coordinates[1]
+          }}
+  
+      onClick={() => {
+        setSelectedPerson(person);
+      }}
+      />
+      ))}
+       
+       {selectedPerson && (
+         <InfoWindow
+         position={{
+         lat: selectedPerson.geometry.coordinates[0],
+         lng: selectedPerson.geometry.coordinates[1] }}
+
+       onCloseClick={() => {
+         setSelectedPerson(null);
+       }}
+       >
+          <div>
+            <p>{selectedPerson.individual.name}</p>
+            <p>{selectedPerson.individual.language}</p>
+            <img src={cruzstate} alt="uploaded images"></img>           
+          </div>                    
+      </InfoWindow>
+      )} 
     </GoogleMap>
   );
 
