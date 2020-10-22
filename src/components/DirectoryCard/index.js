@@ -1,4 +1,9 @@
 import React from 'react'
+import ReactCardFlip from '../DirectoryCard'
+import props from '../DirectoryCard'
+import randomFlip from '../DirectoryCard'
+import secondaryImage from '../DirectoryCard'
+import pics from '../DirectoryCard'
 // import { Link } from 'react-router-dom'
 
 
