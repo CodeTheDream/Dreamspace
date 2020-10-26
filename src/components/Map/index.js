@@ -1,16 +1,17 @@
 import React, { useState } from "react"
-
 import * as mapData from "../Map/map.json"
-import ReactCardFlip from 'react-card-flip';
-// import DirectoryCard from '../DirectoryCard';
-// import DirectorySearchBar from '../DirectorySearchBar';
-import reactImage from '../../assets/images/react-image.png';
-import rubyImage from '../../assets/images/ruby-on-rails.png';
-import wordPress from '../../assets/images/wordpress.png';
-// import executive from '../../assets/images/executive-director.png';
-import directors from '../../assets/images/directors.svg';
-// import teacher from '../../assets/images/mentor.png';
 import cruzstate from './cruzstate.jpg'
+// import AsiyaMinskBelarus from '../../assets/images/AsiyaMinskBelarus.jpg'
+// import AstElsaAsmara from '../../assets/images/AstElsaAsmara.jpg'
+// import chucksmithtown from './chucksmithtown.jpg'
+// import crystalcliffwoood from './crystalcliffwooo.jpg'
+// import lenndachen from './lenndachen.jpg'
+// import mariandreSanCristobal from './mariandreSanCristobal.jpg'
+// import QwasiKejetiamarket from './QwasiKejetiamarket.jpg'
+// import sadricgreensboro from './sadricgreensboro.jpg'
+// import Petra from './Petra.jpg'
+
+// import styled from 'styled-components'
 
 import { 
 withScriptjs, 
@@ -19,7 +20,6 @@ GoogleMap,
 Marker,
 InfoWindow
 } from "react-google-maps"
-// import { faParking } from "@fortawesome/free-solid-svg-icons";
 
 
 function Map() {
@@ -40,13 +40,7 @@ return(
             lat: person.geometry.coordinates[0],
             lng: person.geometry.coordinates[1]
           }}
-      // {...markers.map((staff) => (
-      //    <Marker
-      //      key={staff.fields.staff_id}
-      //      position={{
-      //        lat: person.geometry.coordinates[0],
-      //        lng: person.geometry.coordinates[1]
-      // }}
+      
       onClick={() => {
         setSelectedPerson(person);
       }}
@@ -57,7 +51,8 @@ return(
          <InfoWindow
          position={{
          lat: selectedPerson.geometry.coordinates[0],
-         lng: selectedPerson.geometry.coordinates[1] }}
+         lng: selectedPerson.geometry.coordinates[1] 
+         }}
 
        onCloseClick={() => {
          setSelectedPerson(null);
@@ -66,15 +61,25 @@ return(
           <div>
             <p>{selectedPerson.individual.name}</p>
             <p>{selectedPerson.individual.language}</p>
-            <img src={cruzstate} alt="uploaded images"></img> 
-          
+            <img src={cruzstate} alt="uploaded images"></img>  
+            {/* <img src={AsiyaMinskBelarus} alt="uploaded images"></img> 
+            <img src={AstElsaAsmara} alt="uploaded images"></img> */}
+            {/* <img src={crystalcliffwoood} alt="uploaded images"></img>
+            <img src={chucksmithtown} alt="uploaded images"></img> */}
+            {/* <img src={lenndachen} alt="uploaded images"></img> */}
+            {/* <img src={mariandreSanCristobal} alt="uploaded images"></img>
+            <img src={QwasiKejetiamarket} alt="uploaded images"></img>
+            <img src={sadricgreensboro} alt="uploaded images"></img>
+            <img src={Petra} alt="uploaded images"></img> */}
+            {/* <img src={cruzstate} alt="uploaded images"></img> */}
           </div>   
-            
+        
+        
       </InfoWindow>
-      )}
       
+      )}
+     
     </GoogleMap>
-
   );
 
   }

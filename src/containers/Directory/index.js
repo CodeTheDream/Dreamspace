@@ -1,7 +1,7 @@
 import React from 'react';
 import DirectorySearchBar from '../../components/DirectorySearchBar';
 import DirectoryList from '../../components/DirectoryList';
-import World from "../../components/Map"
+import World from "../../components/World"
 
 
 
