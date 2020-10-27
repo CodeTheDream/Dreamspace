@@ -97,7 +97,8 @@ class Directory extends React.Component {
 
         {this.state.crewDirectory && (
         
-        <div><DirectorySearchBar 
+        <div>
+        <DirectorySearchBar 
           crewDirectory={this.state.crewDirectory}
           selectedStaffMember={this.selectedStaffMember}
           // handleInput={this.handleInput}

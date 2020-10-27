@@ -1,15 +1,8 @@
 import React, { useState } from "react"
 import * as mapData from "../Map/map.json"
 import cruzstate from './cruzstate.jpg'
-// import AsiyaMinskBelarus from '../../assets/images/AsiyaMinskBelarus.jpg'
-// import AstElsaAsmara from '../../assets/images/AstElsaAsmara.jpg'
-// import chucksmithtown from './chucksmithtown.jpg'
-// import crystalcliffwoood from './crystalcliffwooo.jpg'
-// import lenndachen from './lenndachen.jpg'
-// import mariandreSanCristobal from './mariandreSanCristobal.jpg'
-// import QwasiKejetiamarket from './QwasiKejetiamarket.jpg'
-// import sadricgreensboro from './sadricgreensboro.jpg'
-// import Petra from './Petra.jpg'
+import chucksmithtown from './chucksmithtown.jpg';
+
 
 // import styled from 'styled-components'
 
@@ -19,13 +12,12 @@ withGoogleMap,
 GoogleMap, 
 Marker,
 InfoWindow
-} from "react-google-maps"
+} from "react-google-maps";
 
 
 function Map() {
-const [selectedPerson, setSelectedPerson] = useState(null);
-  
-return(
+  const [selectedPerson, setSelectedPerson] = useState(null);
+  return(
 
      <GoogleMap 
        defaultZoom={13}
@@ -33,6 +25,7 @@ return(
          lat: 20.516960, 
          lng: -100.800262 }} 
       > 
+
       {mapData.markers.map((person) => (
         <Marker
           key={person.individual.person_id}
@@ -48,33 +41,28 @@ return(
       ))}
        
        {selectedPerson && (
-         <InfoWindow
+      <InfoWindow
          position={{
          lat: selectedPerson.geometry.coordinates[0],
-         lng: selectedPerson.geometry.coordinates[1] 
+         lng: selectedPerson.geometry.coordinates[1],
          }}
 
-       onCloseClick={() => {
+         onCloseClick={() => {
          setSelectedPerson(null);
        }}
+       
        >
-          <div>
-            <p>{selectedPerson.individual.name}</p>
-            <p>{selectedPerson.individual.language}</p>
-            <img src={cruzstate} alt="uploaded images"></img>  
-            {/* <img src={AsiyaMinskBelarus} alt="uploaded images"></img> 
-            <img src={AstElsaAsmara} alt="uploaded images"></img> */}
-            {/* <img src={crystalcliffwoood} alt="uploaded images"></img>
-            <img src={chucksmithtown} alt="uploaded images"></img> */}
-            {/* <img src={lenndachen} alt="uploaded images"></img> */}
-            {/* <img src={mariandreSanCristobal} alt="uploaded images"></img>
-            <img src={QwasiKejetiamarket} alt="uploaded images"></img>
-            <img src={sadricgreensboro} alt="uploaded images"></img>
-            <img src={Petra} alt="uploaded images"></img> */}
-            {/* <img src={cruzstate} alt="uploaded images"></img> */}
-          </div>   
-        
-        
+        <>
+          <div className='cruz'>
+            <p>{selectedPerson.individual.name.language}</p>
+            <img src={cruzstate} alt="uploaded images"></img>
+          </div>
+          <div className='chuck'>
+            <p>{selectedPerson.individual.name.language}</p>
+            <img src={chucksmithtown} alt="uploaded images"></img>
+          </div>  
+      
+        </>  
       </InfoWindow>
       
       )}
@@ -83,7 +71,7 @@ return(
   );
 
   }
-
+  
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default function MapInit() {
