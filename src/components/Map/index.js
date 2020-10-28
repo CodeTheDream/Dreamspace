@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-import * as mapData from "../Map/map.json"
-import cruzstate from './cruzstate.jpg'
+import * as mapData from "./map"
+import personpin from './personpin.svg'
+
 
 import { 
 withScriptjs, 
@@ -25,6 +26,7 @@ return(
       > 
       {mapData.markers.map((person) => (
         <Marker
+          icon={personpin}
           key={person.individual.person_id}
           position={{
             lat: person.geometry.coordinates[0],
@@ -50,7 +52,7 @@ return(
           <div>
             <p>{selectedPerson.individual.name}</p>
             <p>{selectedPerson.individual.language}</p>
-            <img src={cruzstate} alt="uploaded images"></img>           
+            <img style={{width:'200px', height:'200px'}} src={selectedPerson.individual.image} alt="uploaded images" />          
           </div>                    
       </InfoWindow>
       )} 

@@ -13,12 +13,14 @@ class Directory extends React.Component {
       searchDirectory: "",
       isFlipped: false,
       isMapView: true,
+      getCoordinates: [],
     }
   }
 
   componentDidMount() {
     this.directoryAirTable();
     this.projectAirTable();
+    this.getMapCoordinates();
   }
   
   selectedStaffMember = id => {
@@ -55,6 +57,19 @@ class Directory extends React.Component {
         this.setState({projectData: projectData});
       });
     }
+
+  getMapCoordinates() {
+    const url = "https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Developers";
+    fetch(url, {
+      headers: { Authorization: "Bearer " + process.env.REACT_APP_AIRTABLE_KEY }
+    })
+      .then(response => response.json())
+      .then(responseData => {
+        console.log(responseData)
+        const mapMarkers= responseData.records;
+        this.setState({getCoordinates: mapMarkers});
+      });
+  }
 
   filterDirectory = searchTerm => {
     // console.log('searchTerm ', searchTerm)

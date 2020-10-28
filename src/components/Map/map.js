@@ -1,11 +1,14 @@
+import cruzstate from "./cruzstate.jpg";
+import sadricstate from "./sadricstate.jpg";
 
-                    {
-                     "markers": [
+                    
+                     export const markers = [
                        {
                          "individual": {
                            "person_id": 1,
                            "name": "Cruz Nunez",
-                           "language": "English, Spanish, French"
+                           "language": "English, Spanish, French",
+                           "image": cruzstate
 
                          },
                          "geometry":{ 
@@ -88,7 +91,8 @@
                           "individual": {
                             "person_id": 8,
                             "name": "Sadric Bonner",
-                            "language": "English"
+                            "language": "English",
+                            "image": sadricstate
                           },
                           "geometry":{
                             "type": "point",
@@ -132,5 +136,5 @@
                       }
                     }
                   ]
-                }
+                
                         
