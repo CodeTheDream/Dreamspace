@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import * as mapData from "../Map/map.json"
-import cruzstate from './cruzstate.jpg'
-import chucksmithtown from './chucksmithtown.jpg';
+import * as mapData from "../Map/map.js"
+
+
 
 
 // import styled from 'styled-components'
@@ -50,26 +50,20 @@ function Map() {
          onCloseClick={() => {
          setSelectedPerson(null);
        }}
-       
+          
        >
-        <>
-          <div className='cruz'>
-            <p>{selectedPerson.individual.name.language}</p>
-            <img src={cruzstate} alt="uploaded images"></img>
-          </div>
-          <div className='chuck'>
-            <p>{selectedPerson.individual.name.language}</p>
-            <img src={chucksmithtown} alt="uploaded images"></img>
-          </div>  
-      
-        </>  
-      </InfoWindow>
-      
+
+         <div>
+            <p>{selectedPerson.individual.name}</p>
+            <p>{selectedPerson.individual.language}</p>
+            <img style={{width: `10em`, height: `10em`}} src={selectedPerson.individual.image} alt="uploaded images" />          
+         </div>
+       
+     </InfoWindow>
       )}
      
     </GoogleMap>
   );
-
   }
   
 const WrappedMap = withScriptjs(withGoogleMap(Map));
