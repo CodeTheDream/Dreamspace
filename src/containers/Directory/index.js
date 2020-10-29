@@ -80,6 +80,7 @@ class Directory extends React.Component {
     this.setState({ crewDirectory: results })
   }
 
+  
   toggleMap = () => {
     this.setState({
       isMapView: !this.state.isMapView

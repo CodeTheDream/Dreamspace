@@ -56,7 +56,7 @@ function Map() {
          <div>
             <p>{selectedPerson.individual.name}</p>
             <p>{selectedPerson.individual.language}</p>
-            <img style={{width: `10em`, height: `10em`}} src={selectedPerson.individual.image} alt="uploaded images" />          
+            <img style={{width: `100px`, height: `100px`}} src={selectedPerson.individual.image} alt="uploaded images" />          
          </div>
        
      </InfoWindow>
