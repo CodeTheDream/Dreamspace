@@ -39,8 +39,10 @@ function Map() {
       }}
       />
       ))}
-       
+
+      
        {selectedPerson && (
+         
       <InfoWindow
          position={{
          lat: selectedPerson.geometry.coordinates[0],
@@ -49,14 +51,13 @@ function Map() {
 
          onCloseClick={() => {
          setSelectedPerson(null);
-       }}
-          
-       >
+       }}    
 
+       >
          <div>
             <p>{selectedPerson.individual.name}</p>
             <p>{selectedPerson.individual.language}</p>
-            <img style={{width: `100px`, height: `100px`}} src={selectedPerson.individual.image} alt="uploaded images" />          
+            <img style={{width: `100px`, height: `100px`, background: `#232741`}} src={selectedPerson.individual.image} alt="uploaded images" />          
          </div>
        
      </InfoWindow>

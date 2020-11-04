@@ -93,6 +93,7 @@ class Directory extends React.Component {
       {this.state.isMapView ?
       <World 
         toggleMap={this.toggleMap}
+        crewDirectory = {this.projectAirTable}
       /> :
       <div className = 'directory-container'>
 

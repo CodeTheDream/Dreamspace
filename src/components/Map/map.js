@@ -16,7 +16,8 @@ import sadric2 from '../Map/images/sadric2.jpg'
                            "person_id": 1,
                            "name": "Cruz Nunez",
                            "language": "English, Spanish, French",
-                           "image": cruzstate
+                           "image": cruzstate,
+                          
                          },
                          "geometry":{ 
                            "type": "point",

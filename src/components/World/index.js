@@ -22,8 +22,8 @@ import {
 
 class World extends Component {
   state = {
-    
     pinClick: false,
+
   };
   getClickOnPin = () => {
     this.setState(
@@ -33,6 +33,7 @@ class World extends Component {
   }
 
     render () {
+      console.log(this.props.projectAirTable);
     return (
     <div>
       <div className="map-toggle" onClick={this.props.toggleMap}>Toggle Map</div>
