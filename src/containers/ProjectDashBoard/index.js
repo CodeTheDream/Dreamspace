@@ -117,7 +117,7 @@ class ProjectDashBoard extends React.Component {
       return (
         <div className="view-container projects-dashboard">
          
-            { <div>
+            {/* <div>
               {this.state.projectData && (
                 <Header
                   projectData={this.state.projectData}
@@ -132,7 +132,7 @@ class ProjectDashBoard extends React.Component {
                   filterProjectList={this.filterProjectList}
                 />
               )}
-            </div>}
+            </div>*/}
   
             {/* {this.state.projectData.length > 0 ? (<FeatureCard project={this.state.selectedProject}/>) : null}  */}
             
