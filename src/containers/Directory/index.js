@@ -6,13 +6,13 @@ import World from "../../components/World"
 
 
 class Directory extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       crewDirectory: [],
       searchDirectory: "",
       isFlipped: false,
-      isMapView: true,
+      isMapView: true
     }
   }
 
