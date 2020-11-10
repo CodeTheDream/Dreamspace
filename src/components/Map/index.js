@@ -56,23 +56,25 @@ function Map() {
 
        >
          <div>
-         <p>{selectedPerson.individual.name}</p>
-         <img style={{width: `100px`, height: `100px`, padding: `#232741`}} 
-          src={selectedPerson.individual.image} alt="uploaded images" /> 
-
-         <a href="https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects" class="image_links" data-image="leaves/Map/image/practiceimage.jpg">Picture 1 In modal dialog</a><br></br>
-         {/* +
-      '<a href="#" class="image_links" data-image="https://www.gstatic.com/webp/gallery3/1.sm.png">Picture 2 In modal dialog</a>';
          
-         <a href="https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects" class="image_links" data-image="https://www.pexels.com/photo/frosted-leaves-3906084/">Picture 1 In modal dialog</a><br></br> */}
-      {/* <a href="#" class="image_links" data-image="https://www.gstatic.com/webp/gallery3/1.sm.png">Picture 2 In modal dialog</a>; */}
+         
+            <p>{selectedPerson.individual.name}</p>
+            <p>{selectedPerson.individual.language}</p> 
+            <img style={{width: `100px`, height: `100px`, padding: `#232741`}} 
+            src={selectedPerson.individual.image} alt="uploaded images" />  
 
-            
-            
-           
+            <a href="https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects" class="image_links" data-image="../../Map/imagegs/practiceimage.jpg">
+            <ul>
+              <li>Click here to view individual's profile page.</li>
+              <li>Projects they have and are currently working.</li>
+            </ul>.</a><br></br> 
+            {/* + */}
+         {/* <a href="#" class="image_links" data-image="https://www.gstatic.com/webp/gallery3/1.sm.png">Picture 2 In modal dialog</a>';   */}
                       
          </div>
-        
+         
+
+
      </InfoWindow>
       )}
      

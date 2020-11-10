@@ -21,6 +21,9 @@ import sadric2 from '../Map/images/sadric2.jpg'
                          },
                          "geometry":{ 
                            "type": "point",
+                           "city": "Celaya",
+                           "state": "Guanajuato",
+                           "country": "Mexico",
                            "coordinates": [ 20.516960, -100.800262 ]  
                          }                           
                        },
@@ -33,6 +36,9 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           },
                           "geometry":{
                             "type": "point",
+                            "city": "Fuzhou",
+                            "state": "Fujian",
+                            "country": "China",
                             "coordinates": [ 26.483685, 117.924896 ]
                           }
                         },
@@ -45,6 +51,9 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           },
                           "geometry":{
                             "type": "point",
+                            "city": "",
+                            "state": "Minsko",
+                            "country": "Belarus",
                             "coordinates": [ 53.897690, 27.549420 ]
                           }
                         },
@@ -57,6 +66,9 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           },
                           "geometry":{
                             "type": "point",
+                            "city": "Cliffwood",
+                            "state": "New Jersey",
+                            "country": "United States",
                             "coordinates": [ 40.073040, -74.724319 ]
                           }
                         },
@@ -69,6 +81,9 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           },
                           "geometry":{
                             "type": "point",
+                            "city": "Smithtown",
+                            "state": "New York",
+                            "country": "United States",
                             "coordinates": [ 40.8549600, -73.197130 ]
                           }
                         },
@@ -81,6 +96,9 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           },
                           "geometry":{
                             "type": "point",
+                            "city": "Asmara",
+                            "state": "",
+                            "country": "Eritrea",
                             "coordinates": [ 15.339000, 38.937111 ]
                           }
                         },
@@ -93,6 +111,9 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           },
                           "geometry":{
                             "type": "point",
+                            "city": "Vracov",
+                            "state": "",
+                            "country": "Czech Republic",
                             "coordinates": [ 	48.979950, 17.215630 ]
                           }
                         },
@@ -105,6 +126,9 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           },
                           "geometry":{
                             "type": "point",
+                            "city": "Greensboro",
+                            "state": "North Carolina",
+                            "country": "United States",
                             "coordinates": [ 36.072701, -79.793900 ]
                           }
                           },   
@@ -117,6 +141,9 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           },
                           "geometry":{
                             "type": "point",
+                            "city": "",
+                            "state": "Kumasi",
+                            "country": "Ghana",
                             "coordinates": [ 6.695070, -1.615800 ]
                         }
                       },
@@ -129,6 +156,9 @@ import sadric2 from '../Map/images/sadric2.jpg'
                         },
                         "geometry":{
                           "type": "point",
+                          "city": "Asmara",
+                          "state": "",
+                          "country": "Eritrea",
                           "coordinates": [ 15.339000, 38.937111 ]
                         }
                       },
@@ -141,6 +171,9 @@ import sadric2 from '../Map/images/sadric2.jpg'
                         },
                         "geometry":{
                           "type": "point", 
+                          "city": "San Cristobal",
+                          "state": "Tachira",
+                          "country": "Venezuela",
                           "coordinates": [ 7.768010, -72.228280 ]
                       }
                     }
