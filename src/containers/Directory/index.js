@@ -79,24 +79,26 @@ class Directory extends React.Component {
     // console.log(results)
     this.setState({ crewDirectory: results })
   }
-
   
   toggleMap = () => {
     this.setState({
       isMapView: !this.state.isMapView
+      
     })
   }
 
-  render() {
+   render() {
+    
     return(
       <div>
       {this.state.isMapView ?
       <World 
         toggleMap={this.toggleMap}
-        crewDirectory = {this.projectAirTable}
+        crewDirectory = {this.state.crewDirectory}
+        
       /> :
       <div className = 'directory-container'>
-
+      
         {this.state.crewDirectory && (
         
         <div>
@@ -108,6 +110,7 @@ class Directory extends React.Component {
         />
         <div onClick={this.toggleMap}>Toggle Map</div>
         </div>
+        
         )}
         {this.state.crewDirectory && (<DirectoryList 
           crewDirectory={this.state.crewDirectory}

@@ -33,7 +33,7 @@ class World extends Component {
   }
 
     render () {
-      console.log(this.props.projectAirTable);
+      console.log(this.props.crewDiretory);
     return (
     <div>
       <div className="map-toggle" onClick={this.props.toggleMap}>Toggle Map</div>
