@@ -63,13 +63,17 @@ function Map() {
             <img style={{width: `100px`, height: `100px`, padding: `#232741`}} 
             src={selectedPerson.individual.image} alt="uploaded images" />  
 
-            <a href="https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects" class="image_links" data-image="../../Map/imagegs/practiceimage.jpg">
+            <a href="https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory" class="image_links" data-image="../../Map/images/practiceimage.jpg">
             <ul>
               <li>Click here to view individual's profile page.</li>
               <li>Projects they have and are currently working.</li>
-            </ul>.</a><br></br> 
-            {/* + */}
-         {/* <a href="#" class="image_links" data-image="https://www.gstatic.com/webp/gallery3/1.sm.png">Picture 2 In modal dialog</a>';   */}
+            </ul></a><br></br> +
+             
+            <a href="https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects" class="image_links" data-image="../../Map/images/practiceimage.png">
+            <ul>
+              <li>Project Listing</li>
+              <li>Dreamspace</li>
+            </ul></a>; 
                       
          </div>
          
