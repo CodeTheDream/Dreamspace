@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import * as mapData from "../Map/map.js"
 import { Link } from 'react-router-dom';
-
-
-
+import styled from 'styled-components';
+import crewDirectory from '../../containers/Directory'
 
 // import styled from 'styled-components'
 
@@ -14,6 +13,7 @@ GoogleMap,
 Marker,
 InfoWindow
 } from "react-google-maps";
+
 
 
 function Map() {
@@ -41,9 +41,11 @@ function Map() {
       />
       ))}
 
+ 
       
        {selectedPerson && (
          
+ 
       <InfoWindow
          position={{
          lat: selectedPerson.geometry.coordinates[0],
@@ -56,12 +58,32 @@ function Map() {
 
        >
          <div>
-         
-         
             <p>{selectedPerson.individual.name}</p>
-            <p>{selectedPerson.individual.language}</p> 
+            {/* <p>{selectedPerson.individual.language}</p>  */}
             <img style={{width: `100px`, height: `100px`, padding: `#232741`}} 
-            src={selectedPerson.individual.image} alt="uploaded images" />  
+            src={selectedPerson.individual.image} alt="uploaded images" /> 
+            <a
+          className="App-link"
+          href="https://airtable.com/tbl6BlIjU9xtYPc3h/viw8KgO9S6wm4O7Y8?blocks=bipZ12rnUhaJi0Q7F"
+          // "https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        ><br></br>
+          See Profile
+        </a>
+            {/* <nav> */}
+              {/* <ul>
+              <li><Link to='/'>Click forProfile</Link></li>
+              {/* <li><Link to='/'>Directory</Link></li> */}
+              {/* </ul>  */}
+            {/* </nav> */}
+
+
+    
+
+{/* )  */}
+            {/* <a style={{display: "table-cell"}} href="person_id" target="_blank">Name</a> */}
+            {/* <td onClick={()=> window.open("LinkToOpen", "person_id")}>View Profile</td>
 
             <a href="https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory" class="image_links" data-image="../../Map/images/practiceimage.jpg">
             <ul>
@@ -73,7 +95,7 @@ function Map() {
             <ul>
               <li>Project Listing</li>
               <li>Dreamspace</li>
-            </ul></a>; 
+            </ul></a>;  */}
                       
          </div>
          
@@ -81,10 +103,11 @@ function Map() {
 
      </InfoWindow>
       )}
-     
+       
     </GoogleMap>
   );
   }
+
   
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
