@@ -15,6 +15,22 @@ InfoWindow
 } from "react-google-maps";
 
 
+// const Button = styled.button`
+//   cursor: pointer;
+//   background: transparent;
+//   font-size: 16px;
+//   border-radius: 3px;
+//   color: palevioletred;
+//   border: 2px solid palevioletred;
+//   margin: 0 1em;
+//   padding: 0.25em 1em;
+//   transition: 0.5s all ease-out;
+ 
+//   &:hover {
+//     background-color: palevioletred;
+//     color: white;
+//   }
+// `;
 
 function Map() {
   const [selectedPerson, setSelectedPerson] = useState(null);
@@ -58,48 +74,19 @@ function Map() {
 
        >
          <div>
-            <p>{selectedPerson.individual.name}</p>
+            <p>{selectedPerson.individual.name}</p><br></br>
             {/* <p>{selectedPerson.individual.language}</p>  */}
             <img style={{width: `100px`, height: `100px`, padding: `#232741`}} 
             src={selectedPerson.individual.image} alt="uploaded images" /> 
-            <a
-          className="App-link"
-          href="https://airtable.com/tbl6BlIjU9xtYPc3h/viw8KgO9S6wm4O7Y8?blocks=bipZ12rnUhaJi0Q7F"
-          // "https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        ><br></br>
-          See Profile
-        </a>
-            {/* <nav> */}
-              {/* <ul>
-              <li><Link to='/'>Click forProfile</Link></li>
-              {/* <li><Link to='/'>Directory</Link></li> */}
-              {/* </ul>  */}
-            {/* </nav> */}
-
-
-    
-
-{/* )  */}
-            {/* <a style={{display: "table-cell"}} href="person_id" target="_blank">Name</a> */}
-            {/* <td onClick={()=> window.open("LinkToOpen", "person_id")}>View Profile</td>
-
-            <a href="https://api.airtable.com/v0/appBu5I7tEJENCp45/Employee%20directory" class="image_links" data-image="../../Map/images/practiceimage.jpg">
-            <ul>
-              <li>Click here to view individual's profile page.</li>
-              <li>Projects they have and are currently working.</li>
-            </ul></a><br></br> +
-             
-            <a href="https://api.airtable.com/v0/appQSPi3XUdUMbM1m/Projects" class="image_links" data-image="../../Map/images/practiceimage.png">
-            <ul>
-              <li>Project Listing</li>
-              <li>Dreamspace</li>
-            </ul></a>;  */}
-                      
+            {/* <Button>Click for Profile</Button> */}
+             <a
+               className="App-link"
+               href="https://airtable.com/tbl6BlIjU9xtYPc3h/viw8KgO9S6wm4O7Y8?blocks=bipZ12rnUhaJi0Q7F"
+               target="_blank"
+               rel="noopener noreferrer"
+        >      <br></br>
+               Click Profile</a>               
          </div>
-         
-
 
      </InfoWindow>
       )}
