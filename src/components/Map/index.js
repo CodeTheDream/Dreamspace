@@ -15,22 +15,47 @@ InfoWindow
 } from "react-google-maps";
 
 
-// const Button = styled.button`
-//   cursor: pointer;
-//   background: transparent;
-//   font-size: 16px;
-//   border-radius: 3px;
-//   color: palevioletred;
-//   border: 2px solid palevioletred;
-//   margin: 0 1em;
-//   padding: 0.25em 1em;
-//   transition: 0.5s all ease-out;
+const Button = styled.button`
+  cursor: pointer;
+  background: blue;
+  font-size: 12px;
+  border-radius: 24px;
+  color: white;
+  border: 2px blue; */}
+  margin: 0 1em;
+  padding: .5em 1em;
+  transition: 0.5s all ease-out;
+  background-color: blue;
+  font-weight: 300;
+  
  
-//   &:hover {
-//     background-color: palevioletred;
-//     color: white;
-//   }
-// `;
+  &:hover {
+    background-color: orange;
+    color: white;
+  
+  }
+`;
+
+const img = styled.div`
+  font-size: 16px;
+  border: solid 1px #dbdbdb;
+  background-color: orange;
+  border-radius: 3px;
+  color: #262626;
+  padding: 7px 33px;
+  border-radius: 3px;
+  color: #999;
+  cursor: text;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+  background: #fafafa;
+ 
+  ${'' /* &:active,
+  &:focus {
+    text-align: left;
+  } */}
+`;
 
 function Map() {
   const [selectedPerson, setSelectedPerson] = useState(null);
@@ -76,16 +101,19 @@ function Map() {
          <div>
             <p>{selectedPerson.individual.name}</p><br></br>
             {/* <p>{selectedPerson.individual.language}</p>  */}
-            <img style={{width: `100px`, height: `100px`, padding: `#232741`}} 
-            src={selectedPerson.individual.image} alt="uploaded images" /> 
-            {/* <Button>Click for Profile</Button> */}
-             <a
+            <img style={{width: `150px`, height: `150px`, padding: `8px`, background: `orange`}} 
+            src={selectedPerson.individual.image} alt="uploaded images" /><br></br><br></br>
+            {/* <Button onclick=<ThisComponent></Button>  */}
+            <Button className="Btn" onClick='profile'>View Profile</Button>
+            {/* <Button className='Btn' onClick={<Map>}<View Unanswered Questions></Button> */}
+            
+             {/* <a
                className="App-link"
                href="https://airtable.com/tbl6BlIjU9xtYPc3h/viw8KgO9S6wm4O7Y8?blocks=bipZ12rnUhaJi0Q7F"
                target="_blank"
                rel="noopener noreferrer"
         >      <br></br>
-               Click Profile</a>               
+               Click Profile</a>            */}
          </div>
 
      </InfoWindow>
