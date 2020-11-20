@@ -1,4 +1,5 @@
 import React from 'react';
+// import profile from '../../containers/Directory/profile'
 import ReactCardFlip from 'react-card-flip';
 import reactImage from '../../assets/images/react-image.png';
 import rubyImage from '../../assets/images/ruby-on-rails.png';
@@ -43,7 +44,7 @@ const checkDepartment = (departments) => {
   // all ctd projects
   let projects = props.projectData;
   // all ctd staff info
-  let staffList = props.crewDirectory;
+  let staffList = props.employeeDirectory;
   // opt in members list
   let optInStaffMembers = staffList.filter(filterList  => 
     filterList.fields.Directory === "YES, Include my contact info in CTD Team Directory")

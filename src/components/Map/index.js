@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import * as mapData from "../Map/map.js"
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import crewDirectory from '../../containers/Directory'
+// import crewDirectory from '../../containers/Directory'
 
 // import styled from 'styled-components'
 
@@ -28,7 +28,6 @@ const Button = styled.button`
   background-color: blue;
   font-weight: bold;
   
- 
   &:hover {
     background-color: orange;
     color: white;
@@ -38,7 +37,7 @@ const Button = styled.button`
 
 function Map() {
   const [selectedPerson, setSelectedPerson] = useState(null);
-  return(
+    return(
 
      <GoogleMap 
        defaultZoom={13}
@@ -71,15 +70,22 @@ function Map() {
 
          onCloseClick={() => {
          setSelectedPerson(null);
+         
        }}    
 
        >
          <div>
             <p>{selectedPerson.individual.name}</p><br></br>
             {/* <p>{selectedPerson.individual.language}</p>  */}
-            <img style={{width: `150px`, height: `150px`, padding: `8px`, background: `orange`}} 
-            src={selectedPerson.individual.image} alt="uploaded images" /><br></br><br></br>
-            {/* <Button onclick=<ThisComponent></Button>  */}
+            <img style=
+            {{
+            width: `150px`, 
+            height: `150px`, 
+            padding: `8px`, 
+            background: `blue`,
+            }} 
+            src={selectedPerson.individual.image} 
+            alt="uploaded images" /><br></br><br></br>
             <Button className="Btn" onClick='profile'>View Profile</Button>    
          </div>
 
@@ -100,7 +106,7 @@ export default function MapInit() {
        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`} 
        loadingElement={<div style={{ height: `100%` }} />}
        containerElement={<div style={{ height: `100%` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
+       mapElement={<div style={{ height: `100%` }} />}
        />
      </div>
    ); 
