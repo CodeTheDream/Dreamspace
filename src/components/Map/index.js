@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import * as mapData from "../Map/map.js"
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-// import crewDirectory from '../../containers/Directory'
 
-// import styled from 'styled-components'
+
 
 import { 
 withScriptjs, 
@@ -21,7 +20,7 @@ const Button = styled.button`
   font-size: 12px;
   border-radius: 24px;
   color: white;
-  border: 2px blue; */}
+  border: 2px blue;  
   margin: 0 1em;
   padding: .5em 1em;
   transition: 0.5s all ease-out;
@@ -72,26 +71,28 @@ function Map() {
          setSelectedPerson(null);
          
        }}    
-
        >
          <div>
-            <p>{selectedPerson.individual.name}</p><br></br>
+            <p style={{ 
+              color: `black`,
+              fontSize: `18px`,
+              fontWeight: `bold`,
+              }}>{selectedPerson.individual.name}</p><br></br>
             {/* <p>{selectedPerson.individual.language}</p>  */}
             <img style=
             {{
             width: `150px`, 
             height: `150px`, 
-            padding: `8px`, 
+            padding: `10px`, 
+            marginTop: '10px',
             background: `blue`,
             }} 
             src={selectedPerson.individual.image} 
             alt="uploaded images" /><br></br><br></br>
             <Button className="Btn" onClick='profile'>View Profile</Button>    
          </div>
-
      </InfoWindow>
-      )}
-       
+      )} 
     </GoogleMap>
   );
   }
