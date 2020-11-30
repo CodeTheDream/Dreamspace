@@ -13,7 +13,6 @@ Marker,
 InfoWindow
 } from "react-google-maps";
 
-
 const Button = styled.button`
   cursor: pointer;
   background: blue;
@@ -78,18 +77,44 @@ function Map() {
               fontSize: `18px`,
               fontWeight: `bold`,
               }}>{selectedPerson.individual.name}</p><br></br>
-            {/* <p>{selectedPerson.individual.language}</p>  */}
+            <p style={{ 
+              color: `black`,
+              fontSize: `15px`,
+              fontWeight: `bold`,
+            }}>{selectedPerson.individual.language}</p><br></br>
+            <p style={{ 
+              color: `black`,
+              fontSize: `15px`,
+              fontWeight: `bold`,
+            }}>{selectedPerson.individual.stack}</p> 
             <img style=
             {{
             width: `150px`, 
             height: `150px`, 
-            padding: `10px`, 
+            padding: `5px`, 
             marginTop: '10px',
             background: `blue`,
             }} 
             src={selectedPerson.individual.image} 
             alt="uploaded images" /><br></br><br></br>
-            <Button className="Btn" onClick='profile'>View Profile</Button>    
+            <Button className="Btn" onClick='profile'>View Profile</Button> <br />  
+            <br />
+            <i style=
+            {{
+            color: `orange`, 
+            padding:` 5px`,
+            }} className="fa fa-envelope"/> 
+            <i style=
+            {{
+            color: `orange`, 
+            padding: `5px`,
+            }} className="fab fa-github"></i>
+            <i style=
+            {{
+            color: `orange`, 
+            padding: `5px`,
+            }} className="fab fa-linkedin"></i>          
+            
          </div>
      </InfoWindow>
       )} 

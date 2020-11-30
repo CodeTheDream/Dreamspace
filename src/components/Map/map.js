@@ -16,6 +16,8 @@ import sadric2 from '../Map/images/sadric2.jpg'
                            "person_id": 1,
                            "name": "Cruz Nunez",
                            "language": "English, Spanish, French",
+                           "stack": "Rails",
+                           
                            "image": cruzstate,
                           
                          },
@@ -32,6 +34,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "person_id": 2,
                             "name": "Lennda Chen",
                             "language": "English, Mandarin, Fuzhounese",
+                            "stack": "Front End",
                             "image": lennda
                           },
                           "geometry":{
@@ -47,6 +50,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "person_id": 3,
                             "name": "Asiya Bykova",
                             "language": "English, Russian",
+                            "stack": "Rails",
                             "image": Asiya
                           },
                           "geometry":{
@@ -62,6 +66,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "person_id": 4,
                             "name": "Crystal Williams-Brown",
                             "language": "English",
+                            "stack": "Rails",
                             "image": crystal
                           },
                           "geometry":{
@@ -77,6 +82,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "person_id": 5,
                             "name": "Chuck Anderson",
                             "language": "English, Russian",
+                            "stack": "Rails",
                             "image": chuck
                           },
                           "geometry":{
@@ -92,6 +98,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "person_id": 6,
                             "name": "Aster Ghebreyesus",
                             "language": "English, Tigrigina",
+                            "stack": "Front End",
                             "image": Aster
                           },
                           "geometry":{
@@ -107,6 +114,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "person_id": 7,
                             "name": "Petra Holesinska",
                             "language": "English, Czech",
+                            "stack": "Rails",
                             "image": Petra
                           },
                           "geometry":{
@@ -122,6 +130,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "person_id": 8,
                             "name": "Sadric Bonner",
                             "language": "English",
+                            "stack": "Front End",
                             "image": sadric2
                           },
                           "geometry":{
@@ -137,6 +146,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "person_id": 9,
                             "name": "Kwasi Yeboah",
                             "language": "English, Twi",
+                            "stack": "Rails",
                             "image": Kwasi
                           },
                           "geometry":{
@@ -152,6 +162,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           "person_id": 10,
                           "name": "Elsabeth Kidane",
                           "language": "English, Tigrigina",
+                          "stack": "Front End",
                           "image": Elsabeth
                         },
                         "geometry":{
@@ -167,6 +178,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           "person_id": 11,
                           "name": "Mariandrea Maldonado",
                           "language": "English, Spanish",
+                          "stack": "Front End",
                           "image": Mariandrea
                         },
                         "geometry":{
