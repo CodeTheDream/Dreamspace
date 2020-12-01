@@ -1,211 +1,176 @@
-
-// import styled from 'styled-components';
-// import DirectorySearchBar from '../../components/DirectorySearchBar';
-// import DirectoryList from '../../components/DirectoryList';
- 
-
-// // // and can help with the linking
-
-// // // basically you need to make sure we have access to 
-// // //whatever value we will use as the query params id for 
-// // //each student (an airtable field) and that id will be part of the url
-
-import React from 'react';
+import React, { useState } from "react"
 import ReactDOM from 'react-dom';
-// import ScotchInfoBar from './ScotchInfoBar';
-// import './styles.css';
+
+// import { Link } from 'react-router-dom';
+// import styled from 'styled-components';
+
+
+function Profile () {
+    const [selectedPerson, setSelectedPerson] = useState(null);
+      return(
+      <main style=
+      {{
+        minHeight: `100vh`,
+        padding: `2rem 0`,
+
+      }} class="has-dflex-center">
+        <section>
+           <div class="lx-container-70">
+              <div class="lx-row">
+         <h1 class="title">Edit your profile</h1>
+       </div>
+                <div class="lx-row align-stretch">
+                    <div class="lx-column column-user-pic">
+                        <div class="profile-pic bs-md">
+                        <h1 class="pic-label">Profile picture</h1>
+                            <div class="pic bs-md">             
+                            <img style=
+                                {{
+                                width: `4024`, 
+                                height: `6048`, 
+                                loading: `lazy`, 
+                                // marginTop: `10px`,
+                                // background: `blue`,
+                                }} 
+                                src={setSelectedPerson.image} alt="uploaded images" />
+                            
+                            <a id="change-avatar" class="lx-btn"><i class="fas fa-camera-retro"></i>&nbsp;&nbsp;Change your profile picture.</a>
+                            </div>            
+                                <div class="pic-info">
+                                  <p><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;This photo will appear on the platform, in your contributions or where it is mentioned.</p>
+                                </div>
+                              </div>
+                            </div> 
+                             <div style=
+                                    {{
+                                      display: `flex`,
+                                      alignItems: `flex-start`,
+                                      justifyContent: `flex-end`,
+
+                                    }}
+                             class="lx-column">
+                                <form action="get">
+                                    <div class="fieldset">
+                                      <label for="user-name">Name</label>
+                                        <div class="input-wrapper">
+                                            <span class="icon"><i class="fas fa-user"></i></span>
+                                            <input type="text" id="user-name" value="Lorem Ipsum" autocomplete="username" required></input>
+                                        </div>
+                                    </div>
+                                    <div id="user-name-helper" class="helper">
+                    <p>Your name can appear on the platform, in your contributions or where it is mentioned.</p>
+                </div>
+                
+                <div class="fieldset">
+                <label for="user-id">Registration</label>
+                <div class="input-wrapper">
+                    <span class="icon"><i class="fas fa-address-card"></i></span>
+                    <input type="number" id="user-id" value="424242" required></input>
+                
+                </div>
+                <div id="user-id-helper" class="helper"></div>
+                </div>
+                <div class="fieldset">
+                <label for="email">E-mail</label>
+                <div class="input-wrapper">
+                    <span class="icon"><i class="fas fa-envelope"></i></span>
+                    <input type="email" id="email" value="lorem@ipsum.com" autocomplete="username"></input>
+                </div>
+                <div id="email-helper" class="helper"></div>
+                </div>
+                <div class="fieldset">
+                <label for="pass">Password</label>
+                <div class="input-wrapper">
+                    <span class="icon"><i class="fas fa-key"></i></span>
+                    <input type="password" id="pass" value="pass123*" autocomplete="current-password"></input>
+                </div>
+                <div id="pass-helper" class="helper">
+                </div>
+                <div class="actions">
+                <a id="cancel" class="lx-btn"></a>
+                <i class="fas fa-ban"></i>&nbsp;&nbsp;Cancel />
+                <a id="clear" class="lx-btn"><i class="fas fa-broom"></i>&nbsp;&nbsp;Clean</a>
+                <a id="save" class="lx-btn"><i class="fas fa-save"></i>&nbsp;&nbsp;Save</a>
+                </div>
+                </div>
+            </form>
+            </div>
+            </div>
+            </div>
+    </section>
+    </main>
+    )
+ };
+
+
+export default Profile;
+
+
+
+
 
 /**
  * Our data
  * ------------------------
- */
-const user = {
-  name: 'Chris on Code',
-  location: 'Las Vegas',
-  foodType: 'Everything',
-  age: 28,
-  likes: 'Coding into the wee hours of the morning',
-  twitterUsername: 'chrisoncode',
-  avatar:
-    'https://scotch-res.cloudinary.com/image/upload/v1556479698/xRZsnhr0_400x400_cpyg2t.png'
-};
+//  */
+// const person = {
+//   profilePic: '',
+//   name: '',
+// //   foodType: 'Everything',
+//   age: 28,
+//   likes: 'Coding into the wee hours of the morning',
+//   twitterUsername: 'chrisoncode',
+//   avatar:
+//     'https://scotch-res.cloudinary.com/image/upload/v1556479698/xRZsnhr0_400x400_cpyg2t.png'
+// };
 
 /**
  * Our React component where we should display data
  * ------------------------
  */
-function Profile() {
-  const url = `https://twitter.com/${user.twitterUsername}`;
+// function Profile () {
+//   const url = `https://twitter.com/${user.twitterUsername}`;
 
-  return (
-    <div className="App">
-      {/* Show user data here */}
-      <div className="user-deets">
-        <img src={user.avatar} alt={user.name} />
-        <h3>
-          <a href={url}>{user.name}</a>
-        </h3>
-        <p>
-          <strong>Location</strong> {user.location}
-        </p>
-        <p>
-          <strong>Eats</strong> {user.foodType}
-        </p>
-        <p>
-          <strong>Age</strong> {user.age}
-        </p>
-        <p>
-          <strong>Likes</strong> {user.likes}
-        </p>
-        <p>
-          <strong>Twitter</strong>{' '}
-          <a href={url}>@{user.twitterUsername}</a>
-        </p>
-      </div>
+//   return (
+//     <div className="App">
+//       {/* Show user data here */}
+//       <div className="user-deets">
+//         <img src={person.profilePic} alt={person.name} />
+//         {/* <h3>
+//           <a href={url}>{user.name}</a>
+//         </h3>
+//         <p>
+//           <strong>Location</strong> {user.location}
+//         </p>
+//         <p>
+//           <strong>Eats</strong> {user.foodType}
+//         </p>
+//         <p>
+//           <strong>Age</strong> {user.age}
+//         </p>
+//         <p>
+//           <strong>Likes</strong> {user.likes}
+//         </p>
+//         <p>
+//           <strong>Twitter</strong>{' '}
+//           <a href={url}>@{user.twitterUsername}</a>
+//         </p>
+//       </div> */}
 
-      {/* <ScotchInfoBar /> */}
-    </div>
-  );
-}
+//       {/* <ScotchInfoBar /> */}
+//       </div>
+//     </div>
+//   );
+// }
 
-export default Profile;
 
+ 
 // const rootElement = document.getElementById('root');
-// ReactDOM.render(<App />, rootElement);
+// ReactDOM.render(<App />, rootElement); 
 
+// export default Profile;
 
-// class Profile extends Component {
-//     state = {
-//       firstName: '',
-//       lastName: '',
-//       email: '',
-//       photo: '',
-//     };
-//     handleChange = e => {
-//       this.setState({
-//         [e.target.id]: e.target.value
-//       });
-//     };
-//     handleSubmit = e => {
-//       e.preventDefault();
-//       console.log(this.state);
-//     };
-//     render() {
-//       return (
-//         <div>
-//           <form onSubmit={this.handleSubmit}>
-//             <label htmlFor="heading">
-//               <h2>
-//                 <u> Personal Information: </u>
-//               </h2>
-//             </label>
-//             <br />
-//             <label htmlFor="firstName">First Name:</label>
-//             <input
-//               type="text"
-//               placeholder="First Name"
-//               id="firstName"
-//               onChange={this.handleChange}
-//             />
-//             &nbsp;&nbsp;&nbsp;&nbsp;
-//             <label htmlFor="middleName">Middle Name:</label>
-//             <input
-//               type="text"
-//               placeholder="Middle Name"
-//               id="middleName"
-//               onChange={this.handleChange}
-//             />{" "}
-//             &nbsp;&nbsp;&nbsp;&nbsp;
-//             <label htmlFor="lastName">Last Name:</label>
-//             <input
-//               type="text"
-//               placeholder="Last Name"
-//               id="lastName"
-//               onChange={this.handleChange}
-//             />{" "}
-//             &nbsp;&nbsp;&nbsp;&nbsp;
-//             <br />
-//             <br />
-//             <label htmlFor="mailId">Mail Id:</label>
-//             <input
-//               type="email"
-//               placeholder="Enter Mail id"
-//               id="mailId"
-//               onChange={this.handleChange}
-//             />
-//             &nbsp;&nbsp;&nbsp;&nbsp;
-//             <label htmlFor="phoneNum">Phone Number:</label>
-//             <input
-//               type="text"
-//               placeholder="Enter Phone Number"
-//               id="phoneNum"
-//               onChange={this.handleChange}
-//             />
-//             &nbsp;&nbsp;&nbsp;&nbsp; Department:
-//             <select id="department" onChange={this.handleChange}>
-//               <option value="one">one</option>
-//               <option value="two">two</option>
-//               <option value="three">three</option>
-//               <option value="four">four</option>
-//             </select>
-//             <br />
-//             <br />
-//             <label htmlFor="jobTitle">Job Title:</label>
-//             <input
-//               type="text"
-//               placeholder="Job Title"
-//               id="jobTitle"
-//               onChange={this.handleChange}
-//             />
-//             &nbsp;&nbsp;&nbsp;&nbsp; Reporting Manager:
-//             <select id="reportingManager" onChange={this.handleChange}>
-//               <option value="one">one</option>
-//               <option value="two">two</option>
-//               <option value="three">three</option>
-//               <option value="four">four</option>
-//             </select>
-//             <br />
-//             <br />
-//             Branch:
-//             <select id="branch" onChange={this.handleChange}>
-//               <option value="one">one</option>
-//               <option value="two">two</option>
-//               <option value="three">three</option>
-//               <option value="four">four</option>
-//             </select>
-//             <br />
-//             <br />
-//             Employee Status:
-//             <select id="employeeStatus" onChange={this.handleChange}>
-//               <option value="Active">Active</option>
-//               <option value="Inactive">Inactive</option>
-//             </select>
-//             <br />
-//             <br />
-//             Marital Status:
-//             <select id="maritalStatus" onChange={this.handleChange}>
-//               <option value="Married">Married</option>
-//               <option value="Unmarried">Unmarried</option>
-//             </select>
-//             <br />
-//             <br />
-//             Role:
-//             <select id="role" onChange={this.handleChange}>
-//               <option value="Manager">Manager</option>
-//               <option value="User">User</option>
-//             </select>
-//             <br />
-//             <br />
-//             <label htmlFor="checkbox">Promote as Manager</label>
-//             <input type="checkbox" id="promote" onChange={this.handleChange} />
-//           </form>
-//         </div>
-//       );
-//     }
-//   }
-  
-//   export default Profile;
-
+// 
 // class Profile extends Component {
 //   constructor(props) {
 //       super(props);
