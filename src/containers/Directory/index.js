@@ -13,7 +13,7 @@ class Directory extends React.Component {
       searchDirectory: "",
       isFlipped: false,
       isMapView: true,
-      getCoordinates: [],
+      developersData: [],
     }
   }
 
@@ -65,9 +65,10 @@ class Directory extends React.Component {
     })
       .then(response => response.json())
       .then(responseData => {
-        console.log(responseData)
-        const mapMarkers= responseData.records;
-        this.setState({getCoordinates: mapMarkers});
+        //console.log('responseData', responseData);
+        const developers= responseData.records;
+        //console.log('mapMarkers', mapMarkers)
+        this.setState({developersData: developers});
       });
   }
 
@@ -107,6 +108,8 @@ class Directory extends React.Component {
       {this.state.isMapView ?
       <World 
         toggleMap={this.toggleMap}
+        //Passed to World
+        mapAPI={this.state.developersData}
       /> :
       <div className = 'directory-container'>
 

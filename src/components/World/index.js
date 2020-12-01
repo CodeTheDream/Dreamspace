@@ -33,11 +33,16 @@ class World extends Component {
   }
 
     render () {
+      //console.log('worldProps', this.props)
+      //console.log('mapAPI', this.props.mapAPI)
+  
     return (
     <div>
       <div className="map-toggle" onClick={this.props.toggleMap}>Toggle Map</div>
       <Map
         getClickOnPin = {this.getClickOnPin}
+        //Passed into map
+        mapAPI = {this.props.mapAPI}
       />
 
     </div>

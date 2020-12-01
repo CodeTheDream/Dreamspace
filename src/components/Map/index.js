@@ -13,27 +13,32 @@ InfoWindow
 // import { faParking } from "@fortawesome/free-solid-svg-icons";
 
 
-function Map() {
+
+
+export const Map = (props) => {
 const [selectedPerson, setSelectedPerson] = useState(null);
+
+console.log('mapProps', props)
   
 return(
-
      <GoogleMap 
-       defaultZoom={13}
+       defaultZoom={3}
        defaultCenter={{ 
          lat: 20.516960, 
          lng: -100.800262 }} 
       > 
-      {mapData.markers.map((person) => (
+      {props.mapAPI.map((person) => (
+        
         <Marker
           icon={personpin}
-          key={person.individual.person_id}
+          key={person.id}
           position={{
-            lat: person.geometry.coordinates[0],
-            lng: person.geometry.coordinates[1]
+            lat: person.fields.latitude,
+            lng: person.fields.longitude
           }}
   
       onClick={() => {
+        console.log('person', person.fields.Image)
         setSelectedPerson(person);
       }}
       />
@@ -42,17 +47,17 @@ return(
        {selectedPerson && (
          <InfoWindow
          position={{
-         lat: selectedPerson.geometry.coordinates[0],
-         lng: selectedPerson.geometry.coordinates[1] }}
+         lat: selectedPerson.fields.latitude,
+         lng: selectedPerson.fields.longitude }}
 
        onCloseClick={() => {
          setSelectedPerson(null);
        }}
        >
           <div>
-            <p>{selectedPerson.individual.name}</p>
-            <p>{selectedPerson.individual.language}</p>
-            <img style={{width:'200px', height:'200px'}} src={selectedPerson.individual.image} alt="uploaded images" />          
+            <p>{selectedPerson.fields.Name}</p>
+            <p>{selectedPerson.fields.languages}</p>
+            <img style={{width:'200px', height:'200px'}} src={selectedPerson.fields.Image[0].url} alt="uploaded images" />
           </div>                    
       </InfoWindow>
       )} 
@@ -63,7 +68,8 @@ return(
 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
-export default function MapInit() {
+export default function MapInit(props) {
+//console.log('MapInit', props)
    return (
      <div style={{ width: "100vw", height: "100vh" }}
      >
@@ -72,6 +78,7 @@ export default function MapInit() {
        loadingElement={<div style={{ height: `100%` }} />}
        containerElement={<div style={{ height: `100%` }} />}
         mapElement={<div style={{ height: `100%` }} />}
+        mapAPI = {props.mapAPI}
        />
      </div>
    ); 
