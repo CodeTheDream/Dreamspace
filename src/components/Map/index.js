@@ -66,7 +66,7 @@ function Map() {
 
          onCloseClick={() => {
          setSelectedPerson(null);
-         console.log("Sadric")
+         console.log("Bonner")
        }}    
        >
          <div>
