@@ -3,8 +3,6 @@ import * as mapData from "../Map/map.js"
 // import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-
-
 import { 
 withScriptjs, 
 withGoogleMap, 
@@ -92,7 +90,7 @@ function Map() {
             width: `150px`, 
             height: `150px`, 
             padding: `5px`, 
-            marginTop: '10px',
+            marginTop: `10px`,
             background: `blue`,
             }} 
             src={selectedPerson.individual.image} 
@@ -108,7 +106,7 @@ function Map() {
             {{
             color: `orange`, 
             padding: `5px`,
-            }} className="fab fa-github"></i>
+            }} className="fab fa-github-square"></i>
             <i style=
             {{
             color: `orange`, 
