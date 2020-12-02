@@ -17,7 +17,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                            "name": "Cruz Nunez",
                            "language": "English, Spanish, French",
                            "stack": "Rails",
-                           "profilePic": "https://airtable.com/tbljPKsrKDaol8u3K/viwYY4GOKd4os9iGl/rec4AIPugKVVaKnsH",
+                           "profilePic": "",
                            "image": cruzstate,
                           
                          },
@@ -35,7 +35,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "name": "Lennda Chen",
                             "language": "English, Mandarin, Fuzhounese",
                             "stack": "Front End",
-                            "profilePic": "https://airtable.com/tbljPKsrKDaol8u3K/viwYY4GOKd4os9iGl/rec4RcIeb5vVzGmKf",
+                            "profilePic": "",
                             "image": lennda
                           },
                           "geometry":{
@@ -52,7 +52,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "name": "Asiya Bykova",
                             "language": "English, Russian",
                             "stack": "Rails",
-                            "profilePic": "https://airtable.com/tbljPKsrKDaol8u3K/viwYY4GOKd4os9iGl/recriKgURxQlJWCyG",
+                            "profilePic": "",
                             "image": Asiya
                           },
                           "geometry":{
@@ -69,7 +69,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "name": "Crystal Williams-Brown",
                             "language": "English",
                             "stack": "Rails",
-                            "profilePic": "https://airtable.com/tbljPKsrKDaol8u3K/viwYY4GOKd4os9iGl/rec4AIPugKVVaKnsH",
+                            "profilePic": "",
                             "image": crystal
                           },
                           "geometry":{
@@ -86,7 +86,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "name": "Chuck Anderson",
                             "language": "English, Russian",
                             "stack": "Rails",
-                            "profilePic": "https://airtable.com/tbljPKsrKDaol8u3K/viwYY4GOKd4os9iGl/recUaaMwYVEJ0b96w",
+                            "profilePic": "",
                             "image": chuck
                           },
                           "geometry":{
@@ -102,8 +102,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "person_id": 6,
                             "name": "Aster Ghebreyesus",
                             "language": "English, Tigrigina",
-                            "stack": "Front End",
-                            "profilePic": "https://airtable.com/tbljPKsrKDaol8u3K/viwYY4GOKd4os9iGl/rece6yf0yXI3IhU8N",
+                            "profilePic": "", 
                             "image": Aster
                           },
                           "geometry":{
@@ -120,7 +119,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "name": "Petra Holesinska",
                             "language": "English, Czech",
                             "stack": "Rails",
-                            "profilePic": "https://airtable.com/tbljPKsrKDaol8u3K/viwYY4GOKd4os9iGl/recBfMJg20RAPGbhG",
+                            "profilePic": "",
                             "image": Petra
                           },
                           "geometry":{
@@ -137,7 +136,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "name": "Sadric Bonner",
                             "language": "English",
                             "stack": "Front End",
-                            "profilePic": "https://airtable.com/tbljPKsrKDaol8u3K/viwYY4GOKd4os9iGl/recjGekCHsCdt97MT",
+                            "profilePic": "",
                             "image": sadric2
                           },
                           "geometry":{
@@ -154,7 +153,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "name": "Kwasi Yeboah",
                             "language": "English, Twi",
                             "stack": "Rails",
-                            "profilePic": "https://airtable.com/tbljPKsrKDaol8u3K/viwYY4GOKd4os9iGl/recJn2gU1QjuY0DG4",
+                            "profilePic": "",
                             "image": Kwasi
                           },
                           "geometry":{
@@ -171,7 +170,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           "name": "Elsabeth Kidane",
                           "language": "English, Tigrigina",
                           "stack": "Front End",
-                          "profilePic": "https://airtable.com/tbljPKsrKDaol8u3K/viwYY4GOKd4os9iGl/rec0P3nQ1Kh9QS69M",
+                          "profilePic": "",
                           "image": Elsabeth
                         },
                         "geometry":{
@@ -188,7 +187,7 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           "name": "Mariandrea Maldonado",
                           "language": "English, Spanish",
                           "stack": "Front End",
-                          "profilePic": "https://airtable.com/tbljPKsrKDaol8u3K/viwYY4GOKd4os9iGl/recQ6yRh86xfvbKmn",
+                          "profilePic": "",
                           "image": Mariandrea
                         },
                         "geometry":{
