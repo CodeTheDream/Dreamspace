@@ -54,20 +54,56 @@ function Profile () {
                             }}
                         
                         classNumber="pic-label">Profile picture</h1>
-                            <div classNumber="pic bs-md">             
-                            <img style=
+                            <div style=
                                 {{
-                                width: `4024`, 
-                                height: `6048`, 
-                                loading: `lazy`, 
-                                // marginTop: `10px`,
-                                // background: `blue`,
+                                width: `16rem`, 
+                                height: `16rem`, 
+                                position: `relative`,
+                                overflow: `hidden`,
+                                borderRadius: `50%`, 
                                 }} 
+                                classNumber="pic bs-md">             
+                            <img style= 
+                            {{
+                                width: `100%`,
+                                height: `100%`,
+                                objectFit: `cover`,
+                                objectPosition: `center`, 
+                            }}
+                                
                                 src="https://bit.ly/3jRbrbp" alt="" width="4024" height="6048" loading="lazy" />
                             
-                            <a id="change-avatar" classNumber="lx-btn"><i classNumber="fas fa-camera-retro"></i>&nbsp;&nbsp;Change your profile picture.</a>
+                            <a style=
+                                {{
+                                    opacity: `0`,
+                                    width: `100%`,
+                                    height: `100%`,
+                                    margin: `0`,
+                                    padding: `0`,
+                                    position: `absolute`,
+                                    transform: `translate(-50%, -50%)`,
+                                    top: `50%`,
+                                    left: `50%`,
+                                    display: `none`,
+                                    alignItems: `center`,
+                                    justifyContent: `center`,
+                                    textTransform: `none`,
+                                    fontSize: `1rem`,
+                                    color: `white`,
+                                    backgroundColor: `rgba(0, 0, 0, 0.8)`,         
+                                    }} 
+                            
+                            id="change-avatar" classNumber="lx-btn" />
+                            {/* <i classNumber="fas  fa-camera-retro"></i>&nbsp;&nbsp;Change your profile picture. /> */}
                             </div>            
-                                <div classNumber="pic-info">
+                                <div style=
+                                {{
+                                    width: `100%`,
+                                    margin: `2rem 0 0 0`,
+                                    fontSize: `0.9rem`,
+                                    textAlign: `center`,
+                                }}
+                                classNumber="pic-info">
                                   <p><i classNumber="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;This photo will appear on the platform, in your contributions or where it is mentioned.</p>
                                 </div>
                               </div>
@@ -80,8 +116,26 @@ function Profile () {
 
                                     }}
                              classNumber="lx-column">
-                                <form action="get">
-                                    <div classNumber="fieldset">
+                                <form style=
+                                    {{ 
+                                        width: `auto`,
+                                        minWidth: `15rem`,
+                                        maxWidth: `25rem`,
+                                        margin: `3rem 0 0 0`,
+                                    }}
+                                    action="get">
+                                    <div style=
+                                    {{
+                                        width: `100%`,
+                                        margin: `2rem 0`,
+                                        position: `relative`,
+                                        display: `flex`,
+                                        flexWrap: `wrap`,
+                                        alignItems: `center`,
+                                        justifyContent: `flex-start`,
+                                    }}
+                                    
+                                    classNumber="fieldset">
                                       <label for="user-name">Name</label>
                                         <div classNumber="input-wrapper">
                                             <span classNumber="icon"><i classNumber="fas fa-user"></i></span>
@@ -92,7 +146,18 @@ function Profile () {
                     <p>Your name can appear on the platform, in your contributions or where it is mentioned.</p>
                 </div>
                 
-                <div classNumber="fieldset">
+                <div style=
+                    {{
+                        width: `100%`,
+                        margin: `2rem 0`,
+                        position: `relative`,
+                        display: `flex`,
+                        flexWrap: `wrap`,
+                        alignItems: `center`,
+                        justifyContent: `flex-start`,
+                     }}
+                
+                classNumber="fieldset">
                 <label for="user-id">Registration</label>
                 <div classNumber="input-wrapper">
                     <span classNumber="icon"><i classNumber="fas fa-address-card"></i></span>
@@ -101,7 +166,17 @@ function Profile () {
                 </div>
                 <div id="user-id-helper" classNumber="helper"></div>
                 </div>
-                <div classNumber="fieldset">
+                <div style=
+                    {{
+                        width: `100%`,
+                        margin: `2rem 0`,
+                        position: `relative`,
+                        display: `flex`,
+                        flexWrap: `wrap`,
+                        alignItems: `center`,
+                        justifyContent: `flex-start`,
+                     }}
+                classNumber="fieldset">
                 <label for="email">E-mail</label>
                 <div classNumber="input-wrapper">
                     <span classNumber="icon"><i classNumber="fas fa-envelope"></i></span>
@@ -109,7 +184,17 @@ function Profile () {
                 </div>
                 <div id="email-helper" classNumber="helper"></div>
                 </div>
-                <div classNumber="fieldset">
+                <div style=
+                    {{
+                        width: `100%`,
+                        margin: `2rem 0`,
+                        position: `relative`,
+                        display: `flex`,
+                        flexWrap: `wrap`,
+                        alignItems: `center`,
+                        justifyContent: `flex-start`,
+                     }}
+                     classNumber="fieldset">
                 <label for="pass">Password</label>
                 <div classNumber="input-wrapper">
                     <span classNumber="icon"><i classNumber="fas fa-key"></i></span>
