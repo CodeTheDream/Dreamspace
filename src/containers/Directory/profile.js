@@ -12,18 +12,40 @@ function Profile () {
       {{
         minHeight: `100vh`,
         padding: `2rem 0`,
-
-      }} class="has-dflex-center">
-        <section>
-           <div class="lx-container-70">
-              <div class="lx-row">
-         <h1 class="title">Edit your profile</h1>
+      }} classNumber="has-dflex-center">
+        <section style=
+      {{
+        minHeight: `100vh`,
+        padding: `2rem 0`,
+      }}
+        >
+           <div classNumber="lx-container-70">
+              <div classNumber="lx-row">
+         <h1 classNumber="title">Edit your profile</h1>
        </div>
-                <div class="lx-row align-stretch">
-                    <div class="lx-column column-user-pic">
-                        <div class="profile-pic bs-md">
-                        <h1 class="pic-label">Profile picture</h1>
-                            <div class="pic bs-md">             
+                <div classNumber="lx-row align-stretch">
+                    <div classNumber="lx-column column-user-pic" style=
+                    {{
+                        display: `flex`,
+                        alignItems: `flex-start`,
+                        justifyContent: `flex-end`,
+                    }}
+                    >
+                        <div classNumber="profile-pic bs-md" style=
+                        {{
+                            width: `auto`,
+                            maxWidth: `20rem`,
+                            margin: `3rem 2rem`,
+                            padding: `2rem`,
+                            display: `flex`,
+                            flexFlow: `wrap column`,
+                            alignItems: `center`,
+                            justifyContent: `center`,
+                            borderRadius: `0.25rem`,
+                            backgroundColor: `white`,
+                                                }}>
+                        <h1 classNumber="pic-label">Profile picture</h1>
+                            <div classNumber="pic bs-md">             
                             <img style=
                                 {{
                                 width: `4024`, 
@@ -34,10 +56,10 @@ function Profile () {
                                 }} 
                                 src={setSelectedPerson.image} alt="uploaded images" />
                             
-                            <a id="change-avatar" class="lx-btn"><i class="fas fa-camera-retro"></i>&nbsp;&nbsp;Change your profile picture.</a>
+                            <a id="change-avatar" classNumber="lx-btn"><i classNumber="fas fa-camera-retro"></i>&nbsp;&nbsp;Change your profile picture.</a>
                             </div>            
-                                <div class="pic-info">
-                                  <p><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;This photo will appear on the platform, in your contributions or where it is mentioned.</p>
+                                <div classNumber="pic-info">
+                                  <p><i classNumber="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;This photo will appear on the platform, in your contributions or where it is mentioned.</p>
                                 </div>
                               </div>
                             </div> 
@@ -48,49 +70,49 @@ function Profile () {
                                       justifyContent: `flex-end`,
 
                                     }}
-                             class="lx-column">
+                             classNumber="lx-column">
                                 <form action="get">
-                                    <div class="fieldset">
+                                    <div classNumber="fieldset">
                                       <label for="user-name">Name</label>
-                                        <div class="input-wrapper">
-                                            <span class="icon"><i class="fas fa-user"></i></span>
+                                        <div classNumber="input-wrapper">
+                                            <span classNumber="icon"><i classNumber="fas fa-user"></i></span>
                                             <input type="text" id="user-name" value="Lorem Ipsum" autocomplete="username" required></input>
                                         </div>
                                     </div>
-                                    <div id="user-name-helper" class="helper">
+                                    <div id="user-name-helper" classNumber="helper">
                     <p>Your name can appear on the platform, in your contributions or where it is mentioned.</p>
                 </div>
                 
-                <div class="fieldset">
+                <div classNumber="fieldset">
                 <label for="user-id">Registration</label>
-                <div class="input-wrapper">
-                    <span class="icon"><i class="fas fa-address-card"></i></span>
+                <div classNumber="input-wrapper">
+                    <span classNumber="icon"><i classNumber="fas fa-address-card"></i></span>
                     <input type="number" id="user-id" value="424242" required></input>
                 
                 </div>
-                <div id="user-id-helper" class="helper"></div>
+                <div id="user-id-helper" classNumber="helper"></div>
                 </div>
-                <div class="fieldset">
+                <div classNumber="fieldset">
                 <label for="email">E-mail</label>
-                <div class="input-wrapper">
-                    <span class="icon"><i class="fas fa-envelope"></i></span>
+                <div classNumber="input-wrapper">
+                    <span classNumber="icon"><i classNumber="fas fa-envelope"></i></span>
                     <input type="email" id="email" value="lorem@ipsum.com" autocomplete="username"></input>
                 </div>
-                <div id="email-helper" class="helper"></div>
+                <div id="email-helper" classNumber="helper"></div>
                 </div>
-                <div class="fieldset">
+                <div classNumber="fieldset">
                 <label for="pass">Password</label>
-                <div class="input-wrapper">
-                    <span class="icon"><i class="fas fa-key"></i></span>
+                <div classNumber="input-wrapper">
+                    <span classNumber="icon"><i classNumber="fas fa-key"></i></span>
                     <input type="password" id="pass" value="pass123*" autocomplete="current-password"></input>
                 </div>
-                <div id="pass-helper" class="helper">
+                <div id="pass-helper" classNumber="helper">
                 </div>
-                <div class="actions">
-                <a id="cancel" class="lx-btn"></a>
-                <i class="fas fa-ban"></i>&nbsp;&nbsp;Cancel />
-                <a id="clear" class="lx-btn"><i class="fas fa-broom"></i>&nbsp;&nbsp;Clean</a>
-                <a id="save" class="lx-btn"><i class="fas fa-save"></i>&nbsp;&nbsp;Save</a>
+                <div classNumber="actions">
+                <a id="cancel" classNumber="lx-btn"></a>
+                <i classNumber="fas fa-ban"></i>&nbsp;&nbsp;Cancel />
+                <a id="clear" classNumber="lx-btn"><i class="fas fa-broom"></i>&nbsp;&nbsp;Clean</a>
+                <a id="save" classNumber="lx-btn"><i classNumber="fas fa-save"></i>&nbsp;&nbsp;Save</a>
                 </div>
                 </div>
             </form>
