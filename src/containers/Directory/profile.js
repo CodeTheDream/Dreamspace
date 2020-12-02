@@ -44,7 +44,16 @@ function Profile () {
                             borderRadius: `0.25rem`,
                             backgroundColor: `white`,
                                                 }}>
-                        <h1 classNumber="pic-label">Profile picture</h1>
+                        <h1 style=
+                            {{
+                            width: `auto`,
+                            margin: `0 0 1rem 0`,
+                            textAlign: `center`,
+                            fontSize: `1.4rem`,
+                            fontWeight: `700`,
+                            }}
+                        
+                        classNumber="pic-label">Profile picture</h1>
                             <div classNumber="pic bs-md">             
                             <img style=
                                 {{
@@ -54,7 +63,7 @@ function Profile () {
                                 // marginTop: `10px`,
                                 // background: `blue`,
                                 }} 
-                                src={setSelectedPerson.image} alt="uploaded images" />
+                                src="https://bit.ly/3jRbrbp" alt="" width="4024" height="6048" loading="lazy" />
                             
                             <a id="change-avatar" classNumber="lx-btn"><i classNumber="fas fa-camera-retro"></i>&nbsp;&nbsp;Change your profile picture.</a>
                             </div>            
