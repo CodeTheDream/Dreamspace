@@ -56,7 +56,7 @@ function Profile() {
                                         borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
                                         fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
                                         backgroundColor: `e9ecef`, }} classNumber="icon">
-                            <i style= {{ color: `orange`, padding:` 5px`, }} className="fas fa-network-wired fa-lg"/></span>
+                            <i style= {{ color: `black`, padding:` 5px`, }} className="fas fa-network-wired fa-lg"/></span>
                                 <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
                                                     borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
                                                     borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
@@ -77,7 +77,7 @@ function Profile() {
                                     borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
                                     fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
                                     backgroundColor: `e9ecef`, }} classNumber="icon">
-                        <i style= {{ color: `orange`, padding:` 5px`, }} className="fab fa-buffer fa-lg"/></span>
+                        <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-buffer fa-lg"/></span>
                             <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
                                                 borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
                                                 borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
@@ -98,7 +98,7 @@ function Profile() {
                                         borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
                                         fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
                                         backgroundColor: `e9ecef`, }} classNumber="icon">
-                            <i style= {{ color: `orange`, padding:` 5px`, }} className="fab fa-dev fa-lg"/></span>
+                            <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-dev fa-lg"/></span>
                                 <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
                                                     borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
                                                     borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
@@ -120,7 +120,7 @@ function Profile() {
                                         borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
                                         fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
                                         backgroundColor: `e9ecef`, }} classNumber="icon">
-                            <i style= {{ color: `orange`, padding:` 5px`, }} className="fas fa-envelope fa-lg"/></span>
+                            <i style= {{ color: `black`, padding:` 5px`, }} className="fas fa-envelope fa-lg"/></span>
                                 <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
                                                     borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
                                                     borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
@@ -141,7 +141,7 @@ function Profile() {
                                         borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
                                         fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
                                         backgroundColor: `e9ecef`, }} classNumber="icon">
-                            <i style= {{ color: `orange`, padding:` 5px`, }} className="fab fa-github-square fa-lg"/></span>
+                            <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-github-square fa-lg"/></span>
                                 <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
                                                     borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
                                                     borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
