@@ -47,8 +47,8 @@ function Profile() {
                 <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
                            flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
                            classNumber="fieldset">
-                  <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Title:
-                </label>
+                  {/* <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Title:
+                </label> */}
                     <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
                                 }} classNumber="input-wrapper"> 
                         <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
@@ -56,20 +56,20 @@ function Profile() {
                                         borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
                                         fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
                                         backgroundColor: `e9ecef`, }} classNumber="icon">
-                            <i style= {{ color: `black`, padding:` 5px`, }} className="fas fa-network-wired fa-lg"/></span>
-                                <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                            <i style= {{ color: `black`, padding:` 5px`, }} className="fas fa-network-wired fa-2x"/></span>
+                                {/* <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
                                                     borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
                                                     borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
                                                     fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
-                                        type="text" id="user-name" value="Lorem Ipsum" autocomplete="username" required></input>
+                                        type="text" id="user-name" value="Job Title" autocomplete="username" required></input> */}
            </div>
            </div>
                         
            <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
                           flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
                            classNumber="fieldset">
-            <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Projects:
-            </label>
+            {/* <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Projects:
+            </label> */}
                 <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
                             }} classNumber="input-wrapper"> 
                     <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
@@ -77,20 +77,20 @@ function Profile() {
                                     borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
                                     fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
                                     backgroundColor: `e9ecef`, }} classNumber="icon">
-                        <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-buffer fa-lg"/></span>
-                            <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                        <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-buffer fa-2x"/></span>
+                            {/* <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
                                                 borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
                                                 borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
                                                 fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
-                                    type="text" id="user-name" value="Lorem Ipsum" autocomplete="username" required></input>
+                                    type="text" id="user-name" value="Projects Listing" autocomplete="username" required></input> */}
             </div>
             </div>
 
            <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
                            flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
                            classNumber="fieldset">
-                <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Stack:
-                </label>
+                {/* <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Stack:
+                </label> */}
                     <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
                                 }} classNumber="input-wrapper"> 
                         <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
@@ -98,12 +98,12 @@ function Profile() {
                                         borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
                                         fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
                                         backgroundColor: `e9ecef`, }} classNumber="icon">
-                            <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-dev fa-lg"/></span>
-                                <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                            <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-dev fa-2x"/></span>
+                                {/* <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
                                                     borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
                                                     borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
                                                     fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
-                                        type="text" id="user-name" value="Lorem Ipsum" autocomplete="username" required></input>
+                                        type="text" id="user-name" value="(React/Full Stack/Rails)" autocomplete="username" required></input> */}
             </div>
             </div>
                     
@@ -111,8 +111,8 @@ function Profile() {
              <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
                            flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
                            classNumber="fieldset">
-                <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Email:
-                </label>
+                {/* <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Email:
+                </label> */}
                     <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
                                 }} classNumber="input-wrapper"> 
                         <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
@@ -120,20 +120,20 @@ function Profile() {
                                         borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
                                         fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
                                         backgroundColor: `e9ecef`, }} classNumber="icon">
-                            <i style= {{ color: `black`, padding:` 5px`, }} className="fas fa-envelope fa-lg"/></span>
-                                <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                            <i style= {{ color: `black`, padding:` 5px`, }} className="fas fa-envelope fa-2x"/></span>
+                                {/* <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
                                                     borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
                                                     borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
                                                     fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
-                                        type="text" id="user-name" value="Lorem Ipsum" autocomplete="username" required></input>
+                                        type="text" id="user-name" value="(Internal use only)" autocomplete="username" required></input> */}
             </div>
             </div>
 
             <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
                            flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
                            classNumber="fieldset">
-                <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Github:
-                </label>
+                {/* <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Github:
+                </label> */}
                     <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
                                 }} classNumber="input-wrapper"> 
                         <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
@@ -141,12 +141,12 @@ function Profile() {
                                         borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
                                         fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
                                         backgroundColor: `e9ecef`, }} classNumber="icon">
-                            <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-github-square fa-lg"/></span>
-                                <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                            <i style= {{ color: `black`, padding: `5px`, }} className="fab fa-github-square fa-2x"/></span>
+                                {/* <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
                                                     borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
                                                     borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
                                                     fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
-                                        type="text" id="user-name" value="Lorem Ipsum" autocomplete="username" required></input>
+                                        type="text" id="user-name" value="(Github Portfolio Link)" autocomplete="username" required></input> */}
                     </div>
                     </div>
                 
