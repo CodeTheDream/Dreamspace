@@ -14,14 +14,13 @@ function Profile() {
       {{ minHeight: `100vh`, padding: `2rem 0`,  }}>
            <div classNumber="lx-container-70">
               <div classNumber="lx-row">
-                <h1 classNumber="title">CTD Profile</h1>
+                <h1 style= {{ fontSize: `45px`, fontWeight: `bold`, }}
+                classNumber="title">CTD Profile</h1>
            </div>
 
            <div style= {{ gridTemplateRows: `auto 1fr auto`, backgroundSize: `contain`,
-                          backgroundPosition: `center`, backgroundRepeat: `no-repeat`,
-                       }}
-           
-           classNumber="lx-row align-stretch">
+                          backgroundPosition: `center`, backgroundRepeat: `no-repeat`, }}
+                classNumber="lx-row align-stretch">
                 <div style= {{ display: `flex`, alignItems: `center`, justifyContent: `flex-end`, maxWidth: `25rem`, float: `left`,
                                width: `45%`, padding: `10px`, }} 
                     classNumber="lx-column column-user-pic">
@@ -39,9 +38,9 @@ function Profile() {
                         transform: `translate(-50%, -50%)`, top: `50%`, left: `50%`, display: `none`, alignItems: `center`,
                         justifyContent: `center`, textTransform: `none`, fontSize: `1rem`, color: `white`, 
                         backgroundColor: `rgba(0, 0, 0, 0.8)`, }} id="change-avatar" classNumber="lx-btn"></a>
-           </div>            
+           </div><br />          
            <div style= {{ width: `flex`, marginLeft: `10px`, fontSize: `1rem`, textAlign: `center`, }} classNumber="pic-info">
-                <p>This space is reserved for each person's favorite quote.</p>
+                <p>"This space is reserved for each person's favorite quote."&nbsp;&nbsp;</p>
            </div>
            </div>
            </div> 
@@ -114,8 +113,7 @@ function Profile() {
              <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
                            flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
                            classNumber="fieldset">
-                {/* <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Email:
-                </label> */}
+                
                     <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
                                 }} classNumber="input-wrapper"> 
                         <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
@@ -151,21 +149,6 @@ function Profile() {
                                         type="text" id="user-name" value="Link to Portfolio" autocomplete="username" required></input>
                     </div>
                     </div>
-                
-                {/* <div style=
-                    {{
-                  width: `100%`,
-                  display: `flex`,
-                  alignItems: `center`,
-                  justifyContent: `space-between`,
-                    }}
-                classNumber="actions">
-                <a id="cancel" classNumber="lx-btn"></a>
-                <i classNumber="fas fa-ban"></i>&nbsp;&nbsp;Cancel />
-                <a id="clear" classNumber="lx-btn"><i class="fas fa-broom"></i>&nbsp;&nbsp;Clean</a>
-                <a id="save" classNumber="lx-btn"><i classNumber="fas fa-save"></i>&nbsp;&nbsp;Save</a>
-                </div> */}
-                
 
                 
             </form>
@@ -178,7 +161,10 @@ function Profile() {
     )
  };
 
-
+ 
+        
+      
+      
 export default Profile;
 
 

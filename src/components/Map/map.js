@@ -27,7 +27,15 @@ import sadric2 from '../Map/images/sadric2.jpg'
                            "state": "Guanajuato",
                            "country": "Mexico",
                            "coordinates": [ 20.516960, -100.800262 ]  
-                         }                           
+                         },
+                         "icon":{ 
+                          "job": "fas fa-network-wired",
+                          "projects": "fab fa-buffer",
+                          "dev": "fab fa-dev",
+                          "email": "fas fa-envelope",
+                          "github": "fab fa-github-square" 
+                         }
+
                        },
                         {
                           "individual": {
@@ -44,7 +52,15 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "state": "Fujian",
                             "country": "China",
                             "coordinates": [ 26.483685, 117.924896 ]
-                          }
+                            
+                          },
+                          "icon":{ 
+                            "job": "fas fa-network-wired",
+                            "projects": "fab fa-buffer",
+                            "dev": "fab fa-dev",
+                            "email": "fas fa-envelope",
+                            "github": "fab fa-github-square" 
+                           }
                         },
                         {
                           "individual": {
@@ -61,7 +77,14 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "state": "Minsko",
                             "country": "Belarus",
                             "coordinates": [ 53.897690, 27.549420 ]
-                          }
+                          },
+                          "icon":{ 
+                            "job": "fas fa-network-wired",
+                            "projects": "fab fa-buffer",
+                            "dev": "fab fa-dev",
+                            "email": "fas fa-envelope",
+                            "github": "fab fa-github-square" 
+                           }
                         },
                         {
                           "individual": {
@@ -78,7 +101,14 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "state": "New Jersey",
                             "country": "United States",
                             "coordinates": [ 40.073040, -74.724319 ]
-                          }
+                          },
+                          "icon":{ 
+                            "job": "fas fa-network-wired",
+                            "projects": "fab fa-buffer",
+                            "dev": "fab fa-dev",
+                            "email": "fas fa-envelope",
+                            "github": "fab fa-github-square" 
+                           }
                         },
                         {
                           "individual": {
@@ -95,7 +125,14 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "state": "New York",
                             "country": "United States",
                             "coordinates": [ 40.8549600, -73.197130 ]
-                          }
+                          },
+                          "icon":{ 
+                            "job": "fas fa-network-wired",
+                            "projects": "fab fa-buffer",
+                            "dev": "fab fa-dev",
+                            "email": "fas fa-envelope",
+                            "github": "fab fa-github-square" 
+                           }
                         },
                         {
                           "individual": {
@@ -111,7 +148,14 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "state": "",
                             "country": "Eritrea",
                             "coordinates": [ 15.339000, 38.937111 ]
-                          }
+                          },
+                          "icon":{ 
+                            "job": "fas fa-network-wired",
+                            "projects": "fab fa-buffer",
+                            "dev": "fab fa-dev",
+                            "email": "fas fa-envelope",
+                            "github": "fab fa-github-square" 
+                           }
                         },
                         {
                           "individual": {
@@ -128,7 +172,14 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "state": "",
                             "country": "Czech Republic",
                             "coordinates": [ 	48.979950, 17.215630 ]
-                          }
+                          },
+                          "icon":{ 
+                            "job": "fas fa-network-wired",
+                            "projects": "fab fa-buffer",
+                            "dev": "fab fa-dev",
+                            "email": "fas fa-envelope",
+                            "github": "fab fa-github-square" 
+                           }
                         },
                         {
                           "individual": {
@@ -145,7 +196,14 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "state": "North Carolina",
                             "country": "United States",
                             "coordinates": [ 36.072701, -79.793900 ]
-                          }
+                          },
+                          "icon":{ 
+                            "job": "fas fa-network-wired",
+                            "projects": "fab fa-buffer",
+                            "dev": "fab fa-dev",
+                            "email": "fas fa-envelope",
+                            "github": "fab fa-github-square" 
+                           }
                           },   
                         {
                           "individual": {
@@ -162,7 +220,14 @@ import sadric2 from '../Map/images/sadric2.jpg'
                             "state": "Kumasi",
                             "country": "Ghana",
                             "coordinates": [ 6.695070, -1.615800 ]
-                        }
+                        },
+                        "icon":{ 
+                          "job": "fas fa-network-wired",
+                          "projects": "fab fa-buffer",
+                          "dev": "fab fa-dev",
+                          "email": "fas fa-envelope",
+                          "github": "fab fa-github-square" 
+                         }
                       },
                       {
                         "individual": {
@@ -179,7 +244,14 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           "state": "",
                           "country": "Eritrea",
                           "coordinates": [ 15.339000, 38.937111 ]
-                        }
+                        },
+                        "icon":{ 
+                          "job": "fas fa-network-wired",
+                          "projects": "fab fa-buffer",
+                          "dev": "fab fa-dev",
+                          "email": "fas fa-envelope",
+                          "github": "fab fa-github-square" 
+                         }
                       },
                       {
                         "individual": {
@@ -196,7 +268,13 @@ import sadric2 from '../Map/images/sadric2.jpg'
                           "state": "Tachira",
                           "country": "Venezuela",
                           "coordinates": [ 7.768010, -72.228280 ]
-                      }
+                      }, "icon":{ 
+                        "job": "fas fa-network-wired",
+                        "projects": "fab fa-buffer",
+                        "dev": "fab fa-dev",
+                        "email": "fas fa-envelope",
+                        "github": "fab fa-github-square" 
+                       }
                     }
                   ]
                

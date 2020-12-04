@@ -14,8 +14,8 @@ InfoWindow
 const Button = styled.button`
   cursor: pointer;
   background: blue;
-  font-size: 12px;
-  border-radius: 24px;
+  font-size: 10px;
+  border-radius: 22px;
   color: white;
   border: 2px blue;  
   margin: 0 1em;
@@ -60,59 +60,34 @@ function Map() {
          
       <InfoWindow
          position={{
-         lat: selectedPerson.geometry.coordinates[0],
-         lng: selectedPerson.geometry.coordinates[1],
-         }}
+         lat: selectedPerson.geometry.coordinates[0], lng: selectedPerson.geometry.coordinates[1], }}
 
          onCloseClick={() => {
          setSelectedPerson(null);
-         console.log("Hello World")
+        
        }}    
        >
          <div>
-            <p style={{ 
-              color: `black`,
-              fontSize: `18px`,
-              fontWeight: `bold`,
-              }}>{selectedPerson.individual.name}</p><br></br>
-            <p style={{ 
-              color: `black`,
-              fontSize: `15px`,
-              fontWeight: `bold`,
-            }}>{selectedPerson.individual.language}</p><br></br>
-            <p style={{ 
-              color: `black`,
-              fontSize: `15px`,
-              fontWeight: `bold`,
-            }}>{selectedPerson.individual.stack}</p> 
+            <p style={{ color: `black`, fontSize: `18px`, fontWeight: `bold`,}}
+            >{selectedPerson.individual.name}</p><br></br>
+
+            <p style={{ color: `black`, fontSize: `15px`, fontWeight: `bold`, }}
+            >{selectedPerson.individual.language}</p><br></br>
+
+            <p style={{ color: `black`, fontSize: `15px`, fontWeight: `bold`, }}
+            >{selectedPerson.individual.stack}</p> 
+
             <img style=
-            {{
-            width: `150px`, 
-            height: `150px`, 
-            padding: `5px`, 
-            marginTop: `10px`,
-            background: `blue`,
-            }} 
-            src={selectedPerson.individual.image} 
-            alt="uploaded images" /><br></br><br></br>
-            <Button className="Btn" onClick='profile'>View Profile</Button> <br />  
-            <br />
-            <i style=
-            {{
-            color: `orange`, 
-            padding:` 5px`,
-            }} className="fa fa-envelope"/> 
-            <i style=
-            {{
-            color: `orange`, 
-            padding: `5px`,
-            }} className="fab fa-github-square"></i>
-            <i style=
-            {{
-            color: `orange`, 
-            padding: `5px`,
-            }} className="fab fa-linkedin"></i>          
-            
+            {{ width: `100px`, height: `100px`, padding: `5px`, marginTop: `10px`, background: `blue`, }} 
+            src={selectedPerson.individual.image} alt="uploaded images" /><br></br><br></br>
+
+            <Button className="Btn" onClick='profile'>View Profile</Button> <br /><br />
+
+            <i style= {{ color: `orange`, padding:` 5px`, }} className="fa fa-envelope fa-7px"/> 
+
+            <i style= {{ color: `orange`, padding: `5px`, }} className="fab fa-github-square fa-7px"></i>
+
+            <i style= {{ color: `orange`, padding: `5px`, }} className="fab fa-linkedin fa-7px"></i>          
          </div>
      </InfoWindow>
       )} 
