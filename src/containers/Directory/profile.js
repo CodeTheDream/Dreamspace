@@ -9,7 +9,7 @@ function Profile() {
     const [selectedPerson, setSelectedPerson] = useState(null);
       return(
       <main style=
-      {{ minHeight: `100vh`, padding: `2rem 0`, }} classNumber="has-dflex-center">
+      {{ minHeight: `100vh`, padding: `3rem 3rem`, }} classNumber="has-dflex-center">
         <section style=
       {{ minHeight: `100vh`, padding: `2rem 0`,  }}>
            <div classNumber="lx-container-70">
