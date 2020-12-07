@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import * as mapData from "../Map/map.js"
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { 
@@ -41,7 +41,6 @@ function Map() {
          lat: 20.516960, 
          lng: -100.800262 }} 
       > 
-
       {mapData.markers.map((person) => (
         <Marker
           key={person.individual.person_id}
@@ -55,7 +54,7 @@ function Map() {
       }}
       />
       ))}
-     
+
        {selectedPerson && (
          
       <InfoWindow
@@ -81,13 +80,16 @@ function Map() {
             {{ width: `100px`, height: `100px`, padding: `5px`, marginTop: `10px`, background: `blue`, }} 
             src={selectedPerson.individual.image} alt="uploaded images" /><br></br><br></br>
 
-            <Button className="Btn" onClick='profile'>View Profile</Button> <br /><br />
+            <Link to={'/directory/:username'}>
+              <Button > Click Me </Button>
+            </Link>
+            <br />
+          
+            <i style= {{ color: `orange`, padding:` 5px`, }} className="fa fa-envelope fa-10px"/> 
 
-            <i style= {{ color: `orange`, padding:` 5px`, }} className="fa fa-envelope fa-7px"/> 
+            <i style= {{ color: `orange`, padding: `5px`, }} className="fab fa-github-square fa-10px"></i>
 
-            <i style= {{ color: `orange`, padding: `5px`, }} className="fab fa-github-square fa-7px"></i>
-
-            <i style= {{ color: `orange`, padding: `5px`, }} className="fab fa-linkedin fa-7px"></i>          
+            <i style= {{ color: `orange`, padding: `5px`, }} className="fab fa-linkedin fa-10px"></i>          
          </div>
      </InfoWindow>
       )} 

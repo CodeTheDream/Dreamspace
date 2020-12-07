@@ -38,9 +38,11 @@ function Profile() {
                         transform: `translate(-50%, -50%)`, top: `50%`, left: `50%`, display: `none`, alignItems: `center`,
                         justifyContent: `center`, textTransform: `none`, fontSize: `1rem`, color: `white`, 
                         backgroundColor: `rgba(0, 0, 0, 0.8)`, }} id="change-avatar" classNumber="lx-btn"></a>
-           </div><br />          
+                    
+           </div><br />       
            <div style= {{ width: `flex`, marginLeft: `10px`, fontSize: `1rem`, textAlign: `center`, }} classNumber="pic-info">
-                <p>"This space is reserved for each person's favorite quote."&nbsp;&nbsp;</p>
+                <p><span>Favorite Quote</span></p><br />
+                <p>"This space is reserved for each person's favorite quote.&nbsp;&nbsp;</p>
            </div>
            </div>
            </div> 
@@ -113,7 +115,8 @@ function Profile() {
              <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
                            flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
                            classNumber="fieldset">
-                
+                {/* <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Email:
+                </label> */}
                     <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
                                 }} classNumber="input-wrapper"> 
                         <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
