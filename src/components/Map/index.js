@@ -81,7 +81,7 @@ function Map() {
             src={selectedPerson.individual.image} alt="uploaded images" /><br></br><br></br>
 
             <Link to={'/directory/:username'}>
-              <Button > Click Me </Button>
+              <Button > See Profile </Button>
             </Link>
             <br />
           
