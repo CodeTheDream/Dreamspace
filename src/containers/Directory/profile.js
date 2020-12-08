@@ -1,9 +1,32 @@
 import React, { useState } from "react"
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-// import { Link } from 'react-router-dom';
-// import styled from 'styled-components';
 
+
+
+
+const Button = styled.button`
+  cursor: pointer;
+  background: blue;
+  font-size: 20px;
+  border-radius: 22px;
+  color: white;
+  border: 2px blue;  
+  margin: 2em 10em;
+  margin-right: 6em;
+  padding: .5em 1em;
+  transition: 0.5s all ease-out;
+  background-color: black;
+  font-weight: bold;
+  
+  &:hover {
+    background-color: orange;
+    color: white;
+  
+  }
+`;
 
 function Profile() {
     const [selectedPerson, setSelectedPerson] = useState(null);
@@ -152,7 +175,9 @@ function Profile() {
                                         type="text" id="user-name" value="Link to Portfolio" autocomplete="username" required></input>
                     </div>
                     </div>
-
+                            <Link to={'/directory/'}>
+                            <Button> Back to Map  </Button>
+                            </Link>
                 
             </form>
             </div>
@@ -161,6 +186,8 @@ function Profile() {
         
         </section>
     </main>
+
+    
     )
  };
 
