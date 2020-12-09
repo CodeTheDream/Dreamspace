@@ -3,16 +3,22 @@ import { Link, withRouter } from "react-router-dom";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
+
+
 const SignUpPage = () => (
-  <div style={{ marginTop: "4.8em" }}>
-   < div className="signup"></div>
-    <h3 className="signin">SignUp</h3>
-    <SignUpForm />
+  <div style={{ marginTop: "7em", marginBottom: '7em', fontWeight: 'bold' }}>
+   <div className="signup">
+    <h3 style= {{marginBottom: '1.5em' }}
+    className="signin">Profile Information</h3>
+   <SignUpForm />
+   </div>
   </div>
 );
 const INITIAL_STATE = {
   username: "name",
+   title: "",
    email: "",
+   projects: "",
   photoUrl: "https://ya-webdesign.com/images250_/placeholder-image-png-1.png",
   passwordOne: "",
   passwordTwo: "",
@@ -24,9 +30,12 @@ const INITIAL_STATE = {
 };
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 const ERROR_MSG_ACCOUNT_EXISTS = `
-  An account with this email address exists.
-  Sign in instead. If you think the
-  account is already used from one of the social logins, try to sign in with one of them. Afterward, associate your accounts on your personal account page.
+  
+
+  An account with this email address already exists. 
+  
+  Please sign in instead. 
+  
 `;
 class SignUpFormBase extends Component {
   constructor(props) {
@@ -34,7 +43,7 @@ class SignUpFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
   onSubmit = event => {
-    const { username, email, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
+    const { username, email, title, dev, github, projects, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
    const roles = {};
     if (isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
@@ -50,7 +59,11 @@ class SignUpFormBase extends Component {
         return this.props.firebase.user(authUser.user.uid).set(
           {
             username,
+                title,
+                dev,
+                github,
                 email,
+                projects,
                 roles,
                 education,
                 interest,
@@ -82,7 +95,10 @@ class SignUpFormBase extends Component {
   };
   render() {
     const {
-      username,
+      title,
+      projects,
+      github,
+      dev,
       email,
       passwordOne,
       passwordTwo,
@@ -94,18 +110,42 @@ class SignUpFormBase extends Component {
       passwordOne !== passwordTwo ||
       passwordOne === "" ||
       email === "" ||
-      username === "";
+      title === "";
+      
+
       return (
-          <div className="view-container-signup">
-              <form  className="form" onSubmit={this.onSubmit} >
+        <div className="view-container-signup">
+          <form  className="form" onSubmit={this.onSubmit} >
            
          <input
-          name="username"
-          value={username}
+          name="title"
+          value={title}
           onChange={this.onChange}
           type="text"
-          placeholder="Name"
+          placeholder="Title"
         />
+        <input
+          name="projects"
+          value={projects}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Projects"
+        />
+        <input
+          name="dev"
+          value={dev}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Dev"
+        />
+        <input
+          name="github"
+          value={github}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Github"
+        />
+        
         <input
           name="email"
           value={email}
@@ -113,6 +153,7 @@ class SignUpFormBase extends Component {
           type="text"
           placeholder="Email"
         />
+
         <input
           name="passwordOne"
           value={passwordOne}
@@ -127,7 +168,7 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Confirm Password"
         />
-                      <button className="button-tertiary" disabled={isInvalid} type="submit">
+        <button className="button-tertiary" disabled={isInvalid} type="submit">
           Submit
         </button>
               {error && <p>{error.message}</p>}
