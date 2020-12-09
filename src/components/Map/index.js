@@ -33,8 +33,9 @@ const Button = styled.button`
 
 function Map() {
   const [selectedPerson, setSelectedPerson] = useState(null);
+  
     return(
-
+      
      <GoogleMap 
        defaultZoom={13}
        defaultCenter={{ 
@@ -81,7 +82,7 @@ function Map() {
             src={selectedPerson.individual.image} alt="uploaded images" /><br></br><br></br>
 
             <Link to={'/directory/:username'}>
-              <Button > See Profile </Button>
+              <Button > View Profile </Button>
             </Link>
             <br />
           
@@ -100,11 +101,15 @@ function Map() {
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default function MapInit() {
+  
    return (
      <div style={{ width: "100vw", height: "100vh" }}
+     
      >
+     
        <WrappedMap 
        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`} 
+       
        loadingElement={<div style={{ height: `100%` }} />}
        containerElement={<div style={{ height: `100%` }} />}
        mapElement={<div style={{ height: `100%` }} />}
@@ -112,6 +117,5 @@ export default function MapInit() {
      </div>
    ); 
 }
-
 
 
