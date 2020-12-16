@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
-
+import styled from 'styled-components';
 
 const SignUpPage = () => (
   <div style={{ marginTop: "7em", marginBottom: '7em', fontWeight: 'bold' }}>
@@ -37,6 +37,26 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
   Please sign in instead. 
   
 `;
+
+const Button = styled.button`
+  cursor: pointer;
+  background: black;
+  font-size: 16px;
+  border-radius: 25px;
+  color: white;
+  ${'' /* border: 2px solid black; */}
+  margin: 1em 1em;
+  margin-left: 10px;
+  margin-right: 20px;
+  padding: 1em 1em;
+  transition: 0.5s all ease-out;
+ 
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`;
+
 class SignUpFormBase extends Component {
   constructor(props) {
     super(props);
@@ -168,9 +188,9 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Confirm Password"
         />
-        <button className="button-tertiary" disabled={isInvalid} type="submit">
+        <Button className="button-tertiary" disabled={isInvalid} type="submit">
           Submit
-        </button>
+        </Button>
               {error && <p>{error.message}</p>}
             
         </form>
@@ -180,7 +200,9 @@ class SignUpFormBase extends Component {
 }
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link className="linkstyle" to={ROUTES.SIGNUP}>Sign Up</Link>
+    Don't have an account? 
+    <Link className="linkstyle" to=
+    {ROUTES.SIGNUP}>Sign Up</Link>
   </p>
 );
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));

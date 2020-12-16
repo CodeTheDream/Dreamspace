@@ -4,12 +4,14 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Articles from "./containers/Articles";
 import * as ROUTES from "./constants/routes.js";
+import LinkGithub from "./containers/LinkGithub";
 import About from "./containers/About";
 import IndividualView from "./containers/IndividualView";
 import Account from "./containers/Account";
 import SignUp from "./components/SignUp";
 import SignInPage from "./components/SignIn";
 import HomePage from "./containers/HomePage";
+import Image from "./components/Map";
 import ProjectDashBoard from "./containers/ProjectDashBoard";
 import { withAuthentication } from "./components/Session";
 import  password from "./components/PasswordForget";
@@ -37,6 +39,7 @@ function App() {
           <Route exact path={ROUTES.HOME} component={HomePage} /> 
           <Route exact path={ROUTES.PASSWORD_FORGET} component={password} /> 
           <Route exact path={ROUTES.DIRECTORY} component={Directory} />
+          <Route exact path={ROUTES.LINKGITHUB} component={LinkGithub} />
           <Route path={ROUTES.PROFILE} component={Profile} />
          
           {/* <Route exact path={ROUTES.WORLD} component={World} /> */}
