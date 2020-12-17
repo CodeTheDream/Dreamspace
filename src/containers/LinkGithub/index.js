@@ -9,8 +9,7 @@ function LinkGithub() {
       <br />
       <h1 className="has-text-centered">Testing</h1>
        <div className="has-text-centered">
-       <a href="https://github.com/scbonner/devedit" style= {{ color: `black`, padding: `5px`, }} className="fab fa-github-square fa-10px">
-
+       <a href="https://github.com/scbonner" style= {{ color: `black`, padding: `5px`, }} className="fab fa-github-square fa-10px">
        </a>
 
        {/* <a href="mailto:info@nlbm.com">scbonner2015@gmail.com" style= {{ color: `black`, padding: `5px`, }} className=-"fa fa-envelope-o fa-10px">
