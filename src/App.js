@@ -21,7 +21,7 @@ import Directory from "./containers/Directory";
 // import World from "./components/World";
 // import Map from "./components/Map";
 import Profile from "./containers/Directory/profile";
-import Underconstruct from "./containers/Directory/underconstruct";
+// import Underconstruct from "./containers/Directory/underconstruct";
 
 function App() {
   return (
@@ -40,7 +40,7 @@ function App() {
           <Route exact path={ROUTES.HOME} component={HomePage} /> 
           <Route exact path={ROUTES.PASSWORD_FORGET} component={password} /> 
           <Route exact path={ROUTES.DIRECTORY} component={Directory} />
-          <Route exact path={ROUTES.UNDERCONSTRUCT} component={Underconstruct} />
+          {/* <Route exact path={ROUTES.UNDERCONSTRUCT} component={Underconstruct} /> */}
           <Route exact path={ROUTES.LINKGITHUB} component={LinkGithub} />
           <Route path={ROUTES.PROFILE} component={Profile} />
          
