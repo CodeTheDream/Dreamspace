@@ -189,9 +189,8 @@ function Profile() {
             </div>
             </div>
             </div>        
-        
         </section>
-    </main>
+      </main>
 
     
     )
