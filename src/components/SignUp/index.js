@@ -5,6 +5,7 @@ import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
 import styled from 'styled-components';
 
+
 const SignUpPage = () => (
   <div style={{ marginTop: "7em", marginBottom: '7em', fontWeight: 'bold' }}>
    <div className="signup">
@@ -32,30 +33,30 @@ const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 const ERROR_MSG_ACCOUNT_EXISTS = `
   
 
-  An account with this email address already exists. 
+//   An account with this email address already exists. 
   
-  Please sign in instead. 
+//   Please sign in instead. 
   
-`;
+// `;
 
-const Button = styled.button`
-  cursor: pointer;
-  background: black;
-  font-size: 16px;
-  border-radius: 25px;
-  color: white;
-  ${'' /* border: 2px solid black; */}
-  margin: 1em 1em;
-  margin-left: 10px;
-  margin-right: 20px;
-  padding: 1em 1em;
-  transition: 0.5s all ease-out;
+// const Button = styled.button`
+//   cursor: pointer;
+//   background: black;
+//   font-size: 16px;
+//   border-radius: 25px;
+//   color: white;
+//   ${'' /* border: 2px solid black; */}
+//   margin: 1em 1em;
+//   margin-left: 10px;
+//   margin-right: 20px;
+//   padding: 1em 1em;
+//   transition: 0.5s all ease-out;
  
-  &:hover {
-    background-color: white;
-    color: black;
-  }
-`;
+//   &:hover {
+//     background-color: white;
+//     color: black;
+//   }
+// `;
 
 class SignUpFormBase extends Component {
   constructor(props) {
@@ -63,7 +64,7 @@ class SignUpFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
   onSubmit = event => {
-    const { username, email, title, dev, github, projects, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
+    const { username, email, title, dev, github, quote, projects, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
    const roles = {};
     if (isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
@@ -84,7 +85,7 @@ class SignUpFormBase extends Component {
                 github,
                 email,
                 projects,
-                roles,
+                quote,
                 education,
                 interest,
                 aboutyourself
@@ -115,6 +116,7 @@ class SignUpFormBase extends Component {
   };
   render() {
     const {
+      quote,
       title,
       projects,
       github,
@@ -122,7 +124,6 @@ class SignUpFormBase extends Component {
       email,
       passwordOne,
       passwordTwo,
-      isAdmin,
       error,
      
     } = this.state;
@@ -134,70 +135,339 @@ class SignUpFormBase extends Component {
       
 
       return (
-        <div className="view-container-signup">
-          <form  className="form" onSubmit={this.onSubmit} >
-           
-         <input
-          name="title"
-          value={title}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Title"
-        />
-        <input
-          name="projects"
-          value={projects}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Projects"
-        />
-        <input
-          name="dev"
-          value={dev}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Dev"
-        />
-        <input
-          name="github"
-          value={github}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Github"
-        />
-        
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email"
-        />
-
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <Button className="button-tertiary" disabled={isInvalid} type="submit">
-          Submit
-        </Button>
-              {error && <p>{error.message}</p>}
+//         <div className="view-container-signup">
+//           <form  className="form" onSubmit={this.onSubmit} >
+//             <input
+//               name="title"
+//               value={title}
+//               onChange={this.onChange}
+//               type="text"
+//               placeholder="Title"
+//             />
+//             <input
+//               name="projects"
+//               value={projects}
+//               onChange={this.onChange}
+//               type="text"
+//               placeholder="Projects"
+//             />
+//             <input
+//               name="dev"
+//               value={dev}
+//               onChange={this.onChange}
+//               type="text"
+//               placeholder="Dev"
+//             />
+//             <input
+//               name="quote"
+//               value={quote}
+//               onChange={this.onChange}
+//               type="text"
+//               placeholder="Quote"
+//             />
+//             <input
+//               name="github"
+//               value={github}
+//               onChange={this.onChange}
+//               type="text"
+//               placeholder="Github"
+//             />
             
-        </form>
-    </div>
-    );
-  }
-}
+//             <input
+//               name="email"
+//               value={email}
+//               onChange={this.onChange}
+//               type="text"
+//               placeholder="Email"
+//             />
+
+//             <input
+//               name="passwordOne"
+//               value={passwordOne}
+//               onChange={this.onChange}
+//               type="password"
+//               placeholder="Password"
+//             />
+//             <input
+//               name="passwordTwo"
+//               value={passwordTwo}
+//               onChange={this.onChange}
+//               type="password"
+//               placeholder="Confirm Password"
+//             />
+//         </form>
+//         <br />
+//         <div className="view-container-signup2">
+//           <form  className="form" onSubmit={this.onSubmit} >
+//             <input
+//               name="title"
+//               value={title}
+//               onChange={this.onChange}
+//               type="text"
+//               placeholder="Title"
+//             />
+//             <input
+//               name="projects"
+//               value={projects}
+//               onChange={this.onChange}
+//               type="text"
+//               placeholder="Projects"
+//             />
+//             <input
+//               name="dev"
+//               value={dev}
+//               onChange={this.onChange}
+//               type="text"
+//               placeholder="Dev"
+//             />
+//             <input
+//               name="quote"
+//               value={quote}
+//               onChange={this.onChange}
+//               type="text"
+//               placeholder="Quote"
+//             />
+        
+//             <Button className="button-tertiary" disabled={isInvalid} type="submit">
+//               Submit
+//             </Button>
+//                   {error && <p>{error.message}</p>}
+                
+//         </form>
+
+        <div style= {{ display: `flex`, alignItems: `flex-start`, justifyContent: `flex-end`, }} classNumber="lx-column">
+              <form style= {{ gridTemplateColumns: `1fr 300px`, margin: `4rem 2rem`,
+                                padding: `10px`, textAlign: `left`, minWidth: `35rem`,
+                                maxWidth: `35rem`, marginTop: `30px`, }} action="get">
+                <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
+                           flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
+                           classNumber="fieldset">
+                 
+                    <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
+                                }} classNumber="input-wrapper"> 
+                        <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
+                                        borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
+                                        borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
+                                        fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
+                                        backgroundColor: `e9ecef`, }} classNumber="icon">
+                            <i style= {{ color: `black`, padding:` 5px`, }} className="fas fa-network-wired fa-2x"/></span>
+                                <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                                                    borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
+                                                    borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
+                                                    fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
+                                        type="text" id="user-name" value="Job Title" autocomplete="username" required></input>
+           </div>
+           </div>
+                        
+           <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
+                          flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
+                           classNumber="fieldset">
+           
+                <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
+                            }} classNumber="input-wrapper"> 
+                    <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
+                                    borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
+                                    borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
+                                    fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
+                                    backgroundColor: `e9ecef`, }} classNumber="icon">
+                        <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-buffer fa-2x"/></span>
+                            <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                                                borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
+                                                borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
+                                                fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
+                                    type="text" id="user-name" value="Projects" autocomplete="username" required></input>
+            </div>
+            </div>
+
+        <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
+                           flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
+                           classNumber="fieldset">
+                
+                    <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
+                                }} classNumber="input-wrapper"> 
+                        <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
+                                        borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
+                                        borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
+                                        fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
+                                        backgroundColor: `e9ecef`, }} classNumber="icon">
+                            <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-dev fa-2x"/></span>
+                                <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                                                    borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
+                                                    borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
+                                                    fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
+                                        type="text" id="user-name" value="React or Rails" autocomplete="username" required></input>
+            </div>
+            </div>
+
+        <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
+                           flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
+                           classNumber="fieldset">
+                {/* <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Email:
+                </label> */}
+                    <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
+                                }} classNumber="input-wrapper"> 
+                        <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
+                                        borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
+                                        borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
+                                        fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
+                                        backgroundColor: `e9ecef`, }} classNumber="icon">
+                            {/* <i style= {{ color: `black`, padding:` 5px`, }} className="fas fa-envelope fa-2x"/> */}
+                            <a href="mailto:scbonner2015@gmail.com" style= {{ color: `black`, padding: `5px`, }} className="fas fa-envelope fa-2x">
+                            </a>
+                            </span>
+                                <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                                                    borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
+                                                    borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
+                                                    fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
+                                        type="text" id="user-name" value="Internal use" autocomplete="username" required></input>
+            </div>
+            </div>
+
+        <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
+                           flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
+                           classNumber="fieldset">
+                <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"></label>
+                    <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
+                                }} classNumber="input-wrapper"> 
+                        <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
+                                        borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
+                                        borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
+                                        fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
+                                        backgroundColor: `e9ecef`, }} classNumber="icon">
+                            {/* <i style= {{ color: `black`, padding: `5px`, }} className="fab fa-github-square fa-2x"/> */}
+                            <a href="https://github.com/scbonner" style= {{ color: `black`, padding: `5px`, }} className="fab fa-github-square fa-2x">
+                            </a>
+                            </span>
+                                <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                                                    borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
+                                                    borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
+                                                    fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
+                                        type="text" id="user-name" value="Link to Portfolio" autocomplete="username" required></input>
+                    </div>
+                    </div>
+
+                    <div style= {{ display: `flex`, alignItems: `flex-start`, justifyContent: `flex-end`, }} classNumber="lx-column">
+              <form style= {{ gridTemplateColumns: `1fr 300px`, margin: `4rem 2rem`,
+                                padding: `10px`, textAlign: `left`, minWidth: `35rem`,
+                                maxWidth: `35rem`, marginTop: `30px`, }} action="get">
+                <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
+                           flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
+                           classNumber="fieldset">
+                 
+                    <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
+                                }} classNumber="input-wrapper"> 
+                        <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
+                                        borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
+                                        borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
+                                        fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
+                                        backgroundColor: `e9ecef`, }} classNumber="icon">
+                            <i style= {{ color: `black`, padding:` 5px`, }} className="fas fa-network-wired fa-2x"/></span>
+                                <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                                                    borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
+                                                    borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
+                                                    fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
+                                        type="text" id="user-name" value="Job Title" autocomplete="username" required></input>
+           </div>
+           </div>
+                        
+           <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
+                          flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
+                           classNumber="fieldset">
+           
+                <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
+                            }} classNumber="input-wrapper"> 
+                    <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
+                                    borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
+                                    borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
+                                    fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
+                                    backgroundColor: `e9ecef`, }} classNumber="icon">
+                        <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-buffer fa-2x"/></span>
+                            <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                                                borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
+                                                borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
+                                                fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
+                                    type="text" id="user-name" value="Projects" autocomplete="username" required></input>
+            </div>
+            </div>
+
+        <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
+                           flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
+                           classNumber="fieldset">
+                
+                    <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
+                                }} classNumber="input-wrapper"> 
+                        <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
+                                        borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
+                                        borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
+                                        fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
+                                        backgroundColor: `e9ecef`, }} classNumber="icon">
+                            <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-dev fa-2x"/></span>
+                                <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                                                    borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
+                                                    borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
+                                                    fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
+                                        type="text" id="user-name" value="React or Rails" autocomplete="username" required></input>
+            </div>
+            </div>
+
+        <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
+                           flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
+                           classNumber="fieldset">
+                {/* <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"> Email:
+                </label> */}
+                    <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
+                                }} classNumber="input-wrapper"> 
+                        <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
+                                        borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
+                                        borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
+                                        fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
+                                        backgroundColor: `e9ecef`, }} classNumber="icon">
+                            {/* <i style= {{ color: `black`, padding:` 5px`, }} className="fas fa-envelope fa-2x"/> */}
+                            <a href="mailto:scbonner2015@gmail.com" style= {{ color: `black`, padding: `5px`, }} className="fas fa-envelope fa-2x">
+                            </a>
+                            </span>
+                                <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                                                    borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
+                                                    borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
+                                                    fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
+                                        type="text" id="user-name" value="Internal use" autocomplete="username" required></input>
+            </div>
+            </div>
+
+        <div style= {{ width: `100%`, margin: `2rem 0`, position: `relative`, display: `flex`,
+                           flexWrap: `wrap`, alignItems: `center`, justifyContent: `flex-start`, }} 
+                           classNumber="fieldset">
+                <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"></label>
+                    <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
+                                }} classNumber="input-wrapper"> 
+                        <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
+                                        borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
+                                        borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
+                                        fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
+                                        backgroundColor: `e9ecef`, }} classNumber="icon">
+                            {/* <i style= {{ color: `black`, padding: `5px`, }} className="fab fa-github-square fa-2x"/> */}
+                            <a href="https://github.com/scbonner" style= {{ color: `black`, padding: `5px`, }} className="fab fa-github-square fa-2x">
+                            </a>
+                            </span>
+                                <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
+                                                    borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
+                                                    borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
+                                                    fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
+                                        type="text" id="user-name" value="Link to Portfolio" autocomplete="username" required></input>
+                    </div>
+                    </div>
+            </form>
+        </div>
+    
+)
+  
+    };
+  };
+                              
+                          
+  
+  
+
 const SignUpLink = () => (
   <p>
     Don't have an account? 
