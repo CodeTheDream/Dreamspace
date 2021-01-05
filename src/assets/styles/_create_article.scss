@@ -1,11 +1,12 @@
 * {
   
   box-sizing:border-box;
+  
   content: width= device-width ,initial-scale=1;
   }
   .devedit-form-legend1 {
     font-size: 1em;
-   margin: auto;
+    margin: auto;
     }
   
   .button-secondary1 {
@@ -36,6 +37,7 @@
       border-radius: 8px;
       display: flex;
       flex-direction: column;
+      
       transform: translate(-45%, -35%);
     }
     .button-secondary1 {
@@ -64,9 +66,9 @@
     font-weight: bold;
     align-self: flex-end;
     background: $main-color;
-    // background: $secondary-color;
+    background: $secondary-color;
     color: lightgray;
-    // background-color: yellow;
+    background-color: yellow;
   }
   .modal-wrapper-postarticle {
     background: rgba(0, 0, 0, 0.5);
@@ -115,9 +117,11 @@
       flex-direction: column;
       transform: translate(-35%, -35%);
     }
-    //.devedit-form-legend1 {
-    // font-size: 1em;
-    //}
+    .devedit-form-legend1 {
+      
+      font-size: 1em;
+      
+    }
   }
 .autosuggest_list{
   font-size: 0.5em;
@@ -125,5 +129,21 @@
   letter-spacing: -0.08em;
   text-align: start;
   align-self: flex-start;
- // padding: 1em;
+  padding: 1em;
+}
+
+.popupcontainer{
+  display: flex;
+  
+  
+}
+.plus-sign{
+  
+  background-color: #ccc;
+ 
+  
+  
+  
+  
+  
 }

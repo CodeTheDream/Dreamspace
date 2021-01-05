@@ -13,19 +13,17 @@ export const options = [];
 //export const options = [{name:"React"}, {name:"Ruby"}, {name:"Javascript"}];
 const moment = require("moment");
 
-  
-  const getSuggestions = (value) => {
+const getSuggestions = (value) => {
   //const{tags1}=this.props
   const inputValue = value.trim().toLowerCase();
   const inputLength = inputValue.length;
 
   return inputLength === 0
     ? []
-    :options.filter(
+    : options.filter(
         (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
       );
 };
-
 
 const getSuggestionValue = (suggestion) => suggestion.name;
 
@@ -64,10 +62,8 @@ class Createarticle extends Component {
       userName: "",
       suggestions: [],
       value: "",
-      inputTag:"",
-      calculatedvote:0,
-    
-
+      inputTag: "",
+      calculatedvote: 0,
     };
   }
 
@@ -76,16 +72,14 @@ class Createarticle extends Component {
       const totalTags = [];
       snapshot.forEach((doc) => {
         const data = doc.data();
-       // totalTags.push(data);
-        options.push(data)
+        // totalTags.push(data);
+        options.push(data);
       });
-console.log("tags from api call",options)
+      console.log("tags from api call", options);
       //this.setState({ tags1: totalTags },()=>console.log("Tags1",totalTags));
     });
-    
   };
   onChange = (e, { newValue }) => {
-
     this.setState({
       value: newValue,
     });
@@ -102,7 +96,7 @@ console.log("tags from api call",options)
       suggestions: [],
     });
   };
-  togglePopup = ()=>{
+  togglePopup = () => {
     this.setState({
       showPopup: !this.state.showPopup,
     });
@@ -116,7 +110,7 @@ console.log("tags from api call",options)
   // onTagChange = (e) => {
   //   console.log("Tag on change",e.target.value)
   //   this.setState({
-      
+
   //     tags: e.target.value,
   //   });
   //   getSuggestions.push(this.state.tags)
@@ -132,56 +126,56 @@ console.log("tags from api call",options)
     });
   };
 
-  
   handleSubmit = (e, authUser) => {
-    const newtag1=this.state.value;
-    const newtag=[{name:"newtag1"}]
+    const newtag1 = this.state.value;
+    const newtag = [{ name: "newtag1" }];
     // console.log("username on article submit",authUser.username)
-     e.preventDefault();
-     this.props.firebase
-       .articles()
-       .add({
-         userId: authUser.uid,
+    e.preventDefault();
+    this.props.firebase
+      .articles()
+      .add({
+        userId: authUser.uid,
         // userName:this.state.userName,
-         title: this.state.title,
-         description: this.state.description,
-         tags: this.state.value,
-         url: this.state.url,
-         downvotes: this.state.downvotes,
-           upvotes: this.state.upvotes,
-         calculatedvote:this.state.calculatedvote,
-        
-         timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A`)
-       })
-       .then(docRef => {
-         
-         this.setState({confirmmessage:docRef.id})
-         console.log("Document written with ID: ", this.state.confirmmessage);
-      alert("you've successfully created an article with ID: " + this.state.confirmmessage);
-       
-       });
-       if(newtag.name !== options.name){
-         
-            this.props.firebase
-            .tags()
-            .add({
-              name:this.state.value
-            })
-          };
-        
-     this.setState({
-       value: "",
-       title: "",
-       url: "",
-       description: "",
-       downvotes: 0,
-         upvotes: 0,
-       calculatedvote:0,
-       showPopup:false,
-       options:""
-     });
-     
-   }
+        title: this.state.title,
+        description: this.state.description,
+        tags: this.state.value,
+        url: this.state.url,
+        downvotes: this.state.downvotes,
+        upvotes: this.state.upvotes,
+        calculatedvote: this.state.calculatedvote,
+
+        timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A`),
+      })
+      .then((docRef) => {
+        this.setState({ confirmmessage: docRef.id });
+        console.log("Document written with ID: ", this.state.confirmmessage);
+        alert(
+          "you've successfully created an article with ID: " +
+            this.state.confirmmessage
+        );
+      });
+    if (newtag.name !== options.name) {
+      this.props.firebase.tags().add({
+        name: this.state.value,
+      });
+    }
+
+    this.setState({
+      value: "",
+      title: "",
+      url: "",
+      description: "",
+      downvotes: 0,
+      upvotes: 0,
+      calculatedvote: 0,
+      showPopup: false,
+      options: "",
+    });
+  };
+  handleClick = () => {
+    
+   
+  };
   render() {
     const { value, suggestions } = this.state;
 
@@ -202,7 +196,7 @@ console.log("tags from api call",options)
             {this.state.showPopup ? (
               <Dialog closePopup={this.togglePopup}>
                 <div>
-                  <div>
+                  <div className="popup-container">
                     {/* <div style={{fontSize:"legend"}}>Create new post</div>*/}
                     <legend className="devedit-form-legend1">
                       Create New Post
@@ -214,7 +208,7 @@ console.log("tags from api call",options)
                             <form
                               onSubmit={(e) => this.handleSubmit(e, authUser)}
                             >
-                              <ul>
+                              {/* <ul>
                                 <li>
                                   <input
                                     type="text"
@@ -225,8 +219,8 @@ console.log("tags from api call",options)
                                   />
                                   
                                 </li>
-                                <li>
-                                  {/*<select
+                                <li> */}
+                              {/* <select
                                     value={this.state.tags}
                                     onChange={this.onTagChange}
                                   >
@@ -237,8 +231,8 @@ console.log("tags from api call",options)
                                         </option>
                                       );
                                     })}
-                                  </select>*/}
-                                  <div className="autosuggest_list">
+                                  </select> */}
+                              {/* <div className="autosuggest_list">
                                   <Autosuggest
                                     suggestions={suggestions}
                                     onSuggestionsFetchRequested={
@@ -285,7 +279,13 @@ console.log("tags from api call",options)
                                     Post
                                   </button>
                                 </li>
-                              </ul>
+                              </ul> */}
+                              <span
+                                className="plus-sign"
+                                onClick={this.handleClick}
+                              >
+                                <i className="fas fa-plus"></i>
+                              </span>
                             </form>
                           </li>
                         </ul>
