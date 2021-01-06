@@ -218,7 +218,7 @@ class SignUpFormBase extends Component {
               <div className="input-wrapper"> 
                 <span className="icon"> 
                   <i className="fas fa-portrait fa-1x"/></span>
-                  {/* adding non-breaking spaces between icon and input line */}
+                  {/* adding non-breaking spaces to separate icon and input line */}
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
                   <input className="col-6 form-control" name="Name" onSubmit={this.onSubmit} type="text" value={name}
@@ -232,8 +232,27 @@ class SignUpFormBase extends Component {
                   <i className="fas fa-network-wired fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" title="Title" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Title"  id="username" autocomplete="title" required></input> 
+                  <input list="staff" id="organization" name="Staff" />
+                    <datalist id="staff">
+                        <option value="Staff" />
+                        <option value="Intern" />
+                        <option value="Volunteer" />
+                     </datalist>
+              </div>
+            </div> 
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span  className="icon"> 
+                  <i className="fab fa-dev fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input list="choices" id="various" name="title" />
+                    <datalist id="choices">
+                        <option value="Frontend" />
+                        <option value="Backend" />
+                        <option value="Full Stack" />
+                     </datalist>
               </div>
             </div> 
 
@@ -346,8 +365,11 @@ class SignUpFormBase extends Component {
                   <i class="fas fa-podcast fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Remote" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Remote" id="username" autocomplete="username" required></input> 
+                  <input list="remote" id="conditional" name="remote" />
+                   <datalist id="remote">
+                      <option value="Yes" />
+                      <option value="No" />
+                    </datalist>
               </div>
             </div> 
             <hr></hr>
@@ -358,11 +380,11 @@ class SignUpFormBase extends Component {
                   <i class="fas fa-laptop-code fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <select className="col-6 form-control" id="Equipment" placeholder="Equipment" autocomplete="username" required>
-                      <option value=""> --Have any CTD equipment?  --</option>
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                    </select>
+                  <input list="choices" id="conditional" name="choices" />
+                   <datalist id="choices">
+                      <option value="Yes" />
+                      <option value="No" />
+                    </datalist>
               </div>
             </div> 
 
