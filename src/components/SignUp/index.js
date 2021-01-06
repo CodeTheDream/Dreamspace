@@ -131,7 +131,7 @@ class SignUpFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
   onSubmit = event => {
-    const { username, name, email, title, dev, github, quote, projects, state, country, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
+    const { username, name, email, title, dev, github, equipment, quote, projects, state, country, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
    const roles = {};
     if (isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
@@ -150,6 +150,7 @@ class SignUpFormBase extends Component {
                 name,
                 title,
                 dev,
+                equipment,
                 github,
                 email,
                 projects,
@@ -196,6 +197,7 @@ class SignUpFormBase extends Component {
       country,
       imageOfHome,
       upload,
+      equipment,
       email,
       passwordOne,
       passwordTwo,
@@ -363,70 +365,6 @@ class SignUpFormBase extends Component {
                     </select>
               </div>
             </div> 
-
-            {/*  <div className="fieldset">
-                  <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`, }}
-                              className="input-wrapper"> 
-                      <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
-                                    borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `05em`, borderTopRightRadius: `0`,
-                                    borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`, backgroundColor: `e9ecef` }} className="icon">
-                        <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-dev fa-1x"/></span>
-                            <input className="col-6 form-control" project="Projects" onSubmit={this.onSubmit} type="text" value={name}
-                              placeholder="Dev" style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, 
-                              display: `block`, borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
-                              borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0, fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }} id="user-name" autocomplete="username" required>   
-                            </input>
-                                <input onSubmit={this.onSubmit} name="notificationRadio" type="radio" value="React" />
-                                React
-                                <input onChange={this.onSubmit} name="notificationRadio" type="radio" value="Rails" />
-                                Rails
-          </div>
-          </div>
-                  
-
-            <div className="fieldset">
-                  <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
-                              }} className="input-wrapper"> 
-                      <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
-                            borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
-                            borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
-                            fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
-                            backgroundColor: `e9ecef`, }} className="icon">
-                          <a href="mailto:scbonner2015@gmail.com" style= {{ color: `black`, padding: `5px`, }} 
-                              className="fas fa-envelope fa-1x">
-                          </a>
-                      </span>
-                          <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
-                                borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
-                                borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
-                                fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
-                                type="text" id="user-name" value="Internal use" autocomplete="username" required>
-                          </input>
-          </div>
-          </div>
-
-          <div className="fieldset">
-              <label style= {{ width: `100%`, margin: `0 0 1rem 1`, fontSize: `1.2rem`, fontWeight: `700`, }} for="user-name"></label>
-                  <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`,
-                              }} className="input-wrapper"> 
-                      <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
-                          borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
-                          borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
-                          fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
-                          backgroundColor: `e9ecef`, }} className="icon">
-                            <a href="https://github.com/scbonner" style= {{ color: `black`, padding: `5px`, }} 
-                                className="fab fa-github-square fa-1x">
-                            </a>
-                      </span>
-                        <input style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`,
-                            borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, borderTopRightRadius: `0.25em`,
-                            borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0,
-                            fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
-                            type="text" id="user-name" value="Link to Portfolio" autocomplete="username" required></input>
-                    </div>
-                    </div>
-                    <hr></hr>
-                    <br /> */}
 
             <Link to={'/directory/profile.js'}>
             <Button> Profile Page </Button>
