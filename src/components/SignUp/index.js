@@ -61,10 +61,13 @@ const FormWrapper = styled.div`
   display: flex;
   alignItems: flex-start;
   justify-content: center;
+
   form {
     margin: 4rem 2rem; 
     padding: 10px;
+
   }
+
 .fieldset {
     width: 100%; 
     margin: 2rem 0; 
@@ -290,7 +293,7 @@ class SignUpFormBase extends Component {
                             fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
                             type="text" id="user-name" value="Link to Portfolio" autocomplete="username" required></input>
                     </div>
-                    </div> */}
+                    </div>
                     <hr></hr>
                     <br />
 
@@ -301,7 +304,6 @@ class SignUpFormBase extends Component {
               
         </form>
       </FormWrapper>
-      
       
    
     )
