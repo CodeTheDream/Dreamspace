@@ -78,45 +78,50 @@ const FormWrapper = styled.div`
     justifyContent: flex-start; 
 } 
 `
-// .name {
-//     flexGrow: 1; 
-//     minHeight: 2rem; 
-//     padding: 0.375rem 0.75rem;                         
-//     display: block; 
-//     border-top-left-radius: .75em; 
-//     border-bottom-left-radius: 2em;
-//     border-top-right-radius: 0.25em;
-//     border-bottom-right-radius: 0.25em; 
-//     border: 0.0625rem solid #ced4da; 
-//     border-left: 0, fontSize: 1rem;
-//     fontWeight: 100; 
-//     lineHeight: 1.75; 
-//     color: #495057;
- 
-//   }
-// `; 
+const span = styled.div`
+  width: fit-content;
+  margin: 0;
+  padding: 1rem 1rem;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em; 
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0; 
+  border: 0.0625rem solid #ced4da; 
+  font-size: 1rem; 
+  font-weight: 400; 
+  line-height: 1.5; 
+  color: #495057; 
+  text-align: center; 
+  background-color: e9ecef;
+  } 
+`
+const i = styled.div`
+  color: black;
+  padding: 5px;
+  
+  }
+`
+const inputwrapper = styled.div`
+    flexGrow: 1; 
+    minHeight: 2rem; 
+    padding: 0.375rem 0.75rem;                         
+    display: block; 
+    border-top-left-radius: .75em; 
+    border-bottom-left-radius: 2em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em; 
+    border: 0.0625rem solid #ced4da; 
+    border-left: 0, fontSize: 1rem;
+    fontWeight: 100; 
+    lineHeight: 1.75; 
+    color: #495057;
+  }
+`; 
    
 
-// {
-//     width: fit-content;
-//     margin: 0;
-//     padding: 1rem 1rem;
-//     display: flex;
-//     align-items: center;
-//     border-top-left-radius: 0.25em;
-//     border-bottom-left-radius: 0.25em; 
-//     border-top-right-radius: 0;
-//     border-bottom-right-radius: 0; 
-//     border: 0.0625rem solid #ced4da; 
-//     font-size: 1rem; 
-//     font-weight: 400; 
-//     line-height: 1.5; 
-//     color: #495057; 
-//     text-align: center; 
-//     background-color: e9ecef;
-                          
-// }
-// `;
+    
 
 
 class SignUpFormBase extends Component {
@@ -200,40 +205,37 @@ class SignUpFormBase extends Component {
       return (
         <FormWrapper>
           <form action="get">
-              <div className="fieldset">
-                  <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`, }}
-                      className="input-wrapper"> 
-                      <span className="icon">
-                        <i style= {{ color: `black`, padding:` 5px`, }}className="fas fa-network-wired fa-1x"/>
-                      </span>
-                        <input className="col-6 form-control" name="Name" onSubmit={this.onSubmit} type="text" value={name}
-                          placeholder="Name"  id="user-name" autocomplete="username" required>
-                        </input>            
-                  </div>
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span  className="icon"> 
+                  <i className="fas fa-network-wired fa-1x"/></span>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Name" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Name"  id="username" autocomplete="username" required></input>            
               </div>
+            </div>
                       
-              {/* <div className="fieldset">
-                  <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`, }}
-                              className="input-wrapper"> 
-                      <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
-                                    borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
-                                    borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`, backgroundColor: `e9ecef` }} className="icon">
-                          <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-buffer fa-1x"/></span>
-                              <input className="col-6 form-control" project="Projects" onSubmit={this.onSubmit} type="text" 
-                                  value= {name} placeholder="Projects" style= {{ flexGrow: `1`, minHeight: `3rem`, padding: `0.375rem 0.75rem`, display: `block`, borderTopLeftRadius: `0`, borderBottomLeftRadius: `0`, 
-                                  borderTopRightRadius: `0.25em`, borderBottomRightRadius: `0.25em`, border: `0.0625rem solid #ced4da`, borderLeft: 0, fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color:` #495057`, }}
-                                  id="user-name" autocomplete="username" required>
-                              </input>
-                                    <select className="projects" onSubmit={this.onSubmit} value={projects}>
-                                    <option value= 'projects'>Dreamspace</option>
-                                    <option value= 'projects'>Loanwell</option>
-                                    <option value= 'projects'>Mural AR</option>
-                                    <option value= 'projects'>NC Fair Chance</option>
-                                  </select>
+            {/* <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span  className="icon"> 
+                  <i className="fab fa-buffer fa-1x"/></span>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input className="col-6 form-control" projects="Projects" onSubmit={this.onSubmit} type="text" value={projects}
+                    placeholder="Projects"  id="username" autocomplete="username" required></input> 
               </div>
-              </div>
+            </div> */}
 
-              <div className="fieldset">
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span  className="icon"> 
+                  <i className="fab fa-buffer fa-1x"/></span>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Projects" onSubmit={this.onSubmit} type="text" value={projects}
+                    placeholder="Projects"  id="projects" autocomplete="projects" required></input> 
+              </div>
+            </div>
+
+            {/*  <div className="fieldset">
                   <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`, }}
                               className="input-wrapper"> 
                       <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
@@ -295,12 +297,12 @@ class SignUpFormBase extends Component {
                     </div>
                     </div>
                     <hr></hr>
-                    <br />
+                    <br /> */}
 
             <Link to={'/directory/profile.js'}>
             <Button> Profile Page </Button>
             </Link>
-            {/* {error && <p>{error.message}</p>} */}
+            {error && <p>{error.message}</p>}
               
         </form>
       </FormWrapper>
