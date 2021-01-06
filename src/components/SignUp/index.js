@@ -124,8 +124,6 @@ const hr = styled.div`
   }
 `;
 
-    
-
 
 class SignUpFormBase extends Component {
   constructor(props) {
@@ -133,7 +131,7 @@ class SignUpFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
   onSubmit = event => {
-    const { username, name, email, title, dev, github, quote, projects, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
+    const { username, name, email, title, dev, github, quote, projects, state, country, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
    const roles = {};
     if (isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
@@ -156,6 +154,8 @@ class SignUpFormBase extends Component {
                 email,
                 projects,
                 quote,
+                state,
+                country,
                 education,
                 interest,
                 aboutyourself
@@ -192,6 +192,10 @@ class SignUpFormBase extends Component {
       projects,
       github,
       dev,
+      state,
+      country,
+      imageOfHome,
+      upload,
       email,
       passwordOne,
       passwordTwo,
@@ -274,8 +278,91 @@ class SignUpFormBase extends Component {
                     placeholder="Languages" id="username" autocomplete="username" required></input> 
               </div>
             </div>
-            <br />
             <hr></hr>
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-chalkboard-teacher fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <select className="col-6 form-control" id="username" placeholder="Mentor" autocomplete="username" required>
+                    <option value="">-- Are you a Mentor? --</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+              </div>
+            </div> 
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-landmark fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="State" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="State" id="username" autocomplete="username" required></input> 
+              </div>
+            </div>
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-globe fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Country" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Country" id="username" autocomplete="username" required></input> 
+              </div>
+            </div> 
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-map fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="image" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="ImageOfHome" id="username" autocomplete="username" required></input> 
+              </div>
+            </div>  
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-camera fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Upload" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Upload" id="username" autocomplete="username" required></input> 
+              </div>
+            </div> 
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-podcast fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Remote" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Remote" id="username" autocomplete="username" required></input> 
+              </div>
+            </div> 
+            <hr></hr>
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-laptop-code fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <select className="col-6 form-control" id="Equipment" placeholder="Equipment" autocomplete="username" required>
+                      <option value=""> --Have any CTD equipment?  --</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+              </div>
+            </div> 
 
             {/*  <div className="fieldset">
                   <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`, }}
