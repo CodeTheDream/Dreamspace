@@ -119,7 +119,10 @@ const inputwrapper = styled.div`
     color: #495057;
   }
 `; 
-   
+const hr = styled.div`
+  border-color: black;
+  }
+`;
 
     
 
@@ -207,39 +210,78 @@ class SignUpFormBase extends Component {
           <form action="get">
             <div className="fieldset">
               <div className="input-wrapper"> 
-                <span  className="icon"> 
-                  <i className="fas fa-network-wired fa-1x"/></span>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
+                <span className="icon"> 
+                  <i className="fas fa-portrait fa-1x"/></span>
+                  {/* adding non-breaking spaces between icon and input line */}
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
                   <input className="col-6 form-control" name="Name" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Name"  id="username" autocomplete="username" required></input>            
+                    placeholder="Name" id="username" autocomplete="username" required></input>            
               </div>
             </div>
                       
-            {/* <div className="fieldset">
+             <div className="fieldset">
               <div className="input-wrapper"> 
                 <span  className="icon"> 
-                  <i className="fab fa-buffer fa-1x"/></span>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input className="col-6 form-control" projects="Projects" onSubmit={this.onSubmit} type="text" value={projects}
-                    placeholder="Projects"  id="username" autocomplete="username" required></input> 
+                  <i className="fas fa-network-wired fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" title="Title" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Title"  id="username" autocomplete="title" required></input> 
               </div>
-            </div> */}
+            </div> 
 
             <div className="fieldset">
               <div className="input-wrapper"> 
-                <span  className="icon"> 
+                <span className="icon"> 
                   <i className="fab fa-buffer fa-1x"/></span>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Projects" onSubmit={this.onSubmit} type="text" value={projects}
-                    placeholder="Projects"  id="projects" autocomplete="projects" required></input> 
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Projects" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Projects" id="username" autocomplete="username" required></input> 
               </div>
             </div>
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i className="fas fa-envelope fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Email" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Email" id="username" autocomplete="username" required></input> 
+              </div>
+            </div>
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i className="fab fa-github-square fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Github" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Github" id="username" autocomplete="username" required></input> 
+              </div>
+            </div>
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-rss-square fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="languages" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Languages" id="username" autocomplete="username" required></input> 
+              </div>
+            </div>
+            <br />
+            <hr></hr>
 
             {/*  <div className="fieldset">
                   <div style= {{ width: `100%`, display: `flex`, flexFlow: `nowrap`, alignItems: `stetch`, justifyContent: `center`, }}
                               className="input-wrapper"> 
                       <span style= {{ width: `fit-content`, margin: `0`, padding: `1rem 1rem`, display: `flex`, alignItems: `center`,
-                                    borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `0.25em`, borderTopRightRadius: `0`,
+                                    borderTopLeftRadius: `0.25em`, borderBottomLeftRadius: `05em`, borderTopRightRadius: `0`,
                                     borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`, fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`, backgroundColor: `e9ecef` }} className="icon">
                         <i style= {{ color: `black`, padding:` 5px`, }} className="fab fa-dev fa-1x"/></span>
                             <input className="col-6 form-control" project="Projects" onSubmit={this.onSubmit} type="text" value={name}
