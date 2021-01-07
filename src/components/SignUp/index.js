@@ -232,8 +232,8 @@ class SignUpFormBase extends Component {
                   <i className="fas fa-network-wired fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input list="staff" id="organization" name="Staff" />
-                    <datalist id="staff">
+                  <input list="title" id="title-choice" name="title-choice" placeholder="Title" />
+                    <datalist id="title">
                         <option value="Staff" />
                         <option value="Intern" />
                         <option value="Volunteer" />
@@ -247,8 +247,8 @@ class SignUpFormBase extends Component {
                   <i className="fab fa-dev fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input list="choices" id="various" name="title" />
-                    <datalist id="choices">
+                <input list="dev" id="dev-choice" name="dev-choice" placeholder='Dev' />
+                    <datalist id="dev">
                         <option value="Frontend" />
                         <option value="Backend" />
                         <option value="Full Stack" />
@@ -262,8 +262,17 @@ class SignUpFormBase extends Component {
                   <i className="fab fa-buffer fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Projects" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Projects" id="username" autocomplete="username" required></input> 
+                  <input list="projects" id="projects-choice" placeholder="Projects" name="projects-choice" />
+                      <datalist id="projects">
+                          <option value="AACT" />
+                          <option value="Clinwiki" />
+                          <option value="DreamSpace" />
+                          <option value="NC Fair Chance" />
+                          <option value="Vamos" />
+                          <option value="Mural AR" />
+                          <option value="Upstate" />
+                          <option value="NCMA" />
+                      </datalist>
               </div>
             </div>
 
@@ -307,11 +316,11 @@ class SignUpFormBase extends Component {
                   <i class="fas fa-chalkboard-teacher fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <select className="col-6 form-control" id="username" placeholder="Mentor" autocomplete="username" required>
-                    <option value="">-- Are you a Mentor? --</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                  </select>
+                  <input list="mentor" id="mentor-choice" placeholder="Mentor" name="equipment" />
+                    <datalist id="mentor">
+                      <option value="Yes" />
+                      <option value="No" />
+                    </datalist>
               </div>
             </div> 
 
@@ -365,7 +374,7 @@ class SignUpFormBase extends Component {
                   <i class="fas fa-podcast fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input list="remote" id="conditional" name="remote" />
+                  <input list="remote" id="remote-choie" placeholder="Remote" name="remote-choice" />
                    <datalist id="remote">
                       <option value="Yes" />
                       <option value="No" />
@@ -380,8 +389,8 @@ class SignUpFormBase extends Component {
                   <i class="fas fa-laptop-code fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input list="choices" id="conditional" name="choices" />
-                   <datalist id="choices">
+                  <input list="equipment" id="equipment-choice" placeholder="Equipment" name="equipment-choice" />
+                    <datalist id="equipment">
                       <option value="Yes" />
                       <option value="No" />
                     </datalist>
