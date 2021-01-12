@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import FormWrapper from "react-form-wrapper";
 import { compose } from "recompose";
 import Autosuggest from "react-autosuggest";
 import {
@@ -64,6 +65,7 @@ class Createarticle extends Component {
       value: "",
       inputTag: "",
       calculatedvote: 0,
+      showTitle: false
     };
   }
 
@@ -172,10 +174,14 @@ class Createarticle extends Component {
       options: "",
     });
   };
-  handleClick = () => {
-    
+  handleClick = (e) => {
+    this.setState({showTitle:true})
    
   };
+  hndleChange = (event) => {
+    const value = event.target.value
+
+  }
   render() {
     const { value, suggestions } = this.state;
 
@@ -205,7 +211,7 @@ class Createarticle extends Component {
                       <div>
                         <ul>
                           <li>
-                            <form
+                            <FormWrapper
                               onSubmit={(e) => this.handleSubmit(e, authUser)}
                             >
                               {/* <ul>
@@ -280,13 +286,38 @@ class Createarticle extends Component {
                                   </button>
                                 </li>
                               </ul> */}
-                              <span
-                                className="plus-sign"
-                                onClick={this.handleClick}
-                              >
-                                <i className="fas fa-plus"></i>
-                              </span>
-                            </form>
+
+                              <label htmlFor="title">
+                                Title 
+                                <input
+                                  type="text"
+                                  name="title"
+                                  id="title"
+                                  value={this.state.title}
+                                  onChange={this.handleChange}
+                                  autoComplete="title"
+                                />
+                              </label>
+
+                              <br />
+                              <label htmlFor="url">
+                                URL
+                                <input
+                                  type="text"
+                                  name="url"
+                                  id="url"
+                                  value={this.state.url}
+                                  onChange={this.handleChange}
+                                  autoComplete="url"
+                                />
+                              </label>
+
+                              
+                              
+                              <br />
+
+                              <input type="submit" value="Submit" />
+                            </FormWrapper>
                           </li>
                         </ul>
                       </div>
