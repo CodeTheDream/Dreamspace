@@ -302,7 +302,7 @@ console.log("tags from api call",options)
                     </legend>
                   <div>
                 <div>
-                  <FormWrapper
+                  <FormWrapper>
                     onSubmit={(e) => this.handleSubmit(e, authUser)}
                   >
                     <form action="get">
