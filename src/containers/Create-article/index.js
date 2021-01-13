@@ -60,8 +60,8 @@ const FormWrapper = styled.div`
   alignItems: flex-start;
   justify-content: center;
   form {
-    margin: 4rem 2rem; 
-    padding: 10px;
+    margin: 2rem 1rem; 
+    padding: 1.5px;
   }
 .fieldset {
     width: 100%; 
@@ -114,10 +114,10 @@ const inputwrapper = styled.div`
     color: #495057;
   }
 `; 
-const hr = styled.div`
-  border-color: black;
-  }
-`;
+// const hr = styled.div`
+//   border-color: black;
+//   }
+// `;
 
 class Dialog extends React.Component {
   render() {
@@ -248,7 +248,7 @@ console.log("tags from api call",options)
           "you've successfully created an article with ID: " +
             this.state.confirmmessage
         );
-      });
+      }); 
     if (newtag.name !== options.name) {
       this.props.firebase.tags().add({
         name: this.state.value,
@@ -302,7 +302,7 @@ console.log("tags from api call",options)
                     </legend>
                   <div>
                 <div>
-                  <FormWrapper>
+                  <FormWrapper
                     onSubmit={(e) => this.handleSubmit(e, authUser)}
                   >
                     <form action="get">
@@ -310,20 +310,15 @@ console.log("tags from api call",options)
                         <div className="input-wrapper"> 
                           <span className="icon"> 
                             <i className="fas fa-portrait fa-1x"/></span>
-                            {/* adding non-breaking spaces to separate icon and input line */}
-                            {/* &nbsp;&nbsp;
-                            &nbsp;&nbsp; */}
-                            <input className="col-6 form-control" name="Title" onSubmit={this.onSubmit} type="text" 
+                              <input className="col-6 form-control" name="Title" onSubmit={this.onSubmit} type="text" 
                               placeholder="Title" id="username" autocomplete="username" required></input>            
                         </div>
                       </div>
                       <div className="fieldset">
                         <div className="input-wrapper"> 
-                          <span className="icon"> 
-                            <i className="fas fa-envelope fa-1x"/></span>
-                            {/* &nbsp;&nbsp;
-                            &nbsp;&nbsp; */}
-                            <input className="col-6 form-control" name="Url" onSubmit={this.onSubmit} type="text"                     placeholder="Url" id="username" autocomplete="username" required></input> 
+                          <span className="icon"></span>
+                            <i className="fas fa-envelope fa-1x" />
+                             <input className="col-6 form-control" name="Url" onSubmit={this.onSubmit} type="text"                     placeholder="Url" id="username" autocomplete="username" required></input> 
                         </div>
                       </div>
                     </form>
