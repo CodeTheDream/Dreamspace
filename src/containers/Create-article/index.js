@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import FormWrapper from "react-form-wrapper";
 import { compose } from "recompose";
 import { Link, withRouter } from "react-router-dom";
 import Autosuggest from "react-autosuggest";
@@ -152,10 +153,9 @@ class Createarticle extends Component {
       userName: "",
       suggestions: [],
       value: "",
-      inputTag:"",
-      calculatedvote:0,
-    
-
+      inputTag: "",
+      calculatedvote: 0,
+      showTitle: false
     };
   }
 
@@ -231,45 +231,50 @@ console.log("tags from api call",options)
        .add({
          userId: authUser.uid,
         // userName:this.state.userName,
-         title: this.state.title,
-         description: this.state.description,
-         tags: this.state.value,
-         url: this.state.url,
-         downvotes: this.state.downvotes,
-           upvotes: this.state.upvotes,
-         calculatedvote:this.state.calculatedvote,
-        
-         timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A`)
-       })
-       .then(docRef => {
-         
-         this.setState({confirmmessage:docRef.id})
-         console.log("Document written with ID: ", this.state.confirmmessage);
-      alert("you've successfully created an article with ID: " + this.state.confirmmessage);
-       
-       });
-       if(newtag.name !== options.name){
-         
-            this.props.firebase
-            .tags()
-            .add({
-              name:this.state.value
-            })
-          };
-        
-     this.setState({
-       value: "",
-       title: "",
-       url: "",
-       description: "",
-       downvotes: 0,
-         upvotes: 0,
-       calculatedvote:0,
-       showPopup:false,
-       options:""
-     });
-     
-   }
+        title: this.state.title,
+        description: this.state.description,
+        tags: this.state.value,
+        url: this.state.url,
+        downvotes: this.state.downvotes,
+        upvotes: this.state.upvotes,
+        calculatedvote: this.state.calculatedvote,
+
+        timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A`),
+      })
+      .then((docRef) => {
+        this.setState({ confirmmessage: docRef.id });
+        console.log("Document written with ID: ", this.state.confirmmessage);
+        alert(
+          "you've successfully created an article with ID: " +
+            this.state.confirmmessage
+        );
+      });
+    if (newtag.name !== options.name) {
+      this.props.firebase.tags().add({
+        name: this.state.value,
+      });
+    }
+
+    this.setState({
+      value: "",
+      title: "",
+      url: "",
+      description: "",
+      downvotes: 0,
+      upvotes: 0,
+      calculatedvote: 0,
+      showPopup: false,
+      options: "",
+    });
+  };
+  handleClick = (e) => {
+    this.setState({showTitle:true})
+   
+  };
+  hndleChange = (event) => {
+    const value = event.target.value
+
+  }
   render() {
     const { value, suggestions } = this.state;
 
@@ -295,43 +300,47 @@ console.log("tags from api call",options)
                     <legend className="devedit-form-legend1">
                       Create New Post
                     </legend>
-                    </div>
-
-                    <FormWrapper>
+                  <div>
+                <div>
+                  <FormWrapper
+                    onSubmit={(e) => this.handleSubmit(e, authUser)}
+                  >
                     <form action="get">
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fas fa-portrait fa-1x"/></span>
-                  {/* adding non-breaking spaces to separate icon and input line */}
-                  {/* &nbsp;&nbsp;
-                  &nbsp;&nbsp; */}
-                  <input className="col-6 form-control" name="Title" onSubmit={this.onSubmit} type="text" 
-                    placeholder="Title" id="username" autocomplete="username" required></input>            
-              </div>
-            </div>
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fas fa-envelope fa-1x"/></span>
-                  {/* &nbsp;&nbsp;
-                  &nbsp;&nbsp; */}
-                  <input className="col-6 form-control" name="Url" onSubmit={this.onSubmit} type="text"                     placeholder="Url" id="username" autocomplete="username" required></input> 
-              </div>
-            </div>
+                      <div className="fieldset">
+                        <div className="input-wrapper"> 
+                          <span className="icon"> 
+                            <i className="fas fa-portrait fa-1x"/></span>
+                            {/* adding non-breaking spaces to separate icon and input line */}
+                            {/* &nbsp;&nbsp;
+                            &nbsp;&nbsp; */}
+                            <input className="col-6 form-control" name="Title" onSubmit={this.onSubmit} type="text" 
+                              placeholder="Title" id="username" autocomplete="username" required></input>            
+                        </div>
+                      </div>
+                      <div className="fieldset">
+                        <div className="input-wrapper"> 
+                          <span className="icon"> 
+                            <i className="fas fa-envelope fa-1x"/></span>
+                            {/* &nbsp;&nbsp;
+                            &nbsp;&nbsp; */}
+                            <input className="col-6 form-control" name="Url" onSubmit={this.onSubmit} type="text"                     placeholder="Url" id="username" autocomplete="username" required></input> 
+                        </div>
+                      </div>
                     </form>
                     </FormWrapper>
                        
                     <Link to={'/projects'}>
                      <Button> Profile Page </Button>
                     </Link>
-                    
+                    </div>
                   </div>
-                
+                </div>
+                </div>
               </Dialog>
             ) : null}
           </div> 
-           
+        
+          
         )}
       </AuthUserContext.Consumer>
     );
