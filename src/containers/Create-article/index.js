@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FormWrapper from "react-form-wrapper";
+
 import { compose } from "recompose";
 import Autosuggest from "react-autosuggest";
 import {
@@ -178,8 +178,12 @@ class Createarticle extends Component {
     this.setState({showTitle:true})
    
   };
-  hndleChange = (event) => {
+  handleChange = (event) => {
     const value = event.target.value
+    this.setState({
+      ...this.state,
+      [event.target.name]: value
+    })
 
   }
   render() {
@@ -211,7 +215,7 @@ class Createarticle extends Component {
                       <div>
                         <ul>
                           <li>
-                            <FormWrapper
+                            <form
                               onSubmit={(e) => this.handleSubmit(e, authUser)}
                             >
                               {/* <ul>
@@ -288,7 +292,7 @@ class Createarticle extends Component {
                               </ul> */}
 
                               <label htmlFor="title">
-                                Title 
+                                Title
                                 <input
                                   type="text"
                                   name="title"
@@ -311,13 +315,22 @@ class Createarticle extends Component {
                                   autoComplete="url"
                                 />
                               </label>
+                              <label htmlFor="description">
+                                Description
+                                <textarea
+                                  col={30}
+                                  rows={10}
+                                  name="description"
+                                  value={this.state.description}
+                                  onChange={this.handleChange}
+                                  required
+                                />
+                              </label>
 
-                              
-                              
                               <br />
 
                               <input type="submit" value="Submit" />
-                            </FormWrapper>
+                            </form>
                           </li>
                         </ul>
                       </div>
