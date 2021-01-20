@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, } from "react"
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -24,9 +24,95 @@ const Button = styled.button`
   &:hover {
     background-color: grey;
     color: white;
-  
   }
 `;
+
+const FormWrapper = styled.div`
+  display: flex;
+  alignItems: flex-start;
+  justify-content: center;
+
+  form {
+    margin: 4rem 2rem; 
+    padding: 10px;
+
+  }
+
+.fieldset {
+    width: 100%; 
+    margin: 2rem 0; 
+    position: relative; 
+    display: flex; 
+    flexWrap: wrap; 
+    alignItems: center; 
+    justifyContent: flex-start; 
+} 
+`
+const span = styled.div`
+  width: fit-content;
+  margin: 0;
+  padding: 1rem 1rem;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em; 
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0; 
+  border: 0.0625rem solid #ced4da; 
+  font-size: 1rem; 
+  font-weight: 400; 
+  line-height: 1.5; 
+  color: #495057; 
+  text-align: center; 
+  background-color: e9ecef;
+  } 
+`
+const i = styled.div`
+  color: black;
+  padding: 5px;
+  
+  }
+`
+const inputwrapper = styled.div`
+    flexGrow: 1; 
+    minHeight: 2rem; 
+    padding: 0.375rem 0.75rem;                         
+    display: block; 
+    border-top-left-radius: .75em; 
+    border-bottom-left-radius: 2em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em; 
+    border: 0.0625rem solid #ced4da; 
+    border-left: 0, fontSize: 1rem;
+    fontWeight: 100; 
+    lineHeight: 1.75; 
+    color: #495057;
+  }
+`; 
+const hr = styled.div`
+  border-color: black;
+  }
+`;
+
+
+
+// import React, { useState, useEffect } from 'react';
+// function Example() {
+//   const [count, setCount] = useState(0);
+//   // Similar to componentDidMount and componentDidUpdate:
+//   useEffect(() => {
+//     // Update the document title using the browser API
+//     document.title = `You clicked ${count} times`;
+//   });
+//   return (
+//     <div>
+//       <p>You clicked {count} times</p>
+//       <button onClick={() => setCount(count + 1)}>
+//         Click me
+//       </button>
+//     </div>
+//   );
+
 
 function Profile() {
     const [selectedPerson, setSelectedPerson] = useState(null);
@@ -51,8 +137,8 @@ function Profile() {
            <div style= {{ width: `50%`, maxWidth: `30rem`, margin: `6rem .05rem`, display: `flex`, flexFlow: `wrap column`, 
                           alignItems: `center`, justifyContent: `center`, borderRadius: `0.25rem`, backgroundColor: `white`, }}
                     classNumber="profile-pic bs-md">
-                <h1 style= {{ width: `auto`, margin: `0 0 1rem 0`, textAlign: `center`, fontSize: `1.4rem`, fontWeight: `700`, }}
-                    classNumber="pic-label">Staff Name Goes Here</h1>
+                {/* <h1 style= {{ width: `auto`, margin: `0 0 1rem 0`, textAlign: `center`, fontSize: `1.4rem`, fontWeight: `700`, }}
+                    classNumber="pic-label">Intern Name</h1> */}
            <div style= {{ width: `20rem`, height: `20rem`, position: `relative`, overflow: `hidden`, borderRadius: `50%`, }} 
                 classNumber="pic bs-md">             
                 <img style= {{ width: `100%`, height: `100%`, objectFit: `cover`, objectPosition: `center`, }} 
@@ -170,7 +256,7 @@ function Profile() {
                                         borderBottomRightRadius: `0`, border: `0.0625rem solid #ced4da`, fontSize: `1rem`,
                                         fontWeight: `400`, lineHeight: `1.5`, color: `#495057`, textAlign: `center`,
                                         backgroundColor: `e9ecef`, }} classNumber="icon">
-                            {/* <i style= {{ color: `black`, padding: `5px`, }} className="fab fa-github-square fa-2x"/> */}
+
                             <a href="https://github.com/scbonner" style= {{ color: `black`, padding: `5px`, }} className="fab fa-github-square fa-2x">
                             </a>
                             </span>
@@ -181,6 +267,95 @@ function Profile() {
                                         type="text" id="user-name" value="Link to Portfolio" autocomplete="username" required></input>
                     </div>
                     </div>
+
+
+                    <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-chalkboard-teacher fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input list="mentor" id="mentor-choice" placeholder="Mentor" name="equipment" />
+                    <datalist id="mentor">
+                      <option value="Yes" />
+                      <option value="No" />
+                    </datalist>
+              </div>
+            </div> 
+{/* 
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-landmark fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="State" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="State" id="username" autocomplete="username" required></input> 
+              </div>
+            </div>
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-globe fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Country" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Country" id="username" autocomplete="username" required></input> 
+              </div>
+            </div> 
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-map fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="image" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="ImageOfHome" id="username" autocomplete="username" required></input> 
+              </div>
+            </div>  
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-camera fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Upload" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Upload" id="username" autocomplete="username" required></input> 
+              </div>
+            </div> 
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-podcast fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input list="remote" id="remote-choie" placeholder="Remote" name="remote-choice" />
+                   <datalist id="remote">
+                      <option value="Yes" />
+                      <option value="No" />
+                    </datalist>
+              </div>
+            </div> 
+            <hr></hr>
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-laptop-code fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input list="equipment" id="equipment-choice" placeholder="Equipment" name="equipment-choice" />
+                    <datalist id="equipment">
+                      <option value="Yes" />
+                      <option value="No" />
+                    </datalist>
+              </div>
+            </div>  */}
+
                             <Link to={'/directory/'}>
                             <Button> Back to Map  </Button>
                             </Link>

@@ -222,11 +222,23 @@ class SignUpFormBase extends Component {
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
                   <input className="col-6 form-control" name="Name" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Name" id="username" autocomplete="username" required></input>            
+                    placeholder="First Name" id="username" autocomplete="username" required></input>            
+              </div>
+            </div>
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i className="fas fa-portrait fa-1x"/></span>
+                  {/* adding non-breaking spaces to separate icon and input line */}
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Name" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Last Name" id="username" autocomplete="username" required></input>            
               </div>
             </div>
                       
-             <div className="fieldset">
+             {/* <div className="fieldset">
               <div className="input-wrapper"> 
                 <span  className="icon"> 
                   <i className="fas fa-network-wired fa-1x"/></span>
@@ -239,7 +251,7 @@ class SignUpFormBase extends Component {
                         <option value="Volunteer" />
                      </datalist>
               </div>
-            </div> 
+            </div>  */}
 
             <div className="fieldset">
               <div className="input-wrapper"> 
@@ -247,7 +259,7 @@ class SignUpFormBase extends Component {
                   <i className="fab fa-dev fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                <input list="dev" id="dev-choice" name="dev-choice" placeholder='Dev' />
+                <input list="dev" id="dev-choice" name="dev-choice" placeholder='Developer' />
                     <datalist id="dev">
                         <option value="Frontend" />
                         <option value="Backend" />
@@ -256,7 +268,7 @@ class SignUpFormBase extends Component {
               </div>
             </div> 
 
-            <div className="fieldset">
+            {/* <div className="fieldset">
               <div className="input-wrapper"> 
                 <span className="icon"> 
                   <i className="fab fa-buffer fa-1x"/></span>
@@ -274,7 +286,19 @@ class SignUpFormBase extends Component {
                           <option value="NCMA" />
                       </datalist>
               </div>
+            </div> */}  
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i className="fab fa-github-square fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Github" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Github" id="username" autocomplete="username" required></input> 
+              </div>
             </div>
+            <hr />
 
             <div className="fieldset">
               <div className="input-wrapper"> 
@@ -290,26 +314,36 @@ class SignUpFormBase extends Component {
             <div className="fieldset">
               <div className="input-wrapper"> 
                 <span className="icon"> 
-                  <i className="fab fa-github-square fa-1x"/></span>
+                  <i className="fas fa-unlock-alt fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Github" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Github" id="username" autocomplete="username" required></input> 
+                  <input className="col-6 form-control" name="Password" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Password" id="username" autocomplete="username" required></input> 
               </div>
             </div>
 
             <div className="fieldset">
               <div className="input-wrapper"> 
                 <span className="icon"> 
-                  <i class="fas fa-rss-square fa-1x"/></span>
+                  <i className="fas fa-lock-alt fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input className="col-6 form-control" name="Confirm" onSubmit={this.onSubmit} type="text" value={name}
+                    placeholder="Confirm Password" id="username" autocomplete="username" required></input> 
+              </div>
+            </div>
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-language fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
                   <input className="col-6 form-control" name="languages" onSubmit={this.onSubmit} type="text" value={name}
                     placeholder="Languages" id="username" autocomplete="username" required></input> 
               </div>
             </div>
-            <hr></hr>
-
+          
             <div className="fieldset">
               <div className="input-wrapper"> 
                 <span className="icon"> 
