@@ -10,7 +10,8 @@ const SignUpPage = () => (
   <div style={{ marginTop: "7em", marginBottom: '7em', fontWeight: 'bold' }}>
    <div className="signup">
     <h3 style= {{marginBottom: '1.5em' }}
-    className="signin">Enter Profile Information</h3>
+    className="signin">Profile Information</h3>
+    <p>Please take time out to fill in your information.</p>
    <SignUpForm />
    </div>
   </div>
@@ -40,15 +41,13 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
 
 const Button = styled.button`
   cursor: pointer;
-  background: black;
+  background: blue;
   font-size: 16px;
   border-radius: 25px;
   color: white;
-  ${'' /* border: 2px solid black; */}
-  margin: 1em 1em;
-  margin-left: 10px;
-  margin-right: 20px;
-  padding: 1em 1em;
+  margin-left: 12px;
+  margin-right: 20px; 
+  padding: .75em .75em;
   transition: 0.5s all ease-out;
  
   &:hover {
@@ -259,7 +258,7 @@ class SignUpFormBase extends Component {
                   <i className="fab fa-dev fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                <input list="dev" id="dev-choice" name="dev-choice" placeholder='Developer' />
+                <input list="dev" id="dev-choice" name="dev-choice" placeholder='Developer' required/>
                     <datalist id="dev">
                         <option value="Frontend" />
                         <option value="Backend" />
@@ -333,7 +332,7 @@ class SignUpFormBase extends Component {
               </div>
             </div>
 
-            <div className="fieldset">
+            {/* <div className="fieldset">
               <div className="input-wrapper"> 
                 <span className="icon"> 
                   <i class="fas fa-language fa-1x"/></span>
@@ -429,12 +428,16 @@ class SignUpFormBase extends Component {
                       <option value="No" />
                     </datalist>
               </div>
-            </div> 
+            </div>  */}
 
+            <Button className="button-tertiary" type="submit" value="Submit">
+              Submit
+            </Button>
+{/* 
             <Link to={'/directory/profile.js'}>
             <Button> Profile Page </Button>
             </Link>
-            {error && <p>{error.message}</p>}
+            {error && <p>{error.message}</p>} */}
               
         </form>
       </FormWrapper>
