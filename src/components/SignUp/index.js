@@ -130,7 +130,7 @@ class SignUpFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
   onSubmit = event => {
-    const { username, name, email, title, dev, github, equipment, quote, projects, state, country, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
+    const { username, firstName, lastName, email, title, dev, github, equipment, quote, projects, state, country, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
    const roles = {};
     if (isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
@@ -146,7 +146,8 @@ class SignUpFormBase extends Component {
         return this.props.firebase.user(authUser.user.uid).set(
           {
             username,
-                name,
+                firstName,
+                lastName,
                 title,
                 dev,
                 equipment,
@@ -186,17 +187,11 @@ class SignUpFormBase extends Component {
   };
   render() {
     const {
-      name,
-      quote,
-      title,
+      firstName,
+      lastName,
       projects,
       github,
       dev,
-      state,
-      country,
-      imageOfHome,
-      upload,
-      equipment,
       email,
       passwordOne,
       passwordTwo,
@@ -207,7 +202,7 @@ class SignUpFormBase extends Component {
       passwordOne !== passwordTwo ||
       passwordOne === "" ||
       email === "" ||
-      title === "";
+      github === "";
       
 
       return (
@@ -220,7 +215,7 @@ class SignUpFormBase extends Component {
                   {/* adding non-breaking spaces to separate icon and input line */}
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Name" onSubmit={this.onSubmit} type="text" value={name}
+                  <input className="col-6 form-control" name="firstName" onSubmit={this.onSubmit} type="text" value={firstName}
                     placeholder="First Name" id="username" autocomplete="username" required></input>            
               </div>
             </div>
@@ -232,29 +227,14 @@ class SignUpFormBase extends Component {
                   {/* adding non-breaking spaces to separate icon and input line */}
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Name" onSubmit={this.onSubmit} type="text" value={name}
+                  <input className="col-6 form-control" name="lastName" onSubmit={this.onSubmit} type="text" value={lastName}
                     placeholder="Last Name" id="username" autocomplete="username" required></input>            
               </div>
             </div>
-                      
-             {/* <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span  className="icon"> 
-                  <i className="fas fa-network-wired fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input list="title" id="title-choice" name="title-choice" placeholder="Title" />
-                    <datalist id="title">
-                        <option value="Staff" />
-                        <option value="Intern" />
-                        <option value="Volunteer" />
-                     </datalist>
-              </div>
-            </div>  */}
-
+              
             <div className="fieldset">
               <div className="input-wrapper"> 
-                <span  className="icon"> 
+              <span className="icon"> 
                   <i className="fab fa-dev fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
@@ -265,27 +245,7 @@ class SignUpFormBase extends Component {
                         <option value="Full Stack" />
                      </datalist>
               </div>
-            </div> 
-
-            {/* <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fab fa-buffer fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input list="projects" id="projects-choice" placeholder="Projects" name="projects-choice" />
-                      <datalist id="projects">
-                          <option value="AACT" />
-                          <option value="Clinwiki" />
-                          <option value="DreamSpace" />
-                          <option value="NC Fair Chance" />
-                          <option value="Vamos" />
-                          <option value="Mural AR" />
-                          <option value="Upstate" />
-                          <option value="NCMA" />
-                      </datalist>
-              </div>
-            </div> */}  
+            </div>   
 
             <div className="fieldset">
               <div className="input-wrapper"> 
@@ -293,7 +253,7 @@ class SignUpFormBase extends Component {
                   <i className="fab fa-github-square fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Github" onSubmit={this.onSubmit} type="text" value={name}
+                  <input className="col-6 form-control" name="Github" onSubmit={this.onSubmit} type="text" value={github}
                     placeholder="Github" id="username" autocomplete="username" required></input> 
               </div>
             </div>
@@ -305,7 +265,7 @@ class SignUpFormBase extends Component {
                   <i className="fas fa-envelope fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Email" onSubmit={this.onSubmit} type="text" value={name}
+                  <input className="col-6 form-control" name="Email" onSubmit={this.onSubmit} type="text" value={email}
                     placeholder="Email" id="username" autocomplete="username" required></input> 
               </div>
             </div>
@@ -316,7 +276,7 @@ class SignUpFormBase extends Component {
                   <i className="fas fa-unlock-alt fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Password" onSubmit={this.onSubmit} type="text" value={name}
+                  <input className="col-6 form-control" name="Password" onSubmit={this.onSubmit} type="text" value={passwordOne}
                     placeholder="Password" id="username" autocomplete="username" required></input> 
               </div>
             </div>
@@ -327,7 +287,7 @@ class SignUpFormBase extends Component {
                   <i className="fas fa-lock-alt fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Confirm" onSubmit={this.onSubmit} type="text" value={name}
+                  <input className="col-6 form-control" name="Confirm" onSubmit={this.onSubmit} type="text" value={passwordTwo}
                     placeholder="Confirm Password" id="username" autocomplete="username" required></input> 
               </div>
             </div>

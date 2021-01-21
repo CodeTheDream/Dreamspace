@@ -3,27 +3,26 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
+import ProfilePic from '../../containers/Directory/profilepic';
 import styled from 'styled-components';
 
 
 
+// const Button = styled.button`
 const Button = styled.button`
   cursor: pointer;
   background: blue;
-  font-size: 20px;
-  border-radius: 22px;
+  font-size: 16px;
+  border-radius: 25px;
   color: white;
-  border: 2px blue;  
-  margin: 2em 10em;
-  margin-right: 6em;
-  padding: .5em 1em;
+  margin-left: 12px;
+  margin-right: 20px; 
+  padding: .75em .75em;
   transition: 0.5s all ease-out;
-  background-color: black;
-  font-weight: bold;
-  
+ 
   &:hover {
-    background-color: grey;
-    color: white;
+    background-color: white;
+    color: black;
   }
 `;
 
@@ -34,7 +33,7 @@ const FormWrapper = styled.div`
 
   form {
     margin: 4rem 2rem; 
-    padding: 10px;
+    padding: 15px;
 
   }
 
@@ -155,21 +154,21 @@ class Profile extends Component {
  }
  onSubmit = event => {
    const { 
-  title,
-  email,
-   projects,
-   language,
-   mentor,
-   state,
-   country,
-   image,
-   photo,
-   remote,
-   equipment,
-   passwordOne,
-   passwordTwo,
-   isAdmin,
-   error,
+    title,
+    email,
+    projects,
+    language,
+    mentor,
+    state,
+    country,
+    image,
+    photo,
+    remote,
+    equipment,
+    passwordOne,
+    passwordTwo,
+    isAdmin,
+    error
   
   } = this.state;
   const roles = {};
@@ -272,27 +271,28 @@ class Profile extends Component {
            <div style= {{ width: `50%`, maxWidth: `30rem`, margin: `6rem .05rem`, display: `flex`, flexFlow: `wrap column`, 
                           alignItems: `center`, justifyContent: `center`, borderRadius: `0.25rem`, backgroundColor: `white`, }}
                     classNumber="profile-pic bs-md">
-                {/* <h1 style= {{ width: `auto`, margin: `0 0 1rem 0`, textAlign: `center`, fontSize: `1.4rem`, fontWeight: `700`, }}
-                    classNumber="pic-label">Intern Name</h1> */}
+            <ProfilePic />
            <div style= {{ width: `20rem`, height: `20rem`, position: `relative`, overflow: `hidden`, borderRadius: `50%`, }} 
-                classNumber="pic bs-md">             
-                <img style= {{ width: `100%`, height: `100%`, objectFit: `cover`, objectPosition: `center`, }} 
-                    src="https://bit.ly/3jRbrbp" alt="" loading="lazy" />
+                classNumber="pic bs-md">      
+                       
+                {/* <img style= {{ width: `100%`, height: `100%`, objectFit: `cover`, objectPosition: `center`, }} 
+                    src="https://bit.ly/3jRbrbp" alt="" loading="lazy" /> */}
+                    
                     <a style= {{ opacity: `0`, width: `5-0%`, height: `100%`, margin: `25px`, padding: `0`, position: `absolute`,
                         transform: `translate(-50%, -50%)`, top: `50%`, left: `50%`, display: `none`, alignItems: `center`,
                         justifyContent: `center`, textTransform: `none`, fontSize: `1rem`, color: `white`, 
                         backgroundColor: `rgba(0, 0, 0, 0.8)`, }} id="change-avatar" classNumber="lx-btn"></a>
-                    
-           </div><br />       
-           <div style= {{ width: `flex`, marginLeft: `10px`, fontSize: `1rem`, textAlign: `center`, }} classNumber="pic-info">
-                <p><span>Favorite Quote</span></p><br />
-                <p>"This space is reserved for each person's favorite quote.&nbsp;&nbsp;</p>
+                  
            </div>
+        
+
            </div>
            </div> 
+        
 
           <FormWrapper>
-          <form action="get">
+          {/* <form action="get"> */}
+          <form onSubmit={this.handleSubmit}>
             <div className="fieldset">
               <div className="input-wrapper"> 
                 <span  className="icon"> 
@@ -307,22 +307,7 @@ class Profile extends Component {
                      </datalist>
               </div>
             </div>  
-
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span  className="icon"> 
-                  <i className="fab fa-dev fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                <input list="dev" id="dev-choice" name="dev-choice" placeholder='Developer' required/>
-                    <datalist id="dev">
-                        <option value="Frontend" />
-                        <option value="Backend" />
-                        <option value="Full Stack" />
-                     </datalist>
-              </div>
-            </div> 
-
+            
             <div className="fieldset">
               <div className="input-wrapper"> 
                 <span className="icon"> 
@@ -341,64 +326,19 @@ class Profile extends Component {
                           <option value="NCMA" />
                       </datalist>
               </div>
-            </div>   
-
-            {/* <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fab fa-github-square fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Github" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Github" id="username" autocomplete="username" required></input> 
-              </div>
-            </div>
-            <hr />
+            </div>  
 
             <div className="fieldset">
               <div className="input-wrapper"> 
                 <span className="icon"> 
-                  <i className="fas fa-envelope fa-1x"/></span>
+                  <i className="fas fa-language fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Email" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Email" id="username" autocomplete="username" required></input> 
+                  <input className="col-6 form-control" name="Language" onChange={this.handleChange} type="text" value={this.state.value}
+                    placeholder="Language" id="username" autocomplete="username" required></input> 
               </div>
             </div>
 
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fas fa-unlock-alt fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Password" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Password" id="username" autocomplete="username" required></input> 
-              </div>
-            </div>
-
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fas fa-lock-alt fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Confirm" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Confirm Password" id="username" autocomplete="username" required></input> 
-              </div>
-            </div> */}
-
-            {/* <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-language fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="languages" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Languages" id="username" autocomplete="username" required></input> 
-              </div>
-            </div>
-          
             <div className="fieldset">
               <div className="input-wrapper"> 
                 <span className="icon"> 
@@ -419,7 +359,7 @@ class Profile extends Component {
                   <i class="fas fa-landmark fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="State" onSubmit={this.onSubmit} type="text" value={name}
+                  <input className="col-6 form-control" name="State" onChange={this.handleChange} type="text" value={this.state.value}
                     placeholder="State" id="username" autocomplete="username" required></input> 
               </div>
             </div>
@@ -430,12 +370,59 @@ class Profile extends Component {
                   <i class="fas fa-globe fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Country" onSubmit={this.onSubmit} type="text" value={name}
+                  <input className="col-6 form-control" name="Country" onChange={this.handleChange} type="text" value={this.state.value}
                     placeholder="Country" id="username" autocomplete="username" required></input> 
               </div>
             </div> 
 
             <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-podcast fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input list="remote" id="remote-choie" placeholder="Remote" name="remote-choice" />
+                   <datalist id="remote">
+                      <option value="Yes" />
+                      <option value="No" />
+                    </datalist>
+              </div>
+            </div> 
+           
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i class="fas fa-laptop-code fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  <input list="equipment" id="equipment-choice" placeholder="Equipment" name="equipment-choice" />
+                    <datalist id="equipment">
+                      <option value="Yes" />
+                      <option value="No" />
+                    </datalist>
+              </div>
+            </div>
+          
+            <hr></hr>
+
+            <Button 
+              className="button-tertiary" 
+              type="submit" 
+              value="Submit">
+                Submit
+            </Button>
+{/* 
+            <Link to={'/directory/profile.js'}>
+            <Button> Profile Page </Button>
+            </Link>
+            {error && <p>{error.message}</p>} */}
+       
+              </form>
+            </FormWrapper>
+      
+
+
+            {/* <div className="fieldset">
               <div className="input-wrapper"> 
                 <span className="icon"> 
                   <i class="fas fa-map fa-1x"/></span>
@@ -487,18 +474,7 @@ class Profile extends Component {
               
             
 
-            <Button className="button-tertiary" type="submit" value="Submit">
-              Submit
-            </Button>
-{/* 
-            <Link to={'/directory/profile.js'}>
-            <Button> Profile Page </Button>
-            </Link>
-            {error && <p>{error.message}</p>} */}
-              
-        </form>
-      </FormWrapper>
-      
+        
    
     {/* )
  };
