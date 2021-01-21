@@ -259,6 +259,7 @@ class SignUpFormBase extends Component {
             </div>
             <hr />
 
+          
             <div className="fieldset">
               <div className="input-wrapper"> 
                 <span className="icon"> 
@@ -276,8 +277,8 @@ class SignUpFormBase extends Component {
                   <i className="fas fa-unlock-alt fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Password" onSubmit={this.onSubmit} type="text" value={passwordOne}
-                    placeholder="Password" id="username" autocomplete="username" required></input> 
+                  <input className="col-6 form-control" name="PasswordOne" onChange={this.handleChange} type="password" value={this.state.value}
+                    placeholder="Password" id="pass" required></input> 
               </div>
             </div>
 
@@ -287,10 +288,12 @@ class SignUpFormBase extends Component {
                   <i className="fas fa-lock-alt fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Confirm" onSubmit={this.onSubmit} type="text" value={passwordTwo}
-                    placeholder="Confirm Password" id="username" autocomplete="username" required></input> 
+                  <input className="col-6 form-control" name="PasswordTwo" onChange={this.handleChange} type="password" value={this.state.value}
+                    placeholder="Confirm Password" id="pass" required></input> 
               </div>
             </div>
+
+        
 
             {/* <div className="fieldset">
               <div className="input-wrapper"> 
