@@ -334,8 +334,7 @@ class Profile extends Component {
                   <i className="fas fa-language fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Language" onChange={this.handleChange} type="text" value={this.state.value}
-                    placeholder="Language" id="username" autocomplete="username" required></input> 
+                  <input className="col-6 form-control" name="Language" onChange={this.handleChange} type="text" value={this.state.value} placeholder="Language" id="username" autocomplete="username" required></input> 
               </div>
             </div>
 

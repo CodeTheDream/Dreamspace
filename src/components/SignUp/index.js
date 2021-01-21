@@ -215,8 +215,7 @@ class SignUpFormBase extends Component {
                   {/* adding non-breaking spaces to separate icon and input line */}
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="firstName" onSubmit={this.onSubmit} type="text" value={firstName}
-                    placeholder="First Name" id="username" autocomplete="username" required></input>            
+                  <input className="col-6 form-control" name="firstName" onChange={this.handleChange} type="text" value={this.state.value} placeholder="First Name" id="username" autocomplete="username" required></input>            
               </div>
             </div>
 
@@ -227,8 +226,7 @@ class SignUpFormBase extends Component {
                   {/* adding non-breaking spaces to separate icon and input line */}
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="lastName" onSubmit={this.onSubmit} type="text" value={lastName}
-                    placeholder="Last Name" id="username" autocomplete="username" required></input>            
+                  <input className="col-6 form-control" name="lastName" onChange={this.handleChange} type="text" value={this.state.value} placeholder="Last Name" id="username" autocomplete="username" required></input>            
               </div>
             </div>
               
@@ -266,8 +264,7 @@ class SignUpFormBase extends Component {
                   <i className="fas fa-envelope fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Email" onSubmit={this.onSubmit} type="text" value={email}
-                    placeholder="Email" id="username" autocomplete="username" required></input> 
+                  <input className="col-6 form-control" name="Email" onChange={this.handleChange} type="text" value={this.state.value} placeholder="Email" id="username" autocomplete="username" required></input> 
               </div>
             </div>
 
