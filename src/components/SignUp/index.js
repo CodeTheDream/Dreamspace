@@ -10,8 +10,8 @@ const SignUpPage = () => (
   <div style={{ marginTop: "7em", marginBottom: '7em', fontWeight: 'bold' }}>
    <div className="signup">
     <h3 style= {{marginBottom: '1.5em' }}
-    className="signin">Profile Information</h3>
-    <p>Please take time out to fill in your information.</p>
+    className="signin">SignUp Page</h3>
+    <p>Fill in all requested information below.</p>
    <SignUpForm />
    </div>
   </div>
@@ -127,7 +127,7 @@ const hr = styled.div`
 class SignUpFormBase extends Component {
   constructor(props) {
     super(props);
-    this.state = { ...INITIAL_STATE };
+    this.state = { ...INITIAL_STATE };   //refer to lines 19 and 32
   }
   onSubmit = event => {
     const { username, firstName, lastName, email, title, dev, github, equipment, quote, projects, state, country, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
@@ -187,6 +187,7 @@ class SignUpFormBase extends Component {
   };
   render() {
     const {
+      username,
       firstName,
       lastName,
       projects,
@@ -202,7 +203,7 @@ class SignUpFormBase extends Component {
       passwordOne !== passwordTwo ||
       passwordOne === "" ||
       email === "" ||
-      github === "";
+      username === "";
       
 
       return (
@@ -291,105 +292,6 @@ class SignUpFormBase extends Component {
             </div>
 
         
-
-            {/* <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-language fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="languages" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Languages" id="username" autocomplete="username" required></input> 
-              </div>
-            </div>
-          
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-chalkboard-teacher fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input list="mentor" id="mentor-choice" placeholder="Mentor" name="equipment" />
-                    <datalist id="mentor">
-                      <option value="Yes" />
-                      <option value="No" />
-                    </datalist>
-              </div>
-            </div> 
-
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-landmark fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="State" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="State" id="username" autocomplete="username" required></input> 
-              </div>
-            </div>
-
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-globe fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Country" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Country" id="username" autocomplete="username" required></input> 
-              </div>
-            </div> 
-
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-map fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="image" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="ImageOfHome" id="username" autocomplete="username" required></input> 
-              </div>
-            </div>  
-
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-camera fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Upload" onSubmit={this.onSubmit} type="text" value={name}
-                    placeholder="Upload" id="username" autocomplete="username" required></input> 
-              </div>
-            </div> 
-
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-podcast fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input list="remote" id="remote-choie" placeholder="Remote" name="remote-choice" />
-                   <datalist id="remote">
-                      <option value="Yes" />
-                      <option value="No" />
-                    </datalist>
-              </div>
-            </div> 
-            <hr></hr>
-
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-laptop-code fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input list="equipment" id="equipment-choice" placeholder="Equipment" name="equipment-choice" />
-                    <datalist id="equipment">
-                      <option value="Yes" />
-                      <option value="No" />
-                    </datalist>
-              </div>
-            </div>  */}
-
             <Button className="button-tertiary" type="submit" value="Submit">
               Submit
             </Button>

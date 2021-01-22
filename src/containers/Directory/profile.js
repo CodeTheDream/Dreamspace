@@ -288,7 +288,6 @@ class Profile extends Component {
 
            </div>
            </div> 
-        
 
           <FormWrapper>
           {/* <form action="get"> */}
