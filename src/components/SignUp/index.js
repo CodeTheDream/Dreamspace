@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
+import PasswordConfirm from '../PasswordConfirm';
 import styled from 'styled-components';
 
 
@@ -130,7 +131,7 @@ class SignUpFormBase extends Component {
     this.state = { ...INITIAL_STATE };   //refer to lines 19 and 32
   }
   onSubmit = event => {
-    const { username, firstName, lastName, email, title, dev, github, equipment, quote, projects, state, country, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
+    const { username, firstName, lastName, email, title, dev, github, equipment, quote, projects, state, country, passwordOne, isAdmin, interest, education, aboutyourself } = this.state;
    const roles = {};
     if (isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
@@ -146,20 +147,20 @@ class SignUpFormBase extends Component {
         return this.props.firebase.user(authUser.user.uid).set(
           {
             username,
-                firstName,
-                lastName,
-                title,
-                dev,
-                equipment,
-                github,
-                email,
-                projects,
-                quote,
-                state,
-                country,
-                education,
-                interest,
-                aboutyourself
+            firstName,
+            lastName,
+            title,
+            dev,
+            equipment,
+            github,
+            email,
+            projects,
+            quote,
+            state,
+            country,
+            education,
+            interest,
+            aboutyourself
           },
           { merge: true }
         );
@@ -204,7 +205,6 @@ class SignUpFormBase extends Component {
       passwordOne === "" ||
       email === "" ||
       username === "";
-      
 
       return (
         <FormWrapper>
@@ -257,53 +257,10 @@ class SignUpFormBase extends Component {
               </div>
             </div>
             <hr />
-
-          
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fas fa-envelope fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Email" onChange={this.handleChange} type="text" value={this.state.value} placeholder="Email" id="username" autocomplete="username" required></input> 
-              </div>
-            </div>
-
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fas fa-unlock-alt fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="PasswordOne" onChange={this.handleChange} type="password" value={this.state.value}
-                    placeholder="Password" id="pass" required></input> 
-              </div>
-            </div>
-
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fas fa-lock-alt fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="PasswordTwo" onChange={this.handleChange} type="password" value={this.state.value}
-                    placeholder="Confirm Password" id="pass" required></input> 
-              </div>
-            </div>
-
-        
-            <Button className="button-tertiary" type="submit" value="Submit">
-              Submit
-            </Button>
-{/* 
-            <Link to={'/directory/profile.js'}>
-            <Button> Profile Page </Button>
-            </Link>
-            {error && <p>{error.message}</p>} */}
-              
+            {error && <p>{error.message}</p>} 
+          <PasswordConfirm />
         </form>
-      </FormWrapper>
-      
+      </FormWrapper> 
    
     )
  };

@@ -1,7 +1,22 @@
 import React, { useState } from "react";
+import styled from 'styled-components';
 
 
 
+
+const imgData = styled.div`
+width: 20rem;
+height: 20rem;
+position: relative;
+borderRadius: 50%;
+} 
+`
+const img = styled.div`
+  width: 100%; 
+  height: 100%;
+  objectFit: cover;
+  objectPosition: center; 
+}`
 
 
 function ProfilePic() {
@@ -24,7 +39,6 @@ function ProfilePic() {
         <div className="register_player_Twocolumn_layout_two">
           <form className="myForm">
             <div className="formInstructionsDiv formElement">
-              {/* <h2 className="formTitle">Jane Doe</h2> */}
               <p className="instructionsText" />
               <div className="register_profile_image">
                 <input id="profilePic" type="file" onChange={onChangePicture} />
