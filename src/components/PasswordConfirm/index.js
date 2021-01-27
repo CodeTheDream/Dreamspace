@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 
 const INITIAL_STATE = {
-   username: "name",
+   username: "",
    email: "",
    passwordOne: "",
    passwordTwo: "",
@@ -114,6 +114,7 @@ class PasswordConfirm extends Component {
   }
   onSubmit = event => {
     const {
+        username,
         email,
         passwordOne,
         passwordTwo,
@@ -135,7 +136,7 @@ class PasswordConfirm extends Component {
         // Create a user in your Firebase realtime database
         return this.props.firebase.user(authUser.user.uid).set(
           {
-            
+            username,
             email,
             passwordOne,
             passwordTwo,
@@ -180,16 +181,11 @@ class PasswordConfirm extends Component {
       passwordOne === "" ||
       email === "" ||
       username === "";  
-
+console.log("testing",passwordOne, passwordTwo);
       return (
         <FormWrapper>
-          <form action="get">
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <input className="col-6 form-control" name="email" onChange={this.onChange} type="text" value={email} placeholder="Email Address" required></input> 
-              </div>
-            </div>
-
+          <form onSubmit={this.onSubmit}>
+          {/* <form onSubmit={this.handleSubmit}> */}
             <div className="fieldset">
               <div className="input-wrapper"> 
                 <input className="col-6 form-control" name="passwordOne" value={passwordOne} onChange={this.onChange} type="password" placeholder="Password" required></input> 
@@ -202,17 +198,18 @@ class PasswordConfirm extends Component {
               </div>
             </div>
 
-        
-            <Button type="submit">Submit</Button>
+           {/* <Button type="submit">Submit</Button>  */}
+           <Button disabled={isInvalid} type='submit' onSubmit={this.onSubmit}>Submit</Button>
+           
 
             {error && <p>{error.message}</p>}  
         </form>
-      </FormWrapper>
-      
+      </FormWrapper>   
    
     )
  };
 };
+
 
 const SignUpLink = () => (
   <p>
@@ -224,3 +221,7 @@ const SignUpLink = () => (
 const SignUpForm = withRouter(withFirebase(PasswordConfirm));
 export default PasswordConfirm;
 export { SignUpForm, SignUpLink }
+
+
+
+

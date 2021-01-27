@@ -4,6 +4,7 @@ import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
 import PasswordConfirm from '../PasswordConfirm';
+
 import styled from 'styled-components';
 
 
@@ -17,19 +18,16 @@ const SignUpPage = () => (
    </div>
   </div>
 );
+
 const INITIAL_STATE = {
-  username: "name",
-   title: "",
-   email: "",
-   projects: "",
-  photoUrl: "https://ya-webdesign.com/images250_/placeholder-image-png-1.png",
+  firstName: "",
+  lastName: "",
+  email: "",
+  dev: "",
   passwordOne: "",
   passwordTwo: "",
   isAdmin: false,
-  error: null,
-  education:"",
-  interest:"",
-  aboutyourself:""
+  error: null
 };
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 const ERROR_MSG_ACCOUNT_EXISTS = `
@@ -124,17 +122,17 @@ const hr = styled.div`
   }
 `;
 
-
 class SignUpFormBase extends Component {
   constructor(props) {
     super(props);
     this.state = { ...INITIAL_STATE };   //refer to lines 19 and 32
   }
   onSubmit = event => {
-    const { username, firstName, lastName, email, title, dev, github, equipment, quote, projects, state, country, passwordOne, isAdmin, interest, education, aboutyourself } = this.state;
+    console.log('hello world');
+    const { firstName, lastName, email, dev, github, passwordOne, passwordTwo, isAdmin,  } = this.state;
    const roles = {};
     if (isAdmin) {
-      roles[ROLES.ADMIN] = ROLES.ADMIN;
+      roles[ROLES.ADMIN] = ROLES.ADMIN
     }
     // else {
     //   roles[ROLES.NONADMIN] = ROLES.NONADMIN;
@@ -146,21 +144,13 @@ class SignUpFormBase extends Component {
         // Create a user in your Firebase realtime database
         return this.props.firebase.user(authUser.user.uid).set(
           {
-            username,
             firstName,
             lastName,
-            title,
             dev,
-            equipment,
             github,
             email,
-            projects,
-            quote,
-            state,
-            country,
-            education,
-            interest,
-            aboutyourself
+            passwordOne,
+            passwordTwo,
           },
           { merge: true }
         );
@@ -188,10 +178,8 @@ class SignUpFormBase extends Component {
   };
   render() {
     const {
-      username,
       firstName,
       lastName,
-      projects,
       github,
       dev,
       email,
@@ -204,7 +192,7 @@ class SignUpFormBase extends Component {
       passwordOne !== passwordTwo ||
       passwordOne === "" ||
       email === "" ||
-      username === "";
+      github === "";
 
       return (
         <FormWrapper>
@@ -216,7 +204,7 @@ class SignUpFormBase extends Component {
                   {/* adding non-breaking spaces to separate icon and input line */}
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="firstName" onChange={this.handleChange} type="text" value={this.state.value} placeholder="First Name" id="username" autocomplete="username" required></input>            
+                  <input className="col-6 form-control" name="firstName" onChange={this.handleChange} type="text" value={this.state.value} placeholder="First Name" id="fname" autocomplete="off" required></input>            
               </div>
             </div>
 
@@ -227,17 +215,17 @@ class SignUpFormBase extends Component {
                   {/* adding non-breaking spaces to separate icon and input line */}
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="lastName" onChange={this.handleChange} type="text" value={this.state.value} placeholder="Last Name" id="username" autocomplete="username" required></input>            
+                  <input className="col-6 form-control" name="lastName" onChange={this.handleChange} type="text" value={this.state.value} placeholder="Last Name" id="lname" autocomplete="off" required></input>            
               </div>
             </div>
               
             <div className="fieldset">
               <div className="input-wrapper"> 
               <span className="icon"> 
-                  <i className="fab fa-dev fa-1x"/></span>
+                  <i className="fas fa-database fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                <input list="dev" id="dev-choice" name="dev-choice" placeholder='Developer' required/>
+                <input list="dev" id="dev-choice" name="dev-choice" placeholder='Main Tech Stack' required/>
                     <datalist id="dev">
                         <option value="Frontend" />
                         <option value="Backend" />
@@ -253,10 +241,20 @@ class SignUpFormBase extends Component {
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
                   <input className="col-6 form-control" name="Github" onSubmit={this.onSubmit} type="text" value={github}
-                    placeholder="Github" id="username" autocomplete="username" required></input> 
+                    placeholder="Github" id="username" autocomplete="off" required></input> 
               </div>
             </div>
-            <hr />
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+              <span className="icon"> 
+                  <i className="fas fa-envelope fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                <input className="col-6 form-control" name="email" onChange={this.onChange} type="text" value={email} placeholder="Email Address" required></input> 
+              </div>
+            </div>
+              <hr />
             {error && <p>{error.message}</p>} 
           <PasswordConfirm />
         </form>
