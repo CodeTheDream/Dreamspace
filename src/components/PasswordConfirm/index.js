@@ -6,22 +6,7 @@ import * as ROLES from "../../constants/roles";
 import styled from 'styled-components';
 
 
-const INITIAL_STATE = {
-   username: "",
-   email: "",
-   passwordOne: "",
-   passwordTwo: "",
-   isAdmin: false,
-   error: null,
-};
-const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
-const ERROR_MSG_ACCOUNT_EXISTS = `
-  
-//   An account with this email address already exists. 
-  
-//   Please sign in instead. 
-  
-// `;
+
 
 const Button = styled.button`
   cursor: pointer;
@@ -102,10 +87,23 @@ const inputwrapper = styled.div`
     color: #495057;
   }
 `; 
-const hr = styled.div`
-  border-color: black;
-  }
-`;
+
+const INITIAL_STATE = {
+  username: "",
+   email: "",
+   passwordOne: "",
+   passwordTwo: "",
+   isAdmin: false,
+   error: null,
+};
+const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
+const ERROR_MSG_ACCOUNT_EXISTS = `
+  
+//   An account with this email address already exists. 
+  
+//   Please sign in instead. 
+  
+// `;
 
 class PasswordConfirm extends Component {
   constructor(props) {
@@ -131,12 +129,12 @@ class PasswordConfirm extends Component {
     // }
     console.log("roles: ", roles);
     this.props.firebase
+    //signup function with email, passwordOne as parameters
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your Firebase realtime database
         return this.props.firebase.user(authUser.user.uid).set(
           {
-            username,
             email,
             passwordOne,
             passwordTwo,
@@ -164,9 +162,9 @@ class PasswordConfirm extends Component {
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-  onChangeCheckbox = event => {
-    this.setState({ [event.target.name]: event.target.checked });
-  };
+  // onChangeCheckbox = event => {
+  //   this.setState({ [event.target.name]: event.target.checked });
+  // };
   render() {
     const {
       username,
@@ -188,20 +186,19 @@ console.log("testing",passwordOne, passwordTwo);
           {/* <form onSubmit={this.handleSubmit}> */}
             <div className="fieldset">
               <div className="input-wrapper"> 
-                <input className="col-6 form-control" name="passwordOne" value={passwordOne} onChange={this.onChange} type="password" placeholder="Password" required></input> 
+                <input className="col-6 form-control" name="passwordOne" value={passwordOne} onChange={this.onChange} type="password" placeholder="Password" autocomplete="off" required></input> 
               </div>
             </div>
 
             <div className="fieldset">
             <div className="input-wrapper"> 
-                <input className="col-6 form-control" name="passwordTwo" value={passwordTwo} onChange={this.onChange} type="password" placeholder="Confirm Password" required></input> 
+                <input className="col-6 form-control" name="passwordTwo" value={passwordTwo} onChange={this.onChange} type="password" placeholder="Confirm Password" autocomplete="off" required></input> 
               </div>
             </div>
 
            {/* <Button type="submit">Submit</Button>  */}
-           <Button disabled={isInvalid} type='submit' onSubmit={this.onSubmit}>Submit</Button>
+           <Button disabled={isInvalid} type='submit'>SUBMIT</Button>
            
-
             {error && <p>{error.message}</p>}  
         </form>
       </FormWrapper>   
@@ -210,17 +207,8 @@ console.log("testing",passwordOne, passwordTwo);
  };
 };
 
-
-const SignUpLink = () => (
-  <p>
-    Don't have an account? 
-    <Link className="linkstyle" to=
-    {ROUTES.SIGNUP}>Sign Up</Link>
-  </p>
-);
-const SignUpForm = withRouter(withFirebase(PasswordConfirm));
 export default PasswordConfirm;
-export { SignUpForm, SignUpLink }
+
 
 
 

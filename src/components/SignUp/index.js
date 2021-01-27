@@ -26,6 +26,7 @@ const INITIAL_STATE = {
   dev: "",
   passwordOne: "",
   passwordTwo: "",
+  github: "",
   isAdmin: false,
   error: null
 };
@@ -196,15 +197,17 @@ class SignUpFormBase extends Component {
 
       return (
         <FormWrapper>
-          <form action="get">
+          {/* <form action="get"> */}
+          <form onSubmit={this.onSubmit} className="col-6 form-control">
             <div className="fieldset">
               <div className="input-wrapper"> 
                 <span className="icon"> 
                   <i className="fas fa-portrait fa-1x"/></span>
-                  {/* adding non-breaking spaces to separate icon and input line */}
+                  &nbsp;&nbsp;      {/* adding non-breaking spaces to separate icon and input line */}
                   &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="firstName" onChange={this.handleChange} type="text" value={this.state.value} placeholder="First Name" id="fname" autocomplete="off" required></input>            
+                  <input name="firstName" onChange={this.onChange} type="text" value={this.state.firstname} placeholder="First Name" 
+                    id="fname" required>
+                  </input>            
               </div>
             </div>
 
@@ -212,10 +215,10 @@ class SignUpFormBase extends Component {
               <div className="input-wrapper"> 
                 <span className="icon"> 
                   <i className="fas fa-portrait fa-1x"/></span>
-                  {/* adding non-breaking spaces to separate icon and input line */}
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="lastName" onChange={this.handleChange} type="text" value={this.state.value} placeholder="Last Name" id="lname" autocomplete="off" required></input>            
+                  <input name="lastName" onChange={this.onChange} type="text" value={this.state.lastname} placeholder="Last Name" 
+                    id="lname" required></input>            
               </div>
             </div>
               
@@ -240,7 +243,7 @@ class SignUpFormBase extends Component {
                   <i className="fab fa-github-square fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Github" onSubmit={this.onSubmit} type="text" value={github}
+                  <input className="col-6 form-control" name="Github" onChange={this.onChange} type="text" value={github}
                     placeholder="Github" id="username" autocomplete="off" required></input> 
               </div>
             </div>
@@ -254,8 +257,8 @@ class SignUpFormBase extends Component {
                 <input className="col-6 form-control" name="email" onChange={this.onChange} type="text" value={email} placeholder="Email Address" required></input> 
               </div>
             </div>
-              <hr />
-            {error && <p>{error.message}</p>} 
+            <hr />
+            {/* {error && <p>{error.message}</p>}  */}
           <PasswordConfirm />
         </form>
       </FormWrapper> 
