@@ -255,6 +255,8 @@ class SignUpFormBase extends Component {
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
                 <input className="col-6 form-control" name="email" onChange={this.onChange} type="text" value={email} placeholder="Email Address" required></input> 
+
+                
               </div>
             </div>
             <hr />

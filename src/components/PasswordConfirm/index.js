@@ -4,6 +4,7 @@ import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
 import styled from 'styled-components';
+import { compose} from 'recompose';
 
 
 
@@ -162,9 +163,9 @@ class PasswordConfirm extends Component {
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-  // onChangeCheckbox = event => {
-  //   this.setState({ [event.target.name]: event.target.checked });
-  // };
+  onChangeCheckbox = event => {
+    this.setState({ [event.target.name]: event.target.checked });
+   };
   render() {
     const {
       username,
