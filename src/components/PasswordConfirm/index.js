@@ -7,8 +7,6 @@ import styled from 'styled-components';
 import { compose} from 'recompose';
 
 
-
-
 const Button = styled.button`
   cursor: pointer;
   background: blue;
@@ -197,10 +195,73 @@ console.log("testing",passwordOne, passwordTwo);
               </div>
             </div>
 
+            <div className="mail-reset" id="forgotPassword">
+      <div className="mail-reset-content">
+
+      <div className="mail-reset" id="forgotPassword">
+      <div className="mail-reset-content">
+        <form onSubmit={this.onSubmit}>
+      
+          <h3 className="form-title">Enter Information</h3>     
+            <label for="Email" sm={2} />
+              Email
+              <input
+                type="email"
+                name="email"
+                id="Email"
+                value={passwordTwo}
+                onChange={this.onChange}
+                placeholder="Email"
+                aria-label="email address"
+                aria-describedby="email address"
+                aria-invalid="false"
+                {...email}
+              />
+           
+            <label for="newPassword" sm={2} />
+              New Password
+            
+              <input
+                type="password"
+                name="passwordOne"
+                id="newPassword"
+                value={passwordTwo}
+                onChange={this.onChange}
+                placeholder="New Password"
+                aria-label="passwordone"
+                aria-describedby="passwordone"
+                aria-invalid="false"
+                {...passwordOne}
+              />
+            
+            <label for="confirmPassword" sm={2} />
+              Confirm Password
+              <input
+                type="password"
+                name="passwordTwo"
+                id="confirmPassword"
+                value={passwordTwo}
+                onChange={this.onChange}
+                placeholder="Confirm Password"
+                aria-label="passwordtwo"
+                aria-describedby="passwordtwo"
+                aria-invalid="false"
+                {...passwordTwo}
+              />
+    
+
+</form>
+</div>
+</div>
+
+
            {/* <Button type="submit">Submit</Button>  */}
            <Button disabled={isInvalid} type='submit'>SUBMIT</Button>
            
-            {error && <p>{error.message}</p>}  
+            {error && <p>{error.message}</p>} 
+            
+            </div> 
+            </div>
         </form>
       </FormWrapper>   
    
