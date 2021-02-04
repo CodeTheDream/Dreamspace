@@ -185,83 +185,27 @@ console.log("testing",passwordOne, passwordTwo);
           {/* <form onSubmit={this.handleSubmit}> */}
             <div className="fieldset">
               <div className="input-wrapper"> 
+              <span className="icon"> 
+                  <i className="fas fa-lock-open fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
                 <input className="col-6 form-control" name="passwordOne" value={passwordOne} onChange={this.onChange} type="password" placeholder="Password" autocomplete="off" required></input> 
               </div>
             </div>
 
             <div className="fieldset">
             <div className="input-wrapper"> 
+               <label for="passwordTwo" sm={2} />
                 <input className="col-6 form-control" name="passwordTwo" value={passwordTwo} onChange={this.onChange} type="password" placeholder="Confirm Password" autocomplete="off" required></input> 
               </div>
             </div>
 
-            <div className="mail-reset" id="forgotPassword">
-      <div className="mail-reset-content">
-
-      <div className="mail-reset" id="forgotPassword">
-      <div className="mail-reset-content">
-        <form onSubmit={this.onSubmit}>
       
-          <h3 className="form-title">Enter Information</h3>     
-            <label for="Email" sm={2} />
-              Email
-              <input
-                type="email"
-                name="email"
-                id="Email"
-                value={passwordTwo}
-                onChange={this.onChange}
-                placeholder="Email"
-                aria-label="email address"
-                aria-describedby="email address"
-                aria-invalid="false"
-                {...email}
-              />
-           
-            <label for="newPassword" sm={2} />
-              New Password
-            
-              <input
-                type="password"
-                name="passwordOne"
-                id="newPassword"
-                value={passwordTwo}
-                onChange={this.onChange}
-                placeholder="New Password"
-                aria-label="passwordone"
-                aria-describedby="passwordone"
-                aria-invalid="false"
-                {...passwordOne}
-              />
-            
-            <label for="confirmPassword" sm={2} />
-              Confirm Password
-              <input
-                type="password"
-                name="passwordTwo"
-                id="confirmPassword"
-                value={passwordTwo}
-                onChange={this.onChange}
-                placeholder="Confirm Password"
-                aria-label="passwordtwo"
-                aria-describedby="passwordtwo"
-                aria-invalid="false"
-                {...passwordTwo}
-              />
-    
-
-</form>
-</div>
-</div>
-
-
            {/* <Button type="submit">Submit</Button>  */}
            <Button disabled={isInvalid} type='submit'>SUBMIT</Button>
            
             {error && <p>{error.message}</p>} 
             
-            </div> 
-            </div>
         </form>
       </FormWrapper>   
    

@@ -229,11 +229,11 @@ class SignUpFormBase extends Component {
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
                 <input list="dev" id="dev-choice" name="dev-choice" placeholder='Main Tech Stack' required/>
-                    <datalist id="dev">
-                        <option value="Frontend" />
-                        <option value="Backend" />
-                        <option value="Full Stack" />
-                     </datalist>
+                  <datalist id="dev">
+                    <option value="Frontend" />
+                    <option value="Backend" />
+                    <option value="Full Stack" />
+                  </datalist>
               </div>
             </div>   
 
@@ -254,14 +254,42 @@ class SignUpFormBase extends Component {
                   <i className="fas fa-envelope fa-1x"/></span>
                   &nbsp;&nbsp;
                   &nbsp;&nbsp;
-                <input className="col-6 form-control" name="email" onChange={this.onChange} type="text" value={email} placeholder="Email Address" required></input> 
-
-                
+                <input className="col-6 form-control" name="email" onChange={this.onChange} type="text" value={email} placeholder="Email Address" required></input>         
               </div>
             </div>
             <hr />
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+              <span className="icon"> 
+                  <i className="fas fa-lock-open fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                <input className="col-6 form-control" name="passwordOne" value={passwordOne} onChange={this.onChange} type="password" placeholder="Password" autocomplete="off" required></input> 
+              </div>
+            </div>
+
+            <div className="fieldset">
+            <div className="input-wrapper"> 
+            
+            <span className="icon"> 
+            
+                  <i className="fas fa-lock-open fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                <input className="col-6 form-control" name="passwordTwo" value={passwordTwo} onChange={this.onChange} type="password" placeholder="Confirm Password" autocomplete="off" required></input> 
+              </div>
+            </div>
+
+      
+           <Button disabled={isInvalid} type='submit'>SUBMIT</Button>
+           
+            {error && <p>{error.message}</p>} 
+            
+
+
+
             {/* {error && <p>{error.message}</p>}  */}
-          <PasswordConfirm />
+          {/* <PasswordConfirm /> */}
         </form>
       </FormWrapper> 
    
