@@ -3,12 +3,25 @@ import { Link } from 'react-router-dom'
 
 
 const ProjectCard = ({project}) => {
-  console.log("testing project", project)
   return (
-    <div style={{width: "300px", height: "200px", backgroundColor: "green"}} className="project-card ">
-      {project.fields.Name}
+    <div className="project-card ">
+      <div className="card-view">
+      <img src="./ctdlogo.png" alt=""></img>
+        <h1 className="name-header"> {project.fields.Name}</h1>
+        <h4 className="manager-header"> {project.fields["Project Manager"]}</h4>
+        <button>Check This Out</button>
+
+
     </div>
+    </div>
+
   )
 }
+   
+ 
+
+   
+  
+
 
 export default ProjectCard;

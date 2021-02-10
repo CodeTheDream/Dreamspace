@@ -12,6 +12,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faColumns} from '@fortawesome/free-solid-svg-icons';
 library.add(faColumns);
+
+const TextBox = () => {
+  return (
+    <input className="text-input" type="text"></input>
+  )
+}
+
 class ProjectDashBoard extends React.Component {
   constructor(props) {
     super(props);
@@ -80,8 +87,8 @@ class ProjectDashBoard extends React.Component {
     })
       .then(response => response.json())
       .then(responseData => {
-        // console.log("data from Airtable", responseData);
-        const projectData = responseData.records;
+         console.log("data from Airtable", responseData);
+        const projectData = responseData.records.filter(result => result.fields.Status == "Active_high" || result.fields.Status == "Active_mid" ||result.fields.Status == "Active_Slow");
         // console.log("projectData ", projectData);
         this.setState({ projectData: projectData, allProjects: projectData});
       });
@@ -115,7 +122,15 @@ class ProjectDashBoard extends React.Component {
       }
     
       return (
-        <div className="view-container projects-dashboard">
+        <>
+        <div className="view-container">
+          {/* <TextBox /> */}   
+          <SearchBar 
+            projectData={this.state.projectData}
+            selectProject={this.selectProject}
+            handleInput={this.handleInput}
+            filterProjectList={this.filterProjectList}
+            />  
          
             {/* <div>
               {this.state.projectData && (
@@ -143,6 +158,7 @@ class ProjectDashBoard extends React.Component {
                 crewDirectory={this.state.crewDirectory}>
                 {modalScreen}
               </FeatureCard>) : null}  */}
+           
               {this.state.projectData.map(project => (
               <ProjectCard 
                 project={project} 
@@ -155,6 +171,7 @@ class ProjectDashBoard extends React.Component {
 
       
           </div>
+          </>
       );
     }
   }

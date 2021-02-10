@@ -1,0 +1,78 @@
+.view-container {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-gap: 45px;
+    padding: 0;
+    padding-top: 25px;
+    height: auto;
+    padding-bottom: 25px;
+    background: rgb(255, 255, 255);
+    justify-content: center;
+    margin-top: 3em;
+}
+.search-container {
+    grid-column: 1 / 4;
+}
+// look into the minmax function, it will save you time when doing media queries
+.card-view {
+    height: 300px;
+    background: transparent;
+    border-style: solid;
+    border-color: black;
+    border-radius: 15px 50px 30px; 
+    text-align: center;
+    max-width: 300px;
+    margin: auto;
+  
+}
+
+.name-header {
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+
+.developer {
+    font-size: 25px;
+}
+
+.text-input {
+    margin-top: 85px;
+    height: 40px;
+    width: 50%;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.manager-header {
+    text-emphasis: center;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+
+button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: #e26c27;
+    background-color: rgb(27, 38, 196);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    
+  }
+
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+   
+  .Photo {
+    
+       height: 100%;
+       width: auto;
+
+   }
