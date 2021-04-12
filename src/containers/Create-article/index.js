@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './'
 // import FormWrapper from "react-form-wrapper";
 import { compose } from "recompose";
 import { Link, withRouter } from "react-router-dom";
@@ -98,7 +99,7 @@ const i = styled.div`
   
   }
 `
-const inputwrapper = styled.div`
+const InputWrapper = styled.div`
     flexGrow: 1; 
     minHeight: 2rem; 
     padding: 0.375rem 0.75rem;                         
@@ -311,7 +312,7 @@ console.log("tags from api call",options)
                             <form
                               onSubmit={(e) => this.handleSubmit(e, authUser)}
                             > */}
-                              {/* <ul>
+                        {/* <ul>
                                 <li>
                                   <input
                                     type="text"
@@ -323,7 +324,7 @@ console.log("tags from api call",options)
                                   
                                 </li>
                                 <li> */}
-                              {/* <select
+                        {/* <select
                                     value={this.state.tags}
                                     onChange={this.onTagChange}
                                   >
@@ -335,7 +336,7 @@ console.log("tags from api call",options)
                                       );
                                     })}
                                   </select> */}
-                              {/* <div className="autosuggest_list">
+                        {/* <div className="autosuggest_list">
                                   <Autosuggest
                                     suggestions={suggestions}
                                     onSuggestionsFetchRequested={
@@ -384,7 +385,7 @@ console.log("tags from api call",options)
                                 </li>
                               </ul> */}
 
-                              {/* <label htmlFor="title">
+                        {/* <label htmlFor="title">
                                 Title
                                 <input
                                   type="text"
@@ -428,40 +429,60 @@ console.log("tags from api call",options)
                         </ul>
                   <div>
                 <div> */}
-                  <FormWrapper
-                    onSubmit={(e) => this.handleSubmit(e, authUser)}
-                  >
-                    <form action="get">
-                      <div className="fieldset">
-                        <div className="input-wrapper"> 
-                          <span className="icon"> 
-                            <i className="fas fa-portrait fa-1x"/></span>
-                              <input className="col-6 form-control" name="Title" onSubmit={this.onSubmit} type="text" 
-                              placeholder="Title" id="username" autocomplete="username" required></input>            
-                        </div>
-                      </div>
-                      <div className="fieldset">
-                        <div className="input-wrapper"> 
-                          <span className="icon"></span>
-                            <i className="fas fa-envelope fa-1x" />
-                             <input className="col-6 form-control" name="Url" onSubmit={this.onSubmit} type="text"                     placeholder="Url" id="username" autocomplete="username" required></input> 
-                        </div>
-                      </div>
-                    </form>
-                    </FormWrapper>
-                       
-                    {/* <Link to={'/projects'}>
+                        <FormWrapper
+                          onSubmit={(e) => this.handleSubmit(e, authUser)}
+                        >
+                          <form action="get">
+                            <div className="fieldset">
+                              <div className="InputWrapper">
+                                <span className="icon">
+                                  <i className="fas fa-portrait fa-1x" />
+                                </span>
+                                <input
+                                  className="col-6 form-control"
+                                  type="text"
+                                  name="title"
+                                  id="title"
+                                  value={this.state.title}
+                                  onChange={this.handleChange}
+                                  autoComplete="title"
+                                  required
+                                ></input>
+                              </div>
+                            </div>
+                            <div className="fieldset">
+                              <div className="InputWrapper">
+                                <span className="icon"></span>
+                                <i className="fas fa-envelope fa-1x" />
+                                <input
+                                  className="col-6 form-control"
+                                  type="text"
+                                  name="url"
+                                  id="url"
+                                  value={this.state.url}
+                                  onChange={this.handleChange}
+                                  autoComplete="url"
+                                ></input>
+                              </div>
+                            </div>
+                            <div className="fieldset">
+                              <div className="InputWrapper">
+                                <Button type="submit" value="submit">Submit</Button>
+                              </div>
+                            </div>
+                          </form>
+                        </FormWrapper>
+
+                        {/* <Link to={'/projects'}>
                      <Button> Profile Page </Button>
                     </Link> */}
+                      </div>
                     </div>
                   </div>
                 </div>
-                </div>
               </Dialog>
             ) : null}
-          </div> 
-        
-          
+          </div>
         )}
       </AuthUserContext.Consumer>
     );
