@@ -11,9 +11,9 @@ const config = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 };
 //export const storage = firebase.storage();
-class Firebase {
+class Firebase {0
   constructor() {
-    console.log("API KEY", process.env.REACT_APP_API_KEY);
+    // console.log("API KEY", process.env.REACT_APP_API_KEY);
       app.initializeApp(config);
 
       
@@ -63,27 +63,42 @@ class Firebase {
           .get()
           .then(snapshot => {
             const dbUser = snapshot.data();
+            console.log('dbUser', dbUser);
             // default empty roles
           /* if (!dbUser.roles) {
               dbUser.roles = {};
               }*/
              authUser.providerData.forEach(function (profile) {
-                 console.log("Sign-in provider: " + profile.providerId);
+                  console.log("Sign-in provider: " + profile.providerId);
                   console.log("  Provider-specific UID: " + profile.uid);
                   console.log("  Name: " + profile.displayName);
-                 console.log("  Email: " + profile.email);
+                  console.log("  Email: " + profile.email);
                   console.log("  Photo URL: " + profile.photoURL);
               });
+              console.log('authUser', authUser)
             // merge auth and db user
             authUser = {
               uid: authUser.uid,
+              firstName: authUser.firstName,
+              lastName: authUser.lastname,
+              passwordOne: authUser.passwordOne,
+              passwordTwo: authUser.passwordTwo,
               email: authUser.email,
+              developer: authUser.developer,
+              github: authUser.github,
+              projects: authUser.projects,
+              language: authUser.language,
+              mentor: authUser.mentor,
+              state: authUser.state,
+              country: authUser.country,
+              remote: authUser.remote,
+              equipment: authUser.equipment,
               emailVerified: authUser.emailVerified,
               providerData: authUser.providerData,
               photoUrl: authUser.photoURL,
-              education:authUser.education,
-              interest:authUser.interest,
-             aboutyouself:authUser.aboutyouself,
+            //   education: authUser.education,
+            //   interest: authUser.interest,
+            //  aboutyouself: authUser.aboutyouself,
               ...dbUser
             };
             next(authUser);
