@@ -9,13 +9,11 @@ import { AuthUserContext } from "../Session";
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
-    {authUser =>
-            authUser ? <NavigationAuth authUser={authUser} /> :
-                <div>
-                    
-                    <NavigationNonAuth />
-               <Redirect to ="/signin"/>
-                    </div>
+    {authUser => authUser ? <NavigationAuth authUser={authUser} /> :
+      <div>
+        <NavigationNonAuth />
+        <Redirect to ="/signin"/>
+      </div>
     }
   </AuthUserContext.Consumer>
 );
@@ -59,7 +57,9 @@ const NavigationNonAuth = () => (
   <header className="header">
   <img src={Logo} className="logo-wrapper"  alt="hi"/>
     <input className="menu-btn" type="checkbox" id="menu-btn" />
-    <label className="menu-icon" for="menu-btn">
+    {/* htmlFor was for, changed per errors */}
+    {/* switched back to for */}
+    <label className="menu-icon" for="menu-btn">  
       <span className="nav-icon"></span>
     </label>
 
