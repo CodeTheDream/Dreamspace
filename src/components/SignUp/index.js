@@ -4,24 +4,25 @@ import { Link, withRouter } from "react-router-dom";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
+import firebase from 'firebase'
 import styled from 'styled-components';
 
-// const Button = styled.button`
-//   cursor: pointer;
-//   background: blue;
-//   font-size: 16px;
-//   border-radius: 25px;
-//   color: white;
-//   margin-left: 12px;
-//   margin-right: 20px; 
-//   padding: .75em .75em;
-//   transition: 0.5s all ease-out;
+const Button = styled.button`
+  cursor: pointer;
+  background: blue;
+  font-size: 16px;
+  border-radius: 25px;
+  color: white;
+  margin-left: 12px;
+  margin-right: 20px; 
+  padding: .75em .75em;
+  transition: 0.5s all ease-out;
  
-//   &:hover {
-//     background-color: white;
-//     color: black;
-//   }
-// `;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`;
 
 const FormWrapper = styled.div`
   display: flex;
@@ -87,10 +88,10 @@ const SignUpPage = () => (
 );
 
 const INITIAL_STATE = {
-  username: '',
+  username: 'name',
   email: '',
   firstName: '',
-   photoURL: "https://ya-webdesign.com/images250_/placeholder-image-png-1.png",
+//    photoURL: "https://ya-webdesign.com/images250_/placeholder-image-png-1.png",
   lastName: '',
   developer: '',
   github: '',
@@ -143,7 +144,7 @@ class SignUpFormBase extends Component {
   
     if (isAdmin) {
        roles[ROLES.ADMIN] = ROLES.ADMIN;
-    // }
+     }
  // else {
     //   roles[ROLES.NONADMIN] = ROLES.NONADMIN;
     // }
@@ -300,7 +301,7 @@ class SignUpFormBase extends Component {
           </div>
         </div>
 
-        <label>
+        {/* <label>
           Admin:
           <input
             name="isAdmin"
@@ -308,22 +309,24 @@ class SignUpFormBase extends Component {
             checked={isAdmin}
             onChange={this.onChangeCheckbox}
           />
-        </label> 
+        </label>  */}
 
-        {/* <Button className="button-tertiary" disable={isInvalid} type="submit">
+        <Link to={'/directory/profile.js'}>
+           <Button> Profile Page </Button>
+           </Link>
+
+         <Button className="button-tertiary" disable={isInvalid} type="submit">
           Sign Up
-        </Button> */}
+        </Button> 
         {/* <Button type='submit' value='onSubmit'>Submit</Button>   */}
 {/* //             <br />
 //             <br />
 
-//            <Link to={'/directory/profile.js'}>
-//            <Button> Profile Page </Button>
-//            </Link>
+          
 //            {error && <p>{error.message}</p> */}
-        <button className="button-tertiary" disabled={isInvalid} type="submit">
+        {/* <button className="button-tertiary" disabled={isInvalid} type="submit">
           Sign Up
-        </button>
+        </button> */}
 
         {error && <p>{error.message}</p>}
       </form>
@@ -332,7 +335,7 @@ class SignUpFormBase extends Component {
     );
 
 }};
-};
+;
 
 
 const SignUpLink = () => (
@@ -344,7 +347,7 @@ const SignUpLink = () => (
 );
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));
 export default SignUpPage;
-export default { SignUpForm, SignUpLink };
+export { SignUpForm, SignUpLink };
 
 
 
