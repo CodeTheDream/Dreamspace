@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
-import firebase from 'firebase'
+import firebase from 'firebase';
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -22,7 +22,7 @@ const Button = styled.button`
     background-color: white;
     color: black;
   }
-`;
+`; 
 
 const FormWrapper = styled.div`
   display: flex;
@@ -81,10 +81,11 @@ const SignUpPage = () => (
 //     <SignUpForm />
 //   </div>
 <div style={{ marginTop: "4.8em" }}>
-   <div className="signup"></div>
+   <div className="signup">
     <h3 className="signin">SignUp</h3>
     <SignUpForm />
-  </div>
+    </div>
+ </div>
 );
 
 const INITIAL_STATE = {
