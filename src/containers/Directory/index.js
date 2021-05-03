@@ -1,14 +1,18 @@
 import React from 'react';
 import DirectorySearchBar from '../../components/DirectorySearchBar';
 import DirectoryList from '../../components/DirectoryList';
+import World from "../../components/World"
+
+
 
 class Directory extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       crewDirectory: [],
       searchDirectory: "",
       isFlipped: false,
+      isMapView: true
     }
   }
 
@@ -75,15 +79,38 @@ class Directory extends React.Component {
     // console.log(results)
     this.setState({ crewDirectory: results })
   }
-  render() {
+  
+  toggleMap = () => {
+    this.setState({
+      isMapView: !this.state.isMapView
+      
+    })
+  }
+
+   render() {
+    
     return(
+      <div>
+      {this.state.isMapView ?
+      <World 
+        toggleMap={this.toggleMap}
+        crewDirectory = {this.state.crewDirectory}
+        
+      /> :
       <div className = 'directory-container'>
-        {this.state.crewDirectory && (<DirectorySearchBar 
+      
+        {this.state.crewDirectory && (
+        
+        <div>
+        <DirectorySearchBar 
           crewDirectory={this.state.crewDirectory}
           selectedStaffMember={this.selectedStaffMember}
           // handleInput={this.handleInput}
           filterDirectory={this.filterDirectory}
         />
+        <div onClick={this.toggleMap}>Toggle Map</div>
+        </div>
+        
         )}
         {this.state.crewDirectory && (<DirectoryList 
           crewDirectory={this.state.crewDirectory}
@@ -92,10 +119,13 @@ class Directory extends React.Component {
           isFlipped={this.state.isFlipped}
         />)}
      </div>
+     }
+     </div>
    
+ 
     )
-    
-  }
+   }
+  
 }
 
 export default Directory 

@@ -126,4 +126,4 @@ class Articles extends React.Component {
 
 const condition = (authUser) => !!authUser;
 
-export default compose(withFirebase, withAuthorization(condition))(Dashboard);
+export default compose(withFirebase, withAuthorization(condition));
