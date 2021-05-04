@@ -9,13 +9,11 @@ import { AuthUserContext } from "../Session";
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
-    {authUser =>
-            authUser ? <NavigationAuth authUser={authUser} /> :
-                <div>
-                    
-                    <NavigationNonAuth />
-               <Redirect to ="/signin"/>
-                    </div>
+    {authUser => authUser ? <NavigationAuth authUser={authUser} /> :
+      <div>
+        <NavigationNonAuth />
+        <Redirect to ="/signin"/>
+      </div>
     }
   </AuthUserContext.Consumer>
 );
@@ -23,42 +21,45 @@ const Navigation = () => (
 const NavigationAuth = () => (
   <header className="header">
    
-        <Link to={ROUTES.HOME}><img src={Logo} className="logo-wrapper" alt="home" /></Link> 
+    <Link to={ROUTES.HOME}><img src={Logo} className="logo-wrapper" alt="home" /></Link> 
     <input className="menu-btn" type="checkbox" id="menu-btn" />
     <label className="menu-icon" for="menu-btn">
       <span className="nav-icon"></span>
     </label>
     <ul className="menu">
+       <li>
+         <Link to={ROUTES.ARTICLES}>Articles</Link>
+       </li>
              <li>
-        <Link to={ROUTES.ARTICLES}>Articles</Link>
-      </li>
-             <li>
-        <Link to={ROUTES.PROJECT}>Project</Link>
-      </li>
+         <Link to={ROUTES.PROJECT}>Project</Link>
+       </li>
                
+       <li>
+         <Link to={ROUTES.DIRECTORY}>Directory</Link>
+      </li>
       <li>
-        <Link to={ROUTES.DIRECTORY}>Directory</Link>
-            </li>
+         <Link to={ROUTES.WORLD}>World</Link>
+      </li>
             {/* <li>
                 <Link to={ROUTES.ACCOUNT}>Account</Link> 
                 
       </li>*/}
-                < li >
-                <Userprofile />
+       <li>
+          <Userprofile />
                
-                {/* <i className="fa fa-user fa-xs" />{" "}<i className="fa fa-caret-down">  */}
-                    
-          
-      </li>
-    </ul>
-  </header>
+                {/* <i className="fa fa-user fa-xs" />{" "}<i className="fa fa-caret-down">  */}  
+        </li>
+      </ul>
+    </header>
 );
 
 const NavigationNonAuth = () => (
   <header className="header">
   <img src={Logo} className="logo-wrapper"  alt="hi"/>
     <input className="menu-btn" type="checkbox" id="menu-btn" />
-    <label className="menu-icon" for="menu-btn">
+    {/* htmlFor was for, changed per errors */}
+    {/* switched back to for */}
+    <label className="menu-icon" for="menu-btn">  
       <span className="nav-icon"></span>
     </label>
 
@@ -73,7 +74,7 @@ const NavigationNonAuth = () => (
       <li>
         {" "}
         <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-            </li>
+      </li>
           
     </ul>
   </header>

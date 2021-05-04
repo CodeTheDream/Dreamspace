@@ -5,6 +5,8 @@ import { compose } from "recompose";
 //import * as ROUTES from "../../constants/routes";
 import { AuthUserContext } from "../Session";
 const moment = require("moment");
+
+//reply and date stamped component
 class AddReplys extends React.Component {
   constructor(props) {
     super(props);
