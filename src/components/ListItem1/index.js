@@ -11,7 +11,7 @@ class ListItem1 extends React.Component {
         this.state = {
             article: [],
             upvotes: [],
-            downvotes: [],
+            //downvotes: [],
             calculatedvote: [],
             upvotecolor: 'gray',
             downvotecolor: 'gray',
@@ -82,7 +82,7 @@ class ListItem1 extends React.Component {
                 calculatedvote: finalTotal
             })
     }
-    handleUpvote = (authUser) => {
+    handleUpvote = (authUser) => { //handleClap()
 
         const { article } = this.props
         let initialvote = [authUser.uid];
@@ -169,95 +169,95 @@ class ListItem1 extends React.Component {
             }
         }
     }
-    handleDownvote = (authUser) => {
-        const { article } = this.props
-        let initialvote = [authUser.uid];
+    // handleDownvote = (authUser) => { //removeClap()
+    //     const { article } = this.props
+    //     let initialvote = [authUser.uid];
 
-        if (article.downvotes === 0) {
-            // console.log("typeof", typeof (article.upvotes))
-            if (this.checkUpvote(authUser.uid, article.upvotes) === -1) {
-                this.setState({
-                    downvotecolor: 'dodgerblue',
-                    upvotecolor: 'gray'
-                })
-                this.props.firebase
-                    .article(article.uid)
-                    .set({
-                        ...article,
-                        downvotes: initialvote
-                    })
+    //     if (article.downvotes === 0) {
+    //         // console.log("typeof", typeof (article.upvotes))
+    //         if (this.checkUpvote(authUser.uid, article.upvotes) === -1) {
+    //             this.setState({
+    //                 downvotecolor: 'dodgerblue',
+    //                 upvotecolor: 'gray'
+    //             })
+    //             this.props.firebase
+    //                 .article(article.uid)
+    //                 .set({
+    //                     ...article,
+    //                     downvotes: initialvote
+    //                 })
 
-            }
-            else {
-                let uidIndex = this.checkUpvote(authUser.uid, article.upvotes)
-                let articlearray = article.upvotes;
-                articlearray.splice(uidIndex, 1)
-                this.setState({
-                    downvotecolor: 'dodgerblue',
-                    upvotecolor: 'gray'
-                })
-                this.props.firebase
-                    .article(article.uid)
-                    .set({
-                        ...article,
-                        downvotes: initialvote,
-                        upvotes: articlearray
-                    })
-            }
-        }
-        else {
-            // console.log("checkdownvote", this.checkDownvote(authUser.uid, article.downvotes));
-            if (this.checkDownvote(authUser.uid, article.downvotes) === -1) {
-                if (this.checkUpvote(authUser.uid, article.upvotes) === -1) {
-                    this.setState({
-                        calculatedvote: this.state.calculatedvote - 1,
-                        downvotecolor: 'dodgerblue',
-                        upvotecolor: 'gray'
-                    })
-                    let downvotes = article.downvotes
-                    let updatedDownvotes = downvotes
-                    updatedDownvotes.push(authUser.uid)
-                    this.props.firebase
-                        .article(article.uid)
-                        .set({
-                            ...article,
-                            calculatedvote: this.state.calculatedvote - 1,//here i tried to put the updated calculated vote on firebase
-                            downvotes: updatedDownvotes
-                        })
+    //         }
+    //         else {
+    //             let uidIndex = this.checkUpvote(authUser.uid, article.upvotes)
+    //             let articlearray = article.upvotes;
+    //             articlearray.splice(uidIndex, 1)
+    //             this.setState({
+    //                 downvotecolor: 'dodgerblue',
+    //                 upvotecolor: 'gray'
+    //             })
+    //             this.props.firebase
+    //                 .article(article.uid)
+    //                 .set({
+    //                     ...article,
+    //                     downvotes: initialvote,
+    //                     upvotes: articlearray
+    //                 })
+    //         }
+    //     }
+    //     else {
+    //         // console.log("checkdownvote", this.checkDownvote(authUser.uid, article.downvotes));
+    //         if (this.checkDownvote(authUser.uid, article.downvotes) === -1) {
+    //             if (this.checkUpvote(authUser.uid, article.upvotes) === -1) {
+    //                 this.setState({
+    //                     calculatedvote: this.state.calculatedvote - 1,
+    //                     downvotecolor: 'dodgerblue',
+    //                     upvotecolor: 'gray'
+    //                 })
+    //                 let downvotes = article.downvotes
+    //                 let updatedDownvotes = downvotes
+    //                 updatedDownvotes.push(authUser.uid)
+    //                 this.props.firebase
+    //                     .article(article.uid)
+    //                     .set({
+    //                         ...article,
+    //                         calculatedvote: this.state.calculatedvote - 1,//here i tried to put the updated calculated vote on firebase
+    //                         downvotes: updatedDownvotes
+    //                     })
 
-                }
+    //             }
 
 
-                else {
-                    // console.log("checkDownvote")
-                    let uidindex = this.checkUpvote(authUser.uid, article.upvotes)
-                    this.setState({
-                        downvotecolor: 'dodgerblue',
-                        upvotecolor: 'gray'
-                    })
-                    //   console.log("uid", uidindex)
-                    let articlearray = article.upvotes;
-                    articlearray.splice(uidindex, 1)
-                    //  console.log("article.downvote", article.downvotes)
-                    //let downvotearray=article.downvotes.push(authUser.uid)
-                    let downvotes = article.downvotes
-                    let updatedDownvotes = downvotes
-                    updatedDownvotes.push(authUser.uid)
-                    this.props.firebase
-                        .article(article.uid)
-                        .set({
-                            ...article,
-                            upvotes: articlearray,
-                            downvotes: updatedDownvotes
-                        })
-                }
-            }
+    //             else {
+    //                 // console.log("checkDownvote")
+    //                 let uidindex = this.checkUpvote(authUser.uid, article.upvotes)
+    //                 this.setState({
+    //                     downvotecolor: 'dodgerblue',
+    //                     upvotecolor: 'gray'
+    //                 })
+    //                 //   console.log("uid", uidindex)
+    //                 let articlearray = article.upvotes;
+    //                 articlearray.splice(uidindex, 1)
+    //                 //  console.log("article.downvote", article.downvotes)
+    //                 //let downvotearray=article.downvotes.push(authUser.uid)
+    //                 let downvotes = article.downvotes
+    //                 let updatedDownvotes = downvotes
+    //                 updatedDownvotes.push(authUser.uid)
+    //                 this.props.firebase
+    //                     .article(article.uid)
+    //                     .set({
+    //                         ...article,
+    //                         upvotes: articlearray,
+    //                         downvotes: updatedDownvotes
+    //                     })
+    //             }
+    //         }
 
-            else {
-                // console.log("already upvoted")
-            }
-        }
-    }
+    //         else {
+    //             // console.log("already upvoted")
+    //         }
+    //     }
+    // }
 
     checkUpvote = (uid, upvotes) => {
         // console.log("filter", upvotes, uid)
@@ -316,11 +316,11 @@ class ListItem1 extends React.Component {
 
                                             onClick={() => this.handleUpvote(authUser)}
                                         >
-                                            <i className="fas fa-arrow-alt-up" style={{ color: this.state.upvotecolor }}> </i>
+                                            <i className="fas fa-sign-language" style={{ color: this.state.upvotecolor }}> </i>
                                         </div>
 
                                         {this.state.calculatedvote}
-
+{/* 
                                         <div className="downvote-individual"
                                             onClick={() => this.handleDownvote(authUser)}
                                         >
@@ -329,7 +329,7 @@ class ListItem1 extends React.Component {
                                                 color: this.state.downvotecolor
 
                                             }}> </i>
-                                        </div>
+                                        </div> */}
                                     </span>
                                 </div>
                             </div>
@@ -342,46 +342,47 @@ class ListItem1 extends React.Component {
         else {
 
             return (
+              <AuthUserContext.Consumer>
+                {(authUser) => (
+                  <div className="Likis-container">
+                    <div className="likes">
+                      <span
+                        style={{
+                          fontSize: "1em",
+                          marginRight: "auto",
+                          marginLeft: "auto",
+                        }}
+                      >
+                        <div
+                          className="upvote"
+                          onClick={() => this.handleUpvote(authUser)}
+                        >
+                          <i
+                            className="fas fa-sign-language"
+                            style={{ color: this.state.upvotecolor }}
+                          >
+                            {" "}
+                          </i>
+                        </div>
 
-                <AuthUserContext.Consumer>
-                    {
-                        authUser => (
-                            <div className="Likis-container">
+                        {this.state.calculatedvote}
 
-                                <div className="likes">
-                                    <span style={{
-                                        fontSize: "1em",
-                                        marginRight: "auto", marginLeft: "auto"
-                                    }}>
-                                        <div className="upvote"
-
-                                            onClick={() => this.handleUpvote(authUser)}
-                                        >
-                                            <i className="fas fa-arrow-alt-up" style={{ color: this.state.upvotecolor }}> </i>
-                                        </div>
-
-                                        {this.state.calculatedvote}
-
-                                        <div className="downvote"
-                                            onClick={() => this.handleDownvote(authUser)}
+                        {/* <div className="downvote"
+                                            //onClick={() => this.handleDownvote(authUser)}
                                         >
 
                                             <i className="fas fa-arrow-alt-down" style={{
                                                 color: this.state.downvotecolor
 
                                             }}> </i>
-                                        </div>
-                                    </span>
-                                </div>
-                                {this.props.children}
-
-                            </div>
-
-
-                        )}
-
-                </AuthUserContext.Consumer>
-            )
+                                        </div> */}
+                      </span>
+                    </div>
+                    {this.props.children}
+                  </div>
+                )}
+              </AuthUserContext.Consumer>
+            );
         }
     }
 }

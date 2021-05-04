@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import './'
+// import FormWrapper from "react-form-wrapper";
 import { compose } from "recompose";
+import { Link, withRouter } from "react-router-dom";
 import Autosuggest from "react-autosuggest";
 import {
   AuthUserContext,
@@ -8,6 +11,7 @@ import {
 } from "../../components/Session";
 import { withFirebase } from "../../components/Firebase";
 import { messaging } from "firebase";
+import styled from 'styled-components';
 //const options = [ "React", "Ruby", "Javascript"];
 export const options = [];
 //export const options = [{name:"React"}, {name:"Ruby"}, {name:"Javascript"}];
@@ -30,6 +34,91 @@ const moment = require("moment");
 const getSuggestionValue = (suggestion) => suggestion.name;
 
 const renderSuggestion = (suggestion) => <div>{suggestion.name}</div>;
+
+
+
+const Button = styled.button`
+  cursor: pointer;
+  background: black;
+  font-size: 16px;
+  border-radius: 25px;
+  color: white;
+  ${'' /* border: 2px solid black; */}
+  margin: 1em 1em;
+  margin-left: 10px;
+  margin-right: 20px;
+  padding: 1em 1em;
+  transition: 0.5s all ease-out;
+ 
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`;
+
+const FormWrapper = styled.div`
+  display: flex;
+  alignItems: flex-start;
+  justify-content: center;
+  form {
+    margin: 2rem 1rem; 
+    padding: 1.5px;
+  }
+.fieldset {
+    width: 100%; 
+    margin: 2rem 0; 
+    position: relative; 
+    display: flex; 
+    flexWrap: wrap; 
+    alignItems: center; 
+    justifyContent: flex-start; 
+} 
+`
+const span = styled.div`
+  width: fit-content;
+  margin: 0;
+  padding: 1rem 1rem;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em; 
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0; 
+  border: 0.0625rem solid #ced4da; 
+  font-size: 1rem; 
+  font-weight: 400; 
+  line-height: 1.5; 
+  color: #495057; 
+  text-align: center; 
+  background-color: e9ecef;
+  } 
+`
+const i = styled.div`
+  color: black;
+  padding: 5px;
+  
+  }
+`
+const InputWrapper = styled.div`
+    flexGrow: 1; 
+    minHeight: 2rem; 
+    padding: 0.375rem 0.75rem;                         
+    display: block; 
+    border-top-left-radius: .75em; 
+    border-bottom-left-radius: 2em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em; 
+    border: 0.0625rem solid #ced4da; 
+    border-left: 0, fontSize: 1rem;
+    fontWeight: 100; 
+    lineHeight: 1.75; 
+    color: #495057;
+  }
+`; 
+// const hr = styled.div`
+//   border-color: black;
+//   }
+// `;
 
 class Dialog extends React.Component {
   render() {
@@ -56,6 +145,7 @@ class Createarticle extends Component {
     this.state = {
       title: "",
       description: "",
+
       tags: "",
       url: "",
       downvotes: 0,
@@ -64,10 +154,9 @@ class Createarticle extends Component {
       userName: "",
       suggestions: [],
       value: "",
-      inputTag:"",
-      calculatedvote:0,
-    
-
+      inputTag: "",
+      calculatedvote: 0,
+      showTitle: false
     };
   }
 
@@ -143,45 +232,54 @@ console.log("tags from api call",options)
        .add({
          userId: authUser.uid,
         // userName:this.state.userName,
-         title: this.state.title,
-         description: this.state.description,
-         tags: this.state.value,
-         url: this.state.url,
-         downvotes: this.state.downvotes,
-           upvotes: this.state.upvotes,
-         calculatedvote:this.state.calculatedvote,
-        
-         timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A`)
-       })
-       .then(docRef => {
-         
-         this.setState({confirmmessage:docRef.id})
-         console.log("Document written with ID: ", this.state.confirmmessage);
-      alert("you've successfully created an article with ID: " + this.state.confirmmessage);
-       
-       });
-       if(newtag.name !== options.name){
-         
-            this.props.firebase
-            .tags()
-            .add({
-              name:this.state.value
-            })
-          };
-        
-     this.setState({
-       value: "",
-       title: "",
-       url: "",
-       description: "",
-       downvotes: 0,
-         upvotes: 0,
-       calculatedvote:0,
-       showPopup:false,
-       options:""
-     });
-     
-   }
+        title: this.state.title,
+        description: this.state.description,
+        tags: this.state.value,
+        url: this.state.url,
+        downvotes: this.state.downvotes,
+        upvotes: this.state.upvotes,
+        calculatedvote: this.state.calculatedvote,
+
+        timeCreated: moment().format(` MMMM DD, YYYY  --  hh:mm:ss A`),
+      })
+      .then((docRef) => {
+        this.setState({ confirmmessage: docRef.id });
+        console.log("Document written with ID: ", this.state.confirmmessage);
+        alert(
+          "you've successfully created an article with ID: " +
+            this.state.confirmmessage
+        );
+      }); 
+    if (newtag.name !== options.name) {
+      this.props.firebase.tags().add({
+        name: this.state.value,
+      });
+    }
+
+    this.setState({
+      value: "",
+      title: "",
+      url: "",
+      description: "",
+      downvotes: 0,
+      upvotes: 0,
+      calculatedvote: 0,
+      showPopup: false,
+      options: "",
+    });
+  };
+  handleClick = (e) => {
+    this.setState({showTitle:true})
+   
+  };
+  handleChange = (event) => {
+    const value = event.target.value
+    this.setState({
+      ...this.state,
+      [event.target.name]: value
+    })
+
+  }
   render() {
     const { value, suggestions } = this.state;
 
@@ -209,12 +307,12 @@ console.log("tags from api call",options)
                     </legend>
                     <div>
                       <div>
-                        <ul>
+                        {/* <ul>
                           <li>
                             <form
                               onSubmit={(e) => this.handleSubmit(e, authUser)}
-                            >
-                              <ul>
+                            > */}
+                        {/* <ul>
                                 <li>
                                   <input
                                     type="text"
@@ -225,8 +323,8 @@ console.log("tags from api call",options)
                                   />
                                   
                                 </li>
-                                <li>
-                                  {/*<select
+                                <li> */}
+                        {/* <select
                                     value={this.state.tags}
                                     onChange={this.onTagChange}
                                   >
@@ -237,8 +335,8 @@ console.log("tags from api call",options)
                                         </option>
                                       );
                                     })}
-                                  </select>*/}
-                                  <div className="autosuggest_list">
+                                  </select> */}
+                        {/* <div className="autosuggest_list">
                                   <Autosuggest
                                     suggestions={suggestions}
                                     onSuggestionsFetchRequested={
@@ -285,10 +383,99 @@ console.log("tags from api call",options)
                                     Post
                                   </button>
                                 </li>
-                              </ul>
+                              </ul> */}
+
+                        {/* <label htmlFor="title">
+                                Title
+                                <input
+                                  type="text"
+                                  name="title"
+                                  id="title"
+                                  value={this.state.title}
+                                  onChange={this.handleChange}
+                                  autoComplete="title"
+                                />
+                              </label>
+
+                              <br />
+                              <label htmlFor="url">
+                                URL
+                                <input
+                                  type="text"
+                                  name="url"
+                                  id="url"
+                                  value={this.state.url}
+                                  onChange={this.handleChange}
+                                  autoComplete="url"
+                                />
+                              </label>
+                              <label htmlFor="description">
+                                Description
+                                <textarea
+                                  col={30}
+                                  rows={10}
+                                  name="description"
+                                  value={this.state.description}
+                                  onChange={this.handleChange}
+                                  required
+                                />
+                              </label>
+
+                              <br />
+
+                              <input type="submit" value="Submit" />
                             </form>
                           </li>
                         </ul>
+                  <div>
+                <div> */}
+                        <FormWrapper
+                          onSubmit={(e) => this.handleSubmit(e, authUser)}
+                        >
+                          <form action="get">
+                            <div className="fieldset">
+                              <div className="InputWrapper">
+                                <span className="icon">
+                                  <i className="fas fa-portrait fa-1x" />
+                                </span>
+                                <input
+                                  className="col-6 form-control"
+                                  type="text"
+                                  name="title"
+                                  id="title"
+                                  value={this.state.title}
+                                  onChange={this.handleChange}
+                                  autoComplete="title"
+                                  required
+                                ></input>
+                              </div>
+                            </div>
+                            <div className="fieldset">
+                              <div className="InputWrapper">
+                                <span className="icon"></span>
+                                <i className="fas fa-envelope fa-1x" />
+                                <input
+                                  className="col-6 form-control"
+                                  type="text"
+                                  name="url"
+                                  id="url"
+                                  value={this.state.url}
+                                  onChange={this.handleChange}
+                                  autoComplete="url"
+                                ></input>
+                              </div>
+                            </div>
+                            <div className="fieldset">
+                              <div className="InputWrapper">
+                                <Button type="submit" value="submit">Submit</Button>
+                              </div>
+                            </div>
+                          </form>
+                        </FormWrapper>
+
+                        {/* <Link to={'/projects'}>
+                     <Button> Profile Page </Button>
+                    </Link> */}
                       </div>
                     </div>
                   </div>
