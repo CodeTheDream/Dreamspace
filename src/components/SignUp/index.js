@@ -74,12 +74,7 @@ const i = styled.div`
 
 
 const SignUpPage = () => (
-//   <div>
-//    <br />
-//    <br />
-//     <h1>SignUp</h1>
-//     <SignUpForm />
-//   </div>
+
 <div style={{ marginTop: "4.8em" }}>
    <div className="signup">
     <h3 className="signin">SignUp</h3>
@@ -92,7 +87,6 @@ const INITIAL_STATE = {
   username: 'name',
   email: '',
   firstName: '',
-//    photoURL: "https://ya-webdesign.com/images250_/placeholder-image-png-1.png",
   lastName: '',
   developer: '',
   github: '',
@@ -123,32 +117,11 @@ class SignUpFormBase extends Component {
       const { username, firstName, lastName, developer, github, email, passwordOne, passwordTwo, isAdmin } = this.state;
     // console.log('email', email);
       const roles = {};
-
-    //   onSubmit = event => {
-    //     const { username, email, passwordOne, isAdmin,interest,education,aboutyourself} = this.state;
-    //    const roles = {};
-//       // users = () => this.db.collection("users");
-//      this.db.collection("users").document(firebase.getInstance().getCurrentUser().getUid())
-//       .get().addOnCompleteListener(authUser => {
-//       if(authUser.isSuccessful() && authUser.getResult() != null) {
-//       firstName = authUser.getResult().getString("First Name");
-//       lastName = authUser.getResult().getString("Last Name");
-//       email = authUser.getResult().getString("Email");
-//       developer = authUser.getResult().getString("developer");
-//       passwordOne = authUser.getResult().getString("passwordOne");
-//       passwordTwo = authUser.getResult().getString("passwordTwo");
-//       //other stuff
-//    } else {
-//       //deal with err
-//   }
-// });
   
     if (isAdmin) {
        roles[ROLES.ADMIN] = ROLES.ADMIN;
      }
- // else {
-    //   roles[ROLES.NONADMIN] = ROLES.NONADMIN;
-    // }
+ 
   // console.log('roles: ', roles);
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -302,32 +275,13 @@ class SignUpFormBase extends Component {
           </div>
         </div>
 
-        {/* <label>
-          Admin:
-          <input
-            name="isAdmin"
-            type="checkbox"
-            checked={isAdmin}
-            onChange={this.onChangeCheckbox}
-          />
-        </label>  */}
-
-        <Link to={'/directory/profile.js'}>
+        {/* <Link to={'/directory/profile.js'}>
            <Button> Profile Page </Button>
-           </Link>
+        </Link> */}
 
          <Button className="button-tertiary" disable={isInvalid} type="submit">
           Sign Up
         </Button> 
-        {/* <Button type='submit' value='onSubmit'>Submit</Button>   */}
-{/* //             <br />
-//             <br />
-
-          
-//            {error && <p>{error.message}</p> */}
-        {/* <button className="button-tertiary" disabled={isInvalid} type="submit">
-          Sign Up
-        </button> */}
 
         {error && <p>{error.message}</p>}
       </form>

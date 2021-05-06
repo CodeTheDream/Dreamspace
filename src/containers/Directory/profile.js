@@ -2,8 +2,9 @@ import React, { Component } from "react"
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import * as ROUTES from "../../constants/routes";
-import * as ROLES from "../../constants/roles";
+// import * as ROLES from "../../constants/roles";
 import ProfilePic from '../../containers/Directory/profilepic';
+import firebase from 'firebase';
 import styled from 'styled-components';
 
 
@@ -97,8 +98,6 @@ const inputwrapper = styled.div`
   }
 `; 
 
-
-
  const INITIAL_STATE = {
   
   title: "",
@@ -118,15 +117,6 @@ const inputwrapper = styled.div`
   error: null
  
 };
-const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
-const ERROR_MSG_ACCOUNT_EXISTS = `
- 
-//   An account with this email address already exists. 
- 
-//   Please sign in instead. 
- 
-// `;
-
 
 
 class Profile extends Component {
@@ -149,17 +139,15 @@ class Profile extends Component {
     equipment,
     passwordOne,
     passwordTwo,
-    isAdmin,
-    error
+    // isAdmin,
+    // error
   
   } = this.state;
   const roles = {};
-   if (isAdmin) {
-     roles[ROLES.ADMIN] = ROLES.ADMIN;
-   }
-   // else {
-   //   roles[ROLES.NONADMIN] = ROLES.NONADMIN;
-   // }
+  //  if (isAdmin) {
+  //    roles[ROLES.ADMIN] = ROLES.ADMIN;
+  //  }
+   
    console.log("roles: ", roles);
    this.props.firebase
      .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -179,8 +167,8 @@ class Profile extends Component {
           equipment,
           passwordOne,
           passwordTwo,
-          isAdmin,
-          error,
+          // isAdmin,
+          // error,
          },
          { merge: true }
        );
@@ -192,12 +180,12 @@ class Profile extends Component {
        this.setState({ ...INITIAL_STATE });
        this.props.history.push(ROUTES.HOME);
      })
-     .catch(error => {
-       if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
-         error.message = ERROR_MSG_ACCOUNT_EXISTS;
-       }
-       this.setState({ error });
-     });
+    //  .catch(error => {
+    //    if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
+    //      error.message = ERROR_MSG_ACCOUNT_EXISTS;
+    //    }
+    //    this.setState({ error });
+    //  });
    event.preventDefault();
  };
  onChange = event => {
@@ -207,7 +195,7 @@ class Profile extends Component {
    this.setState({ [event.target.name]: event.target.checked });
  };
 
-//  username, firstName, lastName, email, title, dev, github, equipment, projects, state, country, passwordOne, passwordTwo, isAdmin
+
  render() {
    const {
     title,
@@ -223,7 +211,6 @@ class Profile extends Component {
     equipment,
     passwordOne,
     passwordTwo,
-    isAdmin,
     error
 
    } = this.state;
@@ -234,172 +221,165 @@ class Profile extends Component {
      title === "";
      
     return(
-      <main style=
-      {{ minHeight: `100vh`, padding: `3rem 3rem`, }} classNumber="has-dflex-center">
-        <section style=
-      {{ minHeight: `100vh`, padding: `2rem 0`,  }}>
-           <div classNumber="lx-container-70">
-              <div classNumber="lx-row">
-                <h1 style= {{ fontSize: `45px`, fontWeight: `bold`, }}
-                classNumber="title">CTD Profile</h1>
-           </div>
+      <main style={{ minHeight: `100vh`, padding: `3rem 3rem`, }} className="has-dflex-center">
+        <section style={{ minHeight: `100vh`, padding: `2rem 0`,  }}>
+           <div className="lx-container-70">
+              <div className="lx-row">
+                <h1 style= {{ fontSize: `45px`, fontWeight: `bold`, }} 
+                  className="title">CTD Profile</h1>
+              </div>
 
            <div style= {{ gridTemplateRows: `auto 1fr auto`, backgroundSize: `contain`,
-                          backgroundPosition: `center`, backgroundRepeat: `no-repeat`, }}
-                classNumber="lx-row align-stretch">
-                <div style= {{ display: `flex`, alignItems: `center`, justifyContent: `flex-end`, maxWidth: `25rem`, float: `left`,
-                               width: `45%`, padding: `10px`, }} 
-                    classNumber="lx-column column-user-pic">
-           
+                backgroundPosition: `center`, backgroundRepeat: `no-repeat`, }}
+                className="lx-row align-stretch">
+           <div style= {{ display: `flex`, alignItems: `center`, justifyContent: `flex-end`, maxWidth: `25rem`, float: `left`,
+                width: `45%`, padding: `10px`, }} 
+                className="lx-column column-user-pic">
            <div style= {{ width: `50%`, maxWidth: `30rem`, margin: `6rem .05rem`, display: `flex`, flexFlow: `wrap column`, 
-                          alignItems: `center`, justifyContent: `center`, borderRadius: `0.25rem`, backgroundColor: `white`, }}
-                    classNumber="profile-pic bs-md">
+                alignItems: `center`, justifyContent: `center`, borderRadius: `0.25rem`, backgroundColor: `white`, }}
+                className="profile-pic bs-md">
             {/* <ProfilePic /> */}
            <div style= {{ width: `20rem`, height: `20rem`, position: `relative`, overflow: `hidden`, borderRadius: `50%`, }} 
-                classNumber="pic bs-md">      
+                className="pic bs-md">      
                        
-                <img style= {{ width: `100%`, height: `100%`, objectFit: `cover`, objectPosition: `center`, }} 
-                    src="https://bit.ly/3jRbrbp" alt="" loading="lazy" />}
+              <img style= {{ width: `100%`, height: `100%`, objectFit: `cover`, objectPosition: `center`, }} 
+                    src="https://bit.ly/3jRbrbp" alt="" loading="lazy" />
                     
                     <a style= {{ opacity: `0`, width: `5-0%`, height: `100%`, margin: `25px`, padding: `0`, position: `absolute`,
                         transform: `translate(-50%, -50%)`, top: `50%`, left: `50%`, display: `none`, alignItems: `center`,
                         justifyContent: `center`, textTransform: `none`, fontSize: `1rem`, color: `white`, 
-                        backgroundColor: `rgba(0, 0, 0, 0.8)`, }} id="change-avatar" classNumber="lx-btn"></a>
+                        backgroundColor: `rgba(0, 0, 0, 0.8)`, }} id="change-avatar" className="lx-btn"></a>
                   
            </div>
-        
+        </div>
+       </div> 
 
-           </div>
-           </div> 
-
-          <FormWrapper>
+    <FormWrapper>
           {/* <form action="get"> */}
-          <form onSubmit={this.handleSubmit}>
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span  className="icon"> 
-                  <i className="fas fa-network-wired fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input list="title" id="title-choice" name="title-choice" placeholder="Title" />
-                    <datalist id="title">
-                        <option value="Staff" />
-                        <option value="Intern" />
-                        <option value="Volunteer" />
-                     </datalist>
-              </div>
-            </div>  
-            
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fab fa-buffer fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input list="projects" id="projects-choice" placeholder="Projects" name="projects-choice" />
-                      <datalist id="projects">
-                          <option value="AACT" />
-                          <option value="Clinwiki" />
-                          <option value="DreamSpace" />
-                          <option value="NC Fair Chance" />
-                          <option value="Vamos" />
-                          <option value="Mural AR" />
-                          <option value="Upstate" />
-                          <option value="NCMA" />
-                      </datalist>
-              </div>
-            </div>  
+      <form onSubmit={this.handleSubmit}>
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span  className="icon"> 
+              <i className="fas fa-network-wired fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input list="title" id="title-choice" name="title-choice" placeholder="Title" />
+                <datalist id="title">
+                    <option value="Staff" />
+                    <option value="Intern" />
+                    <option value="Volunteer" />
+                  </datalist>
+          </div>
+        </div>  
+        
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fab fa-buffer fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+                <input className="col-6 form-control" name="Language" onChange={this.handleChange} type="text" value={this.state.value} placeholder="Projects" id="projects" autocomplete="projects" required></input>  
+          </div>
+        </div>  
 
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fas fa-language fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Language" onChange={this.handleChange} type="text" value={this.state.value} placeholder="Language" id="username" autocomplete="username" required></input> 
-              </div>
-            </div>
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-language fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input className="col-6 form-control" name="Language" onChange={this.handleChange} type="text" value={this.state.value} placeholder="Language" id="username" autocomplete="username" required></input> 
+          </div>
+        </div>
 
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-chalkboard-teacher fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input list="mentor" id="mentor-choice" placeholder="Mentor" name="equipment" />
-                    <datalist id="mentor">
-                      <option value="Yes" />
-                      <option value="No" />
-                    </datalist>
-              </div>
-            </div> 
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-chalkboard-teacher fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input list="mentor" id="mentor-choice" placeholder="Mentor" name="equipment" />
+                <datalist id="mentor">
+                  <option value="Yes" />
+                  <option value="No" />
+                </datalist>
+          </div>
+        </div> 
 
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-landmark fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="State" onChange={this.handleChange} type="text" value={this.state.value}
-                    placeholder="State" id="username" autocomplete="username" required></input> 
-              </div>
-            </div>
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-landmark fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input className="col-6 form-control" name="State" onChange={this.handleChange} type="text" value={this.state.value}
+                placeholder="State" id="username" autocomplete="username" required></input> 
+          </div>
+        </div>
 
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-globe fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input className="col-6 form-control" name="Country" onChange={this.handleChange} type="text" value={this.state.value}
-                    placeholder="Country" id="username" autocomplete="username" required></input> 
-              </div>
-            </div> 
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-globe fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input className="col-6 form-control" name="Country" onChange={this.handleChange} type="text" value={this.state.value}
+                placeholder="Country" id="username" autocomplete="username" required></input> 
+          </div>
+        </div> 
 
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-podcast fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input list="remote" id="remote-choie" placeholder="Remote" name="remote-choice" />
-                   <datalist id="remote">
-                      <option value="Yes" />
-                      <option value="No" />
-                    </datalist>
-              </div>
-            </div> 
-           
-            <div className="fieldset">
-              <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i class="fas fa-laptop-code fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
-                  <input list="equipment" id="equipment-choice" placeholder="Equipment" name="equipment-choice" />
-                    <datalist id="equipment">
-                      <option value="Yes" />
-                      <option value="No" />
-                    </datalist>
-              </div>
-            </div>
-          
-            <hr></hr>
-            <Button onChange='submit'>Submit</Button>
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-podcast fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input list="remote" id="remote-choie" placeholder="Remote" name="remote-choice" />
+                <datalist id="remote">
+                  <option value="Yes" />
+                  <option value="No" />
+                </datalist>
+          </div>
+        </div> 
+        
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-laptop-code fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input list="equipment" id="equipment-choice" placeholder="Equipment" name="equipment-choice" />
+                <datalist id="equipment">
+                  <option value="Yes" />
+                  <option value="No" />
+                </datalist>
+          </div>
+        </div>
+      
+        <hr></hr>
+
+      
+        
+         <Button className="button-tertiary" disable={isInvalid} type="submit">
+          Sign Up
+         </Button> 
+
+        {/* {error && <p>{error.message}</p>} */}
+        {/* <Button onChange='submit'>Submit</Button> */}
 
 {/* 
-            <Link to={'/directory/profile.js'}>
-            <Button> Profile Page </Button>
-            </Link>
-            {error && <p>{error.message}</p>} */}
-       
-              </form>
-            </FormWrapper>           
+        <Link to={'/directory/profile.js'}>
+        <Button> Profile Page </Button>
+        </Link>
+        {error && <p>{error.message}</p>} */}
+    
+      </form>
+    </FormWrapper>           
             
-            </div>
-          </div>        
-        </section>
-      </main>
+           </div>
+        </div>        
+      </section>
+    </main>
 
     
     )
@@ -407,6 +387,7 @@ class Profile extends Component {
 
 };
         
+
       
       
 export default Profile;

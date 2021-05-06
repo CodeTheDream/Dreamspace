@@ -23,7 +23,7 @@ const NavigationAuth = () => (
    
     <Link to={ROUTES.HOME}><img src={Logo} className="logo-wrapper" alt="home" /></Link> 
     <input className="menu-btn" type="checkbox" id="menu-btn" />
-    <label className="menu-icon" for="menu-btn">
+    <label className="menu-icon" forhtml="menu-btn">
       <span className="nav-icon"></span>
     </label>
     <ul className="menu">
