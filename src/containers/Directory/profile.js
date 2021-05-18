@@ -1,5 +1,7 @@
 
 
+
+
 import React, { Component } from "react"
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
@@ -38,13 +40,13 @@ const FormWrapper = styled.div`
     padding: 15px;
   }
 .fieldset {
-    width: 100%; 
-    margin: 2rem 0; 
-    position: relative; 
-    display: flex; 
-    flexWrap: wrap; 
-    alignItems: center; 
-    justifyContent: flex-start; 
+  width: 100%; 
+  margin: 2rem 0; 
+  position: relative; 
+  display: flex; 
+  flexWrap: wrap; 
+  alignItems: center; 
+  justifyContent: flex-start; 
 } 
 `
 const span = styled.div`
@@ -73,30 +75,30 @@ const i = styled.div`
   }
 `
 const inputwrapper = styled.div`
-    width: 100;
-    display: flex;
-    flexGrow: 1; 
-    flexFlow: nowrap;
-    alignItems: stretch;
-    justifyContent: center;
-    minHeight: 2rem; 
-    padding: 0.375rem 0.75rem;                         
-    display: block; 
-    border-top-left-radius: .75em; 
-    border-bottom-left-radius: 2em;
-    border-top-right-radius: 0.25em;
-    border-bottom-right-radius: 0.25em; 
-    border: 0.0625rem solid #ced4da; 
-    border-left: 0, fontSize: 1rem;
-    fontWeight: 100; 
-    lineHeight: 1.75; 
-    color: #495057;
+  width: 100;
+  display: flex;
+  flexGrow: 1; 
+  flexFlow: nowrap;
+  alignItems: stretch;
+  justifyContent: center;
+  minHeight: 2rem; 
+  padding: 0.375rem 0.75rem;                         
+  display: block; 
+  border-top-left-radius: .75em; 
+  border-bottom-left-radius: 2em;
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em; 
+  border: 0.0625rem solid #ced4da; 
+  border-left: 0, fontSize: 1rem;
+  fontWeight: 100; 
+  lineHeight: 1.75; 
+  color: #495057;
   
   }
 `; 
 
- const INITIAL_STATE = {
-  
+
+const INITIAL_STATE = {
   title: "",
   email: "",
   projects: "",
@@ -117,48 +119,46 @@ const inputwrapper = styled.div`
 
 
 class Profile extends Component {
- constructor(props) {
-   super(props);
-   this.state = { ...INITIAL_STATE };
+  constructor(props) {
+    super(props);
+    this.state = { ...INITIAL_STATE };
  }
- onSubmit = event => {
-   const { 
-    title,
-    email,
-    projects,
-    language,
-    mentor,
-    state,
-    country,
-    image,
-    photo,
-    remote,
-    equipment,
+  onSubmit = event => {
+    const { 
+      title,
+      email,
+      projects,
+      language,
+      mentor,
+      state,
+      country,
+      image,
+      photo,
+      remote,
+      equipment,
     
-    // isAdmin,
-    // error
   
   } = this.state;
   const roles = {};
- }
+  }
 
 
- onChange = event => {
-   this.setState({ [event.target.name]: event.target.value });
- };
- onChangeCheckbox = event => {
-   this.setState({ [event.target.name]: event.target.checked });
- };
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+  onChangeCheckbox = event => {
+    this.setState({ [event.target.name]: event.target.checked });
+  };
 
-componentDidMount() {
+  componentDidMount() {
 //   //1. get username from url params - complete
 //   //2. fetch fb by username
 //   //3. display user data on profile page
-   const username = this.props.match.params.username;
-   const user = this.props.firebase.users.where("github", "==", username);
+const username = this.props.match.params.username;
+const user = this.props.firebase.users("github", "==", username);
 
    //this.props.firebase.users
-   console.log('username', user);
+   console.log(username, user);
 };
 
  render() {
