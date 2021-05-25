@@ -5,7 +5,8 @@ import styled from 'styled-components';
 
 import { 
 withScriptjs, 
-withGoogleMap, 
+withGoogleMap,
+useLoadScript, 
 GoogleMap, 
 Marker,
 InfoWindow
@@ -36,27 +37,22 @@ function Map() {
   
     return(
       
-     <GoogleMap 
+      <GoogleMap 
        defaultZoom={13}
-       defaultCenter={{ 
-         lat: 20.516960, 
-         lng: -100.800262 }} 
+       defaultCenter={{ lat: 20.516960, lng: -100.800262 }} 
       > 
-      {mapData.markers.map((person) => (
-        <Marker
-          key={person.individual.person_id}
-          position={{
-            lat: person.geometry.coordinates[0],
-            lng: person.geometry.coordinates[1]
-          }}
+        {mapData.markers.map((person) => (
+          <Marker
+            key={person.individual.person_id}
+            position={{ lat: person.geometry.coordinates[0], lng: person.geometry.coordinates[1] }}
       
-      onClick={() => {
-        setSelectedPerson(person);
+        onClick={() => {
+          setSelectedPerson(person);
       }}
       />
-      ))}
+))}
 
-       {selectedPerson && (
+        {selectedPerson && (
          
       <InfoWindow
          position={{

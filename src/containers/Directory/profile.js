@@ -1,7 +1,4 @@
 
-
-
-
 import React, { Component } from "react"
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
@@ -10,6 +7,8 @@ import * as ROUTES from "../../constants/routes";
 import ProfilePic from '../../containers/Directory/profilepic';
 import {withFirebase} from '../../components/Firebase';
 import styled from 'styled-components';
+import { faUserSlash } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 //change Fib
 
 
@@ -99,6 +98,7 @@ const inputwrapper = styled.div`
 
 
 const INITIAL_STATE = {
+  users: "",
   title: "",
   email: "",
   projects: "",
@@ -125,6 +125,7 @@ class Profile extends Component {
  }
   onSubmit = event => {
     const { 
+      users,
       title,
       email,
       projects,
@@ -154,29 +155,42 @@ class Profile extends Component {
 //   //1. get username from url params - complete
 //   //2. fetch fb by username
 //   //3. display user data on profile page
+// const username = this.props.match.params.username;
+//   console.log(username);
+
+// const user = this.props.firebase.users.forEach("github", "==", username);
+
 const username = this.props.match.params.username;
-const user = this.props.firebase.users("github", "==", username);
+
+const { match: { params } } = this.props;
+    console.log(params)
+    axios.get(`/firebase/users/${params.username}`)
+      .then(({ data: user }) => {
+        console.log(username);
+
+        this.setState({ user });
+      });
 
    //this.props.firebase.users
-   console.log(username, user);
+  //  console.log(user);
 };
 
  render() {
    const {
-    title,
-    email,
-    projects,
-    language,
-    mentor,
-    state,
-    country,
-    image,
-    photo,
-    remote,
-    equipment,
-    passwordOne,
-    passwordTwo,
-    error
+      title,
+      email,
+      projects,
+      language,
+      mentor,
+      state,
+      country,
+      image,
+      photo,
+      remote,
+      equipment,
+      passwordOne,
+      passwordTwo,
+      error
 
    } = this.state;
    
@@ -313,17 +327,11 @@ const user = this.props.firebase.users("github", "==", username);
                 </datalist>
           </div>
         </div>
-      
-        <hr></hr>
-
-      
+        <hr />
         
          <Button className="button-tertiary" type="submit">
           Sign Up
-         </Button> 
-
-  
-    
+         </Button>
       </form>
     </FormWrapper>           
             
@@ -338,12 +346,5 @@ const user = this.props.firebase.users("github", "==", username);
 
 };
         
-
-      
-      
-export default withFirebase(Profile);
-
-
-
-
-
+export default Profile
+ 

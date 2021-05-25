@@ -141,7 +141,8 @@ comments,
             <div className="auther-name-individual">
               <div className="autherstyle-individual">
                 <span />
-                <img src={this.state.photoUrl} className="user-profile" />{" "}
+                {/* added alt property with empty string  */}
+                <img src={this.state.photoUrl} className="user-profile" alt=""/>{" "}
                 <span className="usernamepost">
                   posted by {this.state.username}
                   {article.timeCreated}
