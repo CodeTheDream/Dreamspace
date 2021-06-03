@@ -46,7 +46,7 @@ const FormWrapper = styled.div`
   flexWrap: wrap; 
   alignItems: center; 
   justifyContent: flex-start; 
-} 
+  } 
 `
 const span = styled.div`
   width: fit-content;
@@ -67,6 +67,14 @@ const span = styled.div`
   background-color: e9ecef;
   } 
 `
+
+
+// const main = styled.div`
+//   minHeight: 100vh;
+//   padding: 3rem 3rem;
+//   }
+// `
+
 const i = styled.div`
   color: black;
   padding: 5px;
@@ -161,6 +169,7 @@ class Profile extends Component {
 // const user = this.props.firebase.users.forEach("github", "==", username);
 
 const username = this.props.match.params.username;
+// const user = this.props.firebase.users.forEach("github", "==", username);
 
 const { match: { params } } = this.props;
     console.log(params)
@@ -170,6 +179,7 @@ const { match: { params } } = this.props;
 
         this.setState({ user });
       });
+
 
    //this.props.firebase.users
   //  console.log(user);
@@ -234,7 +244,12 @@ const { match: { params } } = this.props;
               <i className="fas fa-network-wired fa-1x"/></span>
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input list="title" id="title-choice" name="title" onChange={this.onChange} {...title} placeholder='Title' required/>
+              <input list="title" 
+                  id="title-choice" 
+                  name="title" 
+                  onChange={this.onChange} {...title} 
+                  placeholder='Title' 
+                  required/>
                 <datalist id="title">
                   <option value="Staff" />
                   <option value="Intern" />
@@ -249,7 +264,13 @@ const { match: { params } } = this.props;
               <i className="fab fa-buffer fa-1x"/></span>
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-                <input className="col-6 form-control" name="projects" onChange={this.onChange} type="text" value={this.state.value} placeholder="Projects" required></input>  
+                <input className="col-6 form-control" 
+                  name="projects" 
+                  onChange={this.onChange} 
+                  type="text" 
+                  value={this.state.value}
+                   placeholder="Projects" 
+                   required></input>  
           </div>
         </div>  
 
@@ -259,7 +280,13 @@ const { match: { params } } = this.props;
               <i className="fas fa-language fa-1x"/></span>
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input className="col-6 form-control" name="Language" onChange={this.onChange} type="text" value={this.state.value} placeholder="Language" required></input> 
+              <input className="col-6 form-control" 
+                name="Language"
+                onChange={this.onChange} 
+                type="text" 
+                value={this.state.value} 
+                placeholder="Language" 
+                required></input> 
           </div>
         </div>
 
@@ -270,7 +297,12 @@ const { match: { params } } = this.props;
               &nbsp;&nbsp;
               &nbsp;&nbsp;
 
-              <input list="mentor" id="mentor-choice" name="mentor" onChange={this.onChange} {...mentor} placeholder='Mentor' required/>
+              <input list="mentor" 
+                id="mentor-choice" 
+                name="mentor" 
+                onChange={this.onChange} {...mentor} 
+                placeholder='Mentor' 
+                required/>
                 <datalist id="mentor">
                   <option value="Yes" />
                   <option value="No" />
@@ -284,8 +316,13 @@ const { match: { params } } = this.props;
               <i className="fas fa-landmark fa-1x"/></span>
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input className="col-6 form-control" name="State" onChange={this.onChange} type="text" value={this.state.value}
-                placeholder="State" required></input> 
+              <input className="col-6 form-control" 
+                name="State" 
+                onChange={this.onChange} 
+                type="text" 
+                value={this.state.value}
+                placeholder="State" 
+                required></input> 
           </div>
         </div>
 
@@ -295,8 +332,13 @@ const { match: { params } } = this.props;
               <i className="fas fa-globe fa-1x"/></span>
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input className="col-6 form-control" name="Country" onChange={this.onChange} type="text" value={this.state.value}
-                placeholder="Country"  required></input> 
+              <input className="col-6 form-control" 
+                name="Country" 
+                onChange={this.onChange} 
+                type="text" 
+                value={this.state.value}
+                placeholder="Country"  
+                required></input> 
           </div>
         </div> 
 
@@ -306,7 +348,11 @@ const { match: { params } } = this.props;
               <i className="fas fa-podcast fa-1x"/></span>
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input list="remote" id="remote-choice" name="remote" onChange={this.onChange} {...remote} placeholder='Remote' required/>
+              <input list="remote" id="remote-choice" 
+                name="remote" 
+                onChange={this.onChange} {...remote} 
+                placeholder='Remote' 
+                required/>
                 <datalist id="remote">
                   <option value="Yes" />
                   <option value="No" />
@@ -320,7 +366,12 @@ const { match: { params } } = this.props;
               <i className="fas fa-laptop-code fa-1x"/></span>
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input list="equipment" id="equipment-choice" name="equipment" onChange={this.onChange} {...equipment} placeholder='Equipment' required/>
+              <input list="equipment" 
+                id="equipment-choice" 
+                name="equipment" 
+                onChange={this.onChange} {...equipment} 
+                placeholder='Equipment'
+                required/>
                 <datalist id="equipment">
                   <option value="Yes" />
                   <option value="No" />

@@ -74,13 +74,13 @@ class Userprofile extends React.Component {
               <div className="dropbtn">
                 <i style={{ Color: "#fae596" }}>
                   {" "}
-                  <img src={authUser.photoUrl} className="user-profile1" />
+                  <img src={authUser.photoUrl} className="user-profile1" alt='...'></img>
                 </i>{" "}
                 <i className="fa fa-caret-down" style={{ Color: "#fae596" }} />
                 <div className="dropdown-content">
                   <div>
                     <span>
-                      <img src={authUser.photoUrl} className="user-profile11" />
+                      <img src={authUser.photoUrl} className="user-profile11" alt='...'></img>
                       <div className="PhotoCamera">
                         <span>
                           <i
