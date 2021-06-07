@@ -6,22 +6,21 @@ import * as ROUTES from "../../constants/routes";
 // import * as ROLES from "../../constants/roles";
 import ProfilePic from '../../containers/Directory/profilepic';
 import {withFirebase} from '../../components/Firebase';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import styled, { css } from 'styled-components'
+
 import { faUserSlash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 //change Fib
 
 
-// const Button = styled.button`
 const Button = styled.button`
   cursor: pointer;
   background: blue;
-  font-size: 16px;
-  border-radius: 25px;
-  color: white;
-  margin-left: 12px;
-  margin-right: 20px; 
-  padding: .75em .75em;
+  font-size: 1em;
+  margin: 1em;
+  padding: .75em .5em;
+  border-radius: 50px;
   transition: 0.5s all ease-out;
  
   &:hover {
@@ -38,6 +37,7 @@ const FormWrapper = styled.div`
     margin: 4rem 2rem; 
     padding: 15px;
   }
+
 .fieldset {
   width: 100%; 
   margin: 2rem 0; 
@@ -48,7 +48,49 @@ const FormWrapper = styled.div`
   justifyContent: flex-start; 
   } 
 `
+
+const h1 = styled.div`
+  font-size: 30px; 
+  margin-top: 2rem;
+  font-weight: bold;
+  grid-template-rows: auto 1fr auto;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  }
+`
+
+const main = styled.div`
+  min-height: 100vh;
+  padding: 3rem 3rem;
+  grid-template-rows: auto 1fr auto;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  max-width: 25rem;
+  float: left;
+  width: 45%;
+  padding: 10px; 
+  width: 50%; 
+  max-width: 30rem;
+  margin: 6rem .05rem;
+  display: flex; 
+  flex-flow: wrap column; 
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  background-color: white;
+
+}
+`
+
 const span = styled.div`
+  min-height: 100vh;
+  padding: 3rem 3rem;
   width: fit-content;
   margin: 0;
   padding: 2rem 2rem;
@@ -67,13 +109,6 @@ const span = styled.div`
   background-color: e9ecef;
   } 
 `
-
-
-// const main = styled.div`
-//   minHeight: 100vh;
-//   padding: 3rem 3rem;
-//   }
-// `
 
 const i = styled.div`
   color: black;
@@ -206,34 +241,40 @@ const { match: { params } } = this.props;
    
      
     return(
-      <main style={{ minHeight: `100vh`, padding: `3rem 3rem`, }} className="has-dflex-center">
-        <section style={{ minHeight: `100vh`, padding: `2rem 0`,  }}>
+
+
+      <main className="has-dflex-center">
+        <section>
            <div className="lx-container-70">
-              <div className="lx-row">
-                <h1 style= {{ fontSize: `45px`, fontWeight: `bold`, }} 
-                  className="title">CTD Profile</h1>
+              <div className="lx-row" mt='20px'>
+                <br />
+                <br />
+                <br />
+                <br />
+                <h1 className="title">CTD Profile</h1>
               </div>
 
-           <div style= {{ gridTemplateRows: `auto 1fr auto`, backgroundSize: `contain`,
-                backgroundPosition: `center`, backgroundRepeat: `no-repeat`, }}
-                className="lx-row align-stretch">
-           <div style= {{ display: `flex`, alignItems: `center`, justifyContent: `flex-end`, maxWidth: `25rem`, float: `left`,
-                width: `45%`, padding: `10px`, }} 
-                className="lx-column column-user-pic">
-           <div style= {{ width: `50%`, maxWidth: `30rem`, margin: `6rem .05rem`, display: `flex`, flexFlow: `wrap column`, 
-                alignItems: `center`, justifyContent: `center`, borderRadius: `0.25rem`, backgroundColor: `white`, }}
-                className="profile-pic bs-md">
-            {/* <ProfilePic /> */}
-           <div style= {{ width: `20rem`, height: `20rem`, position: `relative`, overflow: `hidden`, borderRadius: `50%`, }} 
-                className="pic bs-md">      
-                       
-              <img style= {{ width: `100%`, height: `100%`, objectFit: `cover`, objectPosition: `center`, }} 
-                    src="https://bit.ly/3jRbrbp" alt="" loading="lazy" />
+                <div 
+                // style= {{ gridTemplateRows: `auto 1fr auto`, backgroundSize: `contain`,
+                //       backgroundPosition: `center`, backgroundRepeat: `no-repeat`, }}
+                      className="lx-row align-stretch">
+                <div 
+                style= {{ display: `flex`, alignItems: `center`, justifyContent: `flex-end`, maxWidth: `25rem`, float: `left`,
+                       width: `45%`, padding: `10px`, }} 
+                      className="lx-column column-user-pic">
+                <div 
+                // style= {{ width: `50%`, maxWidth: `30rem`, margin: `6rem .05rem`, display: `flex`, flexFlow: `wrap column`, 
+                //       alignItems: `center`, justifyContent: `center`, borderRadius: `0.25rem`, backgroundColor: `white`, }} */}
+                      className="profile-pic bs-md">
 
-                  
-           </div>
-        </div>
-       </div> 
+            {/* <ProfilePic /> */}
+            <div style= {{ width: `20rem`, height: `20rem`, position: `relative`, overflow: `hidden`, borderRadius: `50%`, }} 
+                className="pic bs-md">      
+              <img style= {{ width: `100%`, height: `100%`, objectFit: `cover`, objectPosition: `center`, }} 
+                    src="https://bit.ly/3jRbrbp" alt="" loading="lazy" ></img>
+            </div>
+              </div>
+           </div> 
 
     <FormWrapper>
           {/* <form action="get"> */}
@@ -378,16 +419,15 @@ const { match: { params } } = this.props;
                 </datalist>
           </div>
         </div>
-        <hr />
         
-         <Button className="button-tertiary" type="submit">
+        <Button className="button-tertiary" type="submit">
           Sign Up
-         </Button>
+        </Button> 
+        <hr />
       </form>
     </FormWrapper>           
-            
            </div>
-        </div>        
+             </div>
       </section>
     </main>
 
