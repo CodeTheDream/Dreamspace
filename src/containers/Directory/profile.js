@@ -8,7 +8,7 @@ import ProfilePic from '../../containers/Directory/profilepic';
 import {withFirebase} from '../../components/Firebase';
 // import styled from 'styled-components';
 import styled, { css } from 'styled-components'
-
+import '../../index.css'
 import { faUserSlash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 //change Fib
@@ -49,19 +49,7 @@ const FormWrapper = styled.div`
   } 
 `
 
-const h1 = styled.div`
-  font-size: 30px; 
-  margin-top: 2rem;
-  font-weight: bold;
-  grid-template-rows: auto 1fr auto;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  }
-`
-
-const main = styled.div`
+const main = styled.section`
   min-height: 100vh;
   padding: 3rem 3rem;
   grid-template-rows: auto 1fr auto;
@@ -239,32 +227,23 @@ const { match: { params } } = this.props;
 
    } = this.state;
    
+   //placing style css code in styled components and or 
      
     return(
-
-
-      <main className="has-dflex-center">
+      <>
+      <main>
         <section>
            <div className="lx-container-70">
-              <div className="lx-row" mt='20px'>
-                <br />
-                <br />
-                <br />
-                <br />
+              <div className="lx-row">
                 <h1 className="title">CTD Profile</h1>
               </div>
 
-                <div 
-                // style= {{ gridTemplateRows: `auto 1fr auto`, backgroundSize: `contain`,
-                //       backgroundPosition: `center`, backgroundRepeat: `no-repeat`, }}
-                      className="lx-row align-stretch">
-                <div 
-                style= {{ display: `flex`, alignItems: `center`, justifyContent: `flex-end`, maxWidth: `25rem`, float: `left`,
-                       width: `45%`, padding: `10px`, }} 
-                      className="lx-column column-user-pic">
-                <div 
-                // style= {{ width: `50%`, maxWidth: `30rem`, margin: `6rem .05rem`, display: `flex`, flexFlow: `wrap column`, 
-                //       alignItems: `center`, justifyContent: `center`, borderRadius: `0.25rem`, backgroundColor: `white`, }} */}
+                <div className="lx-row align-stretch">
+                <div style= {{ display: `flex`, alignItems: `center`, 
+                     justifyContent: `flex-end`, maxWidth: `25rem`, float: `left`,
+                     width: `45%`, padding: `10px`, }} className="lx-column column-user-pic">
+                <div style= {{ width: `50%`, maxWidth: `30rem`, margin: `6rem .05rem`, display: `flex`, flexFlow: `wrap column`, 
+                      alignItems: `center`, justifyContent: `center`, borderRadius: `0.25rem`, backgroundColor: `white`, }}
                       className="profile-pic bs-md">
 
             {/* <ProfilePic /> */}
@@ -427,11 +406,11 @@ const { match: { params } } = this.props;
       </form>
     </FormWrapper>           
            </div>
-             </div>
+        </div>        
       </section>
     </main>
 
-    
+    </>
     )
  };
 
