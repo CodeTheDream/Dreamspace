@@ -9,13 +9,13 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   cursor: pointer;
-  background: blue;
+  background: rgb 52, 58, 235;
   font-size: 16px;
-  border-radius: 25px;
+  border-radius: 5px;
   color: white;
   margin-left: 12px;
   margin-right: 20px; 
-  padding: .75em .75em;
+  padding: .75em .50em;
   transition: 0.5s all ease-out;
  
   &:hover {
@@ -114,7 +114,8 @@ class SignUpFormBase extends Component {
 
   // onSubmit = (event, authUser) => {
     onSubmit = event => {
-      const { username, firstName, lastName, developer, github, email, passwordOne, passwordTwo, isAdmin } = this.state;
+      const { username, firstName, lastName, developer, github, 
+              email, passwordOne, passwordTwo, isAdmin } = this.state;
     // console.log('email', email);
       const roles = {};
   
@@ -202,7 +203,13 @@ class SignUpFormBase extends Component {
                 <i className="fas fa-portrait fa-1x"/></span>
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
-                <input className="col-6 form-control" name="firstName" onChange={this.onChange} type="text" value={this.state.value} placeholder="First Name" required></input>            
+                <input className="col-6 form-control" 
+                name="firstName" 
+                onChange={this.onChange} 
+                type="text" 
+                value={this.state.value} 
+                placeholder="First Name" required>
+                </input>            
             </div>
           </div>
 
@@ -213,7 +220,13 @@ class SignUpFormBase extends Component {
                   
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
-                <input className="col-6 form-control" name="lastName" onChange={this.onChange} type="text" value={this.state.value} placeholder="Last Name" required></input>            
+                <input className="col-6 form-control" 
+                name="lastName" 
+                onChange={this.onChange} 
+                type="text" 
+                value={this.state.value} 
+                placeholder="Last Name" required>
+                </input>            
             </div>
           </div>
           
@@ -223,7 +236,11 @@ class SignUpFormBase extends Component {
                 <i className="fab fa-dev fa-1x"/></span>
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
-              <input list="developer" id="developer-choice" name="developer" onChange={this.onChange} {...developer} placeholder='Developer' required/>
+              <input list="developer" 
+              id="developer-choice" 
+              name="developer" 
+              onChange={this.onChange} {...developer} 
+              placeholder='Developer' required/>
                   <datalist id="developer">
                       <option value="Frontend" />
                       <option value="Backend" />
@@ -238,8 +255,13 @@ class SignUpFormBase extends Component {
                 <i className="fab fa-github-square fa-1x"/></span>
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
-                <input className="col-6 form-control" name="github" onChange={this.onChange} type="text" value={this.state.value}
-                placeholder="Github" required></input> 
+                <input className="col-6 form-control" 
+                name="github" 
+                onChange={this.onChange} 
+                type="text" 
+                value={this.state.value}
+                placeholder="Github" required>
+                </input> 
           </div>
         </div>
         <hr />
@@ -250,7 +272,12 @@ class SignUpFormBase extends Component {
               <i className="fas fa-envelope fa-1x"/></span>
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input className="col-6 form-control" name="email" onChange={this.onChange} type="text" value={this.state.value} placeholder="Email" required></input> 
+              <input className="col-6 form-control" 
+              name="email" 
+              onChange={this.onChange} 
+              type="text" value={this.state.value} 
+              placeholder="Email" required>
+              </input> 
           </div>
         </div>
 
@@ -260,8 +287,13 @@ class SignUpFormBase extends Component {
               <i className="fas fa-unlock-alt fa-1x"/></span>
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input className="col-6 form-control" name="passwordOne" onChange={this.onChange} type="password" value={this.state.value}
-                placeholder="Password" required></input> 
+              <input className="col-6 form-control" 
+              name="passwordOne" 
+              onChange={this.onChange} 
+              type="password" 
+              value={this.state.value}
+              placeholder="Password" required>
+              </input> 
           </div>
         </div>
 
@@ -271,20 +303,18 @@ class SignUpFormBase extends Component {
               <i className="fas fa-lock-alt fa-1x"/></span>
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input className="col-6 form-control" name={passwordTwo} onChange={this.onChange} type="password" value={this.state.value}
-                placeholder="Confirm Password" required></input> 
+              <input className="col-6 form-control" 
+              name={passwordTwo} 
+              onChange={this.onChange} 
+              type="password" value={this.state.value}
+              placeholder="Confirm Password" required>
+              </input> 
           </div>
         </div>
-
-        {/* <Link to={'/directory/profile.js'}>
-           <Button> Profile Page </Button>
-        </Link> */}
-  
-    
-        <Button className="button-tertiary" disable={isInvalid} type="submit">
+        <Button className="button-tertiary" 
+        disable={isInvalid} type="submit">
           Sign Up
         </Button> 
-
         {error && <p>{error.message}</p>}
       </form>
     </FormWrapper>

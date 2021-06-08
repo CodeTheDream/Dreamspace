@@ -3744,28 +3744,6 @@ main section {
 
 }
 
- /* .lx-column column-user-pic {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  max-width: 25rem; 
-  float: left;
-  width: 35%; 
-  padding: 10px; 
-}    */
-/* 
-.profile-pic bs-md {
-  width: 50%;
-  max-width: 30rem; 
-  margin: 6rem .05rem; 
-  display: flex; 
-  flex-flow: wrap column; 
-  align-items: center; 
-  justify-content: center;
-  border-radius: 0.25rem; 
-  background-color: white;
-
-} */ 
 
 @media screen and (max-width: 702px) {
   .modal-image-container {

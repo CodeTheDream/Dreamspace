@@ -16,7 +16,7 @@ import axios from "axios";
 
 const Button = styled.button`
   cursor: pointer;
-  background: blue;
+  background: rgb 52, 58, 235;
   font-size: 1em;
   margin: 1em;
   padding: .75em .5em;
@@ -227,7 +227,7 @@ const { match: { params } } = this.props;
 
    } = this.state;
    
-   //placing style css code in styled components and or 
+   //placing inline css code in index.css file, except for three lines of code below 
      
     return(
       <>
@@ -237,18 +237,18 @@ const { match: { params } } = this.props;
               <div className="lx-row">
                 <h1 className="title">CTD Profile</h1>
               </div>
-
                 <div className="lx-row align-stretch">
-                <div style= {{ display: `flex`, alignItems: `center`, 
-                     justifyContent: `flex-end`, maxWidth: `25rem`, float: `left`,
-                     width: `45%`, padding: `10px`, }} className="lx-column column-user-pic">
-                <div style= {{ width: `50%`, maxWidth: `30rem`, margin: `6rem .05rem`, display: `flex`, flexFlow: `wrap column`, 
-                      alignItems: `center`, justifyContent: `center`, borderRadius: `0.25rem`, backgroundColor: `white`, }}
-                      className="profile-pic bs-md">
+                  <div style= {{ display: `flex`, alignItems: `center`, 
+                              justifyContent: `flex-end`, maxWidth: `25rem`, float: `left`,
+                              width: `45%`, padding: `10px`, }} className="lx-column column-user-pic">
+                  <div style= {{ width: `50%`, maxWidth: `30rem`, 
+                              margin: `6rem .05rem`, display: `flex`, flexFlow: `wrap column`, 
+                              alignItems: `center`, justifyContent: `center`, borderRadius: `0.25rem`, 
+                              backgroundColor: `white`, }} className="profile-pic bs-md">
 
             {/* <ProfilePic /> */}
-            <div style= {{ width: `20rem`, height: `20rem`, position: `relative`, overflow: `hidden`, borderRadius: `50%`, }} 
-                className="pic bs-md">      
+            <div style= {{ width: `20rem`, height: `20rem`, position: `relative`, 
+                        overflow: `hidden`, borderRadius: `50%`, }} className="pic bs-md">      
               <img style= {{ width: `100%`, height: `100%`, objectFit: `cover`, objectPosition: `center`, }} 
                     src="https://bit.ly/3jRbrbp" alt="" loading="lazy" ></img>
             </div>

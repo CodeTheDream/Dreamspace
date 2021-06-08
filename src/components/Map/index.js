@@ -14,7 +14,7 @@ InfoWindow
 
 const Button = styled.button`
   cursor: pointer;
-  background: blue;
+  background: rgb 52, 58, 235;
   font-size: 10px;
   border-radius: 22px;
   color: white;
@@ -31,6 +31,22 @@ const Button = styled.button`
   
   }
 `;
+
+
+const p = styled.div`
+  color: black; 
+  font-size: 15px; 
+  font-seight: bold;
+}
+`;
+
+const i = styled.div`
+   color: orange;
+  padding: 5px;
+  
+}
+`;
+
 
 function Map() {
   const [selectedPerson, setSelectedPerson] = useState(null);
@@ -63,14 +79,20 @@ function Map() {
         
        }}    
        >
+
+{/* placed inlined css for infowindow as styled components. Commented out inline for 
+time now... unable to test changes due to Map page not working */}
          <div>
-            <p style={{ color: `black`, fontSize: `18px`, fontWeight: `bold`,}}
+            <p 
+            // style={{ color: `black`, fontSize: `18px`, fontWeight: `bold`,}}
             >{selectedPerson.individual.name}</p><br></br>
 
-            <p style={{ color: `black`, fontSize: `15px`, fontWeight: `bold`, }}
+            <p 
+            // style={{ color: `black`, fontSize: `15px`, fontWeight: `bold`, }}
             >{selectedPerson.individual.language}</p><br></br>
 
-            <p style={{ color: `black`, fontSize: `15px`, fontWeight: `bold`, }}
+            <p 
+            // style={{ color: `black`, fontSize: `15px`, fontWeight: `bold`, }}
             >{selectedPerson.individual.stack}</p> 
 
             <img style=
@@ -81,12 +103,19 @@ function Map() {
               <Button > View Profile </Button>
             </Link>
             <br />
-          
-            <i style= {{ color: `orange`, padding:` 5px`, }} className="fa fa-envelope fa-10px"/> 
+{/* moved inline css comments into styled components above and commented out lines below. Unable to test changes
+at this time */}
+            <i 
+            // style= {{ color: `orange`, padding:` 5px`, }} 
+            className="fa fa-envelope fa-10px"/> 
 
-            <i style= {{ color: `orange`, padding: `5px`, }} className="fab fa-github-square fa-10px"></i>
+            <i 
+            // style= {{ color: `orange`, padding: `5px`, }} 
+            className="fab fa-github-square fa-10px"></i>
 
-            <i style= {{ color: `orange`, padding: `5px`, }} className="fab fa-linkedin fa-10px"></i>          
+            <i 
+            // style= {{ color: `orange`, padding: `5px`, }} 
+            className="fab fa-linkedin fa-10px"></i>          
          </div>
      </InfoWindow>
       )} 
@@ -94,14 +123,13 @@ function Map() {
   );
   }
 
+
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default function MapInit() {
   
    return (
-     <div style={{ width: "100vw", height: "100vh" }}
-     
-     >
+     <div style={{ width: "100vw", height: "100vh" }}>
      
        <WrappedMap 
        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`} 
