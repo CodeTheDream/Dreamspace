@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import * as mapData from "../Map/map.js"
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
 
 import { 
 withScriptjs, 
@@ -14,16 +15,16 @@ InfoWindow
 
 const Button = styled.button`
   cursor: pointer;
-  background: rgb 52, 58, 235;
+  font-weight: bold;
   font-size: 10px;
-  border-radius: 22px;
+  border-radius: 20px;
   color: white;
-  border: 2px blue;  
-  margin: 0 1em;
+  border: 2px blue;   
+  margin: .5em .5em;
   padding: .5em 1em;
   transition: 0.5s all ease-out;
   background-color: blue;
-  font-weight: bold;
+  
   
   &:hover {
     background-color: orange;
@@ -33,19 +34,19 @@ const Button = styled.button`
 `;
 
 
-const p = styled.div`
-  color: black; 
-  font-size: 15px; 
-  font-seight: bold;
-}
-`;
+// const p = styled.div` {
+//   color: blue; 
+//   font-size: 5px;
+//   font-weight: bold;
+// }
+// `;
 
-const i = styled.div`
-   color: orange;
-  padding: 5px;
+// const i = styled.div`
+//   color: orange;
+//   padding: 10px 10px;
   
-}
-`;
+// }
+// `;
 
 
 function Map() {
@@ -83,38 +84,36 @@ function Map() {
 {/* placed inlined css for infowindow as styled components. Commented out inline for 
 time now... unable to test changes due to Map page not working */}
          <div>
-            <p 
-            // style={{ color: `black`, fontSize: `18px`, fontWeight: `bold`,}}
+            <p style={{ color: `black`, fontSize: `18px`, fontWeight: `bold`,}}
             >{selectedPerson.individual.name}</p><br></br>
 
-            <p 
-            // style={{ color: `black`, fontSize: `15px`, fontWeight: `bold`, }}
+            <p style={{ color: `black`, fontSize: `15px`, fontWeight: `bold`, }}
             >{selectedPerson.individual.language}</p><br></br>
 
-            <p 
-            // style={{ color: `black`, fontSize: `15px`, fontWeight: `bold`, }}
+            <p style={{ color: `black`, fontSize: `15px`, fontWeight: `bold`, }}
             >{selectedPerson.individual.stack}</p> 
 
             <img style=
             {{ width: `100px`, height: `100px`, padding: `5px`, marginTop: `10px`, background: `blue`, }} 
             src={selectedPerson.individual.image} alt="uploaded images" /><br></br><br></br>
 
-            <Link to={'/directory/:username'}>
-              <Button > View Profile </Button>
-            </Link>
+            {/* <Link to={'/directory/:username'}> */}
+            <a href="directory/:username" className="button--style-blue"><Button> View Profile </Button></a> 
+              
+            {/* </Link> */}
             <br />
 {/* moved inline css comments into styled components above and commented out lines below. Unable to test changes
 at this time */}
             <i 
-            // style= {{ color: `orange`, padding:` 5px`, }} 
+            style= {{ color: `orange`, padding:` 5px`, }} 
             className="fa fa-envelope fa-10px"/> 
 
             <i 
-            // style= {{ color: `orange`, padding: `5px`, }} 
+            style= {{ color: `orange`, padding: `5px`, }} 
             className="fab fa-github-square fa-10px"></i>
 
             <i 
-            // style= {{ color: `orange`, padding: `5px`, }} 
+            style= {{ color: `orange`, padding: `5px`, }} 
             className="fab fa-linkedin fa-10px"></i>          
          </div>
      </InfoWindow>

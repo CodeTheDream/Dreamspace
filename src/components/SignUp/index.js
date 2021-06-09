@@ -88,6 +88,14 @@ const INITIAL_STATE = {
   email: '',
   firstName: '',
   lastName: '',
+  title: '',
+  projects: '',
+  language: '',
+  mentor: '',
+  state: '',
+  country: '',
+  remote: '',
+  equipment: '',
   developer: '',
   github: '',
   passwordOne: '',
@@ -136,6 +144,14 @@ class SignUpFormBase extends Component {
             email,
             firstName,
             lastName,
+            title: '',
+            projects: '',
+            language: '',
+            mentor: '',
+            state: '',
+            country: '',
+            remote: '',
+            equipment: '',
             developer,
             github,
             passwordOne,
@@ -177,6 +193,14 @@ class SignUpFormBase extends Component {
       username,
       firstName,
       lastName,
+      title,
+      projects,
+      language,
+      mentor,
+      state,
+      country,
+      remote,
+      equipment,
       developer,
       github,   
       email,
@@ -196,7 +220,7 @@ class SignUpFormBase extends Component {
 //form setup for initial signup information, name, email, password      
     return (
       <FormWrapper>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit} autocomplete="!off">
           <div className="fieldset">
             <div className="input-wrapper"> 
               <span className="icon"> 
@@ -208,7 +232,9 @@ class SignUpFormBase extends Component {
                 onChange={this.onChange} 
                 type="text" 
                 value={this.state.value} 
-                placeholder="First Name" required>
+                placeholder="First Name" 
+                autocomplete="chrome-off"
+                required>
                 </input>            
             </div>
           </div>
@@ -225,7 +251,9 @@ class SignUpFormBase extends Component {
                 onChange={this.onChange} 
                 type="text" 
                 value={this.state.value} 
-                placeholder="Last Name" required>
+                placeholder="Last Name" 
+                required
+                autocomplete="chrome-off">
                 </input>            
             </div>
           </div>
@@ -240,7 +268,9 @@ class SignUpFormBase extends Component {
               id="developer-choice" 
               name="developer" 
               onChange={this.onChange} {...developer} 
-              placeholder='Developer' required/>
+              placeholder='Developer' 
+              required
+              autocomplete="chrome-off"/>
                   <datalist id="developer">
                       <option value="Frontend" />
                       <option value="Backend" />
@@ -248,6 +278,159 @@ class SignUpFormBase extends Component {
                   </datalist>   
             </div>
           </div>   
+
+          <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span  className="icon"> 
+              <i className="fas fa-network-wired fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input list="title" 
+                  id="title-choice" 
+                  name="title" 
+                  onChange={this.onChange} {...title} 
+                  placeholder='Title' 
+                  required
+                  autocomplete="chrome-off"
+                  />
+                <datalist id="title">
+                  <option value="Staff" />
+                  <option value="Intern" />
+                  <option value="Volunteer" />
+                </datalist>
+          </div>
+        </div>  
+        
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fab fa-buffer fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+                <input className="col-6 form-control" 
+                  name="projects" 
+                  onChange={this.onChange} 
+                  type="text" 
+                  value={this.state.value}
+                  placeholder="Projects" 
+                  autocomplete="chrome-off"
+                  required></input>  
+          </div>
+        </div>  
+
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-language fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input className="col-6 form-control" 
+                name="Language"
+                onChange={this.onChange} 
+                type="text" 
+                value={this.state.value} 
+                placeholder="Language" 
+                required
+                autocomplete="chrome-off"></input> 
+          </div>
+        </div>
+
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-chalkboard-teacher fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+
+              <input list="mentor" 
+                id="mentor-choice" 
+                name="mentor" 
+                onChange={this.onChange} {...mentor} 
+                autocomplete="chrome-off"
+                placeholder='Mentor' 
+                required/>
+                <datalist id="mentor">
+                  <option value="Yes" />
+                  <option value="No" />
+                </datalist>
+          </div>
+        </div> 
+
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-landmark fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input className="col-6 form-control" 
+                name="State" 
+                onChange={this.onChange} 
+                type="text" 
+                value={this.state.value}
+                placeholder="State" 
+                required
+                autocomplete="chrome-off">
+                </input> 
+          </div>
+        </div>
+
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-globe fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input className="col-6 form-control" 
+                name="Country" 
+                onChange={this.onChange} 
+                type="text" 
+                autocomplete="chrome-off"
+                value={this.state.value}
+                placeholder="Country"  
+                required></input> 
+          </div>
+        </div> 
+
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-podcast fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input list="remote" id="remote-choice" 
+                name="remote" 
+                onChange={this.onChange} {...remote} 
+                placeholder='Remote' 
+                required 
+                autocomplete="chrome-off"/>
+                <datalist id="remote">
+                  <option value="Yes" />
+                  <option value="No" />
+                </datalist>
+          </div>
+        </div> 
+        
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-laptop-code fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input list="equipment" 
+                id="equipment-choice" 
+                name="equipment" 
+                onChange={this.onChange} {...equipment} 
+                placeholder='Equipment'
+                required
+                autocomplete="chrome-off"/>
+                <datalist id="equipment">
+                  <option value="Yes" />
+                  <option value="No" />
+                </datalist>
+          </div>
+        </div>
+
+
 
           <div className="fieldset">
             <div className="input-wrapper"> 
@@ -260,7 +443,8 @@ class SignUpFormBase extends Component {
                 onChange={this.onChange} 
                 type="text" 
                 value={this.state.value}
-                placeholder="Github" required>
+                placeholder="Github" required
+                autocomplete="chrome-off">
                 </input> 
           </div>
         </div>
@@ -275,8 +459,10 @@ class SignUpFormBase extends Component {
               <input className="col-6 form-control" 
               name="email" 
               onChange={this.onChange} 
-              type="text" value={this.state.value} 
-              placeholder="Email" required>
+              type="text" 
+              value={this.state.value} 
+              placeholder="Email" required
+              autocomplete="chrome-off">
               </input> 
           </div>
         </div>
@@ -292,7 +478,8 @@ class SignUpFormBase extends Component {
               onChange={this.onChange} 
               type="password" 
               value={this.state.value}
-              placeholder="Password" required>
+              placeholder="Password" required
+              autocomplete="chrome-off">
               </input> 
           </div>
         </div>
@@ -306,8 +493,10 @@ class SignUpFormBase extends Component {
               <input className="col-6 form-control" 
               name={passwordTwo} 
               onChange={this.onChange} 
-              type="password" value={this.state.value}
-              placeholder="Confirm Password" required>
+              type="password" 
+              value={this.state.value}
+              placeholder="Confirm Password" required
+              autocomplete="chrome-off">
               </input> 
           </div>
         </div>

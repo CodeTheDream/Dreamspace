@@ -400,7 +400,7 @@ const { match: { params } } = this.props;
         </div>
         
         <Button className="button-tertiary" type="submit">
-          Sign Up
+          Submit
         </Button> 
         <hr />
       </form>
