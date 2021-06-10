@@ -24,7 +24,9 @@ class AddReplys extends React.Component {
     });
     //console.log("this is the commentId", commentId)
   };
-  cancle = () => {
+
+  // word cancel was misspelled, corrected online 29
+  cancel = () => {
     this.setState({ showPopup: false });
   };
 
@@ -65,7 +67,7 @@ class AddReplys extends React.Component {
 
   render() {
     // const { comment, limited, timeCreated,commentId } = this.props;
-    const { commentId} = this.props;
+    const { commentId } = this.props;
     //console .log("this is the comment Id i have from comment",commentId)
     return (
       <AuthUserContext.Consumer>
@@ -93,8 +95,10 @@ class AddReplys extends React.Component {
               <button className="submit-btn" type="submit">
                 Reply
               </button>
-            <button className="submit-btn" onClick={this.cancle}>
-                cancle
+
+{/* noticed the word cancel is misspelled on lines 98 & 99 will correct spelling */}
+            <button className="submit-btn" onClick={this.cancel}>
+                cancel
         </button>
             </div>
           </form>
