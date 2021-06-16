@@ -13,6 +13,7 @@ import Create_article from "../Create-article";
 import SearchBar from "../../components/Search-bar";
 import Directory from "../Directory";
 
+
 class Articles extends React.Component {
 
   constructor(props) {
@@ -127,12 +128,8 @@ class Articles extends React.Component {
 
 const condition = (authUser) => !!authUser;
 
-//<<<<<<< HEAD
-export default compose(withFirebase, withAuthorization(condition))(Articles);
-// =======
 // <<<<<<< HEAD
 // export default compose(withFirebase, withAuthorization(condition))(Articles);
-// =======
-// export default compose(withFirebase, withAuthorization(condition));
-// >>>>>>> 60f46eb672b98df0430ea81e25e7d54707d4eaf4
-// >>>>>>> master 
+
+export default compose(withFirebase, withAuthorization(condition));
+

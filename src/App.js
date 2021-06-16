@@ -18,6 +18,7 @@ import  password from "./components/PasswordForget";
 //import FrontPage from "./components/FontPage";
 //import Sidebar from "./components/Sidebar";
 import Directory from "./containers/Directory";
+import Userprofile from './components/Userprofile';
 
 // import World from "./components/World";
 // import Map from "./components/Map";

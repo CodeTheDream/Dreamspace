@@ -17,4 +17,4 @@ export const WORLD = "/world";
 // export const UNDERCONSTRUCT = "/directory/:construct";
 export const PROFILE = "/directory/:username"
 export const INDIVIDUAL_VIEW = "/articles/:articleId";
-export const USERPROFILE= "/userprofile";
+// export const USERPROFILE= "/userprofile";

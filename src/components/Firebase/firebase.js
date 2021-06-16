@@ -84,6 +84,8 @@ class Firebase {
               providerData: authUser.providerData,
               photoUrl: authUser.photoURL,
               education:authUser.education,
+              image:authUser.image,
+              photo:authUser.photo,
               interest:authUser.interest,
              aboutyouself:authUser.aboutyouself,
               ...dbUser
