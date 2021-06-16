@@ -24,7 +24,11 @@
     "react-slideshow-image": "^1.3.4",
     "recompose": "^0.30.0",
     "save": "^2.4.0",
+<<<<<<< HEAD
     "styled-components": "^5.2.0"
+=======
+    "styled-components": "^5.2.1"
+>>>>>>> 056afd00b9f6cff14ba338c27279282c037f93f3
   },
   "scripts": {
     "start": "react-scripts start",
