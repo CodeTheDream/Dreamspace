@@ -1,4 +1,5 @@
 import React from 'react'
+import TeamDirectory from '../TeamDirectory'
 // import { Link } from 'react-router-dom'
 
 
@@ -22,6 +23,7 @@ const About = () => {
             <li>To guide and launch new career paths with enormous opportunities for themselves, their families and communities.</li>
             </ol> 
             </div>
+            <TeamDirectory />
  </div>
     
 

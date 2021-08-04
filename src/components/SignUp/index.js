@@ -5,6 +5,7 @@ import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
 import firebase from 'firebase';
+
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -491,6 +492,7 @@ class SignUpFormBase extends Component {
                     </input> 
                 </div>
               </div>
+          
         <Button className="button-tertiary" 
         disable={isInvalid} type="submit">
           Sign Up
