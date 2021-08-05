@@ -11,7 +11,6 @@ export const PROJECT = "/projects";
 export const ARTICLES = "/articles";
 export const PASSWORD_FORGET = "/passwordforget";
 export const DIRECTORY = "/directory";
-export const TEAMDIRECTORY = "/teamdirectory";
 export const LINKGITHUB = '/linkgithub';
 export const WORLD = "/world";
 

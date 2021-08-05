@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Articles from "./containers/Articles";
-import TeamDirectory from './containers/TeamDirectory'
 import * as ROUTES from "./constants/routes.js";
 import LinkGithub from "./containers/LinkGithub";
 import About from "./containers/About";
@@ -42,7 +41,6 @@ function App() {
           <Route exact path={ROUTES.HOME} component={HomePage} /> 
           <Route exact path={ROUTES.PASSWORD_FORGET} component={password} /> 
           <Route exact path={ROUTES.DIRECTORY} component={Directory} />
-          <Route exact path={ROUTES.TEAMDIRECTORY} component={TeamDirectory} />
           {/* <Route exact path={ROUTES.UNDERCONSTRUCT} component={Underconstruct} /> */}
           <Route exact path={ROUTES.LINKGITHUB} component={LinkGithub} />
           <Route path={ROUTES.PROFILE} component={Profile} />
