@@ -43,27 +43,27 @@ return (
   {/* <p>Display all team members info onto individual cards. </p> */}
     {users.map(user => <div key={user.id}>{user.github}  </div>)}
   
-  {/* <ul>
-        {directory.map(function (directory) {
+      <ul>
+        {users.map(function (user) {
           return (
-            <li key={directory.objectID}>
-              <span>{directory.firstName}</span>
-              <span>{directory.lastName}</span>
-              <span>{directory.email}</span>
-              <span>{directory.developer}</span>
-              <span>{directory.title}</span>
-              <span>{directory.projects}</span>
-              <span>{directory.equipment}</span>
-              <span>{directory.github}</span>
-              <span>{directory.language}</span>
-              <span>{directory.mentor}</span>
-              <span>{directory.remote}</span>
-              <span>{directory.state}</span>
-              <span>{directory.country}</span>
+            <li key={user.objectID}>
+              <span>{user.firstName}</span>
+              <span>{user.lastName}</span>
+              <span>{user.email}</span>
+              <span>{user.developer}</span>
+              <span>{user.title}</span>
+              <span>{user.projects}</span>
+              <span>{user.equipment}</span>
+              <span>{user.github}</span>
+              <span>{user.language}</span>
+              <span>{user.mentor}</span>
+              <span>{user.remote}</span>
+              <span>{user.state}</span>
+              <span>{user.country}</span>
             </li>
           );
         })}
-      </ul> */}
+      </ul> 
     </div>
 )
 }
