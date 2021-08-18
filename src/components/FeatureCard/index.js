@@ -3,6 +3,8 @@ import React from "react";
 // import moment from "moment";
 import ctdlogo from "../../assets/images/ctd-logo.png";
 import ctd from "../../assets/images/ctd-labs-horiz.png";
+
+
 const FeatureCard = props => {
   const { project } = props;
   const directoryData = props.crewDirectory;

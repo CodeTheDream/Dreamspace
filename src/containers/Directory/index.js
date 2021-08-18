@@ -4,7 +4,7 @@ import React, {useState, useEffect} from "react";
 //import directory from '../../components/Firebase/firebase';
 import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
-//import withFirebase from 'firebase'
+import UserCard from './usercard'
 // library.add(faColumns);
 
 
@@ -24,13 +24,13 @@ import { withFirebase } from "../../components/Firebase";
 
   
 const Directory = ({firebase}) => {
-  console.log('hello world', firebase)
+  // console.log('hello world', firebase)
   const [users, setUsers] = useState([])
-    console.log('howdy')
+    // console.log('howdy')
   useEffect(() => {
-    console.log('two lines above working')
+    // console.log('two lines above working')
    firebase.users().onSnapshot((snapshot) => {
-      console.log('not sure if this will work')
+      // console.log('not sure if this will work')
       let team = [];
       snapshot.forEach((doc) => team.push({ ...doc.data(), uid: doc.id }));
       setUsers( team )
@@ -39,29 +39,15 @@ const Directory = ({firebase}) => {
 
 
 return (
-  <div>
-  {/* <p>Display all team members info onto individual cards. </p> */}
-    {users.map(user => <div key={user.id}>{user.github}  </div>)}
   
+  <div>
+
+  {/* <p>Display all team members info onto individual cards. </p> */}
+    {/* {users.map(user => <div key={user.id}>{user.github}</div>)} */}
       <ul>
         {users.map(function (user) {
-          return (
-            <li key={user.objectID}>
-              <span>{user.firstName}</span>
-              <span>{user.lastName}</span>
-              <span>{user.email}</span>
-              <span>{user.developer}</span>
-              <span>{user.title}</span>
-              <span>{user.projects}</span>
-              <span>{user.equipment}</span>
-              <span>{user.github}</span>
-              <span>{user.language}</span>
-              <span>{user.mentor}</span>
-              <span>{user.remote}</span>
-              <span>{user.state}</span>
-              <span>{user.country}</span>
-            </li>
-          );
+          return <UserCard  user={user}/>
+        
         })}
       </ul> 
     </div>
@@ -69,7 +55,6 @@ return (
 }
 
 
-//export default Directory
 export default compose(withFirebase)(Directory);
 
 

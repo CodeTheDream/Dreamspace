@@ -17,6 +17,7 @@ import { withAuthentication } from "./components/Session";
 import  password from "./components/PasswordForget";
 //import FrontPage from "./components/FontPage";
 //import Sidebar from "./components/Sidebar";
+import UserCard from './components/UserCard'
 import Directory from "./containers/Directory";
 import Userprofile from './components/Userprofile';
 
@@ -41,6 +42,7 @@ function App() {
           <Route exact path={ROUTES.HOME} component={HomePage} /> 
           <Route exact path={ROUTES.PASSWORD_FORGET} component={password} /> 
           <Route exact path={ROUTES.DIRECTORY} component={Directory} />
+          {/* <Route exact path={ROUTES.USERCARD} component={UserCard} /> */}
           {/* <Route exact path={ROUTES.UNDERCONSTRUCT} component={Underconstruct} /> */}
           <Route exact path={ROUTES.LINKGITHUB} component={LinkGithub} />
           <Route path={ROUTES.PROFILE} component={Profile} />
