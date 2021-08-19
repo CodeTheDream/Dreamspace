@@ -5,17 +5,18 @@ import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
 import firebase from 'firebase';
+
 import styled from 'styled-components';
 
 const Button = styled.button`
   cursor: pointer;
-  background: blue;
+  background: rgb 52, 58, 235;
   font-size: 16px;
-  border-radius: 25px;
+  border-radius: 5px;
   color: white;
   margin-left: 12px;
   margin-right: 20px; 
-  padding: .75em .75em;
+  padding: .75em .50em;
   transition: 0.5s all ease-out;
  
   &:hover {
@@ -88,6 +89,14 @@ const INITIAL_STATE = {
   email: '',
   firstName: '',
   lastName: '',
+  title: '',
+  projects: '',
+  language: '',
+  mentor: '',
+  state: '',
+  country: '',
+  remote: '',
+  equipment: '',
   developer: '',
   github: '',
   passwordOne: '',
@@ -114,7 +123,8 @@ class SignUpFormBase extends Component {
 
   // onSubmit = (event, authUser) => {
     onSubmit = event => {
-      const { username, firstName, lastName, developer, github, email, passwordOne, passwordTwo, isAdmin } = this.state;
+      const { username, firstName, lastName, developer, github, title, projects, language, mentor, state, country,
+      remote, equipment, email, passwordOne, passwordTwo, isAdmin } = this.state;
     // console.log('email', email);
       const roles = {};
   
@@ -135,10 +145,19 @@ class SignUpFormBase extends Component {
             email,
             firstName,
             lastName,
+            title,
+            projects,
+            language,
+            mentor,
+            state,
+            country,
+            remote,
+            equipment, 
             developer,
             github,
             passwordOne,
-            passwordTwo
+            passwordTwo,
+            isAdmin
           
           },
           { merge: true }
@@ -176,6 +195,14 @@ class SignUpFormBase extends Component {
       username,
       firstName,
       lastName,
+      title,
+      projects,
+      language,
+      mentor,
+      state,
+      country,
+      remote,
+      equipment,
       developer,
       github,   
       email,
@@ -195,96 +222,281 @@ class SignUpFormBase extends Component {
 //form setup for initial signup information, name, email, password      
     return (
       <FormWrapper>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit} autocomplete="!off">
           <div className="fieldset">
             <div className="input-wrapper"> 
               <span className="icon"> 
                 <i className="fas fa-portrait fa-1x"/></span>
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
-                <input className="col-6 form-control" name="firstName" onChange={this.onChange} type="text" value={this.state.value} placeholder="First Name" required></input>            
+                <input className="col-6 form-control" 
+                  name="firstName" 
+                  onChange={this.onChange} 
+                  type="text" 
+                  value={this.state.value} 
+                  placeholder="First Name" 
+                  autocomplete="chrome-off"
+                  required>
+                </input>            
+              </div>
             </div>
-          </div>
 
           <div className="fieldset">
             <div className="input-wrapper"> 
               <span className="icon"> 
                 <i className="fas fa-portrait fa-1x"/></span>
-                  
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
-                <input className="col-6 form-control" name="lastName" onChange={this.onChange} type="text" value={this.state.value} placeholder="Last Name" required></input>            
+                <input className="col-6 form-control" 
+                  name="lastName" 
+                  onChange={this.onChange} 
+                  type="text" 
+                  value={this.state.value} 
+                  placeholder="Last Name" 
+                  required
+                  autocomplete="chrome-off">
+                </input>            
+              </div>
             </div>
-          </div>
           
-          <div className="fieldset">
-            <div className="input-wrapper"> 
-            <span className="icon"> 
-                <i className="fab fa-dev fa-1x"/></span>
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-              <input list="developer" id="developer-choice" name="developer" onChange={this.onChange} {...developer} placeholder='Developer' required/>
-                  <datalist id="developer">
-                      <option value="Frontend" />
-                      <option value="Backend" />
-                      <option value="Full Stack" />
-                  </datalist>   
-            </div>
-          </div>   
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i className="fab fa-dev fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                    <input className="col-6 form-control" 
+                      name="developer" 
+                      onChange={this.onChange} 
+                      type="text" 
+                      value={this.state.value} 
+                      placeholder="Developer Type" 
+                      autocomplete="chrome-off"
+                      required>
+                    </input>  
+                </div>
+              </div>   
 
-          <div className="fieldset">
-            <div className="input-wrapper"> 
-              <span className="icon"> 
-                <i className="fab fa-github-square fa-1x"/></span>
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                <input className="col-6 form-control" name="github" onChange={this.onChange} type="text" value={this.state.value}
-                placeholder="Github" required></input> 
-          </div>
-        </div>
-        <hr />
+              <div className="fieldset">
+                <div className="input-wrapper"> 
+                  <span  className="icon"> 
+                    <i className="fas fa-network-wired fa-1x"/></span>
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                     <input list="title" 
+                        // id="title-choice" 
+                        name="title" 
+                        type="text" 
+                        onChange={this.onChange} {...title} 
+                        placeholder='Title' 
+                        autocomplete="chrome-off"
+                        required>
+                      </input>
+                </div>  
+              </div>  
+        
+              <div className="fieldset">
+                <div className="input-wrapper"> 
+                  <span className="icon"> 
+                    <i className="fab fa-buffer fa-1x"/></span>
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                      <input className="col-6 form-control" 
+                        name="projects" 
+                        onChange={this.onChange} 
+                        type="text" 
+                        value={this.state.value}
+                        placeholder="Projects" 
+                        autocomplete="chrome-off"
+                        required>
+                      </input>  
+                </div>
+              </div>  
 
-        <div className="fieldset">
-          <div className="input-wrapper"> 
-            <span className="icon"> 
-              <i className="fas fa-envelope fa-1x"/></span>
-              &nbsp;&nbsp;
-              &nbsp;&nbsp;
-              <input className="col-6 form-control" name="email" onChange={this.onChange} type="text" value={this.state.value} placeholder="Email" required></input> 
-          </div>
-        </div>
+              <div className="fieldset">
+                <div className="input-wrapper"> 
+                  <span className="icon"> 
+                    <i className="fas fa-language fa-1x"/></span>
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    <input className="col-6 form-control" 
+                      name="language"
+                      onChange={this.onChange} 
+                      type="text" 
+                      value={this.state.value} 
+                      placeholder="Language" 
+                      autocomplete="chrome-off"
+                      required>
+                      </input> 
+                </div>
+              </div>
 
-        <div className="fieldset">
-          <div className="input-wrapper"> 
-            <span className="icon"> 
-              <i className="fas fa-unlock-alt fa-1x"/></span>
-              &nbsp;&nbsp;
-              &nbsp;&nbsp;
-              <input className="col-6 form-control" name="passwordOne" onChange={this.onChange} type="password" value={this.state.value}
-                placeholder="Password" required></input> 
-          </div>
-        </div>
+              <div className="fieldset">
+                <div className="input-wrapper"> 
+                  <span className="icon"> 
+                    <i className="fas fa-chalkboard-teacher fa-1x"/></span>
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    <input list="mentor" 
+                      id="mentor-choice" 
+                      name="mentor" 
+                      type="text" 
+                      onChange={this.onChange} {...mentor} 
+                      autocomplete="chrome-off"
+                      placeholder='Mentor' 
+                      required>
+                    </input>
+                </div>
+              </div> 
 
-        <div className="fieldset">
-          <div className="input-wrapper"> 
-            <span className="icon"> 
-              <i className="fas fa-lock-alt fa-1x"/></span>
-              &nbsp;&nbsp;
-              &nbsp;&nbsp;
-              <input className="col-6 form-control" name={passwordTwo} onChange={this.onChange} type="password" value={this.state.value}
-                placeholder="Confirm Password" required></input> 
-          </div>
-        </div>
+              <div className="fieldset">
+                <div className="input-wrapper"> 
+                  <span className="icon"> 
+                    <i className="fas fa-landmark fa-1x"/></span>
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    <input className="col-6 form-control" 
+                      name="State" 
+                      onChange={this.onChange} 
+                      type="text" 
+                      value={this.state.value}
+                      placeholder="State" 
+                      required
+                      autocomplete="chrome-off">
+                    </input> 
+                </div>
+              </div>
 
-        {/* <Link to={'/directory/profile.js'}>
-           <Button> Profile Page </Button>
-        </Link> */}
-  
-    
-        <Button className="button-tertiary" disable={isInvalid} type="submit">
+              <div className="fieldset">
+                <div className="input-wrapper"> 
+                  <span className="icon"> 
+                    <i className="fas fa-globe fa-1x"/></span>
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    <input className="col-6 form-control" 
+                      name="Country" 
+                      onChange={this.onChange} 
+                      type="text" 
+                      autocomplete="chrome-off"
+                      value={this.state.value}
+                      placeholder="Country"  
+                      required>
+                    </input> 
+                </div>
+              </div> 
+
+              <div className="fieldset">
+                <div className="input-wrapper"> 
+                  <span className="icon"> 
+                    <i className="fas fa-podcast fa-1x"/></span>
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    <input list="remote" id="remote-choice" 
+                      name="remote"
+                      type="text"  
+                      onChange={this.onChange} {...remote} 
+                      placeholder='Remote' 
+                      required 
+                      autocomplete="chrome-off">
+                    </input>
+                </div>
+              </div> 
+              
+              <div className="fieldset">
+                <div className="input-wrapper"> 
+                  <span className="icon"> 
+                    <i className="fas fa-laptop-code fa-1x"/></span>
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    <input list="equipment" 
+                      id="equipment-choice" 
+                      name="equipment"
+                      type="text"  
+                      onChange={this.onChange} {...equipment} 
+                      placeholder='Equipment'
+                      required
+                      autocomplete="chrome-off">
+                    </input>
+                </div>
+              </div>
+
+              <div className="fieldset">
+                <div className="input-wrapper"> 
+                  <span className="icon"> 
+                    <i className="fab fa-github-square fa-1x"/></span>
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    <input className="col-6 form-control" 
+                      name="github" 
+                      onChange={this.onChange} 
+                      type="text" 
+                      value={this.state.value}
+                      placeholder="Github"
+                      autocomplete="chrome-off" 
+                      required>
+                    </input> 
+                </div>
+             </div>
+            <hr />
+
+            <div className="fieldset">
+              <div className="input-wrapper"> 
+                <span className="icon"> 
+                  <i className="fas fa-envelope fa-1x"/></span>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                    <input className="col-6 form-control" 
+                      name="email" 
+                      onChange={this.onChange} 
+                      type="text" 
+                      value={this.state.value} 
+                      placeholder="Email"
+                      autocomplete="chrome-off"
+                      required>
+                    </input> 
+                </div>
+              </div>
+
+              <div className="fieldset">
+                <div className="input-wrapper"> 
+                  <span className="icon"> 
+                    <i className="fas fa-unlock-alt fa-1x"/></span>
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                      <input className="col-6 form-control" 
+                        name="passwordOne" 
+                        onChange={this.onChange} 
+                        type="password" 
+                        value={this.state.value}
+                        placeholder="Password" 
+                        autocomplete="chrome-off"
+                        required>
+                      </input> 
+                </div>
+              </div>
+
+              <div className="fieldset">
+                <div className="input-wrapper"> 
+                  <span className="icon"> 
+                    <i className="fas fa-lock-alt fa-1x"/></span>
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    <input className="col-6 form-control" 
+                        name={passwordTwo} 
+                        onChange={this.onChange} 
+                        type="password" 
+                        value={this.state.value}
+                        placeholder="Confirm Password" 
+                        autocomplete="chrome-off"
+                        required>
+                    </input> 
+                </div>
+              </div>
+          
+        <Button className="button-tertiary" 
+        disable={isInvalid} type="submit">
           Sign Up
         </Button> 
-
         {error && <p>{error.message}</p>}
       </form>
     </FormWrapper>
