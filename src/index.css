@@ -3832,4 +3832,49 @@ main section {
     left: 7em;
   }
 }
+
+
+/* usercard component css */
 /*# sourceMappingURL=index.css.map */
+
+.containerbox {
+  margin-top: 60px;
+  position: relative;
+  width: 50%;
+}
+
+image {
+  display: block;
+  width: 50%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 75%;
+  width:43%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.containerbox:hover .overlay {
+  opacity: 1;
+  position: absolute;
+}
+
+.textcss {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
