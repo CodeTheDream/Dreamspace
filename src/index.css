@@ -3859,7 +3859,7 @@ image {
   height: 75%;
   width: 70%;
   opacity: 0;
-  transition: .5s ease;
+  transition: .1s ease;
   background-color: #008CBA;
 }
 
@@ -3882,6 +3882,7 @@ image {
 }
 
 .row {
+  
   display: flex;
   flex-wrap: wrap;
 }
@@ -3902,6 +3903,7 @@ image {
 /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .row {
+  
     flex-direction: column;
   }
 }

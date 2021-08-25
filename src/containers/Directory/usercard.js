@@ -1,8 +1,8 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Box, SimpleGrid } from "@chakra-ui/react"
-import { Wrap, WrapItem, Center } from "@chakra-ui/react"
+import { Box, Center, Wrap, WrapItem } from "@chakra-ui/react"
+
 
 
 
@@ -33,65 +33,60 @@ export const Col = styled.div`
 
 const usercard = (user) => {
   return (
-<div>
-    
+    <div>
+    {/* Placed Center outside individual boxes to see what it would do placed around entire div*/}
+      <Center>
+        <Wrap>
+          <WrapItem>
+            <div className="containerbox">
+              <Box boxSize="sm">
+              {/* pic is an url not an image stored in devedit project */}
+                <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img>
+              </Box> 
+                <Col size={4}></Col>
+                  <div className="overlay">
+                    <div className="textcss">Chaka, Nigeria</div>
+                    </div>
+                  </div>
+          </WrapItem>
 
-     <Wrap>
-  <WrapItem>
-  <div className="containerbox">
-            
-                          <Box boxSize="sm">
-                          
-                    {/* pic is an url not an image stored in devedit project */}
-                   <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img>
-                     </Box> 
-               <Col size={4}>
-               </Col>
-                   <div className="overlay">
-                   <div className="textcss">Chaka, Nigeria</div>
-                     </div>
-                   </div>
-  </WrapItem>
-  <Wrap>
-  <WrapItem>
-  <div className="containerbox">
-            
-                          <Box boxSize="sm">
-                          
-                    {/* pic is an url not an image stored in devedit project */}
-                   <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img>
-                     </Box> 
-               <Col size={4}>
-               </Col>
-                   <div className="overlay">
-                   <div className="textcss">Chaka, Nigeria</div>
-                     </div>
-                   </div>
-  </WrapItem>
-  <Wrap>
-  <WrapItem>
-  <div className="containerbox">
-            
-                          <Box boxSize="sm">
-                          
-                    {/* pic is an url not an image stored in devedit project */}
-                   <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img>
-                     </Box> 
-               <Col size={4}>
-               </Col>
-                   <div className="overlay">
-                   <div className="textcss">Chaka, Nigeria</div>
-                     </div>
-                   </div>
-  </WrapItem>
-</Wrap>
-</Wrap>
-</Wrap>
-</div>
+      <div>
+        <Wrap>
+          <WrapItem>
+            <div className="containerbox">
+              <Box boxSize="sm">
+              {/* pic is an url not an image stored in devedit project */}
+                <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img>
+              </Box> 
+                <Col size={4}></Col>
+                  <div className="overlay">
+                    <div className="textcss">Chaka, Nigeria</div>
+                    </div>
+                  </div>
+          </WrapItem>
 
-    
-    
-  
+      <div>
+        <Wrap>
+          <WrapItem>
+            <div className="containerbox">
+              <Box boxSize="sm">
+              {/* pic is an url not an image stored in devedit project */}
+                <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img>
+              </Box> 
+                <Col size={4}></Col>
+                  <div className="overlay">
+                    <div className="textcss">Chaka, Nigeria</div>
+                    </div>
+                  </div>
+          </WrapItem>
+      </Wrap>
+        </div>
+      </Wrap> 
+        </div>
+      </Wrap>
+      </Center>
+      </div>
+
      
   );
 }
