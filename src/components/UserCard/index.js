@@ -47,36 +47,7 @@ const UserCard = ({users}) => {
               </ul>
              </ReactCardFlip> 
  </div>
-    //   <>
-    //     <div>
-    //       <Container>
-    //         <Row>
-    //           {UserCard.map((users) (
-                
-    //               <Col md={4} key={users}>
-    //                   <Card style={{ width: '100%' }}>
-    //                       {/* <Card.Img variant="top" src={user.data.url} style={{height:'300px',width:'100%'}} /> */}
-    //                       <Card.Body>
-    //                            <Card.Title>{users.title}</Card.Title> 
-    //                           {/**<Card.Text> **/}
-    //                               <ul>
-    //                                   {users.map(function (user) {
-    //                                     return (
-    //                                       <li key={user.id}>{user.github}</li> 
-    //                                   );
-    //                                   })}
-    //                               </ul>
-    //                           {/** </Card.Text> **/}
-    //                           <Button variant="secondary">Testing</Button>
-    //                       </Card.Body>
-    //                   </Card>
-    //               </Col>  
-    //           )  
-    //            ) }
-    //         </Row>
-    //       </Container>
-    //     </div>
-    // </>
+      
      
     )
         

@@ -5,6 +5,7 @@ import React, {useState, useEffect} from "react";
 import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import UserCard from './usercard'
+
 // library.add(faColumns);
 
 
@@ -46,12 +47,15 @@ return (
     {/* {users.map(user => <div key={user.id}>{user.github}</div>)} */}
       <ul>
         {users.map(function (user) {
-          return <UserCard  user={user}/>
-        
+          return <UserCard user={user} />
+{/*       
+          <li key={user.id}>{user}</li> */}
+    
         })}
       </ul> 
     </div>
-)
+  
+  )
 }
 
 
