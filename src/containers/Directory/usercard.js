@@ -7,7 +7,7 @@ const UserCard = ({user}) => {
     return (
 
         <div>
-            UserCard
+        
         </div>
     )
 }
