@@ -3,28 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-<<<<<<< HEAD
-import { ChakraProvider } from "@chakra-ui/react";
-
-=======
 import { ChakraProvider } from "@chakra-ui/react"
->>>>>>> bedf0c69c23390f946aa3a7dde85b664252b2922
 import Firebase, { FirebaseContext } from './components/Firebase';
 
 ReactDOM.render(
   <ChakraProvider>
   <FirebaseContext.Provider value={new Firebase()}>
-<<<<<<< HEAD
-    <ChakraProvider><App /></ChakraProvider>
-  </FirebaseContext.Provider>,
-  document.getElementById("root")
-=======
     {<App />} 
   
   </FirebaseContext.Provider>
   </ChakraProvider>,
   document.getElementById('root'),
->>>>>>> bedf0c69c23390f946aa3a7dde85b664252b2922
 );
 
 // If you want your app to work offline and load faster, you can change
