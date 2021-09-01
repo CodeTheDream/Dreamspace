@@ -51,7 +51,7 @@ const usercard = (user) => {
               </Box> 
                 <Col size={4}></Col>
                   <div className="overlay">
-                  {/* <Teamcard /> */}
+                   {/* <Teamcard />  */}
                     <div className="textcss">Chaka, Nigeria</div>
                     </div>
                   </div>
@@ -82,8 +82,8 @@ const usercard = (user) => {
               </Box> 
                 <Col size={4}></Col>
                   <div className="overlay">
-                  {/* <Teamcard /> */}
-                    {/* <div className="textcss">Chaka, Nigeria</div> */}
+                  {/* <Teamcard />  */}
+                    <div className="textcss">Chaka, Nigeria</div> 
                     </div>
                   </div>
           </WrapItem>
