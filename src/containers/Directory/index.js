@@ -42,17 +42,18 @@ const Directory = ({firebase}) => {
 return (
   
   <div>
-
+<>
   {/* <p>Display all team members info onto individual cards. </p> */}
     {/* {users.map(user => <div key={user.id}>{user.github}</div>)} */}
       <ul>
         {users.map(function (user) {
           return <UserCard user={user} />
-{/*       
-          <li key={user.id}>{user}</li> */}
+  
+           {/* <li key={user.id}>{user}</li> */}
     
         })}
       </ul> 
+      </>
     </div>
   
   )

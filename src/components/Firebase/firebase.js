@@ -15,7 +15,7 @@ const config = {
 //export const storage = firebase.storage();
 class Firebase {
   constructor() {
-    console.log("API KEY", process.env.REACT_APP_API_KEY);
+    // console.log("API KEY", process.env.REACT_APP_API_KEY);
       app.initializeApp(config);
 
       
