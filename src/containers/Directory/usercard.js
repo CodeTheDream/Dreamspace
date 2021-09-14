@@ -1,12 +1,11 @@
 
-import React from 'react'
-// import Teamcard from './teamcard';
+//import TeamMember from '../Directory/TeamMember'
+import React from 'react';
+import './usercard.css'
+
+
 import styled from 'styled-components'
 import { Box, Center, Wrap, WrapItem } from "@chakra-ui/react"
-//import Teamcard from './teamcard';
-
-
-
 
 
 
@@ -27,6 +26,7 @@ import { Box, Center, Wrap, WrapItem } from "@chakra-ui/react"
 // export const Grid = styled.div`
 
 // `;
+//displays directory pictures
 
 export const Row = styled.div`
   display: flex;
@@ -36,10 +36,11 @@ export const Col = styled.div`
   flex: ${(user) => user.auto}
 `;
 
-const usercard = (user) => {
+function UserCard(user) {
+  console.log('user info', user)
   return (
+    
     <div>
-
     {/* Placed Center outside individual boxes to see what it would do placed around entire div*/}
       <Center>
         <Wrap>
@@ -47,13 +48,15 @@ const usercard = (user) => {
             <div className="containerbox">
               <Box boxSize="sm">
               {/* pic is an url not an image stored in devedit project */}
-                <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img>
+                {/* <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img> */}
+                {/* <TeamMember /> */}
               </Box> 
                 <Col size={4}></Col>
-                  <div className="overlay">
-                   {/* <Teamcard />  */}
-                    <div className="textcss">Chaka, Nigeria</div>
-                    </div>
+                  {/* <div className="overlay">
+                  
+                   <div className="textcss">Chaka, Nigeria</div>
+                    </div> */}
+                   
                   </div>
           </WrapItem>
 
@@ -100,5 +103,5 @@ const usercard = (user) => {
   );
 }
 
- export default usercard
+ export default UserCard
 

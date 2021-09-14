@@ -1,61 +1,29 @@
-// import { useState, useEffect } from 'react'
 
-//import UserCard from './usercard'
-
-//**4. Render all team members info into team member cards**
-
-//5. onClick team member takes you to a route that is at directoy id
+// import * as React from 'react';
 
 
-
-
-
-// export default function teamcard(user) {
-
-//   const [firstName, setFirstName] = useState('')
-//   const [lastName, setLastName] = useState('')
-//   const [title, setTitle] = useState('')
-//   const [developer, setDeveloper] = useState('')
-//   const [github, setGithub] = useState('')
-//   const [error, setError] = useState(false)
-//   const [loading, setLoading] = useState(true)
   
-//   useEffect(() => {
-//       const unsubscribe = firebase
-//         .firestore()
-//         .collection('users')
-//         .doc(id)
-//         .collection('user')
-//         .onSnapshot(
-//           snapshot => {
-//             const users = []
-//             snapshot.forEach(user => {
-//               users.push(user)
-//             })
-//             setLoading(false)
-//             setFirstName(firstName)
-//             setLastName(lastName)
-//             setTitle(title)
-//             setDeveloper(developer)
-//             setGithub(github)
-//           },
-//           err => {
-//             setError(err)
-//           }
-//         )
+//   const teamcard = (user) => (
+//     <ul>
+//       {user.list.map((user) => (
+//         <users key={user.uid} users={user} />
+//       ))}
+//       return (
+//         <li>
+//        <p>{user.user}</p>
+//         {/* <p>{user.firstName}</p>
+//        <p>{user.lastName}</p>
+//        <p>{user.title}</p>
+//        <p>{user.developer}</p>
+//        <p>{user.projects}</p>
+//        <p>{user.github}</p>
+//        <p>{user.email}</p>  */}
 
-//       return () => unsubscribe()
-//     },
-//     [id]
-//   )
+//        </li> 
+//       )
+//     </ul>
+//   );
+  
 
-//   return {
-//     error,
-//     loading,
-//     firstName,
-//     lastName,
-//     title,
-//     developer,
-//     github,
-//   }
-// }
+  
+//   export default teamcard

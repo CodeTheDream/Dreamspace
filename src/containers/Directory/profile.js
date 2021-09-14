@@ -1,5 +1,7 @@
 
 import React, { Component } from "react"
+import { useParams } from 'react-router-dom'
+
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import * as ROUTES from "../../constants/routes";
@@ -11,6 +13,8 @@ import styled, { css } from 'styled-components'
 import '../../index.css'
 import { faUserSlash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+//import EditReset from "./EditReset";
+//import TeamMember from "./TeamMember";
 //change Fib
 
 
@@ -233,7 +237,7 @@ const { match: { params } } = this.props;
       <>
       <main>
         <section>
-           <div className="lx-container-70">
+           {/* <div className="lx-container-70">
               <div className="lx-row">
                 <h1 className="title">CTD Profile</h1>
               </div>
@@ -247,15 +251,18 @@ const { match: { params } } = this.props;
                               backgroundColor: `white`, }} className="profile-pic bs-md">
 
             {/* <ProfilePic /> */}
-            <div style= {{ width: `20rem`, height: `20rem`, position: `relative`, 
+            {/* <div style= {{ width: `20rem`, height: `20rem`, position: `relative`, 
                         overflow: `hidden`, borderRadius: `50%`, }} className="pic bs-md">      
               <img style= {{ width: `100%`, height: `100%`, objectFit: `cover`, objectPosition: `center`, }} 
                     src="https://bit.ly/3jRbrbp" alt="" loading="lazy" ></img>
-            </div>
-              </div>
-           </div> 
+            </div> */}
+
+
+
+          {/* code below to be used to signup */}
 
     <FormWrapper>
+      {/* <TeamMember />  */}
           {/* <form action="get"> */}
       <form onSubmit={this.onSubmit}>
         <div className="fieldset">
@@ -404,9 +411,7 @@ const { match: { params } } = this.props;
         </Button> 
         <hr />
       </form>
-    </FormWrapper>           
-           </div>
-        </div>        
+    </FormWrapper>                 
       </section>
     </main>
 

@@ -4,9 +4,8 @@ import React, {useState, useEffect} from "react";
 //import directory from '../../components/Firebase/firebase';
 import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
-import UserCard from './usercard'
-
-// library.add(faColumns);
+import UserCard from './UserCard'
+import {Link} from 'react-router-dom'
 
 
 //1. create TeamDirectoy function
@@ -21,7 +20,6 @@ import UserCard from './usercard'
 //9. Allow team members to edit if they are logged into my page
 //10. useState Hook declares a state variable called diectory (same as this.state in a class).
 //11. setDirectory updates 
-
 
   
 const Directory = ({firebase}) => {
@@ -42,19 +40,18 @@ const Directory = ({firebase}) => {
 return (
   
   <div>
-<>
-  {/* <p>Display all team members info onto individual cards. </p> */}
-    {/* {users.map(user => <div key={user.id}>{user.github}</div>)} */}
-      <ul>
-        {users.map(function (user) {
-          return <UserCard user={user} />
+    <ul>
+      {users.map(function (user) {
+        return (
+          <Link to={`/directory/${user.uid}`}>
+            <UserCard user={user} />
+          </Link>
+
+        );
   
-           {/* <li key={user.id}>{user}</li> */}
-    
-        })}
-      </ul> 
-      </>
-    </div>
+      })}
+    </ul> 
+  </div>
   
   )
 }
