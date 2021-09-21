@@ -3,3 +3,81 @@
     margin: 0;
     padding: 0;
 }
+
+  
+  section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex; 
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 980px;
+    margin: auto;
+  }
+  
+  .hero {
+    background: #445688;
+  }
+  
+  .hero .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+  }
+  
+  .card {
+    width: 300px;
+    height: 260px;
+    background: #18305a;
+    color: #fff;
+    padding: 40px;
+    margin: 16px 0;
+    
+  }
+  
+  .card h1 {
+    font-size: 30px;
+  }
+  
+  .card a {
+    text-decoration: none;
+    display: inline-block;
+    background: #40538a;
+    color: #fff;
+    padding: 10px;
+    margin: 14px 0 0 0;
+    transition: all 300ms ease-in-out;
+  
+  }
+  
+  .card a:hover {
+    background: #3a4c80;
+  }
+  
+  
+  .full {
+    background: #2a3961;
+  
+  }
+  
+  .full .container {
+    max-width: 640px;
+  }
+  
+  .fullcard {
+    width: 100%;
+    height: 500px;
+    background: #445688;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .fullcard h1 {
+    font-size: 70px;
+  }

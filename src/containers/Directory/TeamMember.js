@@ -1,50 +1,40 @@
 import React from 'react'
-//import  { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import UserCard from './UserCard'
-// import firebase from 'firebase';
 
 
 
-const  TeamMember = () => {
+
+const  TeamMember = (user) => {
   const params = useParams() 
     console.log('Team member params', params)
 
-
-  //   const [users, setUsers] = useState([])
-  //   // console.log('howdy')
-  // useEffect(() => {
-  //   // console.log('two lines above working')
-  //  firebase.users().onSnapshot((snapshot) => {
-  //     // console.log('not sure if this will work')
-  //     let team = [];
-  //     snapshot.forEach((doc) => team.push({ ...doc.data(), uid: doc.id }));
-  //     setUsers( team )
-  //   });
-  // }, [])
+      return (
+        <div>
+          <ul>
 
 
-return (
-  <div>
-    <ul>
-      {user.map((function (user) {
-        return (
-          <Link to={`/directory/${user.uid}`}>
-            <UserCard key={user.id} user={user} />
-          </Link>
-        )
-  
-      })}
-      
-    </ul> 
-    <div style={{margin:'100px'}}>
-      Team Member
-      <p>{params.id}</p> 
-    </div>
-  </div>
+          {/* var itemInfo = items.map(item => >Hex:{item.hex}</div>); */}
 
 
-    
+            {user.map(user => {
+              return (
+                <div key={user.id}>
+                <Link to={`/directory/${user.uid}`}>
+                  <UserCard  user={user} />
+                </Link>
+                </div>
+              );
+        
+            })
+            }
+            
+          </ul> 
+          <div style={{margin:'100px'}}>
+            Team Member
+            <p>{params.id}</p> 
+          </div>
+        </div>
   
   )
 }

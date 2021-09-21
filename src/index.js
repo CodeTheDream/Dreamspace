@@ -10,7 +10,6 @@ ReactDOM.render(
   <ChakraProvider>
   <FirebaseContext.Provider value={new Firebase()}>
     {<App />} 
-  
   </FirebaseContext.Provider>
   </ChakraProvider>,
   document.getElementById('root'),
