@@ -12,8 +12,7 @@ export const ARTICLES = "/articles";
 export const PASSWORD_FORGET = "/passwordforget";
 export const DIRECTORY = "/directory";
 export const TeamMember = "/directory/:id";
-export const USERCARD = '/usercard';
-// export const TEAMCARD = '/teamcard';
+export const TEAMCARD = '/teamcard';
 export const LINKGITHUB = '/linkgithub';
 export const WORLD = "/world";
 
