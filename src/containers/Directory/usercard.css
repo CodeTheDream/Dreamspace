@@ -4,7 +4,10 @@
     padding: 0;
 }
 
-  
+.image
+ {
+  background-image: url("ctdBackground.png");
+}
   section {
     width: 100%;
     min-height: 100vh;

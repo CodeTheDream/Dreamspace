@@ -1,218 +1,54 @@
-
-
-// import React from 'react'
-// import { useParams, Link } from 'react-router-dom'
-// import {  Box, Center, SimpleGrid } from "@chakra-ui/react"
-// import UserCard from './UserCard'
-
-
-
-
-// const  TeamMember = (user) => {
-//   const params = useParams() 
-//     console.log('Team member params', params)
-//     console.log('Team', user)
-
-//       return (
-//         <div>
-//           <ul>
-//             {user.map(function (user) {
-//               return (
-//                 <div key={user.id}>
-//                   <Link to={`/directory/${user.uid}`}>
-//                     <UserCard  user={user} />
-//                   </Link>
-//                 </div>
-//               );
-        
-//             })
-//             }
-            
-//           </ul> 
-//               <Center>
-//       <SimpleGrid columns={3} spacing={8}>
-//       <div style={{margin:'100px'}}>
-//         {user.map(user => {
-//           return (
-            
-            
-//             <Box maxW='lg' borderWidth='3px' overflow='hidden' p='4px' ml='10px' mr='10px'>
-//               <Center mt='1em'>
-//                 <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img>
-
-//               </Center>
-//               <p>{params.id}</p> 
-//                 <h3>{user.firstName} {user.lastName}</h3>
-//                   <p>{user.username}</p>
-//                   <p>{user.developer}</p>
-//                   <p>{user.projects}</p>
-//                   <p>{user.github}</p>
-//                   <p>{user.email}</p>      
-                  
-//             </Box> 
-            
-                 
-//         );
-//       })}
-//       </div>
-//         </SimpleGrid>
-//         </Center> 
+import {  Box, Center } from "@chakra-ui/react"
+import React, {useState, useEffect} from "react";
+//import TeamPhoto from './TeamPhoto'
+import { compose } from "recompose";
+import { withFirebase } from "../../components/Firebase";
+import { useParams } from 'react-router-dom'
+import './usercard.css'
 
 
 
-//             </div>
-          
-        
-  
-//   )
-// }
-
-// export default TeamMember
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import React from 'react'
-import { useParams, Link } from 'react-router-dom'
-import UserCard from './UserCard'
-
-
-
-
-const  TeamMember = (user) => {
+const TeamMember = ({firebase}) => { 
   const params = useParams() 
     console.log('Team member params', params)
 
-      return (
-        <div>
-          <ul>
+    const [user, setUser] = useState([])
+    useEffect(() => {
 
+      firebase
+      .users().doc(params.id).get()
+      .then( snapshot =>{ 
+        console.log('snapshot', snapshot.data()) 
+        return (setUser(snapshot.data()))
+      })
 
-         
-
-            {user.map(user => {
-              return (
-                <div key={user.id}>
-                <Link to={`/directory/${user.uid}`}>
-                  <UserCard  user={user} />
-                </Link>
-                </div>
-              )
+    },[]);
+    
         
-            })
-            }
-            
-          </ul> 
-          <div style={{margin:'100px'}}>
-            Team Member
-            <p>{params.id}</p> 
-          </div>
-        </div>
-  
-  )
+  return (
+
+    <div className='image'>
+    
+      <Center>
+        <Box maxW='sm' borderWidth='1px' overflow='hidden' p='4px' ml='10px' mr='10px' mt='8em' mb='8em' bg='tomato'><br />
+          Team Member
+          <Center mt='1em'>
+            <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img>
+          </Center>
+            <h2>{user.firstName} {user.lastName}</h2>
+            <p>{user.developer}</p> 
+            <p>{user.title}</p> 
+            <p>{user.github}</p> 
+            <p>{user.email}</p> 
+            <p>{user.projects}</p> 
+            <p>{user.mentor}</p> 
+            <p>{user.remote}</p> 
+            <p>{user.state}</p>
+            <p>{user.country}</p> 
+        </Box>
+      </Center>
+    </div>
+    )
 }
 
-export default TeamMember
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//May need code below:
-
-
-// import { propNames } from '@chakra-ui/react'
-// import React from 'react'
-// import { useParams, Link } from 'react-router-dom'
-// import {  Box, Center, SimpleGrid } from "@chakra-ui/react"
-// import UserCard from './UserCard'
-
-
-
-
-// const  TeamMember = (user) => {
-//   const params = useParams() 
-//     console.log('Team member params', params)
-//     console.log('Team', user)
-
-//       return (
-//         <div>
-//           <ul>
-//             {user.map(function (user) {
-//               return (
-//                 <div key={user.id}>
-//                   <Link to={`/directory/${user.uid}`}>
-//                     <UserCard  user={user} />
-//                   </Link>
-//                 </div>
-//               );
-        
-//             })
-//             }
-            
-//           </ul> 
-//               <Center>
-//       <SimpleGrid columns={3} spacing={8}>
-//       <div style={{margin:'100px'}}>
-//         {user.map(user => {
-//           return (
-            
-            
-//             <Box maxW='lg' borderWidth='3px' overflow='hidden' p='4px' ml='10px' mr='10px'>
-//               <Center mt='1em'>
-//                 <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img>
-
-//               </Center>
-//               <p>{params.id}</p> 
-//                 <h3>{user.firstName} {user.lastName}</h3>
-//                   <p>{user.username}</p>
-//                   <p>{user.developer}</p>
-//                   <p>{user.projects}</p>
-//                   <p>{user.github}</p>
-//                   <p>{user.email}</p>      
-                  
-//             </Box> 
-            
-                 
-//         );
-//       })}
-//       </div>
-//         </SimpleGrid>
-//         </Center> 
-
-
-
-//             </div>
-          
-        
-  
-//   )
-// }
-
-// export default TeamMember
+ export default compose(withFirebase)(TeamMember);
