@@ -23,14 +23,11 @@ const TeamMember = ({firebase}) => {
       })
 
     },[]);
-    
         
   return (
-
     <div className='image'>
-    
       <Center>
-        <Box maxW='sm' borderWidth='1px' overflow='hidden' p='4px' ml='10px' mr='10px' mt='8em' mb='8em' bg='tomato'><br />
+        <Box maxW='sm' borderWidth='1px' overflow='hidden' p='4px' ml='10px' mr='10px' mt='8em' mb='8em' bg='grey'><br />
           Team Member
           <Center mt='1em'>
             <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img>
