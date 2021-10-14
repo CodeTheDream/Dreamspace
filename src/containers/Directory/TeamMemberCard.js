@@ -44,3 +44,4 @@ const TeamMemberCard = ({firebase}) => {
 
 export default compose(withFirebase)(TeamMemberCard);
 
+

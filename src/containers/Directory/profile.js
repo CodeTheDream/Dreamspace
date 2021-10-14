@@ -139,6 +139,9 @@ const INITIAL_STATE = {
   projects: "",
   language: "",
   mentor: "",
+  message: "",
+  introduction: "",
+  quote: "",
   state: "",
   country: "",
   image: "",
@@ -165,6 +168,9 @@ class Profile extends Component {
       email,
       projects,
       language,
+      message,
+      introduction,
+      quote,
       mentor,
       state,
       country,
@@ -223,6 +229,9 @@ const { match: { params } } = this.props;
       country,
       image,
       photo,
+      message,
+      introduction,
+      quote,
       remote,
       equipment,
       passwordOne,
@@ -405,6 +414,30 @@ const { match: { params } } = this.props;
                 </datalist>
           </div>
         </div>
+
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fab fa-buffer fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+                <textarea className="introduction" 
+                  name="introduction" 
+                  onChange={this.onChange} 
+                  type="text" 
+                  value={this.state.value}
+                   placeholder="Introduction" 
+                   required></textarea>  
+          </div>
+        </div>  
+
+        {/* <label>Message</label>
+      <textarea
+        placeholder="Message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      ></textarea> */}
+
         
         <Button className="button-tertiary" type="submit">
           Submit

@@ -1,6 +1,5 @@
 import {  Box, Center } from "@chakra-ui/react"
 import React, {useState, useEffect} from "react";
-//import TeamPhoto from './TeamPhoto'
 import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import { useParams } from 'react-router-dom'
@@ -14,7 +13,6 @@ const TeamMember = ({firebase}) => {
 
     const [user, setUser] = useState([])
     useEffect(() => {
-
       firebase
       .users().doc(params.id).get()
       .then( snapshot =>{ 
@@ -24,6 +22,7 @@ const TeamMember = ({firebase}) => {
 
     },[]);
         
+  console.log('show display');
   return (
     <div className='image'>
       <Center>
