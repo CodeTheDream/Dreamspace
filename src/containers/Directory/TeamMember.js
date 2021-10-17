@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import { useParams } from 'react-router-dom'
+//import TeamMemberBG from "./TeamMemberComponents/TeamMemberBG";
 import './usercard.css'
 
 
@@ -26,6 +27,7 @@ const TeamMember = ({firebase}) => {
   return (
     <div className='image'>
       <Center>
+      {/* <TeamMemberBG /> */}
         <Box maxW='sm' borderWidth='1px' overflow='hidden' p='4px' ml='10px' mr='10px' mt='8em' mb='8em' bg='grey'><br />
           Team Member
           <Center mt='1em'>

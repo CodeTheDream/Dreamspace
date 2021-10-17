@@ -4,10 +4,20 @@
     padding: 0;
 }
 
+
+/* #member { 
+	background-image: url('./image/protest.jpeg');
+	background-size: cover; 
+	background-repeat: no-repeat; 
+  /* clip-path: circle(50% at 50% 50%); */
+  /* color: white;
+}    */
+
 .image
  {
   background-image: url("ctdBackground.png");
 }
+
   section {
     width: 100%;
     min-height: 100vh;

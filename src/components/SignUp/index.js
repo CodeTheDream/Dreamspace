@@ -5,6 +5,9 @@ import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
 import firebase from 'firebase';
+import { faUserSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 import styled from 'styled-components';
 
@@ -99,6 +102,9 @@ const INITIAL_STATE = {
   equipment: '',
   developer: '',
   github: '',
+  introduction: '',
+      quote: '',
+      hobbies: '',
   passwordOne: '',
   passwordTwo: '',
   isAdmin: false,
@@ -123,7 +129,7 @@ class SignUpFormBase extends Component {
 
   // onSubmit = (event, authUser) => {
     onSubmit = event => {
-      const { username, firstName, lastName, developer, github, title, projects, language, mentor, state, country,
+      const { username, firstName, lastName, developer, github, title, projects, language, introduction, quote, hobbies, mentor, state, country,
       remote, equipment, email, passwordOne, passwordTwo, isAdmin } = this.state;
     // console.log('email', email);
       const roles = {};
@@ -147,6 +153,9 @@ class SignUpFormBase extends Component {
             lastName,
             title,
             projects,
+            introduction,
+      quote,
+      hobbies,
             language,
             mentor,
             state,
@@ -199,6 +208,9 @@ class SignUpFormBase extends Component {
       projects,
       language,
       mentor,
+      introduction,
+      quote,
+      hobbies,
       state,
       country,
       remote,
@@ -437,6 +449,54 @@ class SignUpFormBase extends Component {
                     </input> 
                 </div>
              </div>
+
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fa-solid fa-message-smile"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+                <input className="quote" 
+                  name="Quote" 
+                  onChange={this.onChange} 
+                  type="text" 
+                  value={this.state.value}
+                   placeholder="Quote" 
+                   required></input>  
+          </div>
+        </div>  
+
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+            <i class="fa-solid fa-icons"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+                <input className="hobbies" 
+                  name="Hobbies" 
+                  onChange={this.onChange} 
+                  type="text" 
+                  value={this.state.value}
+                   placeholder="Hobbies" 
+                   required></input>  
+          </div>
+        </div>  
+
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+            <FontAwesomeIcon icon="fa-solid fa-icons" /></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+                <textarea className="introduction" 
+                  name="Introduction" 
+                  onChange={this.onChange} 
+                  type="text" 
+                  value={this.state.value}
+                   placeholder="Introduction" 
+                   required></textarea>  
+          </div>
+        </div>  
             <hr />
 
             <div className="fieldset">
@@ -492,6 +552,7 @@ class SignUpFormBase extends Component {
                     </input> 
                 </div>
               </div>
+
           
         <Button className="button-tertiary" 
         disable={isInvalid} type="submit">

@@ -199,8 +199,6 @@ class Profile extends Component {
 // const username = this.props.match.params.username;
 //   console.log(username);
 
-// const user = this.props.firebase.users.forEach("github", "==", username);
-
 const username = this.props.match.params.username;
 // const user = this.props.firebase.users.forEach("github", "==", username);
 
@@ -212,7 +210,6 @@ const { match: { params } } = this.props;
 
         this.setState({ user });
       });
-
 
    //this.props.firebase.users
   //  console.log(user);
@@ -268,11 +265,9 @@ const { match: { params } } = this.props;
 
 
 
-          {/* code below to be used to signup */}
+          {/* code below to be used to signup form*/}
 
     <FormWrapper>
-      {/* <TeamMember />  */}
-          {/* <form action="get"> */}
       <form onSubmit={this.onSubmit}>
         <div className="fieldset">
           <div className="input-wrapper"> 
@@ -415,21 +410,6 @@ const { match: { params } } = this.props;
           </div>
         </div>
 
-        <div className="fieldset">
-          <div className="input-wrapper"> 
-            <span className="icon"> 
-              <i className="fab fa-buffer fa-1x"/></span>
-              &nbsp;&nbsp;
-              &nbsp;&nbsp;
-                <textarea className="introduction" 
-                  name="introduction" 
-                  onChange={this.onChange} 
-                  type="text" 
-                  value={this.state.value}
-                   placeholder="Introduction" 
-                   required></textarea>  
-          </div>
-        </div>  
 
         {/* <label>Message</label>
       <textarea
