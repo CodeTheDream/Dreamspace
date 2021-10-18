@@ -13,10 +13,102 @@
   /* color: white;
 }    */
 
-.image
+
+#member {
+  background-image: url("earth.jpg");
+  width: 100%;
+  min-height: 80vh;
+  display: flex; 
+  /* opacity: .5; */
+}
+
+
+#top-left {
+  position: absolute;
+  margin-top: 10em;
+  text-align: left;
+  margin-left: 4em;
+  color: black;
+  font-weight: bold;
+  padding: 15px;
+  background-color: white;
+  background-origin: border-box;
+  font-size: 15px;
+   opacity: .5;
+}
+
+#top-right {
+  position: absolute;
+  margin-top: 10em;
+  text-align: left;
+  margin-left: 75em;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  padding: 15px;
+  background-color: white;
+  background-origin: border-box;
+  opacity: .5; 
+
+}
+
+#container .row .column {
+  color: black;
+  margin-top: 5px;
+}
+
+/* 
+.vl {
+  border-left: 6px solid green;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 0;
+} */
+
+
+#container .row .column h2{
+  color: black;
+  font-weight: bold;
+}
+
+#container .row .column p{
+  color: black;
+  font-size: 20px;
+}
+ 
+
+
+.container20 {
+  border-right: 1px solid black;
+}
+
+.containerII {
+  border: 2px solid rgb(75, 70, 74);
+  border-radius: .5em;
+  padding: 20px;
+  column-width: 10em;
+  column-rule: 1px solid rgb(75, 70, 74);
+}
+
+
+#bottom-left {
+  position: absolute;
+  margin-top: 50em;
+  text-align: left;
+  margin-left: 15em;
+  color: 'black';
+  font-weight: bold;
+  border-style: 3px;
+  border-color: blue;
+}
+
+
+/* .image
  {
   background-image: url("ctdBackground.png");
-}
+} */
 
   section {
     width: 100%;
@@ -29,7 +121,7 @@
     max-width: 980px;
     margin: auto;
   }
-  
+
   .hero {
     background: #445688;
   }
