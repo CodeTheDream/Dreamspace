@@ -5,6 +5,8 @@ import { Box, Center, SimpleGrid } from "@chakra-ui/react"
 import { Link } from "react-router-dom";
 
 
+//This page displays the entire users directory
+
 const TeamMemberCard = ({firebase}) => {
   console.log('hello world', firebase)
   const [users, setUsers] = useState([])

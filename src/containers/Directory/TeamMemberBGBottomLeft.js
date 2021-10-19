@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import './usercard.css'
 
 
+//This code displays both left and right sides view
 
 const TeamMemberBGBottomLeft = ({firebase}) => {
   const params = useParams() 
@@ -22,24 +23,23 @@ const TeamMemberBGBottomLeft = ({firebase}) => {
   },[]);
       
   
-  return (  
+    return (  
 
-    <div id='container'>
-        <div className="row">
-            <div className="column">
-                <h2>Introduction</h2>
-                <p>{user.lastName}</p>
+        <div id='container'>
+            <div className="row">
+                <div className="column">
+                    <h2>Introduction</h2>
+                    <p>{user.lastName}</p>
+                </div>
+
+                <div className="column">
+                    <h2>Quote</h2>
+                    <p>{user.email}</p>
+
+                    <h2>Hobbies</h2>
+                    <p>{user.github}</p>
+                </div>
             </div>
-
-        <div className="column">
-            <h2>Quote</h2>
-            <p>{user.email}</p>
-
-
-            <h2>Hobbies</h2>
-            <p>{user.github}</p>
-        </div>
-        </div>
         </div>  
     )
 }

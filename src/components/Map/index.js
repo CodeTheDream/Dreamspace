@@ -100,7 +100,7 @@ time now... unable to test changes due to Map page not working */}
             {/* <Link to={'/directory/:username'}> */}
             <a href="directory/:username" className="button--style-blue"><Button> View Profile </Button></a> 
               
-            {/* </Link> */}
+          
             <br />
 {/* moved inline css comments into styled components above and commented out lines below. Unable to test changes
 at this time */}

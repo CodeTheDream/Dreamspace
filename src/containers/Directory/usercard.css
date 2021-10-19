@@ -15,7 +15,7 @@
 
 
 #member {
-  background-image: url("earth.jpg");
+  background-image: url("../Directory/Images/earth.jpg");
   width: 100%;
   min-height: 80vh;
   display: flex; 
@@ -40,6 +40,7 @@
 #top-right {
   position: absolute;
   margin-top: 10em;
+  margin-bottom: 8em;;
   text-align: left;
   margin-left: 75em;
   font-size: 15px;

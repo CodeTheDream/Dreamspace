@@ -1,9 +1,11 @@
 import React from 'react'
-// import{ Container, Jumbotron } from 'reactstrap'
 import TeamMemberBGTopLeft from './TeamMemberBGTopLeft' 
 import TeamMemberBGTopRight from './TeamMemberBGTopRight' 
 import './usercard.css'
 
+
+//This is the code display for the world map which is static.
+//future work effort on the long/lat coordinants may display individually
 
 const TeamMemberBackGround = () => {
   return (

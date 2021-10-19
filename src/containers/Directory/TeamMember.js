@@ -3,12 +3,13 @@ import React, {useState, useEffect} from "react";
 import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import { useParams } from 'react-router-dom'
-//import TeamMemberBackGround from "./TeamMemberComponents/TeamMemberBG";
 import './usercard.css'
 import TeamMemberBackGround from "./TeamMemberBackGround";
 import TeamMemberBGBottomLeft from "./TeamMemberBGBottomLeft";
 
 
+//This page displays each individual team member of CTD 
+//The photo is currently static at the time
 
 const TeamMember = ({firebase}) => { 
   const params = useParams() 
@@ -37,22 +38,14 @@ const TeamMember = ({firebase}) => {
             <img src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" ></img>
           </Center> 
             <h2>{user.firstName} {user.lastName}</h2> 
-            <p>{user.title}</p> 
-            {/* <p>{user.developer}</p>
-            <p>{user.github}</p> 
-            <p>{user.email}</p> 
-            <p>{user.projects}</p> 
-            <p>{user.mentor}</p> 
-            <p>{user.remote}</p> 
-            <p>{user.state}</p>
-            <p>{user.country}</p>  */}
+            <p>{user.developer}</p> 
         </Box>
       </Center>
       <TeamMemberBGBottomLeft />
       
     </div>
     
-    )
+  )
 }
 
  export default compose(withFirebase)(TeamMember);
