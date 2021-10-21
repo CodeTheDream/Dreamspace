@@ -3908,3 +3908,8 @@ image {
   }
 }
 
+hr.new1 {
+  border: .5px solid black;
+  border-radius: 1px;
+  width: 100%;
+}

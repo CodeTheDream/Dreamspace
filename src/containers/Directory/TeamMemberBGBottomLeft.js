@@ -24,20 +24,19 @@ const TeamMemberBGBottomLeft = ({firebase}) => {
       
   
     return (  
-
         <div id='container'>
             <div className="row">
                 <div className="column">
-                    <h2>Introduction</h2>
-                    <p>{user.lastName}</p>
+                    <h3>Introduction</h3>
+                    <p>{user.introduction}</p>
                 </div>
 
                 <div className="column">
-                    <h2>Quote</h2>
-                    <p>{user.email}</p>
+                    <h3 mb='2em'>Favorite Quote</h3>
+                    <p>{user.quote}</p>
 
-                    <h2>Hobbies</h2>
-                    <p>{user.github}</p>
+                    <h3>Hobbies</h3>
+                    <p>{user.hobbies}</p>
                 </div>
             </div>
         </div>  

@@ -6,20 +6,22 @@ import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
 import firebase from 'firebase';
 import { faUserSlash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../../index.css'
 // import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 import styled from 'styled-components';
 
 const Button = styled.button`
   cursor: pointer;
-  background: rgb 52, 58, 235;
+  position: center;
+  ${'' /* margin: 0.8em; */}
+  background: grey;
   font-size: 16px;
   border-radius: 5px;
   color: white;
-  margin-left: 12px;
-  margin-right: 20px; 
-  padding: .75em .50em;
+  font-weight: bold;
+  padding: 1em;
   transition: 0.5s all ease-out;
  
   &:hover {
@@ -30,8 +32,9 @@ const Button = styled.button`
 
 const FormWrapper = styled.div`
   display: flex;
-  alignItems: flex-start;
+  align-items: flex-start;
   justify-content: center;
+  border-color: black;
 
   form {
     margin: 4rem 2rem; 
@@ -44,9 +47,9 @@ const FormWrapper = styled.div`
     margin: 2rem 0; 
     position: relative; 
     display: flex; 
-    flexWrap: wrap; 
-    alignItems: center; 
-    justifyContent: flex-start; 
+    border-radius: 5px;
+    align-Items: center; 
+    justify-Content: flex-start; 
 } 
 `
 
@@ -56,11 +59,13 @@ const span = styled.div`
   padding: 1rem 1rem;
   display: flex;
   align-items: center;
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em; 
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0; 
-  border: 0.0625rem solid #ced4da; 
+
+  ${'' /* border: 1px solid #ccc; */}
+  border-top-left-radius: 0.25em solid black;
+  border-bottom-left-radius: 0.25em solid #ccc; 
+  border-top-right-radius: 0 solid #ccc;
+  border-bottom-right-radius: 0 solid #ccc; 
+ 
   font-size: 1rem; 
   font-weight: 400; 
   line-height: 1.5; 
@@ -69,9 +74,10 @@ const span = styled.div`
   background-color: e9ecef;
   } 
 `;
+
 const i = styled.div`
-  color: black;
-  padding: 5px;
+  color: orange;
+  padding: 5;
 
   }
 `;
@@ -233,13 +239,11 @@ class SignUpFormBase extends Component {
 
 //form setup for initial signup information, name, email, password      
     return (
-      <FormWrapper>
+      <FormWrapper border-color="black">
         <form onSubmit={this.onSubmit} autocomplete="!off">
           <div className="fieldset">
             <div className="input-wrapper"> 
-              <span className="icon"> 
-                <i className="fas fa-portrait fa-1x"/></span>
-                &nbsp;&nbsp;
+                <label>First Name: 
                 &nbsp;&nbsp;
                 <input className="col-6 form-control" 
                   name="firstName" 
@@ -249,15 +253,14 @@ class SignUpFormBase extends Component {
                   placeholder="First Name" 
                   autocomplete="chrome-off"
                   required>
-                </input>            
+                </input>  
+                </label>          
               </div>
             </div>
 
           <div className="fieldset">
             <div className="input-wrapper"> 
-              <span className="icon"> 
-                <i className="fas fa-portrait fa-1x"/></span>
-                &nbsp;&nbsp;
+            <label>Last Name: 
                 &nbsp;&nbsp;
                 <input className="col-6 form-control" 
                   name="lastName" 
@@ -267,34 +270,35 @@ class SignUpFormBase extends Component {
                   placeholder="Last Name" 
                   required
                   autocomplete="chrome-off">
-                </input>            
+                </input> 
+                </label>           
               </div>
             </div>
           
             <div className="fieldset">
               <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fab fa-dev fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
+              <label>Developer: 
+                  &nbsp;&nbsp;&nbsp;
                     <input className="col-6 form-control" 
                       name="developer" 
                       onChange={this.onChange} 
                       type="text" 
                       value={this.state.value} 
-                      placeholder="Developer Type" 
+                      placeholder="Developer" 
                       autocomplete="chrome-off"
                       required>
-                    </input>  
+                    </input> 
+                    </label> 
                 </div>
               </div>   
 
               <div className="fieldset">
                 <div className="input-wrapper"> 
-                  <span  className="icon"> 
-                    <i className="fas fa-network-wired fa-1x"/></span>
-                    &nbsp;&nbsp;
-                    &nbsp;&nbsp;
+                <label>Title: 
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    
                      <input list="title" 
                         // id="title-choice" 
                         name="title" 
@@ -304,13 +308,16 @@ class SignUpFormBase extends Component {
                         autocomplete="chrome-off"
                         required>
                       </input>
+                      </label>
                 </div>  
               </div>  
+
+              <hr className="new1" />
         
               <div className="fieldset">
                 <div className="input-wrapper"> 
                   <span className="icon"> 
-                    <i className="fab fa-buffer fa-1x"/></span>
+                  <i class="fas fa-th 3x"></i></span>
                     &nbsp;&nbsp;
                     &nbsp;&nbsp;
                       <input className="col-6 form-control" 
@@ -328,7 +335,7 @@ class SignUpFormBase extends Component {
               <div className="fieldset">
                 <div className="input-wrapper"> 
                   <span className="icon"> 
-                    <i className="fas fa-language fa-1x"/></span>
+                    <i className="fas fa-language 3x"/></span>
                     &nbsp;&nbsp;
                     &nbsp;&nbsp;
                     <input className="col-6 form-control" 
@@ -346,7 +353,7 @@ class SignUpFormBase extends Component {
               <div className="fieldset">
                 <div className="input-wrapper"> 
                   <span className="icon"> 
-                    <i className="fas fa-chalkboard-teacher fa-1x"/></span>
+                  <i class="fas fa-chalkboard-teacher 3x"></i></span>
                     &nbsp;&nbsp;
                     &nbsp;&nbsp;
                     <input list="mentor" 
@@ -364,7 +371,7 @@ class SignUpFormBase extends Component {
               <div className="fieldset">
                 <div className="input-wrapper"> 
                   <span className="icon"> 
-                    <i className="fas fa-landmark fa-1x"/></span>
+                  <i class="fas fa-landmark 3x"></i></span>
                     &nbsp;&nbsp;
                     &nbsp;&nbsp;
                     <input className="col-6 form-control" 
@@ -382,7 +389,7 @@ class SignUpFormBase extends Component {
               <div className="fieldset">
                 <div className="input-wrapper"> 
                   <span className="icon"> 
-                    <i className="fas fa-globe fa-1x"/></span>
+                  <i class="fas fa-globe 3x"></i></span>
                     &nbsp;&nbsp;
                     &nbsp;&nbsp;
                     <input className="col-6 form-control" 
@@ -400,7 +407,7 @@ class SignUpFormBase extends Component {
               <div className="fieldset">
                 <div className="input-wrapper"> 
                   <span className="icon"> 
-                    <i className="fas fa-podcast fa-1x"/></span>
+                  <i class="fas fa-podcast 3x"></i></span>
                     &nbsp;&nbsp;
                     &nbsp;&nbsp;
                     <input list="remote" id="remote-choice" 
@@ -417,7 +424,7 @@ class SignUpFormBase extends Component {
               <div className="fieldset">
                 <div className="input-wrapper"> 
                   <span className="icon"> 
-                    <i className="fas fa-laptop-code fa-1x"/></span>
+                  <i class="fas fa-laptop 3x"></i></span>
                     &nbsp;&nbsp;
                     &nbsp;&nbsp;
                     <input list="equipment" 
@@ -435,7 +442,7 @@ class SignUpFormBase extends Component {
               <div className="fieldset">
                 <div className="input-wrapper"> 
                   <span className="icon"> 
-                    <i className="fab fa-github-square fa-1x"/></span>
+                  <i className="fab fa-github-square fa-1x"/></span>
                     &nbsp;&nbsp;
                     &nbsp;&nbsp;
                     <input className="col-6 form-control" 
@@ -453,23 +460,37 @@ class SignUpFormBase extends Component {
         <div className="fieldset">
           <div className="input-wrapper"> 
             <span className="icon"> 
-              <i className="fa-solid fa-message-smile"/></span>
+            <i class="fas fa-quote-left 7x"></i></span>
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-                <input className="quote" 
-                  name="Quote" 
+              <textarea className="quote"
+                  name="quote" 
                   onChange={this.onChange} 
                   type="text" 
                   value={this.state.value}
-                   placeholder="Quote" 
-                   required></input>  
+                   placeholder="Favorite Quote" 
+                   required></textarea> 
           </div>
         </div>  
+
+
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> </span>
+           
+              &nbsp;
+              &nbsp;&nbsp;
+                
+          </div>
+        </div> 
+
+
 
         <div className="fieldset">
           <div className="input-wrapper"> 
             <span className="icon"> 
-            <i class="fa-solid fa-icons"/></span>
+            <i class="fas fa-icons 3x"></i>
+            </span>
               &nbsp;&nbsp;
               &nbsp;&nbsp;
                 <input className="hobbies" 
@@ -482,22 +503,27 @@ class SignUpFormBase extends Component {
           </div>
         </div>  
 
+        
         <div className="fieldset">
           <div className="input-wrapper"> 
-            <span className="icon"> 
-            <FontAwesomeIcon icon="fa-solid fa-icons" /></span>
+            <span className="icon"> </span>
+           
+              &nbsp;
               &nbsp;&nbsp;
-              &nbsp;&nbsp;
-                <textarea className="introduction" 
-                  name="Introduction" 
+                <textarea className="introduction"
+                  rows='3'
+                  cols='20'
+                  maxlength='90' 
+                  name="introduction" 
                   onChange={this.onChange} 
                   type="text" 
                   value={this.state.value}
-                   placeholder="Introduction" 
+                   placeholder="Introduction Statement" 
                    required></textarea>  
           </div>
         </div>  
-            <hr />
+
+        <hr className="new1" />
 
             <div className="fieldset">
               <div className="input-wrapper"> 

@@ -52,7 +52,7 @@ const TeamMemberBGTopLeft = ({firebase}) => {
   return (  
     <div className='image'>
         <div id="top-left">
-            <h2>Name:  {user.firstName} {user.lastName}</h2>
+           
                 <p>Developer:  {user.developer}</p> 
                 <p>Title:  {user.title}</p> 
                 <p>Github:  {user.github}</p> 
