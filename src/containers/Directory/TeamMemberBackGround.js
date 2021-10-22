@@ -11,8 +11,8 @@ const TeamMemberBackGround = () => {
   return (
     <div className fluid id='member'>
       
-        <div class="jumbotron jumbotron-fluid bg-info text-white">
-          <div class="container text-sm-center pt-5">
+        <div className="jumbotron jumbotron-fluid bg-info text-white">
+          <div className="container text-sm-center pt-5">
             <TeamMemberBGTopLeft />
             <TeamMemberBGTopRight />
           </div>        

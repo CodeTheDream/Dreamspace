@@ -3913,3 +3913,22 @@ hr.new1 {
   border-radius: 1px;
   width: 100%;
 }
+
+
+textarea {
+  display: block;
+  min-width: 100px;
+  margin: 1em;
+  padding: 1em;
+  width: 20em;
+  height: 8em;
+  border-radius: .5px;
+  border-style: none;
+  border: 1.5px solid grey;
+  transition: 0.1s ease;
+}
+
+#container  {
+  margin-bottom: 5em;
+
+}

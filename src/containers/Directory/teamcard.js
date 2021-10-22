@@ -50,11 +50,6 @@ function teamcard(user) {
                             <Box maxW='lg' borderWidth='3px' overflow='hidden' p='5px' ml='10px' mr='10px'>
                                 <img src={user.picture.large} className='border' alt='...' />
                             </Box>
-                            
-                                {/* <h4>{user.name.first} {user.name.last}</h4> */}
-                                    {/* <p>{user.email}</p>
-                                    <p>{user.gender}</p>
-                                    <p>{user.location.city} {user.location.state}</p> */}
                         </Box>  
                 );
             })}

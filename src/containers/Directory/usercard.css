@@ -66,8 +66,8 @@
 }
 
 #container .row .column p{
-  margin-top:;
-  color: black;
+  /* margin-top:; */
+  color: bold black;
   font-size: 20px;
 }
  
@@ -91,7 +91,7 @@
   margin-top: 50em;
   text-align: left;
   margin-left: 15em;
-  color: 'black';
+  color: black;
   font-weight: bold;
   border-style: 3px;
   border-color: blue;
@@ -222,18 +222,16 @@
     transition: 0.1s ease;
   }
 
-  /* .button {
-    margin: 0.8em;
-    position: center;
-    padding: 1em;
-    border: 1px solid #E4E6E8;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.1s ease-in;
+
+  /* TeamMemberBGBottomLeft divider line  */
+  .containerdiv {
+    flex: 1 0 0;
   }
-  button:hover {
-    background-color: palevioletred;
-    color: white;
-  }
-   */
   
+  .divider {
+    display: inline-block;
+    width: 2px;
+    background-color: black;
+    margin: 0 10px;
+    height: 10em;
+  }

@@ -22,7 +22,7 @@ const TeamMemberBGBottomLeft = ({firebase}) => {
 
   },[]);
       
-  
+  console.log('hi')
     return (  
         <div id='container'>
             <div className="row">
@@ -30,13 +30,18 @@ const TeamMemberBGBottomLeft = ({firebase}) => {
                     <h3>Introduction</h3>
                     <p>{user.introduction}</p>
                 </div>
+                <div className="containerdiv">
+               {/* <span>goodmorning hello user!</span> */}
+              <span className="divider" />
+      </div>
 
                 <div className="column">
                     <h3 mb='2em'>Favorite Quote</h3>
-                    <p>{user.quote}</p>
+                    <p>{user.quote}</p><br />
 
                     <h3>Hobbies</h3>
                     <p>{user.hobbies}</p>
+                  
                 </div>
             </div>
         </div>  

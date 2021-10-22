@@ -53,14 +53,12 @@ const FormWrapper = styled.div`
 } 
 `
 
-const span = styled.div`
+const textarea = styled.div`
   width: fit-content;
   margin: 0;
   padding: 1rem 1rem;
   display: flex;
-  align-items: center;
-
-  ${'' /* border: 1px solid #ccc; */}
+  ${'' /* align-items: center; */}
   border-top-left-radius: 0.25em solid black;
   border-bottom-left-radius: 0.25em solid #ccc; 
   border-top-right-radius: 0 solid #ccc;
@@ -70,7 +68,7 @@ const span = styled.div`
   font-weight: 400; 
   line-height: 1.5; 
   color: #495057; 
-  text-align: center; 
+  text-align: left; 
   background-color: e9ecef;
   } 
 `;
@@ -85,9 +83,9 @@ const i = styled.div`
 
 const SignUpPage = () => (
 
-<div style={{ marginTop: "4.8em" }}>
+<div style={{ marginTop: "10em" }}>
    <div className="signup">
-    <h3 className="signin">SignUp</h3>
+    <h1 className="signin">Team Member SignUp Form</h1>
     <SignUpForm />
     </div>
  </div>
@@ -135,8 +133,7 @@ class SignUpFormBase extends Component {
 
   // onSubmit = (event, authUser) => {
     onSubmit = event => {
-      const { username, firstName, lastName, developer, github, title, projects, language, introduction, quote, hobbies, mentor, state, country,
-      remote, equipment, email, passwordOne, passwordTwo, isAdmin } = this.state;
+      const { username, firstName, lastName, developer, github, title, projects, language, introduction, quote, hobbies, mentor, state, country,remote, equipment, email, passwordOne, passwordTwo, isAdmin } = this.state;
     // console.log('email', email);
       const roles = {};
   
@@ -298,9 +295,7 @@ class SignUpFormBase extends Component {
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    
                      <input list="title" 
-                        // id="title-choice" 
                         name="title" 
                         type="text" 
                         onChange={this.onChange} {...title} 
@@ -312,14 +307,13 @@ class SignUpFormBase extends Component {
                 </div>  
               </div>  
 
-              <hr className="new1" />
-        
+<br />
+<hr className="new1" />
+<br />        
               <div className="fieldset">
                 <div className="input-wrapper"> 
-                  <span className="icon"> 
-                  <i class="fas fa-th 3x"></i></span>
-                    &nbsp;&nbsp;
-                    &nbsp;&nbsp;
+                <label>Projects: 
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <input className="col-6 form-control" 
                         name="projects" 
                         onChange={this.onChange} 
@@ -328,15 +322,15 @@ class SignUpFormBase extends Component {
                         placeholder="Projects" 
                         autocomplete="chrome-off"
                         required>
-                      </input>  
+                      </input> 
+                      </label> 
                 </div>
               </div>  
 
+
               <div className="fieldset">
                 <div className="input-wrapper"> 
-                  <span className="icon"> 
-                    <i className="fas fa-language 3x"/></span>
-                    &nbsp;&nbsp;
+                  <label>Language: 
                     &nbsp;&nbsp;
                     <input className="col-6 form-control" 
                       name="language"
@@ -347,35 +341,18 @@ class SignUpFormBase extends Component {
                       autocomplete="chrome-off"
                       required>
                       </input> 
+                      </label>
                 </div>
               </div>
 
-              <div className="fieldset">
-                <div className="input-wrapper"> 
-                  <span className="icon"> 
-                  <i class="fas fa-chalkboard-teacher 3x"></i></span>
-                    &nbsp;&nbsp;
-                    &nbsp;&nbsp;
-                    <input list="mentor" 
-                      id="mentor-choice" 
-                      name="mentor" 
-                      type="text" 
-                      onChange={this.onChange} {...mentor} 
-                      autocomplete="chrome-off"
-                      placeholder='Mentor' 
-                      required>
-                    </input>
-                </div>
-              </div> 
 
               <div className="fieldset">
                 <div className="input-wrapper"> 
-                  <span className="icon"> 
-                  <i class="fas fa-landmark 3x"></i></span>
-                    &nbsp;&nbsp;
-                    &nbsp;&nbsp;
+                  <label>State:
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input className="col-6 form-control" 
-                      name="State" 
+                      name="state" 
                       onChange={this.onChange} 
                       type="text" 
                       value={this.state.value}
@@ -383,17 +360,17 @@ class SignUpFormBase extends Component {
                       required
                       autocomplete="chrome-off">
                     </input> 
+                    </label>
                 </div>
               </div>
 
               <div className="fieldset">
                 <div className="input-wrapper"> 
-                  <span className="icon"> 
-                  <i class="fas fa-globe 3x"></i></span>
+                 <label>Country: 
                     &nbsp;&nbsp;
                     &nbsp;&nbsp;
                     <input className="col-6 form-control" 
-                      name="Country" 
+                      name="country" 
                       onChange={this.onChange} 
                       type="text" 
                       autocomplete="chrome-off"
@@ -401,50 +378,129 @@ class SignUpFormBase extends Component {
                       placeholder="Country"  
                       required>
                     </input> 
+                    </label>
+                </div>
+              </div> 
+
+  <br />
+  <hr className="new1" />
+  <br />
+
+              <div className="fieldset">
+                <div className="input-wrapper"> 
+                 <label>Mentor:
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    <input list="mentor" 
+                      id="mentor-choice" 
+                      name="mentor" 
+                      onChange={this.onChange} {...mentor} 
+                      type="text" 
+                      value={this.state.value}
+                      autocomplete="chrome-off"
+                      placeholder='Mentor' 
+                      required>
+                    </input>
+                    </label>
                 </div>
               </div> 
 
               <div className="fieldset">
                 <div className="input-wrapper"> 
-                  <span className="icon"> 
-                  <i class="fas fa-podcast 3x"></i></span>
+                 <label>Remote:
                     &nbsp;&nbsp;
                     &nbsp;&nbsp;
                     <input list="remote" id="remote-choice" 
                       name="remote"
+                      onChange={this.onChange} {...remote}
                       type="text"  
-                      onChange={this.onChange} {...remote} 
+                      value={this.state.value}
                       placeholder='Remote' 
                       required 
                       autocomplete="chrome-off">
                     </input>
+                    </label>
                 </div>
               </div> 
               
               <div className="fieldset">
                 <div className="input-wrapper"> 
-                  <span className="icon"> 
-                  <i class="fas fa-laptop 3x"></i></span>
-                    &nbsp;&nbsp;
-                    &nbsp;&nbsp;
+                 <label>Equipment:
                     <input list="equipment" 
                       id="equipment-choice" 
                       name="equipment"
+                      onChange={this.onChange} {...equipment}
                       type="text"  
-                      onChange={this.onChange} {...equipment} 
+                      value={this.state.value}
                       placeholder='Equipment'
                       required
                       autocomplete="chrome-off">
                     </input>
+                    </label>
                 </div>
               </div>
 
-              <div className="fieldset">
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+           <label>Hobbies:
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+                <input className="hobbies" 
+                  name="hobbies" 
+                  onChange={this.onChange} 
+                  type="text" 
+                  value={this.state.value}
+                   placeholder="Hobbies" 
+                   required></input> 
+                   </label> 
+          </div>
+        </div>  
+
+<br />
+<hr className="new1" />   
+<br />     
+
+<label>Favorite Quote:
+        <div className="fieldset"> 
+          <div className="input-wrapper"> 
+         
+              <textarea className="quote"
+                  name="quote" 
+                  onChange={this.onChange} 
+                  type="text" 
+                  value={this.state.value}
+                   placeholder="Favorite Quote" 
+                   required></textarea> 
+            
+          </div>
+        </div>
+        </label>
+        
+
+        <label>Introduction Statement:
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+              &nbsp;&nbsp;&nbsp;
+                <textarea className="introduction"
+                  name="introduction" 
+                  onChange={this.onChange} 
+                  type="text" 
+                  value={this.state.value}
+                   placeholder="Introduction Statement" 
+                   required></textarea>  
+                 
+          </div>
+        </div>  
+        </label>
+
+<br />
+        <hr className="new1" />
+
+        <div className="fieldset">
                 <div className="input-wrapper"> 
-                  <span className="icon"> 
-                  <i className="fab fa-github-square fa-1x"/></span>
+                  <label>Github:
                     &nbsp;&nbsp;
-                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
                     <input className="col-6 form-control" 
                       name="github" 
                       onChange={this.onChange} 
@@ -454,83 +510,16 @@ class SignUpFormBase extends Component {
                       autocomplete="chrome-off" 
                       required>
                     </input> 
+                    </label>
                 </div>
              </div>
 
-        <div className="fieldset">
-          <div className="input-wrapper"> 
-            <span className="icon"> 
-            <i class="fas fa-quote-left 7x"></i></span>
-              &nbsp;&nbsp;
-              &nbsp;&nbsp;
-              <textarea className="quote"
-                  name="quote" 
-                  onChange={this.onChange} 
-                  type="text" 
-                  value={this.state.value}
-                   placeholder="Favorite Quote" 
-                   required></textarea> 
-          </div>
-        </div>  
-
-
-        <div className="fieldset">
-          <div className="input-wrapper"> 
-            <span className="icon"> </span>
-           
-              &nbsp;
-              &nbsp;&nbsp;
-                
-          </div>
-        </div> 
-
-
-
-        <div className="fieldset">
-          <div className="input-wrapper"> 
-            <span className="icon"> 
-            <i class="fas fa-icons 3x"></i>
-            </span>
-              &nbsp;&nbsp;
-              &nbsp;&nbsp;
-                <input className="hobbies" 
-                  name="Hobbies" 
-                  onChange={this.onChange} 
-                  type="text" 
-                  value={this.state.value}
-                   placeholder="Hobbies" 
-                   required></input>  
-          </div>
-        </div>  
-
-        
-        <div className="fieldset">
-          <div className="input-wrapper"> 
-            <span className="icon"> </span>
-           
-              &nbsp;
-              &nbsp;&nbsp;
-                <textarea className="introduction"
-                  rows='3'
-                  cols='20'
-                  maxlength='90' 
-                  name="introduction" 
-                  onChange={this.onChange} 
-                  type="text" 
-                  value={this.state.value}
-                   placeholder="Introduction Statement" 
-                   required></textarea>  
-          </div>
-        </div>  
-
-        <hr className="new1" />
 
             <div className="fieldset">
               <div className="input-wrapper"> 
-                <span className="icon"> 
-                  <i className="fas fa-envelope fa-1x"/></span>
-                  &nbsp;&nbsp;
-                  &nbsp;&nbsp;
+                <label>Email:
+                  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;
                     <input className="col-6 form-control" 
                       name="email" 
                       onChange={this.onChange} 
@@ -539,16 +528,15 @@ class SignUpFormBase extends Component {
                       placeholder="Email"
                       autocomplete="chrome-off"
                       required>
-                    </input> 
+                    </input>
+                    </label> 
                 </div>
               </div>
 
               <div className="fieldset">
                 <div className="input-wrapper"> 
-                  <span className="icon"> 
-                    <i className="fas fa-unlock-alt fa-1x"/></span>
-                    &nbsp;&nbsp;
-                    &nbsp;&nbsp;
+                 <label>Password:
+                    &nbsp;&nbsp;&nbsp;
                       <input className="col-6 form-control" 
                         name="passwordOne" 
                         onChange={this.onChange} 
@@ -557,14 +545,14 @@ class SignUpFormBase extends Component {
                         placeholder="Password" 
                         autocomplete="chrome-off"
                         required>
-                      </input> 
+                      </input>
+                      </label> 
                 </div>
               </div>
 
               <div className="fieldset">
                 <div className="input-wrapper"> 
-                  <span className="icon"> 
-                    <i className="fas fa-lock-alt fa-1x"/></span>
+                  <label>Confirm Password:
                     &nbsp;&nbsp;
                     &nbsp;&nbsp;
                     <input className="col-6 form-control" 
@@ -576,13 +564,14 @@ class SignUpFormBase extends Component {
                         autocomplete="chrome-off"
                         required>
                     </input> 
+                    </label>
                 </div>
               </div>
 
           
         <Button className="button-tertiary" 
         disable={isInvalid} type="submit">
-          Sign Up
+          SIGN UP
         </Button> 
         {error && <p>{error.message}</p>}
       </form>
