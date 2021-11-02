@@ -13,7 +13,7 @@ import TeamMemberBGBottomLeft from "./TeamMemberBGBottomLeft";
 
 const TeamMember = ({firebase}) => { 
   const params = useParams() 
-    console.log('Team member params', params)
+    // console.log('Team member params', params)
 
     const [user, setUser] = useState([])
     useEffect(() => {
@@ -42,7 +42,6 @@ const TeamMember = ({firebase}) => {
         </Box>
       </Center>
       <TeamMemberBGBottomLeft />
-      
     </div>
     
   )

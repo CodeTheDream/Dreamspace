@@ -15,6 +15,6 @@ export const TEAMMEMBER = "/directory/:id";
 // export const LINKGITHUB = '/linkgithub';
 export const WORLD = "/world";
 // export const UNDERCONSTRUCT = "/directory/:construct";
-export const PROFILE = "/directory/:username"
+export const PROFILE = "/directory/:userId"
 export const INDIVIDUAL_VIEW = "/articles/:articleId";
 // export const USERPROFILE= "/userprofile";

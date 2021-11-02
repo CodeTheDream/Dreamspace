@@ -133,6 +133,9 @@ const inputwrapper = styled.div`
 
 
 const INITIAL_STATE = {
+  firstName: "",
+  lastName: "",
+  github: "",
   users: "",
   title: "",
   email: "",
@@ -140,6 +143,8 @@ const INITIAL_STATE = {
   language: "",
   mentor: "",
   message: "",
+  developer: "",
+  hobbies: "",
   introduction: "",
   quote: "",
   state: "",
@@ -163,21 +168,30 @@ class Profile extends Component {
  }
   onSubmit = event => {
     const { 
-      users,
-      title,
-      email,
-      projects,
-      language,
-      message,
-      introduction,
-      quote,
-      mentor,
-      state,
-      country,
-      image,
-      photo,
-      remote,
-      equipment,
+      firstName,
+  lastName,
+  github,
+  users,
+  title,
+  email,
+  projects,
+  language,
+  mentor,
+  message,
+  developer,
+  hobbies,
+  introduction,
+  quote,
+  state,
+  country,
+  image,
+  photo,
+  remote,
+  equipment,
+  passwordOne,
+  passwordTwo,
+  isAdmin,
+  error,
     
   
   } = this.state;
@@ -217,28 +231,35 @@ const { match: { params } } = this.props;
 
  render() {
    const {
-      title,
-      email,
-      projects,
-      language,
-      mentor,
-      state,
-      country,
-      image,
-      photo,
-      message,
-      introduction,
-      quote,
-      remote,
-      equipment,
-      passwordOne,
-      passwordTwo,
-      error
+    firstName,
+    lastName,
+    github,
+    users,
+    title,
+    email,
+    projects,
+    language,
+    mentor,
+    message,
+    developer,
+    hobbies,
+    introduction,
+    quote,
+    state,
+    country,
+    image,
+    photo,
+    remote,
+    equipment,
+    passwordOne,
+    passwordTwo,
+    isAdmin,
+    error,
 
    } = this.state;
    
    //placing inline css code in index.css file, except for three lines of code below 
-     
+     console.log()
     return(
       <>
       <main>
@@ -369,6 +390,22 @@ const { match: { params } } = this.props;
                 type="text" 
                 value={this.state.value}
                 placeholder="Country"  
+                required></input> 
+          </div>
+        </div> 
+
+        <div className="fieldset">
+          <div className="input-wrapper"> 
+            <span className="icon"> 
+              <i className="fas fa-globe fa-1x"/></span>
+              &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input className="col-6 form-control" 
+                name="Developer" 
+                onChange={this.onChange} 
+                type="text" 
+                value={this.state.value}
+                placeholder="Developer"  
                 required></input> 
           </div>
         </div> 
