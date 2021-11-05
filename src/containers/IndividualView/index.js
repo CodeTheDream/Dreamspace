@@ -7,7 +7,10 @@ import Comment from "../../components/Comment";
 import ListItem1 from "../../components/ListItem1";
 import ReplyComment from "../../components/ReplyComment";
 import AddReplys from "../../components/AddReplys";
+
+
 const moment = require("moment");
+
 class IndividualView extends React.Component {
   constructor(props) {
     super(props);

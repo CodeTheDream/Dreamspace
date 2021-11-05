@@ -8,6 +8,7 @@ import TeamMemberBackGround from "./TeamMemberBackGround";
 import TeamMemberBGBottomLeft from "./TeamMemberBGBottomLeft";
 
 
+
 //This page displays each individual team member of CTD 
 //The photo is currently static at the time
 
@@ -42,6 +43,7 @@ const TeamMember = ({firebase}) => {
         </Box>
       </Center>
       <TeamMemberBGBottomLeft />
+    
     </div>
     
   )

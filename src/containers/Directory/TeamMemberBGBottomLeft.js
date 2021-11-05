@@ -2,7 +2,10 @@ import React, {useState, useEffect} from "react";
 import { compose } from "recompose";
 import { withFirebase } from "../../components/Firebase";
 import { useParams } from 'react-router-dom'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './usercard.css'
+import EditUpdates  from '../../components/EditUpdates';
+//import EditUpdates from "../../components/EditUpdates";
 
 
 //This code displays both left and right sides view
@@ -33,6 +36,8 @@ const TeamMemberBGBottomLeft = ({firebase}) => {
                 <div className="containerdiv">
                {/* <span>goodmorning hello user!</span> */}
               <span className="divider" />
+              {/* <EditUpdates /> */}
+              <EditUpdates />
       </div>
 
                 <div className="column">

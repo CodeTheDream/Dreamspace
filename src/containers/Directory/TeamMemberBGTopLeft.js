@@ -4,6 +4,7 @@ import { withFirebase } from "../../components/Firebase";
 import { useParams } from 'react-router-dom'
 import './usercard.css'
 import styled from 'styled-components';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 
@@ -69,15 +70,3 @@ const TeamMemberBGTopLeft = ({firebase}) => {
 
  export default compose(withFirebase)(TeamMemberBGTopLeft);
 
-
- // so line 59 in that first message
-// 9:36
-// that error messages is sayign the object that has .developer on it is undefined
-// 9:37
-// so from a debugging standpoint ou should be trying to see what's going on with that object... in that case it's the "user" object
-// 9:37
-// and what is probably appening is that the component is trying to render before it has access to the user object
-// 9:38
-// so you have to stop that component from rendering until the object is defined
-
-//This code displays on the top lefthand corner of the individual page
